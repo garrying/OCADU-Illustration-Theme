@@ -1,0 +1,65 @@
+@import "_reset.scss";
+@import "links";
+
+/* --------------------------------------------------------------------------
+	global
+--------------------------------------------------------------------------- */
+
+body {
+	font: 12px/20px sans-serif;
+	background:#f2f2f2;
+}
+
+h1,h2,h3,h4,h5,h6 {font-weight:bold;}
+
+/* --------------------------------------------------------------------------
+	site nav
+--------------------------------------------------------------------------- */
+#footer {
+	position:fixed;
+	background: rgba(0%, 0%, 100%, 0.5);
+	bottom:0;
+	width:100%;		
+	color:#fff;
+	-webkit-transition: background 0.2s ease-in-out;
+	-moz-transition: background 0.2s ease-in-out;
+	-o-transition: background 0.2s ease-in-out;
+	transition: background 0.2s ease-in-out;
+
+	&:hover {background: rgba(100%, 0%, 0%, 0.5);}
+	@include links (#fff,#00ffff)
+	
+}
+
+.year, .events {
+	float:left;
+	width:100px;
+	padding-right:20px;
+	margin-right:20px;
+	border-right:1px #f2f2f2 solid;	
+	&.active h3 a, li.active a {background:#000;}
+}
+
+.events {
+	border-right:none;
+	h2 a.active {background:#000};
+}
+
+
+
+/* --------------------------------------------------------------------------
+	content
+--------------------------------------------------------------------------- */
+#container {
+	color:#333;
+	
+	.gallery img {vertical-align:bottom;}
+	.gallery a {line-height:0;}
+	
+	.single-navigation {
+		div { background:#fff;display:inline;}		
+		}
+
+	@include links (#0000ff,#00ffff)
+	
+}
