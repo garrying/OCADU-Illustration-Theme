@@ -14,7 +14,7 @@
 	        </a></h3>
 	        <ul>
 	          <?php
-	            $wpq = array( 'post_type' => 'illustrator', 'taxonomy' => 'gradyear', 'order' => 'ASC', 'orderby' => 'title', 'term' => $year->slug );
+	            $wpq = array( 'post_type' => 'illustrator', 'posts_per_page' => '-1', 'taxonomy' => 'gradyear', 'order' => 'ASC', 'orderby' => 'title', 'term' => $year->slug );
 	            $year_posts = new WP_Query ($wpq);
 	          ?>
 	          <?php foreach( $year_posts->posts as $post ) : ?>
