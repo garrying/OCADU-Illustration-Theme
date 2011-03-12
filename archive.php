@@ -3,7 +3,7 @@
 <div id="container">
 
 	<h1 class="page-title"><?php echo $term->name; ?></h1>
-
+	<div id="year-archive">
 	<?php if (have_posts()) : ?>
 		
 		<?php query_posts($query_string . '&orderby=title&order=ASC');?>
@@ -25,6 +25,7 @@
 
 	  <?php endwhile; ?>
 	<?php endif; ?>
+	</div>
 
 </div> <!-- #container -->
 
