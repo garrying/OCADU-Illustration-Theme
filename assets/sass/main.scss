@@ -31,6 +31,8 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 	
 }
 
+#footer-menu {display:none;}
+
 .year, .events {
 	float:left;
 	width:100px;
@@ -53,6 +55,7 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 #container {
 	color:#333;
 	
+	.gallery-item {margin-bottom:10px;}
 	.gallery img {vertical-align:bottom;}
 	.gallery a {line-height:0;}
 	

@@ -81,6 +81,9 @@ h1, h2, h3, h4, h5, h6 {
     color: aqua;
     text-decoration: none; }
 
+#footer-menu {
+  display: none; }
+
 .year, .events {
   float: left;
   width: 100px;
@@ -100,6 +103,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------------------- */
 #container {
   color: #333; }
+  #container .gallery-item {
+    margin-bottom: 10px; }
   #container .gallery img {
     vertical-align: bottom; }
   #container .gallery a {

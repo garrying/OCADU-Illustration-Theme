@@ -4,7 +4,10 @@ $("#footer-header").click(function () {
   });
 
 // Probably going to use Masonry for some grid action.
-$('.gallery').masonry({ columnWidth: 300, animate: true });
+$('.gallery').masonry({ columnWidth: 310, animate: true });
+
+$('#year-archive').masonry({ columnWidth: 160, animate: true });
+
 
 // A quick go at keyboar nav. I'm sure there is a better way at this.
 $(document.documentElement).keyup(function (event) {
