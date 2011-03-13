@@ -4,7 +4,7 @@ $("#footer-header").click(function () {
   });
 
 // Probably going to use Masonry for some grid action.
-$('.gallery').masonry({ columnWidth: 310, animate: true });
+$('.illu-work').masonry({ columnWidth: 310, animate: true, itemSelector: '.gallery-item' });
 
 $('#year-archive').masonry({ columnWidth: 160, animate: true });
 

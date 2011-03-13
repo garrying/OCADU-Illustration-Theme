@@ -7,7 +7,7 @@
 
 body {
 	font: 12px/20px sans-serif;
-	background:#f2f2f2;
+	background:#fff;
 }
 
 h1,h2,h3,h4,h5,h6 {font-weight:bold;}
@@ -15,31 +15,39 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 /* --------------------------------------------------------------------------
 	site nav
 --------------------------------------------------------------------------- */
-#footer {
-	position:fixed;
-	background: rgba(0%, 0%, 100%, 0.5);
-	bottom:0;
-	width:100%;		
-	color:#fff;
+#header {
+	background: #f9f9f9;
+	position:relative;
+	height:70px;
+	min-width:930px;
+	color:#4d4d4d;
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 	-o-transition: background 0.2s ease-in-out;
 	transition: background 0.2s ease-in-out;
 
-	&:hover {background: rgba(100%, 0%, 0%, 0.5);}
-	@include links (#fff,#00ffff)
+	.container {position:absolute;bottom:0;width:100%;padding-bottom:20px;}
+
+	.search-nav-right {float:right;}
 	
+	#logo {float:left;width:300px;margin-right:10px;}
+
+	@include links (#4d4d4d,#ff747a)		
 }
 
-#footer-menu {display:none;}
-
-.year, .events {
+#page-nav {
 	float:left;
-	width:100px;
-	padding-right:20px;
+	font-family: 'Cuprum', arial, serif;
+	font-size:1.5em;
+	ul li {display:inline;margin-right:30px;}
+}
+
+.year {
+	font-family: 'Cuprum', arial, serif;
+	font-size:1.5em;
+	float:left;
 	margin-right:20px;
-	border-right:1px #f2f2f2 solid;	
-	&.active h3 a, li.active a {background:#000;}
+	&.active h2 a, li.active a {background:#000;}
 }
 
 .events {
@@ -47,6 +55,11 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 	h2 a.active {background:#000};
 }
 
+#search {
+	float:right;
+	margin-right:10px;
+	#s {border:none;background:#fff;width:200px;}
+}
 
 
 /* --------------------------------------------------------------------------
@@ -54,15 +67,32 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 --------------------------------------------------------------------------- */
 #container {
 	color:#333;
-	
+	min-width:930px;
 	.gallery-item {margin-bottom:10px;}
 	.gallery img {vertical-align:bottom;}
 	.gallery a {line-height:0;}
-	
-	.single-navigation {
-		div { background:#fff;display:inline;}		
+	.container {
+		font-family: 'Cuprum', arial, serif;
+		float:right;
+		margin-right:10px;
+		div:first-child {border-right:1px solid #d5d5d5;}
+		div {float:left;padding:5px;}
+		@include links (#808080,#ff747a)
 		}
 
-	@include links (#0000ff,#00ffff)
-	
+	@include links (#ff747a,#ff0000)
+}
+
+.single-navigation {
+	background:#f2f2f2;
+}
+
+#meta {
+	width:260px;
+	padding:20px;
+	h1 {
+		font-family: 'Cuprum', arial, serif;
+		font-size:3em;
+		line-height:1em;
+	}
 }

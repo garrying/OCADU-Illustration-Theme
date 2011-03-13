@@ -45,12 +45,27 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
+   j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.clearfix:after {
+  clear: both; }
+
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix {
+  zoom: 1; }
+
 /* --------------------------------------------------------------------------
 	global
 --------------------------------------------------------------------------- */
 body {
   font: 12px/20px sans-serif;
-  background: #f2f2f2; }
+  background: #fff; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
@@ -58,39 +73,52 @@ h1, h2, h3, h4, h5, h6 {
 /* --------------------------------------------------------------------------
 	site nav
 --------------------------------------------------------------------------- */
-#footer {
-  position: fixed;
-  background: rgba(0, 0, 255, 0.5);
-  bottom: 0;
-  width: 100%;
-  color: #fff;
+#header {
+  background: #f9f9f9;
+  position: relative;
+  height: 70px;
+  min-width: 930px;
+  color: #4d4d4d;
   -webkit-transition: background 0.2s ease-in-out;
   -moz-transition: background 0.2s ease-in-out;
   -o-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out; }
-  #footer:hover {
-    background: rgba(255, 0, 0, 0.5); }
-  #footer a:link, #footer a:visited {
-    color: white;
+  #header .container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 20px; }
+  #header .search-nav-right {
+    float: right; }
+  #header #logo {
+    float: left;
+    width: 300px;
+    margin-right: 10px; }
+  #header a:link, #header a:visited {
+    color: #4d4d4d;
     text-decoration: none;
     -webkit-transition: color 0.2s ease-in-out;
     -moz-transition: color 0.2s ease-in-out;
     -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out; }
-  #footer a:hover {
-    color: aqua;
+  #header a:hover {
+    color: #ff747a;
     text-decoration: none; }
 
-#footer-menu {
-  display: none; }
-
-.year, .events {
+#page-nav {
   float: left;
-  width: 100px;
-  padding-right: 20px;
-  margin-right: 20px;
-  border-right: 1px #f2f2f2 solid; }
-  .year.active h3 a, .year li.active a, .events.active h3 a, .events li.active a {
+  font-family: 'Cuprum', arial, serif;
+  font-size: 1.5em; }
+  #page-nav ul li {
+    display: inline;
+    margin-right: 30px; }
+
+.year {
+  font-family: 'Cuprum', arial, serif;
+  font-size: 1.5em;
+  float: left;
+  margin-right: 20px; }
+  .year.active h2 a, .year li.active a {
     background: #000; }
 
 .events {
@@ -98,27 +126,63 @@ h1, h2, h3, h4, h5, h6 {
   .events h2 a.active {
     background: #000; }
 
+#search {
+  float: right;
+  margin-right: 10px; }
+  #search #s {
+    border: none;
+    background: #fff;
+    width: 200px; }
+
 /* --------------------------------------------------------------------------
 	content
 --------------------------------------------------------------------------- */
 #container {
-  color: #333; }
+  color: #333;
+  min-width: 930px; }
   #container .gallery-item {
     margin-bottom: 10px; }
   #container .gallery img {
     vertical-align: bottom; }
   #container .gallery a {
     line-height: 0; }
-  #container .single-navigation div {
-    background: #fff;
-    display: inline; }
+  #container .container {
+    font-family: 'Cuprum', arial, serif;
+    float: right;
+    margin-right: 10px; }
+    #container .container div:first-child {
+      border-right: 1px solid #d5d5d5; }
+    #container .container div {
+      float: left;
+      padding: 5px; }
+    #container .container a:link, #container .container a:visited {
+      color: gray;
+      text-decoration: none;
+      -webkit-transition: color 0.2s ease-in-out;
+      -moz-transition: color 0.2s ease-in-out;
+      -o-transition: color 0.2s ease-in-out;
+      transition: color 0.2s ease-in-out; }
+    #container .container a:hover {
+      color: #ff747a;
+      text-decoration: none; }
   #container a:link, #container a:visited {
-    color: blue;
+    color: #ff747a;
     text-decoration: none;
     -webkit-transition: color 0.2s ease-in-out;
     -moz-transition: color 0.2s ease-in-out;
     -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out; }
   #container a:hover {
-    color: aqua;
+    color: red;
     text-decoration: none; }
+
+.single-navigation {
+  background: #f2f2f2; }
+
+#meta {
+  width: 260px;
+  padding: 20px; }
+  #meta h1 {
+    font-family: 'Cuprum', arial, serif;
+    font-size: 3em;
+    line-height: 1em; }
