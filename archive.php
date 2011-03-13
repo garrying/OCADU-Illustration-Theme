@@ -18,9 +18,7 @@
 	      </h2>
 <a href="<?php echo get_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark">	<?php the_post_thumbnail('thumbnail'); ?> </a>
 
-	      <div class="entry-summary">
-	        <?php the_excerpt(); ?>
-	      </div><!-- .entry-summary -->
+
 	    </div>
 
 	  <?php endwhile; ?>
