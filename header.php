@@ -35,6 +35,7 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 		?></title>
 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/assets/stylesheets/main.css" />
+	<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico"/>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -44,3 +45,30 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 </head>
 
 <body <?php body_class(); ?>>
+
+	<div id="header">
+	<div class="container">
+		<div id="logo">
+			<a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
+		</div>
+
+			<div id="year-select">
+			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
+			  <ul>
+			    <?php foreach( $grad_year as $year ) : ?>
+			      <li class="year <?php if ($term == $year->name) echo 'active' ?>">
+			        <h2><a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
+			          <?php echo $year->name; ?>
+			        </a></h2>
+			      </li>
+			    <?php endforeach ?>
+			  </ul>
+			</div> <!-- #year-Select-->
+
+			<div class="search-nav-right">
+				<div id="page-nav"><?php wp_nav_menu(); ?></div>
+		
+				<div id="search"><?php get_search_form(); ?></div>
+			</div>
+		</div> <!-- .container -->
+	</div> <!-- #header -->
