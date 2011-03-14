@@ -55,11 +55,18 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 			<div id="year-select">
 			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
 			
-			<?php $terms = get_the_terms( $post->ID , 'gradyear' );
-			foreach ( $terms as $term ) {
-				$selected_year = $term->name;
-			}
-			?>
+			<?php if (is_search() || is_post_type_archive()) : ?>			
+							
+				<?php else : ?>
+				
+					<?php $terms = get_the_terms( $post->ID , 'gradyear' );
+					foreach ( $terms as $term ) {
+						$selected_year = $term->name;
+					}
+					
+				?>
+	
+			<?php endif; ?>
 					
 			  <ul>
 			    <?php foreach( $grad_year as $year ) : ?>
