@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   margin-right: 20px; }
   .year.active h2 a, .year li.active a {
-    background: #000; }
+    border-bottom: 20px solid #ff747a; }
 
 .events {
   border-right: none; }
@@ -150,11 +150,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Cuprum', arial, serif;
     float: right;
     margin-right: 10px; }
-    #container .container div:first-child {
-      border-right: 1px solid #d5d5d5; }
     #container .container div {
       float: left;
-      padding: 5px; }
+      padding: 10px; }
     #container .container a:link, #container .container a:visited {
       color: gray;
       text-decoration: none;
@@ -173,16 +171,51 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out; }
   #container a:hover {
-    color: red;
+    color: fuchsia;
     text-decoration: none; }
 
+/* --------------------------------------------------------------------------
+	For Single Illustrator Page
+--------------------------------------------------------------------------- */
 .single-navigation {
   background: #f2f2f2; }
 
-#meta {
+#illustrator-details {
   width: 260px;
   padding: 20px; }
-  #meta h1 {
+  #illustrator-details .info {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+    line-height: 1em; }
+  #illustrator-details .phone {
+    border-bottom: none; }
+  #illustrator-details .statement p {
+    margin-bottom: 1em; }
+  #illustrator-details h1 {
     font-family: 'Cuprum', arial, serif;
     font-size: 3em;
-    line-height: 1em; }
+    line-height: 1em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px; }
+  #illustrator-details h2 {
+    font-family: 'Cuprum', arial, serif;
+    font-size: 1.5em;
+    margin: .5em 0; }
+
+/* --------------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------------- */
+#footer {
+  width: 930px;
+  margin: 2em auto;
+  text-align: center;
+  font-family: serif;
+  color: #ccc; }
+  #footer .container {
+    width: 600px;
+    margin: 0 auto; }
+  #footer blockquote {
+    padding: 1em 0;
+    margin: 1em 0;
+    border-top: 4px double #ddd;
+    border-bottom: 4px double #ddd; }

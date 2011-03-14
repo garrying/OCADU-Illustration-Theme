@@ -12,6 +12,8 @@ body {
 
 h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 
+$global_link_color: #ff747a;
+
 /* --------------------------------------------------------------------------
 	site nav
 --------------------------------------------------------------------------- */
@@ -32,7 +34,7 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 	
 	#logo {float:left;width:300px;margin-right:10px;}
 
-	@include links (#4d4d4d,#ff747a)		
+	@include links (#4d4d4d,$global_link_color)		
 }
 
 #page-nav {
@@ -47,7 +49,7 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 	font-size:1.5em;
 	float:left;
 	margin-right:20px;
-	&.active h2 a, li.active a {background:#000;}
+	&.active h2 a, li.active a {border-bottom:20px solid $global_link_color;}
 }
 
 .events {
@@ -69,30 +71,69 @@ h1,h2,h3,h4,h5,h6 {font-weight:bold;}
 	color:#333;
 	min-width:930px;
 	.gallery-item {margin-bottom:10px;}
-	.gallery img {vertical-align:bottom;}
-	.gallery a {line-height:0;}
+	
+	.gallery  {
+		img {vertical-align:bottom;}
+		a {line-height:0;}
+		}	
+		
 	.container {
 		font-family: 'Cuprum', arial, serif;
 		float:right;
 		margin-right:10px;
-		div:first-child {border-right:1px solid #d5d5d5;}
-		div {float:left;padding:5px;}
-		@include links (#808080,#ff747a)
+		div {
+			float:left;padding:10px;
+			}
+		@include links (#808080,$global_link_color)
 		}
-
-	@include links (#ff747a,#ff0000)
+	@include links ($global_link_color,#ff00ff)
 }
+
+/* --------------------------------------------------------------------------
+	For Single Illustrator Page
+--------------------------------------------------------------------------- */
 
 .single-navigation {
 	background:#f2f2f2;
 }
 
-#meta {
+#illustrator-details {
 	width:260px;
 	padding:20px;
+	
+	.info {border-bottom:1px solid #e5e5e5;padding:10px 0;line-height:1em;}
+	.phone {border-bottom:none;}
+	.statement p {margin-bottom:1em;}
+		
 	h1 {
 		font-family: 'Cuprum', arial, serif;
 		font-size:3em;
 		line-height:1em;
+		border-bottom:1px solid #ccc;
+		padding-bottom:10px;
+	}
+	h2 {
+		font-family: 'Cuprum', arial, serif;
+		font-size:1.5em;
+		margin:.5em 0;
+	}
+}
+
+/* --------------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------------- */
+
+#footer {
+	width:930px;margin: 2em auto;
+	text-align: center;
+	font-family: serif;
+	color:#ccc;
+	.container {width:600px;margin:0 auto;}
+	blockquote {
+		padding:1em 0;
+		margin: 1em 0;
+		border-top: 4px double #ddd;
+		border-bottom: 4px double #ddd;
+		
 	}
 }
