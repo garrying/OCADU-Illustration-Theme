@@ -54,9 +54,16 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 
 			<div id="year-select">
 			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
+			
+			<?php $terms = get_the_terms( $post->ID , 'gradyear' );
+			foreach ( $terms as $term ) {
+				$selected_year = $term->name;
+			}
+			?>
+					
 			  <ul>
 			    <?php foreach( $grad_year as $year ) : ?>
-			      <li class="year <?php if ($term == $year->name) echo 'active' ?>">
+			      <li class="year <?php if ($term == $year->name) echo 'active' ?> <?php if ($selected_year == $year->name) echo 'active' ?>">
 			        <h2><a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
 			          <?php echo $year->name; ?>
 			        </a></h2>
