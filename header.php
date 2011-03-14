@@ -71,7 +71,7 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 			  <ul>
 			    <?php foreach( $grad_year as $year ) : ?>
 			      <li class="year <?php if ($term == $year->name) echo 'active' ?> <?php if ($selected_year == $year->name) echo 'active' ?>">
-			        <h2><a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
+			        <h2><a title="View work of <?php echo $year->name; ?>" href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
 			          <?php echo $year->name; ?>
 			        </a></h2>
 			      </li>
