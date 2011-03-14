@@ -1,12 +1,10 @@
 <?php get_header(); ?>
 
-
-
 <div id="container">
 	
 	<div class="single-navigation clearfix">
 		<div class="container">
-		<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true) ); ?></div>
+		<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true) ); ?></div>		
 		<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true) ); ?></div>
 		</div>
 	</div> <!-- end navigation -->
@@ -16,23 +14,27 @@
 	
 	<div class="illu-work">
 	
-	<div class="gallery-item" id="meta">
-	<h1><?php the_title(); ?></h1>
-		
+	<div class="gallery-item" id="illustrator-details">
 
+	<h1><?php the_title(); ?></h1>
+	
+	<?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
+		<div class="info site"><p><a href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>" title="<?php the_title(); ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></p></div>
+	<?php endif; ?>
+	
 	<?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-	 <p><a href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></p>
+	 <div class="info email"><p><a href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></p></div>
 	<?php endif; ?>
 
 	<?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-	 <p><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></p>
+	 <div class="info phone"><p><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></p></div>
 	<?php endif; ?>
 
-	<?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-		<p><a href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>" title="<?php the_title(); ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></p>
+	<?php if ( get_the_content() ) : ?>
+	<div class="statement">
+		<?php $text = '<h2>' . 'Statement' . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+	</div>
 	<?php endif; ?>
-	
-	<?php the_content('Continue reading &rarr;'); ?>
 	
 	</div>
 
@@ -48,7 +50,6 @@
 	<?php endif; ?>
 	</div>
 	
-
 </div> <!-- #container -->
 
 <?php get_footer(); ?>
