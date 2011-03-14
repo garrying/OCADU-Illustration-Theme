@@ -128,11 +128,15 @@ h1, h2, h3, h4, h5, h6 {
 
 #search {
   float: right;
-  margin-right: 10px; }
+  margin: -5px 10px 0 0; }
   #search #s {
     border: none;
     background: #fff;
-    width: 200px; }
+    width: 200px;
+    color: #999;
+    padding: 5px; }
+    #search #s:focus {
+      color: #222; }
 
 /* --------------------------------------------------------------------------
 	content

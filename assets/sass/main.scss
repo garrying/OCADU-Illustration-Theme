@@ -59,8 +59,17 @@ $global_link_color: #ff747a;
 
 #search {
 	float:right;
-	margin-right:10px;
-	#s {border:none;background:#fff;width:200px;}
+	margin: -5px 10px 0 0;
+	#s {
+		border:none;
+		background:#fff;
+		width:200px;
+		color:#999;
+		padding:5px;
+		
+		&:focus {color:#222;};
+		
+		}
 }
 
 
