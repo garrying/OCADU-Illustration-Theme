@@ -6,7 +6,7 @@
 		But I, being poor, have only my dreams;<br />
 		I have spread my dreams under your feet;
 		Tread softly because you tread on my dreams.</blockquote>
-		<p>Copyright © 2010</p>
+		<p>Copyright &copy; <?php echo date('Y'); ?></p>
 		<p>Respective Authors</p>
 	</div>
 </div>
