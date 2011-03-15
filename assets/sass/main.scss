@@ -99,6 +99,95 @@ $global_link_color: #ff747a;
 }
 
 /* --------------------------------------------------------------------------
+	Year/Illustrator Archive
+--------------------------------------------------------------------------- */
+
+#year-archive {
+	.year-title {
+		font-family:'Cuprum', arial, serif;
+		font-size:3em;
+		line-height:1em;
+		padding:20px;
+		background:$global_link_color;
+		width:115px;
+		height:115px;
+			&:hover {
+				background:#333;
+				color:#fff;
+			}
+	}
+	
+	.thumbnail {
+		position:relative;
+		h2 {
+			position:absolute;
+			bottom:0;
+			display:block;
+
+			width:100%;
+			font-family: 'Cuprum', arial, serif;
+			font-size: 1.5em;
+			background:$global_link_color;
+			padding:5px 0;
+			line-height:1em;	
+		}
+		img { margin-bottom:-6px; }
+		&:hover {
+			h2 {
+				background:rgba(0,0,0,0.8);
+			}
+		}
+	}
+	@include links (#fff,#fff)
+		
+}
+
+#illustrator-archive {
+	.thumbnail {
+		position:relative;
+		h2 {
+			position:absolute;
+			bottom:0;
+			display:block;
+			opacity:0;
+			width:100%;
+			padding:4px 0;
+			font-family: 'Cuprum', arial, serif;
+			font-size: 1.5em;
+			background:$global_link_color;
+						
+			-webkit-transition: opacity 0.2s ease-in-out;
+			-moz-transition: opacity 0.2s ease-in-out;
+			-o-transition: opacity 0.2s ease-in-out;
+			transition: opacity 0.2s ease-in-out;
+			
+		}
+		img { margin-bottom:-7px; }
+		&:hover {
+			h2 {
+				display:block;
+				opacity:1;
+				}
+		}
+	}
+	@include links ($global_link_color,#fff)
+	
+}
+
+#infscr-loading {
+z-index: 5000;
+position: fixed;
+bottom: 0px;
+width: 100%;
+height: 25px;
+padding: 10px;
+background: white;
+opacity: 0.8;
+color: white;
+
+}
+
+/* --------------------------------------------------------------------------
 	For Single Illustrator Page
 --------------------------------------------------------------------------- */
 

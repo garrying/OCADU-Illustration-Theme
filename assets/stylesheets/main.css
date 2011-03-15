@@ -179,6 +179,90 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none; }
 
 /* --------------------------------------------------------------------------
+	Year/Illustrator Archive
+--------------------------------------------------------------------------- */
+#year-archive .year-title {
+  font-family: 'Cuprum', arial, serif;
+  font-size: 3em;
+  line-height: 1em;
+  padding: 20px;
+  background: #ff747a;
+  width: 115px;
+  height: 115px; }
+  #year-archive .year-title:hover {
+    background: #333;
+    color: #fff; }
+#year-archive .thumbnail {
+  position: relative; }
+  #year-archive .thumbnail h2 {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    font-family: 'Cuprum', arial, serif;
+    font-size: 1.5em;
+    background: #ff747a;
+    padding: 5px 0;
+    line-height: 1em; }
+  #year-archive .thumbnail img {
+    margin-bottom: -6px; }
+  #year-archive .thumbnail:hover h2 {
+    background: rgba(0, 0, 0, 0.8); }
+#year-archive a:link, #year-archive a:visited {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out; }
+#year-archive a:hover {
+  color: white;
+  text-decoration: none; }
+
+#illustrator-archive .thumbnail {
+  position: relative; }
+  #illustrator-archive .thumbnail h2 {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    opacity: 0;
+    width: 100%;
+    padding: 4px 0;
+    font-family: 'Cuprum', arial, serif;
+    font-size: 1.5em;
+    background: #ff747a;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out; }
+  #illustrator-archive .thumbnail img {
+    margin-bottom: -7px; }
+  #illustrator-archive .thumbnail:hover h2 {
+    display: block;
+    opacity: 1; }
+#illustrator-archive a:link, #illustrator-archive a:visited {
+  color: #ff747a;
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out; }
+#illustrator-archive a:hover {
+  color: white;
+  text-decoration: none; }
+
+#infscr-loading {
+  z-index: 5000;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 25px;
+  padding: 10px;
+  background: white;
+  opacity: 0.8;
+  color: white; }
+
+/* --------------------------------------------------------------------------
 	For Single Illustrator Page
 --------------------------------------------------------------------------- */
 .single-navigation {

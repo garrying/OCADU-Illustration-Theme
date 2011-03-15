@@ -2,31 +2,27 @@
 
 <div id="container">
 
+	<div id="illustrator-archive">
+
 	<?php if (have_posts()) : ?>
 
 	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-   
-   <div class="post">
+   	<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+	
 
 	<?php while (have_posts()) : the_post(); ?>
-       <div class="result">
+       <div class="post">
                <div class="thumbnail">
                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
                        <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
                        <?php the_post_thumbnail('thumbnail'); ?>
                    </a>
                </div>
-       </div>
-       
+       </div><!-- .post --> 
        <?php endwhile; ?>
        
-       <div class="navigation">
-           <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-           <div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-       </div>
-       
-   </div> <!-- .post -->
-   
+
+
 <?php else :
 
 	if ( is_category() ) { // If this is a category archive
@@ -43,6 +39,16 @@
 
 endif;
 ?>
+
+
+</div>
+
+
+<div class="navigation">
+     <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
+     <div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
+ </div>
+
 
 </div> <!-- #container -->
 

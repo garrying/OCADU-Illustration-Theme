@@ -1,7 +1,9 @@
 // Probably going to use Masonry for some grid action.
 $('.illu-work').masonry({ columnWidth: 310, animate: true, itemSelector: '.gallery-item' });
 
-$('#year-archive').masonry({ columnWidth: 160, animate: true });
+$('#year-archive').masonry({ columnWidth: 155, animate: true, itemSelector: '.post' });
+
+$('#illustrator-archive').masonry({ columnWidth: 155, animate: false, itemSelector: '.post' });
 
 // A quick go at keyboar nav. I'm sure there is a better way at this.
 $(document.documentElement).keyup(function (event) {
