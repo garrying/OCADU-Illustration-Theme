@@ -20,4 +20,10 @@ function my_gallery_style() {
     return "<div class='gallery'>";
 }
 
+// Add custom menu using wp_nav_menu()
+
+register_nav_menus( array(
+	'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+) );
+
 ?>

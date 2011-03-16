@@ -80,7 +80,9 @@ OO   OO CC    C AAAAAAA DD   DD UU   UU     2222   00   00  11  11
 			</div> <!-- #year-Select-->
 
 			<div class="search-nav-right">
-				<div id="page-nav"><?php wp_nav_menu(); ?></div>
+				<div id="page-nav">	
+					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				</div>
 		
 				<div id="search"><?php get_search_form(); ?></div>
 			</div>
