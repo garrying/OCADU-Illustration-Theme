@@ -235,3 +235,35 @@ color: white;
 		
 	}
 }
+
+/* --------------------------------------------------------------------------
+	404
+--------------------------------------------------------------------------- */
+
+#page-not-found {
+	h1 {
+		font-family: 'Cuprum', arial, serif;
+		font-size:3em;
+		line-height:1em;
+	}
+	p {
+		font-family: serif;
+		color:#999;
+		&.small {color:#ccc;}
+	}
+	#searchform {
+		margin:2em 0;
+		#s {
+			border:1px solid #ccc;
+			padding:5px;
+			width:300px;
+			color:#999;
+			&:focus {
+				color:#000;
+			}
+		}
+	}
+	
+	margin-top:2em;
+	text-align:center;
+}

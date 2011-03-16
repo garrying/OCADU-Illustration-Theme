@@ -307,3 +307,28 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
     border-top: 4px double #ddd;
     border-bottom: 4px double #ddd; }
+
+/* --------------------------------------------------------------------------
+	404
+--------------------------------------------------------------------------- */
+#page-not-found {
+  margin-top: 2em;
+  text-align: center; }
+  #page-not-found h1 {
+    font-family: 'Cuprum', arial, serif;
+    font-size: 3em;
+    line-height: 1em; }
+  #page-not-found p {
+    font-family: serif;
+    color: #999; }
+    #page-not-found p.small {
+      color: #ccc; }
+  #page-not-found #searchform {
+    margin: 2em 0; }
+    #page-not-found #searchform #s {
+      border: 1px solid #ccc;
+      padding: 5px;
+      width: 300px;
+      color: #999; }
+      #page-not-found #searchform #s:focus {
+        color: #000; }
