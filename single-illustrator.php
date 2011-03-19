@@ -4,8 +4,8 @@
 	
 	<div class="single-navigation clearfix">
 		<div class="container">
-		<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true) ); ?></div>		
-		<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true) ); ?></div>
+			<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>		
+			<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>
 		</div>
 	</div> <!-- end navigation -->
 	

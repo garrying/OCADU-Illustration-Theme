@@ -28,11 +28,27 @@ $global_link_color: #ff747a;
 	-o-transition: background 0.2s ease-in-out;
 	transition: background 0.2s ease-in-out;
 
-	.container {position:absolute;bottom:0;width:100%;padding-bottom:20px;}
+	.container {
+		position:absolute;
+		bottom:0;
+		width:100%;
+		}
 
-	.search-nav-right {float:right;}
+	.search-nav-right {
+		float:right;
+		position:absolute;
+		bottom:16px;
+		right:0;
+		}
 	
-	#logo {float:left;width:300px;margin-right:10px;}
+	#logo {
+		width:300px;
+		margin-right:10px;
+		background:#1a1a1a;
+		display:block;
+		float:left;
+		height:70px;
+		}
 
 	@include links (#4d4d4d,$global_link_color)		
 }
@@ -50,6 +66,12 @@ $global_link_color: #ff747a;
 	float:left;
 	margin-right:20px;
 	&.active h2 a, li.active a {border-bottom:20px solid $global_link_color;}
+}
+
+#year-select {
+	position:absolute;
+	bottom:18px;
+	left:310px;
 }
 
 .events {
@@ -88,10 +110,29 @@ $global_link_color: #ff747a;
 		
 	.container {
 		font-family: 'Cuprum', arial, serif;
-		float:right;
-		margin-right:10px;
-		div {
-			float:left;padding:10px;
+		color:#808080;
+		.prev-link {
+			float:left;
+			width:50%;
+				a {
+					display:block;
+					width:100%;
+					padding-left:20px;
+					background:url('../..//assets/images/single-nav-left.gif') no-repeat left center #f2f2f2;
+				}
+			}
+		.next-link {
+			float:right;
+			width:50%;
+				a {
+					text-align:right;
+					display:block;
+					margin-left:-20px;
+					padding-right:20px;
+					width:100%;
+					background:url('../..//assets/images/single-nav-right.gif') no-repeat right center #f2f2f2;
+					
+				}
 			}
 		@include links (#808080,$global_link_color)
 		}
@@ -190,10 +231,6 @@ color: white;
 /* --------------------------------------------------------------------------
 	For Single Illustrator Page
 --------------------------------------------------------------------------- */
-
-.single-navigation {
-	background:#f2f2f2;
-}
 
 #illustrator-details {
 	width:260px;
