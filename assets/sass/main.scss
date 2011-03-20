@@ -18,7 +18,7 @@ $global_link_color: #ff747a;
 	site nav
 --------------------------------------------------------------------------- */
 #header {
-	background: #f9f9f9;
+	background:#f9f9f9;
 	position:relative;
 	height:70px;
 	min-width:930px;
@@ -44,10 +44,16 @@ $global_link_color: #ff747a;
 	#logo {
 		width:300px;
 		margin-right:10px;
-		background:#1a1a1a;
+		background:url('../../assets/images/header-bg.png') no-repeat #1a1a1a;
 		display:block;
 		float:left;
 		height:70px;
+			a {
+				display:block;
+				width:100%;
+				height:70px;
+				text-indent:-9999px;
+			}
 		}
 
 	@include links (#4d4d4d,$global_link_color)		
@@ -118,7 +124,7 @@ $global_link_color: #ff747a;
 					display:block;
 					width:100%;
 					padding-left:20px;
-					background:url('../..//assets/images/single-nav-left.gif') no-repeat left center #f2f2f2;
+					background:url('../../assets/images/single-nav-left.gif') no-repeat left center #f2f2f2;
 				}
 			}
 		.next-link {
@@ -130,13 +136,29 @@ $global_link_color: #ff747a;
 					margin-left:-20px;
 					padding-right:20px;
 					width:100%;
-					background:url('../..//assets/images/single-nav-right.gif') no-repeat right center #f2f2f2;
+					background:url('../../assets/images/single-nav-right.gif') no-repeat right center #f2f2f2;
 					
 				}
 			}
 		@include links (#808080,$global_link_color)
 		}
-	@include links ($global_link_color,#ff00ff)
+		
+		.single-page {
+			margin: 2em auto;
+			width:600px;
+			h1 {
+				font-family: 'Cuprum', arial, serif;
+				font-size:3em;
+				line-height:1em;
+				padding-bottom:10px;
+				text-align:center;
+			}
+			p {
+				margin-bottom:1em;
+			}
+		}
+		
+	@include links ($global_link_color,#009999)
 }
 
 /* --------------------------------------------------------------------------
