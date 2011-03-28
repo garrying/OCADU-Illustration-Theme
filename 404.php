@@ -7,7 +7,7 @@
 	<div class="entry-content">
 		<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.'); ?></p>
 		<?php get_search_form(); ?>
-		<p class="small">Psst &hellip; Press enter to submit</p>
+		<p class="small">Psst &hellip; Press Enter to submit</p>
 	</div><!-- .entry-content -->
 </div>
 
