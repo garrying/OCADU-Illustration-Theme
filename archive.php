@@ -13,12 +13,12 @@
 	  <?php while (have_posts()) : the_post(); ?>
 
       <div class="post">
-              <div class="thumbnail">
-                  <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-                      <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-                      <?php the_post_thumbnail('thumbnail'); ?>
-                  </a>
-              </div>
+         <div class="thumbnail">
+             <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+                 <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+                 <?php the_post_thumbnail('thumbnail'); ?>
+             </a>
+         </div>
       </div><!-- .post -->
 
 	  <?php endwhile; ?>

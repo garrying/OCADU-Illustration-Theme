@@ -253,6 +253,77 @@ color: white;
 }
 
 /* --------------------------------------------------------------------------
+	For Search Results
+--------------------------------------------------------------------------- */
+
+#search-results {
+	.post {margin-bottom:10px;}
+	.thumbnail {
+		position:relative;
+		h2 {
+			position:absolute;
+			bottom:0;
+			display:block;
+			padding:5px;
+			font-size: 1.25em;
+			line-height:1em;	
+			background:rgba(0,0,0,0.6);;
+						
+			-webkit-transition: opacity 0.2s ease-in-out;
+			-moz-transition: opacity 0.2s ease-in-out;
+			-o-transition: opacity 0.2s ease-in-out;
+			transition: opacity 0.2s ease-in-out;
+			
+		}
+		img { margin-bottom:-6px; }
+		&:hover {
+			h2 {
+				background:rgba(0,0,0,0.8);
+				}
+		}
+	}
+	h1 {
+		font-size: 2em;
+		line-height: 1em;
+		padding-bottom: 10px;
+		.term {color:$global_link_color;}
+	}
+	
+	#s {
+			border:1px solid #ddd;
+			padding:10px;
+			width:240px;
+			color:#999;
+			
+			-moz-border-radius: 10px; 
+		  -webkit-border-radius: 10px;
+		  border-radius: 10px;
+
+			&:focus {
+				color:#000;
+			}
+	}
+	#search-form {
+		width: 260px;
+		padding: 20px;
+		margin: 2em 0;
+	}
+	
+	#neg-search {
+		width:300px;
+		margin:2em 0;
+		padding:20px 0;
+		h2 {
+			font-size:2em;
+			line-height:1em;
+			}
+		}
+	
+	@include links (#fff,#fff)
+}
+
+
+/* --------------------------------------------------------------------------
 	For Single Illustrator Page
 --------------------------------------------------------------------------- */
 

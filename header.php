@@ -5,8 +5,11 @@
                                          
  OOOOO   CCCCC    AAA   DDDDD      UU   UU     2222    00000   1   1  
 OO   OO CC    C  AAAAA  DD  DD     UU   UU    222222  00   00 111 111 
+OO   OO CC    c AA   AA DD   DD    UU   UU        222 00   00  11  11 
+OO   OO CC      AA   AA DD   DD    UU   UU        222 00   00  11  11 
 OO   OO CC      AA   AA DD   DD    UU   UU        222 00   00  11  11 
 OO   OO CC    C AAAAAAA DD   DD    UU   UU     2222   00   00  11  11 
+OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11 
  OOOO0   CCCCC  AA   AA DDDDDD      UUUUU     2222222  00000  111 111
 
 -->
