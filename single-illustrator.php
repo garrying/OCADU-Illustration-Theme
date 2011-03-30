@@ -39,7 +39,7 @@
 	</div>
 
 	<?php
-	    $gallery_shortcode = '[gallery link="file" size="medium" itemtag="div" icontag="div" columns="0"]';
+	    $gallery_shortcode = '[gallery link="small" size="medium" itemtag="div" icontag="div" columns="0"]';
 	    print apply_filters( 'the_content', $gallery_shortcode );
 	 ?>
           
