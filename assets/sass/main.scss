@@ -159,9 +159,19 @@ $global_link_color: #009999;
 				padding-bottom:10px;
 				text-align:center;
 			}
+			h2 {
+				font-size:2em;
+				line-height:1em;
+				padding:10px 0;
+				text-align:center;
+			}
 			p {
 				margin-bottom:1em;
 			}
+			.left, .right {float:left;width:280px}
+			.left {margin-right:10px;}
+			.right {margin-left:10px;}
+			.faculty-list div {width:25%;padding:0;margin:0;}
 		}
 		
 	@include links ($global_link_color,#009999)
@@ -238,9 +248,12 @@ $global_link_color: #009999;
 				}
 		}
 	}
-	@include links ($global_link_color,#fff)
-	
+	@include links ($global_link_color,#fff)	
 }
+
+.navigation div {margin:0 10px;}
+.alignleft {float:left;}
+.alignright {float:right;}
 
 #infscr-loading {
 z-index: 5000;
@@ -433,4 +446,3 @@ color: white;
 	margin-top:2em;
 	text-align:center;
 }
-

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div id="container">
 	
-<div class="single-page">
+<div class="single-page clearfix">
 	
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 

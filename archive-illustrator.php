@@ -21,8 +21,6 @@
        </div><!-- .post --> 
        <?php endwhile; ?>
        
-
-
 <?php else :
 
 	if ( is_category() ) { // If this is a category archive
@@ -44,9 +42,9 @@ endif;
 </div>
 
 
-<div class="navigation">
-    <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-    <div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
+<div class="navigation clearfix">
+    <div class="alignleft"><?php previous_posts_link('&laquo; View Previous') ?></div>
+    <div class="alignright"><?php next_posts_link('View More &raquo;') ?></div>
 </div>
 
 
