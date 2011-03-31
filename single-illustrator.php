@@ -12,7 +12,7 @@
 		
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 	
-	<div class="illu-work">
+	<div class="grid-large">
 	
 	<div class="gallery-item" id="illustrator-details">
 

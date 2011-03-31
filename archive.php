@@ -2,7 +2,7 @@
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 <div id="container">
 
-	<div id="year-archive">
+	<div id="year-archive" class='grid-small'>
 	
 	<h1 class="year-title post"><?php echo $term->name; ?></h1>
 		

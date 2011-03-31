@@ -2,7 +2,7 @@
 
 
 <div id="container">	
-	<div id="image-single">
+	<div id="image-single" class="grid-large">
 
 	<?php
 	/* Run the loop to output the attachment.

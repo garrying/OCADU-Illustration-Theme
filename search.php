@@ -2,7 +2,7 @@
 
 <div id="container">
 	
-	<div id="search-results">
+	<div id="search-results" class="grid-large">
 		
 	<?php if (have_posts()) : ?>
     
