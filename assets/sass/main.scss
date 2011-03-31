@@ -22,6 +22,7 @@ $global_link_color: #009999;
 	site nav
 --------------------------------------------------------------------------- */
 #header {
+	min-width: 930px;
 	background:#f9f9f9;
 	position:relative;
 	height:70px;
@@ -351,6 +352,21 @@ color: white;
 	
 }
 
+#image-navigation {
+	border-top:1px solid #e5e5e5;padding:10px 0;
+}
+
+#image-navigation-shortcuts {
+	font-size:.85em;
+	color:#ccc;
+}
+
+.arrow {
+	color:$global_link_color;
+	font-family:sans-serif;
+}
+
+
 /* --------------------------------------------------------------------------
 	Footer
 --------------------------------------------------------------------------- */
@@ -361,10 +377,7 @@ color: white;
 	font-family: serif;
 	color:#ccc;
 	.container {width:600px;margin:0 auto;}
-	.arrow {
-		color:$global_link_color;
-		font-family:sans-serif;
-	}
+
 	.footer-selects {
 		width:300px;
 		margin:2em auto;

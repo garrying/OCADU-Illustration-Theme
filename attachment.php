@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <div id="container">	
 	<div id="image-single">
 
@@ -10,6 +11,7 @@
 	 */
 	get_template_part( 'loop', 'attachment' );
 	?>
+
 
 	</div><!-- #image-single -->
 </div><!-- #container -->

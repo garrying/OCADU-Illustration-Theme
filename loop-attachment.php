@@ -2,7 +2,7 @@
 
 				<?php if ( ! empty( $post->post_parent ) ) : ?>
 					<div class="post" id="illustrator-details">
-					<h1 class="page-title"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'twentyten' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
+					<h1 class="page-title"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'twentyten' ), get_the_title( $post->post_parent ) ) ); ?>"><?php
 						/* translators: %s - title of parent post */
 						printf( __( '%s'), get_the_title( $post->post_parent ) );
 					?></a></h1>
@@ -21,8 +21,17 @@
 					
 					<div id="image-navigation">
 						<div class="nav-previous"><?php previous_image_link( true ); ?></div>
+						
 						<div class="nav-next"><?php next_image_link( true ); ?></div>
-					</div><!-- #nav-below -->
+						
+
+					</div><!-- #image-navigation-->
+					
+					<div id="image-navigation-shortcuts">
+					<p>Keyboard Shortcuts:</p>
+					<p><span class="arrow">&larr;</span> Next Previous // Next Image <span class="arrow">&rarr;</span></p>
+					</div>
+					
 								
 					</div>
 				<?php endif; ?>
@@ -58,6 +67,5 @@
 						<div class="entry-caption"><?php if ( !empty( $post->post_excerpt ) ) the_excerpt(); ?></div>
 
 					</div><!-- .single-image -->
-
 
 <?php endwhile; // end of the loop. ?>
