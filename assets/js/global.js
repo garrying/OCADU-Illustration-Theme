@@ -5,7 +5,7 @@ $('.grid-large').masonry({ columnWidth: 310, animate: true, itemSelector: '.gall
 
 $('.grid-small').masonry({ columnWidth: 155, animate: true, itemSelector: '.post' });
 
-$('#illustrator-archive').masonry({ columnWidth: 155, animate: false, itemSelector: '.post' });
+$('#illustrator-archive').masonry({ columnWidth: 155, animate: true, itemSelector: '.post' });
 
 // A quick go at keyboar nav. I'm sure there is a better way at this.
 $(document.documentElement).keyup(function (event) {

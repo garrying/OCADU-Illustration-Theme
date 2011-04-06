@@ -4,8 +4,8 @@
 
 	<div id="illustrator-archive" class="index">
 		
-	<div class="post" style="background:#222;width:465px;height:600px">
-	asdadad
+	<div id="welcome" class="post">
+	Fancy welcome here.
 	</div>
 
 	<?php if (have_posts()) : ?>
