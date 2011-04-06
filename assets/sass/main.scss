@@ -108,6 +108,25 @@ $global_link_color: #009999;
 		}
 }
 
+/* --------------------------------------------------------------------------
+	index
+--------------------------------------------------------------------------- */
+
+.index {
+	.post {
+		background:#222;
+		img {
+			opacity:0.50;
+			-webkit-transition: opacity 0.5s ease-in-out;
+			-moz-transition: opacity 0.5s ease-in-out;
+			-o-transition: opacity 0.5s ease-in-out;
+			transition: opacity 0.5s ease-in-out;
+			}
+			&:hover {
+				img {opacity:1;}
+			}
+		}
+}
 
 /* --------------------------------------------------------------------------
 	content
