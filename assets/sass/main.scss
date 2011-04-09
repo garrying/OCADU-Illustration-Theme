@@ -60,6 +60,10 @@ $global_link_color: #009999;
 			}
 		}
 
+-moz-box-shadow:inset 0px 0px 4px #ffffff; /* FF3.5+ */
+-webkit-box-shadow:inset 0px 0px 4px #ffffff; /* Saf3.0+, Chrome */
+box-shadow:inset 0px 0px 10px rgba(0,0,0,0.1); /* Opera 10.5, IE9, Chrome 10+ */
+
 	@include links (#4d4d4d,$global_link_color)		
 }
 
@@ -130,8 +134,10 @@ $global_link_color: #009999;
 		background:#1a1a1a;
 		width:155px * 3;
 		color:#fff;
-		height:155px * 4;
+		height:155px * 3;
 	}
+	
+	background-color: #1a1a1a;
 }
 
 /* --------------------------------------------------------------------------

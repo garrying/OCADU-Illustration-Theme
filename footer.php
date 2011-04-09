@@ -1,7 +1,6 @@
 <div id="footer">
 	<div class="container">
 
-
 <p>Keyboard Shortcuts: <span class="arrow">&larr;</span> Previous Illustrator // Next Illustrator <span class="arrow">&rarr;</span></p>
 <div class="footer-selects">
 	
@@ -34,7 +33,6 @@
 </div>
 
 <p>Maintained by the Illustration Department at <a href="http://www.ocad.ca" title="OCAD U We Heart U">OCAD University</a></p>
-
 
 <p>We ♥ <a href="http://wordpress.org" title="Seriously">Wordpress</a></p>
 
