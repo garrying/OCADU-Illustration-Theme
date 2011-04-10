@@ -1,15 +1,7 @@
 <?php get_header(); ?>
 
 <div id="container">
-	
-	<div class="single-navigation clearfix">
-		<div class="container">
-			<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>		
-			<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>
-		</div>
-	</div> <!-- end navigation -->
-	
-		
+			
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 	
 	<div class="grid-large">
@@ -49,6 +41,14 @@
 
 	<?php endif; ?>
 	</div>
+	
+	<div class="single-navigation clearfix">
+		<div class="container">
+			<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>		
+			<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></div>
+		</div>
+	</div> <!-- end navigation -->
+	
 	
 </div> <!-- #container -->
 

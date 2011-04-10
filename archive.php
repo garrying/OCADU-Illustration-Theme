@@ -8,7 +8,7 @@
 		
 	<?php if (have_posts()) : ?>
 		
-		<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+		<?php query_posts($query_string . '&orderby=title&order=ASC&posts_per_page=-1 ');?>
 		
 	  <?php while (have_posts()) : the_post(); ?>
 
