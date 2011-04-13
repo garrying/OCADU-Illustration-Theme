@@ -241,7 +241,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			}
 		&:hover {
 			h2 {
-				background:rgba(0,0,0,0.9);
+				background:$global_link_color;
 			}
 		}
 	}
@@ -322,7 +322,7 @@ color: white;
 		img { margin-bottom:-6px; }
 		&:hover {
 			h2 {
-				background:rgba(0,0,0,0.8);
+				background:$global_link_color;
 				}
 		}
 	}
