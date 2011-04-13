@@ -24,7 +24,19 @@
 
 	<?php if ( get_the_content() ) : ?>
 	<div class="statement">
+	
+		<?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
+			
+		<?php $title_illu = get_post_meta($post->ID, 'illu_title', true) ?>
+		
+		<?php $text = '<h2>' . $title_illu . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+		
+		<?php else: ?>
+			
 		<?php $text = '<h2>' . 'Statement' . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+		
+		<?php endif; ?>
+		
 	</div>
 	<?php endif; ?>
 	
