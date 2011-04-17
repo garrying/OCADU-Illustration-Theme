@@ -5,7 +5,7 @@
 	<div id="illustrator-archive" class="index">
 		
 	<div id="welcome" class="post">
-	Fancy welcome here.
+	
 	</div>
 
 	<?php if (have_posts()) : ?>

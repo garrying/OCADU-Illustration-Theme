@@ -55,7 +55,6 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 		<div id="logo">
 			<a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
 		</div>
-
 			<div id="year-select">
 			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
 			
