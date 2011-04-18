@@ -41,10 +41,6 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 	<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico"/>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
-
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
-
 	 <?php wp_head(); ?>
 </head>
 
