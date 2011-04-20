@@ -18,6 +18,9 @@ h1,h2,h3,h4,h5,h6 {
 
 $global_link_color: #7F00FF;
 
+span.assistant {color:#999;}
+p.small {color:#ccc;}
+
 /* --------------------------------------------------------------------------
 	site nav
 --------------------------------------------------------------------------- */
@@ -82,7 +85,6 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	font-size:1.5em;
 	float:left;
 	letter-spacing:.10em;
-	
 	margin-right:20px;
 	&.active h2 a, li.active a {border-bottom:20px solid $global_link_color;}
 }
@@ -91,11 +93,6 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	position:absolute;
 	bottom:18px;
 	left:310px;
-}
-
-.events {
-	border-right:none;
-	h2 a.active {background:#000};
 }
 
 #search {
@@ -173,8 +170,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 					display:block;
 					margin-left:-20px;
 					padding-right:20px;
-					width:100%;
-									
+					width:100%;					
 				}
 			}
 		@include links (#808080,$global_link_color)
@@ -189,14 +185,18 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 				padding-bottom:10px;
 				text-align:center;
 			}
+			blockquote {
+				margin:0 0 1em 1em;
+			}
 			h2 {
 				font-size:2em;
 				line-height:1em;
-				padding:10px 0;
+				padding:20px 0;
 				text-align:center;
 			}
 			p {
 				margin-bottom:1em;
+				&:last-child {margin-bottom:0;}
 			}
 			.left, .right {float:left;width:280px}
 			.left {margin-right:10px;}
@@ -204,7 +204,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			.faculty-list div {width:25%;padding:0;margin:0;}
 		}
 		
-	@include links ($global_link_color,#009999)
+	@include links ($global_link_color,#333)
 }
 
 /* --------------------------------------------------------------------------
@@ -246,7 +246,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			}
 		}
 	}
-	@include links (#fff,#fff)
+	@include links (#dedede,#fff)
 		
 }
 
@@ -261,8 +261,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			padding:5px;
 			font-size: 1.25em;
 			line-height:1em;	
-			
-			background:rgba(0,0,0,0.6);;
+			background:rgba(0,0,0,0.6);
 						
 			-webkit-transition: opacity 0.2s ease-in-out;
 			-moz-transition: opacity 0.2s ease-in-out;
@@ -281,22 +280,6 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	@include links ($global_link_color,#fff)	
 }
 
-.navigation div {margin:0 10px;}
-.alignleft {float:left;}
-.alignright {float:right;}
-
-#infscr-loading {
-z-index: 5000;
-position: fixed;
-bottom: 0px;
-width: 100%;
-height: 25px;
-padding: 10px;
-background: white;
-opacity: 0.8;
-color: white;
-}
-
 /* --------------------------------------------------------------------------
 	For Search Results
 --------------------------------------------------------------------------- */
@@ -313,12 +296,6 @@ color: white;
 			font-size: 1.25em;
 			line-height:1em;	
 			background:rgba(0,0,0,0.6);;
-						
-			-webkit-transition: opacity 0.2s ease-in-out;
-			-moz-transition: opacity 0.2s ease-in-out;
-			-o-transition: opacity 0.2s ease-in-out;
-			transition: opacity 0.2s ease-in-out;
-			
 		}
 		img { margin-bottom:-6px; }
 		&:hover {
@@ -352,6 +329,7 @@ color: white;
 		width: 260px;
 		padding: 20px;
 		margin: 2em 0;
+		p {margin-top:1em};
 	}
 	
 	#neg-search {
@@ -364,7 +342,7 @@ color: white;
 			}
 		}
 	
-	@include links (#fff,#fff)
+	@include links (#dedede,#fff)
 }
 
 
@@ -396,7 +374,8 @@ color: white;
 }
 
 #image-navigation {
-	border-top:1px solid #e5e5e5;padding:10px 0;
+	border-top:1px solid #e5e5e5;
+	padding:10px 0;
 }
 
 #image-navigation-shortcuts {
@@ -447,7 +426,7 @@ color: white;
 	}
 	p {
 		color:#666;
-		&.small {color:#ccc;}
+		margin:1em 0;
 	}
 	#searchform {
 		margin:2em 0;
