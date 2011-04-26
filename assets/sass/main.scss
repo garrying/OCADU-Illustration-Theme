@@ -6,17 +6,18 @@
 	global
 --------------------------------------------------------------------------- */
 
+$global_link_color: #7F00FF;
+$font_stack: 'Cuprum', 'Trebuchet MS', arial, sans-serif;
+
 body {
 	font: 12px/20px sans-serif;
 	background:#fff;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: 'Cuprum', arial, serif;
+	font-family: $font-stack;
 	text-rendering: optimizeLegibility;
 }
-
-$global_link_color: #7F00FF;
 
 span.assistant {color:#999;}
 p.small {color:#ccc;}
@@ -73,7 +74,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 
 #page-nav {
 	float:left;
-	font-family: 'Cuprum', arial, serif;
+	font-family: $font-stack;
 	font-size:1.5em;
 	ul li {
 		display:inline;
@@ -153,7 +154,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		}	
 		
 	.container {
-		font-family: 'Cuprum', arial, serif;
+		font-family: $font-stack;
 		color:#808080;
 		border-top:1px #f2f2f2 solid;
 		.prev-link {
@@ -388,7 +389,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 
 .arrow {
 	color:$global_link_color;
-	font-family:sans-serif;
+	font-family: helvetica, arial, sans-serif;
 }
 
 
