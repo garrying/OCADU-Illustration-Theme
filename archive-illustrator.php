@@ -7,7 +7,7 @@
 	<?php if (have_posts()) : ?>
 
 	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-   	<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+   	<?php query_posts($query_string . '&orderby=title&order=ASC&posts_per_page=20');?>
 	
 
 	<?php while (have_posts()) : the_post(); ?>
