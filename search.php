@@ -11,7 +11,6 @@
    
 	    <div class="excerpt">
 	    	<?php get_search_form(); ?>
-	<p class="small">Psst &hellip; Press Enter to submit</p>
 	    </div>
 </div>
 		<?php while (have_posts()) : the_post(); ?>

@@ -44,8 +44,9 @@ p.small {color:#ccc;}
 	.search-nav-right {
 		float:right;
 		position:absolute;
-		bottom:16px;
+		bottom:18px;
 		right:0;
+		width:400px;
 		}
 	
 	#logo {
@@ -96,17 +97,19 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 }
 
 #search {
-	float:right;
-	margin: -5px 10px 0 0;
+	position:absolute;
+	bottom:-4px;
+	right:10px;
 	#s {
 		border:none;
-		background:#fff;
+		border-bottom:1px #999 dotted;
+		background:none;
 		width:200px;
 		color:#999;
 		padding:5px;
-		&:focus {color:#222;};
-		
+		&:focus {color:#222;background:rgba(255,255,255,0.5);}
 		}
+
 }
 
 /* --------------------------------------------------------------------------
@@ -314,9 +317,9 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	#s {
 			border:1px solid #ddd;
 			padding:10px;
-			width:240px;
+			width:200px;
 			color:#999;
-			
+			margin-right:10px;
 			-moz-border-radius: 10px; 
 		  -webkit-border-radius: 10px;
 		  border-radius: 10px;
@@ -433,9 +436,9 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		#s {
 			border:1px solid #ddd;
 			padding:10px;
-			width:300px;
+			width:280px;
 			color:#999;
-			
+			margin-right:10px;
 			-moz-border-radius: 10px; 
 		  -webkit-border-radius: 10px;
 		  border-radius: 10px;

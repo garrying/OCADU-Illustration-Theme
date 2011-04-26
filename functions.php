@@ -26,11 +26,11 @@ register_nav_menus( array(
 	'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
 ) );
 
-// Limit search to Events and Illustrators
+// Limit search to Illustrators
 
 function SearchFilter($query) {
     if ($query->is_search) {
-        $query->set('post_type', array( 'illustrator', 'event' ));
+        $query->set('post_type', array( 'illustrator' ));
     }
     return $query;
 }

@@ -12,10 +12,11 @@
 		
 	<?php
 		$args=array(
-		  'taxonomy' => 'gradyear',
-		  'post_type' => 'illustrator',
-			//'term' => '2011',
-		  'posts_per_page' => -1,
+		'taxonomy' => 'gradyear',
+		'post_type' => 'illustrator',
+		//'term' => '2011',
+		'posts_per_page' => -1,
+		'orderby' => 'rand',
 		);
 	?>
 
@@ -33,7 +34,6 @@
        
 <?php endif; ?>
 
-
 </div>
 
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
@@ -42,7 +42,6 @@
     <div class="alignright"><?php next_posts_link('View More &raquo;') ?></div>
 </div>
 <?php endif; ?>
-
 
 </div> <!-- #container -->
 
