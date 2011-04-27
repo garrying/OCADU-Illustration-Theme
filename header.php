@@ -52,9 +52,12 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 			<a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
 		</div>
 			<div id="year-select">
-			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
+			<?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
+
+			<?php $terms = get_the_terms( $post->ID , 'gradyear' ); ?>
 			
-			<?php if (is_search() || is_post_type_archive() || is_page() || is_attachment()) : ?>		
+			<?php if ( empty($terms) ) : ?>		
+				
 
 			<?php else : ?>
 			
