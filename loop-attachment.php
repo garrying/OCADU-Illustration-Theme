@@ -8,11 +8,11 @@
 					?></a></h1>
 					
 					<?php if ( get_post_meta($post->post_parent, 'illu_sites', true) ) : ?>
-						<div class="info site"><p><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></p></div>
+						<div class="info site"><p><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></p></div>
 					<?php endif; ?>
-
+					
 					<?php if ( get_post_meta($post->post_parent, 'illu_email', true) ) : ?>
-					 <div class="info email"><p><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></p></div>
+					 <div class="info email"><p><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->post_parent, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></p></div>
 					<?php endif; ?>
 
 					<?php if ( get_post_meta($post->post_parent, 'illu_phone', true) ) : ?>
