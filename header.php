@@ -54,10 +54,8 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 			<div id="year-select">
 			  <?php $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); ?>
 			
-			<?php if (is_search() || is_post_type_archive()) : ?>		
-				
-			<?php elseif (is_page()) : ?>			
-								
+			<?php if (is_search() || is_post_type_archive() || is_page() || is_attachment()) : ?>		
+
 			<?php else : ?>
 			
 				<?php $terms = get_the_terms( $post->ID , 'gradyear' );
