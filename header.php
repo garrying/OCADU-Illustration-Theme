@@ -57,16 +57,15 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 			<?php if (is_search() || is_post_type_archive()) : ?>		
 				
 			<?php elseif (is_page()) : ?>			
-					
-				asda			
-				<?php else : ?>
+								
+			<?php else : ?>
+			
+				<?php $terms = get_the_terms( $post->ID , 'gradyear' );
+				foreach ( $terms as $term ) {
+					$selected_year = $term->name;
+				}
 				
-					<?php $terms = get_the_terms( $post->ID , 'gradyear' );
-					foreach ( $terms as $term ) {
-						$selected_year = $term->name;
-					}
-					
-				?>
+			?>
 	
 			<?php endif; ?>
 					
