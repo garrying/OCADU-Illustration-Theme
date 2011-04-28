@@ -139,6 +139,9 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		width:155px * 2;
 		color:#fff;
 		height:155px * 3;
+		&:hover {
+			background:url('../images/index-bg-hover.png') no-repeat #1a1a1a;
+		}
 	}
 	
 }
