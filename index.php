@@ -14,7 +14,7 @@
 		$args=array(
 		'taxonomy' => 'gradyear',
 		'post_type' => 'illustrator',
-		//'term' => '2011',
+		'term' => '2011',
 		'posts_per_page' => -1,
 		'orderby' => 'rand',
 		);
