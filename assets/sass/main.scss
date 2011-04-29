@@ -247,8 +247,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			background:rgba(0,0,0,0.6);;
 			line-height:1em;	
 		}
-		img { margin-bottom:-6px;
-			}
+		img {margin-bottom:-7px;}
 		&:hover {
 			h2 {
 				background:$global_link_color;
@@ -278,7 +277,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			transition: opacity 0.2s ease-in-out;
 			
 		}
-		img { margin-bottom:-7px; }
+		img {margin-bottom:-7px;}
 		&:hover {
 			h2 {
 				display:block;
