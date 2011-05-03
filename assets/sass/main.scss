@@ -49,7 +49,7 @@ sup {vertical-align: super;font-size:.75em;}
 		position:absolute;
 		bottom:18px;
 		right:0;
-		width:400px;
+		width:440px;
 		}
 	
 	#logo {
@@ -212,6 +212,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			p {
 				margin-bottom:1em;
 				&:last-child {margin-bottom:0;}
+				&.about {font:normal normal 400 1.25em/1.75em Georgia,Serif;}
 			}
 			.left, .right {float:left;width:280px}
 			.left {margin-right:10px;}
