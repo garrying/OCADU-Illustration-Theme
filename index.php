@@ -8,8 +8,6 @@
 	<a href="/about" title="A message from Paul Dallas"></a>
 	</div>
 
-	<?php if (have_posts()) : ?>
-		
 	<?php
 		$args=array(
 		'taxonomy' => 'gradyear',
@@ -32,16 +30,7 @@
        </div><!-- .post --> 
        <?php endwhile; ?>
        
-<?php endif; ?>
-
 </div>
-
-<?php if (  $wp_query->max_num_pages > 1 ) : ?>
-<div class="navigation clearfix">
-    <div class="alignleft"><?php previous_posts_link('&laquo; View Previous') ?></div>
-    <div class="alignright"><?php next_posts_link('View More &raquo;') ?></div>
-</div>
-<?php endif; ?>
 
 </div> <!-- #container -->
 
