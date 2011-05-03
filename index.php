@@ -5,7 +5,7 @@
 	<div id="illustrator-archive" class="index">
 		
 	<div id="welcome" class="post">
-	
+	<a href="/about" title="A message from Paul Dallas"></a>
 	</div>
 
 	<?php if (have_posts()) : ?>

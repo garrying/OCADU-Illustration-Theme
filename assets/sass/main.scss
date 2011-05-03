@@ -138,9 +138,15 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		background:url('../images/index-bg.png') no-repeat #1a1a1a;
 		width:155px * 2;
 		color:#fff;
-		height:155px * 3;
+		height:155px * 2;
+		a {
+			display:block;
+			width:100%;
+			height:100%;
+		}
+		
 		&:hover {
-			background:url('../images/index-bg-hover.png') no-repeat #1a1a1a;
+			background:url('../images/index-bg-hover.gif') no-repeat $global_link_color;
 		}
 	}
 	
@@ -231,7 +237,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		width:115px;
 		height:115px;
 			&:hover {
-				background:$global_link_color;;
+				background:url('../images/index-bg-hover-alt.gif') no-repeat $global_link_color;
 				color:#fff;
 			}
 	}
