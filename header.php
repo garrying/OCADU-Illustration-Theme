@@ -56,9 +56,8 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 
 			<?php $terms = get_the_terms( $post->ID , 'gradyear' ); ?>
 			
-			<?php if ( empty($terms) ) : ?>		
+			<?php if ( empty($terms) || is_post_type_archive() || is_search() ) : ?>		
 				
-
 			<?php else : ?>
 			
 				<?php $terms = get_the_terms( $post->ID , 'gradyear' );
