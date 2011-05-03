@@ -48,6 +48,12 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/global.js"></script>
 
 <?php
+if ( function_exists( 'yoast_analytics' ) ) { 
+  yoast_analytics(); 
+}
+?>
+
+<?php
 	/* Always have wp_footer() just before the closing </body>
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to reference JavaScript files.
