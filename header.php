@@ -36,6 +36,11 @@ OO   OO CC    C AA   AA DD   DD    UU   UU     2222   00   00  11  11
 			echo " | $site_description";
 
 		?></title>
+		
+	<?php if ( is_front_page() ) : ?>
+	<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by OCAD University's Illustration Department. Featuring work from the graduating class of 2011, 2010 and 2009." /> 
+	<?php endif; ?>
+	<meta name="keywords" content="ocad, ocad u, ocadu, ontario college of art and design, university, toronto, canada, design, illustration, illustrators, designers, graphic, art, creativity, portfolio" />
 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/assets/stylesheets/main.css" />
 	<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
