@@ -1,6 +1,6 @@
 // Homepage Imageload Biznezz
 $(function () {
-	$('.home img').hide();//hide all the images on the page
+	$('.home img').hide();//hide all the images on the page	
 });
 
 var i = 0;//initialize
