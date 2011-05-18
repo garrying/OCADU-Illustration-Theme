@@ -265,7 +265,6 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 
 #illustrator-archive {
 	.thumbnail {
-		position:relative;
 		h2 {
 			position:absolute;
 			bottom:0;
@@ -273,16 +272,15 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 			opacity:0;
 			padding:5px;
 			font-size: 1.25em;
-			line-height:1em;	
 			background:rgba(0,0,0,0.6);
-						
+									
 			-webkit-transition: opacity 0.2s ease-in-out;
 			-moz-transition: opacity 0.2s ease-in-out;
 			-o-transition: opacity 0.2s ease-in-out;
 			transition: opacity 0.2s ease-in-out;
 			
 		}
-		img {margin-bottom:-7px;}
+		img {display:block;}
 		&:hover {
 			h2 {
 				display:block;
