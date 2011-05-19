@@ -42,7 +42,7 @@
 	</div>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.masonry.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.uniform.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/global.js"></script>
