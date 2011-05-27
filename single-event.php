@@ -21,8 +21,8 @@
 	
 	<div class="single-navigation clearfix">
 		<div class="container">
-			<div class="prev-link"><?php previous_post_link_plus( array('order_by' => 'post_date', 'format' => '%link') ); ?></div>		
-			<div class="next-link"><?php next_post_link_plus( array('order_by' => 'post_date', 'format' => '%link') ); ?></div>
+			<div class="prev-link"><?php next_post_link_plus( array('order_by' => 'post_date', 'format' => '%link') ); ?></div>		
+			<div class="next-link"><?php previous_post_link_plus( array('order_by' => 'post_date', 'format' => '%link') ); ?></div>
 		</div>
 	</div>
 	
