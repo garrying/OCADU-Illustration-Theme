@@ -7,7 +7,9 @@
 	<?php if (have_posts()) : ?>
 		
 	<h1 class="year-title post">Events</h1>
-
+	
+	<?php query_posts($query_string . '&orderby=date&order=DSC&posts_per_page=10');?>
+	
 	<?php while (have_posts()) : the_post(); ?>
 	
   <div class="post">
