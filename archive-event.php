@@ -2,30 +2,24 @@
 
 <div id="container">
 
+	<div id="event-archive" class="grid-small">
+		
 	<?php if (have_posts()) : ?>
-
-	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-   
-   <div class="post">
+		
+	<h1 class="year-title post">Events</h1>
 
 	<?php while (have_posts()) : the_post(); ?>
-       <div class="result">
+	
+  <div class="post">
                <div class="thumbnail">
                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
                        <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-                       <?php the_post_thumbnail('thumbnail'); ?>
+                       <?php the_post_thumbnail('medium', array('alt' => '.get_the_title().', 'title' => ''.get_the_title().'' )); ?>
                    </a>
                </div>
        </div>
        
-       <?php endwhile; ?>
-       
-       <div class="navigation">
-           <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-           <div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-       </div>
-       
-   </div> <!-- .post -->
+       <?php endwhile; ?>       
    
 <?php else :
 
@@ -43,6 +37,17 @@
 
 endif;
 ?>
+
+</div>
+
+<?php if (  $wp_query->max_num_pages > 1 ) : ?>
+<div class="navigation clearfix">
+	<div class="container">
+    <div class="prev-link"><?php previous_posts_link('&laquo; View Previous') ?></div>
+    <div class="next-link"><?php next_posts_link('View More &raquo;') ?></div>
+	</div>
+</div>
+<?php endif; ?>
 
 </div> <!-- #container -->
 

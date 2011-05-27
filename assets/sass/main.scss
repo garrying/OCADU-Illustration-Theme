@@ -28,7 +28,7 @@ sup {vertical-align: super;font-size:.75em;}
 	site nav
 --------------------------------------------------------------------------- */
 #header {
-	min-width: 930px;
+	min-width: 960px;
 	background:url('../images/header-bg.png') top center #f9f9f9;
 	position:relative;
 	height:70px;
@@ -49,7 +49,7 @@ sup {vertical-align: super;font-size:.75em;}
 		position:absolute;
 		bottom:18px;
 		right:0;
-		width:440px;
+		width:490px;
 		}
 	
 	#logo {
@@ -80,7 +80,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	font-size:1.5em;
 	ul li {
 		display:inline;
-		margin-right:30px;
+		margin-right:20px;
 		&.current-menu-item {border-bottom:20px solid $global_link_color;}
 		}
 }
@@ -227,7 +227,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	Year/Illustrator Archive
 --------------------------------------------------------------------------- */
 
-#year-archive {
+#year-archive, #event-archive {
 	.year-title {
 		font-size:3em;
 		line-height:1em;
@@ -263,7 +263,11 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		
 }
 
-#illustrator-archive {
+#event-archive .year-title {
+	width:105px;
+}
+
+#illustrator-archive, #event-archive {
 	.thumbnail {
 		h2 {
 			position:absolute;
@@ -356,7 +360,6 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	@include links (#dedede,#fff)
 }
 
-
 /* --------------------------------------------------------------------------
 	For Single Illustrator Page
 --------------------------------------------------------------------------- */
@@ -399,6 +402,14 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 	font-family: helvetica, arial, sans-serif;
 }
 
+/* --------------------------------------------------------------------------
+	For Single Event Page
+--------------------------------------------------------------------------- */
+
+.event-image {
+	text-align:center;
+	margin-bottom:1em;
+}
 
 /* --------------------------------------------------------------------------
 	Footer
