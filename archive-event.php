@@ -16,7 +16,7 @@
                <div class="thumbnail">
                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
                        <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-                       <?php the_post_thumbnail('medium', array('alt' => '.get_the_title().', 'title' => ''.get_the_title().'' )); ?>
+                       <?php the_post_thumbnail('medium', array('alt' => ''.get_the_title().'', 'title' => ''.get_the_title().'' )); ?>
                    </a>
                </div>
        </div>
