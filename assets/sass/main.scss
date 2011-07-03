@@ -224,7 +224,7 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 }
 
 /* --------------------------------------------------------------------------
-	Year/Illustrator Archive
+	Year/Illustrator/Events Archive
 --------------------------------------------------------------------------- */
 
 #year-archive, #event-archive {
@@ -293,6 +293,10 @@ box-shadow:inset 0px 0px 8px rgba(0,0,0,0.05); /* Opera 10.5, IE9, Chrome 10+ */
 		}
 	}
 	@include links ($global_link_color,#fff)	
+}
+
+#event-archive .post {
+  margin-bottom:10px
 }
 
 /* --------------------------------------------------------------------------
