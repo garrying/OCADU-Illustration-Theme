@@ -7,6 +7,8 @@ var i = 0;//initialize
 var int=0;//Internet Explorer Fix
 $(window).bind("load", function() {//The load event will only fire if the entire page or document is fully loaded
 	var int = setInterval("doThis(i)",100);//500 is the fade in speed in milliseconds
+	$('.home .post').show();//hide all the images on the page	
+	
 });
 
 function doThis() {
