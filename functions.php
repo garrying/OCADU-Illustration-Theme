@@ -10,7 +10,37 @@ add_theme_support( 'post-thumbnails' );
  * Load some scripts please.
  */
  
+if (!function_exists('load_my_scripts')) {
+	function load_scripts() {
+		if (!is_admin()) {
+			wp_deregister_script( 'jquery' );
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', '','',true);
+			wp_enqueue_script('jquery');
+			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.js', array('jquery'), '1.0', true );
+			wp_enqueue_script('myscript');
+		}
+	}
+}
+add_action('wp_enqueue_scripts', 'load_scripts');
 
+
+/**
+ * Clean up body_class output
+ */
+function wp_body_class( $wp_classes, $extra_classes )
+{
+	// List of the only WP generated classes allowed
+	$whitelist = array( 'home', 'archive', 'page', 'single', 'category', 'tag', 'error404', 'logged-in', 'admin-bar', 'search' );
+
+	// Filter the body classes
+	// Whitelist result: (comment if you want to blacklist classes)
+	$wp_classes = array_intersect( $wp_classes, $whitelist );
+
+	// Add the extra classes back untouched
+	return array_merge( $wp_classes, (array) $extra_classes );
+}
+
+add_filter( 'body_class', 'wp_body_class', 10, 2 );
 
 /**
  * Display navigation to next/previous pages when applicable
