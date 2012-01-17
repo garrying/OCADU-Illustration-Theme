@@ -1,10 +1,9 @@
 	</div><!-- #main -->
 
-	<footer id="colophon" role="contentinfo">
-
-			<div id="site-generator">
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform' ); ?>" ><?php printf( __( 'Proudly powered by %s' ), 'WordPress' ); ?></a>
-			</div>
+	<footer id="colophon" role="contentinfo">		
+		<div id="copyright">
+			<p>Copyright © 2012 Respective Authors</p>
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

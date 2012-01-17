@@ -4,7 +4,7 @@
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
-
+				<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 

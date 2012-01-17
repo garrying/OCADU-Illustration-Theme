@@ -43,7 +43,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed">
+<div id="page">
 	<header id="branding" role="banner">
 			<hgroup>
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>

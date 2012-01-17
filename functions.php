@@ -27,6 +27,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
 /**
  * Clean up body_class output
  */
+
 function wp_body_class( $wp_classes, $extra_classes )
 {
 	// List of the only WP generated classes allowed
@@ -45,6 +46,7 @@ add_filter( 'body_class', 'wp_body_class', 10, 2 );
 /**
  * Display navigation to next/previous pages when applicable
  */
+
 if ( ! function_exists( 'ocadillu_content_nav' ) ) :
 function ocadillu_content_nav( $nav_id ) {
 	global $wp_query;
@@ -52,11 +54,37 @@ function ocadillu_content_nav( $nav_id ) {
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $nav_id; ?>">
 			<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>' ) ); ?></div>
+			<div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
+			<div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
 		</nav><!-- #nav-above -->
 	<?php endif;
 }
 endif;
+
+/**
+ * Remove inline css from gallery shortcode
+ */
+
+function my_gallery_style() {
+    return "<div class='gallery'>";
+}
+add_filter( 'gallery_style', 'my_gallery_style', 99 );
+
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+/**
+ * Clean titles for image attachments
+ */
+	
+function set_page_title($title) {
+	if (wp_attachment_is_image()) {
+		global $post;
+		$postparent = get_the_title($post->post_parent) . " | ";
+		$title = $postparent;  
+	}
+  return $title;
+}
+
+add_filter('wp_title', 'set_page_title');
 
 ?>
