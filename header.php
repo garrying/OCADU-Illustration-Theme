@@ -58,12 +58,19 @@
         <div id="year-select">
         <?php 
           $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-          $terms = get_the_terms( $post->ID , 'gradyear' );
+					// Selected menu state for attachments 
+					$terms = get_the_terms($post->post_parent, 'gradyear');
+					foreach ( $terms as $term ) { 
+	      		$selected_year = $term->name;
+					}
+					// Selected menu state for individual items
+					$terms = get_the_terms( $post->ID , 'gradyear' );
           foreach ( $terms as $term ) {
         		$selected_year = $term->name;
 					}
         ?>
-          <ul>
+
+					<ul>
             <?php foreach( $grad_year as $year ) : ?>
               <li class="year <?php if ($term == $year->name || $selected_year == $year->name) echo 'selected' ?>">
                 <h2><a title="View work of <?php echo $year->name; ?>" href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
