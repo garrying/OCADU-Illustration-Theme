@@ -13,7 +13,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -34,9 +34,8 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/assets/stylesheets/main.css" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<![endif]-->
+<script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/modernizr-2.0.6.min.js"></script>
+
 <?php
 	wp_head();
 ?>
