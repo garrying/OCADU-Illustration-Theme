@@ -5,11 +5,14 @@
 			<div id="content" role="main">
 			
 			<?php if ( is_home() || is_front_page() ) {
+			$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC&number=1');	
 			$args = array(
 					'taxonomy' => 'gradyear',
 					'post_type' => 'illustrator',
-					'term' => '2011',
-					'posts_per_page' => 5,
+					'term' => $grad_year[0]->name,
+					'orderby' => 'title',
+					'order' => ASC,
+					'paged' => get_query_var('paged'),
 					);
 			query_posts( $args );
 			}
