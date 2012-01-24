@@ -87,4 +87,28 @@ function set_page_title($title) {
 
 add_filter('wp_title', 'set_page_title');
 
+/**
+ * Add custom menu using wp_nav_menu()
+ */
+register_nav_menus( array(
+	'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+) );
+
+/**
+ * Added menu functionality for Events post type in menu
+ */
+
+function x_nav_menu_css_class( $classes, $item = null, $args = null ) {
+$post_type = "event";
+  if ( is_singular() || is_post_type_archive( $post_type ) ) {
+          $pto = get_post_type_object( get_query_var('post_type') );
+          if ( $pto->rewrite['slug'] == $item->post_name )
+          $classes[] = 'current-menu-item';
+  }
+  return $classes;
+}
+
+add_filter( 'nav_menu_css_class', 'x_nav_menu_css_class', 10, 3 );
+
+
 ?>
