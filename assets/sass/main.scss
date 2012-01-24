@@ -1,10 +1,19 @@
 @import 'reset';
 
+// Helpful Variables
+
+$body_bg: #F9F9F9;
+$body_text: #222;
+$link: #FF0000;
+$link_hover: #00FF00;
+$link_active: #0000FF;
+$link_visited: darken( $link, 30% );
+
 // Global
 
 html  {
-	background: #F9F9F9;
-	color: #222;
+	background: $body_bg;
+	color: $body_text;
 }
 
 body {
@@ -12,4 +21,22 @@ body {
 	font-size: 12px;
 	line-height: 16px;
 	text-rendering: optimizeLegibility;
+}
+
+// Links
+
+a {
+	color:$link;
+	&:visited {
+		color:$link_visited;
+	}
+	&:hover {
+		color:$link_hover;
+	}
+	&:active {
+		color:$link_active;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
 }
