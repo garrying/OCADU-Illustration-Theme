@@ -52,7 +52,11 @@
 			<nav id="access" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Main menu' ); ?></h3>
 
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				<?php wp_nav_menu( array( 
+					'container' =>false,
+					'menu_class' => 'nav',
+					'theme_location' => 'primary' )
+					); ?>
 								
         <div id="year-select">
         <?php 

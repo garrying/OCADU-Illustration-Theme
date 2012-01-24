@@ -90,6 +90,7 @@ add_filter('wp_title', 'set_page_title');
 /**
  * Add custom menu using wp_nav_menu()
  */
+
 register_nav_menus( array(
 	'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
 ) );
@@ -100,7 +101,7 @@ register_nav_menus( array(
 
 function x_nav_menu_css_class( $classes, $item = null, $args = null ) {
 $post_type = "event";
-  if ( is_singular() || is_post_type_archive( $post_type ) ) {
+  if ( is_singular( $post_type ) ) {
           $pto = get_post_type_object( get_query_var('post_type') );
           if ( $pto->rewrite['slug'] == $item->post_name )
           $classes[] = 'current-menu-item';
@@ -110,5 +111,29 @@ $post_type = "event";
 
 add_filter( 'nav_menu_css_class', 'x_nav_menu_css_class', 10, 3 );
 
+/**
+ * Reduce nav classes, leaving only 'current-menu-item'
+ */
+
+function nav_class_filter( $var ) {
+	return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+}
+add_filter('nav_menu_css_class', 'nav_class_filter', 100, 1);
+
+/**
+ * Add page slug as nav IDs
+ */
+
+function cleanname($v) {
+	$v = preg_replace('/[^a-zA-Z0-9s]/', '', $v);
+	$v = str_replace(' ', '-', $v);
+	$v = strtolower($v);
+	return $v;
+}
+
+function nav_id_filter( $id, $item ) {
+	return 'nav-'.cleanname($item->title);
+}
+add_filter( 'nav_menu_item_id', 'nav_id_filter', 10, 2 );
 
 ?>
