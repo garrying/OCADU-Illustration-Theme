@@ -5,7 +5,8 @@
 
 			<article id="post-0" class="post error404 not-found">
 				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?' ); ?></h1>
+					<h1 class="entry-title"><?php _e( 'Page Not Found' ); ?></h1>
+					<h2>Apologies, but the page you requested could not be found or has been moved. </h2>
 				</header>
 			</article><!-- #post-0 -->
 
