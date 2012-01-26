@@ -1,12 +1,20 @@
 @import 'reset';
+@import 'linear-gradient';
+@import 'border-radius';
+@import 'font-import';
 
 // Helpful Variables
 
-$body_bg: #F9F9F9;
+$line: 20;
+$font-size: 14;
+$em: $font-size * 1;
+
+$body_bg: #FFF;
+$orange: #EE4000;
 $body_text: #222;
-$link: #FF0000;
-$link_hover: #00FF00;
-$link_active: #0000FF;
+$link: #333;
+$link_hover: #FF6666;
+$link_active: #FF0000;
 $link_visited: darken( $link, 30% );
 
 // Global
@@ -17,10 +25,39 @@ html  {
 }
 
 body {
-	font-family: sans-serif;
-	font-size: 12px;
-	line-height: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: $font-size / 16 * 1em;
+	line-height: #{$line / $em}em;
 	text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family:"TitilliumText22LMedium";
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+hr {
+	border: 0;
+  border-bottom: 1px solid #eee;
+}
+
+p {
+	margin-bottom:1em;
+}
+
+// Assistive text
+
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
 }
 
 // Links
@@ -39,4 +76,194 @@ a {
 	&:focus {
 		outline: thin dotted;
 	}
+}
+
+.container {
+	position:relative;
+	margin:0 auto;
+	padding:0 20px;
+	max-width:1000px;
+}
+
+// Header
+
+header[role=banner] {
+	font-family:"TitilliumText22LMedium";
+	border-bottom:1px solid #eee;
+	position:relative;
+	.container {
+		min-height:80px;
+	}
+	a {
+		text-decoration:none;
+	}
+	#access {
+		display:inline-block;
+		vertical-align:bottom;	
+		li {
+			float:left;
+			a {
+				display:block;
+				padding:10px;
+				border-left:1px solid #eee;
+			}
+		}
+	}
+	.page-search {
+		position:absolute;
+		right:0;
+		bottom:0;
+	}
+}
+
+// Year Select
+
+#year-select {
+	margin:0 auto;
+	position:absolute;
+	bottom:0;
+	li {
+		float:left;
+		a {
+			display:block;
+			border-left:none;
+			padding:10px;
+			text-decoration:none;
+     	text-shadow: 0 1px 0 #fff; 
+			border:1px solid #eee;
+			border-left:0;
+			border-bottom:0;
+		}
+	}
+}
+
+// Search Form
+
+#search {
+			display:inline-block;
+			border-left:1px solid #eee;
+			vertical-align: middle;
+			padding:5px 0 5px;
+	input[type=text] {
+		border:0;
+		padding:8px;
+		margin:0;
+		width:150px;
+		font-size:0.929em;
+		background:$body_bg;
+	}
+	input[type=submit] {
+		border:0;
+		padding:8px;
+		margin:0;
+		width:24px;
+		text-indent:-999px;
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
+		background-repeat:no-repeat;
+		background-color:$body_bg;
+		opacity:.8;
+	}
+}
+
+// Single Illustrator Page 
+
+#content {
+	position:relative;
+}
+
+aside {
+	position:absolute;
+	right:0;
+	top:30px;
+	width:280px;
+	padding-left:20px;
+	.info {
+		font-family: 'TitilliumText22LRegular';
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&.phone {
+			letter-spacing:1px;
+		}
+	}
+	p {
+		font-size:0.929em;
+	}
+	.entry-title {
+		font-family: 'TitilliumText22LLight';
+		font-size:1.75em;
+		margin-bottom:20px;
+	}
+	.vertical-rule-main, .vertical-rule-corner-top, .vertical-rule-corner-bottom {
+		position:absolute;
+		width:30px;
+		left:0;
+	}
+	.vertical-rule-main {
+		top: 30px;
+		bottom: 30px;
+		height: auto;
+		background:-webkit-linear-gradient(left,rgba(0, 0, 0, 0.08),rgba(0, 0, 0, 0.04) 1px,rgba(0, 0, 0, 0.04) 1px,transparent 30px,transparent 100%);
+	}
+	.vertical-rule-corner-top {
+		height: 30px;
+		top:0;
+		background:-webkit-radial-gradient(left bottom,circle,rgba(0, 0, 0, .04),transparent 30px,transparent 100%);
+	}
+	.vertical-rule-corner-bottom {
+		height: 30px;
+		bottom:0;
+		background:-webkit-radial-gradient(left top,circle,rgba(0, 0, 0, .04),transparent 30px,transparent 100%);
+	}
+	#nav-single {
+		margin-top:20px;
+		font-family: 'TitilliumText22LRegular';
+		font-size:0;
+		display:inline-block;
+		border:1px solid #eee;
+		@include border-radius(5px);
+		li {
+			font-size:14px;
+			display:inline-block;
+			vertical-align:middle;
+			color:#eee;
+			text-align:center;
+			a {
+				width:118px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding:5px 10px;
+				display:block;
+				text-decoration:none;
+				border-right:1px solid #eee;
+			}
+			&:last-child a {
+				border-right:none;
+			};
+		}
+	}
+}
+
+// Footer
+
+footer {
+	font-size:0.929em;
+	font-family: 'TitilliumText22LLight';
+	text-align:center;
+}
+
+// Error 404
+
+article.error404 {
+	h1 {
+		font-family: 'TitilliumText22LLight';
+		font-size:3em;
+		margin-bottom:1em;
+	}
+	h2 {
+		color:#999;
+	}
+	text-align:center;
+	margin:100px 0;
 }
