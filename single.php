@@ -5,12 +5,6 @@
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<nav id="nav-single">
-						<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
-						<span class="nav-previous"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></span>
-						<span class="nav-next"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></span>
-					</nav><!-- #nav-single -->
-
 					<?php get_template_part( 'content', 'single' ); ?>
 
 				<?php endwhile; // end of the loop. ?>
