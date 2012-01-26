@@ -44,21 +44,13 @@
 <body <?php body_class(); ?>>
 <div id="page">
 	<header id="branding" role="banner">
-			<hgroup>
+		<div class="container">
+			<!-- <hgroup>
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</hgroup>
-
-			<nav id="access" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu' ); ?></h3>
-
-				<?php wp_nav_menu( array( 
-					'container' =>false,
-					'menu_class' => 'nav',
-					'theme_location' => 'primary' )
-					); ?>
-								
-        <div id="year-select">
+			</hgroup> -->
+			
+			 <nav id="year-select">
         <?php 
           $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
 					// Selected menu state for attachments 
@@ -82,12 +74,30 @@
               </li>
             <?php endforeach ?>
           </ul>
-        </div> <!-- #year-Select-->
+        </nav> <!-- #year-Select-->
+			
+			<div class="page-search">
+
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text"><?php _e( 'Main menu' ); ?></h3>
+				
+				     
+				
+
+				<?php wp_nav_menu( array( 
+					'container' =>false,
+					'menu_class' => 'nav',
+					'theme_location' => 'primary' )
+					); ?>
+								
+  
 				
 			</nav><!-- #access -->
 			<div id="search">
 			  <?php get_search_form(); ?>
 			</div><!-- #search -->
+			</div><!-- .page-search -->
+			</div><!-- .container -->
 	</header><!-- #branding -->
 
-	<div id="main">
+	<div id="main" class="container">
