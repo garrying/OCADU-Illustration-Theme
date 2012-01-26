@@ -32,13 +32,19 @@
 		
 		<?php the_content(); ?>
 		
-		<nav id="nav-single">
-			<ul>
-			<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
-			<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
-			<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
-			</ul>
-		</nav><!-- #nav-single -->
+		<footer class="nav-single">
+			
+			<nav id="nav-single">
+				<ul>
+				<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
+				<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
+				<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
+				</ul>
+			</nav><!-- #nav-single -->
+
+		</footer><!-- .nav-single -->
+		
+
 		
 		<span class="vertical-rule-main"></span>
 		<span class="vertical-rule-corner-top"></span>
@@ -48,7 +54,6 @@
 		
 	</div><!-- .entry-content -->
 
-	<footer class="entry-meta">
 
-	</footer><!-- .entry-meta -->
+	
 </article><!-- #post-<?php the_ID(); ?> -->
