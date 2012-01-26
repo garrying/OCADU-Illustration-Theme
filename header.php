@@ -51,6 +51,8 @@
 			</hgroup> -->
 			
 			 <nav id="year-select">
+				<h3 class="assistive-text"><?php _e( 'Year select' ); ?></h3>
+				
         <?php 
           $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
 					// Selected menu state for attachments 
