@@ -38,4 +38,12 @@ $(document).ready(function() {
 	
 	// Footer copyright show hide
 	
+	var footerEle = $('#copyright');
+	
+	footerEle.toggle( function() {
+		$(this).animate({marginRight:0});
+	}, function() {
+		$(this).animate({marginRight:-360});
+	});
+	
 });
