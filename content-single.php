@@ -34,8 +34,8 @@
 		<footer class="nav-single">
 			
 			<nav id="nav-single">
-				<ul>
 				<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
+				<ul>
 				<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
 				<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
 				</ul>
