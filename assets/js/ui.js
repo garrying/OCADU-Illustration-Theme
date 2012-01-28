@@ -1,22 +1,43 @@
 $(document).ready(function() {
 	
+	// uniform year select
+	
+	$(function(){ $("select").uniform(); });
+	
+	// Jump menu business
+	$('#illu-jumpmenu').change(function(){
+	  window.location.href = $(this).val();
+	 });
+	
 	// Sticky Illustrator Information
 	
 	var illustratorInfo = $('aside#illustrator-meta');
+	var yearTitle = $('h1#year-title');
 	
-	var top = illustratorInfo.offset().top - parseFloat(illustratorInfo.css('marginTop').replace(/auto/, 0));
+	if ($('body').hasClass('single')) {
+		var top = illustratorInfo.offset().top - parseFloat(illustratorInfo.css('marginTop').replace(/auto/, 0));
+	} else if ($('body').hasClass('archive')) {
+		var topYeartitle = yearTitle.offset().top - parseFloat(yearTitle.css('marginTop').replace(/auto/, 0));
+	}
 	
   $(window).scroll(function (event) {
     // what the y position of the scroll is
     var y = $(this).scrollTop();
 
     // whether that's below the form
-    if (y >= top) {
-      // if so, ad the fixed class
-      illustratorInfo.addClass('fixed');
+    if (y >= top || y >= topYeartitle ) {
+			if ($('body').hasClass('single')) {
+      	illustratorInfo.addClass('fixed'); 
+			} else if ($('body').hasClass('archive')) {
+				yearTitle.addClass('fixed');
+			}
     } else {
       // otherwise remove it
-      illustratorInfo.removeClass('fixed');
+      if ($('body').hasClass('single')) {
+				illustratorInfo.removeClass('fixed');
+			} else if ($('body').hasClass('archive')) {
+				yearTitle.removeClass('fixed');
+			}
     }
   });
 	

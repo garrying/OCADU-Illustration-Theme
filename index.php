@@ -12,7 +12,6 @@
 					'term' => $grad_year[0]->name,
 					'orderby' => 'title',
 					'order' => ASC,
-					'paged' => get_query_var('paged'),
 					);
 			query_posts( $args );
 			}

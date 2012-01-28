@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'linear-gradient';
 @import 'border-radius';
+@import 'uniform';
 @import 'font-import';
 
 // Helpful Variables
@@ -119,21 +120,22 @@ header[role=banner] {
 // Year Select
 
 #year-select {
-	margin:0 auto;
 	position:absolute;
 	bottom:0;
-	li {
-		float:left;
-		a {
-			display:block;
-			border-left:none;
-			padding:10px;
-			text-decoration:none;
-     	text-shadow: 0 1px 0 #fff; 
-			border:1px solid #eee;
-			border-left:0;
-			border-bottom:0;
-		}
+	label {
+		margin-right:5px;
+	}
+	a, form {
+		display:inline-block;
+		padding:10px 0;
+		vertical-align:bottom;
+	}
+	a {
+		border-left:1px solid #eee;
+		padding:10px;
+	}
+	form {
+		padding-bottom:7px;
 	}
 }
 
@@ -240,8 +242,18 @@ aside#illustrator-meta {
 		display:inline-block;
 		border:1px solid #eee;
 		@include border-radius(5px);
+		
+	  -webkit-transition: background 0.3s ease-in-out;  
+	     -moz-transition: background 0.3s ease-in-out;  
+	      -ms-transition: background 0.3s ease-in-out;  
+	       -o-transition: background 0.3s ease-in-out;  
+	          transition: background 0.3s ease-in-out;
+
 		&:hover {
-			background:$link_hover;
+			background:$body_text;
+			a {
+				color:#fff;
+			}
 		}
 		li {
 			font-size:14px;
@@ -258,7 +270,7 @@ aside#illustrator-meta {
 				text-decoration:none;
 				border-right:1px solid #eee;
 				&:hover {
-					color:$body_text;
+					color:#fff
 				}
 			}
 			&:last-child a {
@@ -276,10 +288,11 @@ aside#illustrator-meta {
 		text-decoration:none;
 		border:1px solid #eee;
 	}
-	&.fixed {
-		top:0;
-		position:fixed;
-	}
+}
+
+.fixed {
+	top:0;
+	position:fixed !important;
 }
 
 .gallery {
@@ -304,6 +317,90 @@ aside#illustrator-meta {
 		display:block;
 	}
 }
+
+// Homepage / Archives
+
+.archive, .home {
+	#main.container {
+		width:100%;
+		margin:0;
+		padding:0;
+		max-width:none;
+	}
+	article {
+		float:left;
+		width:25%;
+		background:$link_hover;
+		position:relative;
+		img {
+			width:100%;
+			height:auto;
+			display:block;
+			opacity:.5;
+			
+		  -webkit-transition: opacity 0.3s ease-in-out;  
+		     -moz-transition: opacity 0.3s ease-in-out;  
+		      -ms-transition: opacity 0.3s ease-in-out;  
+		       -o-transition: opacity 0.3s ease-in-out;  
+		          transition: opacity 0.3s ease-in-out;
+
+		}
+		&:hover {
+			img {
+				opacity:.8;
+			}
+		}
+		a {
+			color:#fff;
+			text-decoration:none;
+		}
+	}
+	h1 {
+		z-index:10;
+		padding:5px;
+		position:absolute;
+		padding:20px;
+		font-size:1.5em;
+		font-family: 'TitilliumText22LRegular';
+		&#year-title {
+			z-index:9999;
+			font-size:1em;
+			text-align:center;
+			position:static;
+			background:transparentize($body_text, 0.02);
+			color:#fff;
+			padding:5px 0;
+			width:100%;
+			letter-spacing:2px;
+		}
+	}
+}
+
+// Events
+
+article.event {
+	#illustrator-meta-guide {
+		width:400px;
+	}
+	aside#illustrator-meta {
+		width:400px;
+	}
+	.gallery {
+		width:50%;
+		.gallery-item {
+			float:left;
+			width:100%;
+			margin: 0 0 7px;
+			img {
+				width:98%;
+				height:auto;
+				display:block;
+			}
+		}
+	}
+}
+
+
 
 // Footer
 

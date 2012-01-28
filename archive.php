@@ -1,6 +1,17 @@
 <?php get_header(); ?>
+<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
+
+<h1 id="year-title">
+<?php if ($term->name == null)
+		wp_title("");
+	else
+		echo $term->name;
+ ?>
+</h1>
 
 		<section id="primary">
+
+			
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>

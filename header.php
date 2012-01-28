@@ -67,15 +67,26 @@
 					}
         ?>
 
-					<ul>
+					<form class="ddpl-form" name="illustrator-select" id="illustrator-select">
+						<label>Graduating Year</label>
+						<select name="illu-jumpmenu" id="illu-jumpmenu">
+						<option value="/">Current Year</option>
             <?php foreach( $grad_year as $year ) : ?>
-              <li class="year <?php if ($term == $year->name || $selected_year == $year->name) echo 'selected' ?>">
-                <h2><a title="View work of <?php echo $year->name; ?>" href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>">
+              <option value="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'selected' ?> >
+
                   <?php echo $year->name; ?>
-                </a></h2>
-              </li>
+     
+              </option>
             <?php endforeach ?>
-          </ul>
+          </select>
+</form>
+
+<?php if (is_singular('illustrator')) 
+	echo 
+		'<a href="/year/'. $term->slug .'">Back to ' . $term->name . ' index</a>';  
+?>
+
+
         </nav> <!-- #year-Select-->
 			
 			<div class="page-search">
