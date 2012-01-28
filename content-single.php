@@ -1,9 +1,7 @@
 <article <?php post_class(); ?>>
-
-	<div class="entry-content">
-		
+			
 		<?php
-			    $gallery_shortcode = '[gallery size="medium" columns="0"]';
+			    $gallery_shortcode = '[gallery size="medium" itemtag="div" icontag="div" columns="0"]';
 					print apply_filters( 'the_content', $gallery_shortcode );
 		?>
 		<div id="illustrator-meta-guide">
@@ -53,8 +51,5 @@
 		
 		</aside><!-- aside -->
 		</div>
-	</div><!-- .entry-content -->
-
-
 	
 </article><!-- #post-<?php the_ID(); ?> -->
