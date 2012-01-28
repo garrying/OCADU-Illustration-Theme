@@ -1,22 +1,13 @@
 <?php get_header(); ?>
 
-		<div id="primary" class="image-attachment">
+		<div id="primary" class="image">
 			<div id="content" role="main">
 				
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<nav id="nav-single">
-					<h3 class="assistive-text"><?php _e( 'Image navigation' ); ?></h3>
-					<span class="nav-previous"><?php previous_image_link( false, __( '&larr; Previous' ) ); ?></span>
-					<span class="nav-next"><?php next_image_link( false, __( 'Next &rarr;' ) ); ?></span>
-				</nav><!-- #nav-single -->
+					<article <?php post_class(); ?>>
 
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-						<div class="entry-content">
-
-							<div class="entry-attachment">
-								<div class="attachment">
+								<div class="illustrator-image">
 <?php
 	/**
 	 * Grab the IDs of all the image attachments in a gallery so we can get the URL of the next adjacent image in a gallery,
@@ -46,11 +37,60 @@
 									echo wp_get_attachment_image( $post->ID, array( $attachment_size, 1024 ) ); // filterable image width with 1024px limit for image height.
 									?></a>
 
-								</div><!-- .attachment -->
+								</div><!-- .illustrator-image -->
+						
+						<div id="illustrator-meta-guide">
+						<aside id="illustrator-meta">
+						<header class="entry-header">
+							<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
+							<hr />
+						</header><!-- .entry-header -->
 
-							</div><!-- .entry-attachment -->
+								<?php if ( get_post_meta($post->post_parent, 'illu_sites', true) ) : ?>
+									<div class="info site"><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></div><hr />
 
-						</div><!-- .entry-content -->
+								<?php endif; ?>
+
+								<?php if ( get_post_meta($post->post_parent, 'illu_sites_2', true) ) : ?>
+									<div class="info site"><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites_2', true) ?></a></div><hr />
+								<?php endif; ?>
+
+								<?php if ( get_post_meta($post->post_parent, 'illu_email', true) ) : ?>
+								 <div class="info email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></div><hr />
+								<?php endif; ?>
+
+								<?php if ( get_post_meta($post->post_parent, 'illu_phone', true) ) : ?>
+								 <div class="info phone"><?php echo get_post_meta($post->post_parent, 'illu_phone', true) ?></div>	<hr />
+								<?php endif; ?>
+
+
+						   <?php $parent = get_post($post->post_parent); ?>
+					     <?php echo apply_filters('the_content', $parent->post_content); ?>
+
+						<footer class="nav-single image">
+							
+							<nav id="nav-single">							
+								<h3 class="assistive-text"><?php _e( 'Image navigation' ); ?></h3>
+								<ul>
+								<li class="nav-previous"><?php previous_image_link( false, __( '&larr; Previous' ) ); ?></li>
+								<li class="nav-next"><?php next_image_link( false, __( 'Next &rarr;' ) ); ?></li>
+								</ul>
+							</nav><!-- #nav-single -->
+							
+							<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="View All Work" id="illustrator-back">
+								<?php echo "View all work by ". get_the_title( $post->post_parent);?>
+							</a>
+				
+						</footer><!-- .nav-single .image -->
+
+
+
+						<span class="vertical-rule-main"></span>
+						<span class="vertical-rule-corner-top"></span>
+						<span class="vertical-rule-corner-bottom"></span>
+
+						</aside><!-- aside -->
+						</div>
 
 					</article><!-- #post-<?php the_ID(); ?> -->
 
