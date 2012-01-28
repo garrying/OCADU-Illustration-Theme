@@ -151,7 +151,7 @@ header[role=banner] {
         border-left: 1px solid #eee; }
   header[role=banner] .page-search {
     position: absolute;
-    right: 0;
+    right: 20px;
     bottom: 0; }
 
 #year-select {
@@ -198,15 +198,16 @@ header[role=banner] {
 
 #illustrator-meta-guide {
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 0;
   width: 280px; }
 
 aside#illustrator-meta {
-  position: absolute;
-  margin-top: 20px;
+  position: relative;
+  padding: 20px 0;
   width: 280px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  background: rgba(255, 255, 255, 0.7); }
   aside#illustrator-meta .info {
     font-family: 'TitilliumText22LRegular';
     white-space: nowrap;
@@ -228,15 +229,25 @@ aside#illustrator-meta {
     top: 30px;
     bottom: 30px;
     height: auto;
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%); }
+    background-color: white;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%);
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%);
+    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%);
+    background: linear-gradient(left right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%); }
   aside#illustrator-meta .vertical-rule-corner-top {
     height: 30px;
     top: 0;
-    background: -webkit-radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
+    background: -webkit-radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: -moz-radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: -ms-radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
   aside#illustrator-meta .vertical-rule-corner-bottom {
     height: 30px;
     bottom: 0;
-    background: -webkit-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
+    background: -webkit-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: -moz-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: -ms-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
+    background: radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
   aside#illustrator-meta #nav-single {
     margin-top: 20px;
     font-family: 'TitilliumText22LRegular';
@@ -253,7 +264,6 @@ aside#illustrator-meta {
       font-size: 14px;
       display: inline-block;
       vertical-align: middle;
-      color: #eee;
       text-align: center; }
       aside#illustrator-meta #nav-single li a {
         width: 118px;
@@ -270,10 +280,58 @@ aside#illustrator-meta {
     top: 0;
     position: fixed; }
 
+.gallery {
+  width: 69%; }
+  .gallery .gallery-item {
+    float: left;
+    width: 50%;
+    margin: 0 0 7px; }
+    .gallery .gallery-item img {
+      width: 98%;
+      height: auto;
+      display: block; }
+
 footer {
   font-size: 0.929em;
   font-family: 'TitilliumText22LLight';
   text-align: center; }
+  footer #heart {
+    -webkit-animation: strobe 2s infinite;
+    /* Saf5, Chrome */
+    -moz-animation: strobe 2s infinite;
+    /* FF5+ */
+    -ms-animation: strobe 2s infinite;
+    /* IE10 */ }
+
+@-webkit-keyframes strobe {
+  0% {
+    color: #222222; }
+
+  50% {
+    color: #ff6666; }
+
+  100% {
+    color: #222222; } }
+
+@-moz-keyframes strobe {
+  0% {
+    color: #222222; }
+
+  50% {
+    color: #ff6666; }
+
+  100% {
+    color: #222222; } }
+
+@-ms-keyframes strobe {
+  0% {
+    color: #222222; }
+
+  50% {
+    color: #ff6666; }
+
+  100% {
+    color: #222222; } }
 
 article.error404 {
   text-align: center;
