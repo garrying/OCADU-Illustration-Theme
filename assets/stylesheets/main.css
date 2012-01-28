@@ -196,43 +196,48 @@ header[role=banner] {
 #content {
   position: relative; }
 
-aside {
+#illustrator-meta-guide {
   position: absolute;
   right: 0;
-  top: 30px;
+  top: 0;
+  width: 280px; }
+
+aside#illustrator-meta {
+  position: absolute;
+  margin-top: 20px;
   width: 280px;
   padding-left: 20px; }
-  aside .info {
+  aside#illustrator-meta .info {
     font-family: 'TitilliumText22LRegular';
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
-    aside .info.phone {
+    aside#illustrator-meta .info.phone {
       letter-spacing: 1px; }
-  aside p {
+  aside#illustrator-meta p {
     font-size: 0.929em; }
-  aside .entry-title {
+  aside#illustrator-meta .entry-title {
     font-family: 'TitilliumText22LLight';
     font-size: 1.75em;
     margin-bottom: 20px; }
-  aside .vertical-rule-main, aside .vertical-rule-corner-top, aside .vertical-rule-corner-bottom {
+  aside#illustrator-meta .vertical-rule-main, aside#illustrator-meta .vertical-rule-corner-top, aside#illustrator-meta .vertical-rule-corner-bottom {
     position: absolute;
     width: 30px;
     left: 0; }
-  aside .vertical-rule-main {
+  aside#illustrator-meta .vertical-rule-main {
     top: 30px;
     bottom: 30px;
     height: auto;
     background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04) 1px, rgba(0, 0, 0, 0.04) 1px, transparent 30px, transparent 100%); }
-  aside .vertical-rule-corner-top {
+  aside#illustrator-meta .vertical-rule-corner-top {
     height: 30px;
     top: 0;
     background: -webkit-radial-gradient(left bottom, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
-  aside .vertical-rule-corner-bottom {
+  aside#illustrator-meta .vertical-rule-corner-bottom {
     height: 30px;
     bottom: 0;
     background: -webkit-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
-  aside #nav-single {
+  aside#illustrator-meta #nav-single {
     margin-top: 20px;
     font-family: 'TitilliumText22LRegular';
     font-size: 0;
@@ -244,13 +249,13 @@ aside {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box; }
-    aside #nav-single li {
+    aside#illustrator-meta #nav-single li {
       font-size: 14px;
       display: inline-block;
       vertical-align: middle;
       color: #eee;
       text-align: center; }
-      aside #nav-single li a {
+      aside#illustrator-meta #nav-single li a {
         width: 118px;
         white-space: nowrap;
         overflow: hidden;
@@ -259,8 +264,11 @@ aside {
         display: block;
         text-decoration: none;
         border-right: 1px solid #eee; }
-      aside #nav-single li:last-child a {
+      aside#illustrator-meta #nav-single li:last-child a {
         border-right: none; }
+  aside#illustrator-meta.fixed {
+    top: 0;
+    position: fixed; }
 
 footer {
   font-size: 0.929em;

@@ -171,10 +171,16 @@ header[role=banner] {
 	position:relative;
 }
 
-aside {
+#illustrator-meta-guide {
 	position:absolute;
 	right:0;
-	top:30px;
+	top:0;
+	width:280px;
+}
+
+aside#illustrator-meta {
+	position:absolute;
+	margin-top:20px;
 	width:280px;
 	padding-left:20px;
 	.info {
@@ -242,6 +248,10 @@ aside {
 				border-right:none;
 			};
 		}
+	}
+	&.fixed {
+		top:0;
+		position:fixed;
 	}
 }
 

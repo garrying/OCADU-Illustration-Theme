@@ -6,7 +6,8 @@
 			    $gallery_shortcode = '[gallery size="medium" columns="0"]';
 					print apply_filters( 'the_content', $gallery_shortcode );
 		?>
-		<aside>
+		<div id="illustrator-meta-guide">
+		<aside id="illustrator-meta">
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<hr />
@@ -51,7 +52,7 @@
 		<span class="vertical-rule-corner-bottom"></span>
 		
 		</aside><!-- aside -->
-		
+		</div>
 	</div><!-- .entry-content -->
 
 
