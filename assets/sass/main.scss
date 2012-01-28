@@ -233,12 +233,16 @@ aside#illustrator-meta {
 		background:radial-gradient(left top,circle,rgba(0, 0, 0, .04),transparent 30px,transparent 100%);
 	}
 	#nav-single {
+		background:#fff;
 		margin-top:20px;
 		font-family: 'TitilliumText22LRegular';
 		font-size:0;
 		display:inline-block;
 		border:1px solid #eee;
 		@include border-radius(5px);
+		&:hover {
+			background:$link_hover;
+		}
 		li {
 			font-size:14px;
 			display:inline-block;
@@ -253,11 +257,24 @@ aside#illustrator-meta {
 				display:block;
 				text-decoration:none;
 				border-right:1px solid #eee;
+				&:hover {
+					color:$body_text;
+				}
 			}
 			&:last-child a {
 				border-right:none;
-			};
+			}
 		}
+	}
+	#illustrator-back {
+		font-family: 'TitilliumText22LRegular';
+		text-align: center;
+		font-size:14px;
+		display:block;
+		margin-top:20px;
+		padding:5px 10px;
+		text-decoration:none;
+		border:1px solid #eee;
 	}
 	&.fixed {
 		top:0;
@@ -279,35 +296,44 @@ aside#illustrator-meta {
 	}
 }
 
+.illustrator-image {
+	width:69%;
+	img {
+		width:98%;
+		height:auto;
+		display:block;
+	}
+}
+
 // Footer
 
 footer {
 	font-size:0.929em;
 	font-family: 'TitilliumText22LLight';
-	text-align:center;
-	#heart {
-		-webkit-animation: strobe 2s infinite; /* Saf5, Chrome */
-		-moz-animation: strobe 2s infinite; /* FF5+ */
-		-ms-animation: strobe 2s infinite; /* IE10 */
+	text-align:left;
+	p {
+		margin-bottom:0;
 	}
-}
-
-// Strobe That Heart
-
-@-webkit-keyframes strobe {
-  0%   { color: $body_text; }
-  50%  { color: $link_hover; }
-  100% { color: $body_text; }
-}
-@-moz-keyframes strobe {
-  0%   { color: $body_text; }
-  50%  { color: $link_hover; }
-  100% { color: $body_text; }
-}
-@-ms-keyframes strobe {
-  0%   { color: $body_text; }
-  50%  { color: $link_hover; }
-  100% { color: $body_text; }
+	#copyright {
+		position:fixed;
+		right:0;
+		bottom:0;
+		padding:10px 0 10px 40px;
+		width:360px;
+		margin-right:-360px;	
+	}
+	#heart {
+		position:absolute;
+		color: transparentize($body_text, 0.5);
+		background: transparentize($body_bg, 0.5);
+		left:0;
+		width:30px;
+		height:30px;
+		text-indent:9px;
+		border:1px solid #eee;
+		@include border-radius(5px);
+		line-height:2.6em;
+	}
 }
 
 // Error 404

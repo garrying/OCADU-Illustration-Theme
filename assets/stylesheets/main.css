@@ -249,6 +249,7 @@ aside#illustrator-meta {
     background: -ms-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
     background: radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
   aside#illustrator-meta #nav-single {
+    background: #fff;
     margin-top: 20px;
     font-family: 'TitilliumText22LRegular';
     font-size: 0;
@@ -260,6 +261,8 @@ aside#illustrator-meta {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box; }
+    aside#illustrator-meta #nav-single:hover {
+      background: #ff6666; }
     aside#illustrator-meta #nav-single li {
       font-size: 14px;
       display: inline-block;
@@ -274,8 +277,19 @@ aside#illustrator-meta {
         display: block;
         text-decoration: none;
         border-right: 1px solid #eee; }
+        aside#illustrator-meta #nav-single li a:hover {
+          color: #222222; }
       aside#illustrator-meta #nav-single li:last-child a {
         border-right: none; }
+  aside#illustrator-meta #illustrator-back {
+    font-family: 'TitilliumText22LRegular';
+    text-align: center;
+    font-size: 14px;
+    display: block;
+    margin-top: 20px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #eee; }
   aside#illustrator-meta.fixed {
     top: 0;
     position: fixed; }
@@ -291,47 +305,42 @@ aside#illustrator-meta {
       height: auto;
       display: block; }
 
+.illustrator-image {
+  width: 69%; }
+  .illustrator-image img {
+    width: 98%;
+    height: auto;
+    display: block; }
+
 footer {
   font-size: 0.929em;
   font-family: 'TitilliumText22LLight';
-  text-align: center; }
+  text-align: left; }
+  footer p {
+    margin-bottom: 0; }
+  footer #copyright {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 10px 0 10px 40px;
+    width: 360px;
+    margin-right: -360px; }
   footer #heart {
-    -webkit-animation: strobe 2s infinite;
-    /* Saf5, Chrome */
-    -moz-animation: strobe 2s infinite;
-    /* FF5+ */
-    -ms-animation: strobe 2s infinite;
-    /* IE10 */ }
-
-@-webkit-keyframes strobe {
-  0% {
-    color: #222222; }
-
-  50% {
-    color: #ff6666; }
-
-  100% {
-    color: #222222; } }
-
-@-moz-keyframes strobe {
-  0% {
-    color: #222222; }
-
-  50% {
-    color: #ff6666; }
-
-  100% {
-    color: #222222; } }
-
-@-ms-keyframes strobe {
-  0% {
-    color: #222222; }
-
-  50% {
-    color: #ff6666; }
-
-  100% {
-    color: #222222; } }
+    position: absolute;
+    color: rgba(34, 34, 34, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    left: 0;
+    width: 30px;
+    height: 30px;
+    text-indent: 9px;
+    border: 1px solid #eee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    line-height: 2.6em; }
 
 article.error404 {
   text-align: center;
