@@ -67,4 +67,15 @@ $(document).ready(function() {
 		$(this).animate({marginRight:-360});
 	});
 	
+	// Show Hide Search
+	
+	var searchField = $('#search');
+	
+	searchField.one('click', function() {
+		$(this).animate({width:200}, function() {
+			$(this).find('input').animate({width:160});
+		});
+	});
+	
+	
 });

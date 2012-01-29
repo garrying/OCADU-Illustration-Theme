@@ -67,8 +67,8 @@
 					}
         ?>
 
-					<form class="ddpl-form" name="illustrator-select" id="illustrator-select">
-						<label>Graduating Year</label>
+					<form name="illustrator-select" id="illustrator-select">
+						<label for="illu-jumpmenu">Graduating Year</label>
 						<select name="illu-jumpmenu" id="illu-jumpmenu">
 						<option value="/">Current Year</option>
             <?php foreach( $grad_year as $year ) : ?>
