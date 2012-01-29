@@ -689,7 +689,8 @@ header[role=banner] {
     width: 150px;
     font-size: 0.929em;
     background: transparent;
-    width: 0; }
+    width: 0;
+    opacity: 0; }
 
 #content {
   position: relative; }
@@ -826,13 +827,18 @@ aside#illustrator-meta {
 .archive article, .home article {
   float: left;
   width: 25%;
-  background: #ff6666;
+  background-color: #222222;
+  background-image: -webkit-linear-gradient(135deg, #222222, #ff6666);
+  background-image: -moz-linear-gradient(135deg, #222222, #ff6666);
+  background-image: -ms-linear-gradient(135deg, #222222, #ff6666);
+  background-image: -o-linear-gradient(135deg, #222222, #ff6666);
+  background-image: linear-gradient(135deg, #222222, #ff6666);
   position: relative; }
   .archive article img, .home article img {
     width: 100%;
     height: auto;
     display: block;
-    opacity: .5;
+    opacity: .4;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -ms-transition: opacity 0.3s ease-in-out;
@@ -855,7 +861,11 @@ aside#illustrator-meta {
     font-size: 1em;
     text-align: center;
     position: static;
-    background: rgba(34, 34, 34, 0.98);
+    background-color: transparent;
+    background-image: -webkit-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
+    background-image: -moz-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
+    background-image: -ms-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
+    background-image: radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
     color: #fff;
     padding: 5px 0;
     width: 100%;
@@ -891,20 +901,21 @@ footer {
     margin-right: -360px; }
   footer #heart {
     position: absolute;
-    color: rgba(34, 34, 34, 0.5);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(34, 34, 34, 0.5);
+    color: white;
     left: 0;
     width: 30px;
     height: 30px;
     text-indent: 9px;
-    border: 1px solid #eee;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    line-height: 2.6em; }
+    line-height: 2.6em;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
 
 article.error404 {
   text-align: center;
