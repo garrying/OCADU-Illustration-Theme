@@ -73,7 +73,7 @@ $(document).ready(function() {
 	
 	searchField.one('click', function() {
 		$(this).animate({width:200}, function() {
-			$(this).find('input').animate({width:160});
+			$(this).find('input').animate({width:160}).fadeTo('slow',1);
 		});
 	});
 	
