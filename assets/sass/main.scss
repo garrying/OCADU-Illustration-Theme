@@ -11,6 +11,7 @@ $font-size: 14;
 $em: $font-size * 1;
 
 $body_bg: #FFF;
+$header_bg: #FFF;
 $orange: #EE4000;
 $body_text: #222;
 $link: #333;
@@ -89,15 +90,14 @@ a {
 // Header
 
 header[role=banner] {
-	font-family:"TitilliumText22LMedium";
+	font-family:"TitilliumText22LRegular";
 	border-bottom:1px solid #eee;
 	position:relative;
+	background:$header_bg;
 	.container {
-		min-height:80px;
+		min-height:60px;
 	}
-	a {
-		text-decoration:none;
-	}
+
 	#access {
 		display:inline-block;
 		vertical-align:bottom;	
@@ -106,7 +106,7 @@ header[role=banner] {
 			a {
 				display:block;
 				padding:10px;
-				border-left:1px solid #eee;
+				
 			}
 		}
 	}
@@ -149,7 +149,7 @@ header[role=banner] {
 			width:32px;	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
 				background-repeat:no-repeat;
 				background-position:5px center;
-				background-color:$body_bg;
+				background-color:$header_bg;
 	input[type=text] {
 		border:0;
 		padding:8px;
@@ -349,33 +349,38 @@ aside#illustrator-meta {
 			img {
 				opacity:.8;
 			}
+			h1 {
+				background:$body_text;
+			}
 		}
 		a {
 			color:#fff;
 			text-decoration:none;
 		}
+		
 	}
 	h1 {
 		z-index:10;
 		padding:5px;
 		position:absolute;
-		padding:20px;
+		padding:10px;
 		font-size:1.5em;
-		font-family: 'TitilliumText22LRegular';
+		font-family: 'TitilliumText22LLight';
 		&#year-title {
 			z-index:9999;
 			font-size:1em;
+			font-family: 'TitilliumText22LRegular';
 			text-align:center;
 			position:static;
 			background-color:transparent;
-			background-image:-webkit-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.7));
-			background-image:-moz-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.7));
-			background-image:-ms-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.7));
-			background-image:radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.7));
+			background-image:-webkit-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
+			background-image:-moz-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
+			background-image:-ms-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
+			background-image:radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
 			color:#fff;
-			padding:5px 0;
+			padding:1px 0;
 			width:100%;
-			letter-spacing:2px;
+			letter-spacing:1px;
 		}
 	}
 }

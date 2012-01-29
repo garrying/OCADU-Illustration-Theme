@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$(function(){ $("select").uniform(); });
 	
 	// Jump menu business
+	
 	$('#illu-jumpmenu').change(function(){
 	  window.location.href = $(this).val();
 	 });
@@ -77,5 +78,13 @@ $(document).ready(function() {
 		});
 	});
 	
+	// Click black year bar to scroll back to top
+	
+	var titleBar = $('#year-title');
+	
+	titleBar.on('click', function() {
+		$('body,html').animate({scrollTop: 0}, 400);
+		return false;
+	});
 	
 });

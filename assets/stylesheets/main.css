@@ -636,13 +636,12 @@ a {
   max-width: 1000px; }
 
 header[role=banner] {
-  font-family: "TitilliumText22LMedium";
+  font-family: "TitilliumText22LRegular";
   border-bottom: 1px solid #eee;
-  position: relative; }
+  position: relative;
+  background: white; }
   header[role=banner] .container {
-    min-height: 80px; }
-  header[role=banner] a {
-    text-decoration: none; }
+    min-height: 60px; }
   header[role=banner] #access {
     display: inline-block;
     vertical-align: bottom; }
@@ -650,8 +649,7 @@ header[role=banner] {
       float: left; }
       header[role=banner] #access li a {
         display: block;
-        padding: 10px;
-        border-left: 1px solid #eee; }
+        padding: 10px; }
   header[role=banner] .page-search {
     position: absolute;
     right: 20px;
@@ -846,6 +844,8 @@ aside#illustrator-meta {
     transition: opacity 0.3s ease-in-out; }
   .archive article:hover img, .home article:hover img {
     opacity: .8; }
+  .archive article:hover h1, .home article:hover h1 {
+    background: #222222; }
   .archive article a, .home article a {
     color: #fff;
     text-decoration: none; }
@@ -853,23 +853,24 @@ aside#illustrator-meta {
   z-index: 10;
   padding: 5px;
   position: absolute;
-  padding: 20px;
+  padding: 10px;
   font-size: 1.5em;
-  font-family: 'TitilliumText22LRegular'; }
+  font-family: 'TitilliumText22LLight'; }
   .archive h1#year-title, .home h1#year-title {
     z-index: 9999;
     font-size: 1em;
+    font-family: 'TitilliumText22LRegular';
     text-align: center;
     position: static;
     background-color: transparent;
-    background-image: -webkit-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
-    background-image: -moz-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
-    background-image: -ms-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
-    background-image: radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.7));
+    background-image: -webkit-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
+    background-image: -moz-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
+    background-image: -ms-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
+    background-image: radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
     color: #fff;
-    padding: 5px 0;
+    padding: 1px 0;
     width: 100%;
-    letter-spacing: 2px; }
+    letter-spacing: 1px; }
 
 article.event #illustrator-meta-guide {
   width: 400px; }
