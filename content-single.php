@@ -29,7 +29,7 @@
 		<footer class="nav-single">
 			
 			<nav id="nav-single">
-				<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Previous and Next Illustrator' ); ?></h3>
 				<ul>
 				<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
 				<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
@@ -38,8 +38,6 @@
 
 		</footer><!-- .nav-single -->
 		
-
-		
 		<span class="vertical-rule-main"></span>
 		<span class="vertical-rule-corner-top"></span>
 		<span class="vertical-rule-corner-bottom"></span>
@@ -47,10 +45,9 @@
 		</aside><!-- aside -->
 		</div>
 		
-		
-			<?php
-				    $gallery_shortcode = '[gallery size="medium" itemtag="div" icontag="div" columns="0"]';
-						print apply_filters( 'the_content', $gallery_shortcode );
-			?>
-	
+		<?php
+			    $gallery_shortcode = '[gallery size="medium" itemtag="div" icontag="div" columns="0"]';
+					print apply_filters( 'the_content', $gallery_shortcode );
+		?>
+
 </article><!-- #post-<?php the_ID(); ?> -->
