@@ -60,12 +60,14 @@ $(document).ready(function() {
 	
 	// Footer copyright show hide
 	
+	var heartEle = $('#heart');
 	var footerEle = $('#copyright');
 	
-	footerEle.toggle( function() {
-		$(this).animate({marginRight:0});
+	
+	heartEle.toggle( function() {
+		footerEle.animate({marginRight:0});
 	}, function() {
-		$(this).animate({marginRight:-360});
+		footerEle.animate({marginRight:-360});
 	});
 	
 	// Show Hide Search
