@@ -96,6 +96,9 @@ header[role=banner] {
 	background:$header_bg;
 	.container {
 		min-height:60px;
+		@media only screen and (max-width: 767px) {
+		min-height:80px;
+		}
 	}
 
 	#access {
@@ -169,10 +172,12 @@ header[role=banner] {
 }
 
 #illustrator-meta-guide {
-	position:absolute;
-	right:20px;
-	top:0;
+	float:right;
+	margin-right:20px;
 	width:280px;
+	@media only screen and (max-width: 767px) {
+		width:100%;
+	}
 }
 
 aside#illustrator-meta {
@@ -181,6 +186,9 @@ aside#illustrator-meta {
 	width:280px;
 	padding-left:20px;
 	background: transparentize($body_bg, 0.3);
+	@media only screen and (max-width: 767px) {
+		width:100%;
+	}
 	.info {
 		font-family: 'TitilliumText22LRegular';
 		white-space: nowrap;
@@ -202,6 +210,9 @@ aside#illustrator-meta {
 		position:absolute;
 		width:30px;
 		left:0;
+		@media only screen and (max-width: 767px) { 
+			display:none;
+		}
 	}
 	.vertical-rule-main {
 		top: 30px;
@@ -288,16 +299,33 @@ aside#illustrator-meta {
 .fixed {
 	top:0;
 	position:fixed !important;
+	@media only screen and (max-width: 767px) {
+		position:static !important;
+	}
 }
 
 .gallery {
-	width:69%;
+	width:67%;
+	float:left;
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		width:58%;
+	}
+	@media only screen and (max-width: 767px) { 
+		width:100%;
+	}
 	.gallery-item {
 		float:left;
 		width:50%;
 		margin: 0 0 7px;
+		@media only screen and (max-width: 767px) { 
+			width:100%;
+			margin:0 0 7px;
+			}
 		img {
 			width:98%;
+			@media only screen and (max-width: 767px) { 
+				width:100%;
+			}
 			height:auto;
 			display:block;
 		}
@@ -305,9 +333,16 @@ aside#illustrator-meta {
 }
 
 .illustrator-image {
-	width:69%;
+	width:67%;
+	float:left;
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		width:58%;
+	}
+	@media only screen and (max-width: 767px) { 
+		width:100%;
+	}
 	img {
-		width:98%;
+		width:100%;
 		height:auto;
 		display:block;
 	}
@@ -325,6 +360,9 @@ aside#illustrator-meta {
 	article {
 		float:left;
 		width:25%;
+		@media only screen and (max-width: 767px) { 
+			width:50%;
+		}
 		background-color: $body_text;
 		background-image: -webkit-linear-gradient(135deg, $body_text, $link_hover); 
 		background-image:    -moz-linear-gradient(135deg, $body_text, $link_hover); 
@@ -365,7 +403,7 @@ aside#illustrator-meta {
 		position:absolute;
 		padding:10px;
 		font-size:1.5em;
-		font-family: 'TitilliumText22LLight';
+		font-family: 'TitilliumText22LThin';
 		&#year-title {
 			z-index:9999;
 			font-size:1em;
@@ -427,6 +465,9 @@ footer {
 		padding:10px 0 10px 40px;
 		width:360px;
 		margin-right:-360px;	
+		@media only screen and (max-width: 767px) { 
+			display:none;
+		}
 	}
 	#heart {
 		position:absolute;

@@ -642,6 +642,9 @@ header[role=banner] {
   background: white; }
   header[role=banner] .container {
     min-height: 60px; }
+    @media only screen and (max-width: 767px) {
+      header[role=banner] .container {
+        min-height: 80px; } }
   header[role=banner] #access {
     display: inline-block;
     vertical-align: bottom; }
@@ -694,10 +697,12 @@ header[role=banner] {
   position: relative; }
 
 #illustrator-meta-guide {
-  position: absolute;
-  right: 20px;
-  top: 0;
+  float: right;
+  margin-right: 20px;
   width: 280px; }
+  @media only screen and (max-width: 767px) {
+    #illustrator-meta-guide {
+      width: 100%; } }
 
 aside#illustrator-meta {
   position: relative;
@@ -705,6 +710,9 @@ aside#illustrator-meta {
   width: 280px;
   padding-left: 20px;
   background: rgba(255, 255, 255, 0.7); }
+  @media only screen and (max-width: 767px) {
+    aside#illustrator-meta {
+      width: 100%; } }
   aside#illustrator-meta .info {
     font-family: 'TitilliumText22LRegular';
     white-space: nowrap;
@@ -722,6 +730,9 @@ aside#illustrator-meta {
     position: absolute;
     width: 30px;
     left: 0; }
+    @media only screen and (max-width: 767px) {
+      aside#illustrator-meta .vertical-rule-main, aside#illustrator-meta .vertical-rule-corner-top, aside#illustrator-meta .vertical-rule-corner-bottom {
+        display: none; } }
   aside#illustrator-meta .vertical-rule-main {
     top: 30px;
     bottom: 30px;
@@ -798,22 +809,46 @@ aside#illustrator-meta {
 .fixed {
   top: 0;
   position: fixed !important; }
+  @media only screen and (max-width: 767px) {
+    .fixed {
+      position: static !important; } }
 
 .gallery {
-  width: 69%; }
+  width: 67%;
+  float: left; }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    .gallery {
+      width: 58%; } }
+  @media only screen and (max-width: 767px) {
+    .gallery {
+      width: 100%; } }
   .gallery .gallery-item {
     float: left;
     width: 50%;
     margin: 0 0 7px; }
+    @media only screen and (max-width: 767px) {
+      .gallery .gallery-item {
+        width: 100%;
+        margin: 0 0 7px; } }
     .gallery .gallery-item img {
       width: 98%;
       height: auto;
       display: block; }
+      @media only screen and (max-width: 767px) {
+        .gallery .gallery-item img {
+          width: 100%; } }
 
 .illustrator-image {
-  width: 69%; }
+  width: 67%;
+  float: left; }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    .illustrator-image {
+      width: 58%; } }
+  @media only screen and (max-width: 767px) {
+    .illustrator-image {
+      width: 100%; } }
   .illustrator-image img {
-    width: 98%;
+    width: 100%;
     height: auto;
     display: block; }
 
@@ -832,6 +867,9 @@ aside#illustrator-meta {
   background-image: -o-linear-gradient(135deg, #222222, #ff6666);
   background-image: linear-gradient(135deg, #222222, #ff6666);
   position: relative; }
+  @media only screen and (max-width: 767px) {
+    .archive article, .home article {
+      width: 50%; } }
   .archive article img, .home article img {
     width: 100%;
     height: auto;
@@ -855,7 +893,7 @@ aside#illustrator-meta {
   position: absolute;
   padding: 10px;
   font-size: 1.5em;
-  font-family: 'TitilliumText22LLight'; }
+  font-family: 'TitilliumText22LThin'; }
   .archive h1#year-title, .home h1#year-title {
     z-index: 9999;
     font-size: 1em;
@@ -900,6 +938,9 @@ footer {
     padding: 10px 0 10px 40px;
     width: 360px;
     margin-right: -360px; }
+    @media only screen and (max-width: 767px) {
+      footer #copyright {
+        display: none; } }
   footer #heart {
     position: absolute;
     background: rgba(34, 34, 34, 0.5);
