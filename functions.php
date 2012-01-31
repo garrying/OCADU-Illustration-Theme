@@ -27,7 +27,6 @@ if (!function_exists('load_my_scripts')) {
 }
 add_action('wp_enqueue_scripts', 'load_scripts');
 
-
 /**
  * Clean up body_class output
  */
@@ -139,5 +138,26 @@ function nav_id_filter( $id, $item ) {
 	return 'nav-'.cleanname($item->title);
 }
 add_filter( 'nav_menu_item_id', 'nav_id_filter', 10, 2 );
+
+/**
+ * Limit Search to Illustrators and Events
+ */
+
+function SearchFilter($query) {
+    if ($query->is_search) {
+        $query->set('post_type',array('illustrator','event'));
+    }
+return $query;
+}
+add_filter('pre_get_posts','SearchFilter');
+
+/**
+ * Use proper ellipses for excerpts
+ */
+
+function new_excerpt_more($more) {
+	return '&hellip;';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 
 ?>
