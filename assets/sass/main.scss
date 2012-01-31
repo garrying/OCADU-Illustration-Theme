@@ -125,6 +125,10 @@ header[role=banner] {
 #year-select {
 	position:absolute;
 	bottom:0;
+	@media only screen and (max-width: 767px) {
+		top:0;
+		right:10px;
+	}
 	label {
 		margin-right:5px;
 	}
@@ -350,7 +354,7 @@ aside#illustrator-meta {
 
 // Homepage / Archives
 
-.archive, .home {
+.archive, .home, .search {
 	#main.container {
 		width:100%;
 		margin:0;
@@ -421,6 +425,14 @@ aside#illustrator-meta {
 			letter-spacing:1px;
 		}
 	}
+	.entry-summary {
+		position:absolute;
+		padding:10px;
+		bottom:0;
+		color:#fff;
+		background: transparentize($body_text, 0.1);
+		font-size:12px;
+	}
 }
 
 // Events
@@ -486,15 +498,18 @@ footer {
 
 // Error 404
 
-article.error404 {
+article.error404, article.not-found {
 	h1 {
 		font-family: 'TitilliumText22LLight';
 		font-size:3em;
 		margin-bottom:1em;
+		position:static;
 	}
 	h2 {
 		color:#999;
 	}
 	text-align:center;
+	background:none;
+	width:100%;
 	margin:100px 0;
 }

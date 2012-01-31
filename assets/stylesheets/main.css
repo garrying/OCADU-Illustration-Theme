@@ -661,6 +661,10 @@ header[role=banner] {
 #year-select {
   position: absolute;
   bottom: 0; }
+  @media only screen and (max-width: 767px) {
+    #year-select {
+      top: 0;
+      right: 10px; } }
   #year-select label {
     margin-right: 5px; }
   #year-select a, #year-select form {
@@ -852,12 +856,12 @@ aside#illustrator-meta {
     height: auto;
     display: block; }
 
-.archive #main.container, .home #main.container {
+.archive #main.container, .home #main.container, .search #main.container {
   width: 100%;
   margin: 0;
   padding: 0;
   max-width: none; }
-.archive article, .home article {
+.archive article, .home article, .search article {
   float: left;
   width: 25%;
   background-color: #222222;
@@ -868,9 +872,9 @@ aside#illustrator-meta {
   background-image: linear-gradient(135deg, #222222, #ff6666);
   position: relative; }
   @media only screen and (max-width: 767px) {
-    .archive article, .home article {
+    .archive article, .home article, .search article {
       width: 50%; } }
-  .archive article img, .home article img {
+  .archive article img, .home article img, .search article img {
     width: 100%;
     height: auto;
     display: block;
@@ -880,21 +884,21 @@ aside#illustrator-meta {
     -ms-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out; }
-  .archive article:hover img, .home article:hover img {
+  .archive article:hover img, .home article:hover img, .search article:hover img {
     opacity: .8; }
-  .archive article:hover h1, .home article:hover h1 {
+  .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
     background: #222222; }
-  .archive article a, .home article a {
+  .archive article a, .home article a, .search article a {
     color: #fff;
     text-decoration: none; }
-.archive h1, .home h1 {
+.archive h1, .home h1, .search h1 {
   z-index: 10;
   padding: 5px;
   position: absolute;
   padding: 10px;
   font-size: 1.5em;
   font-family: 'TitilliumText22LThin'; }
-  .archive h1#year-title, .home h1#year-title {
+  .archive h1#year-title, .home h1#year-title, .search h1#year-title {
     z-index: 9999;
     font-size: 1em;
     font-family: 'TitilliumText22LRegular';
@@ -909,6 +913,13 @@ aside#illustrator-meta {
     padding: 1px 0;
     width: 100%;
     letter-spacing: 1px; }
+.archive .entry-summary, .home .entry-summary, .search .entry-summary {
+  position: absolute;
+  padding: 10px;
+  bottom: 0;
+  color: #fff;
+  background: rgba(34, 34, 34, 0.9);
+  font-size: 12px; }
 
 article.event #illustrator-meta-guide {
   width: 400px; }
@@ -959,12 +970,15 @@ footer {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
 
-article.error404 {
+article.error404, article.not-found {
   text-align: center;
+  background: none;
+  width: 100%;
   margin: 100px 0; }
-  article.error404 h1 {
+  article.error404 h1, article.not-found h1 {
     font-family: 'TitilliumText22LLight';
     font-size: 3em;
-    margin-bottom: 1em; }
-  article.error404 h2 {
+    margin-bottom: 1em;
+    position: static; }
+  article.error404 h2, article.not-found h2 {
     color: #999; }
