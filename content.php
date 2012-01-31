@@ -17,14 +17,19 @@
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+			<?php 
+			$excerpt = get_the_excerpt();
+			if ($excerpt) {
+				echo '<div class="entry-summary">';
+				echo $excerpt;
+				echo '</div>';
+			}
+			 ?>
 		<?php elseif ( is_page() ) : ?>
-		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' ) ); ?>
-		</div><!-- .entry-content -->
-		<?php endif; ?>
-
+				<div class="entry-content">
+					<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' ) ); ?>
+				</div><!-- .entry-content -->
+				<?php endif; ?>
+		
 
 	</article><!-- #post-<?php the_ID(); ?> -->
