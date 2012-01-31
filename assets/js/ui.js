@@ -17,7 +17,7 @@ $(document).ready(function() {
 	
 	if ($('body').hasClass('single')) {
 		var top = illustratorInfo.offset().top - parseFloat(illustratorInfo.css('marginTop').replace(/auto/, 0));
-	} else if ($('body').hasClass('archive')) {
+	} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
 		var topYeartitle = yearTitle.offset().top - parseFloat(yearTitle.css('marginTop').replace(/auto/, 0));
 	}
 	
@@ -29,14 +29,14 @@ $(document).ready(function() {
     if (y >= top || y >= topYeartitle ) {
 			if ($('body').hasClass('single')) {
       	illustratorInfo.addClass('fixed'); 
-			} else if ($('body').hasClass('archive')) {
+			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
 				yearTitle.addClass('fixed');
 			}
     } else {
       // otherwise remove it
       if ($('body').hasClass('single')) {
 				illustratorInfo.removeClass('fixed');
-			} else if ($('body').hasClass('archive')) {
+			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
 				yearTitle.removeClass('fixed');
 			}
     }
