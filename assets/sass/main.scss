@@ -27,7 +27,7 @@ html  {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: $font-size / 16 * 1em;
 	line-height: #{$line / $em}em;
 	text-rendering: optimizeLegibility;
@@ -38,16 +38,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 em {
-  font-style: italic;
+	font-style: italic;
 }
 
 hr {
 	border: 0;
-  border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
 
 p {
@@ -309,8 +309,11 @@ aside#illustrator-meta {
 }
 
 .gallery {
-	width:67%;
+	width:69%;
 	float:left;
+	@media only screen and (min-width: 960px) and (max-width: 999px) {
+		width:66%;
+	}
 	@media only screen and (min-width: 768px) and (max-width: 959px) {
 		width:58%;
 	}
@@ -337,8 +340,11 @@ aside#illustrator-meta {
 }
 
 .illustrator-image {
-	width:67%;
+	width:69%;
 	float:left;
+	@media only screen and (min-width: 960px) and (max-width: 999px) {
+		width:66%;
+	}
 	@media only screen and (min-width: 768px) and (max-width: 959px) {
 		width:58%;
 	}

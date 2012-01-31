@@ -818,8 +818,11 @@ aside#illustrator-meta {
       position: static !important; } }
 
 .gallery {
-  width: 67%;
+  width: 69%;
   float: left; }
+  @media only screen and (min-width: 960px) and (max-width: 999px) {
+    .gallery {
+      width: 66%; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
     .gallery {
       width: 58%; } }
@@ -843,8 +846,11 @@ aside#illustrator-meta {
           width: 100%; } }
 
 .illustrator-image {
-  width: 67%;
+  width: 69%;
   float: left; }
+  @media only screen and (min-width: 960px) and (max-width: 999px) {
+    .illustrator-image {
+      width: 66%; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
     .illustrator-image {
       width: 58%; } }
