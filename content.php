@@ -1,4 +1,4 @@
-	<article <?php post_class(); ?>>
+	<article <?php post_class(); ?> role="article">
 		<header class="entry-header">
 
 		<?php if ( is_page() ) : // Only display Excerpts for Search ?>

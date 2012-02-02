@@ -106,7 +106,7 @@
   
 				
 			</nav><!-- #access -->
-			<div id="search">
+			<div id="search" role="search">
 			  <?php get_search_form(); ?>
 			</div><!-- #search -->
 			</div><!-- .page-search -->

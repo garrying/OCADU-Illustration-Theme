@@ -40,7 +40,7 @@
 								</div><!-- .illustrator-image -->
 						
 						<div id="illustrator-meta-guide">
-						<aside id="illustrator-meta">
+						<aside id="illustrator-meta" role="complementary">
 						<header class="entry-header">
 							<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
 							<hr />
