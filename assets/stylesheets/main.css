@@ -672,10 +672,27 @@ header[role=banner] {
     padding: 10px 0;
     vertical-align: bottom; }
   #year-select a {
-    border-left: 1px solid #eee;
     padding: 10px; }
   #year-select form {
     padding-bottom: 7px; }
+  #year-select #year-back-button {
+    background: url("../images/gallery-button.png") no-repeat 10px 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-left: 1px solid #eee;
+    text-indent: -9999px;
+    padding: 0 0 9px 10px;
+    margin-right: 12px;
+    opacity: .4;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    position: relative; }
+    #year-select #year-back-button:hover {
+      opacity: 1; }
 
 #search {
   display: inline-block;
