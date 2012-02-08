@@ -1,14 +1,14 @@
 $(document).ready(function() {
 	
 	// uniform year select
-	
-	$(function(){ $("select").uniform(); });
+	"use strict";
+	$("select").uniform();
 	
 	// Jump menu business
 	
 	$('#illu-jumpmenu').change(function(){
-	  window.location.href = $(this).val();
-	 });
+		window.location.href = $(this).val();
+	});
 	
 	// Sticky Illustrator Information
 	
@@ -21,26 +21,26 @@ $(document).ready(function() {
 		var topYeartitle = yearTitle.offset().top - parseFloat(yearTitle.css('marginTop').replace(/auto/, 0));
 	}
 	
-  $(window).scroll(function (event) {
-    // what the y position of the scroll is
-    var y = $(this).scrollTop();
+	$(window).scroll(function (event) {
+	// what the y position of the scroll is
+		var y = $(this).scrollTop();
 
-    // whether that's below the form
-    if (y >= top || y >= topYeartitle ) {
-			if ($('body').hasClass('single')) {
-      	illustratorInfo.addClass('fixed'); 
-			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-				yearTitle.addClass('fixed');
-			}
-    } else {
-      // otherwise remove it
-      if ($('body').hasClass('single')) {
-				illustratorInfo.removeClass('fixed');
-			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-				yearTitle.removeClass('fixed');
-			}
-    }
-  });
+		// whether that's below the form
+		if (y >= top || y >= topYeartitle ) {
+				if ($('body').hasClass('single')) {
+					illustratorInfo.addClass('fixed'); 
+				} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
+					yearTitle.addClass('fixed');
+				}
+		} else {
+		// otherwise remove it
+		if ($('body').hasClass('single')) {
+					illustratorInfo.removeClass('fixed');
+				} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
+					yearTitle.removeClass('fixed');
+				}
+		}
+	});
 	
 	// Masonry for Illustrator Pages
 	
@@ -50,11 +50,11 @@ $(document).ready(function() {
 	gallery.imagesLoaded( function(){
 		gallery.masonry({
 			isAnimated: true,
-		  itemSelector: galleryItems,
-		  // set columnWidth a fraction of the container width
-		  columnWidth: function( containerWidth ) {
-		    return containerWidth / 2;
-		  }
+			itemSelector: galleryItems,
+			// set columnWidth a fraction of the container width
+			columnWidth: function( containerWidth ) {
+			return containerWidth / 2;
+			}
 		});
 	});
 	
