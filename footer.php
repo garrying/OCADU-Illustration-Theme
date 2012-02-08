@@ -2,9 +2,10 @@
 
 	<footer id="colophon" role="contentinfo" class="container">		
 		<div id="copyright">
-			<div id="heart"> ♥</div>
+			<div id="toggle"></div>
 			<p>Copyright © 2012 Respective Authors</p>
 			<p>Maintained by the Illustration Department at <a href="http://www.ocadu.ca" title="Link to OCAD University's website">OCAD University</a></p>
+			
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->

@@ -639,7 +639,29 @@ header[role=banner] {
   font-family: "TitilliumText22LRegular";
   border-bottom: 1px solid #eee;
   position: relative;
-  background: white; }
+  background: url("../images/wave.png"); }
+  header[role=banner] hgroup #site-title {
+    font-family: "TitilliumText22LRegular";
+    font-size: 1em;
+    padding: 10px 10px 10px 0;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    border-right: 1px solid #eee; }
+    @media only screen and (max-width: 767px) {
+      header[role=banner] hgroup #site-title {
+        top: 0;
+        right: auto;
+        left: 10px;
+        border-right: none; }
+        header[role=banner] hgroup #site-title a {
+          display: block;
+          width: 30px;
+          height: 30px;
+          background: url("../images/eye.png") no-repeat;
+          text-indent: -999px; } }
+  header[role=banner] hgroup #site-description {
+    display: none; }
   header[role=banner] .container {
     min-height: 60px; }
     @media only screen and (max-width: 767px) {
@@ -653,6 +675,9 @@ header[role=banner] {
       header[role=banner] #access li a {
         display: block;
         padding: 10px; }
+    @media only screen and (max-width: 767px) {
+      header[role=banner] #access.hide {
+        display: none; } }
   header[role=banner] .page-search {
     position: absolute;
     right: 20px;
@@ -660,11 +685,13 @@ header[role=banner] {
 
 #year-select {
   position: absolute;
-  bottom: 0; }
+  bottom: 0;
+  left: 155px; }
   @media only screen and (max-width: 767px) {
     #year-select {
       top: 0;
-      right: 10px; } }
+      right: 10px;
+      left: auto; } }
   #year-select label {
     margin-right: 5px; }
   #year-select a, #year-select form {
@@ -674,7 +701,7 @@ header[role=banner] {
   #year-select a {
     padding: 10px; }
   #year-select form {
-    padding-bottom: 7px; }
+    padding-bottom: 6px; }
   #year-select #year-back-button {
     background: url("../images/gallery-button.png") no-repeat 10px 0;
     display: inline-block;
@@ -702,8 +729,7 @@ header[role=banner] {
   width: 32px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
   background-repeat: no-repeat;
-  background-position: 5px center;
-  background-color: white; }
+  background-position: 5px center; }
   #search input[type=text] {
     border: 0;
     padding: 8px;
@@ -729,8 +755,7 @@ aside#illustrator-meta {
   position: relative;
   padding: 20px 0;
   width: 280px;
-  padding-left: 20px;
-  background: rgba(255, 255, 255, 0.7); }
+  padding-left: 20px; }
   @media only screen and (max-width: 767px) {
     aside#illustrator-meta {
       width: 100%; } }
@@ -796,7 +821,7 @@ aside#illustrator-meta {
     -o-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out; }
     aside#illustrator-meta #nav-single:hover {
-      background: #222222; }
+      background: url("../images/tightwave.png") #333333; }
       aside#illustrator-meta #nav-single:hover a {
         color: #fff; }
     aside#illustrator-meta #nav-single li {
@@ -825,7 +850,11 @@ aside#illustrator-meta {
     margin-top: 20px;
     padding: 5px 10px;
     text-decoration: none;
-    border: 1px solid #eee; }
+    border: 1px solid #eee;
+    border-radius: 5px; }
+    aside#illustrator-meta #illustrator-back:hover {
+      background: url("../images/stars.png");
+      color: #000; }
 
 .fixed {
   top: 0;
@@ -910,7 +939,7 @@ aside#illustrator-meta {
   .archive article:hover img, .home article:hover img, .search article:hover img {
     opacity: .8; }
   .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
-    background: #222222; }
+    background: url("../images/tightwave.png") #222222; }
   .archive article a, .home article a, .search article a {
     color: #fff;
     text-decoration: none; }
@@ -920,7 +949,12 @@ aside#illustrator-meta {
   position: absolute;
   padding: 10px;
   font-size: 1.5em;
-  font-family: 'TitilliumText22LThin'; }
+  font-family: 'TitilliumText22LThin';
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out; }
   .archive h1#year-title, .home h1#year-title, .search h1#year-title {
     z-index: 9999;
     font-size: 1em;
@@ -943,6 +977,35 @@ aside#illustrator-meta {
   color: #fff;
   background: rgba(34, 34, 34, 0.9);
   font-size: 12px; }
+
+article.page h1 {
+  font-family: 'TitilliumText22LLight';
+  font-size: 1.75em;
+  margin: 20px 0; }
+article.page h2 {
+  font-family: 'TitilliumText22LLight';
+  font-size: 1.5em;
+  margin: 20px 0; }
+article.page .left, article.page .right {
+  float: left;
+  width: 46%; }
+  @media only screen and (max-width: 767px) {
+    article.page .left, article.page .right {
+      width: 100%;
+      margin: 0 !important; } }
+article.page .right {
+  margin-left: 2%; }
+article.page .left {
+  margin-right: 2%; }
+article.page .row {
+  border-top: 1px solid #eee;
+  clear: both; }
+  article.page .row .span1 {
+    width: 25%;
+    float: left; }
+    @media only screen and (max-width: 767px) {
+      article.page .row .span1 {
+        width: 50%; } }
 
 article.event #illustrator-meta-guide {
   width: 400px; }
@@ -969,27 +1032,25 @@ footer {
     position: fixed;
     right: 0;
     bottom: 0;
-    padding: 10px 0 10px 40px;
+    padding: 10px 0 10px 30px;
     width: 360px;
     margin-right: -360px; }
     @media only screen and (max-width: 767px) {
       footer #copyright {
         display: none; } }
-  footer #heart {
+  footer #toggle {
     position: absolute;
-    background: rgba(34, 34, 34, 0.5);
+    background: url("../images/zigzag.png") no-repeat;
     color: white;
     left: 0;
-    width: 30px;
-    height: 30px;
-    text-indent: 9px;
+    width: 20px;
+    height: 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    line-height: 2.6em;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
 
@@ -997,7 +1058,8 @@ article.error404, article.not-found {
   text-align: center;
   background: none;
   width: 100%;
-  margin: 100px 0; }
+  margin: 80px 0;
+  position: relative; }
   article.error404 h1, article.not-found h1 {
     font-family: 'TitilliumText22LLight';
     font-size: 3em;
@@ -1005,3 +1067,11 @@ article.error404, article.not-found {
     position: static; }
   article.error404 h2, article.not-found h2 {
     color: #999; }
+  article.error404 .box, article.not-found .box {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    background: url("../images/smallstar.png");
+    margin-bottom: 50px; }
+  article.error404:hover h1, article.not-found:hover h1 {
+    background: none; }

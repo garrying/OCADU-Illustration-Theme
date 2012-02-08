@@ -93,7 +93,35 @@ header[role=banner] {
 	font-family:"TitilliumText22LRegular";
 	border-bottom:1px solid #eee;
 	position:relative;
-	background:$header_bg;
+	background:url('../images/wave.png');
+	hgroup {
+		#site-title {
+			font-family:"TitilliumText22LRegular";
+			font-size: 1em;
+			padding:10px 10px 10px 0;
+			margin:0;
+			position: absolute;
+			bottom:0;
+			border-right:1px solid #eee;
+			@media only screen and (max-width: 767px) {
+				top:0;
+				right:auto;
+				left:10px;
+				border-right:none;
+				a {
+					display:block;
+					width:30px;
+					height:30px;
+					background:url('../images/eye.png') no-repeat;
+					text-indent:-999px;
+				}
+
+			}
+		}
+		#site-description {
+			display:none;
+		}
+	}
 	.container {
 		min-height:60px;
 		@media only screen and (max-width: 767px) {
@@ -112,6 +140,11 @@ header[role=banner] {
 				
 			}
 		}
+		&.hide {
+			@media only screen and (max-width: 767px) {
+				display:none;
+			}
+		}
 	}
 	.page-search {
 		position:absolute;
@@ -125,9 +158,11 @@ header[role=banner] {
 #year-select {
 	position:absolute;
 	bottom:0;
+	left:155px;
 	@media only screen and (max-width: 767px) {
 		top:0;
 		right:10px;
+		left:auto;
 	}
 	label {
 		margin-right:5px;
@@ -141,7 +176,7 @@ header[role=banner] {
 		padding:10px;
 	}
 	form {
-		padding-bottom:7px;
+		padding-bottom:6px;
 	}
 	#year-back-button {
 		background:url('../images/gallery-button.png') no-repeat 10px 0;
@@ -176,7 +211,7 @@ header[role=banner] {
 			width:32px;	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
 				background-repeat:no-repeat;
 				background-position:5px center;
-				background-color:$header_bg;
+				
 	input[type=text] {
 		border:0;
 		padding:8px;
@@ -209,7 +244,6 @@ aside#illustrator-meta {
 	padding:20px 0;
 	width:280px;
 	padding-left:20px;
-	background: transparentize($body_bg, 0.3);
 	@media only screen and (max-width: 767px) {
 		width:100%;
 	}
@@ -280,7 +314,7 @@ aside#illustrator-meta {
 	          transition: background 0.3s ease-in-out;
 
 		&:hover {
-			background:$body_text;
+			background:url('../images/tightwave.png') #333;
 			a {
 				color:#fff;
 			}
@@ -317,6 +351,11 @@ aside#illustrator-meta {
 		padding:5px 10px;
 		text-decoration:none;
 		border:1px solid #eee;
+		border-radius:5px;
+		&:hover {
+			background:url('../images/stars.png');
+			color:#000;
+		}
 	}
 }
 
@@ -418,7 +457,7 @@ aside#illustrator-meta {
 				opacity:.8;
 			}
 			h1 {
-				background:$body_text;
+				background:url('../images/tightwave.png') #222;
 			}
 		}
 		a {
@@ -434,6 +473,11 @@ aside#illustrator-meta {
 		padding:10px;
 		font-size:1.5em;
 		font-family: 'TitilliumText22LThin';
+		-webkit-transition: background 0.3s ease-in-out;  
+		-moz-transition: background 0.3s ease-in-out;  
+		-ms-transition: background 0.3s ease-in-out;  
+		-o-transition: background 0.3s ease-in-out;  
+		transition: background 0.3s ease-in-out;
 		&#year-title {
 			z-index:9999;
 			font-size:1em;
@@ -458,6 +502,46 @@ aside#illustrator-meta {
 		color:#fff;
 		background: transparentize($body_text, 0.1);
 		font-size:12px;
+	}
+}
+
+// Page
+
+article.page {
+	h1 {
+		font-family: 'TitilliumText22LLight';
+		font-size: 1.75em;
+		margin: 20px 0;
+	}
+	h2 {
+		font-family: 'TitilliumText22LLight';
+		font-size: 1.5em;
+		margin: 20px 0;
+	}
+	.left, .right {
+		float:left;
+		width:46%;
+		@media only screen and (max-width: 767px) { 
+			width:100%;
+			margin:0 !important;
+		}
+	}
+	.right {
+		margin-left:2%;
+	}
+	.left {
+		margin-right:2%;
+	}
+	.row {
+		border-top:1px solid #eee;
+		clear:both;
+		.span1 {
+			width:25%;
+			float:left;
+			@media only screen and (max-width: 767px) { 
+				width:50%;
+			}
+		}
 	}
 }
 
@@ -500,23 +584,21 @@ footer {
 		position:fixed;
 		right:0;
 		bottom:0;
-		padding:10px 0 10px 40px;
+		padding:10px 0 10px 30px;
 		width:360px;
 		margin-right:-360px;	
 		@media only screen and (max-width: 767px) { 
 			display:none;
 		}
 	}
-	#heart {
+	#toggle {
 		position:absolute;
-		background: transparentize($body_text, 0.5);
+		background:url('../images/zigzag.png') no-repeat;
 		color: $body_bg;
 		left:0;
-		width:30px;
-		height:30px;
-		text-indent:9px;
+		width:20px;
+		height:20px;
 		@include border-radius(5px);
-		line-height:2.6em;
 		box-shadow: 0 1px 0 rgba(0,0,0,0.5);
 		text-shadow: 0 1px 0 rgba(0,0,0,0.5);
 	}
@@ -537,5 +619,16 @@ article.error404, article.not-found {
 	text-align:center;
 	background:none;
 	width:100%;
-	margin:100px 0;
+	margin:80px 0;
+	position:relative;
+	.box {
+		margin:0 auto;
+		width:100px;
+		height:100px;
+		background:url('../images/smallstar.png');
+		margin-bottom:50px;
+	}
+	&:hover h1 {
+		background:none;
+	}
 }

@@ -60,11 +60,11 @@ $(document).ready(function() {
 	
 	// Footer copyright show hide
 	
-	var heartEle = $('#heart');
+	var toggleEle = $('#toggle');
 	var footerEle = $('#copyright');
 	
 	
-	heartEle.toggle( function() {
+	toggleEle.toggle( function() {
 		footerEle.animate({marginRight:0});
 	}, function() {
 		footerEle.animate({marginRight:-360});
@@ -75,6 +75,7 @@ $(document).ready(function() {
 	var searchField = $('#search');
 	
 	searchField.one('click', function() {
+		$('#access').addClass('hide');
 		$(this).animate({width:200}, function() {
 			$(this).find('input').animate({width:160}).fadeTo('slow',1);
 		});

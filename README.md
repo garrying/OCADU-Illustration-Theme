@@ -15,7 +15,6 @@ Currently working on *Wordpress 3.3.1*
 * [WordPress SEO Plugin](http://yoast.com/wordpress/seo/)
 * [WP Database Optimizer](http://matthewaprice.com/wp-database-optimizer/)
 * [WP-PageNavi](http://wordpress.org/extend/plugins/wp-pagenavi/)
-* 
 
 ## Site URLs
 
