@@ -1,6 +1,6 @@
 # OCAD U Illustration Wordpress Theme
 
-## A theme for OCAD U's Illustration department by [Garry Ing](http://garrying.com/ "Link to garrying.com")
+## A theme for OCAD U's Illustration Department by [Garry Ing](http://garrying.com/ "Link to garrying.com")
 
 Currently working on *Wordpress 3.3.1*
 
