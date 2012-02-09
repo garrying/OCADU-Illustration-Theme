@@ -41,8 +41,8 @@
 			<nav id="nav-single">
 				<h3 class="assistive-text"><?php _e( 'Previous and Next Illustrator' ); ?></h3>
 				<ul>
-				<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
-				<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true) ); ?></li>
+				<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '&larr; %title') ); ?></li>
+				<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '%title &rarr;') ); ?></li>
 				</ul>
 			</nav><!-- #nav-single -->
 

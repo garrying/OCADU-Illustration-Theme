@@ -64,8 +64,15 @@
 								<?php endif; ?>
 
 
-						   <?php $parent = get_post($post->post_parent); ?>
-					     <?php echo apply_filters('the_content', $parent->post_content); ?>
+						<?php $parent = get_post($post->post_parent); ?>
+						<?php if ( get_post_meta($post->post_parent, 'illu_title', true) ) : ?>
+			
+						<?php $title_illu = get_post_meta($post->post_parent, 'illu_title', true) ?>
+						
+						<?php $text = '<h2>' . $title_illu . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+						<?php endif; ?>
+
+					    <?php echo apply_filters('the_content', $parent->post_content); ?>
 
 						<footer class="nav-single image">
 							
