@@ -20,11 +20,21 @@
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-				 <div class="info phone"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div>	<hr />
+				 <div class="info phone"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div><hr />
 				<?php endif; ?>
 			
 		
-		<?php the_content(); ?>
+				<?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
+			
+		<?php $title_illu = get_post_meta($post->ID, 'illu_title', true) ?>
+		
+		<?php $text = '<h2>' . $title_illu . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+		
+		<?php else: ?>
+			
+		<?php $text = get_the_content(); echo apply_filters('the_content', $text); ?>
+		
+		<?php endif; ?>
 		
 		<footer class="nav-single">
 			
