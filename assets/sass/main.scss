@@ -19,6 +19,10 @@ $link_hover: #FF6666;
 $link_active: #FF0000;
 $link_visited: darken( $link, 30% );
 
+$gradient1:#434973;
+$gradient2:#B96069;
+$gradient3:#EF3225;
+
 // Global
 
 html  {
@@ -125,7 +129,7 @@ header[role=banner] {
 	.container {
 		min-height:60px;
 		@media only screen and (max-width: 767px) {
-		min-height:80px;
+			min-height:80px;
 		}
 	}
 
@@ -142,6 +146,9 @@ header[role=banner] {
 		}
 		&.hide {
 			@media only screen and (max-width: 767px) {
+				display:none;
+			}
+			@media only screen and (min-width: 768px) and (max-width: 959px) {
 				display:none;
 			}
 		}
@@ -433,11 +440,11 @@ aside#illustrator-meta {
 			width:50%;
 		}
 		background-color: $body_text;
-		background-image: -webkit-linear-gradient(135deg, $body_text, $link_hover); 
-		background-image:    -moz-linear-gradient(135deg, $body_text, $link_hover); 
-		background-image:     -ms-linear-gradient(135deg, $body_text, $link_hover); 
-		background-image:      -o-linear-gradient(135deg, $body_text, $link_hover); 
-		background-image:         linear-gradient(135deg, $body_text, $link_hover);
+		background-image: -webkit-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		background-image:    -moz-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		background-image:     -ms-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		background-image:      -o-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		background-image:         linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%);
 		position:relative;
 		img {
 			width:100%;

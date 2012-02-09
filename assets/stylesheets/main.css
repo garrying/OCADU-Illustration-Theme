@@ -678,6 +678,9 @@ header[role=banner] {
     @media only screen and (max-width: 767px) {
       header[role=banner] #access.hide {
         display: none; } }
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      header[role=banner] #access.hide {
+        display: none; } }
   header[role=banner] .page-search {
     position: absolute;
     right: 20px;
@@ -917,11 +920,11 @@ aside#illustrator-meta {
   float: left;
   width: 25%;
   background-color: #222222;
-  background-image: -webkit-linear-gradient(135deg, #222222, #ff6666);
-  background-image: -moz-linear-gradient(135deg, #222222, #ff6666);
-  background-image: -ms-linear-gradient(135deg, #222222, #ff6666);
-  background-image: -o-linear-gradient(135deg, #222222, #ff6666);
-  background-image: linear-gradient(135deg, #222222, #ff6666);
+  background-image: -webkit-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
+  background-image: -moz-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
+  background-image: -ms-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
+  background-image: -o-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
+  background-image: linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
   position: relative; }
   @media only screen and (max-width: 767px) {
     .archive article, .home article, .search article {
