@@ -47,16 +47,16 @@
 						</header><!-- .entry-header -->
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_sites', true) ) : ?>
-									<div class="info site"><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></div><hr />
+									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></div><hr />
 
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_sites_2', true) ) : ?>
-									<div class="info site"><a title="Visit illustrator's website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites_2', true) ?></a></div><hr />
+									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites_2', true) ?></a></div><hr />
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_email', true) ) : ?>
-								 <div class="info email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></div><hr />
+								 <div class="info email"><a title="Email Illustrator" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></div><hr />
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_phone', true) ) : ?>
@@ -85,7 +85,7 @@
 							</nav><!-- #nav-single -->
 							
 							<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="View All Work" id="illustrator-back">
-								<?php echo "View all work by ". get_the_title( $post->post_parent);?>
+								<?php echo "View all work by ". get_the_title($post->post_parent);?>
 							</a>
 				
 						</footer><!-- .nav-single .image -->

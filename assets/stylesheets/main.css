@@ -1011,11 +1011,11 @@ article.page .row {
         width: 50%; } }
 
 article.event #illustrator-meta-guide {
-  width: 400px; }
+  width: 500px; }
 article.event aside#illustrator-meta {
-  width: 400px; }
+  width: 500px; }
 article.event .gallery {
-  width: 50%; }
+  width: 45%; }
   article.event .gallery .gallery-item {
     float: left;
     width: 100%;
