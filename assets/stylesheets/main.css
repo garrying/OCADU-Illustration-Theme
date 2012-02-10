@@ -981,6 +981,10 @@ aside#illustrator-meta {
   background: rgba(34, 34, 34, 0.9);
   font-size: 12px; }
 
+.home article {
+  opacity: 0;
+  margin-top: 10px; }
+
 article.page h1 {
   font-family: 'TitilliumText22LLight';
   font-size: 1.75em;
