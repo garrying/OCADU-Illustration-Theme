@@ -89,5 +89,20 @@ $(document).ready(function() {
 		$('body,html').animate({scrollTop: 0}, 400);
 		return false;
 	});
+
+	// Homepage Load
+
+	function doCascade(delay){
+		$('article').each(function(i){
+			$(this).delay(i * delay).animate({
+				marginTop:'0px',
+				opacity:1,
+				},500);	
+		});
+	}
+
+	if ($('body').hasClass('home')) {
+		doCascade(300);
+	};
 	
 });
