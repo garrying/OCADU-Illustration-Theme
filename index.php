@@ -10,8 +10,7 @@
 					'taxonomy' => 'gradyear',
 					'post_type' => 'illustrator',
 					'term' => $grad_year[0]->name,
-					'orderby' => 'title',
-					'order' => ASC,
+					'orderby' => 'rand',
 					);
 			query_posts( $args );
 			}
