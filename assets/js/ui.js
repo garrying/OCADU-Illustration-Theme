@@ -96,7 +96,7 @@ $(document).ready(function() {
 		$('article').each(function(i){
 			$(this).delay(i * delay).animate({
 				marginTop:'0px',
-				opacity:1,
+				opacity:.99,
 				},500);	
 		});
 	}
