@@ -38,6 +38,8 @@ if (!function_exists('load_my_scripts')) {
 			wp_enqueue_script('masonry');
 			wp_register_script('uniform', get_template_directory_uri().'/assets/js/jquery.uniform.min.js', array('jquery'), '1.0', true );
 			wp_enqueue_script('uniform');
+			wp_register_script('spin', get_template_directory_uri().'/assets/js/spin.min.js', array('jquery'), '1.0', true );
+			wp_enqueue_script('spin');
 			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.js', array('jquery'), '1.0', true );
 			wp_enqueue_script('myscript');
 		}
