@@ -23,7 +23,7 @@ $(document).ready(function () {
 		// what the y position of the scroll is
 		var y = $(this).scrollTop();
 		var windowHeight = $(window).height(); 
-		var illustratorInfoHeight = illustratorInfo.height();
+		var illustratorInfoHeight = illustratorInfo.height() + 40;
 
 		// whether that's below the form
 		if (y >= top && illustratorInfoHeight < windowHeight || y >= topYeartitle) {
