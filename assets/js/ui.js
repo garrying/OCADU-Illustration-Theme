@@ -26,7 +26,7 @@ $(document).ready(function () {
 		var illustratorInfoHeight = illustratorInfo.height();
 
 		// whether that's below the form
-		if (y >= top && illustratorInfoHeight < windowHeight || y >= topYeartitle && illustratorInfoHeight < windowHeight) {
+		if (y >= top && illustratorInfoHeight < windowHeight || y >= topYeartitle) {
 			if ($('body').hasClass('single')) {
 				illustratorInfo.addClass('fixed');
 			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
@@ -80,7 +80,6 @@ $(document).ready(function () {
 	// Footer copyright show hide
 	var toggleEle = $('#toggle');
 	var footerEle = $('#copyright');
-
 
 	toggleEle.toggle(function () {
 		footerEle.animate({
