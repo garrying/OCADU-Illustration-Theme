@@ -22,9 +22,11 @@ $(document).ready(function () {
 	$(window).scroll(function (event) {
 		// what the y position of the scroll is
 		var y = $(this).scrollTop();
+		var windowHeight = $(window).height(); 
+		var illustratorInfoHeight = illustratorInfo.height();
 
 		// whether that's below the form
-		if (y >= top || y >= topYeartitle) {
+		if (y >= top && illustratorInfoHeight < windowHeight || y >= topYeartitle && illustratorInfoHeight < windowHeight) {
 			if ($('body').hasClass('single')) {
 				illustratorInfo.addClass('fixed');
 			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
