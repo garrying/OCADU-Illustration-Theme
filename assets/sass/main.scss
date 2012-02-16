@@ -377,12 +377,6 @@ aside#illustrator-meta {
 .gallery {
 	width:69%;
 	float:left;
-	@media only screen and (min-width: 960px) and (max-width: 999px) {
-		width:66%;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 959px) {
-		width:58%;
-	}
 	@media only screen and (max-width: 767px) { 
 		width:100%;
 	}

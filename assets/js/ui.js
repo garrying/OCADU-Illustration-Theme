@@ -46,7 +46,6 @@ $(document).ready(function () {
 
 	gallery.imagesLoaded(function () {
 		gallery.masonry({
-			isAnimated: true,
 			itemSelector: galleryItems,
 			// set columnWidth a fraction of the container width
 			columnWidth: function (containerWidth) {
@@ -54,6 +53,27 @@ $(document).ready(function () {
 			}
 		});
 	});
+
+	// Resize Gallery Area 
+		function galleryResize(){
+			var galleryWidth = illustratorInfo.width();
+			var containerWidth = $('.container').width();
+			if (containerWidth >= 728) {
+				gallery.width(containerWidth - galleryWidth - 20);
+			} else {
+				gallery.width("100%");
+			}
+		}
+		
+	if ($('body').hasClass('single')) {
+	
+		$(galleryResize);
+
+		$(window).resize(function() {
+			$(galleryResize);
+		});
+
+	}
 
 	// Footer copyright show hide
 	var toggleEle = $('#toggle');
