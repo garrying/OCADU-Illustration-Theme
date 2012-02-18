@@ -637,33 +637,52 @@ a {
 
 header[role=banner] {
   font-family: "TitilliumText22LRegular";
-  border-bottom: 1px solid #eee;
   position: relative;
-  background: url("../images/wave.png"); }
+  background: url("../images/wave.png");
+  -moz-box-shadow: inset 0 -1px 0px #eeeeee;
+  -webkit-box-shadow: inset 0 -1px 0px #eeeeee;
+  box-shadow: inset 0 -1px 0px #eeeeee; }
   header[role=banner] hgroup #site-title {
     font-family: "TitilliumText22LRegular";
     font-size: 1em;
-    padding: 10px 10px 10px 0;
     margin: 0;
     position: absolute;
     bottom: 0;
-    border-right: 1px solid #eee; }
+    padding: 0; }
+    header[role=banner] hgroup #site-title a {
+      padding: 10px;
+      border-right: 1px solid #eee;
+      display: inline-block;
+      background: url("../images/tightwave.png") #222222;
+      text-decoration: none;
+      color: #fff; }
+      header[role=banner] hgroup #site-title a:hover {
+        background: #ff6666; }
+      header[role=banner] hgroup #site-title a.montage {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
     @media only screen and (max-width: 767px) {
       header[role=banner] hgroup #site-title {
         top: 0;
         right: auto;
-        left: 10px;
+        left: 0;
         border-right: none; }
         header[role=banner] hgroup #site-title a {
           display: block;
           width: 30px;
-          height: 30px;
-          background: url("../images/eye.png") no-repeat;
-          text-indent: -999px; } }
+          height: 80px;
+          background: url("../images/eye.png") no-repeat center center;
+          text-indent: -999px;
+          padding: 0 10px;
+          border: none; } }
   header[role=banner] hgroup #site-description {
     display: none; }
   header[role=banner] .container {
-    min-height: 60px; }
+    min-height: 40px; }
     @media only screen and (max-width: 767px) {
       header[role=banner] .container {
         min-height: 80px; } }
@@ -674,7 +693,8 @@ header[role=banner] {
       float: left; }
       header[role=banner] #access li a {
         display: block;
-        padding: 10px; }
+        padding: 10px;
+        text-decoration: none; }
     @media only screen and (max-width: 767px) {
       header[role=banner] #access.hide {
         display: none; } }
@@ -689,7 +709,7 @@ header[role=banner] {
 #year-select {
   position: absolute;
   bottom: 0;
-  left: 155px; }
+  left: 165px; }
   @media only screen and (max-width: 767px) {
     #year-select {
       top: 0;

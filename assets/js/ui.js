@@ -166,4 +166,30 @@ $(document).ready(function () {
 		}
 	});
 
+	// Site Title Montage!
+
+	var siteTitle = $('#site-title a');
+	var timerId = 0;
+
+	if ($('body').hasClass('archive') || $('body').hasClass('home')) {
+		siteTitle.mouseover(function(){
+			$(this).addClass('montage');
+			var i = 0;
+			timerId = setInterval(function(){
+					var divs = $('article');
+					i++;
+					if (i >= divs.length) {
+						i = 0;
+					}
+					var bgImage = $('article').eq(i).find('img').attr('src');
+					siteTitle.css('background-image', 'url("' + bgImage + '")');
+				},70);
+		});
+	}
+
+	siteTitle.mouseout(function(){
+		clearInterval(timerId);
+		$(this).removeClass('montage').css('background-image', '');
+	});
+
 });
