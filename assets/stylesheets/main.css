@@ -618,14 +618,24 @@ p {
   /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px); }
 
+::-moz-selection {
+  background: #ff6666;
+  color: #fff;
+  text-shadow: none; }
+
+::selection {
+  background: #ff6666;
+  color: #fff;
+  text-shadow: none; }
+
 a {
   color: #333333; }
   a:visited {
-    color: black; }
+    color: gray; }
   a:hover {
     color: #ff6666; }
   a:active {
-    color: red; }
+    color: #cc0000; }
   a:focus {
     outline: thin dotted; }
 
@@ -651,7 +661,6 @@ header[role=banner] {
     padding: 0; }
     header[role=banner] hgroup #site-title a {
       padding: 10px;
-      border-right: 1px solid #eee;
       display: inline-block;
       background: url("../images/tightwave.png") #222222;
       text-decoration: none;
@@ -726,13 +735,13 @@ header[role=banner] {
   #year-select form {
     padding-bottom: 6px; }
   #year-select #year-back-button {
-    background: url("../images/gallery-button.png") no-repeat 10px 0;
+    background: url("../images/gallery-button.png") no-repeat 10px center;
     display: inline-block;
     width: 20px;
-    height: 20px;
+    height: 40px;
     border-left: 1px solid #eee;
     text-indent: -9999px;
-    padding: 0 0 9px 10px;
+    padding: 0 0 0 10px;
     margin-right: 12px;
     opacity: .4;
     -webkit-transition: opacity 0.3s ease-in-out;
@@ -798,7 +807,8 @@ aside#illustrator-meta {
   aside#illustrator-meta .vertical-rule-main, aside#illustrator-meta .vertical-rule-corner-top, aside#illustrator-meta .vertical-rule-corner-bottom {
     position: absolute;
     width: 30px;
-    left: 0; }
+    left: 0;
+    z-index: -1; }
     @media only screen and (max-width: 767px) {
       aside#illustrator-meta .vertical-rule-main, aside#illustrator-meta .vertical-rule-corner-top, aside#illustrator-meta .vertical-rule-corner-bottom {
         display: none; } }
@@ -874,7 +884,12 @@ aside#illustrator-meta {
     padding: 5px 10px;
     text-decoration: none;
     border: 1px solid #eee;
-    border-radius: 5px; }
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; }
     aside#illustrator-meta #illustrator-back:hover {
       background: url("../images/stars.png");
       color: #000; }
@@ -934,7 +949,7 @@ aside#illustrator-meta {
 .archive article, .home article, .search article {
   float: left;
   width: 25%;
-  background-color: #222222;
+  background-color: #b96069;
   background-image: -webkit-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
   background-image: -moz-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
   background-image: -ms-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
@@ -1031,8 +1046,14 @@ article.page .row {
 
 article.event #illustrator-meta-guide {
   width: 500px; }
+  @media only screen and (max-width: 767px) {
+    article.event #illustrator-meta-guide {
+      width: 100%; } }
 article.event aside#illustrator-meta {
   width: 500px; }
+  @media only screen and (max-width: 767px) {
+    article.event aside#illustrator-meta {
+      width: 100%; } }
 article.event .gallery {
   width: 45%; }
   article.event .gallery .gallery-item {
@@ -1097,3 +1118,6 @@ article.error404, article.not-found {
     margin-bottom: 50px; }
   article.error404:hover h1, article.not-found:hover h1 {
     background: none; }
+
+html.no-cssgradients #year-title {
+  background: #222; }

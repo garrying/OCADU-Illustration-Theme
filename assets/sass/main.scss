@@ -1,5 +1,4 @@
 @import 'reset';
-@import 'linear-gradient';
 @import 'border-radius';
 @import 'uniform';
 @import 'font-import';
@@ -11,13 +10,11 @@ $font-size: 14;
 $em: $font-size * 1;
 
 $body_bg: #FFF;
-$header_bg: #FFF;
-$orange: #EE4000;
 $body_text: #222;
 $link: #333;
 $link_hover: #FF6666;
-$link_active: #FF0000;
-$link_visited: darken( $link, 30% );
+$link_active: darken($link_hover, 30%);
+$link_visited: lighten($link, 30% );
 
 $gradient1:#434973;
 $gradient2:#B96069;
@@ -66,6 +63,11 @@ p {
 	clip: rect(1px, 1px, 1px, 1px);
 }
 
+// Selection 
+
+::-moz-selection { background: $link_hover; color: #fff; text-shadow: none; }
+::selection { background: $link_hover; color: #fff; text-shadow: none; }
+
 // Links
 
 a {
@@ -110,7 +112,6 @@ header[role=banner] {
 			padding:0;
 			a {
 				padding:10px;
-				border-right:1px solid #eee;
 				display:inline-block;
 				background: url('../images/tightwave.png') #222;
 				text-decoration: none;
@@ -208,13 +209,13 @@ header[role=banner] {
 		padding-bottom:6px;
 	}
 	#year-back-button {
-		background:url('../images/gallery-button.png') no-repeat 10px 0;
+		background:url('../images/gallery-button.png') no-repeat 10px center;
 		display:inline-block;
 		width:20px;
-		height:20px;
+		height:40px;
 		border-left:1px solid #eee;
 		text-indent: -9999px;
-		padding:0 0 9px 10px;
+		padding:0 0 0 10px;
 		margin-right:12px;
 		opacity:.4;
 		-webkit-transition: opacity 0.3s ease-in-out;  
@@ -297,6 +298,7 @@ aside#illustrator-meta {
 		position:absolute;
 		width:30px;
 		left:0;
+		z-index:-1;
 		@media only screen and (max-width: 767px) { 
 			display:none;
 		}
@@ -335,13 +337,11 @@ aside#illustrator-meta {
 		display:inline-block;
 		border:1px solid #eee;
 		@include border-radius(5px);
-		
-	  -webkit-transition: background 0.3s ease-in-out;  
-	     -moz-transition: background 0.3s ease-in-out;  
-	      -ms-transition: background 0.3s ease-in-out;  
-	       -o-transition: background 0.3s ease-in-out;  
-	          transition: background 0.3s ease-in-out;
-
+		-webkit-transition: background 0.3s ease-in-out;  
+		-moz-transition: background 0.3s ease-in-out;  
+		-ms-transition: background 0.3s ease-in-out;  
+		-o-transition: background 0.3s ease-in-out;  
+		transition: background 0.3s ease-in-out;
 		&:hover {
 			background:url('../images/tightwave.png') #333;
 			a {
@@ -380,7 +380,7 @@ aside#illustrator-meta {
 		padding:5px 10px;
 		text-decoration:none;
 		border:1px solid #eee;
-		border-radius:5px;
+		@include border-radius(5px);
 		&:hover {
 			background:url('../images/stars.png');
 			color:#000;
@@ -456,7 +456,7 @@ aside#illustrator-meta {
 		@media only screen and (max-width: 767px) { 
 			width:50%;
 		}
-		background-color: $body_text;
+		background-color: $gradient2;
 		background-image: -webkit-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
 		background-image:    -moz-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
 		background-image:     -ms-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
@@ -581,9 +581,15 @@ article.page {
 article.event {
 	#illustrator-meta-guide {
 		width:500px;
+		@media only screen and (max-width: 767px) { 
+			width:100%;
+		}
 	}
 	aside#illustrator-meta {
 		width:500px;
+		@media only screen and (max-width: 767px) { 
+			width:100%;
+		}
 	}
 	.gallery {
 		width:45%;
@@ -599,8 +605,6 @@ article.event {
 		}
 	}
 }
-
-
 
 // Footer
 
@@ -661,5 +665,13 @@ article.error404, article.not-found {
 	}
 	&:hover h1 {
 		background:none;
+	}
+}
+
+// IE Fallbacks 
+
+html.no-cssgradients {
+	#year-title {
+		background:#222;
 	}
 }
