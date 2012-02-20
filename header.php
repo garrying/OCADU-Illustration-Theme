@@ -80,28 +80,29 @@
 					}
         ?>
 
-					<form name="illustrator-select" id="illustrator-select">
-						<label for="illu-jumpmenu">Graduating Year</label>
-						<select name="illu-jumpmenu" id="illu-jumpmenu">
-						<option value="/">Current Year</option>
+					<div id="illustrator-select">
+						<div id="illu-indicator">Graduating Year </div>
+						<div id="illu-jumpmenu">
+						<a class="home" href="/" title="Back to Main Index">Current Year</a>
             <?php foreach( $grad_year as $year ) : ?>
-              <option value="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'selected' ?> >
+              <a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'class="selected"' ?> title="View Work From <?php echo $year->name ?>" >
 
                   <?php echo $year->name; ?>
      
-              </option>
+              </a>
             <?php endforeach ?>
-          </select>
-</form>
-
-<?php if (is_singular('illustrator')) 
-	echo 
-		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' list">Back to ' . $term->name . ' index</a>';  
-?>
+          </div>
+					</div>
 
 
         </nav> <!-- #year-Select-->
 			
+<?php if (is_singular('illustrator')) 
+	echo 
+		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">Back to ' . $term->name . ' index</a>';  
+?>
+
+
 			<div class="page-search">
 
 			<nav id="access" role="navigation">

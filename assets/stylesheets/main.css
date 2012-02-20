@@ -716,42 +716,84 @@ header[role=banner] {
     bottom: 0; }
 
 #year-select {
-  position: absolute;
-  bottom: 0;
-  left: 165px; }
+  float: left;
+  margin-left: 135px;
+  padding: 0 30px 0 10px;
+  border-right: 1px solid #eee;
+  position: relative;
+  cursor: pointer; }
+  #year-select:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #222222;
+    right: 8px;
+    top: 16px;
+    opacity: .3; }
   @media only screen and (max-width: 767px) {
     #year-select {
-      top: 0;
-      right: 10px;
-      left: auto; } }
-  #year-select label {
-    margin-right: 5px; }
-  #year-select a, #year-select form {
-    display: inline-block;
-    padding: 10px 0;
-    vertical-align: bottom; }
-  #year-select a {
-    padding: 10px; }
-  #year-select form {
-    padding-bottom: 6px; }
-  #year-select #year-back-button {
-    background: url("../images/gallery-button.png") no-repeat 10px center;
-    display: inline-block;
-    width: 20px;
-    height: 40px;
-    border-left: 1px solid #eee;
-    text-indent: -9999px;
-    padding: 0 0 0 10px;
-    margin-right: 12px;
-    opacity: .4;
-    -webkit-transition: opacity 0.3s ease-in-out;
-    -moz-transition: opacity 0.3s ease-in-out;
-    -ms-transition: opacity 0.3s ease-in-out;
-    -o-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.3s ease-in-out;
-    position: relative; }
-    #year-select #year-back-button:hover {
-      opacity: 1; }
+      float: right;
+      margin-left: 0;
+      border-right: none;
+      border: 1px solid #eee;
+      border-width: 0 1px 1px 1px;
+      margin-top: -2px; } }
+  #year-select:hover:after {
+    opacity: 1; }
+  #year-select #illu-indicator {
+    padding: 10px 0; }
+  #year-select #illu-jumpmenu {
+    position: absolute;
+    z-index: 9999;
+    background: url("../images/tightwave.png") #222222;
+    width: 142px;
+    display: none;
+    margin-left: -10px; }
+    #year-select #illu-jumpmenu a {
+      display: block;
+      text-align: center;
+      float: left;
+      text-decoration: none;
+      color: #fff;
+      width: 50px;
+      padding: 10px;
+      border: 1px solid #333;
+      border-width: 1px 1px 0 0;
+      -webkit-transition: background 0.3s ease-in-out;
+      -moz-transition: background 0.3s ease-in-out;
+      -ms-transition: background 0.3s ease-in-out;
+      -o-transition: background 0.3s ease-in-out;
+      transition: background 0.3s ease-in-out; }
+      #year-select #illu-jumpmenu a.home {
+        width: 121px;
+        border-top: none; }
+      #year-select #illu-jumpmenu a:hover {
+        background: #ff6666; }
+
+#year-back-button {
+  background: url("../images/gallery-button.png") no-repeat 10px center;
+  float: left;
+  display: block;
+  width: 20px;
+  height: 40px;
+  text-indent: -9999px;
+  padding: 0 0 0 10px;
+  margin-right: 12px;
+  opacity: .4;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  position: relative; }
+  #year-back-button:hover {
+    opacity: 1; }
+  @media only screen and (max-width: 767px) {
+    #year-back-button {
+      float: right; } }
 
 #search {
   display: inline-block;

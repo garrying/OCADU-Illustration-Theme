@@ -186,34 +186,77 @@ header[role=banner] {
 // Year Select
 
 #year-select {
-	position:absolute;
-	bottom:0;
-	left:165px;
+	float:left;
+	margin-left:135px;
+	padding:0 30px 0 10px;
+	border-right:1px solid #eee;
+	position:relative;
+	cursor:pointer;
+	&:after {
+		position:absolute;
+		content: "";
+		width: 0;
+		height: 0;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-top: 6px solid $body_text;
+		right:8px;
+		top:16px;
+		opacity:.3;
+	}
 	@media only screen and (max-width: 767px) {
-		top:0;
-		right:10px;
-		left:auto;
+		float:right;
+		margin-left:0;
+		border-right:none;
+		border:1px solid #eee;
+		border-width:0 1px 1px 1px;
+		margin-top:-2px;
 	}
-	label {
-		margin-right:5px;
+	&:hover:after {
+		opacity:1;
 	}
-	a, form {
-		display:inline-block;
+	#illu-indicator {
 		padding:10px 0;
-		vertical-align:bottom;
 	}
-	a {
-		padding:10px;
+	#illu-jumpmenu {
+		position:absolute;
+		z-index:9999;
+		background: url('../images/tightwave.png') #222;
+		width:142px;
+		display:none;
+		margin-left:-10px;
+		a {
+			display:block;
+			text-align: center;
+			float:left;
+			text-decoration: none;
+			color:#fff;
+			width:50px;
+			padding:10px;
+			border:1px solid #333;
+			border-width:1px 1px 0 0;
+			-webkit-transition: background 0.3s ease-in-out;  
+			-moz-transition: background 0.3s ease-in-out;  
+			-ms-transition: background 0.3s ease-in-out;  
+			-o-transition: background 0.3s ease-in-out;  
+			transition: background 0.3s ease-in-out;
+			&.home {
+				width:121px;
+				border-top:none;
+			}
+			&:hover {
+				background:$link_hover;
+			}
+		}
 	}
-	form {
-		padding-bottom:6px;
-	}
-	#year-back-button {
+}
+
+#year-back-button {
 		background:url('../images/gallery-button.png') no-repeat 10px center;
-		display:inline-block;
+		float:left;
+		display:block;
 		width:20px;
 		height:40px;
-		border-left:1px solid #eee;
 		text-indent: -9999px;
 		padding:0 0 0 10px;
 		margin-right:12px;
@@ -227,8 +270,9 @@ header[role=banner] {
 		&:hover {
 			opacity:1;
 		}
-
-	}
+		@media only screen and (max-width: 767px) {
+			float:right;
+		}
 }
 
 // Search Form

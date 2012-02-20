@@ -1,12 +1,18 @@
 $(document).ready(function () {
-
-	// uniform year select
+	
 	"use strict";
-	$("select").uniform();
 
-	// Jump menu business
-	$('#illu-jumpmenu').change(function () {
-		window.location.href = $(this).val();
+	// Year Select
+	var yearSelect = $('#year-select');
+	var selected = yearSelect.find('.selected').text();
+	var selectMenu = $('#illu-jumpmenu');
+
+	$('#illu-indicator').append(selected);
+	
+	yearSelect.on('click', function(){
+		selectMenu.slideToggle('fast', function(){
+			$(this).toggleClass('open');
+		});
 	});
 
 	// Sticky Illustrator Information
