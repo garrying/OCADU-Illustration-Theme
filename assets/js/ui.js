@@ -176,21 +176,26 @@ $(document).ready(function () {
 
 	var siteTitle = $('#site-title a');
 	var timerId = 0;
-
-	if ($('body').hasClass('archive') || $('body').hasClass('home')) {
+	function montageSelect(divcollection) {
 		siteTitle.mouseover(function(){
 			$(this).addClass('montage');
 			var i = 0;
 			timerId = setInterval(function(){
-					var divs = $('article');
+					var divs = $(divcollection);
 					i++;
 					if (i >= divs.length) {
 						i = 0;
 					}
-					var bgImage = $('article').eq(i).find('img').attr('src');
+					var bgImage = $(divcollection).eq(i).find('img').attr('src');
 					siteTitle.css('background-image', 'url("' + bgImage + '")');
 				},70);
 		});
+	}
+
+	if ($('body').hasClass('archive') || $('body').hasClass('home')) {
+		montageSelect('article');
+	} else if ($('body').hasClass('single') && $('img').length > 1) {
+		montageSelect('.gallery-icon');
 	}
 
 	siteTitle.mouseout(function(){
