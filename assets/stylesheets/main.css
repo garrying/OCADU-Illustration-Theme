@@ -826,12 +826,13 @@ header[role=banner] {
       width: 100%; } }
 
 aside#illustrator-meta {
-  position: relative;
+  position: absolute;
   padding: 20px 0;
   width: 280px;
   padding-left: 20px; }
   @media only screen and (max-width: 767px) {
     aside#illustrator-meta {
+      position: relative;
       width: 100%; } }
   aside#illustrator-meta .info {
     font-family: 'TitilliumText22LRegular';

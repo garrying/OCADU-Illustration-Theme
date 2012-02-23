@@ -55,6 +55,7 @@ $(document).ready(function () {
 	gallery.imagesLoaded(function () {
 		gallery.masonry({
 			itemSelector: galleryItems,
+			isAnimated: true,
 			// set columnWidth a fraction of the container width
 			columnWidth: function (containerWidth) {
 				return containerWidth / 2;
