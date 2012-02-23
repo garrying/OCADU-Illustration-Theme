@@ -188,10 +188,14 @@ header[role=banner] {
 #year-select {
 	float:left;
 	margin-left:135px;
-	padding:0 30px 0 10px;
+	padding:0 33px 0 10px;
 	border-right:1px solid #eee;
 	position:relative;
 	cursor:pointer;
+	&:active {
+		color:#fff;
+		background:$link_hover;
+	}
 	&:after {
 		position:absolute;
 		content: "";
@@ -200,7 +204,7 @@ header[role=banner] {
 		border-left: 6px solid transparent;
 		border-right: 6px solid transparent;
 		border-top: 6px solid $body_text;
-		right:8px;
+		right:12px;
 		top:16px;
 		opacity:.3;
 	}
@@ -318,6 +322,7 @@ aside#illustrator-meta {
 	padding:20px 0;
 	width:280px;
 	padding-left:20px;
+	z-index:999;
 	@media only screen and (max-width: 767px) {
 		position:relative;
 		width:100%;
@@ -497,7 +502,7 @@ aside#illustrator-meta {
 	}
 	article {
 		float:left;
-		width:25%;
+		width:20%;
 		@media only screen and (max-width: 767px) { 
 			width:50%;
 		}
@@ -513,13 +518,11 @@ aside#illustrator-meta {
 			height:auto;
 			display:block;
 			opacity:.4;
-			
-		  -webkit-transition: opacity 0.3s ease-in-out;  
-		     -moz-transition: opacity 0.3s ease-in-out;  
-		      -ms-transition: opacity 0.3s ease-in-out;  
-		       -o-transition: opacity 0.3s ease-in-out;  
-		          transition: opacity 0.3s ease-in-out;
-
+			-webkit-transition: opacity 0.3s ease-in-out;  
+			-moz-transition: opacity 0.3s ease-in-out;  
+			-ms-transition: opacity 0.3s ease-in-out;  
+			-o-transition: opacity 0.3s ease-in-out;  
+			transition: opacity 0.3s ease-in-out;      
 		}
 		&:hover {
 			img {
@@ -532,6 +535,9 @@ aside#illustrator-meta {
 		a {
 			color:#fff;
 			text-decoration:none;
+		}
+		&.two {
+			width:10%;
 		}
 		
 	}
@@ -562,6 +568,9 @@ aside#illustrator-meta {
 			padding:1px 0;
 			width:100%;
 			letter-spacing:1px;
+			&:hover {
+				background-image:url('../images/tightwave.png');
+			}
 		}
 	}
 	.entry-summary {

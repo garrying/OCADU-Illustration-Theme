@@ -718,10 +718,13 @@ header[role=banner] {
 #year-select {
   float: left;
   margin-left: 135px;
-  padding: 0 30px 0 10px;
+  padding: 0 33px 0 10px;
   border-right: 1px solid #eee;
   position: relative;
   cursor: pointer; }
+  #year-select:active {
+    color: #fff;
+    background: #ff6666; }
   #year-select:after {
     position: absolute;
     content: "";
@@ -730,7 +733,7 @@ header[role=banner] {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 6px solid #222222;
-    right: 8px;
+    right: 12px;
     top: 16px;
     opacity: .3; }
   @media only screen and (max-width: 767px) {
@@ -829,7 +832,8 @@ aside#illustrator-meta {
   position: absolute;
   padding: 20px 0;
   width: 280px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  z-index: 999; }
   @media only screen and (max-width: 767px) {
     aside#illustrator-meta {
       position: relative;
@@ -991,7 +995,7 @@ aside#illustrator-meta {
   max-width: none; }
 .archive article, .home article, .search article {
   float: left;
-  width: 25%;
+  width: 20%;
   background-color: #b96069;
   background-image: -webkit-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
   background-image: -moz-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
@@ -1019,6 +1023,8 @@ aside#illustrator-meta {
   .archive article a, .home article a, .search article a {
     color: #fff;
     text-decoration: none; }
+  .archive article.two, .home article.two, .search article.two {
+    width: 10%; }
 .archive h1, .home h1, .search h1 {
   z-index: 10;
   padding: 5px;
@@ -1046,6 +1052,8 @@ aside#illustrator-meta {
     padding: 1px 0;
     width: 100%;
     letter-spacing: 1px; }
+    .archive h1#year-title:hover, .home h1#year-title:hover, .search h1#year-title:hover {
+      background-image: url("../images/tightwave.png"); }
 .archive .entry-summary, .home .entry-summary, .search .entry-summary {
   position: absolute;
   padding: 10px;
