@@ -113,11 +113,13 @@ header[role=banner] {
 			a {
 				padding:10px;
 				display:inline-block;
-				background: url('../images/tightwave.png') #222;
 				text-decoration: none;
-				color:#fff;
+				color:gray;
+				border-left:1px solid #eee;
+				border-right:1px solid #eee;
 				&:hover {
 					background:$link_hover;
+					color:#fff;
 				}
 				&.montage {
 					-webkit-background-size: cover;
@@ -216,8 +218,11 @@ header[role=banner] {
 		border-width:0 1px 1px 1px;
 		margin-top:-2px;
 	}
-	&:hover:after {
-		opacity:1;
+	&:hover {
+		box-shadow: inset 0 -2px 0 $link_hover;
+		&:after {
+			opacity:1;
+		}
 	}
 	#illu-indicator {
 		padding:10px 0;
@@ -504,83 +509,59 @@ aside#illustrator-meta {
 	article {
 		float:left;
 		width:20%;
+		margin:10px auto 10px auto;
+
 		@media only screen and (max-width: 767px) { 
 			width:50%;
 		}
-		background-color: $gradient2;
-		background-image: -webkit-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		background-image:    -moz-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		background-image:     -ms-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		background-image:      -o-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		background-image:         linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%);
+		// background-color: $gradient2;
+		// background-image: -webkit-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		// background-image:    -moz-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		// background-image:     -ms-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		// background-image:      -o-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
+		// background-image:         linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%);
 		position:relative;
 		img {
-			width:100%;
+			width:80%;
 			height:auto;
+			margin:0 auto;
 			display:block;
-			opacity:.4;
 			-webkit-transition: opacity 0.3s ease-in-out;  
 			-moz-transition: opacity 0.3s ease-in-out;  
 			-ms-transition: opacity 0.3s ease-in-out;  
 			-o-transition: opacity 0.3s ease-in-out;  
-			transition: opacity 0.3s ease-in-out;      
-		}
-		&:hover {
-			img {
-				opacity:.8;
-			}
-			h1 {
-				background:url('../images/tightwave.png') #222;
-			}
+			transition: opacity 0.3s ease-in-out;
+			border-radius:50%;   
 		}
 		a {
-			color:#fff;
 			text-decoration:none;
 		}
-		&.two {
-			width:10%;
+		&:hover h1 {
+			color:$link_hover;
 		}
-		
 	}
+
 	h1 {
-		z-index:10;
-		padding:5px;
-		position:absolute;
-		padding:10px;
+		color:#666;
 		font-size:1.5em;
-		font-family: 'TitilliumText22LThin';
-		-webkit-transition: background 0.3s ease-in-out;  
-		-moz-transition: background 0.3s ease-in-out;  
-		-ms-transition: background 0.3s ease-in-out;  
-		-o-transition: background 0.3s ease-in-out;  
-		transition: background 0.3s ease-in-out;
+		font-family: 'TitilliumText22LRegular';
+		font-size: 14px;
+		margin-top:10px;
+		text-align: center;
 		&#year-title {
 			z-index:9999;
 			font-size:1em;
+			margin:0;
 			font-family: 'TitilliumText22LRegular';
 			text-align:center;
 			position:static;
-			background-color:transparent;
-			background-image:-webkit-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
-			background-image:-moz-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
-			background-image:-ms-radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
-			background-image:radial-gradient(center, circle cover, $body_text, rgba(0,0,0,0.8));
-			color:#fff;
+			color:#666;
+			border-bottom:1px solid #eee;
+			background:$body_bg;
 			padding:1px 0;
 			width:100%;
 			letter-spacing:1px;
-			&:hover {
-				background-image:url('../images/tightwave.png');
-			}
 		}
-	}
-	.entry-summary {
-		position:absolute;
-		padding:10px;
-		bottom:0;
-		color:#fff;
-		background: transparentize($body_text, 0.1);
-		font-size:12px;
 	}
 }
 

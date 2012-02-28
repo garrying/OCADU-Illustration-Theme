@@ -126,7 +126,6 @@ $(document).ready(function () {
 	function doCascade(delay) {
 		$('article').each(function (i) {
 			$(this).delay(i * delay).animate({
-				marginTop: '0px',
 				opacity: .99
 			}, 500);
 		});

@@ -662,11 +662,13 @@ header[role=banner] {
     header[role=banner] hgroup #site-title a {
       padding: 10px;
       display: inline-block;
-      background: url("../images/tightwave.png") #222222;
       text-decoration: none;
-      color: #fff; }
+      color: gray;
+      border-left: 1px solid #eee;
+      border-right: 1px solid #eee; }
       header[role=banner] hgroup #site-title a:hover {
-        background: #ff6666; }
+        background: #ff6666;
+        color: #fff; }
       header[role=banner] hgroup #site-title a.montage {
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -744,8 +746,10 @@ header[role=banner] {
       border: 1px solid #eee;
       border-width: 0 1px 1px 1px;
       margin-top: -2px; } }
-  #year-select:hover:after {
-    opacity: 1; }
+  #year-select:hover {
+    box-shadow: inset 0 -2px 0 #ff6666; }
+    #year-select:hover:after {
+      opacity: 1; }
   #year-select #illu-indicator {
     padding: 10px 0; }
   #year-select #illu-jumpmenu {
@@ -997,71 +1001,46 @@ aside#illustrator-meta {
 .archive article, .home article, .search article {
   float: left;
   width: 20%;
-  background-color: #b96069;
-  background-image: -webkit-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
-  background-image: -moz-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
-  background-image: -ms-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
-  background-image: -o-linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
-  background-image: linear-gradient(135deg, #434973 0%, #b96069 50%, #ef3225 100%);
+  margin: 10px auto 10px auto;
   position: relative; }
   @media only screen and (max-width: 767px) {
     .archive article, .home article, .search article {
       width: 50%; } }
   .archive article img, .home article img, .search article img {
-    width: 100%;
+    width: 80%;
     height: auto;
+    margin: 0 auto;
     display: block;
-    opacity: .4;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -ms-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.3s ease-in-out; }
-  .archive article:hover img, .home article:hover img, .search article:hover img {
-    opacity: .8; }
-  .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
-    background: url("../images/tightwave.png") #222222; }
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 50%; }
   .archive article a, .home article a, .search article a {
-    color: #fff;
     text-decoration: none; }
-  .archive article.two, .home article.two, .search article.two {
-    width: 10%; }
+  .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
+    color: #ff6666; }
 .archive h1, .home h1, .search h1 {
-  z-index: 10;
-  padding: 5px;
-  position: absolute;
-  padding: 10px;
+  color: #666;
   font-size: 1.5em;
-  font-family: 'TitilliumText22LThin';
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  -ms-transition: background 0.3s ease-in-out;
-  -o-transition: background 0.3s ease-in-out;
-  transition: background 0.3s ease-in-out; }
+  font-family: 'TitilliumText22LRegular';
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center; }
   .archive h1#year-title, .home h1#year-title, .search h1#year-title {
     z-index: 9999;
     font-size: 1em;
+    margin: 0;
     font-family: 'TitilliumText22LRegular';
     text-align: center;
     position: static;
-    background-color: transparent;
-    background-image: -webkit-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
-    background-image: -moz-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
-    background-image: -ms-radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
-    background-image: radial-gradient(center, circle cover, #222222, rgba(0, 0, 0, 0.8));
-    color: #fff;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    background: white;
     padding: 1px 0;
     width: 100%;
     letter-spacing: 1px; }
-    .archive h1#year-title:hover, .home h1#year-title:hover, .search h1#year-title:hover {
-      background-image: url("../images/tightwave.png"); }
-.archive .entry-summary, .home .entry-summary, .search .entry-summary {
-  position: absolute;
-  padding: 10px;
-  bottom: 0;
-  color: #fff;
-  background: rgba(34, 34, 34, 0.9);
-  font-size: 12px; }
 
 .home article {
   opacity: 0;
