@@ -47,7 +47,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/assets/stylesheets/main.css" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/modernizr-2.0.6.min.js"></script>
+<script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/modernizr-2.5.3.min.js"></script>
 
 <?php
 	wp_head();
