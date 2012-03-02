@@ -1016,9 +1016,12 @@ aside#illustrator-meta {
     -ms-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
-    border-radius: 50%; }
+    border-radius: 50%;
+    opacity: 0.9; }
   .archive article a, .home article a, .search article a {
     text-decoration: none; }
+    .archive article a:hover img, .home article a:hover img, .search article a:hover img {
+      opacity: 1; }
   .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
     color: #ff6666; }
 .archive h1, .home h1, .search h1 {
