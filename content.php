@@ -16,8 +16,11 @@
 		<?php endif; ?>
 
 		</header><!-- .entry-header -->
-
 	
-		
+		<?php if ( is_page() ) : ?>
+		<div class="entry-content">
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' ) ); ?>
+		</div><!-- .entry-content -->
+		<?php endif; ?>
 
 	</article><!-- #post-<?php the_ID(); ?> -->
