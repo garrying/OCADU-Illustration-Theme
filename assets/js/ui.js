@@ -77,7 +77,6 @@ $(document).ready(function () {
 		$(window).resize(function() {
 			$(galleryResize);
 		});
-
 	}
 
 	// Footer copyright show hide
@@ -109,9 +108,7 @@ $(document).ready(function () {
 	});
 
 	// Click black year bar to scroll back to top
-	var titleBar = $('#year-title');
-
-	titleBar.on('click', function () {
+	pageTitle.on('click', function () {
 		$('body').animate({
 			scrollTop: 0
 		}, 400);
