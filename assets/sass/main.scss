@@ -32,6 +32,7 @@ body {
 	font-size: $font-size / 16 * 1em;
 	line-height: #{$line / $em}em;
 	text-rendering: optimizeLegibility;
+	overflow-x:hidden;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -89,8 +90,10 @@ a {
 .container {
 	position:relative;
 	margin:0 auto;
-	padding:0 20px;
 	max-width:1000px;
+	@media only screen and (max-width: 767px) {
+		padding:0 20px;
+	}
 }
 
 // Header
@@ -104,17 +107,12 @@ header[role=banner] {
    	box-shadow:         inset 0 -1px 0px #eee;
 	hgroup {
 		#site-title {
-			font-family:"TitilliumText22LRegular";
-			font-size: 1em;
-			margin:0;
 			position: absolute;
 			bottom:0;
-			padding:0;
 			a {
 				padding:10px;
 				display:inline-block;
 				text-decoration: none;
-				color:gray;
 				border-left:1px solid #eee;
 				border-right:1px solid #eee;
 				&:hover {
@@ -131,8 +129,6 @@ header[role=banner] {
 				}
 			}
 			@media only screen and (max-width: 767px) {
-				top:0;
-				right:auto;
 				left:0;
 				border-right:none;
 				a {
@@ -140,7 +136,9 @@ header[role=banner] {
 					width:30px;
 					height:80px;
 					background:url('../images/eye.png') no-repeat center center;
-					text-indent:-999px;
+					text-indent: 100%;
+					white-space: nowrap;
+					overflow: hidden;
 					padding:0 10px;
 					border:none;
 				}
@@ -157,7 +155,6 @@ header[role=banner] {
 			min-height:80px;
 		}
 	}
-
 	#access {
 		display:inline-block;
 		vertical-align:bottom;	
@@ -261,39 +258,41 @@ header[role=banner] {
 }
 
 #year-back-button {
-		background:url('../images/gallery-button.png') no-repeat 10px center;
-		float:left;
-		display:block;
-		width:20px;
-		height:40px;
-		text-indent: -9999px;
-		padding:0 0 0 10px;
-		margin-right:12px;
-		opacity:.4;
-		-webkit-transition: opacity 0.3s ease-in-out;  
-	     -moz-transition: opacity 0.3s ease-in-out;  
-	      -ms-transition: opacity 0.3s ease-in-out;  
-	       -o-transition: opacity 0.3s ease-in-out;  
-	          transition: opacity 0.3s ease-in-out;
-	    position:relative;
-		&:hover {
-			opacity:1;
-		}
-		@media only screen and (max-width: 767px) {
-			float:right;
-		}
+	background:url('../images/gallery-button.png') no-repeat 10px center;
+	float:left;
+	display:block;
+	width:20px;
+	height:40px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+	margin-right:12px;
+	opacity:.4;
+	-webkit-transition: opacity 0.3s ease-in-out;  
+	-moz-transition: opacity 0.3s ease-in-out;  
+	-ms-transition: opacity 0.3s ease-in-out;  
+	-o-transition: opacity 0.3s ease-in-out;  
+	transition: opacity 0.3s ease-in-out;
+    position:relative;
+	&:hover {
+		opacity:1;
+	}
+	@media only screen and (max-width: 767px) {
+		float:right;
+	}
 }
 
 // Search Form
 
 #search {
-			display:inline-block;
-			border-left:1px solid #eee;
-			vertical-align: middle;
-			padding:5px 0 5px;
-			width:32px;	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
-				background-repeat:no-repeat;
-				background-position:5px center;
+		display:inline-block;
+		border-left:1px solid #eee;
+		vertical-align: middle;
+		padding:5px 0 5px;
+		width:32px;	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
+		background-repeat:no-repeat;
+		background-position:5px center;
 				
 	input[type=text] {
 		border:0;
@@ -304,14 +303,10 @@ header[role=banner] {
 		background:transparent;
 		width:0;
 		opacity:0;
-		}
+	}
 }
 
 // Single Illustrator Page 
-
-#content {
-	position:relative;
-}
 
 #illustrator-meta-guide {
 	float:right;
@@ -322,7 +317,7 @@ header[role=banner] {
 	}
 }
 
-aside#illustrator-meta {
+#illustrator-meta {
 	position:absolute;
 	padding:20px 0;
 	width:280px;
@@ -417,15 +412,13 @@ aside#illustrator-meta {
 				display:block;
 				text-decoration:none;
 				border-right:1px solid #eee;
-				&:hover {
-					color:#fff
-				}
 			}
 			&:last-child a {
 				border-right:none;
 			}
 		}
 	}
+
 	#illustrator-back {
 		font-family: 'TitilliumText22LRegular';
 		text-align: center;
@@ -500,27 +493,16 @@ aside#illustrator-meta {
 // Homepage / Archives
 
 .archive, .home, .search {
-	#main.container {
-		width:100%;
-		margin:0;
-		padding:0;
+	#main {
 		max-width:none;
 	}
 	article {
 		float:left;
 		width:20%;
 		margin:10px auto 10px auto;
-
 		@media only screen and (max-width: 767px) { 
 			width:50%;
 		}
-		// background-color: $gradient2;
-		// background-image: -webkit-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		// background-image:    -moz-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		// background-image:     -ms-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		// background-image:      -o-linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%); 
-		// background-image:         linear-gradient(135deg, $gradient1 0%, $gradient2 50%, $gradient3 100%);
-		position:relative;
 		img {
 			width:80%;
 			height:auto;
@@ -536,30 +518,27 @@ aside#illustrator-meta {
 		}
 		a {
 			text-decoration:none;
-			&:hover img {
+		}
+		&:hover {
+			img {
 				opacity:1;
 			}
-		}
-		&:hover h1 {
-			color:$link_hover;
+			h1 {
+				color:$link_hover;
+			}
 		}
 	}
 
 	h1 {
 		color:#666;
 		font-size:1.5em;
-		font-family: 'TitilliumText22LRegular';
 		font-size: 14px;
 		margin-top:10px;
 		text-align: center;
-		&#year-title {
+		&#page-title {
 			z-index:9999;
 			font-size:1em;
 			margin:0;
-			font-family: 'TitilliumText22LRegular';
-			text-align:center;
-			position:static;
-			color:#666;
 			border-bottom:1px solid #eee;
 			background:$body_bg;
 			padding:1px 0;
@@ -579,15 +558,13 @@ aside#illustrator-meta {
 // Page
 
 article.page {
-	h1 {
+	h1,h2 {
 		font-family: 'TitilliumText22LLight';
 		font-size: 1.75em;
 		margin: 20px 0;
 	}
 	h2 {
-		font-family: 'TitilliumText22LLight';
 		font-size: 1.5em;
-		margin: 20px 0;
 	}
 	.left, .right {
 		float:left;
@@ -625,7 +602,7 @@ article.event {
 			width:100%;
 		}
 	}
-	aside#illustrator-meta {
+	#illustrator-meta {
 		width:500px;
 		@media only screen and (max-width: 767px) { 
 			width:100%;
@@ -649,9 +626,8 @@ article.event {
 // Footer
 
 footer {
-	font-size:0.929em;
+	font-size:0.85em;
 	font-family: 'TitilliumText22LLight';
-	text-align:left;
 	p {
 		margin-bottom:0;
 	}
@@ -669,7 +645,6 @@ footer {
 	#toggle {
 		position:absolute;
 		background:url('../images/zigzag.png') no-repeat;
-		color: $body_bg;
 		left:0;
 		width:20px;
 		height:20px;
@@ -682,20 +657,17 @@ footer {
 // Error 404
 
 article.error404, article.not-found {
+	width:100%;
 	h1 {
 		font-family: 'TitilliumText22LLight';
 		font-size:3em;
 		margin-bottom:1em;
-		position:static;
 	}
 	h2 {
 		color:#999;
 	}
 	text-align:center;
-	background:none;
-	width:100%;
 	margin:80px 0;
-	position:relative;
 	.box {
 		margin:0 auto;
 		width:100px;
@@ -703,9 +675,14 @@ article.error404, article.not-found {
 		background:url('../images/smallstar.png');
 		margin-bottom:50px;
 	}
-	&:hover h1 {
-		background:none;
-	}
+}
+
+// Progress
+
+#progress {
+	position:fixed;
+	top:50%;
+	left:50%;
 }
 
 // IE Fallbacks 

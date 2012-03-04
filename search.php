@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 
-<h1 id="year-title">
+<h1 id="page-title">
 <?php if ($term->name == null)
 		wp_title("");
 	else

@@ -1,14 +1,16 @@
 $(document).ready(function () {
 	
-	"use strict";
+	'use strict';
 
 	// Year Select
 	var yearSelect = $('#year-select');
 	var selected = yearSelect.find('.selected').text();
 	var selectMenu = $('#illu-jumpmenu');
 
-	$('#illu-indicator').append(selected);
-	
+	if ($('body').hasClass('search') !== true) {
+		$('#illu-indicator').append(selected);
+	}
+
 	yearSelect.on('click', function(){
 		selectMenu.slideToggle('fast', function(){
 			$(this).toggleClass('open');
@@ -16,13 +18,13 @@ $(document).ready(function () {
 	});
 
 	// Sticky Illustrator Information
-	var illustratorInfo = $('aside#illustrator-meta');
-	var yearTitle = $('h1#year-title');
+	var illustratorInfo = $('#illustrator-meta');
+	var pageTitle = $('#page-title');
 
 	if ($('body').hasClass('single')) {
-		var top = illustratorInfo.offset().top - parseFloat(illustratorInfo.css('marginTop').replace(/auto/, 0));
+		var top = illustratorInfo.offset().top;
 	} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-		var topYeartitle = yearTitle.offset().top - parseFloat(yearTitle.css('marginTop').replace(/auto/, 0));
+		var topPagetitle = pageTitle.offset().top;
 	}
 
 	$(window).scroll(function (event) {
@@ -32,19 +34,13 @@ $(document).ready(function () {
 		var illustratorInfoHeight = illustratorInfo.height() + 40;
 
 		// whether that's below the form
-		if (y >= top && illustratorInfoHeight < windowHeight || y >= topYeartitle) {
-			if ($('body').hasClass('single')) {
-				illustratorInfo.addClass('fixed');
-			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-				yearTitle.addClass('fixed');
-			}
+		if (y >= top && illustratorInfoHeight < windowHeight || y >= topPagetitle) {
+			illustratorInfo.addClass('fixed');
+			pageTitle.addClass('fixed');
 		} else {
 			// otherwise remove it
-			if ($('body').hasClass('single')) {
-				illustratorInfo.removeClass('fixed');
-			} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-				yearTitle.removeClass('fixed');
-			}
+			illustratorInfo.removeClass('fixed');
+			pageTitle.removeClass('fixed');
 		}
 	});
 
@@ -64,15 +60,15 @@ $(document).ready(function () {
 	});
 
 	// Resize Gallery Area 
-		function galleryResize(){
-			var galleryWidth = illustratorInfo.width();
-			var containerWidth = $('.container').width();
-			if (containerWidth >= 728) {
-				gallery.width(containerWidth - galleryWidth - 20);
-			} else {
-				gallery.width("100%");
-			}
+	function galleryResize(){
+		var galleryWidth = illustratorInfo.width();
+		var containerWidth = $('.container').width();
+		if (containerWidth >= 728) {
+			gallery.width(containerWidth - galleryWidth - 20);
+		} else {
+			gallery.width("100%");
 		}
+	}
 		
 	if ($('body').hasClass('single')) {
 	
@@ -116,7 +112,7 @@ $(document).ready(function () {
 	var titleBar = $('#year-title');
 
 	titleBar.on('click', function () {
-		$('body,html').animate({
+		$('body').animate({
 			scrollTop: 0
 		}, 400);
 		return false;
@@ -131,10 +127,6 @@ $(document).ready(function () {
 		});
 	}
 
-	if ($('body').hasClass('home')) {
-		doCascade(300);
-	}
-
 	// Loader Spinner for images
 	$.fn.spin = function (opts) {
 		this.each(function () {
@@ -146,34 +138,43 @@ $(document).ready(function () {
 			}
 			if (opts !== false) {
 				data.spinner = new Spinner($.extend({
-					color: '#FF6666'
+					color: '#FF6666',
+					width: 2
 				}, opts)).spin(this);
 			}
 		});
 		return this;
 	};
 
-	$('.gallery').spin({
-		width: 2
-	});
+	gallery.spin();
+
+	if ($('body').hasClass('home')||$('body').hasClass('archive')) {
+		$('#progress').spin();
+	}
 
 	$(window).load(function () {
-		$('.gallery').spin(false);
-		$('.gallery').find('img').fadeTo('fast', 1);
+		gallery.spin(false);
+		$('#progress').spin(false);
+		gallery.find('img').fadeTo('fast', 1);
+		if ($('body').hasClass('home')) {
+			doCascade(300);
+		}
 	});
 
 	// Keyboard Shortcuts
+	var nextItem = $('.nav-next a');
+	var prevItem = $('.nav-previous a');
+
 	$(document.documentElement).keyup(function (event) {
 		// handle cursor keys, illustrator, work navigation
-		if (event.keyCode === 37 && ($('.nav-previous a').length)) {
-			window.location = $('.nav-previous a').attr('href');
-		} else if (event.keyCode === 39 && ($(".nav-next a").length)) {
-			window.location = $('.nav-next a').attr('href');
+		if (event.keyCode === 37 && (prevItem.length)) {
+			window.location = prevItem.attr('href');
+		} else if (event.keyCode === 39 && (nextItem.length)) {
+			window.location = nextItem.attr('href');
 		}
 	});
 
 	// Site Title Montage!
-
 	var siteTitle = $('#site-title a');
 	var timerId = 0;
 	function montageSelect(divcollection) {
@@ -192,10 +193,10 @@ $(document).ready(function () {
 		});
 	}
 
-	if ($('body').hasClass('archive') || $('body').hasClass('home')) {
-		montageSelect('article');
-	} else if ($('body').hasClass('single') && $('img').length > 1) {
+	if ($('body').hasClass('single') && $('img').length > 1) {
 		montageSelect('.gallery-icon');
+	} else {
+		montageSelect('article');
 	}
 
 	siteTitle.mouseout(function(){
