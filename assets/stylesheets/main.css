@@ -1001,14 +1001,19 @@ header[role=banner] {
   margin-top: 10px;
   text-align: center; }
   .archive h1#page-title, .home h1#page-title, .search h1#page-title {
-    z-index: 9999;
+    z-index: 99;
     font-size: 1em;
     margin: 0;
     border-bottom: 1px solid #eee;
     background: white;
     padding: 1px 0;
     width: 100%;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    position: absolute;
+    top: 0; }
+
+.archive #content, .search #content {
+  padding-top: 20px; }
 
 .home article {
   opacity: 0;
