@@ -1,6 +1,5 @@
 @import 'reset';
 @import 'border-radius';
-@import 'uniform';
 @import 'font-import';
 
 // Helpful Variables
@@ -15,10 +14,6 @@ $link: #333;
 $link_hover: #FF6666;
 $link_active: darken($link_hover, 30%);
 $link_visited: lighten($link, 30% );
-
-$gradient1:#434973;
-$gradient2:#B96069;
-$gradient3:#EF3225;
 
 // Global
 
@@ -186,7 +181,7 @@ header[role=banner] {
 
 #year-select {
 	float:left;
-	margin-left:135px;
+	margin-left:137px;
 	padding:0 33px 0 10px;
 	border-right:1px solid #eee;
 	position:relative;
@@ -215,7 +210,7 @@ header[role=banner] {
 		border-width:0 1px 1px 1px;
 		margin-top:-2px;
 	}
-	&:hover {
+	&:hover, &.open {
 		box-shadow: inset 0 -2px 0 $link_hover;
 		&:after {
 			opacity:1;
@@ -230,7 +225,8 @@ header[role=banner] {
 		background: url('../images/tightwave.png') #222;
 		width:142px;
 		display:none;
-		margin-left:-10px;
+		left:0;
+		border-bottom:1px solid #333;
 		a {
 			display:block;
 			text-align: center;
@@ -295,11 +291,12 @@ header[role=banner] {
 		background-position:5px center;
 				
 	input[type=text] {
+		font-family:"TitilliumText22LRegular";
 		border:0;
-		padding:8px;
+		padding:7px;
 		margin:0 0 0 30px;
 		width:150px;
-		font-size:0.929em;
+		font-size:1em;
 		background:transparent;
 		width:0;
 		opacity:0;
@@ -458,7 +455,7 @@ header[role=banner] {
 		@media only screen and (max-width: 767px) { 
 			width:100%;
 			margin:0 0 7px;
-			}
+		}
 		img {
 			width:98%;
 			@media only screen and (max-width: 767px) { 
@@ -513,7 +510,7 @@ header[role=banner] {
 			-ms-transition: opacity 0.3s ease-in-out;  
 			-o-transition: opacity 0.3s ease-in-out;  
 			transition: opacity 0.3s ease-in-out;
-			border-radius:50%;  
+			@include border-radius(50%);
 			opacity:0.9; 
 		}
 		a {

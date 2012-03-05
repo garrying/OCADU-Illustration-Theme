@@ -35,7 +35,7 @@
 		<?php $text = get_the_content(); echo apply_filters('the_content', $text); ?>
 		
 		<?php endif; ?>
-		
+
 		<footer class="nav-single">
 			
 			<nav id="nav-single">
@@ -60,4 +60,4 @@
 			print apply_filters( 'the_content', $gallery_shortcode );
 		?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- <?php the_title(); ?> -->

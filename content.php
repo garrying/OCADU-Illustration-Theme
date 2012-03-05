@@ -23,4 +23,4 @@
 		</div><!-- .entry-content -->
 		<?php endif; ?>
 
-	</article><!-- #post-<?php the_ID(); ?> -->
+	</article><!-- <?php the_title(); ?> -->

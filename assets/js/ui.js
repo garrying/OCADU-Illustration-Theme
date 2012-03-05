@@ -12,9 +12,8 @@ $(document).ready(function () {
 	}
 
 	yearSelect.on('click', function(){
-		selectMenu.slideToggle('fast', function(){
-			$(this).toggleClass('open');
-		});
+		$(this).toggleClass('open');
+		selectMenu.slideToggle('fast');
 	});
 
 	// Sticky Illustrator Information
@@ -103,7 +102,7 @@ $(document).ready(function () {
 		}, function () {
 			$(this).find('input').animate({
 				width: 160
-			}).fadeTo('slow', 1);
+			}).fadeTo('fast', 1);
 		});
 	});
 
@@ -145,13 +144,15 @@ $(document).ready(function () {
 
 	gallery.spin();
 
+	var progress = $('#progress');
+
 	if ($('body').hasClass('home')||$('body').hasClass('archive')) {
-		$('#progress').spin();
+		progress.spin();
 	}
 
 	$(window).load(function () {
 		gallery.spin(false);
-		$('#progress').spin(false);
+		progress.spin(false);
 		gallery.find('img').fadeTo('fast', 1);
 		if ($('body').hasClass('home')) {
 			doCascade(300);

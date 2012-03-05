@@ -32,9 +32,8 @@
 		$next_attachment_url = wp_get_attachment_url();
 	}
 ?>
-									<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><?php
-									$attachment_size = apply_filters( 'ocadu_attachment_size', 848 );
-									echo wp_get_attachment_image( $post->ID, array( $attachment_size, 1024 ) ); // filterable image width with 1024px limit for image height.
+						<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><?php
+						echo wp_get_attachment_image( $post->ID, 'large'); // filterable image width with 1024px limit for image height.
 									?></a>
 
 								</div><!-- .illustrator-image -->
@@ -42,7 +41,9 @@
 						<div id="illustrator-meta-guide">
 						<aside id="illustrator-meta" role="complementary">
 						<header class="entry-header">
-							<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
+							<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="View All Work" >
+								<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
+							</a>
 							<hr />
 						</header><!-- .entry-header -->
 
@@ -74,6 +75,10 @@
 
 					    <?php echo apply_filters('the_content', $parent->post_content); ?>
 
+					    <?php 
+					    $type = get_post_type($post->post_parent);
+					    if (is_attachment() && $type !== 'event') : ?>
+
 						<footer class="nav-single image">
 							
 							<nav id="nav-single">							
@@ -90,7 +95,7 @@
 				
 						</footer><!-- .nav-single .image -->
 
-
+						<?php endif; ?>
 
 						<span class="vertical-rule-main"></span>
 						<span class="vertical-rule-corner-top"></span>
@@ -99,7 +104,7 @@
 						</aside><!-- aside -->
 						</div>
 
-					</article><!-- #post-<?php the_ID(); ?> -->
+					</article><!-- <?php the_title(); ?> -->
 
 				<?php endwhile; // end of the loop. ?>
 
