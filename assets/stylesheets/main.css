@@ -585,17 +585,10 @@ footer {
         display: none; } }
   footer #toggle {
     position: absolute;
-    background: url("../images/zigzag.png") no-repeat;
+    background: url("../images/info.png") no-repeat;
     left: 0;
     width: 20px;
-    height: 20px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
+    height: 20px; }
 
 article.error404, article.not-found {
   width: 100%;
