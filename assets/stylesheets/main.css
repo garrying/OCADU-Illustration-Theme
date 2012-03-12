@@ -511,7 +511,8 @@ header[role=banner] {
     width: 100%;
     letter-spacing: 1px;
     position: absolute;
-    top: 0; }
+    top: 0;
+    left: 0; }
 
 .archive #content, .search #content {
   padding-top: 20px; }
