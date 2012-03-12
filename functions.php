@@ -178,4 +178,94 @@ function new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+function get_socialimage() {
+  global $post, $posts;
+
+  $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '', '' );
+
+  if ( has_post_thumbnail($post->ID) ) {
+    $socialimg = $src[0];
+  } else {
+    $socialimg = '';
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    if (array_key_exists(1, $matches))
+      if (array_key_exists(0, $matches[1]))
+        $socialimg = $matches [1] [0];
+  }
+
+  if(empty($socialimg))
+    $socialimg = get_template_directory_uri() . '/assets/images/nothumb.gif';
+
+  return $socialimg;
+}
+
+// For truncating excerpt text in OpenGraph/G+ header
+
+function ellipsis($text, $max=155, $append='...') {
+       if (strlen($text) <= $max) return $text;
+       $out = substr($text,0,$max);
+       if (strpos($text,' ') === FALSE) return $out.$append;
+       return preg_replace('/\w+$/','',$out).$append;
+}
+
+
+// facebook share
+function facebook_connect() {
+	if (is_singular()) {
+		echo "\n" . '<!-- facebook open graph -->' . "\n";
+		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
+		global $post;
+		$the_excerpt = strip_tags($post->post_content);
+		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
+		echo '<meta property="og:url" content="'. get_permalink() .'"/>' . "\n";
+		echo '<meta property="og:title" content="'.get_the_title().'" />' . "\n";
+		echo '<meta property="og:type" content="article"/>' . "\n";
+		echo '<meta property="og:description" content="'.ellipsis($the_excerpt).'" />' . "\n";
+		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
+		echo '<!-- end facebook open graph -->' . "\n";
+	}
+	if (is_home()) {
+		echo "\n" . '<!-- facebook open graph -->' . "\n";
+		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
+		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
+		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
+		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
+		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
+		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+		echo '<meta property="og:type" content="website"/>' . "\n";
+		echo '<!-- end facebook open graph -->' . "\n";
+	}
+}
+
+// google +1 meta info
+function google_header() {
+	if (is_singular()) {
+		echo '<!-- google +1 tags -->' . "\n";
+		global $post;
+		$the_excerpt = strip_tags($post->post_content);
+		echo '<meta itemprop="name" content="'.get_the_title().'">' . "\n";
+		echo '<meta itemprop="description" content="'.ellipsis($the_excerpt).'">' . "\n";
+		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
+		echo '<!-- end google +1 tags -->' . "\n";
+	}
+}
+
+// general description meta
+function plain_description() {
+	if (is_singular()) {
+		global $post;
+		$the_excerpt = strip_tags($post->post_content);
+		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
+	}
+	if (is_home()) {
+		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+	}
+}
+	
+// add this in the header 
+add_action('wp_head', 'facebook_connect');
+add_action('wp_head', 'google_header');
+add_action('wp_head', 'plain_description');
+
+
 ?>
