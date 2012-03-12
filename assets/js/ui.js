@@ -106,13 +106,17 @@ $(document).ready(function () {
 		});
 	});
 
-	// Click black year bar to scroll back to top
-	pageTitle.on('click', function () {
+	// Click to scroll back to top
+	var illustratorName = $('#illustrator-meta h1');
+
+	var backTotop = function () {
 		$('body').animate({
 			scrollTop: 0
 		}, 400);
-		return false;
-	});
+	};
+
+	pageTitle.on('click', backTotop);
+	illustratorName.on('click', backTotop);
 
 	// Homepage Load
 	function doCascade(delay) {
