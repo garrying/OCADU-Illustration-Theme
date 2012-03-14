@@ -51,6 +51,17 @@ p {
 	margin-bottom:1em;
 }
 
+abbr[title] {
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
+}
+
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  letter-spacing:2px;
+}
+
 // Assistive text
 
 .assistive-text {
@@ -335,6 +346,7 @@ header[role=banner] {
 	}
 	p {
 		font-size:0.929em;
+		line-height:1.45em;
 	}
 	.entry-title {
 		font-family: 'TitilliumText22LLight';
@@ -632,7 +644,7 @@ article.event {
 // Footer
 
 footer {
-	font-size:0.85em;
+	font-size:0.95em;
 	font-family: 'TitilliumText22LLight';
 	p {
 		margin-bottom:0;
@@ -644,9 +656,6 @@ footer {
 		padding:10px 0 10px 30px;
 		width:360px;
 		margin-right:-360px;	
-		@media only screen and (max-width: 767px) { 
-			display:none;
-		}
 	}
 	#toggle {
 		position:absolute;
@@ -654,6 +663,9 @@ footer {
 		left:0;
 		width:20px;
 		height:20px;
+	}
+	@media only screen and (max-width: 767px) { 
+		display:none;
 	}
 }
 
@@ -686,6 +698,12 @@ article.error404, article.not-found {
 	position:fixed;
 	top:50%;
 	left:50%;
+}
+
+// Paul's Message Block 
+article.post-6 {
+	margin:0 auto;
+	max-width:600px;
 }
 
 // IE Fallbacks 

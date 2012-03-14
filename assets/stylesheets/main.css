@@ -89,6 +89,15 @@ hr {
 p {
   margin-bottom: 1em; }
 
+abbr[title] {
+  border-bottom: 1px dotted #ddd;
+  cursor: help; }
+
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
 .assistive-text {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -325,7 +334,8 @@ header[role=banner] {
     #illustrator-meta .info.phone {
       letter-spacing: 1px; }
   #illustrator-meta p {
-    font-size: 0.929em; }
+    font-size: 0.929em;
+    line-height: 1.45em; }
   #illustrator-meta .entry-title {
     font-family: 'TitilliumText22LLight';
     font-size: 1.75em;
@@ -570,7 +580,7 @@ article.event .gallery {
       display: block; }
 
 footer {
-  font-size: 0.85em;
+  font-size: 0.95em;
   font-family: 'TitilliumText22LLight'; }
   footer p {
     margin-bottom: 0; }
@@ -581,15 +591,15 @@ footer {
     padding: 10px 0 10px 30px;
     width: 360px;
     margin-right: -360px; }
-    @media only screen and (max-width: 767px) {
-      footer #copyright {
-        display: none; } }
   footer #toggle {
     position: absolute;
     background: url("../images/info.png") no-repeat;
     left: 0;
     width: 20px;
     height: 20px; }
+  @media only screen and (max-width: 767px) {
+    footer {
+      display: none; } }
 
 article.error404, article.not-found {
   width: 100%;
@@ -612,6 +622,10 @@ article.error404, article.not-found {
   position: fixed;
   top: 50%;
   left: 50%; }
+
+article.post-6 {
+  margin: 0 auto;
+  max-width: 600px; }
 
 html.no-cssgradients #year-title {
   background: #222; }

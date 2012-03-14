@@ -267,5 +267,21 @@ add_action('wp_head', 'facebook_connect');
 add_action('wp_head', 'google_header');
 add_action('wp_head', 'plain_description');
 
+// hijack image titles for copyright stuff
+
+function ocadu_gallery_filter( $attr ) {
+	global $post;
+	if (wp_attachment_is_image()) {
+		$postparent = get_the_title($post->post_parent);
+		$attr['alt'] = "Illustration by ". $postparent .""; 
+		$attr['title'] = "Click for Next Illustration"; 
+	} else {
+		$attr['alt'] = "Illustration by ". get_the_title() .""; 
+		$attr['title'] = "Click to View"; 
+	}
+	return $attr; 
+} 
+
+add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
 ?>
