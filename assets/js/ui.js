@@ -13,7 +13,9 @@ $(document).ready(function () {
 
 	yearSelect.on('click', function(){
 		$(this).toggleClass('open');
-		selectMenu.slideToggle('fast');
+		selectMenu.slideToggle('fast', function(){
+			selectMenu.find('.selected').focus();
+		});
 	});
 
 	// Sticky Illustrator Information
