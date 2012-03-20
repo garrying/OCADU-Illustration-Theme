@@ -112,7 +112,7 @@ $(document).ready(function () {
 	var illustratorName = $('#illustrator-meta h1');
 
 	var backTotop = function () {
-		$('body').animate({
+		$('html, body').animate({
 			scrollTop: 0
 		}, 400);
 	};

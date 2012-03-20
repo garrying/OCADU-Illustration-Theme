@@ -34,11 +34,11 @@ if (!function_exists('load_my_scripts')) {
 			wp_deregister_script( 'jquery' );
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array('jquery'), '1.0', true );
+			wp_register_script('masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array('jquery'), '', true );
 			wp_enqueue_script('masonry');
-			wp_register_script('spin', get_template_directory_uri().'/assets/js/spin.min.js', array('jquery'), '1.0', true );
+			wp_register_script('spin', get_template_directory_uri().'/assets/js/spin.min.js', array('jquery'), '', true );
 			wp_enqueue_script('spin');
-			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.js', array('jquery'), '1.0', true );
+			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.js', array('jquery'), '', true );
 			wp_enqueue_script('myscript');
 		}
 	}
@@ -202,12 +202,11 @@ function get_socialimage() {
 // For truncating excerpt text in OpenGraph/G+ header
 
 function ellipsis($text, $max=155, $append='...') {
-       if (strlen($text) <= $max) return $text;
-       $out = substr($text,0,$max);
-       if (strpos($text,' ') === FALSE) return $out.$append;
-       return preg_replace('/\w+$/','',$out).$append;
+	if (strlen($text) <= $max) return $text;
+	$out = substr($text,0,$max);
+	if (strpos($text,' ') === FALSE) return $out.$append;
+	return preg_replace('/\w+$/','',$out).$append;
 }
-
 
 // facebook share
 function facebook_connect() {

@@ -28,7 +28,7 @@
 			
 		<?php $title_illu = get_post_meta($post->ID, 'illu_title', true) ?>
 		
-		<?php $text = '<h2>' . $title_illu . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
+		<?php $text = '<h2 class="thesis-title">' . $title_illu . '</h2>' . get_the_content(); echo apply_filters('the_content', $text); ?>
 		
 		<?php else: ?>
 			

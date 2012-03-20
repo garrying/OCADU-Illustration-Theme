@@ -34,9 +34,10 @@
 			<?php else : ?>
 
 				<article class="post no-results not-found">
+					<div class="box"></div>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
-						<h2><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.' ); ?></h2>
+						<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.' ); ?></h2>
 					</header><!-- .entry-header -->
 				</article><!-- #post-0 -->
 
