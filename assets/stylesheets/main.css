@@ -456,7 +456,7 @@ header[role=banner] {
     background: -ms-radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%);
     background: radial-gradient(left top, circle, rgba(0, 0, 0, 0.04), transparent 30px, transparent 100%); }
   #illustrator-meta #nav-single {
-    background: #fff;
+    background: white;
     margin-top: 20px;
     font-size: 0;
     display: inline-block;
@@ -719,6 +719,3 @@ article.error404, article.not-found {
 article.post-6 {
   margin: 0 auto;
   max-width: 600px; }
-
-html.no-cssgradients #year-title {
-  background: #222; }

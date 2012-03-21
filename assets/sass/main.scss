@@ -27,12 +27,14 @@ body {
 	font-size: $font-size / 16 * 1em;
 	line-height: #{$line / $em}em;
 	text-rendering: optimizeLegibility;
-	overflow-x:hidden;
+	overflow-x: hidden;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family:"Apercu Regular";
-	font-size-adjust:0.508; font-weight:normal; font-style:normal; 
+	font-family: "Apercu Regular";
+	font-size-adjust: 0.508; 
+	font-weight: normal; 
+	font-style: normal; 
 }
 
 strong {
@@ -468,7 +470,7 @@ header[role=banner] {
 		background:radial-gradient(left top,circle,rgba(0, 0, 0, .04),transparent 30px,transparent 100%);
 	}
 	#nav-single {
-		background:#fff;
+		background:$body_bg;
 		margin-top:20px;
 		font-size:0;
 		display:inline-block;
@@ -791,12 +793,4 @@ article.error404, article.not-found {
 article.post-6 {
 	margin:0 auto;
 	max-width:600px;
-}
-
-// IE Fallbacks 
-
-html.no-cssgradients {
-	#year-title {
-		background:#222;
-	}
 }
