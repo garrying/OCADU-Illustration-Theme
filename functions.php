@@ -194,7 +194,7 @@ function get_socialimage() {
   }
 
   if(empty($socialimg))
-    $socialimg = get_template_directory_uri() . '/assets/images/nothumb.gif';
+    $socialimg = get_template_directory_uri() . '/assets/images/nothumb.png';
 
   return $socialimg;
 }
@@ -210,7 +210,7 @@ function ellipsis($text, $max=155, $append='...') {
 
 // facebook share
 function facebook_connect() {
-	if (is_singular()) {
+	if (is_singular() && is_attachment() !== true ) {
 		echo "\n" . '<!-- facebook open graph -->' . "\n";
 		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
 		global $post;
@@ -238,7 +238,7 @@ function facebook_connect() {
 
 // google +1 meta info
 function google_header() {
-	if (is_singular()) {
+	if (is_singular()  && is_attachment() !== true) {
 		echo '<!-- google +1 tags -->' . "\n";
 		global $post;
 		$the_excerpt = strip_tags($post->post_content);
@@ -247,11 +247,18 @@ function google_header() {
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
+	if (is_home()) {
+		echo '<!-- google +1 tags -->' . "\n";
+		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'"/>' . "\n";
+		echo '<meta property="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
+		echo '<!-- end google +1 tags -->' . "\n";
+	}
 }
 
 // general description meta
 function plain_description() {
-	if (is_singular()) {
+	if (is_singular() && is_attachment() !== true) {
 		global $post;
 		$the_excerpt = strip_tags($post->post_content);
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";

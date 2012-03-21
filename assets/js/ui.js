@@ -14,7 +14,9 @@ $(document).ready(function () {
 	yearSelect.on('click', function(){
 		$(this).toggleClass('open');
 		selectMenu.slideToggle('fast', function(){
-			selectMenu.find('.selected').focus();
+				if ($('body').hasClass('search') !== true) {
+					selectMenu.find('.selected').focus();
+				}
 		});
 	});
 
@@ -197,10 +199,14 @@ $(document).ready(function () {
 		});
 	}
 
-	if ($('body').hasClass('single') && $('img').length > 1) {
+	if ($('body').hasClass('single') && $('img').length > 1 ) {
 		montageSelect('.gallery-icon');
-	} else {
+	} else if ($('img').length > 1) {
 		montageSelect('article');
+	} else {
+		siteTitle.on('hover', function() {
+			$(this).toggleClass('animated');
+		});
 	}
 
 	siteTitle.mouseout(function(){

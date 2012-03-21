@@ -65,9 +65,59 @@ abbr[title] {
 }
 
 abbr {
-  font-size: 90%;
+  font-size: 80%;
   text-transform: uppercase;
-  letter-spacing:2px;
+  letter-spacing:1px;
+}
+
+// CSS3 Animation 
+
+@keyframes erroranimate
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 10px 0;}
+}
+
+@-moz-keyframes erroranimate /* Firefox */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 10px 0;}
+}
+
+@-webkit-keyframes erroranimate /* Safari and Chrome */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 10px 0;}
+}
+
+@-ms-keyframes erroranimate /* Safari and Chrome */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 10px 0;}
+}
+
+@keyframes headeranimate
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 18px 0;}
+}
+
+@-moz-keyframes headeranimate /* Firefox */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 18px 0;}
+}
+
+@-webkit-keyframes headeranimate /* Safari and Chrome */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 18px 0;}
+}
+
+@-ms-keyframes headeranimate /* Safari and Chrome */
+{
+	0% {background-position: 0 0 ;}
+	100% {background-position: 18px 0;}
 }
 
 // Assistive text
@@ -132,8 +182,16 @@ header[role=banner] {
 				width:147px;
 				text-align:center;
 				&:hover {
-					background:$link_hover;
 					color:#fff;
+				}
+				&.animated {
+					animation: headeranimate 1s infinite;
+					-ms-animation: headeranimate 1s infinite;
+					-moz-animation: headeranimate 1s infinite;
+					-webkit-animation: headeranimate 1s infinite;
+					-webkit-animation-timing-function: linear;
+					-moz-animation-timing-function: linear;
+					background:url('../images/tightwave.png') #333;
 				}
 				&.montage {
 					-webkit-background-size: cover;
@@ -355,6 +413,7 @@ header[role=banner] {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		font-size: 0.929em;
 		&.phone {
 			letter-spacing:1px;
 		}
@@ -362,6 +421,7 @@ header[role=banner] {
 	.thesis-title {
 		border-bottom:1px solid #000;
 		display:inline-block;
+		font-size: 0.929em;
 		margin-bottom:0.5em;
 	}
 	p {
@@ -414,19 +474,20 @@ header[role=banner] {
 		display:inline-block;
 		border:1px solid #eee;
 		@include border-radius(5px);
-		-webkit-transition: background 0.3s ease-in-out;  
-		-moz-transition: background 0.3s ease-in-out;  
-		-ms-transition: background 0.3s ease-in-out;  
-		-o-transition: background 0.3s ease-in-out;  
-		transition: background 0.3s ease-in-out;
 		&:hover {
+			animation: headeranimate 1s infinite;
+			-ms-animation: headeranimate 1s infinite;
+			-moz-animation: headeranimate 1s infinite;
+			-webkit-animation: headeranimate 1s infinite;
+			-webkit-animation-timing-function: linear;
+			-moz-animation-timing-function: linear;
 			background:url('../images/tightwave.png') #333;
 			a {
 				color:#fff;
 			}
 		}
 		li {
-			font-size:14px;
+			font-size:13px;
 			display:inline-block;
 			vertical-align:middle;
 			text-align:center;
@@ -447,9 +508,9 @@ header[role=banner] {
 	}
 
 	#illustrator-back {
-		text-align: center;
-		font-size:14px;
+		text-align:center;
 		display:block;
+		font-size:0.929em;
 		margin-top:20px;
 		padding:5px 10px;
 		text-decoration:none;
@@ -557,13 +618,10 @@ header[role=banner] {
 
 	h1 {
 		color:#444;
-		font-size:1.5em;
-		font-size: 14px;
 		margin-top:10px;
 		text-align: center;
 		&#page-title {
 			z-index:99;
-			font-size:1em;
 			margin:0;
 			border-bottom:1px solid #eee;
 			background:$body_bg;
@@ -689,31 +747,6 @@ footer {
 }
 
 // Error 404
-
-@keyframes erroranimate
-{
-	0% {background-position: 0 0 ;}
-	100% {background-position: 10px 0;}
-}
-
-@-moz-keyframes erroranimate /* Firefox */
-{
-	0% {background-position: 0 0 ;}
-	100% {background-position: 10px 0;}
-}
-
-@-webkit-keyframes erroranimate /* Safari and Chrome */
-{
-	0% {background-position: 0 0 ;}
-	100% {background-position: 10px 0;}
-}
-
-@-ms-keyframes erroranimate /* Safari and Chrome */
-{
-	0% {background-position: 0 0 ;}
-	100% {background-position: 10px 0;}
-}
-
 
 article.error404, article.not-found {
 	width:100%;

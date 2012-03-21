@@ -67,36 +67,35 @@
 			 <nav id="year-select">
 				<h3 class="assistive-text"><?php _e( 'Year select' ); ?></h3>
 				
-        <?php 
-          $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-					// Selected menu state for attachments 
-					$terms = get_the_terms($post->post_parent, 'gradyear');
-					foreach ( $terms as $term ) { 
-	      		$selected_year = $term->name;
-					}
-					// Selected menu state for individual items
-					$terms = get_the_terms( $post->ID , 'gradyear' );
-          foreach ( $terms as $term ) {
-        		$selected_year = $term->name;
-					}
-        ?>
+				<?php 
+					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
+							// Selected menu state for attachments 
+							$terms = get_the_terms($post->post_parent, 'gradyear');
+							foreach ( $terms as $term ) { 
+							$selected_year = $term->name;
+							}
+							// Selected menu state for individual items
+							$terms = get_the_terms( $post->ID , 'gradyear' );
+					foreach ( $terms as $term ) {
+						$selected_year = $term->name;
+						}
+				?>
 
 					<div id="illustrator-select">
-						<div id="illu-indicator">Graduating Year </div>
-						<div id="illu-jumpmenu">
-						<a class="home" href="/" title="Back to Main Index">Current Year</a>
-            <?php foreach( $grad_year as $year ) : ?>
-              <a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'class="selected"' ?> title="View Work From <?php echo $year->name ?>" >
+						<div id="illu-indicator">Graduating Year</div>
+							<div id="illu-jumpmenu">
+								<a class="home" href="/" title="Back to Main Index">Current Year</a>
+								<?php foreach( $grad_year as $year ) : ?>
+								<a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'class="selected"' ?> title="View Work From <?php echo $year->name ?>" >
 
-                  <?php echo $year->name; ?>
-     
-              </a>
-            <?php endforeach ?>
-          </div>
+								<?php echo $year->name; ?>
+
+								</a>
+								<?php endforeach ?>
+							</div>
 					</div>
 
-
-        </nav> <!-- #year-Select-->
+			</nav> <!-- #year-Select-->
 			
 <?php if (is_singular('illustrator')) 
 	echo 
@@ -108,9 +107,6 @@
 
 			<nav id="access" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Main menu' ); ?></h3>
-				
-				     
-				
 
 				<?php wp_nav_menu( array( 
 					'container' =>false,
@@ -118,8 +114,6 @@
 					'theme_location' => 'primary' )
 					); ?>
 								
-  
-				
 			</nav><!-- #access -->
 			<div id="search" role="search">
 			  <?php get_search_form(); ?>

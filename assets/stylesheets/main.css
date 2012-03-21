@@ -104,9 +104,65 @@ abbr[title] {
   cursor: help; }
 
 abbr {
-  font-size: 90%;
+  font-size: 80%;
   text-transform: uppercase;
-  letter-spacing: 2px; }
+  letter-spacing: 1px; }
+
+@keyframes erroranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 10px 0; } }
+
+@-moz-keyframes erroranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 10px 0; } }
+
+@-webkit-keyframes erroranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 10px 0; } }
+
+@-ms-keyframes erroranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 10px 0; } }
+
+@keyframes headeranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 18px 0; } }
+
+@-moz-keyframes headeranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 18px 0; } }
+
+@-webkit-keyframes headeranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 18px 0; } }
+
+@-ms-keyframes headeranimate {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 18px 0; } }
 
 .assistive-text {
   position: absolute !important;
@@ -162,8 +218,15 @@ header[role=banner] {
       width: 147px;
       text-align: center; }
       header[role=banner] hgroup #site-title a:hover {
-        background: #ff6666;
         color: #fff; }
+      header[role=banner] hgroup #site-title a.animated {
+        animation: headeranimate 1s infinite;
+        -ms-animation: headeranimate 1s infinite;
+        -moz-animation: headeranimate 1s infinite;
+        -webkit-animation: headeranimate 1s infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-timing-function: linear;
+        background: url("../images/tightwave.png") #333333; }
       header[role=banner] hgroup #site-title a.montage {
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -346,12 +409,14 @@ header[role=banner] {
   #illustrator-meta .info {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    font-size: 0.929em; }
     #illustrator-meta .info.phone {
       letter-spacing: 1px; }
   #illustrator-meta .thesis-title {
     border-bottom: 1px solid #000;
     display: inline-block;
+    font-size: 0.929em;
     margin-bottom: 0.5em; }
   #illustrator-meta p {
     font-size: 0.929em;
@@ -400,18 +465,19 @@ header[role=banner] {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-transition: background 0.3s ease-in-out;
-    -moz-transition: background 0.3s ease-in-out;
-    -ms-transition: background 0.3s ease-in-out;
-    -o-transition: background 0.3s ease-in-out;
-    transition: background 0.3s ease-in-out; }
+    border-radius: 5px; }
     #illustrator-meta #nav-single:hover {
+      animation: headeranimate 1s infinite;
+      -ms-animation: headeranimate 1s infinite;
+      -moz-animation: headeranimate 1s infinite;
+      -webkit-animation: headeranimate 1s infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-timing-function: linear;
       background: url("../images/tightwave.png") #333333; }
       #illustrator-meta #nav-single:hover a {
         color: #fff; }
     #illustrator-meta #nav-single li {
-      font-size: 14px;
+      font-size: 13px;
       display: inline-block;
       vertical-align: middle;
       text-align: center; }
@@ -428,8 +494,8 @@ header[role=banner] {
         border-right: none; }
   #illustrator-meta #illustrator-back {
     text-align: center;
-    font-size: 14px;
     display: block;
+    font-size: 0.929em;
     margin-top: 20px;
     padding: 5px 10px;
     text-decoration: none;
@@ -524,13 +590,10 @@ header[role=banner] {
     color: #ff6666; }
 .archive h1, .home h1, .search h1 {
   color: #444;
-  font-size: 1.5em;
-  font-size: 14px;
   margin-top: 10px;
   text-align: center; }
   .archive h1#page-title, .home h1#page-title, .search h1#page-title {
     z-index: 99;
-    font-size: 1em;
     margin: 0;
     border-bottom: 1px solid #eee;
     background: white;
@@ -617,34 +680,6 @@ footer #toggle {
       display: none; } }
   footer #toggle:active {
     background-color: #ff6666; }
-
-@keyframes erroranimate {
-  0% {
-    background-position: 0 0; }
-
-  100% {
-    background-position: 10px 0; } }
-
-@-moz-keyframes erroranimate {
-  0% {
-    background-position: 0 0; }
-
-  100% {
-    background-position: 10px 0; } }
-
-@-webkit-keyframes erroranimate {
-  0% {
-    background-position: 0 0; }
-
-  100% {
-    background-position: 10px 0; } }
-
-@-ms-keyframes erroranimate {
-  0% {
-    background-position: 0 0; }
-
-  100% {
-    background-position: 10px 0; } }
 
 article.error404, article.not-found {
   width: 100%;
