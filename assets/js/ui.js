@@ -92,7 +92,7 @@ $(document).ready(function () {
 		});
 	}, function () {
 		footerEle.animate({
-			marginRight: -360
+			marginRight: -340
 		});
 	});
 
@@ -105,10 +105,17 @@ $(document).ready(function () {
 			width: 200
 		}, function () {
 			$(this).find('input').animate({
-				width: 160
+				width: 150
 			}).fadeTo('fast', 1);
 		});
 	});
+
+	var searchTip = $('#search-tip');
+
+	searchField.find('input').focus(function(){
+		searchTip.fadeToggle();
+	});
+	
 
 	// Click to scroll back to top
 	var illustratorName = $('#illustrator-meta h1');
