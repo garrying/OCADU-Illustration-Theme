@@ -2,3 +2,6 @@
 		<label for="s" class="assistive-text"><?php _e( 'Search' ); ?></label>
 		<input type="text" class="field" name="s" id="s" placeholder="<?php esc_attr_e( 'Looking for Something?' ); ?>" required />
 	</form>
+	<div id="search-tip">
+		Press Enter When You're Ready
+	</div>
