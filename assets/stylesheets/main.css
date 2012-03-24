@@ -71,6 +71,7 @@ body {
   font-size: 0.875em;
   line-height: 1.429em;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -178,6 +179,11 @@ abbr {
   text-shadow: none; }
 
 a {
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
   color: #333333; }
   a:visited {
     color: gray; }
@@ -590,6 +596,12 @@ header[role=banner] {
   @media only screen and (max-width: 767px) {
     .archive article, .home article, .search article {
       width: 50%; } }
+  @media (min-width: 768px) and (max-width: 980px) {
+    .archive article, .home article, .search article {
+      width: 25%; } }
+  @media (min-width: 1300px) {
+    .archive article, .home article, .search article {
+      width: 12.5%; } }
   .archive article img, .home article img, .search article img {
     width: 80%;
     height: auto;
@@ -612,10 +624,20 @@ header[role=banner] {
     opacity: 1; }
   .archive article:hover h1, .home article:hover h1, .search article:hover h1 {
     color: #ff6666; }
+  .archive article:active img, .home article:active img, .search article:active img {
+    transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -moz-transform: scale(0.95); }
 .archive h1, .home h1, .search h1 {
-  color: #444;
   margin-top: 10px;
-  text-align: center; }
+  text-align: center;
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out; }
   .archive h1#page-title, .home h1#page-title, .search h1#page-title {
     z-index: 99;
     margin: 0;
@@ -693,11 +715,18 @@ footer #copyright {
   padding: 10px 0 10px 10px;
   width: 340px;
   margin-right: -340px;
-  background: #ff6666;
-  color: #fff; }
+  color: #fff;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out; }
   footer #copyright a {
     color: #fff; }
-  footer #copyright:hover {
+  @media only screen and (max-width: 767px) {
+    footer #copyright {
+      display: none; } }
+  footer #copyright.open {
     animation: headeranimate 1s infinite;
     -ms-animation: headeranimate 1s infinite;
     -moz-animation: headeranimate 1s infinite;
@@ -705,21 +734,24 @@ footer #copyright {
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
     background: url("../images/tightwave.png") #333333; }
-  @media only screen and (max-width: 767px) {
-    footer #copyright {
-      display: none; } }
+  footer #copyright hr {
+    border-bottom: 1px solid #555; }
 footer #toggle {
   position: absolute;
-  background: url("../images/info.png") no-repeat #ff6666;
   left: -20px;
-  top: -1px;
+  top: 0;
+  cursor: pointer;
   width: 20px;
-  height: 20px; }
+  height: 20px;
+  letter-spacing: 1px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #222222; }
   @media only screen and (max-width: 767px) {
     footer #toggle {
       display: none; } }
-  footer #toggle:active, footer #toggle:hover {
-    background-color: #222222; }
+  footer #toggle span {
+    letter-spacing: 4px; }
 
 article.error404, article.not-found {
   width: 100%;
@@ -745,6 +777,8 @@ article.error404, article.not-found {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%; }
+    article.error404 .box:hover, article.not-found .box:hover {
+      background-color: #ff6666; }
   article.error404 .additional, article.not-found .additional {
     margin-top: 1em; }
     article.error404 .additional ul li, article.not-found .additional ul li {

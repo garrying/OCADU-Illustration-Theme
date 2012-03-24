@@ -27,6 +27,7 @@ body {
 	font-size: $font-size / 16 * 1em;
 	line-height: #{$line / $em}em;
 	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
 	overflow-x: hidden;
 }
 
@@ -135,6 +136,11 @@ abbr {
 // Links
 
 a {
+	-webkit-transition: color 0.3s ease-in-out;  
+	-moz-transition: color 0.3s ease-in-out;  
+	-ms-transition: color 0.3s ease-in-out;  
+	-o-transition: color 0.3s ease-in-out;  
+	transition: color 0.3s ease-in-out;
 	color:$link;
 	&:visited {
 		color:$link_visited;
@@ -238,7 +244,7 @@ header[role=banner] {
 			a {
 				display:block;
 				padding:10px;
-				text-decoration: none;
+				text-decoration:none;
 			}
 			&.current-menu-item {
 				a {
@@ -623,6 +629,12 @@ header[role=banner] {
 		@media only screen and (max-width: 767px) { 
 			width:50%;
 		}
+		@media (min-width: 768px) and (max-width: 980px) {
+			width:25%;
+		}
+		@media (min-width: 1300px) {
+			width:12.5%;
+		}
 		img {
 			width:80%;
 			height:auto;
@@ -647,12 +659,23 @@ header[role=banner] {
 				color:$link_hover;
 			}
 		}
+		&:active img {
+			transform: scale(.95);
+			-ms-transform: scale(.95);
+			-webkit-transform: scale(.95);
+			-o-transform: scale(.95);
+			-moz-transform: scale(.95);
+		}
 	}
 
 	h1 {
-		color:#444;
 		margin-top:10px;
 		text-align: center;
+		-webkit-transition: color 0.3s ease-in-out;  
+		-moz-transition: color 0.3s ease-in-out;  
+		-ms-transition: color 0.3s ease-in-out;  
+		-o-transition: color 0.3s ease-in-out;  
+		transition: color 0.3s ease-in-out;
 		&#page-title {
 			z-index:99;
 			margin:0;
@@ -763,12 +786,19 @@ footer {
 		padding:10px 0 10px 10px;
 		width:340px;
 		margin-right:-340px;
-		background:$link_hover;
 		color:#fff;
+		-webkit-transition: background-color 0.3s ease-in-out;  
+		-moz-transition: background-color 0.3s ease-in-out;  
+		-ms-transition: background-color 0.3s ease-in-out;  
+		-o-transition: background-color 0.3s ease-in-out;  
+		transition: background-color 0.3s ease-in-out;
 		a {
 			color:#fff;
 		}
-		&:hover {
+		@media only screen and (max-width: 767px) { 
+			display:none;
+		}
+		&.open {
 			animation: headeranimate 1s infinite;
 			-ms-animation: headeranimate 1s infinite;
 			-moz-animation: headeranimate 1s infinite;
@@ -777,22 +807,26 @@ footer {
 			-moz-animation-timing-function: linear;
 			background:url('../images/tightwave.png') #333;
 		}
-		@media only screen and (max-width: 767px) { 
-			display:none;
+		hr {
+			border-bottom:1px solid #555;
 		}
 	}
 	#toggle {
 		position:absolute;
-		background:url('../images/info.png') no-repeat $link_hover;
 		left:-20px;
-		top:-1px;
+		top:0;
+		cursor:pointer;
 		width:20px;
 		height:20px;
+		letter-spacing:1px;
+		font-size:12px;
+		line-height:12px;
+		color:$body_text;
 		@media only screen and (max-width: 767px) { 
 			display:none;
 		}
-		&:active, &:hover {
-			background-color:$body_text;
+		span {
+			letter-spacing:4px;
 		}
 	}
 }
@@ -820,6 +854,9 @@ article.error404, article.not-found {
 		background:url('../images/smallstar.png');
 		margin-bottom:1.5em;
 		@include border-radius(50%);
+		&:hover {
+			background-color:$link_hover;
+		}
 	}
 	.additional {
 		margin-top:1em;

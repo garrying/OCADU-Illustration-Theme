@@ -87,10 +87,12 @@ $(document).ready(function () {
 	var footerEle = $('#copyright');
 
 	toggleEle.toggle(function () {
+		footerEle.addClass('open');
 		footerEle.animate({
 			marginRight: 0
 		});
 	}, function () {
+		footerEle.removeClass('open');
 		footerEle.animate({
 			marginRight: -340
 		});
@@ -133,7 +135,7 @@ $(document).ready(function () {
 	function doCascade(delay) {
 		$('article').each(function (i) {
 			$(this).delay(i * delay).animate({
-				opacity: .99
+				opacity: 1
 			}, 500);
 		});
 	}
@@ -150,7 +152,8 @@ $(document).ready(function () {
 			if (opts !== false) {
 				data.spinner = new Spinner($.extend({
 					color: '#FF6666',
-					width: 2
+					width: 2,
+					length: 30
 				}, opts)).spin(this);
 			}
 		});

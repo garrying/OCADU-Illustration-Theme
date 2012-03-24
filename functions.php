@@ -34,6 +34,8 @@ if (!function_exists('load_my_scripts')) {
 			wp_deregister_script( 'jquery' );
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
+			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/modernizr-2.5.3.min.js', '','',false);
+			wp_enqueue_script('modernizer');
 			wp_register_script('masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array('jquery'), '', true );
 			wp_enqueue_script('masonry');
 			wp_register_script('spin', get_template_directory_uri().'/assets/js/spin.min.js', array('jquery'), '', true );
@@ -44,6 +46,19 @@ if (!function_exists('load_my_scripts')) {
 	}
 }
 add_action('wp_enqueue_scripts', 'load_scripts');
+
+/**
+ * Load some styles please.
+ */
+
+function load_ocad_styles() {
+	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.dev/17386.css');
+	wp_enqueue_style('fontdeck');
+	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
+	wp_enqueue_style('ocadustyles');
+}
+
+add_action('wp_enqueue_scripts', 'load_ocad_styles');
 
 /**
  * Clean up body_class output
@@ -230,7 +245,7 @@ function facebook_connect() {
 		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
 		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
 		echo '<meta property="og:type" content="website"/>' . "\n";
 		echo '<!-- end facebook open graph -->' . "\n";
 	}
@@ -250,7 +265,7 @@ function google_header() {
 	if (is_home()) {
 		echo '<!-- google +1 tags -->' . "\n";
 		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'"/>' . "\n";
-		echo '<meta property="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+		echo '<meta property="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
@@ -264,7 +279,7 @@ function plain_description() {
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
 	}
 	if (is_home()) {
-		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University. Featuring work from the graduating class of 2012, 2011, 2010 and 2009." />' . "\n";
+		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
 	}
 }
 	
