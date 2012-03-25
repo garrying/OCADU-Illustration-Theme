@@ -1,6 +1,5 @@
 @import 'reset';
 @import 'border-radius';
-@import 'font-import';
 
 // Helpful Variables
 
@@ -513,9 +512,6 @@ header[role=banner] {
 			text-align:right;
 			a {
 				width:118px;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
 				padding:5px 10px;
 				display:block;
 				text-decoration:none;
@@ -527,6 +523,13 @@ header[role=banner] {
 					padding:5px 5px;
 					top:0;
 					z-index:999;
+				}
+				span {
+					width:100px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display:inline-block;
 				}
 			}
 			&:last-child a {
@@ -733,6 +736,7 @@ article.page {
 		.span1 {
 			font-size: 1.15em;
 			line-height: 1.35em;
+			margin-bottom:1em;
 			width:25%;
 			float:left;
 			@media only screen and (max-width: 767px) { 
@@ -777,15 +781,15 @@ article.event {
 footer {
 	p {
 		margin-bottom:0;
-		font-size:0.75em;
+		font-size:1em;
 	}
 	#copyright {
 		position:fixed;
-		right:0;
+		left:0;
 		bottom:0;
-		padding:10px 0 10px 10px;
-		width:340px;
-		margin-right:-340px;
+		padding:10px 0;
+		width:100%;
+		margin-bottom:-56px;
 		color:#fff;
 		-webkit-transition: background-color 0.3s ease-in-out;  
 		-moz-transition: background-color 0.3s ease-in-out;  
@@ -805,16 +809,20 @@ footer {
 			-webkit-animation: headeranimate 1s infinite;
 			-webkit-animation-timing-function: linear;
 			-moz-animation-timing-function: linear;
-			background:url('../images/tightwave.png') #333;
+			background:url('../images/tightwave.png') rgba(0,0,0,0.8);
+			#toggle {
+				color:$link_hover;
+			}
 		}
-		hr {
-			border-bottom:1px solid #555;
+		section {
+			width:50%;
+			float:left;
 		}
 	}
 	#toggle {
 		position:absolute;
-		left:-20px;
-		top:0;
+		top:-30px;
+		right:40px;
 		cursor:pointer;
 		width:20px;
 		height:20px;

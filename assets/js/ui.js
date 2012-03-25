@@ -89,12 +89,12 @@ $(document).ready(function () {
 	toggleEle.toggle(function () {
 		footerEle.addClass('open');
 		footerEle.animate({
-			marginRight: 0
+			marginBottom: 0
 		});
 	}, function () {
 		footerEle.removeClass('open');
 		footerEle.animate({
-			marginRight: -340
+			marginBottom: -56
 		});
 	});
 
