@@ -47,9 +47,32 @@ $(document).ready(function () {
 		}
 	});
 
-	// Masonry for Illustrator Pages
 	var gallery = $('.gallery');
 	var galleryItems = '.gallery-item';
+	var singleImage = $('.illustrator-image');
+
+	gallery.find('br').remove();
+
+	// Resize Gallery Area 
+	function galleryResize(selector){
+		var galleryWidth = illustratorInfo.innerWidth();
+		var containerWidth = $('.container').width();
+		if (containerWidth <= 767) {
+			selector.width("100%");
+		} else {
+			selector.width(containerWidth - galleryWidth);
+		}
+	}
+		
+	if ($('body').hasClass('single')) {
+
+		$(window).resize(function() {
+			$(galleryResize(gallery));
+			$(galleryResize(singleImage));
+		});
+	}
+
+	// Masonry for Illustrator Pages
 
 	gallery.imagesLoaded(function () {
 		gallery.masonry({
@@ -61,26 +84,6 @@ $(document).ready(function () {
 			}
 		});
 	});
-
-	// Resize Gallery Area 
-	function galleryResize(){
-		var galleryWidth = illustratorInfo.width();
-		var containerWidth = $('.container').width();
-		if (containerWidth >= 728) {
-			gallery.width(containerWidth - galleryWidth - 20);
-		} else {
-			gallery.width("100%");
-		}
-	}
-		
-	if ($('body').hasClass('single')) {
-	
-		$(galleryResize);
-
-		$(window).resize(function() {
-			$(galleryResize);
-		});
-	}
 
 	// Footer copyright show hide
 	var toggleEle = $('#toggle');
@@ -118,7 +121,6 @@ $(document).ready(function () {
 		searchTip.fadeToggle();
 	});
 	
-
 	// Click to scroll back to top
 	var illustratorName = $('#illustrator-meta h1');
 
@@ -175,6 +177,9 @@ $(document).ready(function () {
 		if ($('body').hasClass('home')) {
 			doCascade(300);
 		}
+		$(galleryResize(gallery));
+		$(galleryResize(singleImage));
+		gallery.masonry('reload');
 	});
 
 	// Keyboard Shortcuts

@@ -84,8 +84,8 @@
 							<nav id="nav-single">							
 								<h3 class="assistive-text"><?php _e( 'Image navigation' ); ?></h3>
 								<ul>
-								<li class="nav-previous"><?php previous_image_link( false, __( '&larr; Previous' ) ); ?></li>
-								<li class="nav-next"><?php next_image_link( false, __( 'Next &rarr;' ) ); ?></li>
+								<li class="nav-previous"><?php previous_image_link( false, __( 'Previous' ) ); ?></li>
+								<li class="nav-next"><?php next_image_link( false, __( 'Next' ) ); ?></li>
 								</ul>
 							</nav><!-- #nav-single -->
 							

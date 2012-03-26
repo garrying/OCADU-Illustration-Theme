@@ -379,7 +379,9 @@ header[role=banner] {
 		border-left:1px solid #eee;
 		vertical-align: bottom;
 		padding:2px 0 0 10px;
-		width:32px;	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
+		width:32px;
+		overflow:hidden;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowN0YxODk1MDNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowN0YxODk1MTNGRTcxMUUxQTAyOUQ3NzhGNTc5MzQ1NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJEQjhCQTYxM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEQjhCQTYyM0ZFNDExRTFBMDI5RDc3OEY1NzkzNDU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+THjm2wAAAXhJREFUeNq0lTFLAzEUxy8iWFBBQXQQQRA3p06Cm4sgDk5+A79J134Fhw4Fhw6FDkKHg24O4u4kFYSC2B6Ws9jW+A/8AyH0ri949+AHDVzyS1/eS1RUYmito5Wo5MgTVEEDDMAI9EEb3P5XusqFzKIajMHQG3+AQ0mK/FgDz+Cbi7a441NwDWpgAqbgi+MgQYsL/ICzjHmboEPBHGxJBVWmwaTgQJDKHpgxnSLBPfgFTeFZnYCEkopEYKvlMqAgcuf4fbANFMtRGu+sun1JH0yYoo0AwTrnjCWCF+byKqBJj/n7STKhxp0MmKplUef3/ZA++ASpoJL2+N0or9kWCY7YQIaYpeinpc5OT/nNAw9aJLCpmvPeSXjv9HhG9i5KuPiQsniRJEtgYpc7mzndbRd7BTegy7F2JEoqsFFhE5kL7wLseLdu7EhSXyIRSK72TEkRAleSOpJukU+mOadz8Mh/Yt6KtzKeX8XCuHPPQEUlRiGCZQf5J8AATWKjAukCEMAAAAAASUVORK5CYII%3D);
 		background-repeat:no-repeat;
 		background-position:10px center;
 				
@@ -408,8 +410,7 @@ header[role=banner] {
 
 #illustrator-meta-guide {
 	float:right;
-	margin-right:20px;
-	width:280px;
+	width:300px;
 	@media only screen and (max-width: 767px) {
 		width:100%;
 	}
@@ -417,16 +418,16 @@ header[role=banner] {
 
 #illustrator-meta {
 	position:absolute;
-	padding:20px 0;
+	padding:20px 0 20px 20px;
 	width:280px;
-	padding-left:20px;
 	z-index:999;
 	@media only screen and (max-width: 767px) {
 		position:relative;
 		width:100%;
+		padding:20px 0 20px;
 	}
 	&:active {
-		box-shadow:inset 0 5px 0px #999;
+		box-shadow:inset 0 5px 0px $link_hover;
 	}
 	.info {
 		white-space: nowrap;
@@ -583,10 +584,10 @@ header[role=banner] {
 	.gallery-item {
 		float:left;
 		width:50%;
-		margin: 0 0 7px;
+		padding: 0 0 7px;
 		@media only screen and (max-width: 767px) { 
 			width:100%;
-			margin:0 0 7px;
+			padding:0 0 7px;
 		}
 		img {
 			width:98%;
@@ -596,6 +597,8 @@ header[role=banner] {
 			height:auto;
 			display:block;
 			opacity:0;
+			margin:0;
+			padding:0;
 		}
 	}
 }
@@ -603,19 +606,17 @@ header[role=banner] {
 .illustrator-image {
 	width:69%;
 	float:left;
-	@media only screen and (min-width: 960px) and (max-width: 999px) {
-		width:66%;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 959px) {
-		width:58%;
-	}
-	@media only screen and (max-width: 767px) { 
-		width:100%;
+	position:absolute;
+	@media only screen and (max-width: 768px) { 
+		position:static;
 	}
 	img {
-		width:100%;
+		width:99%;
 		height:auto;
 		display:block;
+		@media only screen and (max-width: 768px) { 
+			width:100%;
+		}
 	}
 }
 
@@ -635,7 +636,7 @@ header[role=banner] {
 		@media (min-width: 768px) and (max-width: 980px) {
 			width:25%;
 		}
-		@media (min-width: 1300px) {
+		@media (min-width: 1350px) {
 			width:12.5%;
 		}
 		img {
@@ -663,11 +664,7 @@ header[role=banner] {
 			}
 		}
 		&:active img {
-			transform: scale(.95);
-			-ms-transform: scale(.95);
-			-webkit-transform: scale(.95);
-			-o-transform: scale(.95);
-			-moz-transform: scale(.95);
+			box-shadow: 0 0 15px 2px $link_hover;
 		}
 	}
 
@@ -811,7 +808,8 @@ footer {
 			-moz-animation-timing-function: linear;
 			background:url('../images/tightwave.png') rgba(0,0,0,0.8);
 			#toggle {
-				color:$link_hover;
+				color:#fff;
+				background:$link_hover;
 			}
 		}
 		section {
@@ -821,21 +819,24 @@ footer {
 	}
 	#toggle {
 		position:absolute;
-		top:-30px;
+		top:-35px;
 		right:40px;
 		cursor:pointer;
-		width:20px;
-		height:20px;
+		width:18px;
+		padding:5px;
+		height:25px;
 		letter-spacing:1px;
 		font-size:12px;
 		line-height:12px;
 		color:$body_text;
+		box-shadow: inset 0 -2px 0 0 $link_hover;
 		@media only screen and (max-width: 767px) { 
 			display:none;
 		}
 		span {
 			letter-spacing:4px;
 		}
+		z-index:999;
 	}
 }
 
