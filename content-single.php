@@ -1,6 +1,6 @@
 <article <?php post_class(); ?> role="article">
 		<div id="illustrator-meta-guide">
-		<aside id="illustrator-meta" role="complementary">
+		<aside id="illustrator-meta" role="complementary" class="sticky">
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<hr />

@@ -39,7 +39,7 @@
 								</div><!-- .illustrator-image -->
 						
 						<div id="illustrator-meta-guide">
-						<aside id="illustrator-meta" role="complementary">
+						<aside id="illustrator-meta" role="complementary" class="sticky">
 						<header class="entry-header">
 							<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="View All Work" >
 								<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
