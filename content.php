@@ -1,7 +1,7 @@
 	<article <?php post_class(); ?> role="article">
 		<header class="entry-header">
 
-		<?php if ( is_page() ) : // Only display Excerpts for Search ?>
+		<?php if ( is_page() ) : ?>
 
 			<h1><?php the_title(); ?></h1>
 

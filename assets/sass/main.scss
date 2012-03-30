@@ -627,14 +627,12 @@ header[role=banner] {
 	}
 }
 
-// Homepage / Archives / Search
-.home, .search, .archive {
+// Homepage / Archives
+
+.archive, .home, .search {
 	#main {
 		max-width:none;
 	}
-}
-
-.dotted {
 	article {
 		float:left;
 		width:20%;
@@ -716,8 +714,10 @@ header[role=banner] {
 
 article.page {
 	h1,h2 {
-		font-size: 1.75em;
 		margin: 20px 0;
+	}
+	h1 {
+		font-size: 1.75em;
 	}
 	h2 {
 		font-size: 1.5em;
@@ -838,7 +838,7 @@ footer {
 		font-size:12px;
 		line-height:12px;
 		color:$body_text;
-		-webkit-transition: background-color 0.3s ease-in-out;  
+				-webkit-transition: background-color 0.3s ease-in-out;  
 		-moz-transition: background-color 0.3s ease-in-out;  
 		-ms-transition: background-color 0.3s ease-in-out;  
 		-o-transition: background-color 0.3s ease-in-out;  

@@ -12,7 +12,7 @@
 		<section id="primary">
 
 			
-			<div id="content" role="main" class="dotted">
+			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
 				<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->

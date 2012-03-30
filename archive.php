@@ -12,7 +12,7 @@
 		<section id="primary">
 
 			
-			<div id="content" role="main" class="dotted">
+			<div id="content" role="main">
 				<div id="progress">
 				</div>
 
