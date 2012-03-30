@@ -1,15 +1,13 @@
 <?php get_header(); ?>
 
-		<div id="primary">
-			<div id="content" role="main">
+	<div id="content" role="main">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'single' ); ?>
+			<?php get_template_part( 'content', 'single' ); ?>
 
-				<?php endwhile; // end of the loop. ?>
+		<?php endwhile; // end of the loop. ?>
 
-			</div><!-- #content -->
-		</div><!-- #primary -->
+	</div><!-- #content -->
 
 <?php get_footer(); ?>

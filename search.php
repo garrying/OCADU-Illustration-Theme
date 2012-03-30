@@ -8,42 +8,38 @@
 		echo $term->name;
  ?>
 </h1>
-
-		<section id="primary">
-
 			
-			<div id="content" role="main">
+		<div id="content" role="main">
 
-			<?php if ( have_posts() ) : ?>
-				<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : ?>
+			<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
+			<?php /* Start the Loop */ ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'content', get_post_format() );
-					?>
+				<?php
+					/* Include the Post-Format-specific template for the content.
+					 * If you want to overload this in a child theme then include a file
+					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					 */
+					get_template_part( 'content', get_post_format() );
+				?>
 
-				<?php endwhile; ?>
+			<?php endwhile; ?>
 
-				<?php ocadillu_content_nav( 'nav-below' ); ?>
+			<?php ocadillu_content_nav( 'nav-below' ); ?>
 
-			<?php else : ?>
+		<?php else : ?>
 
-				<article class="post no-results not-found">
-					<div class="box"></div>
-					<header class="entry-header">
-						<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
-						<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.' ); ?></h2>
-					</header><!-- .entry-header -->
-				</article><!-- #post-0 -->
+			<article class="post no-results not-found">
+				<div class="box"></div>
+				<header class="entry-header">
+					<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
+					<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.' ); ?></h2>
+				</header><!-- .entry-header -->
+			</article><!-- #post-0 -->
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-			</div><!-- #content -->
-		</section><!-- #primary -->
+		</div><!-- #content -->
 
 <?php get_footer(); ?>

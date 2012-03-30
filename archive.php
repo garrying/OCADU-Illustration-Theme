@@ -8,9 +8,6 @@
 		echo $term->name;
  ?>
 </h1>
-
-		<section id="primary">
-
 			
 			<div id="content" role="main">
 				<div id="progress">
@@ -48,6 +45,5 @@
 			<?php endif; ?>
 
 			</div><!-- #content -->
-		</section><!-- #primary -->
 
 <?php get_footer(); ?>
