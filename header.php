@@ -95,7 +95,7 @@
 			
 <?php if (is_singular('illustrator')) 
 	echo 
-		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">Back to ' . $term->name . ' index</a>';  
+		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>Back to ' . $term->name . ' index</span></a>';  
 ?>
 
 
