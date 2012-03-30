@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 
-<h1 id="page-title">
+<h1 id="page-title" class="sticky">
 <?php if ($term->name == null)
 		wp_title("");
 	else
@@ -12,7 +12,7 @@
 		<section id="primary">
 
 			
-			<div id="content" role="main">
+			<div id="content" role="main" class="dotted">
 
 			<?php if ( have_posts() ) : ?>
 				<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->

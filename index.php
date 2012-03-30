@@ -2,7 +2,7 @@
 
 		<div id="primary">
 			
-			<div id="content" role="main">
+			<div id="content" class="dotted" role="main">
 				<div id="progress">
 				</div>
 			
