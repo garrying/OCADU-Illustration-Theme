@@ -15,37 +15,42 @@ $(document).ready(function () {
 		$(this).toggleClass('open');
 		selectMenu.slideToggle('fast', function(){
 				if ($('body').hasClass('search') !== true) {
-					selectMenu.find('.selected').focus();
+					$(this).find('.selected').focus();
 				}
 		});
 	});
 
 	// Sticky Illustrator Information
-	var illustratorInfo = $('#illustrator-meta');
-	var pageTitle = $('#page-title');
 
-	if ($('body').hasClass('single')) {
-		var top = illustratorInfo.offset().top;
-	} else if ($('body').hasClass('archive') || $('body').hasClass('search')) {
-		var topPagetitle = pageTitle.offset().top;
+	var stickyBlock = $('.sticky');
+
+	if ($('body').is('.single, .archive, .search')) {
+		var top = stickyBlock.offset().top;
 	}
 
-	$(window).scroll(function (event) {
-		// what the y position of the scroll is
-		var y = $(this).scrollTop();
+	var fixy = function () {
+		var y = $(window).scrollTop();
 		var windowHeight = $(window).height(); 
-		var illustratorInfoHeight = illustratorInfo.height() + 40;
-
-		// whether that's below the form
-		if (y >= top && illustratorInfoHeight < windowHeight || y >= topPagetitle) {
-			illustratorInfo.addClass('fixed');
-			pageTitle.addClass('fixed');
+		var stickyBlockHeight = stickyBlock.height() + 40;
+		if (y >= top && stickyBlockHeight < windowHeight) {
+			stickyBlock.addClass('fixed');
 		} else {
-			// otherwise remove it
-			illustratorInfo.removeClass('fixed');
-			pageTitle.removeClass('fixed');
+			stickyBlock.removeClass('fixed');
 		}
+	};
+
+	var didScroll = false;
+
+	$(window).scroll(function () {
+		didScroll = true;
 	});
+
+	setInterval(function () {
+		if (didScroll) {
+			didScroll = false;
+			fixy();
+		}
+	}, 40);
 
 	var gallery = $('.gallery');
 	var galleryItems = '.gallery-item';
@@ -54,18 +59,17 @@ $(document).ready(function () {
 	gallery.find('br').remove();
 
 	// Resize Gallery Area 
-	function galleryResize(selector){
-		var galleryWidth = illustratorInfo.innerWidth();
+	var galleryResize = function (selector) {
+		var galleryWidth = stickyBlock.innerWidth();
 		var containerWidth = $('.container').width();
 		if (containerWidth <= 767) {
 			selector.width("100%");
 		} else {
 			selector.width(containerWidth - galleryWidth);
 		}
-	}
+	};
 		
 	if ($('body').hasClass('single')) {
-
 		$(window).resize(function() {
 			$(galleryResize(gallery));
 			$(galleryResize(singleImage));
@@ -103,44 +107,44 @@ $(document).ready(function () {
 
 	// Show Hide Search
 	var searchField = $('#search');
+	var searchTip = $('#search-tip');
 
 	searchField.one('click', function () {
 		$('#access').addClass('hide');
 		$(this).animate({
 			width: 200
 		}, function () {
-			$(this).find('input').animate({
+			$(this).addClass('visible').find('input').animate({
 				width: 150
 			}).fadeTo('fast', 1);
 		});
 	});
-
-	var searchTip = $('#search-tip');
 
 	searchField.find('input').focus(function(){
 		searchTip.fadeToggle();
 	});
 	
 	// Click to scroll back to top
-	var illustratorName = $('#illustrator-meta h1');
-
 	var backTotop = function () {
 		$('html, body').animate({
 			scrollTop: 0
 		}, 400);
 	};
 
-	pageTitle.on('click', backTotop);
-	illustratorName.on('click', backTotop);
+	if ($('body').hasClass('single')) {
+		stickyBlock.find('h1').on('click', backTotop);
+	} else {
+		stickyBlock.on('click', backTotop);
+	}
 
 	// Homepage Load
-	function doCascade(delay) {
+	var doCascade = function (delay) {
 		$('article').each(function (i) {
 			$(this).delay(i * delay).animate({
 				opacity: 1
 			}, 500);
 		});
-	}
+	};
 
 	// Loader Spinner for images
 	$.fn.spin = function (opts) {
@@ -166,20 +170,21 @@ $(document).ready(function () {
 
 	var progress = $('#progress');
 
-	if ($('body').hasClass('home')||$('body').hasClass('archive')) {
+	if ($('body').is('.home, .archive')) {
 		progress.spin();
 	}
 
 	$(window).load(function () {
 		gallery.spin(false);
 		progress.spin(false);
-		gallery.find('img').fadeTo('fast', 1);
+		gallery.find('img').fadeTo('fast', 1, function(){
+			gallery.masonry('reload');
+		});
 		if ($('body').hasClass('home')) {
 			doCascade(300);
 		}
 		$(galleryResize(gallery));
 		$(galleryResize(singleImage));
-		gallery.masonry('reload');
 	});
 
 	// Keyboard Shortcuts
@@ -198,9 +203,9 @@ $(document).ready(function () {
 	// Site Title Montage!
 	var siteTitle = $('#site-title a');
 	var timerId = 0;
-	function montageSelect(divcollection) {
+	var montageSelect = function (divcollection) {
 		siteTitle.mouseover(function(){
-			$(this).addClass('montage');
+			$(this).toggleClass('montage');
 			var i = 0;
 			timerId = setInterval(function(){
 					var divs = $(divcollection);
@@ -212,7 +217,7 @@ $(document).ready(function () {
 					siteTitle.css('background-image', 'url("' + bgImage + '")');
 				},70);
 		});
-	}
+	};
 
 	if ($('body').hasClass('single') && $('img').length > 1 ) {
 		montageSelect('.gallery-icon');
@@ -226,7 +231,7 @@ $(document).ready(function () {
 
 	siteTitle.mouseout(function(){
 		clearInterval(timerId);
-		$(this).removeClass('montage').css('background-image', '');
+		$(this).removeAttr('style').removeAttr('class');
 	});
 
 });
