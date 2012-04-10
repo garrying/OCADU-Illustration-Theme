@@ -166,13 +166,13 @@ $(document).ready(function () {
 		return this;
 	};
 
-	gallery.spin();
-
 	var progress = $('#progress');
 
-	if ($('body').is('.home, .archive')) {
+	if (progress.length > 0) {
 		progress.spin();
 	}
+
+	gallery.spin();
 
 	$(window).load(function () {
 		gallery.spin(false);
@@ -183,8 +183,8 @@ $(document).ready(function () {
 		if ($('body').hasClass('home')) {
 			doCascade(300);
 		}
-		$(galleryResize(gallery));
-		$(galleryResize(singleImage));
+		galleryResize(gallery);
+		galleryResize(singleImage);
 	});
 
 	// Keyboard Shortcuts

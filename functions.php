@@ -32,7 +32,7 @@ if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
 			wp_deregister_script( 'jquery' );
-			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', '','',true);
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
 			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/modernizr-2.5.3.min.js', '','',false);
 			wp_enqueue_script('modernizer');

@@ -618,11 +618,13 @@ header[role=banner] {
 		position:static;
 	}
 	img {
-		width:99%;
+		max-width:99%;
 		height:auto;
+		margin:10px auto;
 		display:block;
-		@media only screen and (max-width: 768px) { 
-			width:100%;
+		@media only screen and (max-width: 768px) {
+			margin-top:20px;
+			max-width:100%;
 		}
 	}
 }
