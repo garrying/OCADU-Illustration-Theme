@@ -3,6 +3,7 @@ $(document).ready(function () {
 	'use strict';
 
 	// Year Select
+
 	var yearSelect = $('#year-select');
 	var selected = yearSelect.find('.selected').text();
 	var selectMenu = $('#illu-jumpmenu');
@@ -232,6 +233,14 @@ $(document).ready(function () {
 	siteTitle.mouseout(function(){
 		clearInterval(timerId);
 		$(this).removeAttr('style').removeAttr('class');
+	});
+
+	// Intro Block
+
+	var messageBlock = $('#intro');
+
+	messageBlock.on('click', function(){
+		$(this).fadeOut('fast');
 	});
 
 });

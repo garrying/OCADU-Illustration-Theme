@@ -638,6 +638,7 @@ header[role=banner] {
 	article {
 		float:left;
 		width:20%;
+		position:relative;
 		margin:10px auto 10px auto;
 		@media only screen and (max-width: 767px) { 
 			width:50%;
@@ -659,21 +660,19 @@ header[role=banner] {
 			-o-transition: opacity 0.3s ease-in-out;  
 			transition: opacity 0.3s ease-in-out;
 			@include border-radius(50%);
-			opacity:0.9; 
+			opacity:0.9;
 		}
 		a {
 			text-decoration:none;
 		}
 		&:hover {
 			img {
+				box-shadow: 0 0 10px 0px $link_hover;
 				opacity:1;
 			}
 			h1 {
 				color:$link_hover;
 			}
-		}
-		&:active img {
-			box-shadow: 0 0 15px 2px $link_hover;
 		}
 	}
 
@@ -889,6 +888,25 @@ article.error404, article.not-found {
 			display:inline-block;
 			padding: 0 10px;
 		}
+	}
+}
+
+// Message 
+
+#intro {
+	position:fixed;
+	width:320px;
+	padding:20px;
+	z-index:999;
+	color:#fff;
+	bottom:0;
+	margin:0 10px;
+	background:transparentize($link_hover,0.1);
+	a {
+		color:#fff;
+	}
+	@media only screen and (max-width: 767px) { 
+		display:none;
 	}
 }
 
