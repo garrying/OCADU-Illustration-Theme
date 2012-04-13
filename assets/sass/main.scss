@@ -195,7 +195,7 @@ header[role=banner] {
 					-webkit-animation: headeranimate 1s infinite;
 					-webkit-animation-timing-function: linear;
 					-moz-animation-timing-function: linear;
-					background:url('../images/tightwave.png') #333;
+					background:url('../images/tightwave-black.png') #333;
 				}
 				&.montage {
 					-webkit-background-size: cover;
@@ -314,7 +314,7 @@ header[role=banner] {
 	#illu-jumpmenu {
 		position:absolute;
 		z-index:9999;
-		background: url('../images/tightwave.png') #222;
+		background: url('../images/tightwave-black.png') #222;
 		width:146px;
 		display:none;
 		left:0;
@@ -508,7 +508,7 @@ header[role=banner] {
 			-webkit-animation: headeranimate 1s infinite;
 			-webkit-animation-timing-function: linear;
 			-moz-animation-timing-function: linear;
-			background:url('../images/tightwave.png') #333;
+			background:url('../images/tightwave-black.png') #333;
 			a {
 				color:#fff;
 			}
@@ -816,7 +816,7 @@ footer {
 			-webkit-animation: headeranimate 1s infinite;
 			-webkit-animation-timing-function: linear;
 			-moz-animation-timing-function: linear;
-			background:url('../images/tightwave.png') rgba(0,0,0,0.8);
+			background:url('../images/tightwave.png') transparentize($link_hover,0.5);
 			#toggle {
 				color:#fff;
 				background:$link_hover;
@@ -901,7 +901,13 @@ article.error404, article.not-found {
 	color:#fff;
 	bottom:0;
 	margin:0 10px;
-	background:transparentize($link_hover,0.1);
+	animation: headeranimate 1s infinite;
+	-ms-animation: headeranimate 1s infinite;
+	-moz-animation: headeranimate 1s infinite;
+	-webkit-animation: headeranimate 1s infinite;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	background:url('../images/tightwave.png') transparentize($link_hover,0.5);
 	a {
 		color:#fff;
 	}
