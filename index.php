@@ -5,10 +5,10 @@
 		<?php if ( is_home() || is_front_page() ) : ?>
 			<div id="intro">
 				<p>
-					OCAD U Illustration is an evolving archive maintained by the Illustration Department at OCAD University featuring work from the graduating class of 2012</p>
+					OCAD U Illustration is an evolving archive maintained by the Illustration Department at OCAD University featuring work from the graduating class of 2012
 				</p>
 				<p>
-					Coinciding with the 97th annual OCAD U graduate exhibition May 5 to 8, 2012
+					Coinciding with the 97<sup>th</sup> annual OCAD U Graduate Exhibition May 3 to 6, 2012
 				</p>
 				<small><a href="/about" title="Link to a message from Paul Dallas">A message from Paul Dallas, Illustration Chair</a></small>
 			</div>
