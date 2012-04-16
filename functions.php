@@ -66,14 +66,8 @@ add_action('wp_enqueue_scripts', 'load_ocad_styles');
 
 function wp_body_class( $wp_classes, $extra_classes )
 {
-	// List of the only WP generated classes allowed
 	$whitelist = array( 'home', 'archive', 'page', 'single', 'category', 'tag', 'error404', 'logged-in', 'admin-bar', 'search' );
-
-	// Filter the body classes
-	// Whitelist result: (comment if you want to blacklist classes)
 	$wp_classes = array_intersect( $wp_classes, $whitelist );
-
-	// Add the extra classes back untouched
 	return array_merge( $wp_classes, (array) $extra_classes );
 }
 
@@ -104,8 +98,8 @@ endif;
 function my_gallery_style() {
     return "<div class='gallery'>";
 }
-add_filter( 'gallery_style', 'my_gallery_style', 99 );
 
+add_filter( 'gallery_style', 'my_gallery_style', 99 );
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
@@ -154,6 +148,7 @@ add_filter( 'nav_menu_css_class', 'x_nav_menu_css_class', 10, 3 );
 function nav_class_filter( $var ) {
 	return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
 }
+
 add_filter('nav_menu_css_class', 'nav_class_filter', 100, 1);
 
 /**
@@ -170,6 +165,7 @@ function cleanname($v) {
 function nav_id_filter( $id, $item ) {
 	return 'nav-'.cleanname($item->title);
 }
+
 add_filter( 'nav_menu_item_id', 'nav_id_filter', 10, 2 );
 
 /**
@@ -180,8 +176,9 @@ function SearchFilter($query) {
     if ($query->is_search) {
         $query->set('post_type',array('illustrator','event'));
     }
-return $query;
+	return $query;
 }
+
 add_filter('pre_get_posts','SearchFilter');
 
 /**
@@ -191,7 +188,12 @@ add_filter('pre_get_posts','SearchFilter');
 function new_excerpt_more($more) {
 	return '&hellip;';
 }
+
 add_filter('excerpt_more', 'new_excerpt_more');
+
+/**
+ * Get Social Image
+ */
 
 function get_socialimage() {
   global $post, $posts;
@@ -214,7 +216,9 @@ function get_socialimage() {
   return $socialimg;
 }
 
-// For truncating excerpt text in OpenGraph/G+ header
+/**
+ * For truncating excerpt text in OpenGraph/G+ header
+ */
 
 function ellipsis($text, $max=155, $append='...') {
 	if (strlen($text) <= $max) return $text;
@@ -223,7 +227,10 @@ function ellipsis($text, $max=155, $append='...') {
 	return preg_replace('/\w+$/','',$out).$append;
 }
 
-// facebook share
+/**
+ * Facebook share
+ */
+
 function facebook_connect() {
 	if (is_singular() && is_attachment() !== true ) {
 		echo "\n" . '<!-- facebook open graph -->' . "\n";
@@ -251,7 +258,10 @@ function facebook_connect() {
 	}
 }
 
-// google +1 meta info
+/**
+ * Google +1 meta info
+ */
+
 function google_header() {
 	if (is_singular()  && is_attachment() !== true) {
 		echo '<!-- google +1 tags -->' . "\n";
@@ -271,7 +281,10 @@ function google_header() {
 	}
 }
 
-// general description meta
+/**
+ * General description meta
+ */
+
 function plain_description() {
 	if (is_singular() && is_attachment() !== true) {
 		global $post;
@@ -282,13 +295,14 @@ function plain_description() {
 		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
 	}
 }
-	
-// add this in the header 
+
 add_action('wp_head', 'facebook_connect');
 add_action('wp_head', 'google_header');
 add_action('wp_head', 'plain_description');
 
-// hijack image titles for copyright stuff
+/**
+ * Hijack image titles for copyright alt
+ */
 
 function ocadu_gallery_filter( $attr ) {
 	global $post;
@@ -301,7 +315,7 @@ function ocadu_gallery_filter( $attr ) {
 		$attr['title'] = "Click to View"; 
 	}
 	return $attr; 
-} 
+}
 
 add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
