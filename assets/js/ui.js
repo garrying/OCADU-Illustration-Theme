@@ -21,6 +21,23 @@ $(document).ready(function () {
 		});
 	});
 
+	// Intro Block
+
+	var messageBlock = $('#intro');
+
+	messageBlock.on('click', function(){
+		$(this).fadeOut('fast').addClass('hidden');
+	});
+
+	var homeMessage = function () {
+		var y = $(window).scrollTop();
+		if (y > 100 || messageBlock.hasClass('hidden') !== false) {
+			messageBlock.fadeOut('fast');
+		} else {
+			messageBlock.fadeIn('fast');
+		}
+	}
+
 	// Sticky Illustrator Information
 
 	var stickyBlock = $('.sticky');
@@ -50,6 +67,7 @@ $(document).ready(function () {
 		if (didScroll) {
 			didScroll = false;
 			fixy();
+			homeMessage();
 		}
 	}, 40);
 
@@ -182,7 +200,7 @@ $(document).ready(function () {
 			gallery.masonry('reload');
 		});
 		if ($('body').hasClass('home')) {
-			doCascade(300);
+			doCascade(150);
 		}
 		galleryResize(gallery);
 		galleryResize(singleImage);
@@ -233,14 +251,6 @@ $(document).ready(function () {
 	siteTitle.mouseout(function(){
 		clearInterval(timerId);
 		$(this).removeAttr('style').removeAttr('class');
-	});
-
-	// Intro Block
-
-	var messageBlock = $('#intro');
-
-	messageBlock.on('click', function(){
-		$(this).fadeOut('fast');
 	});
 
 });
