@@ -30,6 +30,25 @@ body {
 	overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background:#fff;
+    border-left:1px solid #eee;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $body_text; 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: transparentize($body_text,0.7); 
+}
+
 h1,h2,h3,h4,h5,h6 {
 	font-size-adjust: 0.508;
 }
