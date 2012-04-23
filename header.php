@@ -12,20 +12,11 @@
 
 -->
 
-<!--[if IE 6]>
-<html id="ie6" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 7]>
-<html id="ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html id="ie8" <?php language_attributes(); ?>>
-<![endif]-->
 <!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?php
 	/*
@@ -44,8 +35,8 @@
 		echo " | $site_description";
 
 	?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 	wp_head();
 ?>
@@ -65,16 +56,19 @@
 				
 				<?php 
 					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-							// Selected menu state for attachments 
-							$terms = get_the_terms($post->post_parent, 'gradyear');
-							foreach ( $terms as $term ) { 
+					// Selected menu state for attachments 
+					if (is_attachment()) {
+						$terms = get_the_terms($post->post_parent, 'gradyear');
+						foreach ( $terms as $term ) { 
 							$selected_year = $term->name;
-							}
-							// Selected menu state for individual items
-							$terms = get_the_terms( $post->ID , 'gradyear' );
-					foreach ( $terms as $term ) {
-						$selected_year = $term->name;
 						}
+					} else if (is_single()) {
+						// Selected menu state for individual items
+						$terms = get_the_terms( $post->ID , 'gradyear' );
+						foreach ( $terms as $term ) {
+							$selected_year = $term->name;
+						}
+					}
 				?>
 
 					<div id="illustrator-select">
