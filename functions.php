@@ -198,7 +198,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 function get_socialimage() {
   global $post, $posts;
 
-  $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '', '' );
+  $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail', '' );
 
   if ( has_post_thumbnail($post->ID) ) {
     $socialimg = $src[0];
@@ -274,8 +274,8 @@ function google_header() {
 	}
 	if (is_home()) {
 		echo '<!-- google +1 tags -->' . "\n";
-		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'"/>' . "\n";
-		echo '<meta property="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
+		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
+		echo '<meta itemprop="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University">' . "\n";
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
@@ -318,5 +318,29 @@ function ocadu_gallery_filter( $attr ) {
 }
 
 add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
+
+/**
+ * Simplify post classes
+ */
+
+function simplify_post_class($classes) {
+	global $post;
+
+	foreach($classes as $id => $class)
+
+		if( (strpos($class, "tag-") !== false) 
+		|| (strpos($class, "format-") !== false)
+		|| (strpos($class, "type-") !== false) 
+		|| (strpos($class, "status-") !== false)
+		|| (strpos($class, "category-") !== false)
+		|| $class == "")
+		{
+			unset($classes[$id]);
+		}
+
+	return $classes;
+}
+
+add_filter('post_class', 'simplify_post_class');
 
 ?>
