@@ -45,6 +45,7 @@ if (!function_exists('load_my_scripts')) {
 		}
 	}
 }
+
 add_action('wp_enqueue_scripts', 'load_scripts');
 
 /**

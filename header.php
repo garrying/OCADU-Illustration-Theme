@@ -16,9 +16,7 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?php
-	/*
-	 * Print the <title> tag based on what is being viewed.
-	 */
+
 	global $page, $paged;
 
 	wp_title( '|', true, 'right' );
@@ -88,7 +86,6 @@
 	echo 
 		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>Back to ' . $term->name . ' index</span></a>';  
 ?>
-
 
 			<div class="page-search">
 
