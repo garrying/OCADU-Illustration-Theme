@@ -53,7 +53,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_ocad_styles() {
-	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.dev/17386.css');
+	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.com/17386.css');
 	wp_enqueue_style('fontdeck');
 	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
 	wp_enqueue_style('ocadustyles');
