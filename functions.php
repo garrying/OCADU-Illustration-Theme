@@ -235,6 +235,7 @@ function ellipsis($text, $max=155, $append='...') {
 function facebook_connect() {
 	if (is_singular() && is_attachment() !== true ) {
 		echo "\n" . '<!-- facebook open graph -->' . "\n";
+		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
 		global $post;
 		$the_excerpt = strip_tags($post->post_content);
 		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
@@ -247,6 +248,7 @@ function facebook_connect() {
 	}
 	if (is_home()) {
 		echo "\n" . '<!-- facebook open graph -->' . "\n";
+		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
 		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
