@@ -253,7 +253,7 @@ function facebook_connect() {
 		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
 		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
+		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012" />' . "\n";
 		echo '<meta property="og:type" content="website"/>' . "\n";
 		echo '<!-- end facebook open graph -->' . "\n";
 	}
@@ -276,7 +276,7 @@ function google_header() {
 	if (is_home()) {
 		echo '<!-- google +1 tags -->' . "\n";
 		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
-		echo '<meta itemprop="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University">' . "\n";
+		echo '<meta itemprop="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012">' . "\n";
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
@@ -293,7 +293,7 @@ function plain_description() {
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
 	}
 	if (is_home()) {
-		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University" />' . "\n";
+		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012" />' . "\n";
 	}
 }
 
