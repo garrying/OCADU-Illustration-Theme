@@ -36,7 +36,7 @@ $(document).ready(function () {
 		} else {
 			messageBlock.fadeIn('fast');
 		}
-	}
+	};
 
 	// Sticky Illustrator Information
 
@@ -165,6 +165,20 @@ $(document).ready(function () {
 		});
 	};
 
+	$.fn.randomize = function(childElem) {
+		return this.each(function() {
+		var $this = $(this);
+		var elems = $this.children(childElem);
+			elems.sort(function() { return (Math.round(Math.random())-0.5); });
+
+			$this.remove(childElem);
+
+			for (var i=0; i < elems.length; i++) {
+				$this.append(elems[i]);      
+			}
+		});
+	};
+
 	// Loader Spinner for images
 	$.fn.spin = function (opts) {
 		this.each(function () {
@@ -200,6 +214,7 @@ $(document).ready(function () {
 			gallery.masonry('reload');
 		});
 		if ($('body').hasClass('home')) {
+			$('#content').randomize('article');
 			doCascade(150);
 		}
 		galleryResize(gallery);
