@@ -928,7 +928,7 @@ article.error404, article.not-found {
 		color:#fff;
 	}
 	@media only screen and (max-width: 767px) { 
-		display:none;
+		display:none !important;
 	}
 }
 
