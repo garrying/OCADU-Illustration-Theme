@@ -169,7 +169,7 @@ $(document).ready(function () {
 		return this.each(function() {
 		var $this = $(this);
 		var elems = $this.children(childElem);
-			elems.sort(function() { return (Math.round(Math.random())-0.5); });
+			elems.sort(function() { return 0.5 - Math.random(); });
 
 			$this.remove(childElem);
 
