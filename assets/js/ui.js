@@ -165,19 +165,28 @@ $(document).ready(function () {
 		});
 	};
 
-	$.fn.randomize = function(childElem) {
-		return this.each(function() {
-		var $this = $(this);
-		var elems = $this.children(childElem);
-			elems.sort(function() { return 0.5 - Math.random(); });
+    $.fn.shuffle = function() {
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+           });
 
-			$this.remove(childElem);
+        this.each(function(i){
+            $(this).replaceWith($(shuffled[i]));
+        });
 
-			for (var i=0; i < elems.length; i++) {
-				$this.append(elems[i]);      
-			}
-		});
-	};
+        return $(shuffled);
+    };
+
+    if ($('body').hasClass('home')) {
+		$('#content article').shuffle();
+	}
 
 	// Loader Spinner for images
 	$.fn.spin = function (opts) {
@@ -214,7 +223,6 @@ $(document).ready(function () {
 			gallery.masonry('reload');
 		});
 		if ($('body').hasClass('home')) {
-			$('#content').randomize('article');
 			doCascade(150);
 		}
 		galleryResize(gallery);
