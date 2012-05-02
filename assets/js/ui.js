@@ -179,6 +179,10 @@ $(document).ready(function () {
 		});
 	};
 
+	if ($('body').hasClass('home')) {
+		$('#content').randomize('article');
+	}
+
 	// Loader Spinner for images
 	$.fn.spin = function (opts) {
 		this.each(function () {
@@ -214,7 +218,6 @@ $(document).ready(function () {
 			gallery.masonry('reload');
 		});
 		if ($('body').hasClass('home')) {
-			$('#content').randomize('article');
 			doCascade(150);
 		}
 		galleryResize(gallery);
