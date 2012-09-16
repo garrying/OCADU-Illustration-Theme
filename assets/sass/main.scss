@@ -539,6 +539,8 @@ header[role=banner] {
 		}
 		li {
 			font-size:13px;
+			height:30px;
+			overflow:hidden;
 			display:inline-block;
 			vertical-align:middle;
 			text-align:right;
@@ -813,11 +815,15 @@ footer {
 		font-size:1em;
 	}
 	#copyright {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 		position:fixed;
 		left:0;
 		bottom:0;
 		padding:10px 0;
 		width:100%;
+		height:56px;
 		margin-bottom:-56px;
 		color:#fff;
 		-webkit-transition: background-color 0.3s ease-in-out;  
