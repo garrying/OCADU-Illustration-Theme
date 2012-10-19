@@ -14,7 +14,13 @@
 				</div>
 
 			<?php if ( have_posts() ) : ?>
-				<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+
+				<?php if ( is_post_type_archive('event') ) : ?>
+					<?php query_posts($query_string . '&orderby=date&order=DESC');?>
+				<?php else : ?>
+					<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+				<?php endif; ?>
+
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
