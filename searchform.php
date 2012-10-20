@@ -1,4 +1,7 @@
-<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-        <input type="text" value="Looking For Something?" name="s" id="s" onfocus="if (this.value == 'Looking For Something?') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Looking For Something?';}" />
-        <input type="image" id="button" alt="Search" src="<?php bloginfo( 'template_url' ); ?>/assets/images/search.png" />
-</form>
+	<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<label for="s" class="assistive-text"><?php _e( 'Search' ); ?></label>
+		<input type="text" class="field" name="s" id="s" placeholder="<?php esc_attr_e( 'Looking for Someone?' ); ?>" required />
+	</form>
+	<div id="search-tip">
+		Press Enter When You're Ready
+	</div>

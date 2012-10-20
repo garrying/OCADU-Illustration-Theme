@@ -1,30 +1,51 @@
 <?php get_header(); ?>
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-<div id="container">
 
-	<div id="year-archive" class='grid-small'>
-	
-	<h1 class="year-title post"><?php echo $term->name; ?></h1>
-		
-	<?php if (have_posts()) : ?>
-		
-		<?php query_posts($query_string . '&orderby=title&order=ASC&posts_per_page=-1 ');?>
-		
-	  <?php while (have_posts()) : the_post(); ?>
+<h1 id="page-title" class="sticky">
+<?php if ($term->name == null)
+		wp_title("");
+	else
+		echo $term->name;
+ ?>
+</h1>
+			
+			<div id="content" role="main">
+				<div id="progress">
+				</div>
 
-      <div class="post">
-         <div class="thumbnail">
-             <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-                 <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-                 <?php the_post_thumbnail('thumbnail', array('alt' => 'Thumbnail of '.get_the_title().'', 'title' => ''.get_the_title().'' )); ?>
-             </a>
-         </div>
-      </div><!-- .post -->
+			<?php if ( have_posts() ) : ?>
 
-	  <?php endwhile; ?>
-	<?php endif; ?>
-	</div>
+				<?php if ( is_post_type_archive('event') ) : ?>
+					<?php query_posts($query_string . '&orderby=date&order=DESC');?>
+				<?php else : ?>
+					<?php query_posts($query_string . '&orderby=title&order=ASC');?>
+				<?php endif; ?>
 
-</div> <!-- #container -->
+				<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
+
+					<?php
+						get_template_part( 'content', get_post_format() );
+					?>
+
+				<?php endwhile; ?>
+
+				<?php ocadillu_content_nav( 'nav-below' ); ?>
+
+			<?php else : ?>
+
+				<article class="post no-results not-found">
+					<header class="entry-header">
+						<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
+					</header><!-- .entry-header -->
+
+					<div class="entry-content">
+						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.' ); ?></p>
+					</div><!-- .entry-content -->
+				</article><!-- #post-0 -->
+
+			<?php endif; ?>
+
+			</div><!-- #content -->
 
 <?php get_footer(); ?>

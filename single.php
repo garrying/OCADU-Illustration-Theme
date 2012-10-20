@@ -1,18 +1,13 @@
 <?php get_header(); ?>
-<div id="container">
-	
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-	<h1><?php the_title(); ?></h1>
+	<div id="content" role="main">
 
-	<?php the_content('Continue reading &rarr;'); ?>
-        
-	<?php endwhile; else: ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-	<p>Sorry, no posts matched your criteria.</p>
+			<?php get_template_part( 'content', 'single' ); ?>
 
-	<?php endif; ?>
+		<?php endwhile; // end of the loop. ?>
 
-</div> <!-- #container -->
+	</div><!-- #content -->
 
 <?php get_footer(); ?>

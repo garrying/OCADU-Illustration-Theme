@@ -1,56 +1,41 @@
 <?php get_header(); ?>
+<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 
-<div id="container">
-	
-	<div id="search-results" class="grid-large">
-		
-	<?php if (have_posts()) : ?>
-    
-<div class="post" id="search-form">
-	    <h1><?php printf( __( 'Search Results for %s' ), '<span class="term">' . get_search_query() . '</span>' ); ?></h1>
-   
-	    <div class="excerpt">
-	    	<?php get_search_form(); ?>
-	    </div>
-</div>
-		<?php while (have_posts()) : the_post(); ?>
+<h1 id="page-title" class="sticky">
+<?php if ($term->name == null)
+		wp_title("");
+	else
+		echo $term->name;
+ ?>
+</h1>
+			
+		<div id="content" role="main">
 
-      <div class="post">
-              <div class="thumbnail">
-                  <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-                      <h2 id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-                      <?php the_post_thumbnail('medium'); ?>
-                  </a>
-              </div>
-      </div><!-- .post -->
+		<?php if ( have_posts() ) : ?>
+			<?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
+			<?php /* Start the Loop */ ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
+				<?php
+					get_template_part( 'content', get_post_format() );
+				?>
 
 			<?php endwhile; ?>
-    
 
-	<?php else : ?>
-               
-	   <div class="post" id="search-form">
-			    <h1><?php printf( __( 'Search Results for %s' ), '<span class="term">' . get_search_query() . '</span>' ); ?></h1>
+			<?php ocadillu_content_nav( 'nav-below' ); ?>
 
-			    <div class="excerpt">
-			    	<?php get_search_form(); ?>
-			    </div>
-		</div>
-    
-	    <div class="post" id="neg-search">
-	      <h2>Unfortunately nothing was found to match your search term.</h2>
-	    </div>
+		<?php else : ?>
 
-	<?php endif; ?>
+			<article class="post no-results not-found">
+				<div class="box"></div>
+				<header class="entry-header">
+					<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
+					<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.' ); ?></h2>
+				</header><!-- .entry-header -->
+			</article><!-- #post-0 -->
 
-  </div> <!-- search-results -->
+		<?php endif; ?>
 
-	<div class="navigation">
-	    <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-	    <div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-	</div>
-
-</div>
+		</div><!-- #content -->
 
 <?php get_footer(); ?>
