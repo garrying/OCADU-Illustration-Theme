@@ -32,9 +32,9 @@ if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
 			wp_deregister_script( 'jquery' );
-			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', '','',true);
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/modernizr-2.5.3.min.js', '','',false);
+			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/modernizr-2.6.2.min.js', '','',false);
 			wp_enqueue_script('modernizer');
 			wp_register_script('masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array('jquery'), '', true );
 			wp_enqueue_script('masonry');
@@ -53,7 +53,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_ocad_styles() {
-	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.com/17386.css');
+	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.dev/17386.css');
 	wp_enqueue_style('fontdeck');
 	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
 	wp_enqueue_style('ocadustyles');
