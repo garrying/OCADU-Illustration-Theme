@@ -46,7 +46,7 @@
 			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
 			
 			 <nav id="year-select">
-				<h3 class="assistive-text"><?php _e( 'Year select' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
 				
 				<?php 
 					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
@@ -56,7 +56,7 @@
 						foreach ( $terms as $term ) { 
 							$selected_year = $term->name;
 						}
-					} else if (is_single()) {
+					} elseif (is_singular('illustrator')) {
 						// Selected menu state for individual items
 						$terms = get_the_terms( $post->ID , 'gradyear' );
 						foreach ( $terms as $term ) {
@@ -65,17 +65,24 @@
 					}
 				?>
 
-					<div id="illustrator-select">
-						<div id="illu-indicator">Graduating Year</div>
-							<div id="illu-jumpmenu">
-								<a class="home" href="/" title="Back to Main Index">Current Year</a>
-								<?php foreach( $grad_year as $year ) : ?>
-								<a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'class="selected"' ?> title="View Work From <?php echo $year->name ?>" >
-									<?php echo $year->name; ?>
-								</a>
-								<?php endforeach ?>
-							</div>
-					</div>
+				<div id="illustrator-select">
+					<div id="illu-indicator">Graduating Year</div>
+						<div id="illu-jumpmenu">
+							<a class="home" href="/" title="Back to Main Index">Current Year</a>
+							<?php foreach( $grad_year as $year ) {
+								if ( is_singular('illustrator') && $selected_year == $year->name ) {
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+								} elseif ( is_attachment() && $selected_year == $year->name ) {
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+								} elseif ( isset($term) && $term == $year->name ) {
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+								} else {
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."'>".$year->name."</a>";
+								}
+							}
+							?>
+						</div>
+				</div>
 
 			</nav> <!-- #year-Select-->
 			
@@ -87,7 +94,7 @@
 			<div class="page-search">
 
 			<nav id="access" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
 
 				<?php wp_nav_menu( array( 
 					'container' =>false,

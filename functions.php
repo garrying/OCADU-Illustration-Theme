@@ -7,6 +7,12 @@
 add_theme_support( 'post-thumbnails' );
 
 /**
+ * Setting Content Width
+ */
+
+if ( ! isset( $content_width ) ) $content_width = 900;
+
+/**
  * Wordpress Default Header Cleanup
  */
 
@@ -94,7 +100,7 @@ function ocadillu_content_nav( $nav_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $nav_id; ?>">
-			<h3 class="assistive-text"><?php _e( 'Post navigation' ); ?></h3>
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'ocaduillustration' ); ?></h3>
 			<div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
 			<div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
 		</nav><!-- #nav-above -->
@@ -209,16 +215,11 @@ add_filter('excerpt_more', 'new_excerpt_more');
 function get_socialimage() {
   global $post, $posts;
 
-  $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail', '' );
-
-  if ( has_post_thumbnail($post->ID) ) {
+  if ( is_single() && has_post_thumbnail($post->ID) ) {
+  	$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail', '' );
     $socialimg = $src[0];
   } else {
     $socialimg = '';
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    if (array_key_exists(1, $matches))
-      if (array_key_exists(0, $matches[1]))
-        $socialimg = $matches [1] [0];
   }
 
   if(empty($socialimg))

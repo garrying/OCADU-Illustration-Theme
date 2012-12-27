@@ -37,7 +37,7 @@
 		<footer class="nav-single">
 			
 			<nav id="nav-single">
-				<h3 class="assistive-text"><?php _e( 'Previous and Next Illustrator' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Previous and Next Illustrator', 'ocaduillustration' ); ?></h3>
 				<ul>
 				<?php if ( get_post_type() == 'event' ) : ?>
 				<li class="nav-previous"><?php next_post_link_plus( array('order_by' => 'post_date', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>

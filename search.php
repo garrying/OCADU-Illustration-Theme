@@ -2,11 +2,11 @@
 
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 
-<h1 id="page-title" class="sticky">
-<?php if ($term->name == null)
-		wp_title("");
-	else
+<h1 id="page-title">
+<?php if (isset($term->name))
 		echo $term->name;
+	else
+		wp_title("");
 ?>
 </h1>
 
@@ -26,8 +26,8 @@
 		<article class="post no-results not-found">
 			<div class="box"></div>
 			<header class="entry-header">
-				<h1 class="entry-title"><?php _e( 'Nothing Found' ); ?></h1>
-				<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.' ); ?></h2>
+				<h1 class="entry-title"><?php _e( 'Nothing Found', 'ocaduillustration' ); ?></h1>
+				<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.', 'ocaduillustration' ); ?></h2>
 			</header><!-- .entry-header -->
 		</article><!-- #post-0 -->
 

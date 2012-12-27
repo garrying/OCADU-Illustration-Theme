@@ -2,7 +2,7 @@
 
 <article class="error404">
 	<header class="entry-header">
-		<h1 class="entry-title"><?php _e( 'Page Not Found. Sorry!' ); ?></h1>
+		<h1 class="entry-title"><?php _e( 'Page Not Found. Sorry!', 'ocaduillustration' ); ?></h1>
 		<h2>The page you requested could not be found. It might have been moved or renamed.</h2>
 		<h3>Let us know if you're still having trouble. Visit the <a href="/" title="Take Me Back Home">homepage</a>.</h3>
 	</header>

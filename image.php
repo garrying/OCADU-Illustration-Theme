@@ -75,10 +75,10 @@
 						<footer class="nav-single image">
 							
 							<nav id="nav-single">							
-								<h3 class="assistive-text"><?php _e( 'Image navigation' ); ?></h3>
+								<h3 class="assistive-text"><?php _e( 'Image navigation', 'ocaduillustration' ); ?></h3>
 								<ul>
-								<li class="nav-previous"><?php previous_image_link( false, __( 'Previous' ) ); ?></li>
-								<li class="nav-next"><?php next_image_link( false, __( 'Next' ) ); ?></li>
+								<li class="nav-previous"><?php previous_image_link( false, __( 'Previous', 'ocaduillustration' ) ); ?></li>
+								<li class="nav-next"><?php next_image_link( false, __( 'Next', 'ocaduillustration' ) ); ?></li>
 								</ul>
 							</nav><!-- #nav-single -->
 							
