@@ -71,13 +71,13 @@
 							<a class="home" href="/" title="Back to Main Index">Current Year</a>
 							<?php foreach( $grad_year as $year ) {
 								if ( is_singular('illustrator') && $selected_year == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
 								} elseif ( is_attachment() && $selected_year == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
 								} elseif ( isset($term) && $term == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
 								} else {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."'title='View Work From ".$year->name."'>".$year->name."</a>";
+									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>".$year->name."</a>";
 								}
 							}
 							?>

@@ -26,7 +26,7 @@
 		$next_attachment_url = wp_get_attachment_url();
 	}
 ?>
-						<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="Click for Next Illustration" rel="attachment"><?php
+						<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="Click for Next Illustration" rel="next"><?php
 						echo wp_get_attachment_image( $post->ID, 'large'); // filterable image width with 1024px limit for image height.
 									?></a>
 
