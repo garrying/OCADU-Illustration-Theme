@@ -42,6 +42,8 @@
 				<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup> 
+
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
 			
 			 <nav id="year-select">
 				<h3 class="assistive-text"><?php _e( 'Year select' ); ?></h3>
@@ -69,9 +71,7 @@
 								<a class="home" href="/" title="Back to Main Index">Current Year</a>
 								<?php foreach( $grad_year as $year ) : ?>
 								<a href="<?php echo get_term_link( $year->slug, 'gradyear' ); ?>" <?php if ($term == $year->name || $selected_year == $year->name) echo 'class="selected"' ?> title="View Work From <?php echo $year->name ?>" >
-
-								<?php echo $year->name; ?>
-
+									<?php echo $year->name; ?>
 								</a>
 								<?php endforeach ?>
 							</div>
@@ -97,10 +97,10 @@
 								
 			</nav><!-- #access -->
 			<div id="search" role="search">
-			  <?php get_search_form(); ?>
+				<?php get_search_form(); ?>
 			</div><!-- #search -->
 			</div><!-- .page-search -->
 			</div><!-- .container -->
 	</header><!-- #branding -->
 
-	<div id="main" class="container">
+<div id="content" role="main">

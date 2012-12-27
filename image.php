@@ -1,6 +1,4 @@
 <?php get_header(); ?>
-
-			<div id="content" role="main">
 				
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -40,24 +38,23 @@
 							<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="View All Work" >
 								<h1 class="entry-title"><?php echo get_the_title( $post->post_parent ); ?></h1>
 							</a>
-							<hr />
 						</header><!-- .entry-header -->
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_sites', true) ) : ?>
-									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></div><hr />
+									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites', true) ?></a></div>
 
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_sites_2', true) ) : ?>
-									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites_2', true) ?></a></div><hr />
+									<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_sites_2', true) ?></a></div>
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_email', true) ) : ?>
-								 <div class="info email"><a title="Email Illustrator" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></div><hr />
+								 <div class="info email"><a title="Email Illustrator" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->post_parent, 'illu_email', true) ?></a></div>
 								<?php endif; ?>
 
 								<?php if ( get_post_meta($post->post_parent, 'illu_phone', true) ) : ?>
-								 <div class="info phone"><?php echo get_post_meta($post->post_parent, 'illu_phone', true) ?></div>	<hr />
+								 <div class="info phone"><?php echo get_post_meta($post->post_parent, 'illu_phone', true) ?></div>
 								<?php endif; ?>
 
 
@@ -93,17 +90,11 @@
 
 						<?php endif; ?>
 
-						<span class="vertical-rule-main"></span>
-						<span class="vertical-rule-corner-top"></span>
-						<span class="vertical-rule-corner-bottom"></span>
-
 						</aside><!-- aside -->
 						</div>
 
 					</article><!-- <?php the_title(); ?> -->
 
 				<?php endwhile; // end of the loop. ?>
-
-			</div><!-- #content -->
 
 <?php get_footer(); ?>

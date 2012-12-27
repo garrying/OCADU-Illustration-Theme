@@ -20,9 +20,23 @@ function ocad_head_cleanup() {
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );             // start link
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts
 	remove_action( 'wp_head', 'wp_generator' );                           // WP version
+	// remove WP version from css
+  	add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 );
+	// remove Wp version from scripts
+	add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 );
 }
 
 add_action('init', 'ocad_head_cleanup');
+
+/**
+ * Remove WP version from scripts
+ */
+
+function remove_wp_ver_css_js( $src ) {
+    if ( strpos( $src, 'ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
 
 /**
  * Load some scripts please.
@@ -38,9 +52,7 @@ if (!function_exists('load_my_scripts')) {
 			wp_enqueue_script('modernizer');
 			wp_register_script('masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array('jquery'), '', true );
 			wp_enqueue_script('masonry');
-			wp_register_script('spin', get_template_directory_uri().'/assets/js/spin.min.js', array('jquery'), '', true );
-			wp_enqueue_script('spin');
-			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.js', array('jquery'), '', true );
+			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.src.js', array('jquery'), '', true );
 			wp_enqueue_script('myscript');
 		}
 	}
@@ -53,8 +65,6 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_ocad_styles() {
-	wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.dev/17386.css');
-	wp_enqueue_style('fontdeck');
 	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
 	wp_enqueue_style('ocadustyles');
 }

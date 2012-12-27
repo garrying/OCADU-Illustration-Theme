@@ -10,8 +10,6 @@
 </h1>
 			
 			<div id="content" role="main">
-				<div id="progress">
-				</div>
 
 			<?php if ( have_posts() ) : ?>
 

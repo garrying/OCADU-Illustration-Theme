@@ -3,27 +3,25 @@
 		<aside id="illustrator-meta" role="complementary" class="sticky">
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-			<hr />
+
 		</header><!-- .entry-header -->
 			
 				<?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-					<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div><hr />
-					
+				<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div>
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-					<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div><hr />
+				<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div>
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-				 <div class="info email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></div><hr />
+				<div class="info email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></div>
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-				 <div class="info phone"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div><hr />
+				<div class="info phone"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div>
 				<?php endif; ?>
-			
-		
+
 				<?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
 			
 		<?php $title_illu = get_post_meta($post->ID, 'illu_title', true) ?>
@@ -53,10 +51,6 @@
 			</nav><!-- #nav-single -->
 
 		</footer><!-- .nav-single -->
-		
-		<span class="vertical-rule-main"></span>
-		<span class="vertical-rule-corner-top"></span>
-		<span class="vertical-rule-corner-bottom"></span>
 		
 		</aside><!-- aside -->
 		</div>
