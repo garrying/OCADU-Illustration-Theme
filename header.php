@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 
 <!--
 
@@ -36,17 +37,16 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header id="branding" role="banner">
+	<header id="app-head" role="banner">
 		<div class="container">
-			<hgroup>
+			<div class="logo">
 				<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</hgroup> 
+			</div>
 
-			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<a class="visually-hidden" href="#content" title="Skip to content">Skip to content</a>
 			
 			 <nav id="year-select">
-				<h3 class="assistive-text"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
+				<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
 				
 				<?php 
 					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
@@ -66,9 +66,7 @@
 				?>
 
 				<div id="illustrator-select">
-					<div id="illu-indicator">Graduating Year</div>
 						<div id="illu-jumpmenu">
-							<a class="home" href="/" title="Back to Main Index">Current Year</a>
 							<?php foreach( $grad_year as $year ) {
 								if ( is_singular('illustrator') && $selected_year == $year->name ) {
 									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
@@ -90,11 +88,9 @@
 	echo 
 		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>Back to ' . $term->name . ' index</span></a>';  
 ?>
-
-			<div class="page-search">
-
+		<div class="nav-secondary">
 			<nav id="access" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
+				<h3 class="visually-hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
 
 				<?php wp_nav_menu( array( 
 					'container' =>false,
@@ -103,11 +99,12 @@
 					); ?>
 								
 			</nav><!-- #access -->
+			
 			<div id="search" role="search">
 				<?php get_search_form(); ?>
 			</div><!-- #search -->
-			</div><!-- .page-search -->
+		</div>
 			</div><!-- .container -->
-	</header><!-- #branding -->
+	</header><!-- #app-head -->
 
 <div id="content" role="main">
