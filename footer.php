@@ -4,7 +4,7 @@
 		<div id="copyright">
 			<div class="container">
 			<section>
-			<p>Copyright &copy; <?php echo date("Y"); ?>, Respective Authors</p>
+			<p>&copy; <?php echo date("Y"); ?>, Respective Authors</p>
 			<p>Maintained by the Illustration Department at <a href="http://www.ocadu.ca" title="Link to OCAD University's website">OCAD University</a></p>		
 			</section>
 		</div>
