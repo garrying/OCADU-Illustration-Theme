@@ -1,6 +1,61 @@
 <?php
 
 /**
+ * Autocomplete Search Stuff
+ */
+
+function myprefix_autocomplete_init() {
+	// Register our jQuery UI style and our custom javascript file
+	wp_register_script( 'my_acsearch', get_template_directory_uri() . '/assets/js/myacsearch.js', array('jquery-ui-autocomplete'),null,true);
+	wp_localize_script( 'my_acsearch', 'MyAcSearch', array('url' => admin_url( 'admin-ajax.php' )));
+	// Function to fire whenever search form is displayed
+	add_action( 'get_search_form', 'myprefix_autocomplete_search_form' );
+	// Functions to deal with the AJAX request - one for logged in users, the other for non-logged in users.
+	add_action( 'wp_ajax_myprefix_autocompletesearch', 'myprefix_autocomplete_suggestions' );
+	add_action( 'wp_ajax_nopriv_myprefix_autocompletesearch', 'myprefix_autocomplete_suggestions' );
+}
+
+function myprefix_autocomplete_search_form(){
+	wp_enqueue_script( 'my_acsearch' );
+}
+
+function myprefix_autocomplete_suggestions(){
+	// Query for suggestions
+	$posts = get_posts( array(
+		's' =>$_REQUEST['term'],
+	) );
+	// Initialise suggestions array
+	$suggestions=array();
+
+
+	global $post;
+	foreach ($posts as $post): setup_postdata($post);
+		// Initialise suggestion array
+		$suggestion = array();
+		// $suggestion['label'] = esc_html($post->post_title);
+		$suggestion['link'] = get_permalink();
+		$suggestion['thumb'] = get_the_post_thumbnail($page->ID, 'thumbnail');
+		$suggestion['label'] = esc_html($post->post_title);
+
+		$year = get_the_terms( $post->ID, 'gradyear' );
+
+		foreach( $year as $years ) {
+			$suggestion['category'] = $years->name;
+		}
+
+		// Add suggestion to suggestions array
+		$suggestions[]= $suggestion;
+	endforeach;
+	// JSON encode and echo
+	$response = $_GET["callback"] . "(" . json_encode($suggestions) . ")";
+	echo $response;
+	// Don't forget to exit!
+	exit;
+}
+
+add_action( 'init', 'myprefix_autocomplete_init' );
+
+/**
  * Enable Featured Images
  */
 
@@ -52,7 +107,7 @@ if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
 			wp_deregister_script( 'jquery' );
-			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', '','',true);
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
 			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/modernizr-2.6.2.min.js', '','',false);
 			wp_enqueue_script('modernizer');
@@ -190,9 +245,9 @@ add_filter( 'nav_menu_item_id', 'nav_id_filter', 10, 2 );
  */
 
 function SearchFilter($query) {
-    if ($query->is_search) {
-        $query->set('post_type',array('illustrator','event'));
-    }
+	if ($query->is_search) {
+		$query->set('post_type',array('illustrator'));
+	}
 	return $query;
 }
 
@@ -275,7 +330,7 @@ function facebook_connect() {
  */
 
 function google_header() {
-	if (is_singular()  && is_attachment() !== true) {
+	if (is_singular() && is_attachment() !== true) {
 		echo '<!-- google +1 tags -->' . "\n";
 		global $post;
 		$the_excerpt = strip_tags($post->post_content);
@@ -308,9 +363,23 @@ function plain_description() {
 	}
 }
 
+/**
+ * Prefetch Illustrator Pages
+ */
+
+function html_prefetch() {
+	if (is_single() && is_attachment() !== true) {
+		$theUrl = next_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true, 'return' => 'href') );
+		echo '<!-- prefetch and render -->' . "\n";
+		echo '<link rel="prefetch" href="'.$theUrl.'">' . "\n";
+		echo '<link rel="prerender" href="'.$theUrl.'">' . "\n";
+	}
+}
+
 add_action('wp_head', 'facebook_connect');
 add_action('wp_head', 'google_header');
 add_action('wp_head', 'plain_description');
+add_action('wp_head', 'html_prefetch');
 
 /**
  * Hijack image titles for copyright alt
