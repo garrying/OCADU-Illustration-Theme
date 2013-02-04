@@ -1,8 +1,107 @@
 @import 'normalize';
-
 // Variables
 
 // Global
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+.visually-hidden, .ui-helper-hidden-accessible {
+	position: absolute;
+	left: -999em;
+}
+
+// Header
+
+.logo {
+	#site-title {
+		margin:0;
+		a {
+			padding: 0 1em;
+			display: block;
+		}
+	}
+}
+
+#app-head {
+	height: 3em;
+	border-bottom: 1px solid #efefef;
+	h1,h2,h3 {
+		font-size: 1em;
+	}
+}
+
+#year-select {
+	a {
+		display: inline-block;
+		height: 3em;
+		padding: 0 0.5em;
+	}
+}
+
+#menu-primary {
+	margin: 0;
+	padding: 0;
+	li {
+		display: inline-block;
+		margin: 0 1em;
+	}
+}
+
+.nav-secondary {
+	float:right;
+	a {
+		display: block;
+	}
+}
+
+#search {
+	input[type=text] {
+		height: 3em;
+		width: 15em;
+		border-top: none;
+		border-bottom: none;
+		border-right: none;
+		border-left: 1px solid #efefef;
+		padding: 0 0 0 1em;
+		background: transparent;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		&:hover, &:focus {
+			box-shadow: inset 0 0 0 5px #000;
+			outline:none;
+		}
+	}
+}
+
+#illustrator-select {
+	line-height: 3em;
+}
+
+#year-select, #access, #search, .logo, #search {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+// Autocomplete box
+
+.ui-autocomplete {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	a {
+		display: block;
+	}
+	.attachment-thumbnail {
+		width: 100px;
+		height: auto;
+	}
+	.ui-state-focus {
+		background: #ff0000;
+	}
+}
 
 // CSS3 Animation 
 
@@ -11,8 +110,6 @@
 // Selection 
 
 // Links
-
-// Header
 
 // Year Select
 
