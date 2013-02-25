@@ -1,15 +1,15 @@
 </div><!-- #content -->
 
-	<footer id="colophon" role="contentinfo">		
-		<div id="copyright">
-			<div class="container">
-			<section>
+<footer id="colophon" role="contentinfo">		
+	<div id="copyright">
+		<div class="container">
+		<section>
 			<p>&copy; <?php echo date("Y"); ?>, Respective Authors</p>
 			<p>Maintained by the Illustration Department at <a href="http://www.ocadu.ca" title="Link to OCAD University's website">OCAD University</a></p>		
-			</section>
-		</div>
-		</div>
-	</footer><!-- #colophon -->
+		</section>
+	</div>
+	</div>
+</footer><!-- #colophon -->
 
 <?php wp_footer(); ?>
 
