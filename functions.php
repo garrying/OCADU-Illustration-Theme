@@ -106,6 +106,8 @@ function remove_wp_ver_css_js( $src ) {
 if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
+			wp_register_style('fontdeck', 'http://f.fontdeck.com/s/css/uH5+KWQnibDTJRYggGJ9XZLTAgw/ocaduillustration.dev/17386.css');
+			wp_enqueue_style('fontdeck');
 			wp_deregister_script( 'jquery' );
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');

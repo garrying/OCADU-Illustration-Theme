@@ -8,7 +8,7 @@
 			<p>
 				Coinciding with the 97<sup>th</sup> annual OCAD U Graduate Exhibition. May 3 to 6, 2012
 			</p>
-			<small><a href="/about" title="Link to a message from Paul Dallas">A message from Paul Dallas, Illustration Chair</a></small>
+			<p><a href="/about" title="Link to a message from Paul Dallas">A message from Paul Dallas, Illustration Chair</a></p>
 		</div>
 	<?php endif; ?>
 

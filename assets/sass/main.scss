@@ -1,88 +1,182 @@
 @import 'normalize';
+
 // Variables
+
+$primary: #3EBB94;
+$border: 1px solid #efefef;
 
 // Global
 
+* { 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
+  font-family: "Apercu Regular", Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-size: 87.5%;
+  line-height: 137.5%;
+  color: #222;
 }
 
 .visually-hidden, .ui-helper-hidden-accessible {
-	position: absolute;
-	left: -999em;
+  position: absolute;
+  left: -999em;
+}
+
+.text-hidden {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+// Scrollbarz
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-left: 1px solid #eee;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #222; 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: transparentize(#222,0.7); 
+}
+
+// Selection 
+
+::-moz-selection { background: #222; color: #fff; text-shadow: none; }
+::selection { background: #222; color: #fff; text-shadow: none; }
+
+// Hyphenation 
+
+p {
+  -webkit-hyphenate-limit-after: 4;
+  -webkit-hyphenate-limit-before: 4;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 // Header
 
-.logo {
-	#site-title {
-		margin:0;
-		a {
-			padding: 0 1em;
-			display: block;
-		}
-	}
-}
-
 #app-head {
-	height: 3em;
-	border-bottom: 1px solid #efefef;
-	h1,h2,h3 {
-		font-size: 1em;
-	}
+  text-transform: uppercase;
+	border-bottom: $border;
+  min-height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  a {
+    color: #222;
+    text-decoration: none;
+  }
+  .skip {
+    &:focus {
+      position: static;
+      float: left;
+      padding: 0 10px;
+      border-right: $border;
+      display: block;
+    }
+  }
+  .logo {
+    width: 50px;
+    overflow: hidden;
+    float: left;    
+    a {
+      white-space: nowrap;
+      display: block;
+      height: 50px;
+      border-right: $border;
+      &:hover {
+        background: #222;
+      }
+    }
+  }
+  #search {
+    float:left;
+    vertical-align: bottom;
+    border-right: $border;
+    width: 40%;
+    #s {
+      width: 100%;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      color: #222;
+      padding: 0 10px;
+      border: none;
+      min-height: 49px;
+    }
+  }
+  .nav-secondary {
+    float:right;
+    #menu-primary {
+      margin:0;
+      padding:0;
+    }
+    li {
+      vertical-align: middle;
+      list-style: none;
+      float: left;
+    }
+    a {
+      display: block;
+      height: 50px;
+      padding: 0 10px;
+      border-left: $border;
+    }
+  }
+  #year-select {
+    display:none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    line-height: 2em;
+    height: 2em;
+    background: rgba(0,0,0,0.9);
+    a {
+      font-size: 75%;
+      text-align: center;
+      color: #fff;
+      float: left;
+      display: block;
+      width: 25%;
+    }
+  }
+  #year-widget {
+    height: 50px;
+    width: 50px;
+    float: left;
+    display: block;
+    background: #222;
+  }
 }
 
 #year-select {
-	a {
-		display: inline-block;
-		height: 3em;
-		padding: 0 0.5em;
-	}
-}
-
-#menu-primary {
-	margin: 0;
-	padding: 0;
-	li {
-		display: inline-block;
-		margin: 0 1em;
-	}
-}
-
-.nav-secondary {
-	float:right;
-	a {
-		display: block;
-	}
-}
-
-#search {
-	input[type=text] {
-		height: 3em;
-		width: 15em;
-		border-top: none;
-		border-bottom: none;
-		border-right: none;
-		border-left: 1px solid #efefef;
-		padding: 0 0 0 1em;
-		background: transparent;
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		&:hover, &:focus {
-			box-shadow: inset 0 0 0 5px #000;
-			outline:none;
-		}
-	}
-}
-
-#illustrator-select {
-	line-height: 3em;
-}
-
-#year-select, #access, #search, .logo, #search {
 	display: inline-block;
-	vertical-align: baseline;
 }
 
 // Autocomplete box
@@ -132,3 +226,14 @@ body {
 // Error 404
 
 // Footer
+
+#colophon {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  line-height: 50%;
+  font-size: 0.75em;
+  a {
+    color: $primary;
+  }
+}

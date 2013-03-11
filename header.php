@@ -36,34 +36,37 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header id="app-head" role="banner">
+	<header id="app-head" role="banner" class="clearfix">
 		<div class="container">
-			<div class="logo">
-				<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<div class="logo text-hidden">
+				<span id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
 			</div>
 
-			<a class="visually-hidden" href="#content" title="Skip to content">Skip to content</a>
-			
-			 <nav id="year-select">
-				<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
-				
-				<?php 
-					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-					// Selected menu state for attachments 
-					if (is_attachment()) {
-						$terms = get_the_terms($post->post_parent, 'gradyear');
-						foreach ( $terms as $term ) { 
-							$selected_year = $term->name;
-						}
-					} elseif (is_singular('illustrator')) {
-						// Selected menu state for individual items
-						$terms = get_the_terms( $post->ID , 'gradyear' );
-						foreach ( $terms as $term ) {
-							$selected_year = $term->name;
-						}
-					}
-				?>
+			<a class="visually-hidden skip" href="#content" title="Skip to content">Skip to content</a>
 
+
+			<div id="search" role="search">
+				<?php get_search_form(); ?>
+			</div><!-- #search -->
+			<div id="year-widget">
+			<?php 
+				$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
+				// Selected menu state for attachments 
+				if (is_attachment()) {
+					$terms = get_the_terms($post->post_parent, 'gradyear');
+					foreach ( $terms as $term ) { 
+						$selected_year = $term->name;
+					}
+				} elseif (is_singular('illustrator')) {
+					// Selected menu state for individual items
+					$terms = get_the_terms( $post->ID , 'gradyear' );
+					foreach ( $terms as $term ) {
+						$selected_year = $term->name;
+					}
+				}
+			?>
+			<nav id="year-select">
+				<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
 				<div id="illustrator-select">
 						<div id="illu-jumpmenu">
 							<?php foreach( $grad_year as $year ) {
@@ -80,13 +83,12 @@
 							?>
 						</div>
 				</div>
-
 			</nav> <!-- #year-Select-->
-			
-<?php if (is_singular('illustrator')) 
-	echo 
-		'<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>Back to ' . $term->name . ' index</span></a>';  
+			</div>
+			<?php if (is_singular('illustrator')) 
+	echo '<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . ' index</span></a>';  
 ?>
+			
 		<div class="nav-secondary">
 			<nav id="access" role="navigation">
 				<h3 class="visually-hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
@@ -98,10 +100,6 @@
 					); ?>
 								
 			</nav><!-- #access -->
-			
-			<div id="search" role="search">
-				<?php get_search_form(); ?>
-			</div><!-- #search -->
 		</div>
 			</div><!-- .container -->
 	</header><!-- #app-head -->
