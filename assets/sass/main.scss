@@ -1,11 +1,15 @@
 @import 'normalize';
 
+// Webink Font Import
+
+@import url("http://fnt.webink.com/wfs/webink.css/?project=8FDD8395-663F-499F-9A36-C8E7C6B3CDAE&fonts=BF6E34AD-813B-1B6B-449A-38F4A417DE49:f=Executive-Regular,06DF7380-FF3E-3BE8-59D0-E24986CA63CD:f=Executive-Medium,B938B391-BE8A-4F4A-42F3-D707D8F6EAA3:f=Executive-Light,6AADE4ED-2FC6-C1F3-C6AB-C518D2A37A6B:f=Executive-Thin,AFACCE17-5C0F-7C3C-CF59-DFC1523A0631:f=Executive-RegularIta,CFA46947-638C-0F15-A271-A897771BB7AA:f=Executive-Bold");
+
 // Variables
 
 $primary: #3EBB94;
 $border: 1px solid #efefef;
 
-// Global
+// Global Box Sizing
 
 * { 
   -moz-box-sizing: border-box;
@@ -13,12 +17,18 @@ $border: 1px solid #efefef;
   box-sizing: border-box;
 }
 
+// Global Declarations
+
 body {
-  font-family: "Apercu Regular", Helvetica, Arial, sans-serif;
-  text-rendering: optimizeLegibility;
+  font-family: "Executive-Regular", Helvetica, Arial, sans-serif;
+  -moz-font-feature-settings:"calt=1, liga=1, clig=1, kern=1";
+  -moz-font-feature-settings:"calt" 1, "liga" 1, "clig" 1, "kern" 1;
+  -ms-font-feature-settings:"calt", "liga", "clig", "kern";
+  -o-font-feature-settings:"calt", "liga", "clig", "kern";
+  -webkit-font-feature-settings:"calt", "liga", "clig", "kern";
+  font-feature-settings:"calt", "liga", "clig", "kern";
+  text-rendering: optimizeLegibility; 
   -webkit-font-smoothing: antialiased;
-  font-size: 87.5%;
-  line-height: 137.5%;
   color: #222;
 }
 
@@ -35,8 +45,8 @@ body {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    display: table;
 }
 
 .clearfix:after {
@@ -84,10 +94,11 @@ p {
 #app-head {
   text-transform: uppercase;
 	border-bottom: $border;
-  min-height: 50px;
-  line-height: 50px;
-  font-weight: bold;
+  min-height: 44px;
+  line-height: 44px;
   letter-spacing: 1px;
+  padding: 0 7%;
+  position: relative;
   a {
     color: #222;
     text-decoration: none;
@@ -102,14 +113,25 @@ p {
     }
   }
   .logo {
-    width: 50px;
+    width: 44px;
+    height: 44px;
     overflow: hidden;
-    float: left;    
+    float: left;
+    font-weight: bold;
+    border-right: $border;
+    text-align: center;
+    span {
+      display: block;
+      -webkit-transform: rotate(-90deg); 
+      -moz-transform: rotate(-90deg); 
+      -ms-transform: rotate(-90deg); 
+      -o-transform: rotate(-90deg); 
+      transform: rotate(-90deg); 
+    } 
     a {
       white-space: nowrap;
       display: block;
-      height: 50px;
-      border-right: $border;
+      height: 44px;
       &:hover {
         background: #222;
       }
@@ -122,12 +144,14 @@ p {
     width: 40%;
     #s {
       width: 100%;
+      letter-spacing: 0;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       color: #222;
       padding: 0 10px;
       border: none;
-      min-height: 49px;
+      min-height: 39px;
+      outline: none;
     }
   }
   .nav-secondary {
@@ -143,15 +167,24 @@ p {
     }
     a {
       display: block;
-      height: 50px;
+      height: 44px;
       padding: 0 10px;
       border-left: $border;
     }
   }
+  #info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center; 
+    display: block;
+    width: 44px;
+    font-size: 2em;
+  }
   #year-select {
     display:none;
     position: absolute;
-    top: 50px;
+    top: 44px;
     left: 0;
     width: 100%;
     line-height: 2em;
@@ -167,11 +200,11 @@ p {
     }
   }
   #year-widget {
-    height: 50px;
+    height: 44px;
     width: 50px;
     float: left;
     display: block;
-    background: #222;
+    border-right: $border;
   }
 }
 
@@ -228,12 +261,12 @@ p {
 // Footer
 
 #colophon {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  line-height: 50%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 7%;
   font-size: 0.75em;
-  a {
-    color: $primary;
+  p {
+    margin: 0;
   }
 }

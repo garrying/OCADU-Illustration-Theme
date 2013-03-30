@@ -38,12 +38,11 @@
 <body <?php body_class(); ?>>
 	<header id="app-head" role="banner" class="clearfix">
 		<div class="container">
-			<div class="logo text-hidden">
-				<span id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
+			<div class="logo">
+				<span id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">2013</a></span>
 			</div>
 
 			<a class="visually-hidden skip" href="#content" title="Skip to content">Skip to content</a>
-
 
 			<div id="search" role="search">
 				<?php get_search_form(); ?>
@@ -101,7 +100,16 @@
 								
 			</nav><!-- #access -->
 		</div>
-			</div><!-- .container -->
+		<a href="#" id="info">✌</a>
+
+		<div id="colophon" role="contentinfo">
+			<section>
+				<p>&copy; <?php echo date("Y"); ?>, Respective Authors ‡ Maintained by the Illustration Department at <a href="http://www.ocadu.ca" title="Link to OCAD University's website">OCAD University</a></p>
+			</section>
+		</div><!-- #colophon -->
+
+	</div><!-- .container -->
 	</header><!-- #app-head -->
+
 
 <div id="content" role="main">
