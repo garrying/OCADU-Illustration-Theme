@@ -1,0 +1,14 @@
+@mixin filter( $var ) {
+	-webkit-filter: $var;
+	-moz-filter: $var;
+	-ms-filter: $var;
+	-o-filter: $var;
+	filter: $var;
+}
+
+@mixin transition( $var, $timing, $easing ) {
+	-webkit-transition: $var $timing $easing;
+	-moz-transition: $var $timing $easing;
+	-o-transition: $var $timing $easing;
+	transition: $var $timing $easing;
+}

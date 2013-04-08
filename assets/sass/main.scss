@@ -1,4 +1,5 @@
 @import 'normalize';
+@import 'mixins';
 
 // Webink Font Import
 
@@ -53,6 +54,20 @@ body {
     clear: both;
 }
 
+h1, h2 {
+  font-family: "Executive-Bold";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// class for truncating long text
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // Scrollbarz
 
 ::-webkit-scrollbar {
@@ -92,15 +107,15 @@ p {
 // Header
 
 #app-head {
+  font-family: "Executive-Bold";
   text-transform: uppercase;
-	border-bottom: $border;
-  min-height: 44px;
   line-height: 44px;
+  font-size: 0.75em;
   letter-spacing: 1px;
   padding: 0 7%;
   position: relative;
   a {
-    color: #222;
+    color: #555;
     text-decoration: none;
   }
   .skip {
@@ -113,25 +128,18 @@ p {
     }
   }
   .logo {
-    width: 44px;
-    height: 44px;
-    overflow: hidden;
     float: left;
     font-weight: bold;
     border-right: $border;
     text-align: center;
-    span {
-      display: block;
-      -webkit-transform: rotate(-90deg); 
-      -moz-transform: rotate(-90deg); 
-      -ms-transform: rotate(-90deg); 
-      -o-transform: rotate(-90deg); 
-      transform: rotate(-90deg); 
-    } 
     a {
+      width: 44px;
+      height: 44px;
+      overflow: hidden;
       white-space: nowrap;
       display: block;
-      height: 44px;
+      text-indent: 100%;
+      background: url('../images/home.gif') no-repeat center center;
       &:hover {
         background: #222;
       }
@@ -144,14 +152,15 @@ p {
     width: 40%;
     #s {
       width: 100%;
-      letter-spacing: 0;
+      letter-spacing: 1px;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       color: #222;
-      padding: 0 10px;
+      padding: 0 10px 0 10px;
       border: none;
-      min-height: 39px;
+      min-height: 44px;
       outline: none;
+      text-transform: uppercase;
     }
   }
   .nav-secondary {
@@ -182,21 +191,49 @@ p {
     font-size: 2em;
   }
   #year-select {
-    display:none;
     position: absolute;
     top: 44px;
     left: 0;
     width: 100%;
     line-height: 2em;
     height: 2em;
-    background: rgba(0,0,0,0.9);
+    z-index: 9;
     a {
-      font-size: 75%;
+      font-size: 85%;
       text-align: center;
       color: #fff;
       float: left;
       display: block;
-      width: 25%;
+      width: 20%;
+      background-color: rgba(0,0,0,0.8);
+      background-size: 30px 30px;
+      -webkit-transition: background 0.25s ease; 
+      -moz-transition: background 0.25s ease; 
+      -o-transition: background 0.25s ease; 
+      transition: background 0.25s ease; 
+      &.selected, &:hover {
+        background-image: linear-gradient(
+          45deg, 
+          rgba(salmon, 0.3)  25%, 
+          transparent       25%, 
+          transparent       50%, 
+          rgba(salmon, 0.3)  50%, 
+          rgba(salmon, 0.3)  75%, 
+          transparent       75%, 
+          transparent
+        );  
+        background-color: rgba(salmon,0.6);
+        -webkit-animation: barberpole 0.5s linear 4;
+        -moz-animation: barberpole 0.5s linear 4;
+        -o-animation: barberpole 0.5s linear 4;
+        animation: barberpole 0.5s linear 4;
+      }
+      &.selected:hover {
+        -webkit-animation: barberpole 0.5s linear infinite;
+        -moz-animation: barberpole 0.5s linear infinite;
+        -o-animation: barberpole 0.5s linear infinite;
+        animation: barberpole 0.5s linear infinite;
+      }
     }
   }
   #year-widget {
@@ -218,15 +255,55 @@ p {
 	position: absolute;
 	margin: 0;
 	padding: 0;
-	a {
-		display: block;
-	}
+  background: rgba(0,0,0,0.8);
+  z-index: 999 !important;
+  list-style: none;
+  font-size: 0.75em;
+  color: #fff;
+  letter-spacing: 1px;
+  a {
+    display: inline-block;
+    color: white;
+    font-size: 1.2em;
+    text-indent: 10px;
+    width: 85%;
+    min-height: inherit;
+    -webkit-transition: text-indent 150ms ease-in-out; 
+    -moz-transition: text-indent 150ms ease-in-out; 
+    -o-transition: text-indent 150ms ease-in-out; 
+    transition: text-indent 150ms ease-in-out; 
+  }
+  li {
+    display: block;
+    width: 100%;
+    @extend .clearfix;
+    &.ui-autocomplete-category {
+      font-family: "Executive-Bold";
+      background: rgba(black, 0.8);
+      color: #fff;
+      text-align: center;
+      font-size: 85%;
+      line-height: 24px;
+    }
+    &.ui-menu-item {
+      font-family: "Executive-Bold";
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
 	.attachment-thumbnail {
-		width: 100px;
+		width: 15%;
 		height: auto;
+    display: inline-block;
+    vertical-align: middle;
 	}
+  .ui-autocomplete-noresults {
+    display: block;
+    font-size: 1em;
+    text-align: center;
+  }
 	.ui-state-focus {
-		background: #ff0000;
+    text-indent: 20px;
 	}
 }
 
@@ -245,6 +322,92 @@ p {
 // Single Illustrator Page 
 
 // Homepage / Archives
+
+.archive #content, .home #content {
+  overflow: hidden;
+  -webkit-transition: opacity 0.3s ease-in-out; 
+  -moz-transition: opacity 0.3s ease-in-out; 
+  -o-transition: opacity 0.3s ease-in-out; 
+  transition: opacity 0.3s ease-in-out; 
+  &.unfocused {
+    opacity: 0.6;
+    @include filter(grayscale(100%) blur(2px));
+  }
+}
+
+.archive, .home {
+  .illustrator {
+    float: left;
+    width: 16.66667%;
+    position: relative;
+    header a {
+      display: block; 
+      -webkit-transition: box-shadow 0.1s ease; 
+      -webkit-transition: box-shadow 0.1s ease; 
+      -moz-transition: box-shadow 0.1s ease; 
+      -o-transition: box-shadow 0.1s ease; 
+      transition: box-shadow 0.1s ease;  
+    }
+    img {
+      position: relative;
+      z-index: -1;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  h1 {
+    opacity: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    bottom:0;
+    margin: 0;
+    font-size: 0.75em;
+    background: #000;
+    -webkit-transition: opacity 0.25s ease; 
+    -moz-transition: opacity 0.25s ease; 
+    -o-transition: opacity 0.25s ease; 
+    transition: opacity 0.25s ease; 
+  }
+}
+
+.home {
+  .illustrator {
+    -webkit-transition: opacity 0.3s ease-in-out; 
+    -moz-transition: opacity 0.3s ease-in-out; 
+    -o-transition: opacity 0.3s ease-in-out; 
+    transition: opacity 0.3s ease-in-out; 
+    width: 16.66667%;
+    &:nth-child(even) header {
+      margin-top: 0;
+    }
+    &:nth-child(odd) header {
+      margin-top: -50%;
+    }
+    header {
+      a {
+        img {
+          opacity: 0;
+        } 
+        &.visible {
+          img {
+            opacity: 1;
+          }
+          &:hover {
+            h1 {
+              opacity: 1;
+              display: block;
+            }
+            box-shadow: inset 0 0 0 5px black;
+          }
+        }
+      }
+    }
+  }
+}
 
 // Page
 
@@ -265,8 +428,26 @@ p {
   position: absolute;
   top: 0;
   left: 7%;
-  font-size: 0.75em;
   p {
     margin: 0;
   }
+}
+
+// Animation keyframes
+
+@-webkit-keyframes barberpole {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 30px; }
+}
+@-moz-keyframes barberpole {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 30px; }
+}
+@-o-keyframes barberpole {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 30px; }
+}
+@keyframes barberpole {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 30px; }
 }

@@ -55,7 +55,7 @@
 		</div>
 		
 		<?php
-			$gallery_shortcode = '[gallery size="medium" itemtag="div" icontag="div" columns="0"]';
+			$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';
 			print apply_filters( 'the_content', $gallery_shortcode );
 		?>
 

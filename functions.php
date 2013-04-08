@@ -32,9 +32,8 @@ function ocaduillu_autocomplete_suggestions(){
 	foreach ($posts as $post): setup_postdata($post);
 		// Initialise suggestion array
 		$suggestion = array();
-		// $suggestion['label'] = esc_html($post->post_title);
-		$suggestion['link'] = get_permalink();
 		$suggestion['thumb'] = get_the_post_thumbnail($page->ID, 'thumbnail');
+		$suggestion['link'] = get_permalink();
 		$suggestion['label'] = esc_html($post->post_title);
 
 		$year = get_the_terms( $post->ID, 'gradyear' );
@@ -113,6 +112,8 @@ if (!function_exists('load_my_scripts')) {
 			wp_enqueue_script('masonry');
 			wp_register_script('spin', get_template_directory_uri().'/assets/js/lib/spin.min.js', '', '', true );
 			wp_enqueue_script('spin');
+			wp_register_script('diagonalFade', get_template_directory_uri().'/assets/js/lib/jquery.diagonalFade.min.js', '', '', true );
+			wp_enqueue_script('diagonalFade');
 			wp_register_script('pjax', get_template_directory_uri().'/assets/js/lib/jquery.pjax.min.js', '', '', true );
 			wp_enqueue_script('pjax');
 			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.src.js', array('jquery'), '', true );

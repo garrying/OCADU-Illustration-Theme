@@ -20,19 +20,24 @@ $(function () {
   $("#s").catcomplete({
     source: function (req, response) {
       $.getJSON(AcSearch.url + '?callback=?&action=' + acs_action, req, response).success(function (data) {
-        if (data.length == 0) {
-          $('#ui-id-1').html('<h2>No Results</h2>').show();
+        if (data.length == 0) {     
+          data.push({
+              id: 0,
+              category: 'NO RESULTS FOUND',
+          });
         }
+        response(data);
       });
     },
     select: function (event, ui) {
       window.location.href = ui.item.link;
     },
-    search: function (event, ui) {
-      // Something here
-    },
     close: function (event, ui) {
-      //spomething here
+      $('#content').removeClass('unfocused');
+    },
+    open: function() { 
+      $('.ui-menu').width(300); 
+      $('#content').addClass('unfocused');
     },
     minLength: 3,
   });
