@@ -48,26 +48,26 @@
 				<?php get_search_form(); ?>
 			</div><!-- #search -->
 			<div id="year-widget">
-			<?php 
-				$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-				// Selected menu state for attachments 
-				if (is_attachment()) {
-					$terms = get_the_terms($post->post_parent, 'gradyear');
-					foreach ( $terms as $term ) { 
-						$selected_year = $term->name;
+				<div class="year-widget-toggle"><div class="indicator visible"></div></div>
+				<?php 
+					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
+					// Selected menu state for attachments 
+					if (is_attachment()) {
+						$terms = get_the_terms($post->post_parent, 'gradyear');
+						foreach ( $terms as $term ) { 
+							$selected_year = $term->name;
+						}
+					} elseif (is_singular('illustrator')) {
+						// Selected menu state for individual items
+						$terms = get_the_terms( $post->ID , 'gradyear' );
+						foreach ( $terms as $term ) {
+							$selected_year = $term->name;
+						}
 					}
-				} elseif (is_singular('illustrator')) {
-					// Selected menu state for individual items
-					$terms = get_the_terms( $post->ID , 'gradyear' );
-					foreach ( $terms as $term ) {
-						$selected_year = $term->name;
-					}
-				}
-			?>
-			<nav id="year-select">
-				<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
-				<div id="illustrator-select">
-						<div id="illu-jumpmenu">
+				?>
+				<nav id="year-select">
+					<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
+						<div id="illu-jumpmenu" class="clearfix">
 							<?php foreach( $grad_year as $year ) {
 								if ( is_singular('illustrator') && $selected_year == $year->name ) {
 									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
@@ -81,9 +81,8 @@
 							}
 							?>
 						</div>
-				</div>
-			</nav> <!-- #year-Select-->
-			</div>
+				</nav> <!-- #year-Select-->
+			</div> <!-- #year-widget-->
 			<?php if (is_singular('illustrator')) 
 	echo '<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . ' index</span></a>';  
 ?>

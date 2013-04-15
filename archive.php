@@ -1,15 +1,5 @@
 <?php get_header(); ?>
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-
-<h1 id="page-title" class="sticky">
-<?php if (isset($term->name))
-		echo $term->name;
-	else
-		wp_title("");
- ?>
-</h1>
-			
-
 	<?php if ( have_posts() ) : ?>
 
 		<?php if ( is_post_type_archive('event') ) : ?>

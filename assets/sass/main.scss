@@ -60,6 +60,12 @@ h1, h2 {
   letter-spacing: 1px;
 }
 
+// Link Colours
+
+a {
+  color: salmon;
+}
+
 // class for truncating long text
 
 .truncate {
@@ -90,8 +96,6 @@ h1, h2 {
 
 // Selection 
 
-::-moz-selection { background: #222; color: #fff; text-shadow: none; }
-::selection { background: #222; color: #fff; text-shadow: none; }
 
 // Hyphenation 
 
@@ -114,6 +118,9 @@ p {
   letter-spacing: 1px;
   padding: 0 7%;
   position: relative;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.15);
   a {
     color: #555;
     text-decoration: none;
@@ -139,9 +146,11 @@ p {
       white-space: nowrap;
       display: block;
       text-indent: 100%;
-      background: url('../images/home.gif') no-repeat center center;
+      background: url('../images/home.gif') salmon no-repeat bottom left;
+      @include transition(background-color, 140ms, ease-in-out);
       &:hover {
-        background: #222;
+        background-color: transparent;
+        background-position: top left;
       }
     }
   }
@@ -164,7 +173,7 @@ p {
     }
   }
   .nav-secondary {
-    float:right;
+    float: right;
     #menu-primary {
       margin:0;
       padding:0;
@@ -173,12 +182,21 @@ p {
       vertical-align: middle;
       list-style: none;
       float: left;
-    }
-    a {
-      display: block;
-      height: 44px;
-      padding: 0 10px;
-      border-left: $border;
+      a {
+        display: block;
+        height: 44px;
+        padding: 0 10px;
+        border-left: $border;
+      }
+      &:last-child {
+        border-right: $border;
+      }
+      &.current-menu-item, &:hover {
+        box-shadow: inset 0 -2px 0 0 salmon;
+        a {
+          color: salmon;
+        }
+      }
     }
   }
   #info {
@@ -189,6 +207,7 @@ p {
     display: block;
     width: 44px;
     font-size: 2em;
+    color: #999;
   }
   #year-select {
     position: absolute;
@@ -198,20 +217,24 @@ p {
     line-height: 2em;
     height: 2em;
     z-index: 9;
+    #illu-jumpmenu {
+      @include transition(height,0.25s,ease-in-out);
+      height: 24px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
     a {
       font-size: 85%;
       text-align: center;
-      color: #fff;
+      color: #555;
       float: left;
       display: block;
       width: 20%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(255,255,255,0.7);
       background-size: 30px 30px;
-      -webkit-transition: background 0.25s ease; 
-      -moz-transition: background 0.25s ease; 
-      -o-transition: background 0.25s ease; 
-      transition: background 0.25s ease; 
+      @include transition(background,0.25s,ease);
       &.selected, &:hover {
+        color: #fff;
         background-image: linear-gradient(
           45deg, 
           rgba(salmon, 0.3)  25%, 
@@ -235,13 +258,32 @@ p {
         animation: barberpole 0.5s linear infinite;
       }
     }
+    &.collapsed {
+      #illu-jumpmenu {
+        height: 8px;
+      }
+    }
   }
   #year-widget {
-    height: 44px;
-    width: 50px;
     float: left;
     display: block;
-    border-right: $border;
+    cursor: pointer;
+    .year-widget-toggle {
+      height: 44px;
+      width: 25px;
+      position: relative;
+      background: url('../images/clock.png') no-repeat center center;
+    }
+    .visible {
+      position: absolute;
+      width: 0; 
+      height: 0;
+      bottom: 0;
+      left: 5px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid black;
+    }
   }
 }
 
@@ -321,32 +363,129 @@ p {
 
 // Single Illustrator Page 
 
+.gallery {
+  width: 74%;
+  float: left;
+  .gallery-item {
+    float: left;
+    width: 49%;
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+#illustrator-meta {
+  font-size: 81.3%;
+  line-height: 140.0%;
+  float: right;
+  width: 25%;
+  margin-top: 50px;
+  padding-right: 20px;
+  .info {
+    margin: .5em 0;
+  }
+}
+
+#nav-single {
+  background:#eee;
+  margin-top:20px;
+  font-size:0;
+  display:inline-block;
+  border:1px solid #fff;
+  width:100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  &:hover {
+    background:#333;
+    a {
+      color:#fff;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    font-size:13px;
+    line-height: 30px;
+    overflow:hidden;
+    display:inline-block;
+    vertical-align:middle;
+    text-align:right;
+    width:50%;
+    a {
+      padding:5px 10px;
+      display:block;
+      text-decoration:none;
+      box-shadow: inset 1px 0 0 0 #fff;
+      position:relative;
+      color: #444;
+      &:after {
+        content:"";
+        position:absolute;
+        padding:5px 5px;
+        top:0;
+        z-index:999;
+      }
+      span {
+        width:80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display:inline-block;
+      }
+    }
+    &:last-child a {
+      text-align: left;
+    }
+    &:first-child a {
+      box-shadow: none;
+    }
+    &.nav-previous a:after {
+      content:"\2190";
+      left:0;
+      border-right:1px solid #fff;
+    }
+    &.nav-next {
+      margin-left:-5px;
+    }
+    &.nav-next a:after {
+      content:"\2192";
+      right:0;
+      border-left:1px solid #fff;
+    }
+  }
+}
+
 // Homepage / Archives
 
-.archive #content, .home #content {
+#content {
   overflow: hidden;
   -webkit-transition: opacity 0.3s ease-in-out; 
   -moz-transition: opacity 0.3s ease-in-out; 
   -o-transition: opacity 0.3s ease-in-out; 
   transition: opacity 0.3s ease-in-out; 
-  &.unfocused {
-    opacity: 0.6;
-    @include filter(grayscale(100%) blur(2px));
-  }
 }
 
 .archive, .home {
   .illustrator {
     float: left;
-    width: 16.66667%;
+    width: 20%;
     position: relative;
+    padding: 5px;
     header a {
-      display: block; 
+      display: block;
+      position: relative;
       -webkit-transition: box-shadow 0.1s ease; 
       -webkit-transition: box-shadow 0.1s ease; 
       -moz-transition: box-shadow 0.1s ease; 
       -o-transition: box-shadow 0.1s ease; 
-      transition: box-shadow 0.1s ease;  
+      transition: box-shadow 0.1s ease;
+      box-shadow: inset 0 0 0 5px black;
     }
     img {
       position: relative;
@@ -355,9 +494,16 @@ p {
       width: 100%;
       height: auto;
     }
+    &:hover {
+      h1 {
+        opacity: 0;
+      }
+      header a {
+        box-shadow: none;
+      }
+    }
   }
   h1 {
-    opacity: 0;
     width: 100%;
     color: #fff;
     text-align: center;
@@ -376,6 +522,7 @@ p {
 
 .home {
   .illustrator {
+    width: 16.66667%;
     -webkit-transition: opacity 0.3s ease-in-out; 
     -moz-transition: opacity 0.3s ease-in-out; 
     -o-transition: opacity 0.3s ease-in-out; 
@@ -389,9 +536,13 @@ p {
     }
     header {
       a {
+        box-shadow: none;
         img {
           opacity: 0;
-        } 
+        }
+        h1 {
+          opacity: 0;
+        }
         &.visible {
           img {
             opacity: 1;
@@ -407,6 +558,11 @@ p {
       }
     }
   }
+}
+
+.unfocused {
+  opacity: 0.6;
+  @include filter(grayscale(100%) blur(2px));
 }
 
 // Page
