@@ -44,12 +44,11 @@ $(function() {
     $('#year-select').toggleClass('collapsed');
   });
 
-
   setTimeout(function(){
     $('#s').teletype({
       text: '...Looking for someone?'
     });
-  },4000);
+  },5000);
 
   // pjax support
   // $(document).pjax('a', {
@@ -69,6 +68,71 @@ $(function() {
     });
   };
 
+  // Loader Spinner for images
+  $.fn.spin = function (opts) {
+    this.each(function () {
+      var $this = $(this),
+        data = $this.data();
+      if (data.spinner) {
+        data.spinner.stop();
+        delete data.spinner;
+      }
+      if (opts !== false) {
+        data.spinner = new Spinner($.extend({
+          color: '#999',
+          width: 1,
+          length: 30
+        }, opts)).spin(this);
+      }
+    });
+    return this;
+  };
+
+  var progress = $('#progress');
+  
+  progress.spin();
+
+  // Fixed Illustrator details
+  var stickyBlock = $('.sticky');
+
+  var fixy = function () {
+    var y = $(window).scrollTop();
+    var windowHeight = $(window).height(); 
+    var stickyBlockHeight = stickyBlock.height();
+    if (y >= 70 && stickyBlockHeight < windowHeight) {
+      stickyBlock.addClass('fixed');
+    } else {
+      stickyBlock.removeClass('fixed');
+    }
+  };
+
+  var didScroll = false;
+
+  $(window).scroll(function () {
+    didScroll = true;
+  });
+
+  setInterval(function () {
+    if (didScroll) {
+      didScroll = false;
+      fixy();
+    }
+  }, 40);
+
+  // Click to enlarge gallery image
+  $('.gallery-icon a').on('click', function(){
+    var imagelarge = $(this).attr('href');
+    $('html, body').animate({ scrollTop: '68px' });
+    $('.enlarge').html('<img src="'+ imagelarge +'">');
+    console.log(imagelarge);
+    return false;
+  });
+
+  // Click to englarged image to close
+  $('.enlarge').on('click', function(){
+    $(this).find('img').remove();
+  });
+
   // on Window Load
   window.onload = function() {
     if ($('body').hasClass('home')) {
@@ -77,6 +141,9 @@ $(function() {
     }
     $('#s').on('focus', function(){
       $(this).attr('placeholder', 'Search for an Illustrator');
+    });
+    $('.gallery').find('img').fadeTo('fast',1, function(){
+      progress.spin(false);
     });
   };
 

@@ -1,3 +1,4 @@
+<div id="progress"></div>
 <article <?php post_class(); ?> role="article">
 		<div id="illustrator-meta-guide">
 		<aside id="illustrator-meta" role="complementary" class="sticky">
@@ -53,6 +54,8 @@
 		
 		</aside><!-- aside -->
 		</div>
+
+		<div class="enlarge"></div>
 		
 		<?php
 			$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';
