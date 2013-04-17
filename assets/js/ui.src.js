@@ -26,17 +26,28 @@ $(function() {
   };
 
   // Masonry Stuff
-  var $gallerycontainer = $('.gallery');
 
-  $gallerycontainer.imagesLoaded( function(){
-    $gallerycontainer.masonry({
+  var container = document.querySelector('.gallery');
+  var pckry;
+
+  // initialize Packery after all images have loaded
+  imagesLoaded( container, function() {
+    pckry = new Packery( container, {
+      // options
       itemSelector: '.gallery-item',
-      isAnimated: true,
-      columnWidth: function( containerWidth ) {
-        return containerWidth / 2;
-      }
+      gutter: 5
     });
   });
+
+  // $gallerycontainer.imagesLoaded( function(){
+  //   $gallerycontainer.masonry({
+  //     itemSelector: '.gallery-item',
+  //     isAnimated: true,
+  //     columnWidth: function( containerWidth ) {
+  //       return containerWidth / 2;
+  //     }
+  //   });
+  // });
 
   // Year Show Hide
   $('.year-widget-toggle').on('click', function(){
@@ -121,10 +132,22 @@ $(function() {
 
   // Click to enlarge gallery image
   $('.gallery-icon a').on('click', function(){
+    if ($(this).parent().parent().hasClass('enlarge')) {
+      $(this).parent().parent().removeClass('enlarge');
+      pckry.layout();
+      return false;
+    }
     var imagelarge = $(this).attr('href');
-    $('html, body').animate({ scrollTop: '68px' });
-    $('.enlarge').html('<img src="'+ imagelarge +'">');
+    $('.gallery-item').removeClass('enlarge');
+    $('.gallery-icon a').removeClass('active');
+    $(this).addClass('active');
+    $(this).parent().parent().addClass('enlarge');
     console.log(imagelarge);
+    pckry.layout();
+    pckry.on( 'layoutComplete', function(){
+        var itemPos = $('.active').offset();
+        $('body').animate({scrollTop: itemPos.top-20},100);
+    });
     return false;
   });
 
@@ -145,6 +168,7 @@ $(function() {
     $('.gallery').find('img').fadeTo('fast',1, function(){
       progress.spin(false);
     });
+    pckry.layout();
   };
 
 });

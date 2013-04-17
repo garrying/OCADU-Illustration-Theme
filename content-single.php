@@ -54,8 +54,6 @@
 		
 		</aside><!-- aside -->
 		</div>
-
-		<div class="enlarge"></div>
 		
 		<?php
 			$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';

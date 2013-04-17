@@ -151,11 +151,11 @@ p {
       white-space: nowrap;
       display: block;
       text-indent: 100%;
-      background: url('../images/home.gif') $primary no-repeat bottom left;
+      background: url('../images/home.gif') transparent no-repeat top left;
       @include transition(background-color, 140ms, ease-in-out);
       &:hover {
-        background-color: transparent;
-        background-position: top left;
+        background-color: $primary;
+        background-position: bottom left;
       }
     }
   }
@@ -369,17 +369,30 @@ p {
 // Single Illustrator Page 
 
 .gallery {
-  width: 74%;
+  width: 73%;
   float: left;
+  font-size: 0;
   .gallery-item {
     float: left;
-    width: 49%;
+    width: 49.5%;
+    a {
+      display: block;
+    }
     img {
       max-width: 100%;
       height: auto;
       display: block;
-      margin-bottom: 10px;
       opacity: 0;
+    }
+    &.enlarge {
+      width: 100%;
+      float: left;
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 }
@@ -398,19 +411,6 @@ p {
     position: fixed;
     right: 0;
     top: -24px;
-  }
-}
-
-.enlarge {
-  width: 74%;
-  float: left;
-  margin-top: 34px;
-  img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 10px 10px 30px 10px;
   }
 }
 
