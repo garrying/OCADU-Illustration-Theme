@@ -47,7 +47,7 @@
 			<div id="search" role="search">
 				<?php get_search_form(); ?>
 			</div><!-- #search -->
-			<div id="year-widget">
+			<div id="year-widget" data-visible="true">
 				<div class="year-widget-toggle"><div class="indicator visible"></div></div>
 				<?php 
 					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 

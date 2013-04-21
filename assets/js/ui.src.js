@@ -3,6 +3,9 @@
 $(function() {
   'use strict';
 
+  // vars
+  var $viewport = $('html, body');
+
   // year select show hide
 
   // slide show hide for credits in navi bar
@@ -31,13 +34,15 @@ $(function() {
   var pckry;
 
   // initialize Packery after all images have loaded
-  imagesLoaded( container, function() {
-    pckry = new Packery( container, {
-      // options
-      itemSelector: '.gallery-item',
-      gutter: 5
+  if ($('body').hasClass('single')) {
+    imagesLoaded( container, function() {
+      pckry = new Packery( container, {
+        // options
+        itemSelector: '.gallery-item',
+        gutter: 5
+      });
     });
-  });
+  }
 
   // $gallerycontainer.imagesLoaded( function(){
   //   $gallerycontainer.masonry({
@@ -51,14 +56,37 @@ $(function() {
 
   // Year Show Hide
   $('.year-widget-toggle').on('click', function(){
-    $(this).find('.indicator').toggleClass('visible');
-    $('#year-select').toggleClass('collapsed');
+    if ($('#year-widget').attr('data-visible') === 'true') {
+      $(this).find('.indicator').removeClass('visible');
+      $('#year-widget').attr('data-visible','false');
+      $('#year-select').addClass('collapsed');
+      $.cookie('currentlyVisible', 'false', {path: '/'});
+    } else {
+      $(this).find('.indicator').addClass('visible');
+      $('#year-widget').attr('data-visible','true');
+      $('#year-select').removeClass('collapsed');
+      $.cookie('currentlyVisible', 'true', {path: '/'});
+    }
   });
 
+  if ($.cookie('currentlyVisible') === 'false') {
+    $('#year-widget').attr('data-visible','false');
+    $(this).find('.indicator').removeClass('visible');
+    $('#year-select').addClass('collapsed');
+  }
+
+  // Fancy type in place thing for search bar in different contexts
   setTimeout(function(){
-    $('#s').teletype({
-      text: '...Looking for someone?'
-    });
+    if ($('body').hasClass('home')) {
+      $('#s').teletype({
+        text: '...Looking for someone?'
+      });
+    } else if ($('body').hasClass('single') && $('article').hasClass('illustrator')) {
+      var title = $('h1').text();
+      $('#s').teletype({
+        text: ' ● ' + title
+      });
+    }
   },5000);
 
   // pjax support
@@ -90,9 +118,9 @@ $(function() {
       }
       if (opts !== false) {
         data.spinner = new Spinner($.extend({
-          color: '#999',
+          color: '#3EBB94',
           width: 1,
-          length: 30
+          length: 100
         }, opts)).spin(this);
       }
     });
@@ -134,19 +162,21 @@ $(function() {
   $('.gallery-icon a').on('click', function(){
     if ($(this).parent().parent().hasClass('enlarge')) {
       $(this).parent().parent().removeClass('enlarge');
+      $(this).find('img').attr('title','Click to View')
       pckry.layout();
       return false;
     }
     var imagelarge = $(this).attr('href');
     $('.gallery-item').removeClass('enlarge');
     $('.gallery-icon a').removeClass('active');
+    $(this).find('img').attr('title','Click to Minimize')
     $(this).addClass('active');
     $(this).parent().parent().addClass('enlarge');
-    console.log(imagelarge);
+    $(this).find('img').attr('src',imagelarge);
     pckry.layout();
     pckry.on( 'layoutComplete', function(){
         var itemPos = $('.active').offset();
-        $('body').animate({scrollTop: itemPos.top-20},100);
+        $('html, body').animate({scrollTop: itemPos.top-20},90);
     });
     return false;
   });
@@ -154,6 +184,30 @@ $(function() {
   // Click to englarged image to close
   $('.enlarge').on('click', function(){
     $(this).find('img').remove();
+  });
+
+  // Click to scroll back to top
+  var backTotop = function () {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 400);
+  };
+
+  if ($('body').hasClass('single')) {
+    $('.sticky').find('h1').on('click', backTotop);
+  }
+
+  // Keyboard Shortcuts
+  var nextItem = $('.nav-next a');
+  var prevItem = $('.nav-previous a');
+
+  $(document.documentElement).keyup(function (event) {
+    // handle cursor keys, illustrator, work navigation
+    if (event.keyCode === 37 && (prevItem.length)) {
+      window.location = prevItem.attr('href');
+    } else if (event.keyCode === 39 && (nextItem.length)) {
+      window.location = nextItem.attr('href');
+    }
   });
 
   // on Window Load
@@ -168,7 +222,10 @@ $(function() {
     $('.gallery').find('img').fadeTo('fast',1, function(){
       progress.spin(false);
     });
-    pckry.layout();
   };
+
+  $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(e){
+    $viewport.stop();
+  });   
 
 });

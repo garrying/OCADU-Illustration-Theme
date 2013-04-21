@@ -20,6 +20,10 @@ $border: 1px solid #efefef;
 
 // Global Declarations
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Executive-Regular", Helvetica, Arial, sans-serif;
   -moz-font-feature-settings:"calt=1, liga=1, clig=1, kern=1";
@@ -68,6 +72,7 @@ h2 {
 // Link Colours
 
 a {
+  @include transition(color,150ms,ease-in-out);
   color: $primary;
 }
 
@@ -129,6 +134,9 @@ p {
   a {
     color: #555;
     text-decoration: none;
+    &:hover {
+      color: $primary;
+    }
   }
   .skip {
     &:focus {
@@ -169,12 +177,23 @@ p {
       letter-spacing: 1px;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
-      color: #222;
       padding: 0 10px 0 10px;
       border: none;
       min-height: 44px;
       outline: none;
       text-transform: uppercase;
+    }
+    ::-webkit-input-placeholder {
+       color: #555;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+       color: #555;  
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: #555;  
+    }
+    :-ms-input-placeholder {  
+       color: #555;  
     }
   }
   .nav-secondary {
@@ -187,6 +206,7 @@ p {
       vertical-align: middle;
       list-style: none;
       float: left;
+      @include transition(box-shadow, 140ms, ease-in-out);
       a {
         display: block;
         height: 44px;
@@ -224,7 +244,7 @@ p {
     z-index: 9;
     #illu-jumpmenu {
       @include transition(height,0.25s,ease-in-out);
-      height: 24px;
+      height: 8px;
       overflow: hidden;
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
@@ -236,48 +256,49 @@ p {
       display: block;
       width: 20%;
       background-color: rgba(255,255,255,0.7);
-      background-size: 30px 30px;
       @include transition(background,0.25s,ease);
       &.selected, &:hover {
         color: #fff;
-        background-image: linear-gradient(
-          45deg, 
-          rgba($primary, 0.3)  25%, 
-          transparent       25%, 
-          transparent       50%, 
-          rgba($primary, 0.3)  50%, 
-          rgba($primary, 0.3)  75%, 
-          transparent       75%, 
-          transparent
-        );  
+        background-image:url('../images/pattern.png');  
         background-color: rgba($primary,0.6);
-        -webkit-animation: barberpole 0.5s linear 4;
-        -moz-animation: barberpole 0.5s linear 4;
-        -o-animation: barberpole 0.5s linear 4;
-        animation: barberpole 0.5s linear 4;
+        -webkit-animation: barberpole 500ms linear 4;
+        -moz-animation: barberpole 500ms linear 4;
+        -o-animation: barberpole 500ms linear 4;
+        animation: barberpole 500ms linear 4;
       }
       &.selected:hover {
-        -webkit-animation: barberpole 0.5s linear infinite;
-        -moz-animation: barberpole 0.5s linear infinite;
-        -o-animation: barberpole 0.5s linear infinite;
-        animation: barberpole 0.5s linear infinite;
+        -webkit-animation: barberpole 500ms linear infinite;
+        -moz-animation: barberpole 500ms linear infinite;
+        -o-animation: barberpole 500ms linear infinite;
+        animation: barberpole 500ms linear infinite;
       }
     }
     &.collapsed {
       #illu-jumpmenu {
-        height: 8px;
+        height: 24px;
       }
     }
   }
   #year-widget {
     float: left;
     display: block;
-    cursor: pointer;
+    &:hover .visible {
+      -webkit-animation: bounce 1s 3;
+      -moz-animation: bounce 1s 3;
+      -o-animation: bounce 1s 3;
+      animation: bounce 1s 3;
+    }
     .year-widget-toggle {
       height: 44px;
       width: 25px;
       position: relative;
       background: url('../images/clock.png') no-repeat center center;
+      cursor: pointer;
+      &:hover {
+        .visible {
+          border-bottom: 7px solid $primary;
+        }
+      }
     }
     .visible {
       position: absolute;
@@ -404,6 +425,10 @@ p {
   width: 25%;
   margin-top: 50px;
   padding-right: 20px;
+  a:hover {
+    color: #000;
+    text-decoration: none;
+  }
   .info {
     margin: .5em 0;
   }
@@ -412,29 +437,41 @@ p {
     right: 0;
     top: -24px;
   }
+  .description {
+    margin-top: 2.5em;
+  }
 }
 
 #nav-single {
-  background:#eee;
   margin-top:20px;
   font-size:0;
   display:inline-block;
-  border:1px solid #fff;
+  border:1px solid #eee;
+  border-bottom: none;
   width:100%;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  font-family: "Executive-Bold";
+      box-shadow: 0 2px 0 0 rgba(0,0,0,0.05);
+
+  &:after {
+    content: "";
+    width: 1px;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    border-right: 1px solid #eee;
+  }
   &:hover {
-    background:#666;
-    a {
-      color:#fff;
-    }
   }
   ul {
     margin: 0;
     padding: 0;
   }
   li {
-    font-size:13px;
+    font-size:12px;
     line-height: 30px;
     overflow:hidden;
     display:inline-block;
@@ -445,9 +482,8 @@ p {
       padding:5px 10px;
       display:block;
       text-decoration:none;
-      box-shadow: inset 1px 0 0 0 #fff;
       position:relative;
-      color: #444;
+      color: #777;
       &:after {
         content:"";
         position:absolute;
@@ -470,17 +506,17 @@ p {
       box-shadow: none;
     }
     &.nav-previous a:after {
-      content:"\2190";
+      font-size: 20px;
+      content:"\219E";
       left:0;
-      border-right:1px solid #fff;
     }
     &.nav-next {
       margin-left:-5px;
     }
     &.nav-next a:after {
-      content:"\2192";
+      font-size: 20px;
+      content:"\21A0";
       right:0;
-      border-left:1px solid #fff;
     }
   }
 }
@@ -547,11 +583,7 @@ p {
 .home {
   .illustrator {
     width: 16.66667%;
-    -webkit-transition: opacity 0.3s ease-in-out; 
-    -moz-transition: opacity 0.3s ease-in-out; 
-    -o-transition: opacity 0.3s ease-in-out; 
-    transition: opacity 0.3s ease-in-out; 
-    width: 16.66667%;
+    @include transition(opacity,0.3s,ease-in-out);
     &:nth-child(even) header {
       margin-top: 0;
     }
@@ -608,6 +640,14 @@ p {
 
 // Paul's Message
 
+.post-6 {
+  h1 {
+    margin-top: 40px;
+  }
+  padding: 0 20%;
+}
+
+
 // Error 404
 
 // Footer
@@ -626,17 +666,40 @@ p {
 
 @-webkit-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 60px 30px; }
+  to   { background-position: 0px 20px; }
 }
 @-moz-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 60px 30px; }
+  to   { background-position: 0px 20px; }
 }
 @-o-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 60px 30px; }
+  to   { background-position: 0px 20px; }
 }
 @keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 60px 30px; }
+  to   { background-position: 0px 20px; }
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-4px);}
+  60% {-webkit-transform: translateY(-2px);}
+}
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+  40% {-moz-transform: translateY(-4px);}
+  60% {-moz-transform: translateY(-2px);}
+}
+
+@-o-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+  40% {-o-transform: translateY(-4px);}
+  60% {-o-transform: translateY(-2px);}
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-4px);}
+  60% {transform: translateY(-2px);}
 }
