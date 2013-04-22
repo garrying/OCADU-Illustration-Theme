@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<article class="error404">
+<article class="page error404-content">
 	<header class="entry-header">
 		<h1 class="entry-title"><?php _e( 'Page Not Found. Sorry!', 'ocaduillustration' ); ?></h1>
-		<h2>The page you requested could not be found. It might have been moved or renamed.</h2>
-		<h3>Let us know if you're still having trouble. Visit the <a href="/" title="Take Me Back Home">homepage</a>.</h3>
+		<p>The page you requested could not be found. <br />It might have been moved or renamed.</p>
+		<p>Let us know if you're still having trouble. <br />Visit the <a href="/" title="Take Me Back Home">homepage</a>.</p>
 	</header>
 	<div class="additional">
 		Previous Versions of OCAD U Illustration
