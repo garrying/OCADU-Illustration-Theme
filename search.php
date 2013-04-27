@@ -27,7 +27,7 @@
 			<div class="box"></div>
 			<header class="entry-header">
 				<h1 class="entry-title"><?php _e( 'No Matches &#9785;', 'ocaduillustration' ); ?></h1>
-				<h2><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.', 'ocaduillustration' ); ?></h2>
+				<p><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.', 'ocaduillustration' ); ?></p>
 			</header><!-- .entry-header -->
 		</article><!-- #post-0 -->
 

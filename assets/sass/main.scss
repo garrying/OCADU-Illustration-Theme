@@ -771,6 +771,31 @@ article.page {
 
 // Events
 
+.event {
+  padding: 0 10%;
+  @media screen and (max-width: 900px) {
+    padding: 0 3%;
+  }
+  .gallery {
+    width: 50%;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
+    .gallery-item {
+      width: 95%;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
+    }
+  }
+  #illustrator-meta {
+    width: 50%;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
+  }
+}
+
 // Message 
 
 // Progress
