@@ -110,5 +110,5 @@
 	</div><!-- .container -->
 	</header><!-- #app-head -->
 
-
+<div id="progress"></div>
 <div id="content" role="main">

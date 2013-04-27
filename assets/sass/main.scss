@@ -101,7 +101,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: transparentize(#222,0.7); 
+  background: $primary; 
 }
 
 // Selection 
@@ -282,6 +282,46 @@ p {
       border-bottom: 7px solid black;
     }
   }
+  &.double {
+    @media screen and (max-width: 480px) {
+      padding: 0 2%;
+      #search {
+        width: 90%;
+      }
+      #year-back-button {
+        display: none;
+      }
+      .nav-secondary {
+        width: 100%;
+        li:first-child {
+          a {
+            border-left: none;
+          }
+        }
+      }
+    }
+    .nav-secondary {
+      &:after {
+        content:"";
+        position: absolute;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: #eee;
+      }
+    }
+    #year-select {
+      top: 88px;
+    }
+    #search {
+      @media screen and (max-width: 850px) {
+        width: 63%;
+      }
+      @media screen and (max-width: 850px) {
+        width: 70%;
+      }
+    }
+  }
 }
 
 #year-select {
@@ -371,6 +411,10 @@ p {
     min-height: 44px;
     outline: none;
     text-transform: uppercase;
+    @include transition(box-shadow,0.3s,ease-in-out);
+    &:focus, &:hover {
+      box-shadow: inset 0 0 0 2px rgba($primary,0.5);
+    }
   }
   ::-webkit-input-placeholder {
      color: #555;
@@ -390,11 +434,23 @@ p {
 
 .gallery {
   width: 73%;
+  @media screen and (max-width: 768px) {
+    width: 65%;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
   float: left;
   font-size: 0;
   .gallery-item {
     float: left;
     width: 49.5%;
+    @media screen and (max-width: 768px) {
+      width: 95%;
+    }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
     a {
       display: block;
     }
@@ -407,11 +463,14 @@ p {
     &.enlarge {
       width: 100%;
       float: left;
+      z-index: 100;
+      @media screen and (max-width: 768px) {
+        width: 95%;
+      }
       img {
         display: block;
         margin: 0 auto;
         max-width: 100%;
-        max-height: 100%;
       }
     }
   }
@@ -422,6 +481,13 @@ p {
   line-height: 140.0%;
   float: right;
   width: 25%;
+  @media screen and (max-width: 768px) {
+    width: 35%;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0 5% 20px;
+  }
   margin-top: 50px;
   padding-right: 20px;
   a:hover {
@@ -433,6 +499,11 @@ p {
   }
   &.fixed {
     position: fixed;
+    @media screen and (max-width: 600px) {
+      position: static;
+    }
+    z-index: 200;
+    background: rgba(#fff,0.75);
     right: 0;
     top: -24px;
   }
@@ -452,7 +523,7 @@ p {
   letter-spacing: 1px;
   position: relative;
   font-family: "Executive-Bold";
-  box-shadow: 0 2px 0 0 rgba(0,0,0,0.05);
+  box-shadow: 0 2px 0 0 rgba(#000,0.05);
   &:after {
     content: "";
     width: 1px;
@@ -523,10 +594,7 @@ p {
 
 #content {
   overflow: hidden;
-  -webkit-transition: opacity 0.3s ease-in-out; 
-  -moz-transition: opacity 0.3s ease-in-out; 
-  -o-transition: opacity 0.3s ease-in-out; 
-  transition: opacity 0.3s ease-in-out; 
+  @include transition(opacity, 0.3s, ease-in-out);
 }
 
 .archive, .home, .search {
@@ -534,7 +602,13 @@ p {
     float: left;
     width: 20%;
     position: relative;
-    padding: 5px;
+    padding: 10px;
+    @media screen and (max-width: 1024px) {
+      width: 25%;
+    }
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
     header a {
       display: block;
       position: relative;
@@ -581,6 +655,13 @@ p {
 .home {
   .illustrator {
     width: 16.66667%;
+    padding: 5px;
+    @media screen and (max-width: 1024px) {
+      width: 25%
+    }
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
     @include transition(opacity,0.3s,ease-in-out);
     &:nth-child(even) header {
       margin-top: 0;
@@ -616,7 +697,7 @@ p {
 
 #page-title {
   text-align: center;
-  margin-top: 2em;
+  margin-top: 3em;
   font-size: 0.75em;
 }
 
@@ -634,6 +715,9 @@ p {
 
 article.page {
   padding: 0 10%;
+  @media screen and (max-width: 768px) {
+    padding: 0 5%;
+  }
   h1 {
     margin-top: 50px;
   }
@@ -643,6 +727,9 @@ article.page {
   }
   .left, .right {
     width: 46%;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
     float: left;
     p:first-child {
       margin-top: 0;
@@ -650,15 +737,24 @@ article.page {
   }
   .left {
     margin-right: 2%;
+    @media screen and (max-width: 600px) {
+      margin-right: 0;
+    }
   }
   .right {
     margin-left: 2%;
+    @media screen and (max-width: 600px) {
+      margin-left: 0;
+    }
   }
   .row {
     .span1 {
       margin-bottom: 1em;
       width: 25%;
       float: left;
+      @media screen and (max-width: 600px) {
+      width: 50%;
+      }
     }
   }
   .faculty-list {
@@ -680,12 +776,12 @@ article.page {
 // Progress
 
 #progress {
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 100px;
-  z-index: 9999;
-  width: 75%;
-  top: 30%;
+  z-index: -1;
+  width: 100%;
+  top: 40%;
 }
 
 // Paul's Message
@@ -712,14 +808,11 @@ article.post-6 {
 article.error404-content {
   text-align: center;
   padding: 0 20%;
-  color: $primary;
-  background: #1B1D21;
-  a {
-    color: #fff;
-    &:hover {
-      color: $primary;
-    }
+  @media screen and (max-width: 800px) {
+    padding: 0 5%;
   }
+  color: #fff;
+
   .additional {
     ul {
       margin: 10px 0 0;
@@ -755,19 +848,19 @@ article.error404-content {
 
 @-webkit-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 0px 20px; }
+  to   { background-position: 20px 20px; }
 }
 @-moz-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 0px 20px; }
+  to   { background-position: 20px 20px; }
 }
 @-o-keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 0px 20px; }
+  to   { background-position: 20px 20px; }
 }
 @keyframes barberpole {
   from { background-position: 0 0; }
-  to   { background-position: 0px 20px; }
+  to   { background-position: 20px 20px; }
 }
 
 @-webkit-keyframes bounce {

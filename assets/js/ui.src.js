@@ -6,7 +6,17 @@ $(function() {
   // vars
   var $viewport = $('html, body');
 
-  // year select show hide
+  // Check header has not doubled
+  var CheckAppHead = function () {
+    var appHeadheight = $('#app-head').height();
+    if (appHeadheight > 44) {
+      $('#app-head').addClass('double');
+    } else {
+      $('#app-head').removeClass('double');
+    }
+  };
+
+  CheckAppHead();
 
   // slide show hide for credits in navi bar
   $('#info').hover(function(){
@@ -28,8 +38,7 @@ $(function() {
     return this;
   };
 
-  // Masonry Stuff
-
+  // Packery Stuff
   var container = document.querySelector('.gallery');
   var pckry;
 
@@ -43,16 +52,6 @@ $(function() {
       });
     });
   }
-
-  // $gallerycontainer.imagesLoaded( function(){
-  //   $gallerycontainer.masonry({
-  //     itemSelector: '.gallery-item',
-  //     isAnimated: true,
-  //     columnWidth: function( containerWidth ) {
-  //       return containerWidth / 2;
-  //     }
-  //   });
-  // });
 
   // Year Show Hide
   $('.year-widget-toggle').on('click', function(){
@@ -77,7 +76,7 @@ $(function() {
 
   // Fancy type in place thing for search bar in different contexts
   setTimeout(function(){
-    if ($('body').hasClass('home')) {
+    if ($('body').hasClass('home') || $('body').hasClass('error404')) {
       $('#s').teletype({
         text: '...Looking for someone?'
       });
@@ -89,13 +88,6 @@ $(function() {
     }
   },5000);
 
-  // pjax support
-  // $(document).pjax('a', {
-  //   container: '#content',
-  //   fragment: '#content',
-  //   timeout: 5000
-  // });
-  
   // Homepage Cascade
   var doCascade = function (delay) {
     $('.illustrator img').each(function (i) {
@@ -106,6 +98,30 @@ $(function() {
       });
     });
   };
+
+  // Homepage Randomization
+  $.fn.shuffle = function() {
+    var allElems = this.get(),
+        getRandom = function(max) {
+          return Math.floor(Math.random() * max);
+        },
+        shuffled = $.map(allElems, function(){
+          var random = getRandom(allElems.length),
+            randEl = $(allElems[random]).clone(true)[0];
+          allElems.splice(random, 1);
+          return randEl;
+       });
+
+    this.each(function(i){
+      $(this).replaceWith($(shuffled[i]));
+    });
+
+    return $(shuffled);
+  };
+
+  if ($('body').hasClass('home')) {
+    $('#content article').shuffle();
+  }
 
   // Loader Spinner for images
   $.fn.spin = function (opts) {
@@ -119,7 +135,8 @@ $(function() {
       if (opts !== false) {
         data.spinner = new Spinner($.extend({
           color: '#3EBB94',
-          width: 1,
+          width: 10,
+          radius: 50,
           length: 100
         }, opts)).spin(this);
       }
@@ -172,8 +189,8 @@ $(function() {
     $(this).find('img').attr('title','Click to Minimize')
     $(this).addClass('active');
     $(this).parent().parent().addClass('enlarge');
-    $(this).find('img').attr('src',imagelarge);
-    pckry.layout();
+    $(this).find('img').attr('src',imagelarge).attr('width','');
+    setTimeout(function(){ pckry.layout();}, 120);
     pckry.on( 'layoutComplete', function(){
         var itemPos = $('.active').offset();
         $('html, body').animate({scrollTop: itemPos.top-20},90);
@@ -222,10 +239,17 @@ $(function() {
     $('.gallery').find('img').fadeTo('fast',1, function(){
       progress.spin(false);
     });
+    progress.spin(false);
   };
 
   $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(e){
     $viewport.stop();
-  });   
+  });
+
+  // on Window Resize
+
+  $(window).resize(function() {
+    CheckAppHead();
+  });
 
 });
