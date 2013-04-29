@@ -7,20 +7,26 @@ $(function() {
   var $viewport = $('html, body');
 
   // Check header has not doubled
-  var CheckAppHead = function () {
+  var checkAppHead = function () {
     var appHeadheight = $('#app-head').height();
-    if (appHeadheight > 44) {
+    if (appHeadheight > 45) {
       $('#app-head').addClass('double');
     } else {
       $('#app-head').removeClass('double');
     }
   };
 
-  CheckAppHead();
+  checkAppHead();
 
   // slide show hide for credits in navi bar
   $('#info').hover(function(){
-
+    $('#search, .year-widget-toggle').animate({opacity:0});
+    $(this).html('☜');
+    $('#colophon').animate({opacity:1});
+  }, function(){
+    $('#colophon').animate({opacity:0});
+    $(this).html('✌');
+    $('#search, .year-widget-toggle').animate({opacity:1});
   });
 
   // Typewrite effect to replace search placeholder
@@ -78,7 +84,7 @@ $(function() {
   setTimeout(function(){
     if ($('body').hasClass('home') || $('body').hasClass('error404')) {
       $('#s').teletype({
-        text: '...Looking for someone?'
+        text: '...Search The Archive'
       });
     } else if ($('body').hasClass('single') && $('article').hasClass('illustrator')) {
       var title = $('h1').text();
@@ -86,13 +92,13 @@ $(function() {
         text: ' ● ' + title
       });
     }
-  },5000);
+  },7000);
 
   // Homepage Cascade
   var doCascade = function (delay) {
     $('.illustrator img').each(function (i) {
       $(this).delay(i * delay).animate({
-        opacity: 1
+        opacity: 1, marginTop: 0
       }, 500, function(){
         $(this).parent().addClass('visible');
       });
@@ -135,9 +141,9 @@ $(function() {
       if (opts !== false) {
         data.spinner = new Spinner($.extend({
           color: '#3EBB94',
-          width: 10,
+          width: 5,
           radius: 50,
-          length: 100
+          length: 0
         }, opts)).spin(this);
       }
     });
@@ -179,14 +185,14 @@ $(function() {
   $('.gallery-icon a').on('click', function(){
     if ($(this).parent().parent().hasClass('enlarge')) {
       $(this).parent().parent().removeClass('enlarge');
-      $(this).find('img').attr('title','Click to View')
+      $(this).find('img').attr('title','Click to View');
       pckry.layout();
       return false;
     }
     var imagelarge = $(this).attr('href');
     $('.gallery-item').removeClass('enlarge');
     $('.gallery-icon a').removeClass('active');
-    $(this).find('img').attr('title','Click to Minimize')
+    $(this).find('img').attr('title','Click to Minimize');
     $(this).addClass('active');
     $(this).parent().parent().addClass('enlarge');
     $(this).find('img').attr('src',imagelarge).attr('width','');
@@ -242,14 +248,13 @@ $(function() {
     progress.spin(false);
   };
 
-  $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(e){
+  $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(){
     $viewport.stop();
   });
 
   // on Window Resize
-
   $(window).resize(function() {
-    CheckAppHead();
+    checkAppHead();
   });
 
 });

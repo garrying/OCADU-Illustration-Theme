@@ -106,20 +106,18 @@ if (!function_exists('load_my_scripts')) {
 			wp_deregister_script('jquery');
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('jqueryCookie', get_template_directory_uri().'/assets/js/lib/jquery.cookie.js', array('jquery'), '', true );
+			wp_register_script('jqueryCookie', get_template_directory_uri().'/assets/js/lib/jquery.cookie.js', array('jquery'), '', true);
 			wp_enqueue_script('jqueryCookie');
 			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/lib/modernizr-2.6.2.min.js', '','',false);
 			wp_enqueue_script('modernizer');
-			wp_register_script('imagesloaded', get_template_directory_uri().'/assets/js/lib/imagesloaded.min.js', array('jquery'), '', true );
+			wp_register_script('imagesloaded', get_template_directory_uri().'/assets/js/lib/imagesloaded.min.js', array('jquery'), '', true);
 			wp_enqueue_script('imagesloaded');
-			wp_register_script('packery', get_template_directory_uri().'/assets/js/lib/packery.pkgd.min.js', array('jquery'), '', true );
+			wp_register_script('packery', get_template_directory_uri().'/assets/js/lib/packery.pkgd.min.js', array('jquery'), '', true);
 			wp_enqueue_script('packery');
-			wp_register_script('spin', get_template_directory_uri().'/assets/js/lib/spin.min.js', '', '', true );
+			wp_register_script('spin', get_template_directory_uri().'/assets/js/lib/spin.min.js', '', '', true);
 			wp_enqueue_script('spin');
-			wp_register_script('pjax', get_template_directory_uri().'/assets/js/lib/jquery.pjax.min.js', '', '', true );
-			wp_enqueue_script('pjax');
-			wp_register_script('myscript', get_template_directory_uri().'/assets/js/ui.src.js', array('jquery'), '', true );
-			wp_enqueue_script('myscript');
+			wp_register_script('ui', get_template_directory_uri().'/assets/js/ui.src.js', array('jquery'), '', true);
+			wp_enqueue_script('ui');
 		}
 	}
 }
@@ -324,7 +322,7 @@ function facebook_connect() {
 		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
 		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<meta property="og:description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012" />' . "\n";
+		echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013." />' . "\n";
 		echo '<meta property="og:type" content="website"/>' . "\n";
 		echo '<!-- end facebook open graph -->' . "\n";
 	}
@@ -347,7 +345,7 @@ function google_header() {
 	if (is_home()) {
 		echo '<!-- google +1 tags -->' . "\n";
 		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
-		echo '<meta itemprop="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012">' . "\n";
+		echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013.">' . "\n";
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
@@ -364,7 +362,7 @@ function plain_description() {
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
 	}
 	if (is_home()) {
-		echo '<meta name="description" content="OCAD U Illustration is an evolving archive and showcase presented by the Illustration Department at OCAD University featuring work from the graduating class of 2012" />' . "\n";
+		echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013." />' . "\n";
 	}
 }
 

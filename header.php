@@ -39,7 +39,15 @@
 	<header id="app-head" role="banner" class="clearfix">
 		<div class="container">
 			<div class="logo">
-				<span id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">2013</a></span>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<span id="site-title">2013</span>
+				<div id="ocad-lologo">
+					<div class="main">
+						<div class="alpha"></div>
+						<div class="beta"></div>
+					</div>
+				</div>
+				</a>
 			</div>
 
 			<a class="visually-hidden skip" href="#content" title="Skip to content">Skip to content</a>
@@ -99,11 +107,11 @@
 								
 			</nav><!-- #access -->
 		</div>
-		<a href="#" id="info">✌</a>
+		<a href="#" id="info" title="Maintained by the Illustration Department at OCAD University">✌</a>
 
 		<div id="colophon" role="contentinfo">
 			<section>
-				<p>&copy; <?php echo date("Y"); ?>, Respective Authors ‡ Maintained by the Illustration Department at <a href="http://www.ocadu.ca" title="Link to OCAD University's website">OCAD University</a></p>
+				<p>&copy; <?php echo date("Y"); ?>, Respective Authors<br>Maintained by the Illustration Department at OCAD University</p>
 			</section>
 		</div><!-- #colophon -->
 

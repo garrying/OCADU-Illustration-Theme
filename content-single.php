@@ -1,4 +1,3 @@
-<div id="progress"></div>
 <article <?php post_class(); ?> role="article">
 		<div id="illustrator-meta-guide">
 		<aside id="illustrator-meta" role="complementary" class="sticky">

@@ -58,8 +58,9 @@ body {
     clear: both;
 }
 
-h1, h2 {
-  font-family: "Executive-Bold";
+h1, h2, h3, h4, h5 {
+  font-family: "Executive-medium";
+  font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1em;
@@ -128,7 +129,7 @@ p {
   letter-spacing: 1px;
   padding: 0 7%;
   position: relative;
-  background: #fff;
+  background: #fefefe;
   z-index: 10;
   box-shadow: 0 2px 0 0 rgba(0,0,0,0.15);
   a {
@@ -143,15 +144,15 @@ p {
       position: static;
       float: left;
       padding: 0 10px;
+      width: 140px;
       border-right: $border;
       display: block;
     }
   }
   .logo {
     float: left;
-    font-weight: bold;
-    border-right: $border;
     text-align: center;
+    position: relative;
     a {
       width: 44px;
       height: 44px;
@@ -159,11 +160,18 @@ p {
       white-space: nowrap;
       display: block;
       text-indent: 100%;
-      background: url('../images/home.gif') transparent no-repeat top left;
+      background: #eee;
       @include transition(background-color, 140ms, ease-in-out);
+      background-image: url('../images/pattern.png');
+      -webkit-animation: barberpole2 1s linear infinite;
+      -moz-animation: barberpole2 1s linear infinite;
+      -o-animation: barberpole2 1s linear infinite;
+      animation: barberpole2 1s linear infinite;
       &:hover {
         background-color: $primary;
-        background-position: bottom left;
+      }
+      &:active {
+        background-color: darken($primary, 20%);
       }
     }
   }
@@ -203,7 +211,7 @@ p {
     display: block;
     width: 44px;
     font-size: 2em;
-    color: #999;
+    color: $primary;
   }
   #year-select {
     position: absolute;
@@ -263,8 +271,10 @@ p {
       height: 44px;
       width: 25px;
       position: relative;
-      background: url('../images/clock.png') no-repeat center center;
+      background: url('../images/clock.png') #fff no-repeat center center;
       cursor: pointer;
+      border-right: $border;
+      margin-right: 10px;
       &:hover {
         .visible {
           border-bottom: 7px solid $primary;
@@ -284,7 +294,7 @@ p {
   }
   &.double {
     @media screen and (max-width: 480px) {
-      padding: 0 2%;
+      padding: 0;
       #search {
         width: 90%;
       }
@@ -293,14 +303,20 @@ p {
       }
       .nav-secondary {
         width: 100%;
-        li:first-child {
-          a {
-            border-left: none;
+        li {
+          width: 20%;
+          &:first-child {
+            a {
+              border-left: none;
+            }
           }
         }
       }
     }
     .nav-secondary {
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
       &:after {
         content:"";
         position: absolute;
@@ -309,6 +325,13 @@ p {
         width: 100%;
         background: #eee;
       }
+      li {
+        text-align: center;
+        width: 33%;
+        @media screen and (max-width: 320px) {
+          width: auto;
+        }
+      }
     }
     #year-select {
       top: 88px;
@@ -316,9 +339,6 @@ p {
     #search {
       @media screen and (max-width: 850px) {
         width: 63%;
-      }
-      @media screen and (max-width: 850px) {
-        width: 70%;
       }
     }
   }
@@ -354,7 +374,7 @@ p {
     width: 100%;
     @extend .clearfix;
     &.ui-autocomplete-category {
-      font-family: "Executive-Bold";
+      font-family: "Executive-Medium";
       background: rgba(#1B1D21, 0.8);
       color: #fff;
       text-align: center;
@@ -362,7 +382,7 @@ p {
       line-height: 24px;
     }
     &.ui-menu-item {
-      font-family: "Executive-Bold";
+      font-family: "Executive-Medium";
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -467,6 +487,9 @@ p {
       @media screen and (max-width: 768px) {
         width: 95%;
       }
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
       img {
         display: block;
         margin: 0 auto;
@@ -489,6 +512,9 @@ p {
     padding: 0 5% 20px;
   }
   margin-top: 50px;
+  @media screen and (max-width: 480px) {
+    margin-top: 20px;
+  }
   padding-right: 20px;
   a:hover {
     color: #000;
@@ -533,8 +559,6 @@ p {
     left: 50%;
     border-right: 1px solid #eee;
   }
-  &:hover {
-  }
   ul {
     margin: 0;
     padding: 0;
@@ -549,10 +573,14 @@ p {
     width:50%;
     a {
       padding:5px 10px;
+      height: 40px;
       display:block;
       text-decoration:none;
       position:relative;
-      color: #777;
+      color: #555;
+      &:hover {
+        color: $primary;
+      }
       &:after {
         content:"";
         position:absolute;
@@ -598,6 +626,15 @@ p {
 }
 
 .archive, .home, .search {
+  margin-top: 68px;
+  @media screen and (max-width: 480px) {
+    margin-top: 100px;
+  }
+  #app-head {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
   .illustrator, .event {
     float: left;
     width: 20%;
@@ -612,11 +649,7 @@ p {
     header a {
       display: block;
       position: relative;
-      -webkit-transition: box-shadow 0.1s ease; 
-      -webkit-transition: box-shadow 0.1s ease; 
-      -moz-transition: box-shadow 0.1s ease; 
-      -o-transition: box-shadow 0.1s ease; 
-      transition: box-shadow 0.1s ease;
+      @include transition(box-shadow,0.1s,ease-in-out);
       box-shadow: inset 0 0 0 5px #1B1D21;
     }
     img {
@@ -653,6 +686,7 @@ p {
 }
 
 .home {
+  margin-top: 35px;
   .illustrator {
     width: 16.66667%;
     padding: 5px;
@@ -674,6 +708,7 @@ p {
         box-shadow: none;
         img {
           opacity: 0;
+          margin-top: 20px;
         }
         h1 {
           opacity: 0;
@@ -688,6 +723,14 @@ p {
               display: block;
             }
             box-shadow: inset 0 0 0 5px black;
+          }
+          &:active {
+            h1 {
+              opacity: 1;
+              display: block;
+              background: $primary;
+            }
+            box-shadow: inset 0 0 0 5px $primary;
           }
         }
       }
@@ -837,7 +880,11 @@ article.error404-content {
     padding: 0 5%;
   }
   color: #fff;
-
+  a {
+    &:hover {
+      color: #fff;
+    }
+  }
   .additional {
     ul {
       margin: 10px 0 0;
@@ -860,12 +907,64 @@ article.error404-content {
 // Footer
 
 #colophon {
-  display: none;
+  font-family: "Executive-Regular";
+  letter-spacing: 0;
+  text-transform: none;
   position: absolute;
-  top: 0;
   left: 7%;
+  width: 50%;
+  height: 44px;
+  margin-left: 55px;
+  line-height: 1em;
+  z-index: -1;
+  padding: 8px 0;
+  font-size: 12px;
+  opacity: 0;
   p {
     margin: 0;
+  }
+}
+
+// OCAD U Logo
+
+#ocad-lologo {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  div {
+    border-radius: 0;
+    background: rgba(#fff,0.7);
+    @include transition(border-radius, 140ms, ease-in-out);
+  }
+  .main {
+    width: 20px;
+    height: 20px;
+    background: none;
+    box-shadow: inset 0 0 0 1px rgba(#fff,0.7);
+    .alpha {
+      position: absolute;
+      left: -12px;
+      bottom: 0; 
+      width: 12px;
+      height: 12px;
+    }
+    .beta {
+      position: absolute;
+      left: 0px;
+      bottom: -8px; 
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+.logo:hover {
+  #ocad-lologo {
+    div {
+      box-shadow: none;
+      border-radius: 50%;
+      border:none;
+      background: #fff;
+    }
   }
 }
 
@@ -886,6 +985,23 @@ article.error404-content {
 @keyframes barberpole {
   from { background-position: 0 0; }
   to   { background-position: 20px 20px; }
+}
+
+@-webkit-keyframes barberpole2 {
+  from { background-position: 0 0; }
+  to   { background-position: 20px 0; }
+}
+@-moz-keyframes barberpole2 {
+  from { background-position: 0 0; }
+  to   { background-position: 20px 0; }
+}
+@-o-keyframes barberpole2 {
+  from { background-position: 0 0; }
+  to   { background-position: 20px 0; }
+}
+@keyframes barberpole2 {
+  from { background-position: 0 0; }
+  to   { background-position: 20px 0; }
 }
 
 @-webkit-keyframes bounce {
