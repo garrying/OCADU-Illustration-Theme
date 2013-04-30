@@ -214,20 +214,18 @@ $(function() {
     $('.gallery-icon a').removeClass('active');
     $(this).find('img').attr('title','Click to Minimize');
     $(this).addClass('active');
-    $(this).parent().parent().addClass('enlarge');
-
-    $(this).find('img').attr('src',imagelarge).attr('width','');
 
     var img = $("<img />").attr('src', imagelarge);
-    $(this).find('img').load(function() {
+    $(this).find('img').load(imagelarge, function() {
         if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
             alert('broken image!');
         } else {
-            $(this).find('img').append(img);
-            pckry.layout();
+          var imgSource = img[0]['src'];
+          $(this).attr('src', imgSource).attr('width', img[0]['width']).attr('height', img[0]['height']).parent().parent().parent().addClass('enlarge');
+          pckry.layout();
         }
     });
-    pckry.layout()
+
     pckry.on( 'layoutComplete', function(){
         var itemPos = $('.active').offset();
         $('html, body').animate({scrollTop: itemPos.top-20},90);
