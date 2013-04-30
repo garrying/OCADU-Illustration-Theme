@@ -119,4 +119,18 @@
 	</header><!-- #app-head -->
 
 <div id="progress"></div>
+<?php if ( is_home() || is_front_page() ) : ?>
+	<div id="intro">
+		<h1>
+			OCAD U Illustration
+		</h1>
+		<h2>
+			An evolving archive maintained by the Illustration Department at OCAD University. <br> <br> Featuring work from the graduating class of 2013.
+		</h2>
+		<p>
+			Coinciding with the 98<sup>th</sup> annual OCAD U Graduate Exhibition. May 2 to 5, 2013.
+		</p>
+		<small><a href="/about" title="Link to a message from Paul Dallas">A message from Paul Dallas, Illustration Chair</a></small>
+	</div>
+<?php endif; ?>
 <div id="content" role="main">

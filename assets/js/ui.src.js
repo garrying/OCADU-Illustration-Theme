@@ -154,6 +154,22 @@ $(function() {
   
   progress.spin();
 
+  // Intro Block
+  var messageBlock = $('#intro');
+
+  messageBlock.on('click', function(){
+    $(this).fadeOut('fast').addClass('hidden');
+  });
+
+  var homeMessage = function () {
+    var y = $(window).scrollTop();
+    if (y > 1 || messageBlock.hasClass('hidden') !== false) {
+      messageBlock.fadeOut('fast');
+    } else {
+      messageBlock.fadeIn('fast');
+    }
+  };
+
   // Fixed Illustrator details
   var stickyBlock = $('.sticky');
 
@@ -178,6 +194,9 @@ $(function() {
     if (didScroll) {
       didScroll = false;
       fixy();
+      if ($('body').hasClass('home')) {
+        homeMessage();
+      }
     }
   }, 40);
 

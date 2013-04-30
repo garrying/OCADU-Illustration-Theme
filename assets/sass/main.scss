@@ -22,6 +22,7 @@ $border: 1px solid #efefef;
 
 html {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body {
@@ -163,10 +164,10 @@ p {
       background: #eee;
       @include transition(background-color, 140ms, ease-in-out);
       background-image: url('../images/pattern.png');
-      -webkit-animation: barberpole2 1s linear infinite;
-      -moz-animation: barberpole2 1s linear infinite;
-      -o-animation: barberpole2 1s linear infinite;
-      animation: barberpole2 1s linear infinite;
+      -webkit-animation: barberpole 1s linear infinite;
+      -moz-animation: barberpole 1s linear infinite;
+      -o-animation: barberpole 1s linear infinite;
+      animation: barberpole 1s linear infinite;
       &:hover {
         background-color: $primary;
       }
@@ -240,16 +241,16 @@ p {
         color: #fff;
         background-image:url('../images/pattern.png');  
         background-color: rgba($primary,0.6);
-        -webkit-animation: barberpole 500ms linear 4;
-        -moz-animation: barberpole 500ms linear 4;
-        -o-animation: barberpole 500ms linear 4;
-        animation: barberpole 500ms linear 4;
+        -webkit-animation: barberpole 1s linear 4;
+        -moz-animation: barberpole 1s linear 4;
+        -o-animation: barberpole 1s linear 4;
+        animation: barberpole 1s linear 4;
       }
       &.selected:hover {
-        -webkit-animation: barberpole 500ms linear infinite;
-        -moz-animation: barberpole 500ms linear infinite;
-        -o-animation: barberpole 500ms linear infinite;
-        animation: barberpole 500ms linear infinite;
+        -webkit-animation: barberpole 1s linear infinite;
+        -moz-animation: barberpole 1s linear infinite;
+        -o-animation: barberpole 1s linear infinite;
+        animation: barberpole 1s linear infinite;
       }
     }
     &.collapsed {
@@ -412,7 +413,38 @@ p {
 
 // Links
 
-// Year Select
+// Paul's Message 
+#intro {
+  position: absolute;
+  right: 5px;
+  width: 25%;
+  @media screen and (max-width: 1024px) {
+    width: 40%
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  padding: 20px;
+  bottom: 0;
+  color: #fff;
+  z-index: 7;
+  background: rgba($primary, 0.75);
+  background-image: url('../images/pattern.png');
+  -webkit-animation: barberpole 1s linear infinite;
+  -moz-animation: barberpole 1s linear infinite;
+  -o-animation: barberpole 1s linear infinite;
+  animation: barberpole 1s linear infinite;
+  h1 {
+    font-size: 1em;
+    margin-bottom:3em;
+  }
+  h2 {
+    font-size: 1em;
+  }
+  a {
+    color: #fff;
+  }
+}
 
 // Search Form
 
@@ -687,6 +719,8 @@ p {
 
 .home {
   margin-top: 35px;
+  #content {
+  }
   .illustrator {
     width: 16.66667%;
     padding: 5px;

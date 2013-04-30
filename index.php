@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 	<?php if ( is_home() || is_front_page() ) {
 	$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC&number=1');	
 	$args = array(
