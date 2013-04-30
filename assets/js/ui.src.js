@@ -209,13 +209,25 @@ $(function() {
       return false;
     }
     var imagelarge = $(this).attr('href');
+
     $('.gallery-item').removeClass('enlarge');
     $('.gallery-icon a').removeClass('active');
     $(this).find('img').attr('title','Click to Minimize');
     $(this).addClass('active');
     $(this).parent().parent().addClass('enlarge');
+
     $(this).find('img').attr('src',imagelarge).attr('width','');
-    setTimeout(function(){ pckry.layout();}, 120);
+
+    var img = $("<img />").attr('src', imagelarge);
+    $(this).find('img').load(function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            alert('broken image!');
+        } else {
+            $(this).find('img').append(img);
+            pckry.layout();
+        }
+    });
+    pckry.layout()
     pckry.on( 'layoutComplete', function(){
         var itemPos = $('.active').offset();
         $('html, body').animate({scrollTop: itemPos.top-20},90);
