@@ -108,12 +108,14 @@ a {
 
 // Italics and Strongs
 
-i {
+i, em {
   font-family: "Executive-RegularIta";
+  font-style: normal;
 }
 
 strong {
   font-family: "Executive-Bold";
+  font-weight: normal;
 }
 
 // Hyphenation 
