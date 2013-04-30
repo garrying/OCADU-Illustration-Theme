@@ -217,13 +217,13 @@ $(function() {
 
     var img = $("<img />").attr('src', imagelarge);
     $(this).find('img').load(imagelarge, function() {
-      if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-          alert('broken image!');
-      } else {
-        var imgSource = img[0]['src'];
-        console.log(img[0]['width']);
-        $(this).attr('src', imgSource).attr('width', img[0]['width']).attr('height', img[0]['height']).parent().parent().parent().addClass('enlarge');
-      }
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            alert('broken image!');
+        } else {
+          var imgSource = img[0]['src'];
+          $(this).attr('src', imgSource).attr('width', img[0]['width']).attr('height', img[0]['height']).parent().parent().parent().addClass('enlarge');
+          pckry.layout();
+        }
     });
 
     pckry.on( 'layoutComplete', function(){
