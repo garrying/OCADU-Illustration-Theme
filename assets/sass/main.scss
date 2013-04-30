@@ -106,8 +106,15 @@ a {
   background: $primary; 
 }
 
-// Selection 
+// Italics and Strongs
 
+i {
+  font-family: "Executive-RegularIta";
+}
+
+strong {
+  font-family: "Executive-Bold";
+}
 
 // Hyphenation 
 
