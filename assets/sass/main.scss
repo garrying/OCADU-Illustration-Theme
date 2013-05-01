@@ -587,7 +587,7 @@ p {
 
 #nav-single {
   margin-top:20px;
-  font-size:0;
+  font-size:12px;
   display:inline-block;
   border:1px solid #eee;
   border-bottom: none;
@@ -611,10 +611,9 @@ p {
     padding: 0;
   }
   li {
-    font-size:12px;
     line-height: 30px;
     overflow:hidden;
-    display:inline-block;
+    float:left;
     vertical-align:middle;
     text-align:right;
     width:50%;
@@ -653,9 +652,6 @@ p {
       font-size: 20px;
       content:"\219E";
       left:0;
-    }
-    &.nav-next {
-      margin-left:-5px;
     }
     &.nav-next a:after {
       font-size: 20px;
