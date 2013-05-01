@@ -315,7 +315,7 @@ function facebook_connect() {
 		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
 		echo '<!-- end facebook open graph -->' . "\n";
 	}
-	if (is_home()) {
+	if (is_home() || is_archive()) {
 		echo "\n" . '<!-- facebook open graph -->' . "\n";
 		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
 		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
@@ -342,7 +342,7 @@ function google_header() {
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
-	if (is_home()) {
+	if (is_home() || is_archive()) {
 		echo '<!-- google +1 tags -->' . "\n";
 		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
 		echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013.">' . "\n";
@@ -361,7 +361,7 @@ function plain_description() {
 		$the_excerpt = strip_tags($post->post_content);
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
 	}
-	if (is_home()) {
+	if (is_home() || is_archive()) {
 		echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013." />' . "\n";
 	}
 }
