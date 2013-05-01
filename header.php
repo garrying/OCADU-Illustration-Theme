@@ -121,9 +121,6 @@
 <div id="progress"></div>
 <?php if ( is_home() || is_front_page() ) : ?>
 	<div id="intro">
-		<h1>
-			OCAD U Illustration
-		</h1>
 		<h2>
 			An evolving archive maintained by the Illustration Department at OCAD University. <br> <br> Featuring work from the graduating class of 2013.
 		</h2>

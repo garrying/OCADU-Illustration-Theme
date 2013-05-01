@@ -227,6 +227,9 @@ p {
     width: 44px;
     font-size: 2em;
     color: $primary;
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
   #year-select {
     position: absolute;
@@ -308,7 +311,7 @@ p {
     }
   }
   &.double {
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 767px) {
       padding: 0;
       #search {
         width: 90%;
@@ -329,7 +332,7 @@ p {
       }
     }
     .nav-secondary {
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 850px) {
         width: 100%;
       }
       &:after {
@@ -353,7 +356,7 @@ p {
     }
     #search {
       @media screen and (max-width: 850px) {
-        width: 63%;
+        width: 73%;
       }
     }
   }
@@ -435,8 +438,11 @@ p {
   @media screen and (max-width: 1024px) {
     width: 40%
   }
-  @media screen and (max-width: 767px) {
-    display: none;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 480px) and (orientation: landscape) {
+    bottom: -100px;
   }
   padding: 20px;
   bottom: 0;
@@ -472,7 +478,7 @@ p {
     letter-spacing: 1px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 1px 10px;
     border: none;
     min-height: 44px;
     outline: none;
@@ -1017,37 +1023,20 @@ article.error404-content {
 // Animation keyframes
 
 @-webkit-keyframes barberpole {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 20px; }
+  from { background-position: 0 10px; }
+  to   { background-position: 0 0; }
 }
 @-moz-keyframes barberpole {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 20px; }
+  from { background-position: 0 10px; }
+  to   { background-position: 0 0; }
 }
 @-o-keyframes barberpole {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 20px; }
+  from { background-position: 0 10px; }
+  to   { background-position: 0 0; }
 }
 @keyframes barberpole {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 20px; }
-}
-
-@-webkit-keyframes barberpole2 {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
-}
-@-moz-keyframes barberpole2 {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
-}
-@-o-keyframes barberpole2 {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
-}
-@keyframes barberpole2 {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
+  from { background-position: 0 10px; }
+  to   { background-position: 0 0; }
 }
 
 @-webkit-keyframes bounce {

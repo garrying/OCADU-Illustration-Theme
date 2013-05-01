@@ -91,8 +91,13 @@ $(function() {
       $('#s').teletype({
         text: ' ● ' + title
       });
+    } else if ($('body').hasClass('archive') && $('#illu-jumpmenu a').hasClass('selected')) {
+      var title = $('#illu-jumpmenu .selected').text();
+      $('#s').teletype({
+        text: ' ● ' + title
+      });
     }
-  },7000);
+  },6000);
 
   // Homepage Cascade
   var doCascade = function (delay) {
