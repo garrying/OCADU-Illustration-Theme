@@ -116,7 +116,7 @@ if (!function_exists('load_my_scripts')) {
 			wp_enqueue_script('packery');
 			wp_register_script('spin', get_template_directory_uri().'/assets/js/lib/spin.min.js', '', '', true);
 			wp_enqueue_script('spin');
-			wp_register_script('ui', get_template_directory_uri().'/assets/js/ui.src.js', array('jquery'), '', true);
+			wp_register_script('ui', get_template_directory_uri().'/assets/js/ui.min.js', array('jquery'), '', true);
 			wp_enqueue_script('ui');
 		}
 	}
