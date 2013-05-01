@@ -7,11 +7,11 @@
 		</header><!-- .entry-header -->
 			
 				<?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-				<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div>
+				<div class="info site"><a title="Visit Illustrator's Website" target="_blank" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div>
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-				<div class="info site"><a title="Visit Illustrator's Website" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div>
+				<div class="info site"><a title="Visit Illustrator's Website" target="_blank" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div>
 				<?php endif; ?>
 
 				<?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
