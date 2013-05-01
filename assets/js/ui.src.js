@@ -225,9 +225,7 @@ $(function() {
           $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
           var imgContainer = document.querySelector('.gallery');
           imagesLoaded(imgContainer, function(){
-            setTimeout(function(){
             pckry.layout();
-            }, 150);
           });
         }
     });
