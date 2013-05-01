@@ -136,6 +136,9 @@ p {
   text-transform: uppercase;
   line-height: 44px;
   height: 44px;
+  @media screen and (max-width: 850px) {
+    height: 88px;
+  }
   font-size: 0.75em;
   letter-spacing: 1px;
   margin-bottom: 1px;
