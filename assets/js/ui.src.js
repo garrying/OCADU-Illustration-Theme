@@ -223,7 +223,7 @@ $(function() {
         } else {
           var imgSource = img[0]['src'];
           $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
-          var imgContainer = $(this);
+          var imgContainer = document.querySelector('.gallery');
           imagesLoaded(imgContainer, function(){
             setTimeout(function(){
             pckry.layout();
