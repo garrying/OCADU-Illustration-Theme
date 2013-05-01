@@ -216,13 +216,19 @@ $(function() {
     $(this).addClass('active');
 
     var img = $("<img />").attr('src', imagelarge);
+
     $(this).find('img').load(imagelarge, function() {
         if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
             alert('Image failed to load. Try again.');
         } else {
           var imgSource = img[0]['src'];
-          $(this).attr('src', imgSource).attr('width', img[0]['width']).attr('height', img[0]['height']).parent().parent().parent().addClass('enlarge');
-          pckry.layout();
+          $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
+          var imgContainer = $(this);
+          imagesLoaded(imgContainer, function(){
+            setTimeout(function(){
+            pckry.layout();
+            }, 150);
+          });
         }
     });
 
