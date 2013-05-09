@@ -56,7 +56,7 @@
 				<?php get_search_form(); ?>
 			</div><!-- #search -->
 			<div id="year-widget" data-visible="true">
-				<div class="year-widget-toggle"><div class="indicator visible"></div></div>
+				<div class="year-widget-toggle" title="What year is it?"><div class="indicator visible"></div></div>
 				<?php 
 					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
 					// Selected menu state for attachments 

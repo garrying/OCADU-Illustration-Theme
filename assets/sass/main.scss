@@ -38,6 +38,8 @@ body {
   color: #222;
 }
 
+// Hide text helpers
+
 .visually-hidden, .ui-helper-hidden-accessible {
   position: absolute;
   left: -999em;
@@ -49,6 +51,8 @@ body {
   overflow: hidden;
 }
 
+// Clearfix
+
 .clearfix:before,
 .clearfix:after {
     content: " ";
@@ -58,6 +62,8 @@ body {
 .clearfix:after {
     clear: both;
 }
+
+// Headings
 
 h1, h2, h3, h4, h5 {
   font-family: "Executive-medium";
@@ -76,6 +82,10 @@ h2 {
 a {
   @include transition(color,150ms,ease-in-out);
   color: $primary;
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
 }
 
 // class for truncating long text
@@ -93,11 +103,10 @@ a {
 }
  
 ::-webkit-scrollbar-track {
-  background: #fff;
-  border-left: 1px solid #eee;
+  background: #FFF;
+  border-left: 1px solid #EEE;
 }
- 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: #222; 
 }
@@ -175,13 +184,10 @@ p {
       white-space: nowrap;
       display: block;
       text-indent: 100%;
-      background: #eee;
-      @include transition(background-color, 140ms, ease-in-out);
+      background: #EEE;
       background-image: url('../images/pattern.png');
-      -webkit-animation: barberpole 1s linear infinite;
-      -moz-animation: barberpole 1s linear infinite;
-      -o-animation: barberpole 1s linear infinite;
-      animation: barberpole 1s linear infinite;
+      @include transition(background-color, 140ms, ease-in-out);
+      @include animation(barberpole, 1s, linear, infinite);
       &:hover {
         background-color: $primary;
       }
@@ -255,19 +261,13 @@ p {
       background-color: rgba(255,255,255,0.7);
       @include transition(background,0.25s,ease);
       &.selected, &:hover {
-        color: #fff;
-        background-image:url('../images/pattern.png');  
+        color: #FFF;
+        background-image: url('../images/pattern.png');  
         background-color: rgba($primary,0.6);
-        -webkit-animation: barberpole 1s linear 4;
-        -moz-animation: barberpole 1s linear 4;
-        -o-animation: barberpole 1s linear 4;
-        animation: barberpole 1s linear 4;
+        @include animation(barberpole, 1s, linear, 4);
       }
       &.selected:hover {
-        -webkit-animation: barberpole 1s linear infinite;
-        -moz-animation: barberpole 1s linear infinite;
-        -o-animation: barberpole 1s linear infinite;
-        animation: barberpole 1s linear infinite;
+        @include animation(barberpole, 1s, linear, infinite);
       }
     }
     &.collapsed {
@@ -280,16 +280,13 @@ p {
     float: left;
     display: block;
     &:hover .visible {
-      -webkit-animation: bounce 1s 3;
-      -moz-animation: bounce 1s 3;
-      -o-animation: bounce 1s 3;
-      animation: bounce 1s 3;
+      @include animation(bounce, 1s, linear, 3);
     }
     .year-widget-toggle {
       height: 44px;
       width: 25px;
       position: relative;
-      background: url('../images/clock.png') #fff no-repeat center center;
+      background: url('../images/clock.png') #FFF no-repeat center center;
       @media (min--moz-device-pixel-ratio: 1.5),
        (-o-min-device-pixel-ratio: 3/2),
        (-webkit-min-device-pixel-ratio: 1.5),
@@ -314,7 +311,7 @@ p {
       left: 5px;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-bottom: 7px solid black;
+      border-bottom: 7px solid #000;
     }
   }
   &.double {
@@ -348,7 +345,7 @@ p {
         left: 0;
         height: 1px;
         width: 100%;
-        background: #eee;
+        background: #EEE;
       }
       li {
         text-align: center;
@@ -383,7 +380,7 @@ p {
   z-index: 999 !important;
   list-style: none;
   font-size: 0.75em;
-  color: #fff;
+  color: #FFF;
   letter-spacing: 1px;
   a {
     display: inline-block;
@@ -401,7 +398,7 @@ p {
     &.ui-autocomplete-category {
       font-family: "Executive-Medium";
       background: rgba(#1B1D21, 0.8);
-      color: #fff;
+      color: #FFF;
       text-align: center;
       font-size: 85%;
       line-height: 24px;
@@ -429,19 +426,13 @@ p {
 	}
 }
 
-// CSS3 Animation 
+// Homepage Intro Message
 
-// Assistive text
-
-// Selection 
-
-// Links
-
-// Paul's Message 
 #intro {
   position: absolute;
   right: 5px;
   width: 25%;
+  @include transition(width,0.3s,ease-in-out);
   @media screen and (max-width: 1024px) {
     width: 40%
   }
@@ -453,30 +444,27 @@ p {
   }
   padding: 20px;
   bottom: 0;
-  color: #fff;
+  color: #FFF;
   z-index: 7;
   background: rgba($primary, 0.75);
   background-image: url('../images/pattern.png');
-  -webkit-animation: barberpole 1s linear infinite;
-  -moz-animation: barberpole 1s linear infinite;
-  -o-animation: barberpole 1s linear infinite;
-  animation: barberpole 1s linear infinite;
+  @include animation(barberpole, 1s, linear, infinite);
   h1 {
     font-size: 1em;
-    margin-bottom:3em;
+    margin-bottom: 3em;
   }
   h2 {
     font-size: 1em;
   }
   a {
-    color: #fff;
+    color: #FFF;
   }
 }
 
 // Search Form
 
 #search {
-  float:left;
+  float: left;
   vertical-align: bottom;
   border-right: $border;
   width: 40%;
@@ -576,10 +564,6 @@ p {
     margin-top: 20px;
   }
   padding-right: 20px;
-  a:hover {
-    color: #000;
-    text-decoration: none;
-  }
   .info {
     margin: .5em 0;
   }
@@ -589,7 +573,7 @@ p {
       position: static;
     }
     z-index: 200;
-    background: rgba(#fff,0.75);
+    background: rgba(#FFF,0.75);
     right: 0;
     top: -24px;
   }
@@ -599,12 +583,12 @@ p {
 }
 
 #nav-single {
-  margin-top:20px;
-  font-size:12px;
-  display:inline-block;
-  border:1px solid #eee;
+  margin-top: 20px;
+  font-size: 12px;
+  display: inline-block;
+  border: 1px solid #EEE;
   border-bottom: none;
-  width:100%;
+  width: 100%;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
@@ -617,7 +601,7 @@ p {
     height: 100%;
     position: absolute;
     left: 50%;
-    border-right: 1px solid #eee;
+    border-right: 1px solid #EEE;
   }
   ul {
     margin: 0;
@@ -625,34 +609,34 @@ p {
   }
   li {
     line-height: 30px;
-    overflow:hidden;
-    float:left;
-    vertical-align:middle;
-    text-align:right;
-    width:50%;
+    overflow: hidden;
+    float: left;
+    vertical-align: middle;
+    text-align: right;
+    width: 50%;
     a {
-      padding:5px 10px;
+      padding: 5px 10px;
       height: 40px;
       display:block;
-      text-decoration:none;
-      position:relative;
+      text-decoration: none;
+      position: relative;
       color: #555;
       &:hover {
         color: $primary;
       }
       &:after {
-        content:"";
-        position:absolute;
-        padding:5px 5px;
-        top:0;
-        z-index:999;
+        content: "";
+        position: absolute;
+        padding: 5px 5px;
+        top: 0;
+        z-index: 999;
       }
       span {
-        width:80%;
+        width: 80%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        display:inline-block;
+        display: inline-block;
       }
     }
     &:last-child a {
@@ -663,13 +647,13 @@ p {
     }
     &.nav-previous a:after {
       font-size: 20px;
-      content:"\219E";
-      left:0;
+      content: "\219E";
+      left: 0;
     }
     &.nav-next a:after {
       font-size: 20px;
-      content:"\21A0";
-      right:0;
+      content: "\21A0";
+      right: 0;
     }
   }
 }
@@ -725,7 +709,7 @@ p {
     }
     h1 {
       width: 100%;
-      color: #fff;
+      color: #FFF;
       text-align: center;
       padding: 5px 0;
       position: absolute;
@@ -733,18 +717,13 @@ p {
       margin: 0;
       font-size: 0.75em;
       background: #1B1D21;
-      -webkit-transition: opacity 0.25s ease; 
-      -moz-transition: opacity 0.25s ease; 
-      -o-transition: opacity 0.25s ease; 
-      transition: opacity 0.25s ease; 
+      @include transition(opacity,0.25s,ease);
     }
   }
 }
 
 .home {
   margin-top: 35px;
-  #content {
-  }
   .illustrator {
     width: 16.66667%;
     padding: 5px;
@@ -780,7 +759,7 @@ p {
               opacity: 1;
               display: block;
             }
-            box-shadow: inset 0 0 0 5px black;
+            box-shadow: inset 0 0 0 5px #000;
           }
           &:active {
             h1 {
@@ -821,10 +800,6 @@ article.page {
   }
   h1 {
     margin-top: 50px;
-  }
-  a:hover {
-    color: #000;
-    text-decoration: none;
   }
   .left, .right {
     width: 46%;
@@ -897,8 +872,6 @@ article.page {
   }
 }
 
-// Message 
-
 // Progress
 
 #progress {
@@ -937,24 +910,10 @@ article.error404-content {
   @media screen and (max-width: 800px) {
     padding: 0 5%;
   }
-  color: #fff;
+  color: #FFF;
   a {
     &:hover {
-      color: #fff;
-    }
-  }
-  .additional {
-    ul {
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-      box-shadow: 0 2px 0 0 rgba(0,0,0,0.05);
-      li {
-        display: inline-block;
-        a {
-          padding: 10px 10px;
-        }
-      }
+      color: #FFF;
     }
   }
 }
@@ -992,14 +951,14 @@ article.error404-content {
   left: 40%;
   div {
     border-radius: 0;
-    background: rgba(#fff,0.7);
+    background: rgba(#FFF,0.7);
     @include transition(border-radius, 140ms, ease-in-out);
   }
   .main {
     width: 20px;
     height: 20px;
     background: none;
-    box-shadow: inset 0 0 0 1px rgba(#fff,0.7);
+    box-shadow: inset 0 0 0 1px rgba(#FFF,0.7);
     .alpha {
       position: absolute;
       left: -12px;
@@ -1021,8 +980,8 @@ article.error404-content {
     div {
       box-shadow: none;
       border-radius: 50%;
-      border:none;
-      background: #fff;
+      border: none;
+      background: #FFF;
     }
   }
 }
@@ -1030,20 +989,20 @@ article.error404-content {
 // Animation keyframes
 
 @-webkit-keyframes barberpole {
-  from { background-position: 0 10px; }
-  to   { background-position: 0 0; }
+  from {background-position: 0 10px;}
+  to   {background-position: 0 0;}
 }
 @-moz-keyframes barberpole {
-  from { background-position: 0 10px; }
-  to   { background-position: 0 0; }
+  from {background-position: 0 10px;}
+  to   {background-position: 0 0;}
 }
 @-o-keyframes barberpole {
-  from { background-position: 0 10px; }
-  to   { background-position: 0 0; }
+  from {background-position: 0 10px;}
+  to   {background-position: 0 0;}
 }
 @keyframes barberpole {
-  from { background-position: 0 10px; }
-  to   { background-position: 0 0; }
+  from {background-position: 0 10px;}
+  to   {background-position: 0 0;}
 }
 
 @-webkit-keyframes bounce {
