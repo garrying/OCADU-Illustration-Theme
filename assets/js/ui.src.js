@@ -187,23 +187,16 @@ $(function() {
     } else {
       stickyBlock.removeClass('fixed');
     }
+    if ($('body').hasClass('home')) {
+      homeMessage();
+    }
   };
 
-  var didScroll = false;
-
-  $(window).scroll(function () {
-    didScroll = true;
-  });
-
-  setInterval(function () {
-    if (didScroll) {
-      didScroll = false;
-      fixy();
-      if ($('body').hasClass('home')) {
-        homeMessage();
-      }
-    }
-  }, 40);
+  if (window.addEventListener) {
+    window.addEventListener('scroll', fixy, false);
+  } else if (window.attachEvent) {
+    window.attachEvent('onscroll', fixy);
+  }
 
   // Click to enlarge gallery image
   $('.gallery-icon a').on('click', function(){
