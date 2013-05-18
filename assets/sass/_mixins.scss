@@ -1,0 +1,27 @@
+// CSS3 Filters
+
+@mixin filter( $var ) {
+  -webkit-filter: $var;
+  -moz-filter: $var;
+  -ms-filter: $var;
+  -o-filter: $var;
+  filter: $var;
+}
+
+// Transitions
+
+@mixin transition( $var, $timing, $easing ) {
+  -webkit-transition: $var $timing $easing;
+  -moz-transition: $var $timing $easing;
+  -o-transition: $var $timing $easing;
+  transition: $var $timing $easing;
+}
+
+// Animations
+
+@mixin animation( $animation, $timing, $easing, $iterations ) {
+  -webkit-animation: $animation $timing $easing $iterations;
+  -moz-animation: $animation $timing $easing $iterations;
+  -o-animation: $animation $timing $easing $iterations;
+  animation: $animation $timing $easing $iterations;
+}

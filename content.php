@@ -1,6 +1,5 @@
-	<article <?php post_class(); ?> role="article">
-		<header class="entry-header">
-
+<article <?php post_class(); ?> role="article">
+	<header class="entry-header">
 		<?php if ( is_page() ) : ?>
 
 			<h1><?php the_title(); ?></h1>
@@ -21,5 +20,4 @@
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' ) ); ?>
 		</div><!-- .entry-content -->
 		<?php endif; ?>
-
-	</article><!-- <?php the_title(); ?> -->
+</article><!-- <?php the_title(); ?> -->
