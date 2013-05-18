@@ -1,18 +1,29 @@
-/* ocaduillustration.com */
-
 $(function() {
   'use strict';
 
   // vars
+  var $body = $('body');
   var $viewport = $('html, body');
+  var $apphead = $('#app-head');
+  var $colophon = $('#colophon');
+  var $yearwidget = $('#year-widget');
+  var $yearselect = $('#year-select');
+  var $searchinput = $('#s');
+  var $progress = $('#progress');
+  var $messageblock = $('#intro');
+  var $stickyBlock = $('.sticky');
+
+  // keyboard vars
+  var nextItem = $('.nav-next a');
+  var prevItem = $('.nav-previous a');
 
   // Check header has not doubled
   var checkAppHead = function () {
-    var appHeadheight = $('#app-head').height();
+    var appHeadheight = $apphead.height();
     if (appHeadheight > 45) {
-      $('#app-head').addClass('double');
+      $apphead.addClass('double');
     } else {
-      $('#app-head').removeClass('double');
+      $apphead.removeClass('double');
     }
   };
 
@@ -22,9 +33,9 @@ $(function() {
   $('#info').hover(function(){
     $('#search, .year-widget-toggle').animate({opacity:0});
     $(this).html('☜');
-    $('#colophon').animate({opacity:1});
+    $colophon.animate({opacity:1});
   }, function(){
-    $('#colophon').animate({opacity:0});
+    $colophon.animate({opacity:0});
     $(this).html('✌');
     $('#search, .year-widget-toggle').animate({opacity:1});
   });
@@ -49,7 +60,7 @@ $(function() {
   var pckry;
 
   // initialize Packery after all images have loaded
-  if ($('body').hasClass('single')) {
+  if ($body.hasClass('single')) {
     imagesLoaded( container, function() {
       pckry = new Packery( container, {
         // options
@@ -61,39 +72,39 @@ $(function() {
 
   // Year Show Hide
   $('.year-widget-toggle').on('click', function(){
-    if ($('#year-widget').attr('data-visible') === 'true') {
+    if ($yearwidget.attr('data-visible') === 'true') {
       $(this).find('.indicator').removeClass('visible');
-      $('#year-widget').attr('data-visible','false');
-      $('#year-select').addClass('collapsed');
+      $yearwidget.attr('data-visible','false');
+      $yearselect.addClass('collapsed');
       $.cookie('currentlyVisible', 'false', {path: '/'});
     } else {
       $(this).find('.indicator').addClass('visible');
-      $('#year-widget').attr('data-visible','true');
-      $('#year-select').removeClass('collapsed');
+      $yearwidget.attr('data-visible','true');
+      $yearselect.removeClass('collapsed');
       $.cookie('currentlyVisible', 'true', {path: '/'});
     }
   });
 
   if ($.cookie('currentlyVisible') === 'false') {
-    $('#year-widget').attr('data-visible','false');
+    $yearwidget.attr('data-visible','false');
     $(this).find('.indicator').removeClass('visible');
-    $('#year-select').addClass('collapsed');
+    $yearselect.addClass('collapsed');
   }
 
   // Fancy type in place thing for search bar in different contexts
   setTimeout(function(){
-    if ($('body').hasClass('home') || $('body').hasClass('error404')) {
-      $('#s').teletype({
+    if ($body.hasClass('home') || $body.hasClass('error404')) {
+      $searchinput.teletype({
         text: '...Search The Archive'
       });
-    } else if ($('body').hasClass('single') && $('article').hasClass('illustrator')) {
+    } else if ($body.hasClass('single') && $('article').hasClass('illustrator')) {
       var title = $('h1').text();
-      $('#s').teletype({
+      $searchinput.teletype({
         text: ' ● ' + title
       });
-    } else if ($('body').hasClass('archive') && $('#illu-jumpmenu a').hasClass('selected')) {
+    } else if ($body.hasClass('archive') && $('#illu-jumpmenu a').hasClass('selected')) {
       var title = $('#illu-jumpmenu .selected').text();
-      $('#s').teletype({
+      $searchinput.teletype({
         text: ' ● ' + title
       });
     }
@@ -118,19 +129,17 @@ $(function() {
         },
         shuffled = $.map(allElems, function(){
           var random = getRandom(allElems.length),
-            randEl = $(allElems[random]).clone(true)[0];
-          allElems.splice(random, 1);
+              randEl = $(allElems[random]).clone(true)[0];
+              allElems.splice(random, 1);
           return randEl;
        });
-
-    this.each(function(i){
+      this.each(function(i){
       $(this).replaceWith($(shuffled[i]));
     });
-
     return $(shuffled);
   };
 
-  if ($('body').hasClass('home')) {
+  if ($body.hasClass('home')) {
     $('#content article').shuffle();
   }
 
@@ -154,41 +163,35 @@ $(function() {
     });
     return this;
   };
-
-  var progress = $('#progress');
   
-  progress.spin();
+  $progress.spin();
 
   // Intro Block
-  var messageBlock = $('#intro');
-
-  messageBlock.on('click', function(){
+  $messageblock.on('click', function(){
     $(this).fadeOut('fast').addClass('hidden');
   });
 
-  var homeMessage = function () {
+  var homemessage = function () {
     var y = $(window).scrollTop();
-    if (y > 1 || messageBlock.hasClass('hidden') !== false) {
-      messageBlock.fadeOut('fast');
+    if (y > 1 || $messageblock.hasClass('hidden') !== false) {
+      $messageblock.fadeOut('fast');
     } else {
-      messageBlock.fadeIn('fast');
+      $messageblock.fadeIn('fast');
     }
   };
 
   // Fixed Illustrator details
-  var stickyBlock = $('.sticky');
-
   var fixy = function () {
     var y = $(window).scrollTop();
     var windowHeight = $(window).height(); 
-    var stickyBlockHeight = stickyBlock.height();
+    var stickyBlockHeight = $stickyBlock.height();
     if (y >= 70 && stickyBlockHeight < windowHeight) {
-      stickyBlock.addClass('fixed');
+      $stickyBlock.addClass('fixed');
     } else {
-      stickyBlock.removeClass('fixed');
+      $stickyBlock.removeClass('fixed');
     }
-    if ($('body').hasClass('home')) {
-      homeMessage();
+    if ($body.hasClass('home')) {
+      homemessage();
     }
   };
 
@@ -216,7 +219,7 @@ $(function() {
     var img = $("<img />").attr('src', imagelarge);
 
     $(this).find('img').load(imagelarge, function() {
-        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+        if (!this.complete || typeof this.naturalWidth === "undefined" || this.naturalWidth === 0) {
             alert('Image failed to load. Try again.');
         } else {
           var imgSource = img[0]['src'];
@@ -229,8 +232,8 @@ $(function() {
     });
 
     pckry.on( 'layoutComplete', function(){
-        var itemPos = $('.active').offset();
-        $('html, body').animate({scrollTop: itemPos.top-20},90);
+      var itemPos = $('.active').offset();
+      $viewport.animate({scrollTop: itemPos.top-20},90);
     });
     return false;
   });
@@ -242,19 +245,16 @@ $(function() {
 
   // Click to scroll back to top
   var backTotop = function () {
-    $('html, body').animate({
+    $viewport.animate({
       scrollTop: 0
     }, 400);
   };
 
-  if ($('body').hasClass('single')) {
-    $('.sticky').find('h1').on('click', backTotop);
+  if ($body.hasClass('single')) {
+    $stickyBlock.find('h1').on('click', backTotop);
   }
 
   // Keyboard Shortcuts
-  var nextItem = $('.nav-next a');
-  var prevItem = $('.nav-previous a');
-
   $(document.documentElement).keyup(function (event) {
     // handle cursor keys, illustrator, work navigation
     if (event.keyCode === 37 && (prevItem.length)) {
@@ -266,17 +266,17 @@ $(function() {
 
   // on Window Load
   window.onload = function() {
-    if ($('body').hasClass('home')) {
+    if ($body.hasClass('home')) {
       document.getElementById('s').focus();
       doCascade(150);
     }
-    $('#s').on('focus', function(){
+    $searchinput.on('focus', function(){
       $(this).attr('placeholder', 'Search for an Illustrator');
     });
     $('.gallery').find('img').fadeTo('fast',1, function(){
-      progress.spin(false);
+      $progress.spin(false);
     });
-    progress.spin(false);
+    $progress.spin(false);
   };
 
   $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(){
