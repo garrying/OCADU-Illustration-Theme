@@ -186,7 +186,7 @@ p {
       background: #EEE;
       background-image: url('../images/pattern.png');
       @include transition(background-color, 140ms, ease-in-out);
-      @include animation(barberpole, 1s, linear, infinite);
+      @include animation(starfield, 1s, linear, infinite);
       &:hover {
         background-color: $primary;
       }
@@ -263,10 +263,10 @@ p {
         color: #FFF;
         background-image: url('../images/pattern.png');  
         background-color: rgba($primary,0.6);
-        @include animation(barberpole, 1s, linear, 4);
+        @include animation(starfield, 1s, linear, 4);
       }
       &.selected:hover {
-        @include animation(barberpole, 1s, linear, infinite);
+        @include animation(starfield, 1s, linear, infinite);
       }
     }
     &.collapsed {
@@ -396,7 +396,7 @@ p {
     @extend .clearfix;
     &.ui-autocomplete-category {
       font-family: "Executive-Medium";
-      background: rgba(#1B1D21, 0.8);
+      box-shadow: inset 0 0 1px 0 rgba(#000,0.5);
       color: #FFF;
       text-align: center;
       font-size: 85%;
@@ -447,7 +447,7 @@ p {
   z-index: 7;
   background: rgba($primary, 0.75);
   background-image: url('../images/pattern.png');
-  @include animation(barberpole, 1s, linear, infinite);
+  @include animation(starfield, 1s, linear, infinite);
   h1 {
     font-size: 1em;
     margin-bottom: 3em;
@@ -456,7 +456,9 @@ p {
     font-size: 1em;
   }
   a {
+    display: block;
     color: #FFF;
+    width: 100%;
   }
 }
 
@@ -467,6 +469,7 @@ p {
   vertical-align: bottom;
   border-right: $border;
   width: 40%;
+  height: 44px;
   #s {
     width: 100%;
     letter-spacing: 1px;
@@ -474,7 +477,7 @@ p {
     -webkit-font-smoothing: antialiased;
     padding: 0 10px 0 10px;
     border: none;
-    min-height: 44px;
+    height: 44px;
     outline: none;
     text-transform: uppercase;
     @include transition(box-shadow,0.3s,ease-in-out);
@@ -688,7 +691,7 @@ p {
     header a {
       display: block;
       position: relative;
-      @include transition(box-shadow,0.1s,ease-in-out);
+      @include transition(box-shadow,0.25s,ease-in-out);
       box-shadow: inset 0 0 0 5px #1B1D21;
     }
     img {
@@ -716,7 +719,7 @@ p {
       margin: 0;
       font-size: 0.75em;
       background: #1B1D21;
-      @include transition(opacity,0.25s,ease);
+      @include transition(opacity,0.25s,ease-in-out);
     }
   }
 }
@@ -762,6 +765,7 @@ p {
           }
           &:active {
             h1 {
+              @include transition(background, 0.35s, ease-in-out);
               opacity: 1;
               display: block;
               background: $primary;
@@ -937,6 +941,7 @@ article.error404-content {
   padding: 8px 0;
   font-size: 12px;
   opacity: 0;
+  color: $primary;
   p {
     margin: 0;
   }
@@ -987,19 +992,19 @@ article.error404-content {
 
 // Animation keyframes
 
-@-webkit-keyframes barberpole {
+@-webkit-keyframes starfield {
   from {background-position: 0 10px;}
   to   {background-position: 0 0;}
 }
-@-moz-keyframes barberpole {
+@-moz-keyframes starfield {
   from {background-position: 0 10px;}
   to   {background-position: 0 0;}
 }
-@-o-keyframes barberpole {
+@-o-keyframes starfield {
   from {background-position: 0 10px;}
   to   {background-position: 0 0;}
 }
-@keyframes barberpole {
+@keyframes starfield {
   from {background-position: 0 10px;}
   to   {background-position: 0 0;}
 }

@@ -127,7 +127,7 @@
 		<p>
 			Coinciding with the 98<sup>th</sup> annual OCAD U Graduate Exhibition. May 2 to 5, 2013.
 		</p>
-		<small><a href="/about" title="Link to a message from Paul Dallas">A message from Paul Dallas, Illustration Chair</a></small>
+		<small><a href="/about" title="Link to a message from Paul Dallas" class="truncate">A message from Paul Dallas, Illustration Chair</a></small>
 	</div>
 <?php endif; ?>
 <div id="content" role="main">
