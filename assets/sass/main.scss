@@ -432,6 +432,9 @@ p {
   right: 5px;
   width: 25%;
   @include transition(width,0.3s,ease-in-out);
+  @media screen and (max-width: 1280px) {
+    width: 30%
+  }
   @media screen and (max-width: 1024px) {
     width: 40%
   }
@@ -448,11 +451,8 @@ p {
   background: rgba($primary, 0.75);
   background-image: url('../images/pattern.png');
   @include animation(starfield, 1s, linear, infinite);
-  h1 {
-    font-size: 1em;
-    margin-bottom: 3em;
-  }
   h2 {
+    margin-top: 0;
     font-size: 1em;
   }
   a {
