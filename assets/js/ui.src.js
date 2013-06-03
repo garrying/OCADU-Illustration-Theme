@@ -203,6 +203,9 @@ $(function() {
 
   // Click to enlarge gallery image
   $('.gallery-icon a').on('click', function(){
+
+    $progress.spin({color:'#000',radius:9,width:4,left:0,top:0,lines:9}).css({'z-index':1000,'right':20,'width':30,'bottom':20,'height':30,'top':'inherit'});
+
     if ($(this).parent().parent().hasClass('enlarge')) {
       $(this).parent().parent().removeClass('enlarge');
       $(this).find('img').attr('title','Click to View');
@@ -234,6 +237,7 @@ $(function() {
     pckry.on( 'layoutComplete', function(){
       var itemPos = $('.active').offset();
       $viewport.animate({scrollTop: itemPos.top-20},90);
+      $progress.spin(false).css({'z-index':-1});
     });
     return false;
   });
