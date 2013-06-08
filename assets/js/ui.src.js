@@ -226,10 +226,13 @@ $(function() {
             alert('Image failed to load. Try again.');
         } else {
           var imgSource = img[0]['src'];
-          $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
-          var imgContainer = document.querySelector('.gallery');
-          imagesLoaded(imgContainer, function(){
-            pckry.layout();
+          $(this).animate({'opacity':0}, 'fast', function(){
+            $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
+            var imgContainer = document.querySelector('.gallery');
+            imagesLoaded(imgContainer, function(){
+              pckry.layout();
+              $('.active img').delay(300).animate({'opacity':1}, 'slow');
+            });
           });
         }
     });
