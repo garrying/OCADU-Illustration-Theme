@@ -138,6 +138,15 @@ p {
   hyphens: auto;
 }
 
+// Select Colour
+
+::selection {
+  background: lighten(#FA8072,23%);
+}
+::-moz-selection {
+  background: lighten(#FA8072,23%);
+}
+
 // Header
 
 #app-head {
