@@ -1,13 +1,7 @@
 <?php get_header(); ?>
 
-<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-
 <h1 id="page-title">
-<?php if (isset($term->name))
-		echo $term->name;
-	else
-		wp_title("");
-?>
+	<?php printf('Search Results for %s', get_search_query() ); ?>
 </h1>
 
 	<?php if ( have_posts() ) : ?>

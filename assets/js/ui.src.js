@@ -76,20 +76,12 @@ $(function() {
       $(this).find('.indicator').removeClass('visible');
       $yearwidget.attr('data-visible','false');
       $yearselect.addClass('collapsed');
-      $.cookie('currentlyVisible', 'false', {path: '/'});
     } else {
       $(this).find('.indicator').addClass('visible');
       $yearwidget.attr('data-visible','true');
       $yearselect.removeClass('collapsed');
-      $.cookie('currentlyVisible', 'true', {path: '/'});
     }
   });
-
-  if ($.cookie('currentlyVisible') === 'false') {
-    $yearwidget.attr('data-visible','false');
-    $(this).find('.indicator').removeClass('visible');
-    $yearselect.addClass('collapsed');
-  }
 
   // Fancy type in place thing for search bar in different contexts
   setTimeout(function(){
