@@ -1,6 +1,6 @@
 $(function() {
   'use strict';
-
+  
   // vars
   var $body = $('body');
   var $viewport = $('html, body');
