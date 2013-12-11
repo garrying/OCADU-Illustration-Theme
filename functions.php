@@ -61,12 +61,6 @@ add_action( 'init', 'ocaduillu_autocomplete_init' );
 add_theme_support( 'post-thumbnails' );
 
 /**
- * Setting Content Width
- */
-
-if (!isset( $content_width ) ) $content_width = 900;
-
-/**
  * Wordpress Default Header Cleanup
  */
 
@@ -104,7 +98,7 @@ if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
 			wp_deregister_script('jquery');
-			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', '','',true);
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
 			wp_register_script('jqueryCookie', get_template_directory_uri().'/assets/js/lib/jquery.cookie.js', array('jquery'), '', true);
 			wp_enqueue_script('jqueryCookie');
