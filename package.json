@@ -12,6 +12,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-compass": "~0.7.0",
     "jshint-stylish": "~0.1.4",
-    "grunt-contrib-cssmin": "~0.7.0"
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-svgmin": "~0.3.0"
   }
 }

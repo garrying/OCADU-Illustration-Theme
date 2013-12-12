@@ -39,6 +39,32 @@ module.exports = function(grunt) {
         dest: 'assets/stylesheets/',
       }
     },
+    imagemin: {
+      png: {
+        options: {
+          optimizationLevel: 7
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'assets/images/',
+            src: ['*.png'],
+            dest: 'assets/images/',
+            ext: '.png'
+          }
+        ]
+      }
+    },
+    svgmin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'assets/images/',
+          src: '{,*/}*.svg',
+          dest: 'assets/images/'
+        }]
+      }
+    },
     watch: {
       js: {
         files: [
@@ -49,6 +75,10 @@ module.exports = function(grunt) {
       css: {
         files: 'assets/sass/*.scss',
         tasks: ['compass', 'cssmin']
+      },
+      png: {
+        files: 'assets/images/*.png',
+        tasks: ['imagemin']
       }
     },
     clean: {
@@ -65,14 +95,26 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-svgmin');
 
   // Register tasks
   grunt.registerTask('default', [
     'jshint',
     'clean',
     'uglify',
-    'cssmin'
+    'cssmin',
+    'imagemin',
+    'svgmin'
   ]);
+
+  grunt.registerTask('minify', [
+    'uglify',
+    'cssmin',
+    'imagemin',
+    'svgmin'
+  ]);
+
   grunt.registerTask('dev', [
     'watch'
   ]);
