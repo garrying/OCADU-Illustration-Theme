@@ -44,7 +44,8 @@ module.exports = function (grunt) {
         sassDir: 'assets/src/stylesheets',
         cssDir: 'assets/dist/stylesheets',
         generatedImagesDir: 'assets/dist/images',
-        imagesDir: 'assets/src/images',
+        imagesDir: 'assets/dist/images',
+        httpImagesPath: '/wp-content/themes/ocaduillustration/assets/dist/images',
         relativeAssets: false,
         assetCacheBuster: false
       },
@@ -110,13 +111,13 @@ module.exports = function (grunt) {
         ],
         tasks: ['uglify', 'jshint']
       },
-      css: {
-        files: 'assets/src/stylesheets/*.scss',
-        tasks: ['compass:server']
-      },
       png: {
         files: 'assets/src/images/*.png',
         tasks: ['imagemin']
+      },
+      css: {
+        files: 'assets/src/stylesheets/*.scss',
+        tasks: ['compass:server']
       }
     },
     clean: {
