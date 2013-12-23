@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'assets/js/app.src.js',
+        'assets/src/js/app.src.js',
       ]
     },
     csslint: {
@@ -20,15 +20,15 @@ module.exports = function(grunt) {
         options: {
           import: 2
         },
-        src: ['assets/stylesheets/*.css']
+        src: ['assets/dist/stylesheets/*.css']
       }
     },
     uglify: {
       dist: {
         files: {
-          'assets/js/app.min.js': [
-            'assets/js/lib/*.js',
-            'assets/js/app.src.js'
+          'assets/dist/js/app.min.js': [
+            'assets/src/js/lib/*.js',
+            'assets/src/js/app.src.js'
           ]
         }
       }
@@ -36,17 +36,17 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
-          sassDir: 'assets/sass',
-          cssDir: 'assets/stylesheets'
+          sassDir: 'assets/src/stylesheets',
+          cssDir: 'assets/dist/stylesheets'
         }
       }
     },
     cssmin: {
       minify: {
         expand: true,
-        cwd: 'assets/stylesheets/',
+        cwd: 'assets/dist/stylesheets/',
         src: ['*.css'],
-        dest: 'assets/stylesheets/',
+        dest: 'assets/dist/stylesheets/',
       }
     },
     imagemin: {
@@ -57,9 +57,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'assets/images/',
+            cwd: 'assets/src/images/',
             src: ['*.png'],
-            dest: 'assets/images/',
+            dest: 'assets/dist/images/',
             ext: '.png'
           }
         ]
@@ -69,9 +69,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'assets/images/',
+          cwd: 'assets/src/images/',
           src: '{,*/}*.svg',
-          dest: 'assets/images/'
+          dest: 'assets/dist/images/'
         }]
       }
     },
@@ -83,17 +83,17 @@ module.exports = function(grunt) {
         tasks: ['uglify','jshint']
       },
       css: {
-        files: 'assets/sass/*.scss',
+        files: 'assets/src/stylesheets/*.scss',
         tasks: ['compass', 'cssmin']
       },
       png: {
-        files: 'assets/images/*.png',
+        files: 'assets/src/images/*.png',
         tasks: ['imagemin']
       }
     },
     clean: {
       dist: [
-        'assets/js/app.min.js'
+        'assets/dist/js/app.min.js'
       ]
     }
   });

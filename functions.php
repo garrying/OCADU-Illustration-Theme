@@ -6,7 +6,7 @@
 
 function ocaduillu_autocomplete_init() {
 	// Register our jQuery UI style and our custom javascript file
-	wp_register_script( 'acsearch', get_template_directory_uri() . '/assets/js/acsearch.js', array('jquery-ui-autocomplete'),null,true);
+	wp_register_script( 'acsearch', get_template_directory_uri() . '/assets/dist/js/acsearch.js', array('jquery-ui-autocomplete'),null,true);
 	wp_localize_script( 'acsearch', 'AcSearch', array('url' => admin_url( 'admin-ajax.php' )));
 	// Function to fire whenever search form is displayed
 	add_action( 'get_search_form', 'ocaduillu_autocomplete_search_form' );
@@ -100,9 +100,9 @@ if (!function_exists('load_my_scripts')) {
 			wp_deregister_script('jquery');
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/lib/modernizr.min.js', '','',false);
+			wp_register_script('modernizer', get_template_directory_uri().'/assets/src/js/lib/modernizr.min.js', '','',false);
 			wp_enqueue_script('modernizer');
-			wp_register_script('app', get_template_directory_uri().'/assets/js/app.min.js', array('jquery'), '', true);
+			wp_register_script('app', get_template_directory_uri().'/assets/dist/js/app.min.js', array('jquery'), '', true);
 			wp_enqueue_script('app');
 		}
 	}
@@ -115,7 +115,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_ocad_styles() {
-	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
+	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/main.css');
 	wp_enqueue_style('ocadustyles');
 }
 
