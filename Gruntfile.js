@@ -139,6 +139,11 @@ module.exports = function(grunt) {
     'svgmin'
   ]);
 
+  grunt.registerTask('lint', [
+    'jshint',
+    'csslint'
+  ]);
+
   grunt.registerTask('dev', [
     'default',
     'watch'
