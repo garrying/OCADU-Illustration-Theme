@@ -43,14 +43,14 @@ $(function() {
   // Typewrite effect to replace search placeholder
   $.fn.teletype = function (opts) {
     var $this = this,
-        defaults = {
-            animDelay: 150
-        },
-        settings = $.extend(defaults, opts);
-    $.each(settings.text.split(''), function(i, letter){
-        setTimeout(function(){
-            $this.attr('placeholder', $this.attr('placeholder') + letter);
-        }, settings.animDelay * i);
+      defaults = {
+        animDelay: 150
+      },
+      settings = $.extend(defaults, opts);
+    $.each(settings.text.split(''), function (i, letter) {
+      setTimeout(function () {
+        $this.attr('placeholder', $this.attr('placeholder') + letter);
+      }, settings.animDelay * i);
     });
     return this;
   };
@@ -106,26 +106,27 @@ $(function() {
   var doCascade = function (delay) {
     $('.illustrator img').each(function (i) {
       $(this).delay(i * delay).animate({
-        opacity: 1, marginTop: 0
-      }, 500, function(){
+        opacity: 1,
+        marginTop: 0
+      }, 500, function () {
         $(this).parent().addClass('visible');
       });
     });
   };
 
   // Homepage Randomization
-  $.fn.shuffle = function() {
+  $.fn.shuffle = function () {
     var allElems = this.get(),
-        getRandom = function(max) {
-          return Math.floor(Math.random() * max);
-        },
-        shuffled = $.map(allElems, function(){
-          var random = getRandom(allElems.length),
-              randEl = $(allElems[random]).clone(true)[0];
-              allElems.splice(random, 1);
-          return randEl;
-       });
-      this.each(function(i){
+      getRandom = function (max) {
+        return Math.floor(Math.random() * max);
+      },
+      shuffled = $.map(allElems, function () {
+        var random = getRandom(allElems.length),
+          randEl = $(allElems[random]).clone(true)[0];
+        allElems.splice(random, 1);
+        return randEl;
+      });
+    this.each(function (i) {
       $(this).replaceWith($(shuffled[i]));
     });
     return $(shuffled);
@@ -175,7 +176,7 @@ $(function() {
   // Fixed Illustrator details
   var fixy = function () {
     var y = $(window).scrollTop();
-    var windowHeight = $(window).height(); 
+    var windowHeight = $(window).height();
     var stickyBlockHeight = $stickyBlock.height();
     if (y >= 70 && stickyBlockHeight < windowHeight) {
       $stickyBlock.addClass('fixed');
@@ -211,22 +212,22 @@ $(function() {
     $(this).find('img').attr('title','Click to Minimize');
     $(this).addClass('active');
 
-    var img = $("<img />").attr('src', imagelarge);
+    var img = $('<img />').attr('src', imagelarge);
 
     $(this).find('img').load(imagelarge, function() {
-        if (!this.complete || typeof this.naturalWidth === "undefined" || this.naturalWidth === 0) {
-            alert('Image failed to load. Try again.');
-        } else {
-          var imgSource = img[0]['src'];
-          $(this).animate({'opacity':0}, 'fast', function(){
-            $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
-            var imgContainer = document.querySelector('.gallery');
-            imagesLoaded(imgContainer, function(){
-              pckry.layout();
-              $('.active img').delay(300).animate({'opacity':1}, 'slow');
-            });
+      if (!this.complete || typeof this.naturalWidth === 'undefined' || this.naturalWidth === 0) {
+        alert('Image failed to load. Try again.');
+      } else {
+        var imgSource = img[0].srcg;
+        $(this).animate({'opacity':0}, 'fast', function(){
+          $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
+          var imgContainer = document.querySelector('.gallery');
+          imagesLoaded(imgContainer, function(){
+            pckry.layout();
+            $('.active img').delay(300).animate({'opacity':1}, 'slow');
           });
-        }
+        });
+      }
     });
 
     pckry.on( 'layoutComplete', function(){
@@ -278,7 +279,7 @@ $(function() {
     $progress.spin(false);
   };
 
-  $viewport.bind("mousedown DOMMouseScroll mousewheel keyup", function(){
+  $viewport.bind('mousedown DOMMouseScroll mousewheel keyup', function(){
     $viewport.stop();
   });
 
