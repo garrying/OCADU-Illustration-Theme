@@ -75,6 +75,17 @@ module.exports = function(grunt) {
         }]
       }
     },
+    rev: {
+      dist: {
+        files: {
+          src: [
+            'assets/dist/js/{,*/}*.js',
+            'assets/dist/stylesheets/{,*/}*.css',
+            'assets/dist/images/{,*/}*.{gif,jpeg,jpg,png,webp}'
+          ]
+        }
+      }
+    },
     watch: {
       js: {
         files: [
@@ -93,7 +104,7 @@ module.exports = function(grunt) {
     },
     clean: {
       dist: [
-        'assets/dist/js/app.min.js'
+        'assets/dist/js/','assets/dist/images/','assets/dist/stylesheets/'
       ]
     }
   });
@@ -108,12 +119,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-rev');
 
   // Register tasks
   grunt.registerTask('default', [
     'jshint',
     'clean',
     'uglify',
+    'compass',
     'cssmin',
     'imagemin',
     'svgmin'
@@ -127,6 +140,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('dev', [
+    'default',
     'watch'
   ]);
 
