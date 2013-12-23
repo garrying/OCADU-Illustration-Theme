@@ -19,6 +19,7 @@
     "grunt-rev": "~0.1.0",
     "grunt-concurrent": "~0.4.2",
     "time-grunt": "~0.2.5",
-    "load-grunt-tasks": "~0.2.1"
+    "load-grunt-tasks": "~0.2.1",
+    "grunt-contrib-concat": "~0.3.0"
   }
 }
