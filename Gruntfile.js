@@ -81,7 +81,7 @@ module.exports = function(grunt) {
           src: [
             'assets/dist/js/{,*/}*.js',
             'assets/dist/stylesheets/{,*/}*.css',
-            'assets/dist/images/{,*/}*.{gif,jpeg,jpg,png,webp}'
+            'assets/dist/images/{,*/}*.{gif,jpeg,jpg,png,webp,svg}'
           ]
         }
       }
