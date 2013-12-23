@@ -12,6 +12,17 @@ module.exports = function(grunt) {
         'assets/js/app.src.js',
       ]
     },
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc'
+      },
+      strict: {
+        options: {
+          import: 2
+        },
+        src: ['assets/stylesheets/*.css']
+      }
+    },
     uglify: {
       dist: {
         files: {
@@ -96,6 +107,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
 
   // Register tasks
   grunt.registerTask('default', [

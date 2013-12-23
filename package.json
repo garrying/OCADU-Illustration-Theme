@@ -14,6 +14,7 @@
     "jshint-stylish": "~0.1.4",
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-contrib-imagemin": "~0.4.0",
-    "grunt-svgmin": "~0.3.0"
+    "grunt-svgmin": "~0.3.0",
+    "grunt-contrib-csslint": "~0.2.0"
   }
 }
