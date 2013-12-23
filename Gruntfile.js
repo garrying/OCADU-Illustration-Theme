@@ -103,12 +103,21 @@ module.exports = function (grunt) {
         }
       }
     },
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['assets/src/js/lib/*.js','assets/src/js/app.src.js'],
+        dest: 'assets/dist/js/app.min.js',
+      },
+    },
     watch: {
       js: {
         files: [
           '<%= jshint.all %>'
         ],
-        tasks: ['uglify', 'jshint']
+        tasks: ['concat', 'jshint']
       },
       png: {
         files: 'assets/src/images/*.png',
@@ -135,7 +144,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'clean',
-    'uglify',
+    'concat',
     'imagemin',
     'svgmin',
     'concurrent:server'
