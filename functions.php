@@ -1,60 +1,6 @@
 <?php
 
 /**
- * Autocomplete Search Stuff
- */
-
-function ocaduillu_autocomplete_init() {
-	// Register our jQuery UI style and our custom javascript file
-	wp_register_script( 'acsearch', get_template_directory_uri() . '/assets/dist/js/acsearch.js', array('jquery-ui-autocomplete'),null,true);
-	wp_localize_script( 'acsearch', 'AcSearch', array('url' => admin_url( 'admin-ajax.php' )));
-	// Function to fire whenever search form is displayed
-	add_action( 'get_search_form', 'ocaduillu_autocomplete_search_form' );
-	// Functions to deal with the AJAX request - one for logged in users, the other for non-logged in users.
-	add_action( 'wp_ajax_ocaduillu_autocompletesearch', 'ocaduillu_autocomplete_suggestions' );
-	add_action( 'wp_ajax_nopriv_ocaduillu_autocompletesearch', 'ocaduillu_autocomplete_suggestions' );
-}
-
-function ocaduillu_autocomplete_search_form(){
-	wp_enqueue_script( 'acsearch' );
-}
-
-function ocaduillu_autocomplete_suggestions(){
-	// Query for suggestions
-	$posts = get_posts( array(
-		's' =>$_REQUEST['term'],
-	) );
-	// Initialise suggestions array
-	$suggestions=array();
-
-
-	global $post;
-	foreach ($posts as $post): setup_postdata($post);
-		// Initialise suggestion array
-		$suggestion = array();
-		$suggestion['thumb'] = get_the_post_thumbnail($page->ID, 'thumbnail');
-		$suggestion['link'] = get_permalink();
-		$suggestion['label'] = esc_html($post->post_title);
-
-		$year = get_the_terms( $post->ID, 'gradyear' );
-
-		foreach( $year as $years ) {
-			$suggestion['category'] = $years->name;
-		}
-
-		// Add suggestion to suggestions array
-		$suggestions[]= $suggestion;
-	endforeach;
-	// JSON encode and echo
-	$response = $_GET["callback"] . "(" . json_encode($suggestions) . ")";
-	echo $response;
-	// Don't forget to exit!
-	exit;
-}
-
-add_action( 'init', 'ocaduillu_autocomplete_init' );
-
-/**
  * Enable Featured Images
  */
 
@@ -100,8 +46,6 @@ if (!function_exists('load_my_scripts')) {
 			wp_deregister_script('jquery');
 			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('modernizer', get_template_directory_uri().'/assets/src/js/lib/modernizr.min.js', '','',false);
-			wp_enqueue_script('modernizer');
 			wp_register_script('app', get_template_directory_uri().'/assets/dist/js/app.min.js', array('jquery'), '', true);
 			wp_enqueue_script('app');
 		}
