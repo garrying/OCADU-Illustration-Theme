@@ -6,6 +6,5 @@
 			<h1><?php the_title(); ?></h1>
 		</a>
 
-		</header><!-- .entry-header -->
-	
+	</header><!-- .entry-header -->
 </article><!-- <?php the_title(); ?> -->
