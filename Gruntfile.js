@@ -1,5 +1,11 @@
 'use strict';
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
 
   grunt.initConfig({
     jshint: {
@@ -34,10 +40,23 @@ module.exports = function(grunt) {
       }
     },
     compass: {
+      options: {
+        sassDir: 'assets/src/stylesheets',
+        cssDir: 'assets/dist/stylesheets',
+        generatedImagesDir: 'assets/dist/images',
+        imagesDir: 'assets/src/images',
+        relativeAssets: false,
+        assetCacheBuster: false
+      },
       dist: {
         options: {
           sassDir: 'assets/src/stylesheets',
           cssDir: 'assets/dist/stylesheets'
+        }
+      },
+      server: {
+        options: {
+          debugInfo: false
         }
       }
     },
@@ -54,15 +73,13 @@ module.exports = function(grunt) {
         options: {
           optimizationLevel: 7
         },
-        files: [
-          {
-            expand: true,
-            cwd: 'assets/src/images/',
-            src: ['*.png'],
-            dest: 'assets/dist/images/',
-            ext: '.png'
-          }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'assets/src/images/',
+          src: ['*.png'],
+          dest: 'assets/dist/images/',
+          ext: '.png'
+        }]
       }
     },
     svgmin: {
@@ -91,11 +108,11 @@ module.exports = function(grunt) {
         files: [
           '<%= jshint.all %>'
         ],
-        tasks: ['uglify','jshint']
+        tasks: ['uglify', 'jshint']
       },
       css: {
         files: 'assets/src/stylesheets/*.scss',
-        tasks: ['compass', 'cssmin']
+        tasks: ['compass:server']
       },
       png: {
         files: 'assets/src/images/*.png',
@@ -104,32 +121,24 @@ module.exports = function(grunt) {
     },
     clean: {
       dist: [
-        'assets/dist/js/','assets/dist/images/','assets/dist/stylesheets/'
+        'assets/dist/js/', 'assets/dist/images/', 'assets/dist/stylesheets/'
+      ]
+    },
+    concurrent: {
+      server: [
+        'compass:server'
       ]
     }
   });
-
-  // Load tasks
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-svgmin');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-rev');
 
   // Register tasks
   grunt.registerTask('default', [
     'jshint',
     'clean',
     'uglify',
-    'compass',
-    'cssmin',
     'imagemin',
-    'svgmin'
+    'svgmin',
+    'concurrent:server'
   ]);
 
   grunt.registerTask('minify', [
