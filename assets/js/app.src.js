@@ -95,9 +95,9 @@ $(function() {
         text: ' ● ' + title
       });
     } else if ($body.hasClass('archive') && $('#illu-jumpmenu a').hasClass('selected')) {
-      var title = $('#illu-jumpmenu .selected').text();
+      var titleJump = $('#illu-jumpmenu .selected').text();
       $searchinput.teletype({
-        text: ' ● ' + title
+        text: ' ● ' + titleJump
       });
     }
   },6000);
