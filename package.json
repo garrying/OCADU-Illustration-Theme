@@ -20,6 +20,7 @@
     "grunt-concurrent": "~0.4.2",
     "time-grunt": "~0.2.5",
     "load-grunt-tasks": "~0.2.1",
-    "grunt-contrib-concat": "~0.3.0"
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-csscomb": "~1.2.1"
   }
 }
