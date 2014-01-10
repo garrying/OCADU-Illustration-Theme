@@ -193,7 +193,7 @@ p {
       display: block;
       text-indent: 100%;
       background: #EEE;
-      background-image: url('../images/pattern.png');
+      background-image: image-url('pattern.png');
       @include transition(background-color, 140ms, ease-in-out);
       @include animation(starfield, 1s, linear, infinite);
       &:hover {
@@ -270,7 +270,7 @@ p {
       @include transition(background,0.25s,ease);
       &.selected, &:hover {
         color: #FFF;
-        background-image: url('../images/pattern.png');  
+        background-image: image-url('pattern.png');  
         background-color: rgba($primary,0.6);
         @include animation(starfield, 1s, linear, 4);
       }
@@ -294,12 +294,12 @@ p {
       height: 44px;
       width: 25px;
       position: relative;
-      background: url('../images/clock.png') #FFF no-repeat center center;
+      background: image-url('clock.png') #FFF no-repeat center center;
       @media (min--moz-device-pixel-ratio: 1.5),
        (-o-min-device-pixel-ratio: 3/2),
        (-webkit-min-device-pixel-ratio: 1.5),
        (min-resolution: 1.5dppx) {
-        background-image: url('../images/clock.svg');
+        background-image: image-url('clock.svg');
         background-size: 50%;
       }
       cursor: pointer;
@@ -458,7 +458,7 @@ p {
   color: #FFF;
   z-index: 7;
   background: rgba($primary, 0.75);
-  background-image: url('../images/pattern.png');
+  background-image: image-url('pattern.png');
   @include animation(starfield, 1s, linear, infinite);
   h2 {
     margin-top: 0;
