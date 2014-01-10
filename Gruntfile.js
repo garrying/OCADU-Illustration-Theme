@@ -46,13 +46,12 @@ module.exports = function (grunt) {
         generatedImagesDir: 'assets/dist/images',
         imagesDir: 'assets/dist/images',
         httpImagesPath: '/wp-content/themes/ocaduillustration/assets/dist/images',
-        relativeAssets: false,
+        relativeAssets: true,
         assetCacheBuster: false
       },
       dist: {
         options: {
-          sassDir: 'assets/src/stylesheets',
-          cssDir: 'assets/dist/stylesheets'
+          generatedImagesDir: 'assets/dist/images'
         }
       },
       server: {
@@ -103,6 +102,17 @@ module.exports = function (grunt) {
         }
       }
     },
+    usemin: {
+      options: {
+        dirs: ['assets/dist'],
+        assetsDirs: ['assets/dist','assets/dist/images','assets/dist/js','assets/dist/stylesheets'],
+        patterns: {
+          html: [[/(app.min\.js)/, 'Replacing reference to app javascript'],[/(main\.css)/, 'Replacing reference to stylesheet']]
+        }
+      },
+      html: ['functions.php'],
+      css: ['assets/dist/stylesheets/{,*/}*.css']
+    },
     concat: {
       options: {
         separator: ';',
@@ -129,9 +139,16 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      dist: [
-        'assets/dist/js/', 'assets/dist/images/', 'assets/dist/stylesheets/'
-      ]
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            'assets/dist/*',
+            '!assets/dist/.git*'
+          ]
+        }]
+      }
     },
     concurrent: {
       server: [
@@ -150,11 +167,19 @@ module.exports = function (grunt) {
     'concurrent:server'
   ]);
 
-  grunt.registerTask('minify', [
+  grunt.registerTask('build', [
+    'clean',
     'uglify',
-    'cssmin',
     'imagemin',
-    'svgmin'
+    'svgmin',
+    'compass',
+    'cssmin',
+    'rev',
+    'usemin:css',
+  ]);
+
+  grunt.registerTask('build-wordpres', [
+    'usemin:html',
   ]);
 
   grunt.registerTask('lint', [
