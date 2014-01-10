@@ -218,7 +218,7 @@ $(function() {
       if (!this.complete || typeof this.naturalWidth === 'undefined' || this.naturalWidth === 0) {
         alert('Image failed to load. Try again.');
       } else {
-        var imgSource = img[0].srcg;
+        var imgSource = img[0].src;
         $(this).animate({'opacity':0}, 'fast', function(){
           $(this).attr('src', imgSource).attr('width', '').attr('height', '').parent().parent().parent().addClass('enlarge');
           var imgContainer = document.querySelector('.gallery');
