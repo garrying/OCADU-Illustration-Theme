@@ -127,7 +127,7 @@ module.exports = function (grunt) {
         files: [
           '<%= jshint.all %>'
         ],
-        tasks: ['concat', 'jshint']
+        tasks: ['concat']
       },
       png: {
         files: 'assets/src/images/*.png',
@@ -159,7 +159,6 @@ module.exports = function (grunt) {
 
   // Register tasks
   grunt.registerTask('default', [
-    'jshint',
     'clean',
     'concat',
     'imagemin',
@@ -178,7 +177,7 @@ module.exports = function (grunt) {
     'usemin:css',
   ]);
 
-  grunt.registerTask('build-wordpres', [
+  grunt.registerTask('build-wordpress', [
     'usemin:html',
   ]);
 
