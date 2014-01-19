@@ -161,8 +161,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'clean',
     'concat',
-    'imagemin',
-    'svgmin',
     'concurrent:server'
   ]);
 
@@ -172,13 +170,7 @@ module.exports = function (grunt) {
     'imagemin',
     'svgmin',
     'compass',
-    'cssmin',
-    'rev',
-    'usemin:css',
-  ]);
-
-  grunt.registerTask('build-wordpress', [
-    'usemin:html',
+    'cssmin'
   ]);
 
   grunt.registerTask('lint', [
