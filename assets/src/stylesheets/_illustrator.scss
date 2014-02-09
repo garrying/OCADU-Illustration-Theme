@@ -1,0 +1,98 @@
+#illustrator-meta-container {
+  float: right;
+  width: 27%;
+  color: #333;
+  .entry-title, .thesis-title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
+  p, .info {
+    font-size: 93.3%;
+  }
+  .info {
+    margin-bottom: 0.5em;
+  }
+}
+
+#illustrator-meta {
+  margin: 50px;
+}
+
+.description {
+  margin: 1em 0;
+  p {
+    margin-top: 0;
+  }
+}
+
+.nav-single {
+  font-size: 93.3%;
+  margin: 1em 0;
+  border-top: 1px solid #eee;
+  ul {
+    @include flexbox();
+    flex-flow: row wrap;
+  }
+  li {
+    width: 50%;
+    a {
+      padding: 1em 0;
+      display: block;
+      text-decoration: none;
+      @include flexbox();
+      flex-flow: row wrap;
+    }
+    &.nav-next {
+      text-align: right;
+    }
+  }
+  .truncate {
+    width: 80%;
+  }
+  .indicator {
+    width: 20%;
+  }
+}
+
+#illustrator-gallery-container {
+  float: left;
+  width: 73%;
+  .gallery {
+    margin: 0.5em;
+  }
+  .gallery-item {
+    float: left;
+    width: 50%;
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    &.enlarge {
+      width: 100%;
+      float: left;
+      z-index: 8;
+      height: 100vh;
+      padding: 2em 0;
+      @media screen and (max-width: 768px) {
+        width: 95%;
+      }
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height:  100%;
+      }
+    }
+  }
+  margin-bottom: 50px;
+}
+
+.affix {
+  position: fixed;
+  top: 0;
+  right: 0;
+}

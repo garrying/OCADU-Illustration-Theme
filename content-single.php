@@ -1,5 +1,5 @@
 <article <?php post_class(); ?> role="article">
-	<div id="illustrator-meta-guide">
+	<section id="illustrator-meta-container" data-spy="affix" data-offset-top="10">
 		<aside id="illustrator-meta" role="complementary">
 			<header class="entry-header">
 				<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -44,25 +44,26 @@
 
 			<footer class="nav-single">
 				<nav id="nav-single">
-					<h3><?php _e( 'Previous and Next Illustrator', 'ocaduillustration' ); ?></h3>
-					<ul>
+					<ul class="normalized">
 						<?php if ( get_post_type() == 'event' ) : ?>
 							<li class="nav-previous"><?php next_post_link_plus( array('order_by' => 'post_date', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
 							<li class="nav-next"><?php previous_post_link_plus( array('order_by' => 'post_date', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
 						<?php else : ?>
-							<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
-							<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
+							<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator">◐</span> <span class="truncate">%title</span>') ); ?></li>
+							<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate">%title</span> <span class="indicator">◑</span>') ); ?></li>
 						<?php endif; ?>
 					</ul>
 				</nav><!-- #nav-single -->
 			</footer><!-- .nav-single -->
 
 		</aside><!-- aside -->
-	</div>
+	</section>
 	
-	<?php
-		$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';
-		print apply_filters( 'the_content', $gallery_shortcode );
-	?>
+	<section id="illustrator-gallery-container">
+		<?php
+			$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';
+			print apply_filters( 'the_content', $gallery_shortcode );
+		?>
+	</section>
 
 </article><!-- <?php the_title(); ?> -->

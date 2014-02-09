@@ -1,5 +1,7 @@
 </div><!-- #content -->
 
+<div id="loader"></div>
+
 <?php wp_footer(); ?>
 
 <script>

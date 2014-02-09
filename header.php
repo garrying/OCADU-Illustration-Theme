@@ -110,4 +110,4 @@
 	</section>
 <?php endif; ?>
 
-<div id="content" role="main">
+<div <?php if ( is_home() || is_front_page() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">

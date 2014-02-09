@@ -102,7 +102,7 @@ endif;
  */
 
 function my_gallery_style() {
-	return "<div class='gallery'>";
+	return "<div id='pack-content' class='gallery'>";
 }
 
 add_filter('gallery_style', 'my_gallery_style', 99);
@@ -321,18 +321,26 @@ add_action('wp_head', 'html_prefetch');
 
 function ocadu_gallery_filter( $attr ) {
 	global $post;
-	if (wp_attachment_is_image()) {
-		$postparent = get_the_title($post->post_parent);
-		$attr['alt'] = "Illustration by ". $postparent .""; 
-		$attr['title'] = "Click for Next Illustration"; 
-	} else {
-		$attr['alt'] = "Illustration by ". get_the_title() .""; 
-		$attr['title'] = "Click to View"; 
-	}
+	$attr['alt'] = "Illustration by ". get_the_title() .""; 
+	$attr['title'] = "Click to View"; 
 	return $attr; 
 }
 
 add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
+
+/**
+ * Adding data attributes to clean stuff up
+ */
+
+function modify_attachment_link( $markup, $id, $size, $permalink ) {
+  global $post;
+  $thumbnailURL = wp_get_attachment_image_src($id,'medium')[0];
+  if ( ! $permalink ) {
+  	$markup = str_replace( '<a href', '<a data-thumbnail="'. $thumbnailURL .'"  href', $markup );
+  }
+  return $markup;
+}
+add_filter( 'wp_get_attachment_link', 'modify_attachment_link', 10, 4 );
 
 /**
  * Simplify post classes

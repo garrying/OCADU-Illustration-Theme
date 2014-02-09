@@ -415,46 +415,228 @@ table {
   border-spacing: 0;
 }
 
-/* line 9, ../../src/stylesheets/main.scss */
+/* line 3, ../../src/stylesheets/_helpers.scss */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 9, ../../src/stylesheets/_helpers.scss */
+.normalized {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 1, ../../src/stylesheets/_loader.scss */
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+/* line 1, ../../src/stylesheets/_navigation.scss */
+#app-head {
+  display: none;
+}
+
+/* line 1, ../../src/stylesheets/_illustrator.scss */
+#illustrator-meta-container {
+  float: right;
+  width: 27%;
+  color: #333;
+}
+/* line 5, ../../src/stylesheets/_illustrator.scss */
+#illustrator-meta-container .entry-title, #illustrator-meta-container .thesis-title {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+/* line 9, ../../src/stylesheets/_illustrator.scss */
+#illustrator-meta-container p, #illustrator-meta-container .info {
+  font-size: 93.3%;
+}
+/* line 12, ../../src/stylesheets/_illustrator.scss */
+#illustrator-meta-container .info {
+  margin-bottom: 0.5em;
+}
+
+/* line 17, ../../src/stylesheets/_illustrator.scss */
+#illustrator-meta {
+  margin: 50px;
+}
+
+/* line 21, ../../src/stylesheets/_illustrator.scss */
+.description {
+  margin: 1em 0;
+}
+/* line 23, ../../src/stylesheets/_illustrator.scss */
+.description p {
+  margin-top: 0;
+}
+
+/* line 28, ../../src/stylesheets/_illustrator.scss */
+.nav-single {
+  font-size: 93.3%;
+  margin: 1em 0;
+  border-top: 1px solid #eee;
+}
+/* line 32, ../../src/stylesheets/_illustrator.scss */
+.nav-single ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+}
+/* line 36, ../../src/stylesheets/_illustrator.scss */
+.nav-single li {
+  width: 50%;
+}
+/* line 38, ../../src/stylesheets/_illustrator.scss */
+.nav-single li a {
+  padding: 1em 0;
+  display: block;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+}
+/* line 45, ../../src/stylesheets/_illustrator.scss */
+.nav-single li.nav-next {
+  text-align: right;
+}
+/* line 49, ../../src/stylesheets/_illustrator.scss */
+.nav-single .truncate {
+  width: 80%;
+}
+/* line 52, ../../src/stylesheets/_illustrator.scss */
+.nav-single .indicator {
+  width: 20%;
+}
+
+/* line 57, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container {
+  float: left;
+  width: 73%;
+  margin-bottom: 50px;
+}
+/* line 60, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery {
+  margin: 0.5em;
+}
+/* line 63, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery-item {
+  float: left;
+  width: 50%;
+}
+/* line 66, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery-item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* line 71, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery-item.enlarge {
+  width: 100%;
+  float: left;
+  z-index: 8;
+  height: 100vh;
+  padding: 2em 0;
+}
+@media screen and (max-width: 768px) {
+  /* line 71, ../../src/stylesheets/_illustrator.scss */
+  #illustrator-gallery-container .gallery-item.enlarge {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 71, ../../src/stylesheets/_illustrator.scss */
+  #illustrator-gallery-container .gallery-item.enlarge {
+    width: 100%;
+  }
+}
+/* line 83, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery-item.enlarge img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* line 94, ../../src/stylesheets/_illustrator.scss */
+.affix {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+/* line 23, ../../src/stylesheets/main.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 15, ../../src/stylesheets/main.scss */
+/* line 29, ../../src/stylesheets/main.scss */
 body {
-  font-family: 'FranklinGotURWT-Boo', sans-serif;
-  text-rendering: optimizeLegibility;
+  font-family: "FranklinGotURWT-Boo", Helvetica, Arial, sans-serif;
   font-size: 93.8%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* line 21, ../../src/stylesheets/main.scss */
+/* line 36, ../../src/stylesheets/main.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'FranklinGotURWT-Med';
+  font-family: "FranklinGotURWT-Boo", Helvetica, Arial, sans-serif;
   font-weight: normal;
+  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
 }
 
-/* line 28, ../../src/stylesheets/main.scss */
+/* line 47, ../../src/stylesheets/main.scss */
 a {
-  text-decoration: none;
+  color: #222;
 }
 
-/* line 34, ../../src/stylesheets/main.scss */
+/* line 54, ../../src/stylesheets/main.scss */
+.home:after {
+  content: '';
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100px;
+  z-index: 999;
+  bottom: 0;
+  pointer-events: none;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, transparent), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, transparent, #ffffff);
+  background-image: -moz-linear-gradient(top, transparent, #ffffff);
+  background-image: -o-linear-gradient(top, transparent, #ffffff);
+  background-image: linear-gradient(top, transparent, #ffffff);
+}
+
+/* line 67, ../../src/stylesheets/main.scss */
 .home .illustrator {
   width: 25%;
 }
-/* line 36, ../../src/stylesheets/main.scss */
+/* line 69, ../../src/stylesheets/main.scss */
 .home .illustrator.smaller {
   width: 12.5%;
 }
-/* line 39, ../../src/stylesheets/main.scss */
+/* line 72, ../../src/stylesheets/main.scss */
 .home .illustrator img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-/* line 44, ../../src/stylesheets/main.scss */
+/* line 77, ../../src/stylesheets/main.scss */
 .home .illustrator .illustrator-name {
   display: none;
 }
