@@ -69,6 +69,12 @@ a {
 
 .home .illustrator {
   width: 33.3333333333%;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
+  @media (min-width: 1200px) {
+    width: 25%;
+  }
   padding: 4px;
   position: relative;
   overflow: hidden;
@@ -80,6 +86,12 @@ a {
   }
   &.smaller {
     width: 16.6666666666%;
+    @media (max-width: 600px) {
+      width: 25%;
+    }
+    @media (min-width: 1200px) {
+      width: 12.5%;
+    }
   }
   img {
     width: 100%;
@@ -89,7 +101,7 @@ a {
     @include transition-property(opacity,scale);
     @include transition-delay(1s);
     @include transition-duration(200ms);
-    @include transform(scale(0.98));
+    @include transform(scale(0.99));
   }
   .illustrator-name {
     position: absolute;

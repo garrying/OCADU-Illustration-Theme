@@ -775,15 +775,39 @@ a {
   -o-transition-duration: 200ms;
   transition-duration: 200ms;
 }
-/* line 78, ../../src/stylesheets/main.scss */
+@media (max-width: 600px) {
+  /* line 70, ../../src/stylesheets/main.scss */
+  .home .illustrator {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 70, ../../src/stylesheets/main.scss */
+  .home .illustrator {
+    width: 25%;
+  }
+}
+/* line 84, ../../src/stylesheets/main.scss */
 .home .illustrator a {
   display: block;
 }
-/* line 81, ../../src/stylesheets/main.scss */
+/* line 87, ../../src/stylesheets/main.scss */
 .home .illustrator.smaller {
   width: 16.6666666666%;
 }
-/* line 84, ../../src/stylesheets/main.scss */
+@media (max-width: 600px) {
+  /* line 87, ../../src/stylesheets/main.scss */
+  .home .illustrator.smaller {
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 87, ../../src/stylesheets/main.scss */
+  .home .illustrator.smaller {
+    width: 12.5%;
+  }
+}
+/* line 96, ../../src/stylesheets/main.scss */
 .home .illustrator img {
   width: 100%;
   height: auto;
@@ -801,13 +825,13 @@ a {
   -moz-transition-duration: 200ms;
   -o-transition-duration: 200ms;
   transition-duration: 200ms;
-  -webkit-transform: scale(0.98);
-  -moz-transform: scale(0.98);
-  -ms-transform: scale(0.98);
-  -o-transform: scale(0.98);
-  transform: scale(0.98);
+  -webkit-transform: scale(0.99);
+  -moz-transform: scale(0.99);
+  -ms-transform: scale(0.99);
+  -o-transform: scale(0.99);
+  transform: scale(0.99);
 }
-/* line 94, ../../src/stylesheets/main.scss */
+/* line 106, ../../src/stylesheets/main.scss */
 .home .illustrator .illustrator-name {
   position: absolute;
   color: white;
@@ -835,16 +859,16 @@ a {
   -o-transition-duration: 200ms;
   transition-duration: 200ms;
 }
-/* line 112, ../../src/stylesheets/main.scss */
+/* line 124, ../../src/stylesheets/main.scss */
 .home .illustrator:hover .illustrator-name {
   opacity: 1;
   top: 0;
 }
-/* line 117, ../../src/stylesheets/main.scss */
+/* line 129, ../../src/stylesheets/main.scss */
 .home .illustrator.loaded {
   opacity: 1;
 }
-/* line 119, ../../src/stylesheets/main.scss */
+/* line 131, ../../src/stylesheets/main.scss */
 .home .illustrator.loaded img {
   opacity: 1;
   -webkit-transform: scale(1);
@@ -854,7 +878,7 @@ a {
   transform: scale(1);
 }
 
-/* line 126, ../../src/stylesheets/main.scss */
+/* line 138, ../../src/stylesheets/main.scss */
 .home #pack-content {
   margin: 1em;
 }
