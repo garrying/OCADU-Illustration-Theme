@@ -1,6 +1,10 @@
 $(function() {
   'use strict';
 
+  // Adaptive BGs Home Grid
+
+  $.adaptiveBackground.run();
+
   // Selectors
   var container = document.querySelector('#pack-content');
   var spinTarget = document.querySelector('#loader');
@@ -10,12 +14,10 @@ $(function() {
   var prevItem = $('.nav-previous a');
 
   // Loader
-  var loader = new Spinner({color:'#000', lines: 9, width: 2, length: 20}).spin(spinTarget);
-  $(window).load(function() {
-    loader.stop();
-  });
+
 
   // Homepage Random Sizing
+
   if ($('body').hasClass('home')) {
     $('.illustrator').each(function(){
       var randomClass =  Math.floor(Math.random()*2);
@@ -24,6 +26,24 @@ $(function() {
       }
     });
   }
+
+  // Homepage Cascade
+
+  var doCascade = function (delay) {
+    $('.illustrator').each(function (i) {
+      var illustrator = $(this);
+       setTimeout(function() {
+          illustrator.addClass('loaded');
+        }, delay*i);
+    });
+  };
+
+  // Year Selector 
+
+  $('.year-indicator').on('click',function(){
+    $('body').animate({'marginLeft':110,'marginRight':-110},'fast');
+    $('#year-widget').animate({'width':110,},'fast');
+  });
 
   // Packery
   var pckry = new Packery( container, {
@@ -97,7 +117,7 @@ $(function() {
 
   function stop_scroll() {
     setTimeout(function(){
-      $("html, body").stop(true, false);
+      $('html, body').stop(true, false);
     },90);
   };
 
@@ -107,6 +127,15 @@ $(function() {
 
   $('.enlarge').on('click', function(){
     $(this).find('img').fadeOut();
+  });
+
+
+  // When Everything is Loaded
+
+  $(window).load(function() {
+    doCascade(100);
+    
+    console.log('ready');
   });
 
 });

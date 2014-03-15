@@ -1,3 +1,8 @@
+// Font Stack
+
+$fontStack: 'FranklinGotURWT-Boo',Helvetica,Arial,sans-serif;
+
+
 // Helper Classes
 
 .truncate {
@@ -10,4 +15,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.hidden {
+  display: none;
 }

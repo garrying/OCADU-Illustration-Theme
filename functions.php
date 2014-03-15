@@ -322,7 +322,8 @@ add_action('wp_head', 'html_prefetch');
 function ocadu_gallery_filter( $attr ) {
 	global $post;
 	$attr['alt'] = "Illustration by ". get_the_title() .""; 
-	$attr['title'] = "Click to View"; 
+	$attr['title'] = "Click to View";
+	$attr['data-adaptive-background'] = "1"; 
 	return $attr; 
 }
 

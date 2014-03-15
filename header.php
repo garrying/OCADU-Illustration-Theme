@@ -35,8 +35,13 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header id="app-head" role="banner">
+	<header id="app-head" class="<?php if ( is_home() || is_front_page() ) : ?>inverted<?php endif; ?>" role="banner">
 		<div class="container">
+
+			<div class="year-indicator">
+				<a href="#" class="year-current">2014</a>
+			</div>
+
 			<div class="logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 			</div>
@@ -63,8 +68,8 @@
 					}
 				?>
 				<nav id="year-select">
-					<h3><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
-						<ul id="illu-jumpmenu">
+					<h3 class="hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
+						<ul id="illu-jumpmenu" class="normalized">
 							<?php foreach( $grad_year as $year ) {
 								echo "<li>";
 									if ( is_singular('illustrator') && $selected_year == $year->name ) {
@@ -87,7 +92,7 @@
 ?>
 			
 			<nav id="access" role="navigation">
-				<h3><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
+				<h3 class="hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
 				<?php wp_nav_menu( array( 
 					'container' =>false,
 					'menu_class' => 'nav',
@@ -97,17 +102,5 @@
 
 		</div><!-- .container -->
 	</header><!-- #app-head -->
-
-<?php if ( is_home() || is_front_page() ) : ?>
-	<section id="intro">
-		<h2>
-			An evolving archive maintained by the Illustration Department at OCAD University. Featuring work from the graduating class of 2013.
-		</h2>
-		<p>
-			Coinciding with the 98<sup>th</sup> annual OCAD U Graduate Exhibition. May 2 to 5, 2013.
-		</p>
-		<p><a href="/about" title="Link to a message from Paul Dallas" class="truncate">A message from Paul Dallas, Illustration Chair</a></p>
-	</section>
-<?php endif; ?>
 
 <div <?php if ( is_home() || is_front_page() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">

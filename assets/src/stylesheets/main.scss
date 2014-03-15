@@ -15,9 +15,6 @@
 // Webink Import
 @import url("http://fnt.webink.com/wfs/webink.css/?project=2AEA7C02-C274-4290-8B7B-79B5D5258457&fonts=6156719D-9AB2-B4FC-046D-BBFB2F2760B4:f=FranklinGotURWT-Dem,F3207BD3-2009-3ACF-D009-B029F1654718:f=FranklinGotURWT-Hea,230BEFD3-1A8B-AFBF-91DC-9B59C2B800A7:f=FranklinGotURWT-HeaIta,D32F8076-C1D9-1789-2BAB-D2D1454732DF:f=FranklinGotURWT-DemIta,8C610B28-104D-6C37-79A7-41A137E11FBC:f=FranklinGotURWT-MedIta,2F960C14-6589-2634-013D-59BD713141A3:f=FranklinGotURWT-Boo,367757AF-C8FA-E1C7-365D-2F7AE99A7881:f=FranklinGotURWT-Med,33CB6FE4-5602-5874-DBFF-526EB6E0F2B7:f=FranklinGotURWT-Lig,4C87362D-4FC6-6EF3-F257-5706B8432F76:f=FranklinGotURWT-BooIta");
 
-// Font Stack
-$fontStack: 'FranklinGotURWT-Boo',Helvetica,Arial,sans-serif;
-
 // Global Box Sizing
 
 *, *:before, *:after {
@@ -25,6 +22,10 @@ $fontStack: 'FranklinGotURWT-Boo',Helvetica,Arial,sans-serif;
 }
 
 // Global Declarations
+
+html {
+  overflow-x: hidden;
+}
 
 body {
   font-family: $fontStack;
@@ -51,6 +52,8 @@ a {
 // Homepage
 
 .home {
+  color: $white;
+  background: #111;
   &:after {
     content: '';
     position: fixed;
@@ -60,21 +63,70 @@ a {
     z-index: 999;
     bottom: 0;
     pointer-events: none;
-    @include background-image(linear-gradient(top, transparent, $white));
+    @include background-image(linear-gradient(top, transparent, #111));
   }
 }
 
 .home .illustrator {
-  width: 25%;
-  &.smaller {
-    width: 12.5%;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
+  width: 33.3333333333%;
+  padding: 4px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  @include transition-property(opacity);
+  @include transition-duration(200ms);
+  a {
     display: block;
   }
-  .illustrator-name {
-    display: none;
+  &.smaller {
+    width: 16.6666666666%;
   }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    @include transition-property(opacity,scale);
+    @include transition-delay(1s);
+    @include transition-duration(200ms);
+    @include transform(scale(0.98));
+  }
+  .illustrator-name {
+    position: absolute;
+    color: $white;
+    z-index: 10;
+    font-size: 1.2em;
+    line-height: 0.9em;
+    top: -100%;
+    bottom: 75%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 14px;
+    opacity: 0;
+    @include background-image(linear-gradient(top, rgba(#111,0.5), transparent));
+    @include transition-property(top,opacity);
+    @include transition-duration(200ms);
+  }
+  &:hover {
+    .illustrator-name {
+      opacity: 1;
+      top: 0;
+    }
+  }
+  &.loaded {
+    opacity: 1;
+    img {
+      opacity: 1;
+      @include transform(scale(1));
+    }
+  }
+}
+
+.home #pack-content {
+  margin: 1em;
+}
+
+#intro {
+
 }

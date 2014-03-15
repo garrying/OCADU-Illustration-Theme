@@ -1,3 +1,104 @@
 #app-head {
-  display: none;
+  color: #13121E;
+  height: 48px;
+  overflow: hidden;
+  background: $white;
+  border-bottom: 1px solid #222;
+  &.inverted {
+    color: $white;
+    background: transparent;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo {
+    display: inline-block;
+    a {
+      display: block;
+      height: 48px;
+      padding: 16px;
+      line-height: 16px;
+      font-family: 'FranklinGotURWT-Dem';
+    }
+  }
+}
+
+#search {
+  display: inline-block;
+  #s {
+    color: $white;
+    background: transparent;
+    border: none;
+    font-family: $fontStack;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    height: 48px;
+    padding: 16px;
+    line-height: 17px;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+    outline: none;
+  }
+}
+
+.year-indicator {
+  display: inline-block;
+  font-family: 'FranklinGotURWT-Dem';
+  .year-current {
+    display: block;
+    height: 48px;
+    padding: 16px;
+    line-height: 16px;
+  }
+}
+
+#year-widget {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 110px;
+  overflow: hidden;
+  width: 0;
+  a {
+    display: block;
+    height: 48px;
+    padding: 16px;
+    line-height: 16px;
+    text-align: right;
+  }
+}
+
+#access {
+  display: inline-block;
+  float:right;
+}
+
+#menu-primary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      height: 48px;
+      padding: 16px;
+      line-height: 16px;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  color: #444;
+}
+:-moz-placeholder {
+  color: #444;  
+}
+::-moz-placeholder {
+  color: #444;  
+}
+:-ms-input-placeholder {
+  color: #444;  
 }
