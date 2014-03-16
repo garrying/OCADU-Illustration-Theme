@@ -37,13 +37,14 @@
 <body <?php body_class(); ?>>
 	<header id="app-head" class="<?php if ( is_home() || is_front_page() ) : ?>inverted<?php endif; ?>" role="banner">
 		<div class="container">
+				
+			<div class="icon-block"></div>
+			<div class="logo">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+			</div>
 
 			<div class="year-indicator">
 				<a href="#" class="year-current">2014</a>
-			</div>
-
-			<div class="logo">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 			</div>
 
 			<div id="search" role="search">

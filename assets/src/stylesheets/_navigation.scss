@@ -1,26 +1,42 @@
 #app-head {
   color: #13121E;
-  height: 48px;
+  height: 60px;
   overflow: hidden;
   background: $white;
-  border-bottom: 1px solid #222;
+  position: relative;
+  .container {
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    right: 1em;
+    padding: 0 4px;
+  }
   &.inverted {
     color: $white;
     background: transparent;
+    a {
+      color: $white
+    }
   }
   a {
-    color: #fff;
+    color: $white;
     text-decoration: none;
   }
   .logo {
     display: inline-block;
     a {
       display: block;
-      height: 48px;
-      padding: 16px;
-      line-height: 16px;
-      font-family: 'FranklinGotURWT-Dem';
     }
+  }
+  .icon-block {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 34px;
+    height: 60px;
+    background: #F27486;
+  }
+  a {
+    color: #333;
   }
 }
 
@@ -33,23 +49,14 @@
     font-family: $fontStack;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    height: 48px;
-    padding: 16px;
-    line-height: 17px;
-    border-left: 1px solid #222;
-    border-right: 1px solid #222;
     outline: none;
   }
 }
 
 .year-indicator {
   display: inline-block;
-  font-family: 'FranklinGotURWT-Dem';
   .year-current {
     display: block;
-    height: 48px;
-    padding: 16px;
-    line-height: 16px;
   }
 }
 
@@ -63,16 +70,14 @@
   width: 0;
   a {
     display: block;
-    height: 48px;
-    padding: 16px;
-    line-height: 16px;
     text-align: right;
   }
 }
 
 #access {
-  display: inline-block;
-  float:right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #menu-primary {
@@ -83,9 +88,7 @@
     display: inline-block;
     a {
       display: block;
-      height: 48px;
-      padding: 16px;
-      line-height: 16px;
+      margin: 0 1em;
     }
   }
 }

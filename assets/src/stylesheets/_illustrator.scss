@@ -28,7 +28,7 @@
 .nav-single {
   font-size: 93.3%;
   margin: 1em 0;
-  border-top: 1px solid #eee;
+  border-width: 6px 0 0 0;
   ul {
     @include flexbox();
     flex-flow: row wrap;
@@ -41,6 +41,9 @@
       text-decoration: none;
       @include flexbox();
       flex-flow: row wrap;
+      &:hover {
+        background: url(../../src/images/wave-ptnr.png) repeat;
+      }
     }
     &.nav-next {
       text-align: right;

@@ -444,39 +444,59 @@ table {
 /* line 1, ../../src/stylesheets/_navigation.scss */
 #app-head {
   color: #13121E;
-  height: 48px;
+  height: 60px;
   overflow: hidden;
   background: white;
-  border-bottom: 1px solid #222;
+  position: relative;
 }
 /* line 7, ../../src/stylesheets/_navigation.scss */
+#app-head .container {
+  position: absolute;
+  bottom: 0;
+  left: 1em;
+  right: 1em;
+  padding: 0 4px;
+}
+/* line 14, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted {
   color: white;
   background: transparent;
 }
-/* line 11, ../../src/stylesheets/_navigation.scss */
+/* line 17, ../../src/stylesheets/_navigation.scss */
+#app-head.inverted a {
+  color: white;
+}
+/* line 21, ../../src/stylesheets/_navigation.scss */
 #app-head a {
-  color: #fff;
+  color: white;
   text-decoration: none;
 }
-/* line 15, ../../src/stylesheets/_navigation.scss */
+/* line 25, ../../src/stylesheets/_navigation.scss */
 #app-head .logo {
   display: inline-block;
 }
-/* line 17, ../../src/stylesheets/_navigation.scss */
+/* line 27, ../../src/stylesheets/_navigation.scss */
 #app-head .logo a {
   display: block;
-  height: 48px;
-  padding: 16px;
-  line-height: 16px;
-  font-family: 'FranklinGotURWT-Dem';
+}
+/* line 31, ../../src/stylesheets/_navigation.scss */
+#app-head .icon-block {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 34px;
+  height: 60px;
+  background: #F27486;
+}
+/* line 38, ../../src/stylesheets/_navigation.scss */
+#app-head a {
+  color: #333;
 }
 
-/* line 27, ../../src/stylesheets/_navigation.scss */
+/* line 43, ../../src/stylesheets/_navigation.scss */
 #search {
   display: inline-block;
 }
-/* line 29, ../../src/stylesheets/_navigation.scss */
+/* line 45, ../../src/stylesheets/_navigation.scss */
 #search #s {
   color: white;
   background: transparent;
@@ -484,28 +504,19 @@ table {
   font-family: "FranklinGotURWT-Boo", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  height: 48px;
-  padding: 16px;
-  line-height: 17px;
-  border-left: 1px solid #222;
-  border-right: 1px solid #222;
   outline: none;
 }
 
-/* line 45, ../../src/stylesheets/_navigation.scss */
+/* line 56, ../../src/stylesheets/_navigation.scss */
 .year-indicator {
   display: inline-block;
-  font-family: 'FranklinGotURWT-Dem';
 }
-/* line 48, ../../src/stylesheets/_navigation.scss */
+/* line 58, ../../src/stylesheets/_navigation.scss */
 .year-indicator .year-current {
   display: block;
-  height: 48px;
-  padding: 16px;
-  line-height: 16px;
 }
 
-/* line 56, ../../src/stylesheets/_navigation.scss */
+/* line 63, ../../src/stylesheets/_navigation.scss */
 #year-widget {
   position: fixed;
   left: 0;
@@ -515,55 +526,51 @@ table {
   overflow: hidden;
   width: 0;
 }
-/* line 64, ../../src/stylesheets/_navigation.scss */
+/* line 71, ../../src/stylesheets/_navigation.scss */
 #year-widget a {
   display: block;
-  height: 48px;
-  padding: 16px;
-  line-height: 16px;
   text-align: right;
 }
 
-/* line 73, ../../src/stylesheets/_navigation.scss */
+/* line 77, ../../src/stylesheets/_navigation.scss */
 #access {
-  display: inline-block;
-  float: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-/* line 78, ../../src/stylesheets/_navigation.scss */
+/* line 83, ../../src/stylesheets/_navigation.scss */
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 82, ../../src/stylesheets/_navigation.scss */
+/* line 87, ../../src/stylesheets/_navigation.scss */
 #menu-primary li {
   display: inline-block;
 }
-/* line 84, ../../src/stylesheets/_navigation.scss */
+/* line 89, ../../src/stylesheets/_navigation.scss */
 #menu-primary li a {
   display: block;
-  height: 48px;
-  padding: 16px;
-  line-height: 16px;
+  margin: 0 1em;
 }
 
-/* line 93, ../../src/stylesheets/_navigation.scss */
+/* line 96, ../../src/stylesheets/_navigation.scss */
 ::-webkit-input-placeholder {
   color: #444;
 }
 
-/* line 96, ../../src/stylesheets/_navigation.scss */
+/* line 99, ../../src/stylesheets/_navigation.scss */
 :-moz-placeholder {
   color: #444;
 }
 
-/* line 99, ../../src/stylesheets/_navigation.scss */
+/* line 102, ../../src/stylesheets/_navigation.scss */
 ::-moz-placeholder {
   color: #444;
 }
 
-/* line 102, ../../src/stylesheets/_navigation.scss */
+/* line 105, ../../src/stylesheets/_navigation.scss */
 :-ms-input-placeholder {
   color: #444;
 }
@@ -606,7 +613,7 @@ table {
 .nav-single {
   font-size: 93.3%;
   margin: 1em 0;
-  border-top: 1px solid #eee;
+  border-width: 6px 0 0 0;
 }
 /* line 32, ../../src/stylesheets/_illustrator.scss */
 .nav-single ul {
@@ -633,41 +640,45 @@ table {
   display: flex;
   flex-flow: row wrap;
 }
-/* line 45, ../../src/stylesheets/_illustrator.scss */
+/* line 44, ../../src/stylesheets/_illustrator.scss */
+.nav-single li a:hover {
+  background: url(../../src/images/wave-ptnr.png) repeat;
+}
+/* line 48, ../../src/stylesheets/_illustrator.scss */
 .nav-single li.nav-next {
   text-align: right;
 }
-/* line 49, ../../src/stylesheets/_illustrator.scss */
+/* line 52, ../../src/stylesheets/_illustrator.scss */
 .nav-single .truncate {
   width: 80%;
 }
-/* line 52, ../../src/stylesheets/_illustrator.scss */
+/* line 55, ../../src/stylesheets/_illustrator.scss */
 .nav-single .indicator {
   width: 20%;
 }
 
-/* line 57, ../../src/stylesheets/_illustrator.scss */
+/* line 60, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container {
   float: left;
   width: 73%;
   margin-bottom: 50px;
 }
-/* line 60, ../../src/stylesheets/_illustrator.scss */
+/* line 63, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery {
   margin: 0.5em;
 }
-/* line 63, ../../src/stylesheets/_illustrator.scss */
+/* line 66, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item {
   float: left;
   width: 50%;
 }
-/* line 66, ../../src/stylesheets/_illustrator.scss */
+/* line 69, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-/* line 71, ../../src/stylesheets/_illustrator.scss */
+/* line 74, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item.enlarge {
   width: 100%;
   float: left;
@@ -676,18 +687,18 @@ table {
   padding: 2em 0;
 }
 @media screen and (max-width: 768px) {
-  /* line 71, ../../src/stylesheets/_illustrator.scss */
+  /* line 74, ../../src/stylesheets/_illustrator.scss */
   #illustrator-gallery-container .gallery-item.enlarge {
     width: 95%;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 71, ../../src/stylesheets/_illustrator.scss */
+  /* line 74, ../../src/stylesheets/_illustrator.scss */
   #illustrator-gallery-container .gallery-item.enlarge {
     width: 100%;
   }
 }
-/* line 83, ../../src/stylesheets/_illustrator.scss */
+/* line 86, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item.enlarge img {
   display: block;
   margin: 0 auto;
@@ -695,7 +706,7 @@ table {
   max-height: 100%;
 }
 
-/* line 94, ../../src/stylesheets/_illustrator.scss */
+/* line 97, ../../src/stylesheets/_illustrator.scss */
 .affix {
   position: fixed;
   top: 0;
