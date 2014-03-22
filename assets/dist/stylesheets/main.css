@@ -439,6 +439,168 @@ table {
   position: fixed;
   top: 50%;
   left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  z-index: 99;
+  width: 100px;
+  height: 100px;
+  padding: 17px;
+}
+/* line 11, ../../src/stylesheets/_loader.scss */
+#loader .square {
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  position: absolute;
+  -webkit-animation: twist 1s infinite;
+  -moz-animation: twist 1s infinite;
+  -o-animation: twist 1s infinite;
+  animation: twist 1s infinite;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 22, ../../src/stylesheets/_loader.scss */
+#loader .square:nth-child(2) {
+  -webkit-animation: twist-two 1s infinite;
+  -moz-animation: twist-two 1s infinite;
+  -o-animation: twist-two 1s infinite;
+  animation: twist-two 1s infinite;
+}
+/* line 28, ../../src/stylesheets/_loader.scss */
+#loader .square:nth-child(3) {
+  -webkit-animation: twist-three 1s infinite;
+  -moz-animation: twist-three 1s infinite;
+  -o-animation: twist-three 1s infinite;
+  animation: twist-three 1s infinite;
+}
+/* line 34, ../../src/stylesheets/_loader.scss */
+#loader .square:nth-child(4) {
+  -webkit-animation: twist-four 1s infinite;
+  -moz-animation: twist-four 1s infinite;
+  -o-animation: twist-four 1s infinite;
+  animation: twist-four 1s infinite;
+}
+
+@-webkit-keyframes twist {
+  /* line 44, ../../src/stylesheets/_loader.scss */
+  0% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  /* line 45, ../../src/stylesheets/_loader.scss */
+  50% {
+    -webkit-transform: translate(5px, 5px);
+    -moz-transform: translate(5px, 5px);
+    -ms-transform: translate(5px, 5px);
+    -o-transform: translate(5px, 5px);
+    transform: translate(5px, 5px);
+  }
+
+  /* line 46, ../../src/stylesheets/_loader.scss */
+  100% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes twist-two {
+  /* line 49, ../../src/stylesheets/_loader.scss */
+  0% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  /* line 50, ../../src/stylesheets/_loader.scss */
+  50% {
+    -webkit-transform: translate(5px, 5px);
+    -moz-transform: translate(5px, 5px);
+    -ms-transform: translate(5px, 5px);
+    -o-transform: translate(5px, 5px);
+    transform: translate(5px, 5px);
+  }
+
+  /* line 51, ../../src/stylesheets/_loader.scss */
+  50% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes twist-three {
+  /* line 54, ../../src/stylesheets/_loader.scss */
+  0% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  /* line 55, ../../src/stylesheets/_loader.scss */
+  50% {
+    -webkit-transform: translate(-5px, -5px);
+    -moz-transform: translate(-5px, -5px);
+    -ms-transform: translate(-5px, -5px);
+    -o-transform: translate(-5px, -5px);
+    transform: translate(-5px, -5px);
+  }
+
+  /* line 56, ../../src/stylesheets/_loader.scss */
+  100% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes twist-four {
+  /* line 59, ../../src/stylesheets/_loader.scss */
+  0% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  /* line 60, ../../src/stylesheets/_loader.scss */
+  50% {
+    -webkit-transform: translate(-10px, -10px);
+    -moz-transform: translate(-10px, -10px);
+    -ms-transform: translate(-10px, -10px);
+    -o-transform: translate(-10px, -10px);
+    transform: translate(-10px, -10px);
+  }
+
+  /* line 61, ../../src/stylesheets/_loader.scss */
+  100% {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
 
 /* line 1, ../../src/stylesheets/_navigation.scss */
@@ -642,7 +804,7 @@ table {
 }
 /* line 44, ../../src/stylesheets/_illustrator.scss */
 .nav-single li a:hover {
-  background: url(../../src/images/wave-ptnr.png) repeat;
+  background: url(../../src/images/wave-ptnr.png) repeat-x bottom;
 }
 /* line 48, ../../src/stylesheets/_illustrator.scss */
 .nav-single li.nav-next {

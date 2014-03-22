@@ -7,14 +7,11 @@ $(function() {
 
   // Selectors
   var container = document.querySelector('#pack-content');
-  var spinTarget = document.querySelector('#loader');
+  var loaderTarget = $('#loader');
 
   // Keyboard vars
   var nextItem = $('.nav-next a');
   var prevItem = $('.nav-previous a');
-
-  // Loader
-
 
   // Homepage Random Sizing
 
@@ -134,8 +131,7 @@ $(function() {
 
   $(window).load(function() {
     doCascade(100);
-    
-    console.log('ready');
+    loaderTarget.fadeOut();
   });
 
 });

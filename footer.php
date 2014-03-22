@@ -1,6 +1,11 @@
 </div><!-- #content -->
 
-<div id="loader"></div>
+<div id="loader">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
 
 <?php wp_footer(); ?>
 
