@@ -4,13 +4,14 @@
   color: #333;
   .entry-title, .thesis-title {
     font-size: 1.2em;
+    line-height: 1em;
     margin-bottom: 0.5em;
   }
   p, .info {
     font-size: 93.3%;
   }
   .info {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
   }
 }
 
@@ -22,6 +23,11 @@
   margin: 1em 0;
   p {
     margin-top: 0;
+  }
+  &:before {
+    display: block;
+    content: '—';
+    line-height: 0;
   }
 }
 
@@ -36,13 +42,15 @@
   li {
     width: 50%;
     a {
-      padding: 1em 0;
+      padding: 0.9em 0 1em 0;
       display: block;
       text-decoration: none;
       @include flexbox();
       flex-flow: row wrap;
+      @include transition-property(background);
+      @include transition-duration(0.5s);
       &:hover {
-        background: url(../../src/images/wave-ptnr.png) repeat-x bottom;
+        background: rgba($accent,0.1);
       }
     }
     &.nav-next {
@@ -54,6 +62,7 @@
   }
   .indicator {
     width: 20%;
+    text-align: center;
   }
 }
 
