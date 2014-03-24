@@ -35,7 +35,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header id="app-head" class="<?php if ( is_home() || is_front_page() ) : ?>inverted<?php endif; ?>" role="banner">
+	<header id="app-head" class="<?php if ( is_home() || is_front_page() || is_archive() ) : ?>inverted<?php endif; ?>" role="banner">
 		<div class="container">
 				
 			<div class="logo">
@@ -103,4 +103,4 @@
 		</div><!-- .container -->
 	</header><!-- #app-head -->
 
-<div <?php if ( is_home() || is_front_page() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">
+<div <?php if ( is_home() || is_front_page() || is_archive() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">

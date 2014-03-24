@@ -51,7 +51,7 @@ a {
 
 // Homepage
 
-.home {
+.home, .archive {
   color: $white;
   background: #111;
   &:after {
@@ -67,13 +67,16 @@ a {
   }
 }
 
-.home .illustrator {
+.home .illustrator, .archive .illustrator {
   width: 33.3333333333%;
   @media (max-width: 600px) {
     width: 50%;
   }
   @media (min-width: 1200px) {
     width: 25%;
+  }
+  @media (min-width: 1280px) {
+    width: 20%;
   }
   padding: 4px;
   position: relative;
@@ -91,6 +94,9 @@ a {
     }
     @media (min-width: 1200px) {
       width: 12.5%;
+    }
+    @media (min-width: 1280px) {
+      width: 10%;
     }
   }
   img {
@@ -135,8 +141,24 @@ a {
   }
 }
 
-.home #pack-content {
-  margin: 1em;
+.archive .illustrator {
+  .illustrator-name {
+    top: 0;
+    bottom: 75%;
+    opacity: 1;
+  }
+  &:hover {
+    .illustrator-name {
+      opacity: 1;
+      top: -100%;
+    }
+  }
+}
+
+.home, .archive {
+  #pack-content {
+    margin: 1em;
+  }
 }
 
 #intro {
