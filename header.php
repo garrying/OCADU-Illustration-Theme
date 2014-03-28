@@ -29,9 +29,14 @@
 		echo " | $site_description";
 
 	?></title>
-<?php
-	wp_head();
-?>
+	
+	<?php
+		wp_head();
+	?>
+
+	<script type="text/javascript" src="//use.typekit.net/sgm7vuw.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 </head>
 
 <body <?php body_class(); ?>>

@@ -133,10 +133,10 @@ module.exports = function (grunt) {
         files: 'assets/src/images/*.png',
         tasks: ['imagemin']
       },
-      css: {
-        files: 'assets/src/stylesheets/*.scss',
+      compass: {
+        files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
         tasks: ['compass:server']
-      }
+      },
     },
     clean: {
       dist: {

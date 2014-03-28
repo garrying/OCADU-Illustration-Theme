@@ -26,7 +26,10 @@
   }
   &:before {
     display: block;
-    content: '—';
+    content: '';
+    border-bottom: 1px solid #999;
+    width: 5%;
+    height: 1px;
     line-height: 0;
   }
 }
