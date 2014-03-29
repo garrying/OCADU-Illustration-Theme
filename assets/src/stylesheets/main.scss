@@ -9,6 +9,7 @@
 // Components
 @import 'loader';
 @import 'navigation';
+@import 'search';
 @import 'illustrator';
 @import 'indexes';
 
@@ -160,6 +161,52 @@ a {
     margin: 1em;
   }
 }
+
+.post-6, .post-8 {
+  .entry-title {
+    margin: 2em 0 2em 0;
+  }
+  font-size: 1.2em;
+  line-height: 1.3em;
+  color: #333;
+  margin: 0 7% 4em 7%;
+  @media (max-width: 480px) {
+    font-size: 1.1em;
+  }
+  @media (min-width: 768px) {
+    margin: 0 auto 4em auto;
+    max-width: 70%;
+  }
+  @media (min-width: 1199px) {
+    margin: 0 auto;
+    max-width: 55%;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1.3em;
+    margin: 0 auto 4em auto;
+    max-width: 700px;
+  }
+}
+
+.post-8 {
+  .faculty-list {
+    @include flexbox();
+    flex-flow: row wrap;
+    li {
+      margin-bottom: 0.25em;
+    }
+  }
+  .span1 {
+    width: 33.3333%;
+    @media (max-width: 480px) {
+      width: 50%;
+    }
+  }
+  h2 {
+    margin: 2em 0;
+  }
+}
+
 
 #intro {
 

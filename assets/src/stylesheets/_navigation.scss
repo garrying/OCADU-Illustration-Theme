@@ -1,12 +1,13 @@
 #app-head {
   color: #13121E;
   height: 60px;
-  overflow: hidden;
   background: $white;
   position: relative;
+  font-weight: 700;
+  border-bottom: 1px solid #f2f2f2;
   .container {
     position: absolute;
-    bottom: 0;
+    bottom: 1em;
     left: 1em;
     right: 1em;
     padding: 0 4px;
@@ -14,8 +15,12 @@
   &.inverted {
     color: $white;
     background: transparent;
+    border-color: #222;
     a {
       color: $white;
+    }
+    #s {
+      color: #fff;
     }
   }
   a {
@@ -37,19 +42,6 @@
   }
   a {
     color: #333;
-  }
-}
-
-#search {
-  display: inline-block;
-  #s {
-    color: $white;
-    background: transparent;
-    border: none;
-    font-family: $fontStack;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    outline: none;
   }
 }
 
@@ -89,6 +81,11 @@
     a {
       display: block;
       margin: 0 1em;
+    }
+    &.current-menu-item {
+      a {
+        color: $accent;
+      }
     }
   }
 }

@@ -1,6 +1,39 @@
 $(function() {
   'use strict';
 
+  // Typeahead
+
+  var illustratorsDB;
+
+  illustratorsDB = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '/api/get_illustrators/'
+  });
+
+  illustratorsDB.initialize();
+
+  $('.illustrator-search').typeahead({
+    minLength: 3,
+    highlight: true,
+  }, {
+    name: 'illustratorsDB',
+    displayKey: 'title',
+    templates: {
+      empty: [
+        '<div class="empty-message">',
+        'No one matches that name.',
+        '</div>'
+      ].join('\n'),
+      suggestion: Handlebars.compile(['<div class="illustrator-result">{{title}}</div>'].join(''))
+    },
+    source: illustratorsDB.ttAdapter(),
+  }).on('typeahead:selected', function($e, datum){
+    console.log(datum['url']);
+  }).on('typeahead:autocompleted', function($e, datum){
+    console.log(datum['url']);
+  });
+
   // Adaptive BGs Home Grid
 
   $.adaptiveBackground.run();
@@ -43,17 +76,19 @@ $(function() {
   });
 
   // Packery
-  var pckry = new Packery( container, {
-    // options
-    itemSelector: '.gallery-item',
-    isResizeBound: true,
-    isHorizontal: true,
-    transitionDuration: 0
-  });
+  if (container) {
+    var pckry = new Packery( container, {
+      // options
+      itemSelector: '.gallery-item',
+      isResizeBound: true,
+      isHorizontal: true,
+      transitionDuration: 0
+    });
 
-  imagesLoaded( container, function() {
-    pckry.layout();
-  });
+    imagesLoaded( container, function() {
+      pckry.layout();
+    });
+  }
 
   // Keyboard Shortcuts
   $(document).on('keydown', function (event) {

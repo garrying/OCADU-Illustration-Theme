@@ -1,0 +1,33 @@
+#search {
+  display: inline-block;
+  margin-left: 2em;
+}
+
+.illustrator-search {
+  color: #333;
+  background: transparent;
+  border: none;
+  font-family: $fontStack;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+}
+
+.tt-hint {
+  color: #999;
+}
+
+.tt-dropdown-menu {
+  background: $white;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 0.25em;
+}
+
+.tt-suggestion {
+  padding: 0.25em;
+}
+
+.tt-suggestion.tt-cursor {
+  color: $accent;
+}
