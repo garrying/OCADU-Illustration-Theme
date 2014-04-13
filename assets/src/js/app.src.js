@@ -31,7 +31,7 @@ $(function() {
   }).on('typeahead:selected', function($e, datum){
     window.location.href = datum['url'];
   }).on('typeahead:autocompleted', function($e, datum){
-    console.log(datum['url']);
+    window.location.href = datum['url'];
   });
 
   // Adaptive BGs Home Grid

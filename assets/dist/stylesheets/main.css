@@ -660,7 +660,7 @@ table {
   color: #fff;
 }
 /* line 23, ../../src/stylesheets/_navigation.scss */
-#app-head.inverted .search, #app-head.inverted li:first-child {
+#app-head.inverted .search, #app-head.inverted li:first-child, #app-head.inverted .tt-dropdown-menu {
   border-color: #222;
 }
 /* line 27, ../../src/stylesheets/_navigation.scss */
