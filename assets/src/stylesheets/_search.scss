@@ -1,9 +1,24 @@
-#search {
-  display: inline-block;
-  margin-left: 2em;
+#app-head {
+  .search {
+    position: relative;
+    border-left: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
+    width: 30%;
+  }
 }
 
+.search-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
 .illustrator-search {
+  width: 100%;
   color: #333;
   background: transparent;
   border: none;
@@ -11,6 +26,24 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   outline: none;
+  padding: 17px 20px 17px 20px;
+}
+
+::-webkit-input-placeholder {
+ color: #999;
+}
+:-moz-placeholder {
+   color: #999;  
+}
+::-moz-placeholder {
+   color: #999;  
+}
+:-ms-input-placeholder {  
+   color: #999;  
+}
+
+.twitter-typeahead {
+  width: 100%;
 }
 
 .tt-hint {
@@ -19,15 +52,26 @@
 
 .tt-dropdown-menu {
   background: $white;
+  color: #333;
   width: 100%;
-  border: 1px solid #eee;
-  padding: 0.25em;
+  border-top: 1px solid #eee;
+}
+
+.tt-suggestion, .empty-message {
+  padding: 17px 20px 17px 20px;
+  font-size: 1.2em;
+  line-height: 1em;
 }
 
 .tt-suggestion {
-  padding: 0.25em;
+  border-bottom: 1px solid #f2f2f2;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .tt-suggestion.tt-cursor {
-  color: $accent;
+  background: $accent;
+  color: #fff;
+  cursor: pointer;
 }

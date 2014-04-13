@@ -14,7 +14,7 @@ $(function() {
   illustratorsDB.initialize();
 
   $('.illustrator-search').typeahead({
-    minLength: 3,
+    minLength: 1,
     highlight: true,
   }, {
     name: 'illustratorsDB',

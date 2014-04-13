@@ -433,6 +433,29 @@ table {
   display: none;
 }
 
+/* line 25, ../../src/stylesheets/_mixins.scss */
+.flex-wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* line 29, ../../src/stylesheets/_mixins.scss */
+.item {
+  -webkit-box-flex: 1 200px;
+  -moz-box-flex: 1 200px;
+  -webkit-flex: 1 200px;
+  -ms-flex: 1 200px;
+  flex: 1 200px;
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
 /* line 1, ../../src/stylesheets/_loader.scss */
 #loader {
   position: fixed;
@@ -605,48 +628,56 @@ table {
 /* line 1, ../../src/stylesheets/_navigation.scss */
 #app-head {
   color: #13121E;
-  height: 60px;
   background: white;
   position: relative;
-  font-weight: 700;
   border-bottom: 1px solid #f2f2f2;
 }
-/* line 8, ../../src/stylesheets/_navigation.scss */
-#app-head .container {
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
-  right: 1em;
-  padding: 0 4px;
+/* line 6, ../../src/stylesheets/_navigation.scss */
+#app-head .left {
+  float: left;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
-/* line 15, ../../src/stylesheets/_navigation.scss */
+/* line 10, ../../src/stylesheets/_navigation.scss */
+#app-head .right {
+  float: right;
+}
+/* line 13, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted {
   color: white;
   background: transparent;
   border-color: #222;
 }
-/* line 19, ../../src/stylesheets/_navigation.scss */
+/* line 17, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted a {
   color: white;
 }
-/* line 22, ../../src/stylesheets/_navigation.scss */
+/* line 20, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted #s {
   color: #fff;
 }
-/* line 26, ../../src/stylesheets/_navigation.scss */
+/* line 23, ../../src/stylesheets/_navigation.scss */
+#app-head.inverted .search, #app-head.inverted li:first-child {
+  border-color: #222;
+}
+/* line 27, ../../src/stylesheets/_navigation.scss */
 #app-head a {
   color: white;
   text-decoration: none;
 }
-/* line 30, ../../src/stylesheets/_navigation.scss */
+/* line 31, ../../src/stylesheets/_navigation.scss */
 #app-head .logo {
-  display: inline-block;
-}
-/* line 32, ../../src/stylesheets/_navigation.scss */
-#app-head .logo a {
+  float: left;
   display: block;
+  background: #fb5853;
+  padding: 17px 20px 17px 20px;
+  height: 52px;
+  color: #fff;
 }
-/* line 36, ../../src/stylesheets/_navigation.scss */
+/* line 39, ../../src/stylesheets/_navigation.scss */
 #app-head .icon-block {
   display: inline-block;
   vertical-align: bottom;
@@ -654,21 +685,29 @@ table {
   height: 60px;
   background: #F27486;
 }
-/* line 43, ../../src/stylesheets/_navigation.scss */
+/* line 46, ../../src/stylesheets/_navigation.scss */
 #app-head a {
   color: #333;
 }
-
-/* line 48, ../../src/stylesheets/_navigation.scss */
-.year-indicator {
+/* line 49, ../../src/stylesheets/_navigation.scss */
+#app-head .item {
+  padding: 17px 20px 17px 20px;
   display: inline-block;
+  vertical-align: middle;
+  height: 52px;
 }
-/* line 50, ../../src/stylesheets/_navigation.scss */
+
+/* line 57, ../../src/stylesheets/_navigation.scss */
+#year-back-button {
+  margin-left: -5px;
+}
+
+/* line 62, ../../src/stylesheets/_navigation.scss */
 .year-indicator .year-current {
   display: block;
 }
 
-/* line 55, ../../src/stylesheets/_navigation.scss */
+/* line 67, ../../src/stylesheets/_navigation.scss */
 #year-widget {
   position: fixed;
   left: 0;
@@ -678,67 +717,78 @@ table {
   overflow: hidden;
   width: 0;
 }
-/* line 63, ../../src/stylesheets/_navigation.scss */
+/* line 75, ../../src/stylesheets/_navigation.scss */
 #year-widget a {
   display: block;
   text-align: right;
 }
 
-/* line 69, ../../src/stylesheets/_navigation.scss */
-#access {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-/* line 75, ../../src/stylesheets/_navigation.scss */
+/* line 81, ../../src/stylesheets/_navigation.scss */
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 79, ../../src/stylesheets/_navigation.scss */
+/* line 85, ../../src/stylesheets/_navigation.scss */
 #menu-primary li {
   display: inline-block;
 }
-/* line 81, ../../src/stylesheets/_navigation.scss */
+/* line 87, ../../src/stylesheets/_navigation.scss */
+#menu-primary li:first-child {
+  border-right: 1px solid #f2f2f2;
+  border-left: 1px solid #f2f2f2;
+}
+/* line 91, ../../src/stylesheets/_navigation.scss */
 #menu-primary li a {
   display: block;
-  margin: 0 1em;
+  padding: 17px 20px 17px 20px;
 }
-/* line 86, ../../src/stylesheets/_navigation.scss */
+/* line 96, ../../src/stylesheets/_navigation.scss */
 #menu-primary li.current-menu-item a {
   color: #fb5853;
 }
 
-/* line 93, ../../src/stylesheets/_navigation.scss */
+/* line 103, ../../src/stylesheets/_navigation.scss */
 ::-webkit-input-placeholder {
   color: #444;
 }
 
-/* line 96, ../../src/stylesheets/_navigation.scss */
+/* line 106, ../../src/stylesheets/_navigation.scss */
 :-moz-placeholder {
   color: #444;
 }
 
-/* line 99, ../../src/stylesheets/_navigation.scss */
+/* line 109, ../../src/stylesheets/_navigation.scss */
 ::-moz-placeholder {
   color: #444;
 }
 
-/* line 102, ../../src/stylesheets/_navigation.scss */
+/* line 112, ../../src/stylesheets/_navigation.scss */
 :-ms-input-placeholder {
   color: #444;
 }
 
-/* line 1, ../../src/stylesheets/_search.scss */
-#search {
-  display: inline-block;
-  margin-left: 2em;
+/* line 2, ../../src/stylesheets/_search.scss */
+#app-head .search {
+  position: relative;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  width: 30%;
 }
 
-/* line 6, ../../src/stylesheets/_search.scss */
+/* line 10, ../../src/stylesheets/_search.scss */
+.search-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 20, ../../src/stylesheets/_search.scss */
 .illustrator-search {
+  width: 100%;
   color: #333;
   background: transparent;
   border: none;
@@ -746,29 +796,68 @@ table {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   outline: none;
+  padding: 17px 20px 17px 20px;
 }
 
-/* line 16, ../../src/stylesheets/_search.scss */
+/* line 32, ../../src/stylesheets/_search.scss */
+::-webkit-input-placeholder {
+  color: #999;
+}
+
+/* line 35, ../../src/stylesheets/_search.scss */
+:-moz-placeholder {
+  color: #999;
+}
+
+/* line 38, ../../src/stylesheets/_search.scss */
+::-moz-placeholder {
+  color: #999;
+}
+
+/* line 41, ../../src/stylesheets/_search.scss */
+:-ms-input-placeholder {
+  color: #999;
+}
+
+/* line 45, ../../src/stylesheets/_search.scss */
+.twitter-typeahead {
+  width: 100%;
+}
+
+/* line 49, ../../src/stylesheets/_search.scss */
 .tt-hint {
   color: #999;
 }
 
-/* line 20, ../../src/stylesheets/_search.scss */
+/* line 53, ../../src/stylesheets/_search.scss */
 .tt-dropdown-menu {
   background: white;
+  color: #333;
   width: 100%;
-  border: 1px solid #eee;
-  padding: 0.25em;
+  border-top: 1px solid #eee;
 }
 
-/* line 27, ../../src/stylesheets/_search.scss */
+/* line 60, ../../src/stylesheets/_search.scss */
+.tt-suggestion, .empty-message {
+  padding: 17px 20px 17px 20px;
+  font-size: 1.2em;
+  line-height: 1em;
+}
+
+/* line 66, ../../src/stylesheets/_search.scss */
 .tt-suggestion {
-  padding: 0.25em;
+  border-bottom: 1px solid #f2f2f2;
+}
+/* line 68, ../../src/stylesheets/_search.scss */
+.tt-suggestion:last-child {
+  border-bottom: none;
 }
 
-/* line 31, ../../src/stylesheets/_search.scss */
+/* line 73, ../../src/stylesheets/_search.scss */
 .tt-suggestion.tt-cursor {
-  color: #fb5853;
+  background: #fb5853;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* line 1, ../../src/stylesheets/_illustrator.scss */

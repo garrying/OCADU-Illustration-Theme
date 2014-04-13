@@ -1,16 +1,14 @@
 #app-head {
   color: #13121E;
-  height: 60px;
   background: $white;
   position: relative;
-  font-weight: 700;
   border-bottom: 1px solid #f2f2f2;
-  .container {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
-    padding: 0 4px;
+  .left {
+    float: left;
+    @include flex(1);
+  }
+  .right {
+    float: right;
   }
   &.inverted {
     color: $white;
@@ -22,16 +20,21 @@
     #s {
       color: #fff;
     }
+    .search, li:first-child {
+      border-color: #222;
+    }
   }
   a {
     color: $white;
     text-decoration: none;
   }
   .logo {
-    display: inline-block;
-    a {
-      display: block;
-    }
+    float: left;
+    display: block;
+    background: $accent;
+    padding: 17px 20px 17px 20px;
+    height: 52px;
+    color: #fff;
   }
   .icon-block {
     display: inline-block;
@@ -43,10 +46,19 @@
   a {
     color: #333;
   }
+  .item {
+    padding: 17px 20px 17px 20px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 52px;
+  }
+}
+
+#year-back-button {
+  margin-left: -5px;
 }
 
 .year-indicator {
-  display: inline-block;
   .year-current {
     display: block;
   }
@@ -66,21 +78,19 @@
   }
 }
 
-#access {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
   li {
     display: inline-block;
+    &:first-child {
+      border-right: 1px solid #f2f2f2;
+      border-left: 1px solid #f2f2f2;
+    }
     a {
       display: block;
-      margin: 0 1em;
+      padding: 17px 20px 17px 20px;
     }
     &.current-menu-item {
       a {
