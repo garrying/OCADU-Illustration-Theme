@@ -702,68 +702,118 @@ table {
   margin-left: -5px;
 }
 
-/* line 62, ../../src/stylesheets/_navigation.scss */
+/* line 61, ../../src/stylesheets/_navigation.scss */
+.year-indicator {
+  position: relative;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fb5853;
+}
+/* line 67, ../../src/stylesheets/_navigation.scss */
 .year-indicator .year-current {
   display: block;
 }
 
-/* line 67, ../../src/stylesheets/_navigation.scss */
+/* line 72, ../../src/stylesheets/_navigation.scss */
 #year-widget {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 110px;
-  overflow: hidden;
-  width: 0;
+  top: 61px;
+  width: 200px;
+  left: -63px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  font-weight: 300;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, rgba(251, 88, 83, 0.85)), color-stop(100%, #fb5853));
+  background-image: -webkit-linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
+  background-image: -moz-linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
+  background-image: -o-linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
+  background-image: linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
 }
-/* line 75, ../../src/stylesheets/_navigation.scss */
+/* line 81, ../../src/stylesheets/_navigation.scss */
 #year-widget a {
+  color: #fff;
   display: block;
-  text-align: right;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: inset 1px 1px 0 0 rgba(217, 76, 72, 0.2);
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 180ms;
+  -moz-transition-duration: 180ms;
+  -o-transition-duration: 180ms;
+  transition-duration: 180ms;
+}
+/* line 89, ../../src/stylesheets/_navigation.scss */
+#year-widget a.selected, #year-widget a:hover {
+  background: #d94c48;
+}
+/* line 93, ../../src/stylesheets/_navigation.scss */
+#year-widget .year-item {
+  width: 33.33%;
+  float: left;
+}
+/* line 97, ../../src/stylesheets/_navigation.scss */
+#year-widget.open {
+  display: block;
+}
+/* line 100, ../../src/stylesheets/_navigation.scss */
+#year-widget:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fb5853;
 }
 
-/* line 81, ../../src/stylesheets/_navigation.scss */
+/* line 114, ../../src/stylesheets/_navigation.scss */
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 85, ../../src/stylesheets/_navigation.scss */
+/* line 118, ../../src/stylesheets/_navigation.scss */
 #menu-primary li {
   display: inline-block;
 }
-/* line 87, ../../src/stylesheets/_navigation.scss */
+/* line 120, ../../src/stylesheets/_navigation.scss */
 #menu-primary li:first-child {
   border-right: 1px solid #f2f2f2;
   border-left: 1px solid #f2f2f2;
 }
-/* line 91, ../../src/stylesheets/_navigation.scss */
+/* line 124, ../../src/stylesheets/_navigation.scss */
 #menu-primary li a {
   display: block;
   padding: 17px 20px 17px 20px;
 }
-/* line 96, ../../src/stylesheets/_navigation.scss */
+/* line 129, ../../src/stylesheets/_navigation.scss */
 #menu-primary li.current-menu-item a {
   color: #fb5853;
 }
 
-/* line 103, ../../src/stylesheets/_navigation.scss */
+/* line 136, ../../src/stylesheets/_navigation.scss */
 ::-webkit-input-placeholder {
   color: #444;
 }
 
-/* line 106, ../../src/stylesheets/_navigation.scss */
+/* line 139, ../../src/stylesheets/_navigation.scss */
 :-moz-placeholder {
   color: #444;
 }
 
-/* line 109, ../../src/stylesheets/_navigation.scss */
+/* line 142, ../../src/stylesheets/_navigation.scss */
 ::-moz-placeholder {
   color: #444;
 }
 
-/* line 112, ../../src/stylesheets/_navigation.scss */
+/* line 145, ../../src/stylesheets/_navigation.scss */
 :-ms-input-placeholder {
   color: #444;
 }

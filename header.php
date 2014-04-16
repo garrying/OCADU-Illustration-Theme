@@ -49,16 +49,6 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home"><?php bloginfo( 'name' ); ?></a>
 
 				<div class="item year-indicator">
-					<a href="#" class="year-current">2014</a>
-				</div>
-
-				<div class="item search" role="search">
-					<div class="search-container">
-						<?php get_search_form(); ?>
-					</div>
-				</div><!-- #search -->
-
-				<div class="item" id="year-widget">
 					<?php 
 						$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
 						// Selected menu state for attachments 
@@ -75,11 +65,12 @@
 							}
 						}
 					?>
-					<nav class="item" id="year-select">
-						<h3 class="hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
+					<span href="#" class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } elseif (isset($term)) { echo $term; } else {echo('2014');}  ?></span>
+					<div id="year-widget">
+						<nav id="year-select">
 							<ul id="illu-jumpmenu" class="normalized">
 								<?php foreach( $grad_year as $year ) {
-									echo "<li>";
+									echo "<li class='year-item'>";
 										if ( is_singular('illustrator') && $selected_year == $year->name ) {
 											echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
 										} elseif ( is_attachment() && $selected_year == $year->name ) {
@@ -93,8 +84,16 @@
 								}
 								?>
 							</ul>
-					</nav> <!-- #year-Select-->
-				</div> <!-- #year-widget-->
+						</nav> <!-- #year-Select-->
+					</div> <!-- #year-widget-->
+
+				</div>
+
+				<div class="item search" role="search">
+					<div class="search-container">
+						<?php get_search_form(); ?>
+					</div>
+				</div><!-- #search -->
 				<?php if (is_singular('illustrator')) 
 		echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . ' index</span></a>';  
 	?>

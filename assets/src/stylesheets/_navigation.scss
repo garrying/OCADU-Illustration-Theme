@@ -59,22 +59,55 @@
 }
 
 .year-indicator {
+  position: relative;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: $accent;
   .year-current {
     display: block;
   }
 }
 
 #year-widget {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 110px;
-  overflow: hidden;
-  width: 0;
+  top: 61px;
+  width: 200px;
+  left: -63px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  font-weight: 300;
+  @include background-image(linear-gradient(left top, rgba($accent,0.85), rgba($accent,1)));
   a {
+    color: #fff;
     display: block;
-    text-align: right;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: inset 1px 1px 0 0 rgba(#d94c48,0.2);
+    @include transition-property(background);
+    @include transition-duration(180ms);
+    &.selected, &:hover {
+      background: #d94c48;
+    }
+  }
+  .year-item {
+    width: 33.33%;
+    float:left;
+  }
+  &.open {
+    display: block;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $accent;
   }
 }
 

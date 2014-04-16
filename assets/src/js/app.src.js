@@ -34,6 +34,10 @@ $(function() {
     window.location.href = datum['url'];
   });
 
+  $('.illustrator-search').on('click', function(){
+    $('#year-widget').removeClass('open');
+  });
+
   // Adaptive BGs Home Grid
 
   $.adaptiveBackground.run();
@@ -71,8 +75,7 @@ $(function() {
   // Year Selector 
 
   $('.year-indicator').on('click',function(){
-    $('body').animate({'marginLeft':110,'marginRight':-110},'fast');
-    $('#year-widget').animate({'width':110,},'fast');
+    $('#year-widget').toggleClass('open');
   });
 
   // Packery
