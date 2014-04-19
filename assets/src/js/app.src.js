@@ -22,7 +22,7 @@ $(function() {
     templates: {
       empty: [
         '<div class="empty-message">',
-        'No one matches that name.',
+        'No one matches that name ☹',
         '</div>'
       ].join('\n'),
       suggestion: Handlebars.compile(['<div class="illustrator-result">{{title}}</div>'].join(''))
@@ -38,10 +38,6 @@ $(function() {
     $('#year-widget').removeClass('open');
   });
 
-  // Adaptive BGs Home Grid
-
-  $.adaptiveBackground.run();
-
   // Selectors
   var container = document.querySelector('#pack-content');
   var loaderTarget = $('#loader');
@@ -53,6 +49,7 @@ $(function() {
   // Homepage Random Sizing
 
   if ($('body').hasClass('home')) {
+    $.adaptiveBackground.run();    
     $('.illustrator').each(function(){
       var randomClass =  Math.floor(Math.random()*2);
       if (randomClass === 1) {
@@ -76,6 +73,12 @@ $(function() {
 
   $('.year-indicator').on('click',function(){
     $('#year-widget').toggleClass('open');
+  });
+
+  $(document).bind('click', function(e) {
+    if(!$(e.target).is('#year-widget,.year-indicator')) {
+      $('#year-widget').removeClass('open');
+    }
   });
 
   // Packery

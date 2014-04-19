@@ -3,6 +3,7 @@
   background: $white;
   position: relative;
   border-bottom: 1px solid #f2f2f2;
+  font-size: .95em;
   .left {
     float: left;
     @include flex(1);
@@ -15,7 +16,7 @@
     background: transparent;
     border-color: #222;
     a {
-      color: $white;
+      color: #d5d5d5;
     }
     #s {
       color: #fff;
@@ -24,17 +25,12 @@
       border-color: #222;
     }
   }
-  a {
-    color: $white;
-    text-decoration: none;
-  }
   .logo {
     float: left;
     display: block;
-    background: $accent;
+    background: transparent;
     padding: 17px 20px 17px 20px;
-    height: 52px;
-    color: #fff;
+    height: 50px;
   }
   .icon-block {
     display: inline-block;
@@ -44,13 +40,14 @@
     background: #F27486;
   }
   a {
-    color: #333;
+    color: #414141;
+    text-decoration: none;
   }
   .item {
     padding: 17px 20px 17px 20px;
     display: inline-block;
     vertical-align: middle;
-    height: 52px;
+    height: 50px;
   }
 }
 
