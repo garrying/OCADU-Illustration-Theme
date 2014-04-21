@@ -650,7 +650,7 @@ table {
 #app-head.inverted {
   color: white;
   background: transparent;
-  border-color: #222;
+  border-color: #151518;
 }
 /* line 18, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted a {
@@ -662,7 +662,7 @@ table {
 }
 /* line 24, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted .search, #app-head.inverted li:first-child, #app-head.inverted .tt-dropdown-menu {
-  border-color: #222;
+  border-color: #151518;
 }
 /* line 28, ../../src/stylesheets/_navigation.scss */
 #app-head .logo {
@@ -1141,7 +1141,7 @@ a:hover {
 /* line 55, ../../src/stylesheets/main.scss */
 .home, .archive {
   color: white;
-  background: #111;
+  background: #1a1a1d;
 }
 /* line 58, ../../src/stylesheets/main.scss */
 .home:after, .archive:after {
@@ -1153,11 +1153,11 @@ a:hover {
   z-index: 999;
   bottom: 0;
   pointer-events: none;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, transparent), color-stop(100%, #111111));
-  background-image: -webkit-linear-gradient(top, transparent, #111111);
-  background-image: -moz-linear-gradient(top, transparent, #111111);
-  background-image: -o-linear-gradient(top, transparent, #111111);
-  background-image: linear-gradient(top, transparent, #111111);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, transparent), color-stop(100%, #1a1a1d));
+  background-image: -webkit-linear-gradient(top, transparent, #1a1a1d);
+  background-image: -moz-linear-gradient(top, transparent, #1a1a1d);
+  background-image: -o-linear-gradient(top, transparent, #1a1a1d);
+  background-image: linear-gradient(top, transparent, #1a1a1d);
 }
 
 /* line 71, ../../src/stylesheets/main.scss */
@@ -1258,11 +1258,11 @@ a:hover {
   margin: 0;
   padding: 14px;
   opacity: 0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(17, 17, 17, 0.5)), color-stop(100%, transparent));
-  background-image: -webkit-linear-gradient(top, rgba(17, 17, 17, 0.5), transparent);
-  background-image: -moz-linear-gradient(top, rgba(17, 17, 17, 0.5), transparent);
-  background-image: -o-linear-gradient(top, rgba(17, 17, 17, 0.5), transparent);
-  background-image: linear-gradient(top, rgba(17, 17, 17, 0.5), transparent);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(26, 26, 29, 0.6)), color-stop(100%, transparent));
+  background-image: -webkit-linear-gradient(top, rgba(26, 26, 29, 0.6), transparent);
+  background-image: -moz-linear-gradient(top, rgba(26, 26, 29, 0.6), transparent);
+  background-image: -o-linear-gradient(top, rgba(26, 26, 29, 0.6), transparent);
+  background-image: linear-gradient(top, rgba(26, 26, 29, 0.6), transparent);
   -webkit-transition-property: top, opacity;
   -moz-transition-property: top, opacity;
   -o-transition-property: top, opacity;

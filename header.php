@@ -120,7 +120,7 @@
 			An evolving archive maintained by the Illustration Department at OCAD University. <br> <br> Featuring work from the graduating class of 2014.
 		</h2>
 		<p>
-			Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 2 to 5, 2014.
+			Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
 		</p>
 		<p><a href="/about" title="Link to a message from Paul Dallas" class="truncate">A message from Paul Dallas, Illustration Chair</a></p>
 	</div>

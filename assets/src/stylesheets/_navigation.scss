@@ -14,7 +14,7 @@
   &.inverted {
     color: $white;
     background: transparent;
-    border-color: #222;
+    border-color: darken($dark-accent,2%);
     a {
       color: #d5d5d5;
     }
@@ -22,7 +22,7 @@
       color: #fff;
     }
     .search, li:first-child, .tt-dropdown-menu {
-      border-color: #222;
+      border-color: darken($dark-accent,2%);
     }
   }
   .logo {

@@ -54,7 +54,7 @@ a {
 
 .home, .archive {
   color: $white;
-  background: #111;
+  background: $dark-accent;
   &:after {
     content: '';
     position: fixed;
@@ -64,7 +64,7 @@ a {
     z-index: 999;
     bottom: 0;
     pointer-events: none;
-    @include background-image(linear-gradient(top, transparent, #111));
+    @include background-image(linear-gradient(top, transparent, $dark-accent));
   }
 }
 
@@ -123,7 +123,7 @@ a {
     margin: 0;
     padding: 14px;
     opacity: 0;
-    @include background-image(linear-gradient(top, rgba(#111,0.5), transparent));
+    @include background-image(linear-gradient(top, rgba($dark-accent,0.6), transparent));
     @include transition-property(top,opacity);
     @include transition-duration(200ms);
   }
