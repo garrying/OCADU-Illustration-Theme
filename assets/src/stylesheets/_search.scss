@@ -4,6 +4,8 @@
     border-left: 1px solid #f2f2f2;
     border-right: 1px solid #f2f2f2;
     width: 30%;
+    background: image-url('search.svg') no-repeat 95% center;
+    background-size: 13px 13px;
   }
 }
 
@@ -54,6 +56,7 @@
   color: #333;
   width: 100%;
   border-top: 1px solid #eee;
+  box-shadow: 1px 1px 3px rgba(#000,0.1);
 }
 
 .tt-suggestion, .empty-message {
@@ -64,6 +67,11 @@
 
 .tt-suggestion {
   border-bottom: 1px solid #f2f2f2;
+  @include transition-property(background);
+  @include transition-duration(180ms);
+  strong {
+    color: $accent;
+  }
   &:last-child {
     border-bottom: none;
   }
@@ -73,4 +81,7 @@
   background: $accent;
   color: #fff;
   cursor: pointer;
+  strong {
+    color: #fff;
+  }
 }

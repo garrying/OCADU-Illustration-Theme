@@ -28,8 +28,9 @@
   .logo {
     float: left;
     display: block;
-    background: transparent;
-    padding: 17px 20px 17px 20px;
+    background: image-url('eye.svg') right center no-repeat;
+    background-size: 13px 14px;
+    padding: 17px 30px 17px 20px;
     height: 50px;
   }
   .icon-block {
@@ -53,16 +54,33 @@
 
 #year-back-button {
   margin-left: -5px;
+  span {
+    background: image-url('grid.svg') no-repeat 10px center rgba($accent,0.1);
+    background-size: 13px 13px;
+    color: $accent;
+    border-radius: 5px;
+    padding: 5px 8px 5px 30px;
+    @include transition-property(background);
+    @include transition-duration(180ms);
+  }
+  &:hover {
+    span {
+      background-color: rgba($accent,0.25);
+    }
+  }
 }
 
 .year-indicator {
   position: relative;
+  background: image-url('clock.svg') 85% center no-repeat;
+  background-size: 13px 13px;
   cursor: pointer;
   font-weight: 700;
   letter-spacing: 1px;
   color: $accent;
   .year-current {
     display: block;
+    margin-right: 23px;
   }
 }
 

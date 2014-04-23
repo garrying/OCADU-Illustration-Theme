@@ -95,7 +95,7 @@
 					</div>
 				</div><!-- #search -->
 				<?php if (is_singular('illustrator')) 
-		echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . ' index</span></a>';  
+		echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . '</span></a>';  
 	?>
 				
 				</div>
