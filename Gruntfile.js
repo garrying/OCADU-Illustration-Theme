@@ -129,9 +129,9 @@ module.exports = function (grunt) {
         ],
         tasks: ['concat']
       },
-      png: {
-        files: 'assets/src/images/*.png',
-        tasks: ['imagemin']
+      svg: {
+        files: 'assets/src/images/*.svg',
+        tasks: ['svgmin']
       },
       compass: {
         files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
@@ -160,6 +160,7 @@ module.exports = function (grunt) {
   // Register tasks
   grunt.registerTask('default', [
     'clean',
+    'svgmin',
     'concat',
     'concurrent:server'
   ]);
