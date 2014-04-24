@@ -212,7 +212,7 @@ function get_socialimage() {
 	}
 
 	if(empty($socialimg))
-		$socialimg = get_template_directory_uri() . '/assets/images/nothumb.png';
+		$socialimg = get_template_directory_uri() . '/nothumb.png';
 
 	return $socialimg;
 }
