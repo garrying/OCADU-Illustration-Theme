@@ -86,6 +86,7 @@ $(function() {
     var pckry = new Packery( container, {
       // options
       itemSelector: '.gallery-item',
+      gutter: 0,
       isResizeBound: true
     });
     imagesLoaded( container, function() {
