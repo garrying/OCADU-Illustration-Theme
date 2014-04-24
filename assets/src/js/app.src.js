@@ -170,6 +170,7 @@ $(function() {
 
   $(window).load(function() {
     doCascade(100);
+    pckry.layout();
     loaderTarget.fadeOut();
   });
 

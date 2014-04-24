@@ -1109,19 +1109,23 @@ table {
   }
 }
 /* line 105, ../../src/stylesheets/_illustrator.scss */
+#illustrator-gallery-container .gallery-item a {
+  display: block;
+}
+/* line 108, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-/* line 110, ../../src/stylesheets/_illustrator.scss */
+/* line 113, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item.enlarge {
   width: 100%;
   float: left;
   z-index: 8;
   padding: 2em 0;
 }
-/* line 115, ../../src/stylesheets/_illustrator.scss */
+/* line 118, ../../src/stylesheets/_illustrator.scss */
 #illustrator-gallery-container .gallery-item.enlarge img {
   display: block;
   margin: 0 auto;
@@ -1129,14 +1133,14 @@ table {
   max-height: 100%;
 }
 
-/* line 126, ../../src/stylesheets/_illustrator.scss */
+/* line 129, ../../src/stylesheets/_illustrator.scss */
 .affix {
   position: fixed;
   top: 0;
   right: 0;
 }
 @media screen and (max-width: 768px) {
-  /* line 126, ../../src/stylesheets/_illustrator.scss */
+  /* line 129, ../../src/stylesheets/_illustrator.scss */
   .affix {
     position: static;
   }
