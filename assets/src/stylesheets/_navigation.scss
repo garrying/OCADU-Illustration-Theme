@@ -69,7 +69,6 @@
     background: image-url('grid.svg') no-repeat 10px center;
     background-size: 13px 13px;
     color: $accent;
-    border: 2px solid $accent;
     padding: 5px 8px 5px 30px;
     @include transition-property(background);
     @include transition-duration(180ms);

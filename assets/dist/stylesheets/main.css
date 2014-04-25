@@ -728,7 +728,6 @@ table {
   background: url('../images/grid.svg') no-repeat 10px center;
   background-size: 13px 13px;
   color: #fb5853;
-  border: 2px solid #fb5853;
   padding: 5px 8px 5px 30px;
   -webkit-transition-property: background;
   -moz-transition-property: background;
@@ -740,7 +739,7 @@ table {
   transition-duration: 180ms;
 }
 
-/* line 79, ../../src/stylesheets/_navigation.scss */
+/* line 78, ../../src/stylesheets/_navigation.scss */
 .year-indicator {
   position: relative;
   background: url('../images/clock.svg') 85% center no-repeat;
@@ -758,17 +757,17 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 89, ../../src/stylesheets/_navigation.scss */
+/* line 88, ../../src/stylesheets/_navigation.scss */
 .year-indicator:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
-/* line 92, ../../src/stylesheets/_navigation.scss */
+/* line 91, ../../src/stylesheets/_navigation.scss */
 .year-indicator .year-current {
   display: block;
   margin-right: 23px;
 }
 
-/* line 98, ../../src/stylesheets/_navigation.scss */
+/* line 97, ../../src/stylesheets/_navigation.scss */
 #year-widget {
   top: 61px;
   width: 200px;
@@ -783,7 +782,7 @@ table {
   background-image: -o-linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
   background-image: linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
 }
-/* line 107, ../../src/stylesheets/_navigation.scss */
+/* line 106, ../../src/stylesheets/_navigation.scss */
 #year-widget a {
   color: #fff;
   display: block;
@@ -799,20 +798,20 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 115, ../../src/stylesheets/_navigation.scss */
+/* line 114, ../../src/stylesheets/_navigation.scss */
 #year-widget a.selected, #year-widget a:hover {
   background: #d94c48;
 }
-/* line 119, ../../src/stylesheets/_navigation.scss */
+/* line 118, ../../src/stylesheets/_navigation.scss */
 #year-widget .year-item {
   width: 33.33%;
   float: left;
 }
-/* line 123, ../../src/stylesheets/_navigation.scss */
+/* line 122, ../../src/stylesheets/_navigation.scss */
 #year-widget.open {
   display: block;
 }
-/* line 126, ../../src/stylesheets/_navigation.scss */
+/* line 125, ../../src/stylesheets/_navigation.scss */
 #year-widget:after {
   content: '';
   position: absolute;
@@ -826,13 +825,13 @@ table {
   border-bottom: 5px solid #fb5853;
 }
 
-/* line 140, ../../src/stylesheets/_navigation.scss */
+/* line 139, ../../src/stylesheets/_navigation.scss */
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 144, ../../src/stylesheets/_navigation.scss */
+/* line 143, ../../src/stylesheets/_navigation.scss */
 #menu-primary li {
   display: inline-block;
   -webkit-transition-property: box-shadow;
@@ -844,42 +843,42 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 146, ../../src/stylesheets/_navigation.scss */
+/* line 145, ../../src/stylesheets/_navigation.scss */
 #menu-primary li:first-child {
   border-right: 1px solid #f2f2f2;
   border-left: 1px solid #f2f2f2;
   margin-right: -4px;
 }
-/* line 151, ../../src/stylesheets/_navigation.scss */
+/* line 150, ../../src/stylesheets/_navigation.scss */
 #menu-primary li a {
   display: block;
   padding: 17px 20px 16px 20px;
 }
-/* line 156, ../../src/stylesheets/_navigation.scss */
+/* line 155, ../../src/stylesheets/_navigation.scss */
 #menu-primary li.current-menu-item a {
   color: #fb5853;
 }
-/* line 162, ../../src/stylesheets/_navigation.scss */
+/* line 161, ../../src/stylesheets/_navigation.scss */
 #menu-primary li:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
 
-/* line 168, ../../src/stylesheets/_navigation.scss */
+/* line 167, ../../src/stylesheets/_navigation.scss */
 ::-webkit-input-placeholder {
   color: #444;
 }
 
-/* line 171, ../../src/stylesheets/_navigation.scss */
+/* line 170, ../../src/stylesheets/_navigation.scss */
 :-moz-placeholder {
   color: #444;
 }
 
-/* line 174, ../../src/stylesheets/_navigation.scss */
+/* line 173, ../../src/stylesheets/_navigation.scss */
 ::-moz-placeholder {
   color: #444;
 }
 
-/* line 177, ../../src/stylesheets/_navigation.scss */
+/* line 176, ../../src/stylesheets/_navigation.scss */
 :-ms-input-placeholder {
   color: #444;
 }

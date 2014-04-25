@@ -117,7 +117,7 @@
 <?php if ( is_home() || is_front_page() ) : ?>
 	<div id="intro">
 		<div class="intro-inner">
-			<div class="close"></div>
+			<div class="close" title="Close this block please."></div>
 			<h2>
 				An evolving archive maintained by the Illustration Department at OCAD University. Featuring work from the graduating class of 2014.
 			</h2>
