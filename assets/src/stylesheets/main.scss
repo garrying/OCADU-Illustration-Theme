@@ -61,7 +61,7 @@ a {
     display: block;
     width: 100%;
     height: 100px;
-    z-index: 999;
+    z-index: 99;
     bottom: 0;
     pointer-events: none;
     @include background-image(linear-gradient(top, transparent, $dark-accent));
@@ -209,5 +209,72 @@ a {
 
 
 #intro {
-
+  position: fixed;
+  z-index: 999;
+  right: 4px;
+  bottom: 0;
+  top: 0;
+  width: 33.3333333333%;
+  padding: 20px;
+  @include background-image(linear-gradient(top, rgba($dark-accent,0.6), rgba($dark-accent,0.8)));
+  h2 {
+    font-size: 2em;
+    line-height: 1em;
+    font-weight: 900;
+  }
+  .intro-inner {
+    position: absolute;
+    margin-top: -40%;
+    top: 40%;
+    left: 20px;
+    right: 20px;
+  }
+  .link {
+    color: $accent;
+    text-align: center;
+    text-decoration: none;
+    padding: 8px 10px;
+    display: block;
+    margin-top: 1.5em;
+    background: transparent;
+    box-shadow: inset 0 0 0 2px $accent;
+    @include transition-property(color,box-shadow);
+    @include transition-duration(200ms);
+    &:hover {
+      color: #fff;
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+  }
+  .close {
+    width: 40px;
+    height: 40px;
+    background: image-url('x.svg') no-repeat center center;
+    cursor: pointer;
+  }
+  @media (max-width: 500px) {
+    display: none !important;
+  }
+  @media (max-width: 600px) {
+    width: 50%;
+    h2 {
+      font-size: 1.5em;
+    }
+  }
+  @media (max-width: 920px) {
+    h2 {
+      font-size: 1.5em;
+    }
+  }
+  @media (min-width: 1200px) {
+    width: 25%;
+    h2 {
+      font-size: 1.8em;
+    }
+  }
+  @media (min-width: 1280px) {
+    width: 20%;
+    h2 {
+      font-size: 1.5em;
+    }
+  }
 }

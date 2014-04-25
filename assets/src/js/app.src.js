@@ -165,12 +165,39 @@ $(function() {
     $(this).find('img').fadeOut();
   });
 
+  // Intro Block
+  var $messageblock = $('#intro');
+
+  $('#intro .close').on('click', function(){
+    $messageblock.fadeOut().addClass('hidden-intro');
+  });
+
+  var homemessage = function () {
+    var y = $(window).scrollTop();
+    if (y > 1 || $messageblock.hasClass('hidden-intro') !== false) {
+      $messageblock.fadeOut('fast');
+    } else {
+      $messageblock.fadeIn('fast');
+    }
+  };
+
+  if ($('body').hasClass('home')) {
+    homemessage();
+  };
+
+  if (window.addEventListener) {
+    window.addEventListener('scroll', homemessage, false);
+  } else if (window.attachEvent) {
+    window.attachEvent('onscroll', homemessage);
+  }
 
   // When Everything is Loaded
 
   $(window).load(function() {
     doCascade(100);
-    pckry.layout();
+    if (container) {
+      pckry.layout();
+    }
     loaderTarget.fadeOut();
   });
 

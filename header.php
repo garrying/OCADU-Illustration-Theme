@@ -116,13 +116,16 @@
 
 <?php if ( is_home() || is_front_page() ) : ?>
 	<div id="intro">
-		<h2>
-			An evolving archive maintained by the Illustration Department at OCAD University. <br> <br> Featuring work from the graduating class of 2014.
-		</h2>
-		<p>
-			Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
-		</p>
-		<p><a href="/about" title="Link to a message from Paul Dallas" class="truncate">A message from Paul Dallas, Illustration Chair</a></p>
+		<div class="intro-inner">
+			<div class="close"></div>
+			<h2>
+				An evolving archive maintained by the Illustration Department at OCAD University. Featuring work from the graduating class of 2014.
+			</h2>
+			<p>
+				Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
+			</p>
+			<p><a href="/about" title="Link to a message from Paul Dallas" class="link truncate">Introduction from Paul Dallas, Illustration Chair</a></p>
+		</div>
 	</div>
 <?php endif; ?>
 

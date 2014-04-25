@@ -2,6 +2,7 @@
   color: #13121E;
   background: $white;
   position: relative;
+  z-index: 9999;
   border-bottom: 1px solid #f2f2f2;
   font-size: .95em;
   .left {
@@ -32,6 +33,11 @@
     background-size: 13px 14px;
     padding: 17px 30px 17px 20px;
     height: 50px;
+    @include transition-property(box-shadow);
+    @include transition-duration(180ms);
+    &:hover {
+      box-shadow: inset 0px -4px 0px -1px $accent;
+    }
   }
   .icon-block {
     display: inline-block;
@@ -49,24 +55,24 @@
     display: inline-block;
     vertical-align: middle;
     height: 50px;
+    @include transition-property(box-shadow);
+    @include transition-duration(180ms);
+    &:hover {
+      box-shadow: inset 0px -4px 0px -1px $accent;
+    }
   }
 }
 
 #year-back-button {
   margin-left: -5px;
   span {
-    background: image-url('grid.svg') no-repeat 10px center rgba($accent,0.1);
+    background: image-url('grid.svg') no-repeat 10px center;
     background-size: 13px 13px;
     color: $accent;
-    border-radius: 5px;
+    border: 2px solid $accent;
     padding: 5px 8px 5px 30px;
     @include transition-property(background);
     @include transition-duration(180ms);
-  }
-  &:hover {
-    span {
-      background-color: rgba($accent,0.25);
-    }
   }
 }
 
@@ -78,6 +84,11 @@
   font-weight: 700;
   letter-spacing: 1px;
   color: $accent;
+  @include transition-property(box-shadow);
+  @include transition-duration(180ms);
+  &:hover {
+    box-shadow: inset 0px -4px 0px -1px $accent;
+  }
   .year-current {
     display: block;
     margin-right: 23px;
@@ -135,15 +146,21 @@
     &:first-child {
       border-right: 1px solid #f2f2f2;
       border-left: 1px solid #f2f2f2;
+      margin-right: -4px;
     }
     a {
       display: block;
-      padding: 17px 20px 17px 20px;
+      padding: 17px 20px 16px 20px;
     }
     &.current-menu-item {
       a {
         color: $accent;
       }
+    }
+    @include transition-property(box-shadow);
+    @include transition-duration(180ms);
+    &:hover {
+      box-shadow: inset 0px -4px 0px -1px $accent;
     }
   }
 }
