@@ -63,7 +63,7 @@ a {
     z-index: 99;
     bottom: 0;
     pointer-events: none;
-    @include background-image(linear-gradient(top, transparent, $dark-accent));
+    @include background-image(linear-gradient(top, rgba($dark-accent,0), $dark-accent));
   }
 }
 
@@ -122,7 +122,7 @@ a {
     margin: 0;
     padding: 14px;
     opacity: 0;
-    @include background-image(linear-gradient(top, rgba($dark-accent,0.6), transparent));
+    @include background-image(linear-gradient(top, rgba($dark-accent,0.6), rgba($dark-accent,0)));
     @include transition-property(top,opacity);
     @include transition-duration(200ms);
   }
@@ -209,7 +209,7 @@ a {
 
 #intro {
   position: fixed;
-  z-index: 999;
+  z-index: 80;
   right: 4px;
   bottom: 0;
   top: 0;
@@ -224,9 +224,14 @@ a {
   .intro-inner {
     position: absolute;
     margin-top: -40%;
-    top: 40%;
+    top: 35%;
     left: 20px;
     right: 20px;
+    @include transition-property(top);
+    @include transition-duration(1000ms);
+    &.visible {
+      top: 40%;
+    }
   }
   .link {
     color: $accent;

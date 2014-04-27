@@ -175,9 +175,9 @@ $(function() {
   var homemessage = function () {
     var y = $(window).scrollTop();
     if (y > 1 || $messageblock.hasClass('hidden-intro') !== false) {
-      $messageblock.fadeOut('fast');
+      $messageblock.fadeOut('fast').find('.intro-inner').removeClass('visible');
     } else {
-      $messageblock.fadeIn('fast');
+      $messageblock.fadeIn().find('.intro-inner').addClass('visible');
     }
   };
 
