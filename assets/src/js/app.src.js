@@ -71,13 +71,17 @@ $(function() {
 
   // Year Selector 
 
-  $('.year-indicator').on('click',function(){
-    $('#year-widget').toggleClass('open');
+  $('.year-indicator,.year-current').on('click',function(){
+    if ($(this).hasClass('visible')) {
+      $(this).removeClass('visible').find('#year-widget').slideUp('fast');   
+    } else  {
+      $(this).addClass('visible').find('#year-widget').slideDown('fast'); 
+    }
   });
 
   $(document).bind('click', function(e) {
-    if(!$(e.target).is('#year-widget,.year-indicator')) {
-      $('#year-widget').removeClass('open');
+    if(!$(e.target).is('#year-widget,.year-indicator,.year-current')) {
+      $('.year-indicator,.year-current').removeClass('visible').find('#year-widget').slideUp('fast');  
     }
   });
 
@@ -183,6 +187,12 @@ $(function() {
 
   if ($('body').hasClass('home')) {
     homemessage();
+    wt.fix({
+      elements: '#intro h2',
+      chars: 10,
+      method: 'nbsp',
+      event: 'resize'
+    });
   };
 
   if (window.addEventListener) {

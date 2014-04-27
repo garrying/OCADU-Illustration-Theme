@@ -83,6 +83,11 @@
   font-weight: 700;
   letter-spacing: 1px;
   color: $accent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   @include transition-property(box-shadow);
   @include transition-duration(180ms);
   &:hover {
@@ -95,7 +100,7 @@
 }
 
 #year-widget {
-  top: 61px;
+  top: 55px;
   width: 200px;
   left: -63px;
   position: absolute;
@@ -118,9 +123,6 @@
   .year-item {
     width: 33.33%;
     float:left;
-  }
-  &.open {
-    display: block;
   }
   &:after {
     content: '';
