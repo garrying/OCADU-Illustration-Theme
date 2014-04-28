@@ -7,6 +7,17 @@
     background: image-url('search.svg') no-repeat 95% center;
     background-size: 13px 13px;
     margin-left: -4px;
+    @media screen and (max-width: 540px) {
+      width: 80%;
+    }
+  }
+}
+
+.home, .archive, .page {
+  #app-head .search {
+    @media screen and (max-width: 540px) {
+      width: 100%;
+    }
   }
 }
 

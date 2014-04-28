@@ -763,25 +763,31 @@ table {
 #app-head .right {
   float: right;
 }
-/* line 15, ../../src/stylesheets/_navigation.scss */
+@media screen and (max-width: 730px) {
+  /* line 12, ../../src/stylesheets/_navigation.scss */
+  #app-head .right {
+    display: none;
+  }
+}
+/* line 18, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted {
   color: white;
   background: transparent;
   border-color: #151518;
 }
-/* line 19, ../../src/stylesheets/_navigation.scss */
+/* line 22, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted a {
   color: #d5d5d5;
 }
-/* line 22, ../../src/stylesheets/_navigation.scss */
+/* line 25, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted #s {
   color: #fff;
 }
-/* line 25, ../../src/stylesheets/_navigation.scss */
+/* line 28, ../../src/stylesheets/_navigation.scss */
 #app-head.inverted .search, #app-head.inverted li:first-child, #app-head.inverted .tt-dropdown-menu {
   border-color: #151518;
 }
-/* line 29, ../../src/stylesheets/_navigation.scss */
+/* line 32, ../../src/stylesheets/_navigation.scss */
 #app-head .logo {
   float: left;
   display: block;
@@ -798,11 +804,11 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 38, ../../src/stylesheets/_navigation.scss */
+/* line 41, ../../src/stylesheets/_navigation.scss */
 #app-head .logo:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
-/* line 42, ../../src/stylesheets/_navigation.scss */
+/* line 45, ../../src/stylesheets/_navigation.scss */
 #app-head .icon-block {
   display: inline-block;
   vertical-align: bottom;
@@ -810,12 +816,12 @@ table {
   height: 60px;
   background: #F27486;
 }
-/* line 49, ../../src/stylesheets/_navigation.scss */
+/* line 52, ../../src/stylesheets/_navigation.scss */
 #app-head a {
   color: #414141;
   text-decoration: none;
 }
-/* line 53, ../../src/stylesheets/_navigation.scss */
+/* line 56, ../../src/stylesheets/_navigation.scss */
 #app-head .item {
   padding: 17px 20px 17px 20px;
   display: inline-block;
@@ -830,16 +836,22 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 60, ../../src/stylesheets/_navigation.scss */
+/* line 63, ../../src/stylesheets/_navigation.scss */
 #app-head .item:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
 
-/* line 66, ../../src/stylesheets/_navigation.scss */
+/* line 69, ../../src/stylesheets/_navigation.scss */
 #year-back-button {
   margin-left: -5px;
 }
-/* line 68, ../../src/stylesheets/_navigation.scss */
+@media screen and (max-width: 580px) {
+  /* line 69, ../../src/stylesheets/_navigation.scss */
+  #year-back-button {
+    width: 20%;
+  }
+}
+/* line 74, ../../src/stylesheets/_navigation.scss */
 #year-back-button span {
   background: url('../images/grid.svg') no-repeat 10px center;
   background-size: 13px 13px;
@@ -854,8 +866,14 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
+@media screen and (max-width: 580px) {
+  /* line 74, ../../src/stylesheets/_navigation.scss */
+  #year-back-button span {
+    color: transparent;
+  }
+}
 
-/* line 78, ../../src/stylesheets/_navigation.scss */
+/* line 87, ../../src/stylesheets/_navigation.scss */
 .year-indicator {
   position: relative;
   background: url('../images/clock.svg') 85% center no-repeat;
@@ -878,17 +896,17 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 93, ../../src/stylesheets/_navigation.scss */
+/* line 102, ../../src/stylesheets/_navigation.scss */
 .year-indicator:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
-/* line 96, ../../src/stylesheets/_navigation.scss */
+/* line 105, ../../src/stylesheets/_navigation.scss */
 .year-indicator .year-current {
   display: block;
   margin-right: 23px;
 }
 
-/* line 102, ../../src/stylesheets/_navigation.scss */
+/* line 111, ../../src/stylesheets/_navigation.scss */
 #year-widget {
   top: 55px;
   width: 200px;
@@ -903,7 +921,7 @@ table {
   background-image: -o-linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
   background-image: linear-gradient(left top, rgba(251, 88, 83, 0.85), #fb5853);
 }
-/* line 111, ../../src/stylesheets/_navigation.scss */
+/* line 120, ../../src/stylesheets/_navigation.scss */
 #year-widget a {
   color: #fff;
   display: block;
@@ -919,16 +937,16 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 119, ../../src/stylesheets/_navigation.scss */
+/* line 128, ../../src/stylesheets/_navigation.scss */
 #year-widget a.selected, #year-widget a:hover {
   background: #d94c48;
 }
-/* line 123, ../../src/stylesheets/_navigation.scss */
+/* line 132, ../../src/stylesheets/_navigation.scss */
 #year-widget .year-item {
   width: 33.33%;
   float: left;
 }
-/* line 127, ../../src/stylesheets/_navigation.scss */
+/* line 136, ../../src/stylesheets/_navigation.scss */
 #year-widget:after {
   content: '';
   position: absolute;
@@ -942,13 +960,13 @@ table {
   border-bottom: 5px solid #fb5853;
 }
 
-/* line 141, ../../src/stylesheets/_navigation.scss */
+/* line 150, ../../src/stylesheets/_navigation.scss */
 #menu-primary {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 145, ../../src/stylesheets/_navigation.scss */
+/* line 154, ../../src/stylesheets/_navigation.scss */
 #menu-primary li {
   display: inline-block;
   -webkit-transition-property: box-shadow;
@@ -960,42 +978,42 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 147, ../../src/stylesheets/_navigation.scss */
+/* line 156, ../../src/stylesheets/_navigation.scss */
 #menu-primary li:first-child {
   border-right: 1px solid #f2f2f2;
   border-left: 1px solid #f2f2f2;
   margin-right: -4px;
 }
-/* line 152, ../../src/stylesheets/_navigation.scss */
+/* line 161, ../../src/stylesheets/_navigation.scss */
 #menu-primary li a {
   display: block;
   padding: 17px 20px 16px 20px;
 }
-/* line 157, ../../src/stylesheets/_navigation.scss */
+/* line 166, ../../src/stylesheets/_navigation.scss */
 #menu-primary li.current-menu-item a {
   color: #fb5853;
 }
-/* line 163, ../../src/stylesheets/_navigation.scss */
+/* line 172, ../../src/stylesheets/_navigation.scss */
 #menu-primary li:hover {
   box-shadow: inset 0px -4px 0px -1px #fb5853;
 }
 
-/* line 169, ../../src/stylesheets/_navigation.scss */
+/* line 178, ../../src/stylesheets/_navigation.scss */
 ::-webkit-input-placeholder {
   color: #444;
 }
 
-/* line 172, ../../src/stylesheets/_navigation.scss */
+/* line 181, ../../src/stylesheets/_navigation.scss */
 :-moz-placeholder {
   color: #444;
 }
 
-/* line 175, ../../src/stylesheets/_navigation.scss */
+/* line 184, ../../src/stylesheets/_navigation.scss */
 ::-moz-placeholder {
   color: #444;
 }
 
-/* line 178, ../../src/stylesheets/_navigation.scss */
+/* line 187, ../../src/stylesheets/_navigation.scss */
 :-ms-input-placeholder {
   color: #444;
 }
@@ -1010,8 +1028,21 @@ table {
   background-size: 13px 13px;
   margin-left: -4px;
 }
+@media screen and (max-width: 540px) {
+  /* line 2, ../../src/stylesheets/_search.scss */
+  #app-head .search {
+    width: 80%;
+  }
+}
 
-/* line 13, ../../src/stylesheets/_search.scss */
+@media screen and (max-width: 540px) {
+  /* line 17, ../../src/stylesheets/_search.scss */
+  .home #app-head .search, .archive #app-head .search, .page #app-head .search {
+    width: 100%;
+  }
+}
+
+/* line 24, ../../src/stylesheets/_search.scss */
 .search-container {
   position: absolute;
   top: 0;
@@ -1021,7 +1052,7 @@ table {
   width: 100%;
 }
 
-/* line 22, ../../src/stylesheets/_search.scss */
+/* line 33, ../../src/stylesheets/_search.scss */
 .illustrator-search {
   width: 100%;
   color: #333;
@@ -1034,37 +1065,37 @@ table {
   padding: 17px 20px 17px 20px;
 }
 
-/* line 34, ../../src/stylesheets/_search.scss */
+/* line 45, ../../src/stylesheets/_search.scss */
 ::-webkit-input-placeholder {
   color: #999;
 }
 
-/* line 37, ../../src/stylesheets/_search.scss */
+/* line 48, ../../src/stylesheets/_search.scss */
 :-moz-placeholder {
   color: #999;
 }
 
-/* line 40, ../../src/stylesheets/_search.scss */
+/* line 51, ../../src/stylesheets/_search.scss */
 ::-moz-placeholder {
   color: #999;
 }
 
-/* line 43, ../../src/stylesheets/_search.scss */
+/* line 54, ../../src/stylesheets/_search.scss */
 :-ms-input-placeholder {
   color: #999;
 }
 
-/* line 47, ../../src/stylesheets/_search.scss */
+/* line 58, ../../src/stylesheets/_search.scss */
 .twitter-typeahead {
   width: 100%;
 }
 
-/* line 51, ../../src/stylesheets/_search.scss */
+/* line 62, ../../src/stylesheets/_search.scss */
 .tt-hint {
   color: #999;
 }
 
-/* line 55, ../../src/stylesheets/_search.scss */
+/* line 66, ../../src/stylesheets/_search.scss */
 .tt-dropdown-menu {
   background: white;
   color: #333;
@@ -1074,14 +1105,14 @@ table {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 64, ../../src/stylesheets/_search.scss */
+/* line 75, ../../src/stylesheets/_search.scss */
 .tt-suggestion, .empty-message {
   padding: 17px 20px 17px 20px;
   font-size: 1em;
   line-height: 1em;
 }
 
-/* line 70, ../../src/stylesheets/_search.scss */
+/* line 81, ../../src/stylesheets/_search.scss */
 .tt-suggestion {
   border-bottom: 1px solid #f2f2f2;
   -webkit-transition-property: background, text-indent;
@@ -1093,23 +1124,23 @@ table {
   -o-transition-duration: 180ms;
   transition-duration: 180ms;
 }
-/* line 74, ../../src/stylesheets/_search.scss */
+/* line 85, ../../src/stylesheets/_search.scss */
 .tt-suggestion strong {
   color: #fb5853;
 }
-/* line 77, ../../src/stylesheets/_search.scss */
+/* line 88, ../../src/stylesheets/_search.scss */
 .tt-suggestion:last-child {
   border-bottom: none;
 }
 
-/* line 82, ../../src/stylesheets/_search.scss */
+/* line 93, ../../src/stylesheets/_search.scss */
 .tt-suggestion.tt-cursor {
   background: #fb5853;
   color: #fff;
   cursor: pointer;
   text-indent: 5px;
 }
-/* line 87, ../../src/stylesheets/_search.scss */
+/* line 98, ../../src/stylesheets/_search.scss */
 .tt-suggestion.tt-cursor strong {
   color: #fff;
 }
