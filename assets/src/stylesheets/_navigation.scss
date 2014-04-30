@@ -41,6 +41,19 @@
     &:hover {
       box-shadow: inset 0px -4px 0px -1px $accent;
     }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0;
+      top: 50%;
+      left: 0;
+      border-bottom: 1px solid #f2f2f2;
+      display: none;
+      @media screen and (max-width: 540px) {
+        display: block;
+      }
+    }
   }
   .icon-block {
     display: inline-block;

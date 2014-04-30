@@ -95,6 +95,9 @@ $(function() {
     });
     imagesLoaded( container, function() {
       pckry.layout();
+      if ($('body').hasClass('single')) {
+        $('#illustrator-gallery-container').find('.gallery-item').addClass('loaded');
+      }
     });
   }
 

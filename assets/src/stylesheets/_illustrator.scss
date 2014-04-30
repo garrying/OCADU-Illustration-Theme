@@ -99,6 +99,9 @@
   .gallery-item {
     float: left;
     width: 50%;
+    opacity: 0;
+    @include transition-property(opacity);
+    @include transition-duration(180ms);
     @media screen and (max-width: 480px) {
       width: 100%;
     }
@@ -121,6 +124,9 @@
         max-width: 100%;
         max-height:  100%;
       }
+    }
+    &.loaded {
+      opacity: 1;
     }
   }
   margin-bottom: 50px;
