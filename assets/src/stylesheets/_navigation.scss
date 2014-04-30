@@ -28,6 +28,9 @@
     .search, li:first-child, .tt-dropdown-menu {
       border-color: darken($dark-accent,2%);
     }
+    .logo:after {
+      border-color: darken($dark-accent,2%);
+    }
   }
   .logo {
     float: left;

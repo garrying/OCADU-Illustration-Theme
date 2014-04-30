@@ -255,7 +255,7 @@ a {
     background: image-url('x.svg') no-repeat center center;
     cursor: pointer;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 568px) {
     display: none !important;
   }
   @media (max-width: 600px) {
