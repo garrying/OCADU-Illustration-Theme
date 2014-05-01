@@ -3,7 +3,7 @@
   background: $white;
   position: relative;
   z-index: 9999;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid $border-color;
   font-size: .95em;
   .left {
     float: left;
@@ -51,7 +51,7 @@
       height: 0;
       top: 50%;
       left: 0;
-      border-bottom: 1px solid #f2f2f2;
+      border-bottom: 1px solid $border-color;
       display: none;
       @media screen and (max-width: 540px) {
         display: block;
@@ -170,8 +170,8 @@
   li {
     display: inline-block;
     &:first-child {
-      border-right: 1px solid #f2f2f2;
-      border-left: 1px solid #f2f2f2;
+      border-right: 1px solid $border-color;
+      border-left: 1px solid $border-color;
       margin-right: -4px;
     }
     a {
