@@ -113,7 +113,7 @@ $(function() {
   // Image Enlarging
 
     // Click to enlarge gallery image
-  $('.gallery-icon a').on('click', function(){
+  $('.gallery-icon a').on('click', function(event){
 
     event.preventDefault();
 
