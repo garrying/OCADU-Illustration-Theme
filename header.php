@@ -65,7 +65,7 @@
 							}
 						}
 					?>
-					<span href="#" class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } elseif (isset($term)) { echo $term; } else {echo('2014');}  ?></span>
+					<span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } elseif (isset($term)) { echo $term; } else {echo('2014');}  ?></span>
 					<div id="year-widget">
 						<nav id="year-select">
 							<ul id="illu-jumpmenu" class="normalized">
@@ -124,7 +124,7 @@
 			<p>
 				Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
 			</p>
-			<p><a href="/introduction" title="Link to a message from Paul Dallas" class="link truncate">Introduction from Paul Dallas, Illustration Chair</a></p>
+			<p><a href="/introduction" title="Link to a message from Paul Dallas" class="link truncate">Introduction from Paul Dallas<br />Illustration Chair</a></p>
 		</div>
 	</div>
 <?php endif; ?>

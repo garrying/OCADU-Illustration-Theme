@@ -1751,7 +1751,6 @@ a:hover {
 /* line 237, ../../src/stylesheets/main.scss */
 #intro .link {
   color: #fb5853;
-  text-align: center;
   text-decoration: none;
   padding: 8px 10px;
   display: block;
@@ -1767,12 +1766,12 @@ a:hover {
   -o-transition-duration: 200ms;
   transition-duration: 200ms;
 }
-/* line 248, ../../src/stylesheets/main.scss */
+/* line 247, ../../src/stylesheets/main.scss */
 #intro .link:hover {
   color: #fff;
   box-shadow: inset 0 0 0 2px #fff;
 }
-/* line 253, ../../src/stylesheets/main.scss */
+/* line 252, ../../src/stylesheets/main.scss */
 #intro .close {
   width: 40px;
   height: 40px;
@@ -1790,13 +1789,13 @@ a:hover {
   #intro {
     width: 50%;
   }
-  /* line 264, ../../src/stylesheets/main.scss */
+  /* line 263, ../../src/stylesheets/main.scss */
   #intro h2 {
     font-size: 1.5em;
   }
 }
 @media (max-width: 920px) {
-  /* line 269, ../../src/stylesheets/main.scss */
+  /* line 268, ../../src/stylesheets/main.scss */
   #intro h2 {
     font-size: 1.5em;
   }
@@ -1806,7 +1805,7 @@ a:hover {
   #intro {
     width: 25%;
   }
-  /* line 275, ../../src/stylesheets/main.scss */
+  /* line 274, ../../src/stylesheets/main.scss */
   #intro h2 {
     font-size: 1.8em;
   }
@@ -1817,7 +1816,7 @@ a:hover {
     width: 20%;
     right: 6px;
   }
-  /* line 282, ../../src/stylesheets/main.scss */
+  /* line 281, ../../src/stylesheets/main.scss */
   #intro h2 {
     font-size: 1.5em;
   }
