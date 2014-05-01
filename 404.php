@@ -1,6 +1,12 @@
 <?php get_header(); ?>
 
 <article class="page error404-content">
+  <div class="graphic">
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+  </div>
 	<header class="entry-header">
 		<h1 class="entry-title"><?php _e( 'Page Not Found. Sorry!', 'ocaduillustration' ); ?></h1>
 		<p>The page you requested could not be found. <br />It might have been moved or renamed.</p>
