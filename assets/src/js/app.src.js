@@ -91,6 +91,7 @@ $(function() {
       // options
       itemSelector: '.gallery-item',
       gutter: 0,
+      transitionDuration: 0,
       isResizeBound: true
     });
     imagesLoaded( container, function() {
@@ -98,6 +99,7 @@ $(function() {
       if ($('body').hasClass('single')) {
         $('#illustrator-gallery-container').find('.gallery-item').addClass('loaded');
       }
+      pckry.options.transitionDuration = 0.4;
     });
   }
 
