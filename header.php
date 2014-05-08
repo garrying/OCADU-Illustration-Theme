@@ -46,7 +46,7 @@
 
 				<div class="left">
 				
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home"><?php bloginfo( 'name' ); ?></a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
 
 				<div class="item year-indicator">
 					<?php 
