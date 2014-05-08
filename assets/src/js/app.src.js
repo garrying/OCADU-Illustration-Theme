@@ -49,7 +49,6 @@ $(function() {
   // Homepage Random Sizing
 
   if ($('body').hasClass('home')) {
-    // $.adaptiveBackground.run();    
     $('.illustrator').each(function(){
       var randomClass =  Math.floor(Math.random()*2);
       if (randomClass === 1) {
@@ -115,7 +114,7 @@ $(function() {
   // Image Enlarging
 
     // Click to enlarge gallery image
-  $('.gallery-icon a').on('click', function(){
+  $('.gallery-icon a').on('click', function(event){
 
     event.preventDefault();
 
