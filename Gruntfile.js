@@ -18,17 +18,6 @@ module.exports = function (grunt) {
         'assets/src/js/app.src.js',
       ]
     },
-    csslint: {
-      options: {
-        csslintrc: '.csslintrc'
-      },
-      strict: {
-        options: {
-          import: 2
-        },
-        src: ['assets/dist/stylesheets/*.css']
-      }
-    },
     uglify: {
       dist: {
         files: {
@@ -66,19 +55,6 @@ module.exports = function (grunt) {
         cwd: 'assets/dist/stylesheets/',
         src: ['*.css'],
         dest: 'assets/dist/stylesheets/',
-      }
-    },
-    imagemin: {
-      png: {
-        options: {
-          optimizationLevel: 7
-        },
-        files: [{
-          expand: true,
-          cwd: 'assets/src/images/',
-          src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: 'assets/dist/images/'
-        }]
       }
     },
     svgmin: {
@@ -168,15 +144,9 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean',
     'uglify',
-    'imagemin',
     'svgmin',
     'compass',
     'cssmin'
-  ]);
-
-  grunt.registerTask('lint', [
-    'jshint',
-    'csslint'
   ]);
 
   grunt.registerTask('dev', [
