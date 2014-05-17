@@ -50,6 +50,9 @@ module.exports = function (grunt) {
       }
     },
     cssmin: {
+      options: {
+        keepSpecialComments: 0
+      },
       minify: {
         expand: true,
         cwd: 'assets/dist/stylesheets/',
