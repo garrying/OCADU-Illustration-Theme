@@ -99,6 +99,7 @@ $(function() {
         $('#illustrator-gallery-container').find('.gallery-item').addClass('loaded');
       }
       pckry.options.transitionDuration = 0.4;
+      doCascade(100);
     });
   }
 
@@ -209,10 +210,6 @@ $(function() {
   // When Everything is Loaded
 
   $(window).load(function() {
-    doCascade(100);
-    if (container) {
-      pckry.layout();
-    }
     loaderTarget.fadeOut();
   });
 
