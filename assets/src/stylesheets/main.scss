@@ -233,8 +233,8 @@ a {
     position: absolute;
     margin-top: -40%;
     top: 35%;
-    left: 20px;
-    right: 20px;
+    left: 12px;
+    right: calc(1em + 12px);
     @include transition-property(top);
     @include transition-duration(1000ms);
     &.visible {
