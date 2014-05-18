@@ -216,7 +216,10 @@ a {
   top: 0;
   width: 33.3333333333%;
   padding: 20px;
+  opacity: 0;
   @include background-image(linear-gradient(top, rgba($dark-accent,0.6), rgba($dark-accent,0.8)));
+  @include transition-property(opacity);
+  @include transition-duration(1000ms);
   h2 {
     font-size: 2em;
     line-height: 1em;

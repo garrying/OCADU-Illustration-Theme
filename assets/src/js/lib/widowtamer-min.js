@@ -1,2 +1,189 @@
 // Widow Tamer JS by Nathan C. Ford http://artequalswork.com
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2={u:{C:\'p,1i,1j\',v:14,6:\'1k\',D:\'1l\',O:\'1m\'},E:P 1n(),1o:4(a){3(w.1p===\'1q\')2.F(a);2.G(\'1r\',4(){2.F(a)})},F:4(a){5 m=a.6;1s(m){k\'8-Q\':k\'R\':k\'8-S\':k\'T-x\':k\'U-x\':k V:3(a.D==\'H\'&&m&&m.I(\'8\')){W.X(\'Y 6. 1t 1u 11 H 1v 8.\')}7 2.J(a);12;1w:W.X(\'Y 6. 1x 11 1y 8-Q, 8-S, T-x, 1z U-x.\')}},J:4(a){5 b=P 1A();3(a){1B(i 1C 2.u){3(a[i])b[i]=(i==\'6\'&&a[i].I(\'-\'))?2.13(a[i]):a[i];7 b[i]=2.u[i]}}7 b=2.u;3(w.15){5 d=w.15(b.C),i=0;16(i<d.K){5 t=d[i];3(t.L>2.17(t,\'1D-1E\',18)){5 e=t.1F,j=e.K-1,c=1G;16(j>=0){5 f=2.y(e[j]);3(f!=V&&f.K>b.v){c=e[j];12}j--}t.19[b.6]=\'0\';5 g=2.y(c);3(c)2.M(c,t,g,0,b)}i++}2.G(b.O,4(){2.1a(b)})}},y:4(t){l t.N||t.1b},o:4(e,t){3(e.N)e.N=t;7 e.1b=t},M:4(c,t,a,i,b){5 h=t.L;2.o(c,a.1c(0,(b.v*-1)));3(t.L<h){3(b.6==\'R\')2.o(c,2.y(c)+a.1c((b.v*-1)).q(/\\s/g,\'\\1H\'));7{5 d=(b.6.I(\'8\'))?(i/10):(i/1I);3(b.D==\'H\')d=d*-1;t.19[b.6]=d+\'1J\';2.o(c,a);2.M(c,t,a,i+1,b)}}7 2.o(c,a)},1a:4(a){5 b="\'"+a.C.q(/[^a-1d-1K-9\\-\\.]/g,\'\')+"\'";1L(2.E[b]);2.E[b]=1M(4(){2.J(a)},1N)},G:4(e,f){3(B.1e)B.1e(\'1O\'+e,f);7 B.1P(e,f,18)},13:4(s){l s.q(/-([a-1d-Z])/,4(m){l m.q(\'-\',\'\').1f()})},17:4(t,s,n){5 r;3(t.1g)r=t.1g[s.q(/-([A-z])/1Q,4(a,b){l b.1f()})];7 3(B.1h)r=w.1R.1h(t,1S).1T(s);3(n)l 1U(r);7 l r}};',62,119,'||wt|if|function|var|method|else|padding||||||||||||case|return|||settext||replace||||opts|chars|document|spacing|text|||window|elements|dir|to|init|bind|neg|match|hunter|length|offsetHeight|tamer|innerText|event|new|right|nbsp|left|word|letter|undefined|console|log|Invalid|||use|break|fixmethod||querySelectorAll|while|getstyle|true|style|onevent|textContent|slice|zA|attachEvent|toUpperCase|currentStyle|getComputedStyle|li|dd|wordSpacing|pos|orientationchange|Array|fix|readyState|complete|load|switch|You|cannot|with|default|Please|either|or|Object|for|in|line|height|childNodes|false|u00a0|100|em|Z0|clearTimeout|setTimeout|250|on|addEventListener|gi|defaultView|null|getPropertyValue|parseFloat'.split('|'),0,{}))
+
+wt = {
+	
+	// default options
+	opts : {
+		elements : 'p,li,dd',
+		chars : 14,
+		method : 'wordSpacing',
+		dir : 'pos',
+		event : 'orientationchange'
+	},
+	
+	to : new Array(),
+	
+	fix : function (opts) { 
+		
+		if (document.readyState === 'interactive') wt.init(opts);
+		wt.bind('load', function () { wt.init(opts); }); 
+	
+	},
+	
+	init : function (opts) {
+	
+		var m = opts.method;
+		
+		switch (m) {
+			
+			case 'padding-right': case 'nbsp': case 'padding-left': case 'word-spacing': case 'letter-spacing' : case undefined :
+			
+				if (opts.dir == 'neg' && m && m.match('padding')) { 
+					
+					console.log('Invalid method. You cannot use neg with padding.'); 
+					
+				} else wt.hunter(opts);
+				
+				break;
+			
+			default : console.log('Invalid method. Please use either padding-right, padding-left, word-spacing, or letter-spacing.'); 
+		
+		}
+	
+	},
+	
+	hunter : function (uopts) {
+		
+		var opts = new Object();
+		
+		// overwrite defaults with options from user
+		if (uopts) {
+		
+			for(i in wt.opts) {
+				
+				if (uopts[i]) opts[i] = (i == 'method' && uopts[i].match('-')) ? wt.fixmethod(uopts[i]) : uopts[i];
+				else opts[i] = wt.opts[i];
+			
+			}
+		
+		}
+		else opts = wt.opts;
+		
+		if (document.querySelectorAll) {
+		
+			var eles = document.querySelectorAll(opts.elements),
+				i = 0;
+			
+			while (i < eles.length) {
+			
+				var t = eles[i];
+					
+				if (t.offsetHeight > wt.getstyle(t, 'line-height', true)) { 
+					
+					// find a textnode longer than chars
+					var nodes = t.childNodes,
+						j = nodes.length - 1,
+						c = false;
+					
+					while (j >= 0) {
+						
+						var ntext = wt.text(nodes[j]);
+						
+						if (ntext != undefined && ntext.length > opts.chars) {
+							c = nodes[j];
+							break;
+						}
+						
+						j--;
+						
+					}
+					
+					t.style[opts.method] = '0';
+					
+					var ctext = wt.text( c );
+				
+					if (c) wt.tamer(c, t, ctext, 0, opts);
+				
+				}
+				
+				i++;
+			
+			}
+			
+			wt.bind(opts.event, function () { wt.onevent(opts); });
+		
+		}
+	
+	},
+	
+	text : function (t) {
+		
+		return t.innerText || t.textContent;
+		
+	},
+	
+	settext : function (e, t) {
+	
+		if (e.innerText) e.innerText = t;
+		else e.textContent = t; 
+	
+	},
+
+	tamer : function (c, t, text, i, opts) {
+		
+		var h = t.offsetHeight;
+		
+		wt.settext(c, text.slice(0, (opts.chars * -1)));
+		
+		if (t.offsetHeight < h) {
+		
+			if (opts.method == 'nbsp') wt.settext(c, wt.text( c ) + text.slice((opts.chars * -1)).replace(/\s/g, '\u00a0'));
+			
+			else {
+					
+				var inc = (opts.method.match('padding')) ? (i / 10) : (i / 100);
+				
+				if (opts.dir == 'neg') inc = inc * -1; 
+				
+				t.style[opts.method] = inc + 'em';
+				
+				wt.settext(c, text);
+				
+				wt.tamer(c, t, text, i + 1, opts);
+				
+			}
+		
+		}
+		else wt.settext(c, text);
+		
+	},
+	
+	onevent : function (opts) {
+		
+		var to = "'" + opts.elements.replace(/[^a-zA-Z0-9\-\.]/g, '') + "'";
+		
+		clearTimeout(wt.to[to]);
+		wt.to[to] = setTimeout(function () { wt.hunter(opts); }, 250);
+	
+	},
+	
+	bind : function (e, f) {
+		
+		if (window.attachEvent) window.attachEvent('on' + e, f );
+		else window.addEventListener(e, f, true);
+	
+	},
+	
+	fixmethod : function (s) {
+	
+		return s.replace(/-([a-zA-Z])/, function (m) {
+			
+			return m.replace('-','').toUpperCase();
+			
+		});
+		
+	},
+	
+	getstyle : function (t, s, n) {
+		
+		var r;
+		
+		if (t.currentStyle) r = t.currentStyle[s.replace(/-([A-z])/gi, function(a,b) {return b.toUpperCase();})];
+		else if (window.getComputedStyle) r = document.defaultView.getComputedStyle(t,null).getPropertyValue(s);
+		
+		if (n) return parseFloat(r);
+		else return r;
+		
+	}
+	
+};
