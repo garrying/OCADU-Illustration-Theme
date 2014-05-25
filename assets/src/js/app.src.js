@@ -96,6 +96,9 @@ $(function() {
     imagesLoaded( container, function() {
       pckry.layout();
       if ($('body').hasClass('single')) {
+        setTimeout(function(){
+          pckry.layout();
+        },100);
         $('#illustrator-gallery-container').find('.gallery-item').addClass('loaded');
       }
       pckry.options.transitionDuration = 0.4;
