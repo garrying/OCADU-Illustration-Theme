@@ -1,0 +1,22 @@
+// Font Stack
+
+$fontStack: 'franklin-gothic-urw',Helvetica,Arial,sans-serif;
+
+
+// Helper Classes
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.normalized {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hidden {
+  display: none;
+}

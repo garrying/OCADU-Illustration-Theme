@@ -1,70 +1,10 @@
 <?php
 
 /**
- * Autocomplete Search Stuff
- */
-
-function ocaduillu_autocomplete_init() {
-	// Register our jQuery UI style and our custom javascript file
-	wp_register_script( 'acsearch', get_template_directory_uri() . '/assets/js/acsearch.js', array('jquery-ui-autocomplete'),null,true);
-	wp_localize_script( 'acsearch', 'AcSearch', array('url' => admin_url( 'admin-ajax.php' )));
-	// Function to fire whenever search form is displayed
-	add_action( 'get_search_form', 'ocaduillu_autocomplete_search_form' );
-	// Functions to deal with the AJAX request - one for logged in users, the other for non-logged in users.
-	add_action( 'wp_ajax_ocaduillu_autocompletesearch', 'ocaduillu_autocomplete_suggestions' );
-	add_action( 'wp_ajax_nopriv_ocaduillu_autocompletesearch', 'ocaduillu_autocomplete_suggestions' );
-}
-
-function ocaduillu_autocomplete_search_form(){
-	wp_enqueue_script( 'acsearch' );
-}
-
-function ocaduillu_autocomplete_suggestions(){
-	// Query for suggestions
-	$posts = get_posts( array(
-		's' =>$_REQUEST['term'],
-	) );
-	// Initialise suggestions array
-	$suggestions=array();
-
-
-	global $post;
-	foreach ($posts as $post): setup_postdata($post);
-		// Initialise suggestion array
-		$suggestion = array();
-		$suggestion['thumb'] = get_the_post_thumbnail($page->ID, 'thumbnail');
-		$suggestion['link'] = get_permalink();
-		$suggestion['label'] = esc_html($post->post_title);
-
-		$year = get_the_terms( $post->ID, 'gradyear' );
-
-		foreach( $year as $years ) {
-			$suggestion['category'] = $years->name;
-		}
-
-		// Add suggestion to suggestions array
-		$suggestions[]= $suggestion;
-	endforeach;
-	// JSON encode and echo
-	$response = $_GET["callback"] . "(" . json_encode($suggestions) . ")";
-	echo $response;
-	// Don't forget to exit!
-	exit;
-}
-
-add_action( 'init', 'ocaduillu_autocomplete_init' );
-
-/**
  * Enable Featured Images
  */
 
 add_theme_support( 'post-thumbnails' );
-
-/**
- * Setting Content Width
- */
-
-if (!isset( $content_width ) ) $content_width = 900;
 
 /**
  * Wordpress Default Header Cleanup
@@ -80,6 +20,7 @@ function ocad_head_cleanup() {
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts
 	remove_action( 'wp_head', 'wp_generator' ); // WP version
+	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); // Shortlinks
 	add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove WP version from css
 	add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts
 }
@@ -104,20 +45,10 @@ if (!function_exists('load_my_scripts')) {
 	function load_scripts() {
 		if (!is_admin()) {
 			wp_deregister_script('jquery');
-			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', '','',true);
+			wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', '','',true);
 			wp_enqueue_script('jquery');
-			wp_register_script('jqueryCookie', get_template_directory_uri().'/assets/js/lib/jquery.cookie.js', array('jquery'), '', true);
-			wp_enqueue_script('jqueryCookie');
-			wp_register_script('modernizer', get_template_directory_uri().'/assets/js/lib/modernizr-2.6.2.min.js', '','',false);
-			wp_enqueue_script('modernizer');
-			wp_register_script('imagesloaded', get_template_directory_uri().'/assets/js/lib/imagesloaded.min.js', array('jquery'), '', true);
-			wp_enqueue_script('imagesloaded');
-			wp_register_script('packery', get_template_directory_uri().'/assets/js/lib/packery.pkgd.min.js', array('jquery'), '', true);
-			wp_enqueue_script('packery');
-			wp_register_script('spin', get_template_directory_uri().'/assets/js/lib/spin.min.js', '', '', true);
-			wp_enqueue_script('spin');
-			wp_register_script('ui', get_template_directory_uri().'/assets/js/ui.min.js', array('jquery'), '', true);
-			wp_enqueue_script('ui');
+			wp_register_script('app', get_template_directory_uri().'/assets/dist/js/app.min.js', array('jquery'), '', true);
+			wp_enqueue_script('app');
 		}
 	}
 }
@@ -129,7 +60,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
  */
 
 function load_ocad_styles() {
-	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/stylesheets/main.css');
+	wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/main.css');
 	wp_enqueue_style('ocadustyles');
 }
 
@@ -171,7 +102,7 @@ endif;
  */
 
 function my_gallery_style() {
-	return "<div class='gallery'>";
+	return "<div id='pack-content' class='gallery'>";
 }
 
 add_filter('gallery_style', 'my_gallery_style', 99);
@@ -281,7 +212,7 @@ function get_socialimage() {
 	}
 
 	if(empty($socialimg))
-		$socialimg = get_template_directory_uri() . '/assets/images/nothumb.png';
+		$socialimg = get_template_directory_uri() . '/nothumb.png';
 
 	return $socialimg;
 }
@@ -322,7 +253,7 @@ function facebook_connect() {
 		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
 		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
 		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013." />' . "\n";
+		echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
 		echo '<meta property="og:type" content="website"/>' . "\n";
 		echo '<!-- end facebook open graph -->' . "\n";
 	}
@@ -345,7 +276,7 @@ function google_header() {
 	if (is_home() || is_archive()) {
 		echo '<!-- google +1 tags -->' . "\n";
 		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
-		echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013.">' . "\n";
+		echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
 		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
 		echo '<!-- end google +1 tags -->' . "\n";
 	}
@@ -362,7 +293,7 @@ function plain_description() {
 		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
 	}
 	if (is_home() || is_archive()) {
-		echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2013." />' . "\n";
+		echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
 	}
 }
 
@@ -390,18 +321,27 @@ add_action('wp_head', 'html_prefetch');
 
 function ocadu_gallery_filter( $attr ) {
 	global $post;
-	if (wp_attachment_is_image()) {
-		$postparent = get_the_title($post->post_parent);
-		$attr['alt'] = "Illustration by ". $postparent .""; 
-		$attr['title'] = "Click for Next Illustration"; 
-	} else {
-		$attr['alt'] = "Illustration by ". get_the_title() .""; 
-		$attr['title'] = "Click to View"; 
-	}
+	$attr['alt'] = "Illustration by ". get_the_title() .""; 
+	$attr['title'] = "Click to View";
+	$attr['data-adaptive-background'] = "1"; 
 	return $attr; 
 }
 
 add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
+
+/**
+ * Adding data attributes to clean stuff up
+ */
+
+function modify_attachment_link( $markup, $id, $size, $permalink ) {
+  global $post;
+  $thumbnailURL = wp_get_attachment_image_src($id,'medium')[0];
+  if ( ! $permalink ) {
+  	$markup = str_replace( '<a href', '<a data-thumbnail="'. $thumbnailURL .'"  href', $markup );
+  }
+  return $markup;
+}
+add_filter( 'wp_get_attachment_link', 'modify_attachment_link', 10, 4 );
 
 /**
  * Simplify post classes

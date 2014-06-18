@@ -1,0 +1,101 @@
+#app-head {
+  .search {
+    position: relative;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    width: 30%;
+    background: image-url('search.svg') no-repeat 95% center;
+    background-size: 13px 13px;
+    margin-left: -4px;
+    @media screen and (max-width: 540px) {
+      width: 80%;
+    }
+  }
+}
+
+.home, .archive, .page {
+  #app-head .search {
+    @media screen and (max-width: 540px) {
+      width: 100%;
+    }
+  }
+}
+
+.search-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.illustrator-search {
+  width: 100%;
+  color: #333;
+  background: transparent;
+  border: none;
+  font-family: $fontStack;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  padding: 17px 20px 17px 20px;
+}
+
+::-webkit-input-placeholder {
+ color: #999;
+}
+:-moz-placeholder {
+   color: #999;  
+}
+::-moz-placeholder {
+   color: #999;  
+}
+:-ms-input-placeholder {  
+   color: #999;  
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.tt-hint {
+  color: #999;
+}
+
+.tt-dropdown-menu {
+  background: $white;
+  color: #333;
+  width: 100%;
+  margin-top: -1px;
+  border-top: 1px solid $accent;
+  box-shadow: 1px 1px 3px rgba(#000,0.1);
+}
+
+.tt-suggestion, .empty-message {
+  padding: 17px 20px 17px 20px;
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.tt-suggestion {
+  border-bottom: 1px solid $border-color;
+  @include transition-property(background,text-indent);
+  @include transition-duration(180ms);
+  strong {
+    color: $accent;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.tt-suggestion.tt-cursor {
+  background: $accent;
+  color: #fff;
+  cursor: pointer;
+  text-indent: 5px;
+  strong {
+    color: #fff;
+  }
+}

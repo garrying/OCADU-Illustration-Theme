@@ -2,19 +2,18 @@
 <html <?php language_attributes(); ?>>
 
 <!--
- _____   ____     ______  ____        __  __          ___       __      _     __     
-/\  __`\/\  _`\  /\  _  \/\  _`\     /\ \/\ \       /'___`\   /'__`\  /' \  /'__`\   
-\ \ \/\ \ \ \/\_\\ \ \L\ \ \ \/\ \   \ \ \ \ \     /\_\ /\ \ /\ \/\ \/\_, \/\_\L\ \  
- \ \ \ \ \ \ \/_/_\ \  __ \ \ \ \ \   \ \ \ \ \    \/_/// /__\ \ \ \ \/_/\ \/_/_\_<_ 
-  \ \ \_\ \ \ \L\ \\ \ \/\ \ \ \_\ \   \ \ \_\ \      // /_\ \\ \ \_\ \ \ \ \/\ \L\ \
-   \ \_____\ \____/ \ \_\ \_\ \____/    \ \_____\    /\______/ \ \____/  \ \_\ \____/
-    \/_____/\/___/   \/_/\/_/\/___/      \/_____/    \/_____/   \/___/    \/_/\/___/ 
 
+ @@@@@@   @@@@@@@  @@@@@@  @@@@@@@     @@@  @@@     @@@@@@   @@@@@@   @@@ @@@  @@@
+@@!  @@@ !@@      @@!  @@@ @@!  @@@    @@!  @@@    @@   @@@ @@!  @@@ @@@@ @@@  @@@
+@!@  !@! !@!      @!@!@!@! @!@  !@!    @!@  !@!      .!!@!  @!@  !@!  !@! @!@!@!@!
+!!:  !!! :!!      !!:  !!! !!:  !!!    !!:  !!!     !!:     !!:  !!!  !!!      !!!
+ : :. :   :: :: :  :   : : :: :  :      :.:: :     :.:: :::  : : ::   ::       : :
+ 
 -->
 
 <head>
 <meta http-equiv="content-type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 <title><?php
 
 	global $page, $paged;
@@ -30,104 +29,104 @@
 		echo " | $site_description";
 
 	?></title>
-<?php
-	wp_head();
-?>
+	
+	<?php
+		wp_head();
+	?>
+
+	<script type="text/javascript" src="//use.typekit.net/sgm7vuw.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 </head>
 
 <body <?php body_class(); ?>>
-	<header id="app-head" role="banner" class="clearfix">
+	<header id="app-head" class="<?php if ( is_home() || is_front_page() || is_archive() ) : ?>inverted<?php endif; ?>" role="banner">
 		<div class="container">
-			<div class="logo">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<span id="site-title">2013</span>
-				<div id="ocad-lologo">
-					<div class="main">
-						<div class="alpha"></div>
-						<div class="beta"></div>
-					</div>
-				</div>
-				</a>
-			</div>
+			<div class="flex-wrapper">
 
-			<a class="visually-hidden skip" href="#content" title="Skip to content">Skip to content</a>
+				<div class="left">
+				
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
 
-			<div id="search" role="search">
-				<?php get_search_form(); ?>
-			</div><!-- #search -->
-			<div id="year-widget" data-visible="true">
-				<div class="year-widget-toggle" title="What year is it?"><div class="indicator visible"></div></div>
-				<?php 
-					$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
-					// Selected menu state for attachments 
-					if (is_attachment()) {
-						$terms = get_the_terms($post->post_parent, 'gradyear');
-						foreach ( $terms as $term ) { 
-							$selected_year = $term->name;
-						}
-					} elseif (is_singular('illustrator')) {
-						// Selected menu state for individual items
-						$terms = get_the_terms( $post->ID , 'gradyear' );
-						foreach ( $terms as $term ) {
-							$selected_year = $term->name;
-						}
-					}
-				?>
-				<nav id="year-select">
-					<h3 class="visually-hidden"><?php _e( 'Year select', 'ocaduillustration' ); ?></h3>
-						<div id="illu-jumpmenu" class="clearfix">
-							<?php foreach( $grad_year as $year ) {
-								if ( is_singular('illustrator') && $selected_year == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
-								} elseif ( is_attachment() && $selected_year == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
-								} elseif ( isset($term) && $term == $year->name ) {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
-								} else {
-									echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>".$year->name."</a>";
-								}
+				<div class="item year-indicator">
+					<?php 
+						$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
+						// Selected menu state for attachments 
+						if (is_attachment()) {
+							$terms = get_the_terms($post->post_parent, 'gradyear');
+							foreach ( $terms as $term ) { 
+								$selected_year = $term->name;
 							}
-							?>
-						</div>
-				</nav> <!-- #year-Select-->
-			</div> <!-- #year-widget-->
-			<?php if (is_singular('illustrator')) 
-	echo '<a id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . ' index</span></a>';  
-?>
-			
-		<div class="nav-secondary">
-			<nav id="access" role="navigation">
-				<h3 class="visually-hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
+						} elseif (is_singular('illustrator')) {
+							// Selected menu state for individual items
+							$terms = get_the_terms( $post->ID , 'gradyear' );
+							foreach ( $terms as $term ) {
+								$selected_year = $term->name;
+							}
+						}
+					?>
+					<span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } elseif (isset($term)) { echo $term; } else {echo('2014');}  ?></span>
+					<div id="year-widget">
+						<nav id="year-select">
+							<ul id="illu-jumpmenu" class="normalized">
+								<?php foreach( $grad_year as $year ) {
+									echo "<li class='year-item'>";
+										if ( is_singular('illustrator') && $selected_year == $year->name ) {
+											echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+										} elseif ( is_attachment() && $selected_year == $year->name ) {
+											echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+										} elseif ( isset($term) && $term == $year->name ) {
+											echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
+										} else {
+											echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>".$year->name."</a>";
+										}
+									echo "</li>";
+								}
+								?>
+							</ul>
+						</nav> <!-- #year-Select-->
+					</div> <!-- #year-widget-->
 
-				<?php wp_nav_menu( array( 
-					'container' =>false,
-					'menu_class' => 'nav',
-					'theme_location' => 'primary' )
-					); ?>
-								
-			</nav><!-- #access -->
-		</div>
-		<a href="#" id="info" title="Maintained by the Illustration Department at OCAD University">✌</a>
+				</div>
 
-		<div id="colophon" role="contentinfo">
-			<section>
-				<p>&copy; <?php echo date("Y"); ?>, Respective Authors<br>Maintained by the Illustration Department at OCAD University</p>
-			</section>
-		</div><!-- #colophon -->
-
-	</div><!-- .container -->
+				<div class="item search" role="search">
+					<div class="search-container">
+						<?php get_search_form(); ?>
+					</div>
+				</div><!-- #search -->
+				<?php if (is_singular('illustrator')) 
+		echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . '</span></a>';  
+	?>
+				
+				</div>
+				<div class="right">
+					<nav id="access" role="navigation">
+						<h3 class="hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
+						<?php wp_nav_menu( array( 
+							'container' =>false,
+							'menu_class' => 'nav',
+							'theme_location' => 'primary' )
+							); ?>			
+					</nav><!-- #access -->
+				</div>
+			</div>
+		</div><!-- .container -->
 	</header><!-- #app-head -->
 
-<div id="progress"></div>
+
 <?php if ( is_home() || is_front_page() ) : ?>
 	<div id="intro">
-		<h2>
-			An evolving archive maintained by the Illustration Department at OCAD University. <br> <br> Featuring work from the graduating class of 2013.
-		</h2>
-		<p>
-			Coinciding with the 98<sup>th</sup> annual OCAD U Graduate Exhibition. May 2 to 5, 2013.
-		</p>
-		<small><a href="/about" title="Link to a message from Paul Dallas" class="truncate">A message from Paul Dallas, Illustration Chair</a></small>
+		<div class="intro-inner visible">
+			<div class="close" title="Close this block please."></div>
+			<h2>
+				An evolving archive maintained by the Illustration Department at OCAD University. Featuring work from the graduating class of 2014.
+			</h2>
+			<p>
+				Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
+			</p>
+			<p><a href="/introduction" title="Link to a message from Paul Dallas" class="link truncate">Introduction from Paul Dallas<br />Illustration Chair</a></p>
+		</div>
 	</div>
 <?php endif; ?>
-<div id="content" role="main">
+
+<div <?php if ( is_home() || is_front_page() || is_archive() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">

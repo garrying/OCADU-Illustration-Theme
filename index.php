@@ -1,19 +1,19 @@
 <?php get_header(); ?>
 	<?php if ( is_home() || is_front_page() ) {
-	$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC&number=1');	
-	$args = array(
-			'taxonomy' => 'gradyear',
-			'post_type' => 'illustrator',
-			'term' => $grad_year[0]->name,
-			'orderby' => 'rand',
-			);
-	query_posts( $args );
+		$grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC&number=1');	
+		$args = array(
+				'taxonomy' => 'gradyear',
+				'post_type' => 'illustrator',
+				'term' => $grad_year[0]->name,
+				'orderby' => 'rand'
+				);
+		$home_index = new WP_Query($args);
 	}
 	?>
-	<?php if ( have_posts() ) : ?>
+	<?php if ( $home_index->have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php while($home_index->have_posts()) : $home_index->the_post() ?>
 
 			<?php get_template_part( 'content', get_post_format() ); ?>
 

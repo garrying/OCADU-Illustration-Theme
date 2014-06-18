@@ -1,3 +1,5 @@
 assets/.sass-cache/
 assets/.sass-cache/*
 .sass-cache
+.DS_Store
+node_modules
