@@ -34,6 +34,10 @@ $(function() {
     window.location.href = datum.url;
   });
 
+  $('#searchform').submit(function(event) {
+    event.preventDefault();
+  });
+
   $('.illustrator-search').on('click', function(){
     $('#year-widget').removeClass('open');
   });
