@@ -8,7 +8,7 @@ $(function() {
   illustratorsDB = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: '/api/get_illustrators/'
+    prefetch: '/wp-json/posts?type=illustrator'
   });
 
   illustratorsDB.initialize();
@@ -29,9 +29,9 @@ $(function() {
     },
     source: illustratorsDB.ttAdapter(),
   }).on('typeahead:selected', function($e, datum){
-    window.location.href = datum.url;
+    window.location.href = datum.link;
   }).on('typeahead:autocompleted', function($e, datum){
-    window.location.href = datum.url;
+    window.location.href = datum.link;
   });
 
   $('#searchform').submit(function(event) {
