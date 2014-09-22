@@ -79,14 +79,10 @@
 }
 
 .tt-suggestion {
-  border-bottom: 1px solid $border-color;
   @include transition-property(background,text-indent);
   @include transition-duration(180ms);
   strong {
     color: $accent;
-  }
-  &:last-child {
-    border-bottom: none;
   }
 }
 
