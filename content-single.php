@@ -1,5 +1,5 @@
 <article <?php post_class(); ?> role="article">
-	<section id="illustrator-meta-container" data-spy="affix" data-offset-top="52">
+	<section id="illustrator-meta-container">
 		<aside id="illustrator-meta" role="complementary">
 			<header class="entry-header">
 				<h1 class="entry-title"><?php the_title(); ?></h1>
