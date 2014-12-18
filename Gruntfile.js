@@ -18,6 +18,7 @@ module.exports = function (grunt) {
         'assets/src/js/app.src.js',
       ]
     },
+    
     uglify: {
       dist: {
         files: {
@@ -28,27 +29,46 @@ module.exports = function (grunt) {
         }
       }
     },
-    compass: {
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    sass: {
       options: {
-        sassDir: 'assets/src/stylesheets',
-        cssDir: 'assets/dist/stylesheets',
-        generatedImagesDir: 'assets/dist/images',
-        imagesDir: 'assets/dist/images',
-        httpImagesPath: '/wp-content/themes/ocaduillustration/assets/dist/images',
-        relativeAssets: true,
-        assetCacheBuster: false
-      },
+        sourceMap: true
+        },
       dist: {
-        options: {
-          generatedImagesDir: 'assets/dist/images'
-        }
+        files: [{
+          expand: true,
+          cwd: 'assets/src/stylesheets',
+          src: ['*.{scss,sass}'],
+          dest: 'assets/dist/stylesheets',
+          ext: '.css'
+        }]
       },
       server: {
-        options: {
-          debugInfo: false
-        }
+        files: [{
+          expand: true,
+          cwd: 'assets/src/stylesheets',
+          src: ['*.{scss,sass}'],
+          dest: 'assets/dist/stylesheets',
+          ext: '.css'
+        }]
       }
     },
+
+    autoprefixer: {
+      options: {
+        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'assets/src/stylesheets/',
+          src: '{,*/}*.css',
+          dest: 'assets/src/stylesheets/'
+        }]
+      }
+    },
+
     cssmin: {
       options: {
         keepSpecialComments: 0
@@ -60,6 +80,7 @@ module.exports = function (grunt) {
         dest: 'assets/dist/stylesheets/',
       }
     },
+    
     svgmin: {
       dist: {
         files: [{
@@ -70,6 +91,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+    
     rev: {
       dist: {
         files: {
@@ -81,6 +103,7 @@ module.exports = function (grunt) {
         }
       }
     },
+    
     usemin: {
       options: {
         dirs: ['assets/dist'],
@@ -92,6 +115,7 @@ module.exports = function (grunt) {
       html: ['functions.php'],
       css: ['assets/dist/stylesheets/{,*/}*.css']
     },
+    
     concat: {
       options: {
         separator: ';',
@@ -101,6 +125,7 @@ module.exports = function (grunt) {
         dest: 'assets/dist/js/app.min.js',
       },
     },
+    
     watch: {
       js: {
         files: [
@@ -112,11 +137,15 @@ module.exports = function (grunt) {
         files: 'assets/src/images/*.svg',
         tasks: ['svgmin']
       },
-      compass: {
+      sass: {
         files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server']
+        tasks: ['sass:server', 'autoprefixer'],
+        options: {
+          livereload: true,
+        },
       },
     },
+    
     clean: {
       dist: {
         files: [{
@@ -129,9 +158,10 @@ module.exports = function (grunt) {
         }]
       }
     },
+    
     concurrent: {
       server: [
-        'compass:server'
+        'sass:server'
       ]
     }
   });
@@ -148,7 +178,8 @@ module.exports = function (grunt) {
     'clean',
     'uglify',
     'svgmin',
-    'compass',
+    'sass',
+    'autoprefixer',
     'cssmin'
   ]);
 
