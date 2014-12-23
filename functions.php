@@ -258,29 +258,6 @@ function facebook_connect() {
 }
 
 /**
- * Google +1 meta info
- */
-
-function google_header() {
-  if (is_singular() && is_attachment() !== true) {
-    echo '<!-- google +1 tags -->' . "\n";
-    global $post;
-    $the_excerpt = strip_tags($post->post_content);
-    echo '<meta itemprop="name" content="'.get_the_title().'">' . "\n";
-    echo '<meta itemprop="description" content="'.ellipsis($the_excerpt).'">' . "\n";
-    echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
-    echo '<!-- end google +1 tags -->' . "\n";
-  }
-  if (is_home() || is_archive()) {
-    echo '<!-- google +1 tags -->' . "\n";
-    echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
-    echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
-    echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
-    echo '<!-- end google +1 tags -->' . "\n";
-  }
-}
-
-/**
  * General description meta
  */
 
@@ -309,7 +286,6 @@ function html_prefetch() {
 }
 
 add_action('wp_head', 'facebook_connect');
-add_action('wp_head', 'google_header');
 add_action('wp_head', 'plain_description');
 add_action('wp_head', 'html_prefetch');
 

@@ -12,8 +12,8 @@
 -->
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <?php wp_head(); ?>
 
@@ -23,11 +23,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <header id="app-head" class="<?php if ( is_home() || is_front_page() || is_archive() ) : ?>inverted<?php endif; ?>" role="banner">
+  <header id="app-head" role="banner">
     <div class="container">
-      <div class="flex-wrapper">
-
-        <div class="left">
         
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
 
@@ -56,8 +53,6 @@
                   echo "<li class='year-item'>";
                     if ( is_singular('illustrator') && $selected_year == $year->name ) {
                       echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
-                    } elseif ( is_attachment() && $selected_year == $year->name ) {
-                      echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
                     } elseif ( isset($term) && $term == $year->name ) {
                       echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."' class='selected' >".$year->name."</a>";
                     } else {
@@ -81,8 +76,7 @@
     echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . '</span></a>';  
   ?>
         
-        </div>
-        <div class="right">
+       
           <nav id="access" role="navigation">
             <h3 class="hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
             <?php wp_nav_menu( array( 
@@ -91,25 +85,9 @@
               'theme_location' => 'primary' )
               ); ?>     
           </nav><!-- #access -->
-        </div>
-      </div>
+
     </div><!-- .container -->
   </header><!-- #app-head -->
 
 
-<?php if ( is_home() || is_front_page() ) : ?>
-  <div id="intro">
-    <div class="intro-inner visible">
-      <div class="close" title="Close this block please."></div>
-      <h2>
-        An evolving archive maintained by the Illustration Department at OCAD University. Featuring work from the graduating class of 2014.
-      </h2>
-      <p>
-        Coinciding with the 99<sup>th</sup> annual OCAD U Graduate Exhibition. May 1 to 4, 2014.
-      </p>
-      <p><a href="/introduction" title="Link to a message from Paul Dallas" class="link truncate">Introduction from Paul Dallas<br />Illustration Chair</a></p>
-    </div>
-  </div>
-<?php endif; ?>
-
-<div <?php if ( is_home() || is_front_page() || is_archive() ) : ?>id="pack-content"<?php else: ?>id="content"<?php endif; ?> role="main">
+  <div id="content" role="main">
