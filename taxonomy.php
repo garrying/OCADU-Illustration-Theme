@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
   <?php if ( have_posts() ) : ?>
 
     <?php query_posts($query_string . '&orderby=title&order=ASC');?>
