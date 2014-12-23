@@ -7,6 +7,20 @@
 add_theme_support( 'post-thumbnails' );
 
 /**
+ * Let WordPress Manage The Document Title
+ */
+
+add_theme_support( 'title-tag' );
+
+/**
+ * HTML5 Markup
+ */
+
+add_theme_support( 'html5', array(
+  'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+) );
+
+/**
  * Wordpress Default Header Cleanup
  */
 
@@ -112,16 +126,16 @@ add_filter('use_default_gallery_style', '__return_false');
  * Clean titles for image attachments
  */
   
-function set_page_title($title) {
-  if (wp_attachment_is_image()) {
-    global $post;
-    $postparent = get_the_title($post->post_parent) . " | ";
-    $title = $postparent;
-  }
-  return $title;
-}
+// function set_page_title($title) {
+//   if (wp_attachment_is_image()) {
+//     global $post;
+//     $postparent = get_the_title($post->post_parent) . " | ";
+//     $title = $postparent;
+//   }
+//   return $title;
+// }
 
-add_filter('wp_title', 'set_page_title');
+// add_filter('wp_title', 'set_page_title');
 
 /**
  * Add custom menu using wp_nav_menu()
@@ -130,22 +144,6 @@ add_filter('wp_title', 'set_page_title');
 register_nav_menus( array(
   'primary' => __('Primary Navigation', 'ocaduillustration'),
 ));
-
-/**
- * Added menu functionality for Events post type in menu
- */
-
-function x_nav_menu_css_class( $classes, $item = null, $args = null ) {
-$post_type = "event";
-  if ( is_singular( $post_type ) ) {
-    $pto = get_post_type_object( get_query_var('post_type') );
-    if ( $pto->rewrite['slug'] == $item->post_name )
-    $classes[] = 'current-menu-item';
-  }
-  return $classes;
-}
-
-add_filter( 'nav_menu_css_class', 'x_nav_menu_css_class', 10, 3 );
 
 /**
  * Reduce nav classes, leaving only 'current-menu-item'
