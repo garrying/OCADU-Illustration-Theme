@@ -227,12 +227,12 @@ function ellipsis($text, $max=155, $append='...') {
 }
 
 /**
- * Facebook share
+ * Open Graph
  */
 
-function facebook_connect() {
+function opengraph_meta() {
   if (is_singular() && is_attachment() !== true ) {
-    echo "\n" . '<!-- facebook open graph -->' . "\n";
+    echo "\n" . '<!-- opengraph open graph -->' . "\n";
     echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
     global $post;
     $the_excerpt = strip_tags($post->post_content);
@@ -242,10 +242,10 @@ function facebook_connect() {
     echo '<meta property="og:type" content="article"/>' . "\n";
     echo '<meta property="og:description" content="'.ellipsis($the_excerpt).'" />' . "\n";
     echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-    echo '<!-- end facebook open graph -->' . "\n";
+    echo '<!-- end opengraph open graph -->' . "\n";
   }
   if (is_home() || is_archive()) {
-    echo "\n" . '<!-- facebook open graph -->' . "\n";
+    echo "\n" . '<!-- opengraph open graph -->' . "\n";
     echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
     echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
     echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
@@ -253,7 +253,7 @@ function facebook_connect() {
     echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
     echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
     echo '<meta property="og:type" content="website"/>' . "\n";
-    echo '<!-- end facebook open graph -->' . "\n";
+    echo '<!-- end opengraph open graph -->' . "\n";
   }
 }
 
@@ -285,7 +285,7 @@ function html_prefetch() {
   }
 }
 
-add_action('wp_head', 'facebook_connect');
+add_action('wp_head', 'opengraph_meta');
 add_action('wp_head', 'plain_description');
 add_action('wp_head', 'html_prefetch');
 
