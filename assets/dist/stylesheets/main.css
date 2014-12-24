@@ -320,4 +320,11 @@ table {
 td, th {
   padding: 0; }
 
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+
 /*# sourceMappingURL=main.css.map */
