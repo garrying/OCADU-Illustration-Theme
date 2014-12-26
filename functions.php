@@ -1,32 +1,46 @@
 <?php
 
 /**
- * Enable Featured Images
- */
+*
+* OCAD U Illustration Setup
+*
+**/
 
-add_theme_support( 'post-thumbnails' );
+if ( ! function_exists( 'ocadu_setup' ) ) :
+  function ocadu_setup() {
 
-/**
- * Let WordPress Manage The Document Title
- */
+    /**
+     * Enable Featured Images
+     */
 
-add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
 
-/**
- * HTML5 Markup
- */
+    /**
+     * Let WordPress Manage The Document Title
+     */
 
-add_theme_support( 'html5', array(
-  'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-) );
+    add_theme_support( 'title-tag' );
 
-/**
- * Add custom menu using wp_nav_menu()
- */
+    /**
+     * HTML5 Markup
+     */
 
-register_nav_menus( array(
-  'primary' => __('Primary Navigation', 'ocaduillustration'),
-));
+    add_theme_support( 'html5', array(
+      'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+    ));
+
+    /**
+     * Add custom menu using wp_nav_menu()
+     */
+
+    register_nav_menus( array(
+      'primary' => __('Primary Navigation', 'ocaduillustration'),
+    ));
+
+  }
+endif;
+
+add_action( 'after_setup_theme', 'ocadu_setup' );
 
 
 /**
