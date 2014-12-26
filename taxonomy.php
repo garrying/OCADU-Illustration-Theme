@@ -13,7 +13,7 @@
 
     <?php endwhile; ?>
 
-    <?php ocadillu_content_nav( 'nav-below' ); ?>
+    <?php ocadu_content_nav( 'nav-below' ); ?>
 
   <?php else : ?>
 
