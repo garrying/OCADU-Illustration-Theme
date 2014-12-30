@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Illustrator page layout
+   ========================================================================== */
+
+.illustrator {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-bottom: 5rem;
+  padding: 0 4%;
+}
+
+#illustrator-meta {
+  flex: 0 1 25%;
+  padding: 20px;
+  height: 100vh;
+  .illustrator-meta-wrapper {
+    position: fixed;
+    width: 20%;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    flex-wrap: wrap;
+    padding-bottom: 5rem;
+  }
+  .illustrator-meta-detail {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    flex: 0 0 100%;
+    align-self: flex-end;
+  }
+  .illustrator-meta-description {
+    flex: 0 0 100%;
+    align-self: center;
+  }
+}
+
+#illustrator-gallery-container {
+  flex: 2 1 75%;
+  max-width: 1240px;
+  margin-top: 20px;
+  .gallery-item {
+    width: calc(50% - 20px);
+  }
+}

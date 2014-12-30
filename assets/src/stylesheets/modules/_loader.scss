@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Loader
+   ========================================================================== */
+
+#loader {
+  background: linear-gradient(45deg, #29abe2, #9e005d);
+  background-size: 400% 400%;
+  -webkit-animation: loaderGradient 5s ease infinite;
+  -moz-animation: loaderGradient 5s ease infinite;
+  animation: loaderGradient 5s ease infinite;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@-webkit-keyframes loaderGradient {
+    0%{background-position:96% 0%}
+    50%{background-position:5% 100%}
+    100%{background-position:96% 0%}
+}
+@-moz-keyframes loaderGradient {
+    0%{background-position:96% 0%}
+    50%{background-position:5% 100%}
+    100%{background-position:96% 0%}
+}
+@keyframes loaderGradient { 
+    0%{background-position:96% 0%}
+    50%{background-position:5% 100%}
+    100%{background-position:96% 0%}
+}

@@ -1,5 +1,26 @@
-@import 'normalize';
-@import 'boxsizing';
-@import 'variables';
-@import 'mixins';
-@import 'typography';
+/* ==========================================================================
+   Vendor styles (e.g. normalize, bootstrap)
+   ========================================================================== */
+
+@import 'vendor/normalize';
+
+/* ==========================================================================
+   Component styles (e.g. mixins, vars)
+   ========================================================================== */
+
+@import 'components/boxsizing';
+@import 'components/variables';
+@import 'components/mixins';
+@import 'components/helpers';
+
+/* ==========================================================================
+   Modules styles (e.g. layouts, typography)
+   ========================================================================== */
+
+@import 'modules/loader';
+@import 'modules/base';
+@import 'modules/typography';
+@import 'modules/figures';
+@import 'modules/lists';
+@import 'modules/clock';
+@import 'modules/layout';

@@ -1,0 +1,40 @@
+/* ==========================================================================
+   General background
+   ========================================================================== */
+
+html {
+  background: $site-background;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(#000, 0);
+}
+
+body {
+  color: $site-font-color;
+}
+
+::selection {
+  background: salmon;
+  color: red;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid $site-link-color;
+  color: $site-link-color;
+  img {
+    display: block;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+
+  }
+  &:active {
+    
+  }
+}

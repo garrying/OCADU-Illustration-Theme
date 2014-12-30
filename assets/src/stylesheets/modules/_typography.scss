@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Kerning extend
+   ========================================================================== */
+
+%font-kern {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
+  font-kerning: normal;
+}
+
+/* ==========================================================================
+   Heading extend
+   ========================================================================== */
+
+%heading {
+  font-family: $sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6rem;
+  @extend %font-kern;
+  @include font-smoothing(on);
+}
+
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {
+  font: 100%/1.6 $serif;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.4rem;
+  @extend %font-kern;
+  @include font-smoothing(on);
+}
+
+/* ==========================================================================
+   Headings
+   ========================================================================== */
+
+h1 {
+  font-size: 2.618rem;
+  font-style: normal;
+  @extend %heading;
+}
+
+h2 {
+  font-size: 1.618rem;
+  @extend %heading;
+}
+
+h3 {
+  font-size: 3.8rem;
+  @extend %heading;
+}
+
+h4 {
+  font-size: 3.1rem;
+  @extend %heading;
+}
+
+h5 {
+  font-size: 2.8rem;
+  @extend %heading;
+}
+
+h6 {
+  font-size: 2.2rem;
+  @extend %heading;
+}
+
+.heading {
+  @extend %heading;
+}
+
+.meta {
+  font-family: $sans-serif;
+  @extend %font-kern;
+  @include font-smoothing(on);
+}
+
+.illustrator-meta-name {
+  font-size: 0.85rem;
+}
+
+.thesis-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
