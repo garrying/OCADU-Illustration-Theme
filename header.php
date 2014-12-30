@@ -20,6 +20,7 @@
 
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <?php wp_head(); ?>
@@ -31,7 +32,7 @@
 
 <body <?php body_class(); ?>>
   <div id="loader"></div>
-  <header id="app-head" role="banner">
+  <header id="app-head" class="heading hidden" role="banner">
     <div class="container">
         
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
