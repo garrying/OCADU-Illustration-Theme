@@ -158,6 +158,16 @@ module.exports = function (grunt) {
         }]
       }
     },
+
+    copy: {
+      main: {
+        flatten: true,
+        expand: true,
+        cwd: 'assets/src/fonts/',
+        src: '**',
+        dest: 'assets/dist/fonts/'
+      },
+    },
     
     concurrent: {
       server: [
@@ -169,6 +179,7 @@ module.exports = function (grunt) {
   // Register tasks
   grunt.registerTask('default', [
     'clean',
+    'copy',
     'svgmin',
     'concat',
     'concurrent:server'
@@ -176,6 +187,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'copy',
     'uglify',
     'svgmin',
     'sass',
