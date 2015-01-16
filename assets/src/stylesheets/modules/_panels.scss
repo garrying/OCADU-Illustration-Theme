@@ -1,0 +1,28 @@
+%panels {
+  font-family: $sans-serif;
+  font-weight: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: $z-200;
+  overflow: hidden;
+  display: none;
+  width: 50%;
+  background: linear-gradient(45deg, rgba($accent,0.85), rgba($accent,0.75));
+  @include font-smoothing(on);
+}
+
+/**
+*
+* Close button
+*
+**/
+
+.close-panel {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: $z-300;
+}

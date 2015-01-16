@@ -1,0 +1,147 @@
+.title {
+  opacity: 0;
+  transform: scale(0.95);
+  position: fixed;
+  padding: 0 20px;
+  top: 20px;
+  bottom: 20px;
+  width: 47%;
+  display:flex;
+  justify-content:center;
+  z-index: $z-100;
+  color: #fff;
+  background: linear-gradient(225deg, rgba($accent,0.85), rgba(#72b1fa,0.75));
+  background-size: 400% 400%;
+  background-clip: content-box;
+  -webkit-animation: backAnimate 30s ease infinite;
+  -moz-animation: backAnimate 30s ease infinite;
+  animation: backAnimate 30s ease infinite;
+  transition: transform 250ms;
+  @include font-smoothing(on);
+  a {
+    color: #fff;
+    border-color: $accent;
+    &:hover {
+      border-color: #fff;
+    }
+  }
+  .title-primary {
+    font-size: 5rem;
+    line-height: 4rem;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+  .title-unit {
+    padding: 20px;
+    align-self: center;
+    flex: 0 0 100%;
+  }
+  .colophon {
+    border: none;
+    position: absolute;
+    bottom: 20px;
+    font-size: .75rem;
+  }
+}
+
+
+@-webkit-keyframes backAnimate {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes backAnimate {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes backAnimate { 
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+
+/* ==========================================================================
+   Homepage
+   ========================================================================== */
+
+.home, .archive, .search {
+  margin: 0 3%;
+  #app-head .logo {
+    display: none;
+  }
+  #content {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  .illustrator {
+    transform: scale(0.95);
+    opacity: 0;
+    &.velocity-animating {
+      transition: transform 500ms;
+    }
+    &.loaded {
+      transform: scale(1);
+    }
+  }
+}
+
+.archive, .search {
+  #app-head .logo {
+    display: block;
+  }
+}
+
+.search {
+  .page-title {
+    margin: 0;
+    position: fixed;
+    top: 20px;
+    right: 3%;
+    left: 3%;
+    text-align: center;
+    font-size: 1rem;
+    z-index: $z-300;
+    color: $accent;
+    opacity: 0.5;
+    @include font-smoothing(on);
+    mark {
+      background: none;
+      color: $accent;
+    }
+  }
+}
+
+#illustrators {
+  .illustrator-meta-container {
+    opacity: 0.5;
+    transition: opacity 140ms ease-in-out;
+    @include font-smoothing(on);
+  }
+  .illustrator:hover {
+    .illustrator-meta-container {
+      opacity: 1;
+    }
+  }
+  .illustrator-title {
+    font-size: 0.95rem;
+    line-height: 1.2rem;
+    margin-bottom: 0;
+  }
+  .illustrator-name {
+    font-family: $serif;
+    font-size: 0.95rem;
+    margin-top: 0;
+  }
+  .gallery-item {
+    padding: 20px;
+    width: 25%;
+    position: relative;
+    a {
+      border-bottom: 0;
+    }
+  }
+}

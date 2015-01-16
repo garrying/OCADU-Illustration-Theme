@@ -1,0 +1,70 @@
+.year-select {
+  @extend %panels;
+  .year-select-wrapper {
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5% 0;
+  }
+  .year-item {
+    display: flex;
+    color: #fff;
+    border-bottom: none;
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 100%;
+    height: 100%;
+    transition: height 180ms ease-in-out;
+    align-items:center;
+    justify-content:center;
+    &:before, &:after {
+      content: '';
+      height: 3px;
+      position: absolute;
+      background: $accent;
+      width: 30%;
+      top: 50%;
+      right: 0;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+    &.active {
+      height: 150%;
+      &:before, &:after {
+        background: #fff;
+      }
+    }
+    &:hover {
+      height: 200%;
+    }
+  }
+}
+
+.year-indicator {
+  position: fixed;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+  top: 45%;
+  left: calc(3% + 4px);
+  letter-spacing: 1px;
+  @extend %heading;
+  .single & {
+    .year-current {
+      opacity: 0.25;      
+    }
+  }
+  a {
+    color: $accent;
+    border-bottom: 0;
+  }
+}
