@@ -36,6 +36,9 @@ module.exports = function (grunt) {
         sourceMap: true
         },
       dist: {
+        options: {
+          sourceMap: false
+        },
         files: [{
           expand: true,
           cwd: 'assets/src/stylesheets',
@@ -62,9 +65,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'assets/src/stylesheets/',
+          cwd: 'assets/dist/stylesheets/',
           src: '{,*/}*.css',
-          dest: 'assets/src/stylesheets/'
+          dest: 'assets/dist/stylesheets/'
         }]
       }
     },
@@ -182,7 +185,8 @@ module.exports = function (grunt) {
     'copy',
     'svgmin',
     'concat',
-    'concurrent:server'
+    'concurrent:server',
+    'autoprefixer'
   ]);
 
   grunt.registerTask('build', [
@@ -190,7 +194,7 @@ module.exports = function (grunt) {
     'copy',
     'uglify',
     'svgmin',
-    'sass',
+    'sass:dist',
     'autoprefixer',
     'cssmin'
   ]);
