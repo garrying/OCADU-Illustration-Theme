@@ -32,12 +32,22 @@
 
 <body <?php body_class(); ?>>
   <div id="loader"></div>
-  <header id="app-head" class="heading hidden" role="banner">
-    <div class="container">
+  <header id="app-head" role="banner">
+    <div id="app-head-items" class="heading">
         
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
 
-        <div class="item year-indicator">
+        <div class="year-select-container">
+          <div id="clock">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 31 31">
+              <path class="clock-face" fill="#999" d="M15.5 1C23.5 1 30 7.5 30 15.5S23.5 30 15.5 30 1 23.5 1 15.5 7.5 1 15.5 1m0-1C6.9 0 0 6.9 0 15.5S6.9 31 15.5 31 31 24.1 31 15.5 24.1 0 15.5 0z"/>
+              <line class="hour-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="15.5" y1="3.7" x2="15.5" y2="19.3"/>
+              <line class="minute-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="11.9" y1="14" x2="22.3" y2="18.3"/>
+            </svg>
+
+          </div> <!-- #clock-->
+
           <?php 
             $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
             if (is_singular('illustrator')) {
@@ -53,43 +63,39 @@
               }
             }
           ?>
-          <!--<span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } else { echo('2015'); }  ?></span>
- -->
-        </div>
 
-        <div id="year-widget">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" id="clock">
-            <path class="clock-face" fill="#999" d="M15.5 1C23.5 1 30 7.5 30 15.5S23.5 30 15.5 30 1 23.5 1 15.5 7.5 1 15.5 1m0-1C6.9 0 0 6.9 0 15.5S6.9 31 15.5 31 31 24.1 31 15.5 24.1 0 15.5 0z"/>
-            <line class="hour-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="15.5" y1="3.7" x2="15.5" y2="19.3"/>
-            <line class="minute-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="11.9" y1="14" x2="22.3" y2="18.3"/>
-          </svg>
-          
-          <nav class="hidden">
-            <ul>
+          <div class="year-select panel">
+            <div class="year-select-wrapper">
               <?php foreach( $grad_year as $year ) {
                 if (isset($selected_year) && $selected_year == $year->name) {
-                  echo "<li class='year-item active'>";
+                  echo "<a class='year-item active' href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>";
                 } else {
-                  echo "<li class='year-item'>";
+                  echo "<a class='year-item' href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>";
                 }
-                  echo "<a href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>".$year->name."</a>";
-                echo "</li>";
+                  echo $year->name;
+                echo "</a>";
               }
               ?>
-            </ul>
-          </nav> <!-- #year-Select-->
-        </div> <!-- #year-widget-->
+            </div>
+            <div class="close-panel">
+              <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"><path d="M4.8 5.4L25 25.5M25 5.4L4.8 25.5"/></g></svg>
+            </div>
+          </div> <!-- .year-Select-->
+        </div>
 
-        <div class="search hidden" role="search">
-          <div class="search-container">
-            <?php get_search_form(); ?>
+        <div class="search" role="search">
+          <div id="magnifying-glass">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 31 31" id="magnify"><path class="glass" fill="#999" d="M13.7 3.8c5.8 0 10.5 4.7 10.5 10.5s-4.7 10.5-10.5 10.5S3.2 20.1 3.2 14.3 7.9 3.8 13.7 3.8m0-1C7.3 2.8 2.2 8 2.2 14.3s5.2 11.5 11.5 11.5 11.5-5.2 11.5-11.5S20 2.8 13.7 2.8z"/><path class="handle" fill="none" stroke="#999" stroke-linecap="round" stroke-miterlimit="10" d="M21.8 22.5l6.4 6.3"/></svg>
           </div>
-        </div><!-- #search -->
-        <?php if (is_singular('illustrator')) 
-    echo '<a class="item" id="year-back-button" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>' . $term->name . '</span></a>';  
-  ?>
-        
+          <div class="search-container panel">
+            <div class="search-wrapper">
+              <?php get_search_form(); ?>
+            </div>
+            <div class="close-panel">
+              <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"><path d="M4.8 5.4L25 25.5M25 5.4L4.8 25.5"/></g></svg>
+            </div>
+          </div>
+        </div><!-- .search -->
        
         <nav id="access" class="hidden" role="navigation">
           <h3 class="hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
@@ -100,7 +106,13 @@
             ); ?>     
         </nav><!-- #access -->
 
-    </div><!-- .container -->
+    </div><!-- .heading -->
+    <div class="item year-indicator">
+      <span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } else { echo('2015'); }  ?></span> 
+      <?php if (is_singular('illustrator')) 
+          echo '<a class="year-back" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>⤴</span></a>';  
+        ?>
+    </div>
   </header><!-- #app-head -->
 
 

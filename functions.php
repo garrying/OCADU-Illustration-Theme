@@ -37,6 +37,12 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
       'primary' => __('Primary Navigation', 'ocaduillustration'),
     ));
 
+    /**
+     * Add custom image size
+     */
+
+    add_image_size( 'illustrator-home-thumbnail', 480 );
+
   }
 endif;
 
@@ -204,7 +210,7 @@ add_filter('pre_get_posts','ocadu_search_filter');
  * Use proper ellipses for excerpts
  */
 
-function ocadu_excerpt_more($more) {
+function ocadu_new_excerpt_more($more) {
   return '&hellip;';
 }
 

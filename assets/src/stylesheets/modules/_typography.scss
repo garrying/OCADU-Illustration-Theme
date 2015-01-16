@@ -77,16 +77,42 @@ h6 {
 }
 
 .meta {
-  font-family: $sans-serif;
   @extend %font-kern;
   @include font-smoothing(on);
 }
 
 .illustrator-meta-name {
-  font-size: 0.85rem;
+  font-family: $serif;
+  font-style: italic;
+  font-size: 1rem;
+  display: inline-block;
+  &:before {
+    font-style: normal;
+    display: inline-block;
+    text-indent: -15px;
+    color: $accent;
+    content: '※';
+  }
+}
+
+.illustrator-meta-detail {
+  font-size: 1rem;
+  font-style: italic;
+  a {
+    border-color: #ddd;
+    &:hover {
+      border-color: $accent;
+    }
+  }
+}
+
+.illustrator-nav-single {
+  a {
+    border: none;
+  }
 }
 
 .thesis-title {
   font-size: 1rem;
-  font-weight: 700;
+  line-height: 1.2rem;
 }

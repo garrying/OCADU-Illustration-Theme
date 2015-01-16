@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+  <div id="illustrators">
+
   <?php if ( have_posts() ) : ?>
 
     <?php query_posts($query_string . '&orderby=title&order=ASC');?>
@@ -28,5 +30,6 @@
     </article><!-- #post-0 -->
 
   <?php endif; ?>
+  </div>
 
 <?php get_footer(); ?>

@@ -10,6 +10,7 @@ html {
 
 body {
   color: $site-font-color;
+  margin-bottom: 5rem;
 }
 
 ::selection {
@@ -25,11 +26,13 @@ a {
   text-decoration: none;
   border-bottom: 1px solid $site-link-color;
   color: $site-link-color;
+  transition: border-color 180ms ease-in-out;
   img {
     display: block;
   }
   &:hover {
     text-decoration: none;
+    border-color: $accent;
   }
   &:focus {
 

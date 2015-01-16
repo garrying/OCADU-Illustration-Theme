@@ -1,21 +1,28 @@
 #clock {
   position: fixed;
-  right: 20px;
+  left: calc(3% - 20px);
   top: 20px;
-  z-index: 100;
-  &:hover {
+  z-index: $z-300;
+  cursor: pointer;
+  &:hover, &.reverse {
     .hour-hand {
-      transition: transform 1s ease-in-out;
       transform: rotate(360deg);
     }
     .minute-hand {
-      transition: transform 1s ease-in-out;
       transform: rotate(180deg);
     }
   }
   .hour-hand, .minute-hand {
-    transition: transform 1s ease-in-out;
+    transition: transform 500ms ease-in-out;
     transform: rotate(0deg);
     transform-origin: 15.5px 15.5px;
+  }
+  &.reverse {
+    .clock-face {
+      fill: #fff;
+    }
+    .hour-hand, .minute-hand {
+      stroke: #fff;
+    }
   }
 }

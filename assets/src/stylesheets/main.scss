@@ -12,6 +12,7 @@
 @import 'components/variables';
 @import 'components/mixins';
 @import 'components/helpers';
+@import 'components/fontface';
 
 /* ==========================================================================
    Modules styles (e.g. layouts, typography)
@@ -22,5 +23,10 @@
 @import 'modules/typography';
 @import 'modules/figures';
 @import 'modules/lists';
+@import 'modules/panels';
 @import 'modules/clock';
+@import 'modules/search';
+@import 'modules/yearselect';
 @import 'modules/layout';
+@import 'modules/title';
+@import 'modules/forms';

@@ -1,45 +1,108 @@
 /* ==========================================================================
+   Global header elements
+   ========================================================================== */
+
+#app-head {
+  position: absolute;
+  top: 0;
+  .logo {
+    height: 25px;
+    line-height: 25px;
+    color: rgba($site-font-color,0.25);
+    text-align: center;
+    display: block;
+    z-index: $z-300;
+    position: fixed;
+    top: 20px;
+    left: calc(3% + 20px);
+    border-bottom: 0;
+    transition: top 500ms ease-in-out, opacity 500ms ease-in-out;
+    @include font-smoothing(on);
+  }
+  .sticky--unpinned .logo {
+    top: -20px;
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
    Illustrator page layout
    ========================================================================== */
 
-.illustrator {
+.single .illustrator {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  margin-bottom: 5rem;
-  padding: 0 4%;
+  padding: 0 3%;
 }
 
 #illustrator-meta {
-  flex: 0 1 25%;
+  flex: 1 1 30%;
   padding: 20px;
-  height: 100vh;
   .illustrator-meta-wrapper {
     position: fixed;
-    width: 20%;
+    width: 25%;
+    height: 100%;
     display: flex;
     top: 0;
-    bottom: 0;
-    flex-wrap: wrap;
-    padding-bottom: 5rem;
-  }
-  .illustrator-meta-detail {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-    flex: 0 0 100%;
-    align-self: flex-end;
+    flex-flow: row wrap;
+    align-items: center;
   }
   .illustrator-meta-description {
-    flex: 0 0 100%;
-    align-self: center;
+    width: 100%;
+  }
+  .illustrator-nav-single {
+    @include font-smoothing(on);
+    opacity: 0.5;
+    position: absolute;
+    font-style: italic;
+    padding-bottom: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    .nav-next {
+      text-align: right;
+    }
   }
 }
 
 #illustrator-gallery-container {
-  flex: 2 1 75%;
+  flex: 1 1 70%;
   max-width: 1240px;
   margin-top: 20px;
   .gallery-item {
+    transform: scale(0.95);
+    opacity: 0;
     width: calc(50% - 20px);
+    &.velocity-animating {
+      transition: transform 500ms;
+    }
+    &.loaded {
+      transform: scale(1);
+    }
+  }
+}
+
+#image-modal {
+  position: fixed;
+  top: 0;
+  z-index: $z-100;
+  left: 31%;
+  right: 0;
+  background: rgba($site-background,0.75);
+  bottom: 0;
+}
+
+#image-modal-container {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  img {
+    opacity: 0;
+    display: block;
   }
 }

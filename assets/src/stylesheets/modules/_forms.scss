@@ -1,0 +1,35 @@
+input {
+  border: none;
+  font-family: $sans-serif;
+  @extend %font-kern;
+  @include font-smoothing(on);
+}
+
+input[type=search] {
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
+}
+
+/**
+*
+* Placeholder styling
+*
+**/
+
+::-webkit-input-placeholder {
+   color: rgba(#fff,0.75);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba(#fff,0.75);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(#fff,0.75);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba(#fff,0.75);  
+}

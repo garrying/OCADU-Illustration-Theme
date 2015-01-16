@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-  <h1 id="page-title">
+  <h1 class="page-title">
     <?php printf('Search Results for <mark>%s</mark>', get_search_query() ); ?>
   </h1>
-
+  <div id="illustrators">
   <?php if ( have_posts() ) : ?>
     <?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
     <?php /* Start the Loop */ ?>
@@ -25,5 +25,6 @@
     </article><!-- #post-0 -->
 
   <?php endif; ?>
+  </div>
 
 <?php get_footer(); ?>
