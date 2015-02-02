@@ -1,4 +1,4 @@
-<article <?php post_class('gallery-item'); ?> role="article">
+<article <?php post_class('gallery-item'); ?> role="article" data-id="<?php echo the_ID(); ?>">
   <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
     <figure>
       <?php the_post_thumbnail('medium', array('alt' => 'Thumbnail of '.get_the_title().'', 'title' => ''.get_the_title().'' )); ?>

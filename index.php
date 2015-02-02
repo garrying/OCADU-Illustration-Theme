@@ -12,12 +12,18 @@
   ?>
   <div class="title">
     <div class="title-unit">
-      <h1 class="title-primary">OCAD U Illustration</h1>
-      <p class="title-secondary">An evolving archive maintained by the Illustration Department at OCAD University.</p>
-      <p class="title-third">Featuring work from the graduating class of 2015.</p>
-      <p class="message"><a href="#">Introduction from Paul Dallas</a></p>
-      <a href="#" class="colophon">Colophon</a>
+      <div class="title-unit-init unit">
+        <h1 class="title-primary">OCAD U Illustration</h1>
+        <p class="title-secondary">An evolving archive maintained by the Illustration Department at OCAD University.</p>
+        <p class="title-third">Featuring work from the graduating class of 2015.</p>
+        <p class="message"><a href="/introduction">Introduction from Paul Dallas</a></p>
+        <a href="/about" class="colophon">Colophon</a>
+      </div>
+      <div class="illustrator-hover-unit unit">
+        
+      </div>
     </div>
+
   </div>
   <div id="illustrators">
     <?php if ( $home_index->have_posts() ) : ?>

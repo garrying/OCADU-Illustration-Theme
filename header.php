@@ -22,6 +22,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f2f2f2">
   
   <?php wp_head(); ?>
 
@@ -108,9 +109,12 @@
 
     </div><!-- .heading -->
     <div class="item year-indicator">
-      <span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } else { echo('2015'); }  ?></span> 
+      <span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } ?></span> 
       <?php if (is_singular('illustrator')) 
           echo '<a class="year-back" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>⤴</span></a>';  
+        ?>
+      <?php if (is_archive()) 
+          echo '<a class="year-back" href="/" title="Return to homepage"><span>⤴</span></a>';  
         ?>
     </div>
   </header><!-- #app-head -->

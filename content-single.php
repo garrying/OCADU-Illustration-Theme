@@ -47,8 +47,8 @@
       </div>
 
       <ul class="illustrator-nav-single">
-        <li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator">↜</span> <span class="truncate">%title</span>') ); ?></li>
-        <li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate">%title</span> <span class="indicator">↝</span>') ); ?></li>
+        <li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator">↜</span> <span class="truncate name">%title</span>') ); ?></li>
+        <li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator">↝</span>') ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
     </div>

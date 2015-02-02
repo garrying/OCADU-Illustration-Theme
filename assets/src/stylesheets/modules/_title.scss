@@ -5,34 +5,37 @@
   padding: 0 20px;
   top: 20px;
   bottom: 20px;
-  width: 47%;
+  width: 35%;
   display:flex;
+    flex-grow: 1;
+    transition: flex-grow 1000ms linear;
   justify-content:center;
   z-index: $z-100;
-  color: #fff;
-  background: linear-gradient(225deg, rgba($accent,0.85), rgba(#72b1fa,0.75));
-  background-size: 400% 400%;
-  background-clip: content-box;
-  -webkit-animation: backAnimate 30s ease infinite;
-  -moz-animation: backAnimate 30s ease infinite;
-  animation: backAnimate 30s ease infinite;
+  color: $site-font-color;
+  // background: linear-gradient(225deg, rgba($accent,0.85), rgba(#72b1fa,0.75));
+  // background-size: 400% 400%;
+  // background-clip: content-box;
+  // -webkit-animation: backAnimate 30s ease infinite;
+  // -moz-animation: backAnimate 30s ease infinite;
+  // animation: backAnimate 30s ease infinite;
   transition: transform 250ms;
   @include font-smoothing(on);
   a {
-    color: #fff;
+    color: $accent;
     border-color: $accent;
     &:hover {
       border-color: #fff;
     }
   }
   .title-primary {
-    font-size: 5rem;
-    line-height: 4rem;
+    font-size: 3.6rem;
+    line-height: 2.7rem;
     margin-bottom: 0;
+    margin-top: 0;
   }
   p {
-    font-size: 1.5rem;
-    line-height: 1.75rem;
+    font-size: 1.1rem;
+    line-height: 1.55rem;
   }
   .title-unit {
     padding: 20px;
@@ -44,6 +47,10 @@
     position: absolute;
     bottom: 20px;
     font-size: .75rem;
+  }
+  .unit {
+    flex-shrink: 1;
+    transition: flex-shrink 1000ms linear;
   }
 }
 
@@ -89,6 +96,16 @@
   }
 }
 
+.home {
+  #illustrators {
+    margin-left: 36%;
+    width: 64%;
+    .gallery-item {
+      width: 33.3333333333%;
+    }
+  }
+}
+
 .archive, .search {
   #app-head .logo {
     display: block;
@@ -104,7 +121,7 @@
     left: 3%;
     text-align: center;
     font-size: 1rem;
-    z-index: $z-300;
+    z-index: $z-100;
     color: $accent;
     opacity: 0.5;
     @include font-smoothing(on);
@@ -118,12 +135,13 @@
 #illustrators {
   .illustrator-meta-container {
     opacity: 0.5;
-    transition: opacity 140ms ease-in-out;
+    transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
     @include font-smoothing(on);
   }
   .illustrator:hover {
     .illustrator-meta-container {
       opacity: 1;
+      color: $accent;
     }
   }
   .illustrator-title {
@@ -135,12 +153,14 @@
     font-family: $serif;
     font-size: 0.95rem;
     margin-top: 0;
+    margin-bottom: 0;
   }
   .gallery-item {
-    padding: 20px;
     width: 25%;
     position: relative;
     a {
+      padding: 20px;
+      display: block;
       border-bottom: 0;
     }
   }

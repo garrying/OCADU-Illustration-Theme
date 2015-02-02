@@ -14,8 +14,8 @@ body {
 }
 
 ::selection {
-  background: salmon;
-  color: red;
+  background: rgba(salmon,0.5);
+  color: $site-font-color;
 }
 
 /* ==========================================================================

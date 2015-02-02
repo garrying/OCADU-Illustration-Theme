@@ -401,12 +401,12 @@ body {
   margin-bottom: 5rem; }
 
 ::-moz-selection {
-  background: salmon;
-  color: red; }
+  background: rgba(250, 128, 114, 0.5);
+  color: #333333; }
 
 ::selection {
-  background: salmon;
-  color: red; }
+  background: rgba(250, 128, 114, 0.5);
+  color: #333333; }
 
 /* ==========================================================================
    Links
@@ -629,7 +629,7 @@ ul {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.5rem; }
+  font-size: 2rem; }
   .search-form label {
     width: 60%; }
   .search-form .twitter-typeahead {
@@ -663,7 +663,7 @@ ul {
 .tt-dropdown-menu {
   width: 100%; }
   .tt-dropdown-menu p {
-    font-size: 1.25rem; }
+    font-size: 2rem; }
 
 .tt-suggestion {
   opacity: 0.75;
@@ -675,6 +675,27 @@ ul {
   cursor: pointer;
   width: 100%;
   text-indent: 5px; }
+
+.page #content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 0 3%; }
+.page .hentry {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 0 10%; }
+  .page .hentry p {
+    font-size: 1.25rem;
+    line-height: 1.75rem; }
 
 .year-select .year-select-wrapper {
   height: 100%;
@@ -712,7 +733,7 @@ ul {
   position: relative;
   letter-spacing: 1px;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 2rem;
   width: 100%;
   height: 100%;
   -webkit-transition: height 180ms ease-in-out;
@@ -778,10 +799,12 @@ ul {
     top: 20px;
     left: calc(3% + 20px);
     border-bottom: 0;
-    -webkit-transition: top 500ms ease-in-out, opacity 500ms ease-in-out;
-            transition: top 500ms ease-in-out, opacity 500ms ease-in-out;
+    -webkit-transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
+            transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
+    #app-head .logo:hover {
+      color: salmon; }
   #app-head .sticky--unpinned .logo {
     top: -20px;
     opacity: 0; }
@@ -833,7 +856,7 @@ ul {
     opacity: 0.5;
     position: absolute;
     font-style: italic;
-    padding-bottom: 40px;
+    padding: 40px 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -847,6 +870,12 @@ ul {
             justify-content: space-between; }
     #illustrator-meta .illustrator-nav-single .nav-next {
       text-align: right; }
+    #illustrator-meta .illustrator-nav-single .name {
+      opacity: 0;
+      -webkit-transition: opacity 180ms ease-in-out;
+              transition: opacity 180ms ease-in-out; }
+    #illustrator-meta .illustrator-nav-single:hover .name {
+      opacity: 1; }
 
 #illustrator-gallery-container {
   -webkit-box-flex: 1;
@@ -897,39 +926,43 @@ ul {
   padding: 0 20px;
   top: 20px;
   bottom: 20px;
-  width: 47%;
+  width: 35%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-transition: -webkit-box-flex 1000ms linear;
+  -webkit-transition: -webkit-flex-grow 1000ms linear;
+          transition: -webkit-box-flex 1000ms linear;
+          transition: -ms-flex-positive 1000ms linear;
+          transition: flex-grow 1000ms linear;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #fff;
-  background: -webkit-linear-gradient(225deg, rgba(250, 128, 114, 0.85), rgba(114, 177, 250, 0.75));
-  background: linear-gradient(225deg, rgba(250, 128, 114, 0.85), rgba(114, 177, 250, 0.75));
-  background-size: 400% 400%;
-  background-clip: content-box;
-  -webkit-animation: backAnimate 30s ease infinite;
-  animation: backAnimate 30s ease infinite;
+  color: #333333;
   -webkit-transition: -webkit-transform 250ms;
           transition: transform 250ms;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
   .title a {
-    color: #fff;
+    color: salmon;
     border-color: salmon; }
     .title a:hover {
       border-color: #fff; }
   .title .title-primary {
-    font-size: 5rem;
-    line-height: 4rem;
-    margin-bottom: 0; }
+    font-size: 3.6rem;
+    line-height: 2.7rem;
+    margin-bottom: 0;
+    margin-top: 0; }
   .title p {
-    font-size: 1.5rem;
-    line-height: 1.75rem; }
+    font-size: 1.1rem;
+    line-height: 1.55rem; }
   .title .title-unit {
     padding: 20px;
     -webkit-align-self: center;
@@ -944,6 +977,15 @@ ul {
     position: absolute;
     bottom: 20px;
     font-size: 0.75rem; }
+  .title .unit {
+    -webkit-flex-shrink: 1;
+        -ms-flex-negative: 1;
+            flex-shrink: 1;
+    -webkit-transition: -webkit-flex-shrink 1000ms linear;
+    -webkit-transition: -webkit-flex-shrink 1000ms linear;
+            transition: -webkit-flex-shrink 1000ms linear;
+            transition: -ms-flex-negative 1000ms linear;
+            transition: flex-shrink 1000ms linear; }
 
 @-webkit-keyframes backAnimate {
   0% {
@@ -988,6 +1030,12 @@ ul {
           -ms-transform: scale(1);
               transform: scale(1); }
 
+.home #illustrators {
+  margin-left: 36%;
+  width: 64%; }
+  .home #illustrators .gallery-item {
+    width: 33.3333333333%; }
+
 .archive #app-head .logo, .search #app-head .logo {
   display: block; }
 
@@ -999,7 +1047,7 @@ ul {
   left: 3%;
   text-align: center;
   font-size: 1rem;
-  z-index: 300;
+  z-index: 100;
   color: salmon;
   opacity: 0.5;
   -webkit-font-smoothing: antialiased;
@@ -1010,12 +1058,13 @@ ul {
 
 #illustrators .illustrator-meta-container {
   opacity: 0.5;
-  -webkit-transition: opacity 140ms ease-in-out;
-          transition: opacity 140ms ease-in-out;
+  -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+          transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 #illustrators .illustrator:hover .illustrator-meta-container {
-  opacity: 1; }
+  opacity: 1;
+  color: salmon; }
 #illustrators .illustrator-title {
   font-size: 0.95rem;
   line-height: 1.2rem;
@@ -1023,12 +1072,14 @@ ul {
 #illustrators .illustrator-name {
   font-family: 'minion-pro', Times, 'Times New Roman', serif;
   font-size: 0.95rem;
-  margin-top: 0; }
+  margin-top: 0;
+  margin-bottom: 0; }
 #illustrators .gallery-item {
-  padding: 20px;
   width: 25%;
   position: relative; }
   #illustrators .gallery-item a {
+    padding: 20px;
+    display: block;
     border-bottom: 0; }
 
 input {
