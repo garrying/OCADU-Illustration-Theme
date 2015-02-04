@@ -206,44 +206,12 @@ if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').has
 
 /**
 *
-* Homepage Illustrator Hover Calls
+* Homepage Illustrator effect
 *
 **/
 
-if ($('body').hasClass('home')) {
-  var illustratorsResource = '/wp-json/posts/';
-  var illustratorDescription = function(illustratorID) {
-    loader(true);
-    $.getJSON(illustratorsResource+illustratorID).done(function(data) {
-      loader(false);
-      $('.illustrator-hover-unit').html(data.content).velocity('fadeIn');
-    });
-  };
 
-  var illustratorIn = function() {
-    illustratorDescription($(this).data('id'));
-  };
 
-  var illustratorOut = function() {
-    $('.illustrator-hover-unit').velocity('fadeOut');
-  };
-
-  $('.illustrator').hoverIntent({
-    over: illustratorIn,
-    out: illustratorOut
-  });
-
-  $('#illustrators').hoverIntent(function(){
-    $('.title-unit-init').velocity('fadeOut','fast');
-  },function(){
-    $.Velocity.animate($('.illustrator-hover-unit'), { opacity: 0 })
-    /* Callback to fire once the animation is complete. */
-    .then(function(elements) {
-      $('.title-unit-init').velocity('fadeIn');
-    });
-  });
-
-}
 
 /**
 *

@@ -19,11 +19,7 @@
         <p class="message"><a href="/introduction">Introduction from Paul Dallas</a></p>
         <a href="/about" class="colophon">Colophon</a>
       </div>
-      <div class="illustrator-hover-unit unit">
-        
-      </div>
     </div>
-
   </div>
   <div id="illustrators">
     <?php if ( $home_index->have_posts() ) : ?>
