@@ -5,12 +5,14 @@
 html {
   background: $site-background;
   overflow-x: hidden;
+  height: 100%;
   -webkit-tap-highlight-color: rgba(#000, 0);
 }
 
 body {
   color: $site-font-color;
   margin-bottom: 5rem;
+  height: 100%;
 }
 
 ::selection {

@@ -374,8 +374,7 @@ html {
    Loader
    ========================================================================== */
 #loader {
-  background: -webkit-linear-gradient(45deg, #29abe2, #9e005d);
-  background: linear-gradient(45deg, #29abe2, #9e005d);
+  background: url('../images/loader.gif') center center no-repeat;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -394,11 +393,13 @@ html {
 html {
   background: #f2f2f2;
   overflow-x: hidden;
+  height: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
   color: #333333;
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+  height: 100%; }
 
 ::-moz-selection {
   background: rgba(250, 128, 114, 0.5);
@@ -876,6 +877,8 @@ ul {
               transition: opacity 180ms ease-in-out; }
     #illustrator-meta .illustrator-nav-single:hover .name {
       opacity: 1; }
+  #illustrator-meta .illustrator-meta-wrapper-inner {
+    display: none; }
 
 #illustrator-gallery-container {
   -webkit-box-flex: 1;
@@ -911,7 +914,7 @@ ul {
   position: absolute;
   top: 20px;
   bottom: 20px;
-  left: 20px;
+  left: 10px;
   right: 20px; }
   #image-modal-container img {
     opacity: 0;

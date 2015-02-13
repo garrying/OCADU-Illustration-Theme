@@ -82,6 +82,7 @@ container.imagesLoaded( function() {
     gutter: 20
   });
   doCascade('.gallery-item',100);
+  $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
 });
 
 
@@ -109,6 +110,9 @@ container.on( 'click', '.gallery-item', function( event ) {
     });
     $('#image-modal').velocity('fadeIn', { 
       duration: 180, 
+      begin: function() {
+        $('#pack-content').velocity({scale:0.98},'fast');
+      },
       complete: function() { 
         var imageFull = document.getElementById('full-image');
         var imageContainer = document.getElementById('image-modal-container');
@@ -221,6 +225,7 @@ if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').has
 
 var closeAllPanels = function() {
   $('#image-modal').velocity('fadeOut',{duration: 180 });
+  $('#pack-content').velocity({scale:1},'fast');
   $('#magnifying-glass, #clock').removeClass('reverse');
   $('.panel').velocity('fadeOut', { duration: 180 });
   if (!$('#magnifying-glass').is(':visible')) {
@@ -237,6 +242,7 @@ var closePanels = function(event) {
   } else {
     if (!$(event.target).closest('#full-image').length) {
       $('#image-modal').velocity('fadeOut',{duration:180});
+      $('#pack-content').velocity({scale:1},'fast');
     }
     if (!$(event.target).closest('.year-select-container').length) {
       $('#clock').removeClass('reverse');

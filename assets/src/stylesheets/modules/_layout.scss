@@ -76,6 +76,9 @@
       opacity: 1;
     }
   }
+  .illustrator-meta-wrapper-inner {
+    display: none;
+  }
 }
 
 #illustrator-gallery-container {
@@ -109,7 +112,7 @@
   position: absolute;
   top: 20px;
   bottom: 20px;
-  left: 20px;
+  left: 10px;
   right: 20px;
   img {
     opacity: 0;

@@ -108,6 +108,10 @@
         </nav><!-- #access -->
 
     </div><!-- .heading -->
+  </header><!-- #app-head -->
+
+
+  <main id="content" role="main">
     <div class="item year-indicator">
       <span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } ?></span> 
       <?php if (is_singular('illustrator')) 
@@ -117,7 +121,3 @@
           echo '<a class="year-back" href="/" title="Return to homepage"><span>⤴</span></a>';  
         ?>
     </div>
-  </header><!-- #app-head -->
-
-
-  <main id="content" role="main">
