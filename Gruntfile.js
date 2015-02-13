@@ -11,6 +11,7 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
+        force: true,
         reporter: require('jshint-stylish')
       },
       all: [
@@ -94,19 +95,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-    
-    rev: {
-      dist: {
-        files: {
-          src: [
-            'assets/dist/js/{,*/}*.js',
-            'assets/dist/stylesheets/{,*/}*.css',
-            'assets/dist/images/{,*/}*.{gif,jpeg,jpg,png,webp,svg}'
-          ]
-        }
-      }
-    },
-    
+        
     usemin: {
       options: {
         dirs: ['assets/dist'],
@@ -134,7 +123,7 @@ module.exports = function (grunt) {
         files: [
           '<%= jshint.all %>'
         ],
-        tasks: ['concat']
+        tasks: ['jshint','concat']
       },
       svg: {
         files: 'assets/src/images/*.svg',
