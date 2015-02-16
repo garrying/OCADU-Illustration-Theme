@@ -107,6 +107,17 @@ module.exports = function (grunt) {
       html: ['functions.php'],
       css: ['assets/dist/stylesheets/{,*/}*.css']
     },
+
+    imagemin: {
+       static: {
+         options: {
+           optimizationLevel: 3
+         },
+         files: {
+           'assets/dist/images/loader.gif': 'assets/src/images/loader.gif'
+         }
+       }
+     },
     
     concat: {
       options: {
@@ -173,6 +184,7 @@ module.exports = function (grunt) {
     'clean',
     'copy',
     'svgmin',
+    'imagemin',
     'concat',
     'concurrent:server',
     'autoprefixer'
@@ -183,6 +195,7 @@ module.exports = function (grunt) {
     'copy',
     'uglify',
     'svgmin',
+    'imagemin',
     'sass:dist',
     'autoprefixer',
     'cssmin'

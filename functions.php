@@ -251,9 +251,9 @@ function ellipsis($text, $max=155, $append='...') {
  * Open Graph
  */
 
-function ocadu_opengraph_meta() {
+function ocadu_social_meta() {
   if (is_singular() && is_attachment() !== true ) {
-    echo "\n" . '<!-- opengraph open graph -->' . "\n";
+    echo "\n" . '<!-- social meta -->' . "\n";
     echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
     global $post;
     $the_excerpt = strip_tags($post->post_content);
@@ -263,10 +263,10 @@ function ocadu_opengraph_meta() {
     echo '<meta property="og:type" content="article"/>' . "\n";
     echo '<meta property="og:description" content="'.ellipsis($the_excerpt).'" />' . "\n";
     echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-    echo '<!-- end opengraph open graph -->' . "\n";
+    echo '<!-- end social meta -->' . "\n";
   }
   if (is_home() || is_archive()) {
-    echo "\n" . '<!-- opengraph open graph -->' . "\n";
+    echo "\n" . '<!-- social meta -->' . "\n";
     echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
     echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
     echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
@@ -274,7 +274,7 @@ function ocadu_opengraph_meta() {
     echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
     echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
     echo '<meta property="og:type" content="website"/>' . "\n";
-    echo '<!-- end opengraph open graph -->' . "\n";
+    echo '<!-- end social meta -->' . "\n";
   }
 }
 
@@ -306,7 +306,7 @@ function ocadu_prefetch() {
   }
 }
 
-add_action('wp_head', 'ocadu_opengraph_meta');
+add_action('wp_head', 'ocadu_social_meta');
 add_action('wp_head', 'ocadu_plain_description');
 add_action('wp_head', 'ocadu_prefetch');
 

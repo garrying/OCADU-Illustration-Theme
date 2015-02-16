@@ -307,6 +307,42 @@ $(document).keydown(function(e) {
 
 /**
 *
+* 404
+*
+**/
+
+if ($('body').hasClass('error404')) {
+  
+  var makeNewPosition = function (){      
+    // Get viewport dimensions (remove the dimension of the div)
+    var h = $(window).height() - 50;
+    var w = $(window).width() - 50;
+    var nh = Math.floor(Math.random() * h)/h * 100;
+    var nw = Math.floor(Math.random() * w)/w * 100;
+    return [nh,nw];
+  };
+
+  var emojiCanvas = function() {
+    $('.emoji').each(function(i){
+      var size = Math.round(Math.random()*1);
+
+      if (size > 0) {
+        var size = 'big';
+      } else {
+        var size = 'normal';
+      }
+      var newq = makeNewPosition();
+      $(this).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
+    });
+  };
+
+  emojiCanvas();
+  
+}
+
+
+/**
+*
 * Initialize Functions
 *
 **/

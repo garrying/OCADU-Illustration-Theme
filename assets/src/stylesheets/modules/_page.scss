@@ -15,3 +15,20 @@
     }
   }
 }
+
+.error404-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  .emoji {
+    position: absolute;
+    &.big {
+      font-size: 60px;
+    }
+  }
+}
