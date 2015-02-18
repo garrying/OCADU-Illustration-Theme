@@ -512,6 +512,9 @@ h6 {
   font-size: 1rem;
   line-height: 1.2rem; }
 
+#full-image {
+  cursor: e-resize; }
+
 figure {
   margin: 0; }
   figure img {
