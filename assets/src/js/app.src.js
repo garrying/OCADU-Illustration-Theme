@@ -100,7 +100,7 @@ var imageIndex = 1;
 container.on( 'click', '.gallery-item', function( event ) {
   event.preventDefault();
   loader(true);
-  var itemimgFullsrc = $( event.target ).closest('a').attr('href');
+  itemimgFullsrc = $( event.target ).closest('a').attr('href');
 
   $('#image-modal-container').html(function (){
     return '<img id="full-image" src=' + itemimgFullsrc + '>';
@@ -141,6 +141,7 @@ $('.gallery-icon a').each(function(){
 
 
 function nextElement() {
+  loader(true);
   var nextImage = galleryImages[imageIndex];
   imageIndex = (imageIndex+1)%(galleryImages.length);
   $('#full-image').attr('src',nextImage);
@@ -154,7 +155,12 @@ function nextElement() {
       width: loadedImage.width
     });
     fitWatching.trigger();
+    loader(false);
   };
+
+  if (image.complete) {
+    console.log('complete');
+  }
 
   console.log(nextImage);
 
@@ -362,13 +368,13 @@ if ($('body').hasClass('error404')) {
   };
 
   var emojiCanvas = function() {
-    $('.emoji').each(function(i){
+    $('.emoji').each(function(){
       var size = Math.round(Math.random()*1);
 
       if (size > 0) {
-        var size = 'big';
+        size = 'big';
       } else {
-        var size = 'normal';
+        size = 'normal';
       }
       var newq = makeNewPosition();
       $(this).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
