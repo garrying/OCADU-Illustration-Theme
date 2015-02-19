@@ -137,7 +137,6 @@ container.on( 'click', '.gallery-item', function( event ) {
   };
 
   imageIndex = $( event.target ).closest('a').data('index');
-  console.log('clicked on ' + imageIndex);
 
 });
 
