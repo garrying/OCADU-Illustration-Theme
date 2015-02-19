@@ -78,6 +78,7 @@ var container = $('#pack-content');
 var galleryImages = [];
 var itemimgFullsrc;
 var fitWatching;
+var nextImage;
 var imageIndex = 1;
 
 container.imagesLoaded( function() {
@@ -144,9 +145,9 @@ container.on( 'click', '.gallery-item', function( event ) {
 function nextElement() {
   loader(true);
   if (imageIndex === galleryImages.length) {
-    var nextImage = galleryImages[0];
+    nextImage = galleryImages[0];
   } else {
-    var nextImage = galleryImages[imageIndex];
+    nextImage = galleryImages[imageIndex];
   }
   imageIndex = (imageIndex+1)%(galleryImages.length);
   
