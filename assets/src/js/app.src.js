@@ -114,25 +114,18 @@ container.on( 'click', '.gallery-item', function( event ) {
     return '<img id="full-image" src=' + itemimgFullsrc + '>';
   });
 
-  var imgLoad = imagesLoaded( $('#full-image') );
-  
-  function onComplete() {
+  $('#full-image').imagesLoaded().done(function(){
     loader(false);
-
-    $('#full-image').imagesLoaded(function(){
-      $('#image-modal').velocity('fadeIn', { 
-        duration: 180, 
-        begin: function() {
-          $('#pack-content').velocity({scale:0.98},'fast');
-        },
-        complete: function() { 
-          $('#full-image').velocity({opacity:1});
-        } 
-      });
+    $('#image-modal').velocity('fadeIn', { 
+      duration: 180, 
+      begin: function() {
+        $('#pack-content').velocity({scale:0.98},'fast');
+      },
+      complete: function() { 
+        $('#full-image').velocity({opacity:1});
+      } 
     });
-  }
-
-  imgLoad.on('done', onComplete );
+  });
 
   imageIndex = $( event.target ).closest('a').data('index');
 
@@ -150,17 +143,14 @@ function nextElement() {
     
   $('#full-image').velocity({opacity:0}, {
     complete: function() {
-      $(this).attr({
-        src: nextImage
-      });
+      var image = new Image();
+      image.src = nextImage;
+      image.onload = function() {
+        $('#full-image').attr('src',this.src);
+        loader(false);
+        $('#full-image').velocity({opacity:1});
+      };
     }
-  });
-
-  var imgLoad = imagesLoaded( $('#full-image') );
-
-  imgLoad.on('done', function(){
-    loader(false);
-    $('#full-image').velocity({opacity:1});
   });
 
 }
