@@ -120,9 +120,6 @@ container.on( 'click', '.gallery-item', function( event ) {
   function onComplete() {
     loader(false);
 
-    var imageFull = document.getElementById('full-image');
-    var imageModal = document.getElementById('image-modal-container');
-
     $('#full-image').imagesLoaded(function(){
       $('#image-modal').velocity('fadeIn', { 
         duration: 180, 
@@ -134,6 +131,8 @@ container.on( 'click', '.gallery-item', function( event ) {
             duration: 180,
             display: 'block'
           });
+          var imageFull = document.getElementById('full-image');
+          var imageModal = document.getElementById('image-modal-container');
           fitWatching = fit(imageFull,imageModal,{watch:true});
         } 
       });
