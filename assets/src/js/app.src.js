@@ -10,7 +10,7 @@ var loaderTarget = $('#loader');
 
 var loader = function(e) {
   if (e === false) {
-    loaderTarget.velocity('fadeOut', { duration: 180 }).velocity('stop');
+    loaderTarget.velocity('fadeOut', { duration: 180 });
   } else {
     loaderTarget.velocity('fadeIn', { duration: 180 });
   }
