@@ -941,8 +941,7 @@ ul {
   bottom: 0; }
 
 #image-modal-container {
-  padding: 15px;
-  background: red; }
+  padding: 15px; }
   #image-modal-container img {
     opacity: 0; }
 

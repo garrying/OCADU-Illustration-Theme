@@ -10,7 +10,7 @@ var loaderTarget = $('#loader');
 
 var loader = function(e) {
   if (e === false) {
-    loaderTarget.velocity('fadeOut', { duration: 180 });
+    loaderTarget.velocity('fadeOut', { duration: 180 }).velocity('stop');
   } else {
     loaderTarget.velocity('fadeIn', { duration: 180 });
   }
@@ -126,7 +126,7 @@ container.on( 'click', '.gallery-item', function( event ) {
 
   var imgLoad = imagesLoaded( $('#full-image') );
   
-  function onComplete( instance ) {
+  function onComplete() {
     loader(false);
 
     var imageFull = document.getElementById('image-modal-container');
@@ -181,7 +181,6 @@ function nextElement() {
 
   imgLoad.on('done', function(){
     loader(false);
-    console.log('complete');
     var imageFull = document.getElementById('image-modal-container');
     var imageModal = document.getElementById('image-modal');
     fit(imageFull,imageModal,{watch:true});
