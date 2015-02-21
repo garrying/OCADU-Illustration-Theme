@@ -513,7 +513,11 @@ h6 {
   line-height: 1.2rem; }
 
 #full-image {
-  cursor: e-resize; }
+  margin: 0 auto;
+  display: block;
+  cursor: e-resize;
+  max-width: 100%;
+  height: auto; }
 
 figure {
   margin: 0; }
@@ -937,14 +941,9 @@ ul {
   bottom: 0; }
 
 #image-modal-container {
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  left: 10px;
-  right: 20px; }
+  padding: 15px; }
   #image-modal-container img {
-    opacity: 0;
-    display: block; }
+    opacity: 0; }
 
 .title {
   opacity: 0;

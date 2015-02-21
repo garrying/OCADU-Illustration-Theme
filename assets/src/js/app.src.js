@@ -124,21 +124,33 @@ container.on( 'click', '.gallery-item', function( event ) {
     });
   };
 
-  $('#full-image').imagesLoaded(function(){
-    $('#image-modal').velocity('fadeIn', { 
-      duration: 180, 
-      begin: function() {
-        $('#pack-content').velocity({scale:0.98},'fast');
-      },
-      complete: function() { 
-        loader(false);
-        $('#full-image').velocity('fadeIn',{duration:180});
-        var imageFull = document.getElementById('full-image');
-        var imageContainer = document.getElementById('image-modal-container');
-        fitWatching = fit(imageFull,imageContainer,{watch:true});
-      } 
+  var imgLoad = imagesLoaded( $('#full-image') );
+  
+  function onComplete( instance ) {
+    loader(false);
+
+    var imageFull = document.getElementById('image-modal-container');
+    var imageModal = document.getElementById('image-modal');
+
+    $('#full-image').imagesLoaded(function(){
+      $('#image-modal').velocity('fadeIn', { 
+        duration: 180, 
+        begin: function() {
+          $('#pack-content').velocity({scale:0.98},'fast');
+        },
+        complete: function() { 
+          $('#full-image').velocity('fadeIn',{
+            duration: 180,
+            display: 'block'
+          });
+          fitWatching = fit(imageFull,imageModal,{watch:true});
+        } 
+      });
     });
-  });
+
+  }
+
+  imgLoad.on('done', onComplete );
 
   imageIndex = $( event.target ).closest('a').data('index');
 
@@ -164,11 +176,15 @@ function nextElement() {
       width: loadedImage.width
     });
   };
-  
-  $('#full-image').imagesLoaded(function(){
+
+  var imgLoad = imagesLoaded( $('#full-image') );
+
+  imgLoad.on('done', function(){
     loader(false);
+    console.log('complete');
     fitWatching.trigger();
   });
+
 }
 
 $('#image-modal-container').on('click','img',function(){
