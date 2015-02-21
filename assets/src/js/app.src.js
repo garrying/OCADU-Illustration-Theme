@@ -137,7 +137,6 @@ container.on( 'click', '.gallery-item', function( event ) {
         } 
       });
     });
-
   }
 
   imgLoad.on('done', onComplete );
@@ -161,16 +160,6 @@ function nextElement() {
   });
 
   var imgLoad = imagesLoaded( $('#full-image') );
-
-  imgLoad.on( 'always', function() {
-    console.log( imgLoad.images.length + ' images loaded' );
-    // detect which image is broken
-    for ( var i = 0, len = imgLoad.images.length; i < len; i++ ) {
-      var image = imgLoad.images[i];
-      var result = image.isLoaded ? 'loaded' : 'broken';
-      console.log( 'image is ' + result + ' for ' + image.img.src );
-    }
-  });
 
   imgLoad.on('done', function(){
     loader(false);
