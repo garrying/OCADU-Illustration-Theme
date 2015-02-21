@@ -517,7 +517,8 @@ h6 {
   display: block;
   cursor: e-resize;
   max-width: 100%;
-  height: auto; }
+  max-height: 100%;
+  opacity: 0; }
 
 figure {
   margin: 0; }
@@ -943,11 +944,9 @@ ul {
 #image-modal-container {
   position: absolute;
   top: 10px;
+  right: 10px;
   bottom: 10px;
-  left: 10px;
-  right: 10px; }
-  #image-modal-container img {
-    opacity: 0; }
+  left: 10px; }
 
 .title {
   opacity: 0;
