@@ -132,7 +132,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: [
-          '<%= jshint.all %>'
+          '<%= jshint.all %>', 'assets/src/js/lib/*.js'
         ],
         tasks: ['jshint','concat']
       },
