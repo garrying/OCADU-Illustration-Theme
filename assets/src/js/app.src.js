@@ -261,7 +261,9 @@ var closeAllPanels = function() {
   $('#image-modal').velocity('fadeOut',{duration: 180 });
   $('#pack-content').velocity({scale:1},'fast');
   $('#magnifying-glass, #clock').removeClass('reverse');
-  $('.panel').velocity('fadeOut', { duration: 180 });
+  if ($('.panel').is(':visible')) {
+    $('.panel').velocity('fadeOut', { duration: 180 });
+  }
   if (!$('#magnifying-glass').is(':visible')) {
     $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
   }
@@ -274,18 +276,18 @@ var closePanels = function(event) {
   if (event.type === 'keydown') {
     closeAllPanels();
   } else {
-    if (!$(event.target).closest('#full-image').length) {
+    if (!$(event.target).closest('#full-image').length && $('#image-modal').is(':visible')) {
       $('#image-modal').velocity('fadeOut',{duration:180});
       $('#pack-content').velocity({scale:1},'fast');
     }
-    if (!$(event.target).closest('.year-select-container').length) {
+    if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
       $('#clock').removeClass('reverse');
       $('.year-select').velocity('fadeOut', { duration: 180 });
       if (!$('#magnifying-glass').is(':visible')) {
         $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
       }
     }
-    if (!$(event.target).closest('.search').length) {
+    if (!$(event.target).closest('.search').length && $('.search-container').is(':visible')) {
       $('#magnifying-glass').removeClass('reverse');
       $('.search-container').velocity('fadeOut', { duration: 180 });
       if (!$('#clock').is(':visible')) {
