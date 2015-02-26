@@ -15,8 +15,7 @@ module.exports = function (grunt) {
         reporter: require('jshint-stylish')
       },
       all: [
-        'Gruntfile.js',
-        'assets/src/js/app.src.js',
+        'assets/src/js/app.src.js'
       ]
     },
     
