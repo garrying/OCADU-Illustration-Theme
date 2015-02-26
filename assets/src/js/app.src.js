@@ -119,10 +119,10 @@ container.on( 'click', '.gallery-item', function( event ) {
     $('#image-modal').velocity('fadeIn', { 
       duration: 180, 
       begin: function() {
-        $('#pack-content').velocity({scale:0.98},'fast');
+        $('#pack-content').velocity({scale:0.99, blur:2},'fast');
       },
       complete: function() { 
-        $('#full-image').velocity({opacity:1});
+        $('#full-image').velocity({opacity:1},'fast');
       } 
     });
   });
@@ -142,13 +142,14 @@ function nextElement() {
   imageIndex = (imageIndex+1)%(galleryImages.length);
     
   $('#full-image').velocity({opacity:0}, {
+    duration: 'fast',
     complete: function() {
       var image = new Image();
       image.src = nextImage;
       image.onload = function() {
         $('#full-image').attr('src',this.src);
         loader(false);
-        $('#full-image').velocity({opacity:1});
+        $('#full-image').velocity({opacity:1},'fast');
       };
     }
   });
@@ -182,12 +183,23 @@ $('.meta.site a').each(function(){
 $('#clock').on('click',function(){
   if ($(this).hasClass('reverse')) {
     $(this).removeClass('reverse');
-    $('.year-select').velocity('fadeOut', { duration: 180 });
+    $('.year-select').velocity('fadeOut', {
+      duration: 180,
+      complete: function(){
+        $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+      }
+    });
     $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
   } else {
     $(this).addClass('reverse');
     $('.year-select').velocity('fadeIn', { duration: 180 });
     $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
+    $('.year-item').each(function(i){
+      var item = $(this);
+      setTimeout(function() {
+        item.velocity({ opacity: 1 }).addClass('loaded');
+      }, 100*i);
+    });
   }
 });
 
@@ -213,10 +225,8 @@ $('#magnifying-glass').on('click',function(){
     $('.search-container').velocity('fadeIn', { duration: 180 });
     $('#clock').velocity('fadeOut', { duration: 180 });
 
-    // eccccckkkk Fix this later
-    setTimeout(function(){
-      $('.search-field').focus();
-    },180);
+    $('.search-field').focus();
+
   }
 });
 
@@ -262,7 +272,12 @@ var closeAllPanels = function() {
   $('#pack-content').velocity({scale:1},'fast');
   $('#magnifying-glass, #clock').removeClass('reverse');
   if ($('.panel').is(':visible')) {
-    $('.panel').velocity('fadeOut', { duration: 180 });
+    $('.panel').velocity('fadeOut', { 
+      duration: 180,
+      complete: function(){
+        $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+      }
+    });
   }
   if (!$('#magnifying-glass').is(':visible')) {
     $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
@@ -278,11 +293,16 @@ var closePanels = function(event) {
   } else {
     if (!$(event.target).closest('#full-image').length && $('#image-modal').is(':visible')) {
       $('#image-modal').velocity('fadeOut',{duration:180});
-      $('#pack-content').velocity({scale:1},'fast');
+      $('#pack-content').velocity({scale:1, blur:0},'fast');
     }
     if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
       $('#clock').removeClass('reverse');
-      $('.year-select').velocity('fadeOut', { duration: 180 });
+      $('.year-select').velocity('fadeOut', { 
+        duration: 180,
+        complete: function(){
+          $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+        }
+      });
       if (!$('#magnifying-glass').is(':visible')) {
         $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
       }

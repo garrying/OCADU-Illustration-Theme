@@ -29,7 +29,7 @@
   display: flex;
   justify-content:center;
   align-items:center;
-  font-size: 2rem;
+  font-size: 3rem;
   label {
     width: 60%;
   }
@@ -40,7 +40,7 @@
 
 .search-field {
   padding: 10px 0;
-  box-shadow: 0 3px 0 #fff;
+  box-shadow: 0 2px 0 #fff;
   &:focus {
     outline: none;
   }
@@ -74,7 +74,7 @@
 .tt-dropdown-menu {
   width: 100%;
   p {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 

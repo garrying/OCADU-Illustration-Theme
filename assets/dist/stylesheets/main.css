@@ -556,8 +556,8 @@ ul {
   overflow: hidden;
   display: none;
   width: 50%;
-  background: -webkit-linear-gradient(45deg, rgba(250, 128, 114, 0.85), rgba(250, 128, 114, 0.75));
-  background: linear-gradient(45deg, rgba(250, 128, 114, 0.85), rgba(250, 128, 114, 0.75));
+  background: -webkit-linear-gradient(45deg, rgba(250, 128, 114, 0.85), #fa8072);
+  background: linear-gradient(45deg, rgba(250, 128, 114, 0.85), #fa8072);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -641,7 +641,7 @@ ul {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2rem; }
+  font-size: 3rem; }
   .search-form label {
     width: 60%; }
   .search-form .twitter-typeahead {
@@ -649,7 +649,7 @@ ul {
 
 .search-field {
   padding: 10px 0;
-  box-shadow: 0 3px 0 #fff; }
+  box-shadow: 0 2px 0 #fff; }
   .search-field:focus {
     outline: none; }
 
@@ -675,7 +675,7 @@ ul {
 .tt-dropdown-menu {
   width: 100%; }
   .tt-dropdown-menu p {
-    font-size: 2rem; }
+    font-size: 3rem; }
 
 .tt-suggestion {
   opacity: 0.75;
@@ -771,8 +771,6 @@ ul {
   font-size: 2rem;
   width: 100%;
   height: 100%;
-  -webkit-transition: height 180ms ease-in-out;
-          transition: height 180ms ease-in-out;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -780,10 +778,15 @@ ul {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  opacity: 0;
+  -webkit-transition: height 180ms ease-in-out;
+          transition: height 180ms ease-in-out; }
+  .year-select .year-item.loaded {
+    opacity: 1; }
   .year-select .year-item:before, .year-select .year-item:after {
     content: '';
-    height: 3px;
+    height: 2px;
     position: absolute;
     background: salmon;
     width: 30%;
