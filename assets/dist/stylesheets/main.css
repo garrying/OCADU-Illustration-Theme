@@ -937,6 +937,9 @@ ul {
       -webkit-transform: scale(1);
           -ms-transform: scale(1);
               transform: scale(1); }
+  #illustrator-gallery-container a {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in; }
 
 #image-modal {
   position: fixed;
