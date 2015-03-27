@@ -208,11 +208,6 @@ $('#clock').on('click',function(){
 });
 
 
-// $('.year-item').on('click',function(){
-//   $('.year-item').removeClass('active');
-//   $(this).addClass('active');
-// });
-
 /**
 *
 * Search panel

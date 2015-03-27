@@ -170,6 +170,13 @@ module.exports = function (grunt) {
         dest: 'assets/dist/fonts/'
       },
     },
+
+    parker: {
+      options: {},
+      src: [
+        'assets/dist/stylesheets/{,*/}*.css'
+      ],
+    },
     
     concurrent: {
       server: [
