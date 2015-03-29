@@ -1,10 +1,8 @@
-/* ==========================================================================
-   Font import
-   ========================================================================== */
+// Font import
 
 @font-face {
- font-family: 'FoundersGroteskWeb-Bold';
- src: url('../fonts/FoundersGroteskWeb-Bold.eot'); /* IE9 Compat Modes */
- src: url('../fonts/FoundersGroteskWeb-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-      url('../fonts/FoundersGroteskWeb-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+  font-family: 'FoundersGroteskWeb-Bold';
+  src: url('../fonts/FoundersGroteskWeb-Bold.eot');
+  src: url('../fonts/FoundersGroteskWeb-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/FoundersGroteskWeb-Bold.woff') format('woff');
 }

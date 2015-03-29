@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Kerning extend
-   ========================================================================== */
+// Kerning extend
 
 %font-kern {
   text-rendering: optimizeLegibility;
@@ -8,68 +6,62 @@
   font-kerning: normal;
 }
 
-/* ==========================================================================
-   Heading extend
-   ========================================================================== */
+// Heading extend
 
 %heading {
+  @extend %font-kern;
+  @include font-smoothing(on);
   font-family: $sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.6rem;
-  @extend %font-kern;
-  @include font-smoothing(on);
 }
 
 
-/* ==========================================================================
-   Base
-   ========================================================================== */
+// Base
 
 body {
   font: 100%/1.6 $serif;
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.4rem;
   @extend %font-kern;
   @include font-smoothing(on);
+  font-size: 1rem;
+  line-height: 1.4rem;
 }
 
-/* ==========================================================================
-   Headings
-   ========================================================================== */
+// Headings
 
 h1 {
+  @extend %heading;
   font-size: 2.618rem;
   font-style: normal;
-  @extend %heading;
 }
 
 h2 {
-  font-size: 1.618rem;
   @extend %heading;
+  font-size: 1.618rem;
 }
 
 h3 {
-  font-size: 3.8rem;
   @extend %heading;
+  font-size: 3.8rem;
 }
 
 h4 {
-  font-size: 3.1rem;
   @extend %heading;
+  font-size: 3.1rem;
 }
 
 h5 {
-  font-size: 2.8rem;
   @extend %heading;
+  font-size: 2.8rem;
 }
 
 h6 {
-  font-size: 2.2rem;
   @extend %heading;
+  font-size: 2.2rem;
 }
 
 .heading {
@@ -86,6 +78,7 @@ h6 {
   font-style: italic;
   font-size: 1rem;
   display: inline-block;
+
   &:before {
     font-style: normal;
     display: inline-block;
@@ -98,8 +91,10 @@ h6 {
 .illustrator-meta-detail {
   font-size: 1rem;
   font-style: italic;
+
   a {
     border-color: #ddd;
+
     &:hover {
       border-color: $accent;
     }
@@ -107,8 +102,9 @@ h6 {
 }
 
 .illustrator-nav-single {
+
   a {
-    border: none;
+    border: 0;
   }
 }
 

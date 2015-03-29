@@ -1,6 +1,4 @@
-/* ==========================================================================
-   General background
-   ========================================================================== */
+// General background
 
 html {
   background: $site-background;
@@ -10,34 +8,36 @@ html {
 
 body {
   color: $site-font-color;
-  margin-bottom: 5rem;
   height: 100%;
+  margin-bottom: 5rem;
 }
 
 ::selection {
-  background: rgba(salmon,0.5);
+  background: rgba(salmon, .5);
   color: $site-font-color;
 }
 
-/* ==========================================================================
-   Links
-   ========================================================================== */
+// Links
 
 a {
-  text-decoration: none;
   border-bottom: 1px solid $site-link-color;
   color: $site-link-color;
+  text-decoration: none;
   transition: border-color 180ms ease-in-out;
+
   img {
     display: block;
   }
+
   &:hover {
-    text-decoration: none;
     border-color: $accent;
+    text-decoration: none;
   }
+
   &:focus {
 
   }
+
   &:active {
     
   }

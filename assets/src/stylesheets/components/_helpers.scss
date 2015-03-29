@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
+// Helper classes
 
 .hidden {
   display: none;
@@ -8,7 +6,7 @@
 }
 
 .truncate {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }

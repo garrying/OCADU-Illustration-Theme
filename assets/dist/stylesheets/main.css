@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/* ==========================================================================
-   Vendor styles (e.g. normalize, bootstrap)
-   ========================================================================== */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -321,59 +318,26 @@ table {
 td, th {
   padding: 0; }
 
-/* ==========================================================================
-   Component styles (e.g. mixins, vars)
-   ========================================================================== */
-/* ==========================================================================
-   Box sizing
-   (http://www.paulirish.com/2012/box-sizing-border-box-ftw/)
-   ========================================================================== */
 html {
   box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
 
-/* ==========================================================================
-   Typography
-   ========================================================================== */
-/* ==========================================================================
-   Colours
-   ========================================================================== */
-/* ==========================================================================
-   Z-index
-   ========================================================================== */
-/* ==========================================================================
-   Font smoothing
-   ========================================================================== */
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
 .hidden {
   display: none;
   opacity: 0; }
 
 .truncate {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
-/* ==========================================================================
-   Font import
-   ========================================================================== */
 @font-face {
   font-family: 'FoundersGroteskWeb-Bold';
   src: url('../fonts/FoundersGroteskWeb-Bold.eot');
-  /* IE9 Compat Modes */
-  src: url('../fonts/FoundersGroteskWeb-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/FoundersGroteskWeb-Bold.woff') format('woff');
-  /* Pretty Modern Browsers */ }
+  src: url('../fonts/FoundersGroteskWeb-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/FoundersGroteskWeb-Bold.woff') format('woff'); }
 
-/* ==========================================================================
-   Modules styles (e.g. layouts, typography)
-   ========================================================================== */
-/* ==========================================================================
-   Loader
-   ========================================================================== */
 #loader {
   background: url('../images/loader.gif') center center no-repeat;
   position: fixed;
@@ -388,45 +352,36 @@ html {
   opacity: 0;
   display: none; }
 
-/* ==========================================================================
-   General background
-   ========================================================================== */
 html {
   background: #f2f2f2;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  color: #333333;
-  margin-bottom: 5rem;
-  height: 100%; }
+  color: #333;
+  height: 100%;
+  margin-bottom: 5rem; }
 
 ::-moz-selection {
   background: rgba(250, 128, 114, 0.5);
-  color: #333333; }
+  color: #333; }
 
 ::selection {
   background: rgba(250, 128, 114, 0.5);
-  color: #333333; }
+  color: #333; }
 
-/* ==========================================================================
-   Links
-   ========================================================================== */
 a {
+  border-bottom: 1px solid #333;
+  color: #333;
   text-decoration: none;
-  border-bottom: 1px solid #333333;
-  color: #333333;
   -webkit-transition: border-color 180ms ease-in-out;
           transition: border-color 180ms ease-in-out; }
   a img {
     display: block; }
   a:hover {
-    text-decoration: none;
-    border-color: salmon; }
+    border-color: salmon;
+    text-decoration: none; }
 
-/* ==========================================================================
-   Kerning extend
-   ========================================================================== */
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta, input {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
@@ -436,32 +391,23 @@ h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta, input {
      -moz-font-kerning: normal;
           font-kerning: normal; }
 
-/* ==========================================================================
-   Heading extend
-   ========================================================================== */
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.6rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  line-height: 1.6rem; }
 
-/* ==========================================================================
-   Base
-   ========================================================================== */
 body {
   font: 100%/1.6 'minion-pro', Times, 'Times New Roman', serif; }
 
 p {
-  font-size: 1rem;
-  line-height: 1.4rem;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  font-size: 1rem;
+  line-height: 1.4rem; }
 
-/* ==========================================================================
-   Headings
-   ========================================================================== */
 h1 {
   font-size: 2.618rem;
   font-style: normal; }
@@ -482,8 +428,8 @@ h6 {
   font-size: 2.2rem; }
 
 .meta {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 
 .illustrator-meta-name {
   font-family: 'minion-pro', Times, 'Times New Roman', serif;
@@ -506,40 +452,37 @@ h6 {
       border-color: salmon; }
 
 .illustrator-nav-single a {
-  border: none; }
+  border: 0; }
 
 .thesis-title {
   font-size: 1rem;
   line-height: 1.2rem; }
 
 #full-image {
-  margin: 0 auto;
+  cursor: e-resize;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  cursor: e-resize;
-  max-width: 100%;
+  margin: 0 auto;
   max-height: 100%;
+  max-width: 100%;
   opacity: 0; }
 
 figure {
   margin: 0; }
   figure img {
-    display: block;
-    max-width: 100%;
-    height: auto;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-    margin: 0 auto; }
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%; }
 
 .wp-post-image {
   display: block;
-  max-width: 100%;
-  height: auto; }
+  height: auto;
+  max-width: 100%; }
 
-/* ==========================================================================
-   Unordered lists
-   ========================================================================== */
 ul {
   margin: 0;
   padding: 0;
@@ -558,14 +501,9 @@ ul {
   width: 50%;
   background: -webkit-linear-gradient(45deg, rgba(250, 128, 114, 0.85), #fa8072);
   background: linear-gradient(45deg, rgba(250, 128, 114, 0.85), #fa8072);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 
-/**
-*
-* Close button
-*
-**/
 .close-panel {
   cursor: pointer;
   position: absolute;
@@ -574,11 +512,11 @@ ul {
   z-index: 300; }
 
 #clock {
-  position: fixed;
+  cursor: pointer;
   left: calc(3% - 20px);
+  position: fixed;
   top: 20px;
-  z-index: 300;
-  cursor: pointer; }
+  z-index: 300; }
   #clock:hover .hour-hand, #clock.reverse .hour-hand {
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
@@ -588,14 +526,14 @@ ul {
         -ms-transform: rotate(180deg);
             transform: rotate(180deg); }
   #clock .hour-hand, #clock .minute-hand {
-    -webkit-transition: -webkit-transform 500ms ease-in-out;
-            transition: transform 500ms ease-in-out;
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
             transform: rotate(0deg);
     -webkit-transform-origin: 15.5px 15.5px;
         -ms-transform-origin: 15.5px 15.5px;
-            transform-origin: 15.5px 15.5px; }
+            transform-origin: 15.5px 15.5px;
+    -webkit-transition: -webkit-transform 500ms ease-in-out;
+            transition: transform 500ms ease-in-out; }
   #clock.reverse .clock-face {
     fill: #fff; }
   #clock.reverse .hour-hand, #clock.reverse .minute-hand {
@@ -662,15 +600,10 @@ ul {
 .search-container .screen-reader-text {
   display: none; }
 
-/**
-*
-* Typeahead
-*
-**/
 .tt-hint {
-  color: #f96a59;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  color: #f96a59; }
 
 .tt-dropdown-menu {
   width: 100%; }
@@ -678,7 +611,7 @@ ul {
     font-size: 3rem; }
 
 .tt-suggestion {
-  opacity: 0.75;
+  opacity: .75;
   -webkit-transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
           transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out; }
 
@@ -815,53 +748,47 @@ ul {
   left: calc(3% + 4px);
   letter-spacing: 1px; }
   .single .year-indicator .year-current {
-    opacity: 0.25; }
+    opacity: .25; }
   .year-indicator a {
     color: salmon;
     border-bottom: 0; }
 
-/* ==========================================================================
-   Global header elements
-   ========================================================================== */
 #app-head {
   position: absolute;
   top: 0; }
   #app-head .logo {
-    height: 25px;
-    line-height: 25px;
-    color: rgba(51, 51, 51, 0.25);
-    text-align: center;
-    display: block;
-    z-index: 300;
-    position: fixed;
-    top: 20px;
-    left: calc(3% + 20px);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     border-bottom: 0;
+    color: rgba(51, 51, 51, 0.25);
+    display: block;
+    height: 25px;
+    left: calc(3% + 20px);
+    line-height: 25px;
+    position: fixed;
+    text-align: center;
+    top: 20px;
     -webkit-transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
             transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
+    z-index: 300; }
     #app-head .logo:hover {
       color: salmon; }
   #app-head .sticky--unpinned .logo {
-    top: -20px;
-    opacity: 0; }
+    opacity: 0;
+    top: -20px; }
 
-/* ==========================================================================
-   Illustrator page layout
-   ========================================================================== */
 .single .illustrator {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
   padding: 0 3%; }
 
 #illustrator-meta {
@@ -889,9 +816,9 @@ ul {
   #illustrator-meta .illustrator-meta-description {
     width: 100%; }
   #illustrator-meta .illustrator-nav-single {
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    opacity: 0.5;
+    -webkit-font-smoothing: antialiased;
+    opacity: .5;
     position: absolute;
     font-style: italic;
     padding: 40px 0;
@@ -922,12 +849,12 @@ ul {
   -webkit-flex: 1 1 70%;
       -ms-flex: 1 1 70%;
           flex: 1 1 70%;
-  max-width: 1240px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  max-width: 1240px; }
   #illustrator-gallery-container .gallery-item {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(.95);
+        -ms-transform: scale(.95);
+            transform: scale(.95);
     opacity: 0;
     width: calc(50% - 20px); }
     #illustrator-gallery-container .gallery-item.velocity-animating {
@@ -951,25 +878,27 @@ ul {
   bottom: 0; }
 
 #image-modal-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   bottom: 10px;
-  left: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  left: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px; }
 
 .title {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   opacity: 0;
-  -webkit-transform: scale(0.95);
-      -ms-transform: scale(0.95);
-          transform: scale(0.95);
+  -webkit-transform: scale(.95);
+      -ms-transform: scale(.95);
+          transform: scale(.95);
   position: fixed;
   padding: 0 20px;
   top: 20px;
@@ -993,11 +922,7 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #333333;
-  -webkit-transition: -webkit-transform 250ms;
-          transition: transform 250ms;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  color: #333; }
   .title a {
     color: salmon;
     border-color: salmon; }
@@ -1021,7 +946,7 @@ ul {
         -ms-flex: 0 0 100%;
             flex: 0 0 100%; }
   .title .colophon {
-    border: none;
+    border: 0;
     position: absolute;
     bottom: 20px;
     font-size: .75rem; }
@@ -1055,9 +980,6 @@ ul {
   100% {
     background-position: 50% 0%; } }
 
-/* ==========================================================================
-   Homepage
-   ========================================================================== */
 .home, .archive, .search {
   margin: 0 3%; }
   .home #app-head .logo, .archive #app-head .logo, .search #app-head .logo {
@@ -1066,9 +988,9 @@ ul {
     max-width: 1920px;
     margin: 0 auto; }
   .home .illustrator, .archive .illustrator, .search .illustrator {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(.95);
+        -ms-transform: scale(.95);
+            transform: scale(.95);
     opacity: 0; }
     .home .illustrator.velocity-animating, .archive .illustrator.velocity-animating, .search .illustrator.velocity-animating {
       -webkit-transition: -webkit-transform 500ms;
@@ -1088,6 +1010,8 @@ ul {
   display: block; }
 
 .search .page-title {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   position: fixed;
   top: 20px;
@@ -1097,19 +1021,17 @@ ul {
   font-size: 1rem;
   z-index: 100;
   color: salmon;
-  opacity: 0.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  opacity: .5; }
   .search .page-title mark {
     background: none;
     color: salmon; }
 
 #illustrators .illustrator-meta-container {
-  opacity: 0.5;
+  opacity: .5;
   -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
           transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 #illustrators .illustrator:hover .illustrator-meta-container {
   opacity: 1;
   color: salmon; }
@@ -1131,31 +1053,24 @@ ul {
     border-bottom: 0; }
 
 input {
-  border: none;
-  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  border: 0;
+  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif; }
 
 input[type=search] {
   background: none;
-  border: none;
+  border: 0;
   display: block;
   width: 100%; }
 
-/**
-*
-* Placeholder styling
-*
-**/
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.75); }
 
 :-moz-placeholder {
-  /* Firefox 18- */
   color: rgba(255, 255, 255, 0.75); }
 
 ::-moz-placeholder {
-  /* Firefox 19+ */
   color: rgba(255, 255, 255, 0.75); }
 
 :-ms-input-placeholder {

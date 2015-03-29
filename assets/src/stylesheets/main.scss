@@ -1,12 +1,8 @@
-/* ==========================================================================
-   Vendor styles (e.g. normalize, bootstrap)
-   ========================================================================== */
+// Vendor styles (e.g. normalize, bootstrap)
 
 @import 'vendor/normalize';
 
-/* ==========================================================================
-   Component styles (e.g. mixins, vars)
-   ========================================================================== */
+// Component styles (e.g. mixins, vars)
 
 @import 'components/boxsizing';
 @import 'components/variables';
@@ -14,9 +10,7 @@
 @import 'components/helpers';
 @import 'components/fontface';
 
-/* ==========================================================================
-   Modules styles (e.g. layouts, typography)
-   ========================================================================== */
+// Modules styles (e.g. layouts, typography)
 
 @import 'modules/loader';
 @import 'modules/base';

@@ -4,10 +4,12 @@
   top: 71px;
   z-index: $z-300;
   cursor: pointer;
+
   &.reverse {
     .handle {
       stroke: #fff;
     }
+
     .glass {
       fill: #fff;
     }
@@ -18,7 +20,9 @@
   transition: transform 200ms ease-in-out;
   transform: rotate(0deg);
   transform-origin: 11.5px 11.5px;
-  &:hover, .reverse & {
+
+  &:hover,
+  .reverse & {
     transform: rotate(45deg);
   }
 }
@@ -27,12 +31,14 @@
   padding-top: 55px;
   color: #fff;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
+
   label {
     width: 60%;
   }
+
   .twitter-typeahead {
     width: 100%;
   }
@@ -41,6 +47,7 @@
 .search-field {
   padding: 10px 0;
   box-shadow: 0 2px 0 #fff;
+
   &:focus {
     outline: none;
   }
@@ -60,26 +67,24 @@
   }
 }
 
-/**
-*
-* Typeahead
-*
-**/
+
+// Typeahead
 
 .tt-hint {
-  color: darken($accent,5%);
   @include font-smoothing(on);
+  color: darken($accent, 5%);
 }
 
 .tt-dropdown-menu {
   width: 100%;
+  
   p {
     font-size: 3rem;
   }
 }
 
 .tt-suggestion {
-  opacity: 0.75;
+  opacity: .75;
   transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
 }
 

@@ -9,15 +9,12 @@
   overflow: hidden;
   display: none;
   width: 50%;
-  background: linear-gradient(45deg, rgba($accent,0.85), rgba($accent,1));
+  background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
   @include font-smoothing(on);
 }
 
-/**
-*
-* Close button
-*
-**/
+
+// Close button
 
 .close-panel {
   cursor: pointer;

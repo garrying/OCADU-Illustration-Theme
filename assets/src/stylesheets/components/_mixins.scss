@@ -1,14 +1,11 @@
-/* ==========================================================================
-   Font smoothing
-   ========================================================================== */
+// Font smoothing
 
 @mixin font-smoothing($value: on) {
   @if $value == on {
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  @else {
-    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: antialiased;
+  } @else {
     -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
   }
 }

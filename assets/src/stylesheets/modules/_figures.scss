@@ -1,25 +1,26 @@
 #full-image {
-  margin: 0 auto;
-  display: flex;
   cursor: e-resize;
-  max-width: 100%;
+  display: flex;
+  margin: 0 auto;
   max-height: 100%;
+  max-width: 100%;
   opacity: 0;
 }
 
 figure {
   margin: 0;
+
   img {
+    box-shadow: 0 1px 1px 0 rgba(#000, .05);
     display: block;
-    max-width: 100%;
     height: auto;
-    box-shadow: 0 1px 1px 0 rgba(#000,0.05);
     margin: 0 auto;
+    max-width: 100%;
   }
 }
 
 .wp-post-image {
   display: block;
-  max-width: 100%;
   height: auto;
+  max-width: 100%;
 }

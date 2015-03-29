@@ -1,47 +1,47 @@
-/* ==========================================================================
-   Global header elements
-   ========================================================================== */
+// Global header elements
 
 #app-head {
   position: absolute;
   top: 0;
   .logo {
-    height: 25px;
-    line-height: 25px;
-    color: rgba($site-font-color,0.25);
-    text-align: center;
-    display: block;
-    z-index: $z-300;
-    position: fixed;
-    top: 20px;
-    left: calc(3% + 20px);
-    border-bottom: 0;
-    transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
     @include font-smoothing(on);
+    border-bottom: 0;
+    color: rgba($site-font-color, .25);
+    display: block;
+    height: 25px;
+    left: calc(3% + 20px);
+    line-height: 25px;
+    position: fixed;
+    text-align: center;
+    top: 20px;
+    transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
+    z-index: $z-300;
+
     &:hover {
       color: $accent;
     }
   }
+
   .sticky--unpinned .logo {
-    top: -20px;
     opacity: 0;
+    top: -20px;
   }
 }
 
-/* ==========================================================================
-   Illustrator page layout
-   ========================================================================== */
+
+// Illustrator page layout
 
 .single .illustrator {
   display: flex;
-  justify-content: center;
   flex-flow: row wrap;
+  justify-content: center;
   padding: 0 3%;
 }
 
 #illustrator-meta {
   flex: 1 1 30%;
   padding: 20px;
+
   .illustrator-meta-wrapper {
     position: fixed;
     width: 25%;
@@ -51,12 +51,14 @@
     flex-flow: row wrap;
     align-items: center;
   }
+
   .illustrator-meta-description {
     width: 100%;
   }
+
   .illustrator-nav-single {
     @include font-smoothing(on);
-    opacity: 0.5;
+    opacity: .5;
     position: absolute;
     font-style: italic;
     padding: 40px 0;
@@ -65,13 +67,16 @@
     right: 0;
     display: flex;
     justify-content: space-between;
+
     .nav-next {
       text-align: right;
     }
+
     .name {
       opacity: 0;
       transition: opacity 180ms ease-in-out;
     }
+
     &:hover .name {
       opacity: 1;
     }
@@ -83,19 +88,23 @@
 
 #illustrator-gallery-container {
   flex: 1 1 70%;
-  max-width: 1240px;
   margin-top: 20px;
+  max-width: 1240px;
+
   .gallery-item {
-    transform: scale(0.95);
+    transform: scale(.95);
     opacity: 0;
     width: calc(50% - 20px);
+
     &.velocity-animating {
       transition: transform 500ms;
     }
+
     &.loaded {
       transform: scale(1);
     }
   }
+
   a {
     cursor: zoom-in;
   }
@@ -107,16 +116,16 @@
   z-index: $z-100;
   left: 31%;
   right: 0;
-  background: rgba($site-background,0.75);
+  background: rgba($site-background,.75);
   bottom: 0;
 }
 
 #image-modal-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  align-items: center;
   bottom: 10px;
-  left: 10px;
   display: flex;
-  align-items:center; 
+  left: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }

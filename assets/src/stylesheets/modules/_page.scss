@@ -1,14 +1,17 @@
 .page {
+  
   #content {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-flow: row wrap;
     padding: 0 3%;
   }
+
   .hentry {
     margin: 0 auto;
     max-width: 850px;
     padding: 0 10%;
+
     p {
       font-size: 1.25rem;
       line-height: 1.75rem;
@@ -25,8 +28,10 @@
   bottom: 0;
   right: 0;
   left: 0;
+
   .emoji {
     position: absolute;
+
     &.big {
       font-size: 60px;
     }
