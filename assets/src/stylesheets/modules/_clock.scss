@@ -25,12 +25,12 @@
 
   &.reverse {
     .clock-face {
-      fill: #fff;
+      fill: $white;
     }
 
     .hour-hand, 
     .minute-hand {
-      stroke: #fff;
+      stroke: $white;
     }
   }
 }

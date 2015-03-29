@@ -15,17 +15,17 @@ input[type=search] {
 // Placeholder styling
 
 ::-webkit-input-placeholder {
-  color: rgba(#fff, .75);
+  color: rgba($white, .75);
 }
 
 :-moz-placeholder {
-  color: rgba(#fff, .75);  
+  color: rgba($white, .75);  
 }
 
 ::-moz-placeholder {
-  color: rgba(#fff, .75);  
+  color: rgba($white, .75);  
 }
 
 :-ms-input-placeholder {  
-  color: rgba(#fff, .75);  
+  color: rgba($white, .75);  
 }

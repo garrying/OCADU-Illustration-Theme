@@ -7,11 +7,11 @@
 
   &.reverse {
     .handle {
-      stroke: #fff;
+      stroke: $white;
     }
 
     .glass {
-      fill: #fff;
+      fill: $white;
     }
   }
 }
@@ -29,7 +29,7 @@
 
 .search-form {
   padding-top: 55px;
-  color: #fff;
+  color: $white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +46,7 @@
 
 .search-field {
   padding: 10px 0;
-  box-shadow: 0 2px 0 #fff;
+  box-shadow: 0 2px 0 $white;
 
   &:focus {
     outline: none;
@@ -56,7 +56,7 @@
 .search-submit {
   display: none;
   background: none;
-  color: #fff;
+  color: $white;
   padding: 10px 0;
 }
 
