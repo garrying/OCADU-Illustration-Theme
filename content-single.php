@@ -7,7 +7,7 @@
           <?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
             
             <?php
-              $title_illu = get_post_meta($post->ID, 'illu_title', true);
+              $title_illu = esc_html( get_post_meta($post->ID, 'illu_title', true) );
               $text = '<h2 class="thesis-title p-name">' . $title_illu . '</h2>' . get_the_content(); 
               echo apply_filters('the_content', $text);
             ?>
