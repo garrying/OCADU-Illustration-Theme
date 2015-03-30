@@ -69,9 +69,9 @@
             <div class="year-select-wrapper">
               <?php foreach( $grad_year as $year ) {
                 if (isset($selected_year) && $selected_year == $year->name) {
-                  echo "<a class='year-item active' href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>";
+                  echo "<a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
                 } else {
-                  echo "<a class='year-item' href='". get_term_link( $year->slug, 'gradyear' )."' title='View Work From ".$year->name."'>";
+                  echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
                 }
                   echo $year->name;
                 echo "</a>";
