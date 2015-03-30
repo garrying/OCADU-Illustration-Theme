@@ -29,19 +29,27 @@
           </header><!-- .entry-header -->
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-            <div class="meta site truncate u-url"><a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div>
+            <div class="meta site truncate u-url">
+              <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?></a>
+              </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-            <div class="meta site truncate u-url"><a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div>
+            <div class="meta site truncate u-url">
+              <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?></a>
+            </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-            <div class="meta email truncate u-email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></div>
+            <div class="meta email truncate u-email">
+              <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
+            </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-            <div class="meta phone p-tel"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div>
+            <div class="meta phone p-tel">
+              <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
+            </div>
           <?php endif; ?>
         </div>
       </div>
