@@ -6,6 +6,8 @@
 
 add_theme_support( 'post-thumbnails' );
 
+add_image_size( 'illustrator-social', 600, 315, true );
+
 /**
  * Wordpress Default Header Cleanup
  */
@@ -202,106 +204,89 @@ add_filter('excerpt_more', 'new_excerpt_more');
  */
 
 function get_socialimage() {
-	global $post, $posts;
+  global $post, $posts;
 
-	if(is_single() && has_post_thumbnail($post->ID) ) {
-		$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail', '' );
-		$socialimg = $src[0];
-	} else {
-		$socialimg = '';
-	}
+  if(is_single() && has_post_thumbnail($post->ID) ) {
+    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'illustrator-social', '' );
+    $socialimg = $src[0];
+  } else {
+    $socialimg = '';
+  }
 
-	if(empty($socialimg))
-		$socialimg = get_template_directory_uri() . '/nothumb.png';
+  if(empty($socialimg))
+    $socialimg = get_template_directory_uri() . '/nothumb.jpg';
 
-	return $socialimg;
+  return $socialimg;
 }
 
-/**
- * For truncating excerpt text in OpenGraph/G+ header
- */
-
-function ellipsis($text, $max=155, $append='...') {
-	if (strlen($text) <= $max) return $text;
-	$out = substr($text,0,$max);
-	if (strpos($text,' ') === FALSE) return $out.$append;
-	return preg_replace('/\w+$/','',$out).$append;
-}
 
 /**
- * Facebook share
+ * Open Graph
  */
 
-function facebook_connect() {
-	if (is_singular() && is_attachment() !== true ) {
-		echo "\n" . '<!-- facebook open graph -->' . "\n";
-		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
-		global $post;
-		$the_excerpt = strip_tags($post->post_content);
-		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
-		echo '<meta property="og:url" content="'. get_permalink() .'"/>' . "\n";
-		echo '<meta property="og:title" content="'.get_the_title().'" />' . "\n";
-		echo '<meta property="og:type" content="article"/>' . "\n";
-		echo '<meta property="og:description" content="'.ellipsis($the_excerpt).'" />' . "\n";
-		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<!-- end facebook open graph -->' . "\n";
-	}
-	if (is_home() || is_archive()) {
-		echo "\n" . '<!-- facebook open graph -->' . "\n";
-		echo '<meta property="fb:app_id" content="148674908582475"/>' . "\n";
-		echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'"/>' . "\n";
-		echo '<meta property="og:title" content="'. get_bloginfo("name") .'"/>' . "\n";
-		echo '<meta property="og:url" content="'. site_url() .'"/>' . "\n";
-		echo '<meta property="og:image" content="'. get_socialimage() .'"/>' . "\n";
-		echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
-		echo '<meta property="og:type" content="website"/>' . "\n";
-		echo '<!-- end facebook open graph -->' . "\n";
-	}
-}
+function ocadu_social_meta() {
+  echo "\n" . '<!-- social meta -->' . "\n";
+  echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
+  echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'">' . "\n";
+  if (is_singular() && is_attachment() !== true ) {
+    global $post;
+    $the_excerpt = strip_tags($post->post_content);
+    echo '<meta property="og:url" content="'. get_permalink() .'">' . "\n";
+    echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
+    echo '<meta property="og:type" content="article"/>' . "\n";
+    echo '<meta property="og:description" content="'. $the_excerpt .'">' . "\n";
+    echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
 
-/**
- * Google +1 meta info
- */
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
+    echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
+    echo '<meta name="twitter:description" content="'. $the_excerpt .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
 
-function google_header() {
-	if (is_singular() && is_attachment() !== true) {
-		echo '<!-- google +1 tags -->' . "\n";
-		global $post;
-		$the_excerpt = strip_tags($post->post_content);
-		echo '<meta itemprop="name" content="'.get_the_title().'">' . "\n";
-		echo '<meta itemprop="description" content="'.ellipsis($the_excerpt).'">' . "\n";
-		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
-		echo '<!-- end google +1 tags -->' . "\n";
-	}
-	if (is_home() || is_archive()) {
-		echo '<!-- google +1 tags -->' . "\n";
-		echo '<meta itemprop="name" content="'. get_bloginfo("name") .'">' . "\n";
-		echo '<meta itemprop="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
-		echo '<meta itemprop="image" content="'. get_socialimage() .'">' . "\n";
-		echo '<!-- end google +1 tags -->' . "\n";
-	}
+  }
+  if (is_home() || is_archive()) {
+    if (is_home()) {
+      echo '<meta property="og:title" content="'. get_bloginfo("name") .'">' . "\n";
+    } else {
+      $selected_year = single_term_title('', false);
+      echo '<meta property="og:title" content="'. get_bloginfo("name") ." ". $selected_year .'">' . "\n";
+    }
+    echo '<meta property="og:url" content="'. site_url() .'">' . "\n";
+    echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
+    echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
+    echo '<meta property="og:type" content="website">' . "\n";
+
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
+    echo '<meta name="twitter:title" content="'. get_bloginfo("name") .'">' . "\n";
+    echo '<meta name="twitter:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
+
+  }
+  echo '<!-- end social meta -->' . "\n";
+
 }
 
 /**
  * General description meta
  */
 
-function plain_description() {
-	if (is_singular() && is_attachment() !== true) {
-		global $post;
-		$the_excerpt = strip_tags($post->post_content);
-		echo '<meta name="description" content="'.ellipsis($the_excerpt).'">' . "\n";
-	}
-	if (is_home() || is_archive()) {
-		echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014." />' . "\n";
-	}
+function ocadu_plain_description() {
+  if (is_singular() && is_attachment() !== true) {
+    global $post;
+    $the_excerpt = strip_tags($post->post_content);
+    echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
+  }
+  if (is_home() || is_archive()) {
+    echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2014.">' . "\n";
+  }
 }
 
 /**
  * Prefetch Illustrator Pages
  */
 
-function html_prefetch() {
+function ocadu_prefetch() {
 	if (is_single() && is_attachment() !== true) {
 		$theUrl = next_post_link_plus( array('order_by' => 'post_title', 'in_same_tax' => true, 'return' => 'href') );
 		echo '<!-- prefetch and render -->' . "\n";
@@ -310,10 +295,9 @@ function html_prefetch() {
 	}
 }
 
-add_action('wp_head', 'facebook_connect');
-add_action('wp_head', 'google_header');
-add_action('wp_head', 'plain_description');
-add_action('wp_head', 'html_prefetch');
+add_action('wp_head', 'ocadu_social_meta');
+add_action('wp_head', 'ocadu_plain_description');
+add_action('wp_head', 'ocadu_prefetch');
 
 /**
  * Hijack image titles for copyright alt
