@@ -856,7 +856,8 @@ ul {
         -ms-transform: scale(.95);
             transform: scale(.95);
     opacity: 0;
-    width: calc(50% - 20px); }
+    width: calc(50% - 20px);
+    margin-bottom: 20px; }
     #illustrator-gallery-container .gallery-item.velocity-animating {
       -webkit-transition: -webkit-transform 500ms;
               transition: transform 500ms; }

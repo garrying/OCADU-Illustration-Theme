@@ -95,6 +95,7 @@
     transform: scale(.95);
     opacity: 0;
     width: calc(50% - 20px);
+    margin-bottom: 20px;
 
     &.velocity-animating {
       transition: transform 500ms;

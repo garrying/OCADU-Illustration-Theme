@@ -1,7 +1,7 @@
 'use strict';
 
 $(function() {
-    FastClick.attach(document.body);
+  FastClick.attach(document.body);
 });
 
 /**
@@ -85,7 +85,7 @@ var nextImage;
 var imageIndex = 1;
 
 container.imagesLoaded( function() {
-  container.packery({
+  container.masonry({
     itemSelector: '.gallery-item',
     transitionDuration: '250ms',
     gutter: 20
@@ -241,7 +241,7 @@ if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').has
   var homeContainer = $('#illustrators');
 
   homeContainer.imagesLoaded( function() {
-    homeContainer.packery({
+    homeContainer.masonry({
       itemSelector: '.gallery-item',
       transitionDuration: '250ms',
       gutter: 0
