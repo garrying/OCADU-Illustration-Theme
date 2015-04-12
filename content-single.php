@@ -1,4 +1,6 @@
-<article <?php post_class(); ?> role="article">
+<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/CreativeWork">
+
+
   <div id="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
       <div class="illustrator-meta-wrapper-inner">
@@ -8,46 +10,44 @@
             
             <?php
               $title_illu = esc_html( get_post_meta($post->ID, 'illu_title', true) );
-              $text = '<h2 class="thesis-title p-name">' . $title_illu . '</h2>' . get_the_content(); 
-              echo apply_filters('the_content', $text);
-            ?>
-
-          <?php else: ?>
-            
-            <?php 
-              $text = get_the_content(); 
-              echo apply_filters('the_content', $text); 
-            ?>
+              echo '<h2 class="thesis-title p-name" itemprop="name">' . $title_illu . '</h2>';
+            ?>            
           
           <?php endif; ?>
 
+          <?php the_content(); ?>
+
+          <meta itemprop="description" content="<?php $text = strip_tags(get_the_content()); echo wptexturize($text); ?>">
+          <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
+          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID)); echo $image ?>">
+
         </div>
 
-        <div class="illustrator-meta-detail">
+        <div class="illustrator-meta-detail" itemscope itemtype="http://schema.org/Person">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name p-author"><?php the_title(); ?></h1>
+            <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
           </header><!-- .entry-header -->
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-            <div class="meta site truncate u-url">
+            <div class="meta site truncate u-url" itemprop="url">
               <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?></a>
               </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-            <div class="meta site truncate u-url">
+            <div class="meta site truncate u-url" itemprop="url">
               <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-            <div class="meta email truncate u-email">
+            <div class="meta email truncate u-email" itemprop="email">
               <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-            <div class="meta phone p-tel">
+            <div class="meta phone p-tel" itemprop="telephone">
               <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
             </div>
           <?php endif; ?>
@@ -78,4 +78,4 @@
     </div>
   </div>
 
-</article><!-- <?php the_title(); ?> -->
+</article><!-- Illustrator content -->

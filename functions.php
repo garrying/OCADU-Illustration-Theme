@@ -253,7 +253,7 @@ function ocadu_social_meta() {
   echo '<meta property="og:site_name" content="'. get_bloginfo("name") .'">' . "\n";
   if (is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = strip_tags($post->post_content);
+    $the_excerpt = wptexturize(strip_tags($post->post_content));
     echo '<meta property="og:url" content="'. get_permalink() .'">' . "\n";
     echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta property="og:type" content="article"/>' . "\n";
