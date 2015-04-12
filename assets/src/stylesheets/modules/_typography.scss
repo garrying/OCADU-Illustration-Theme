@@ -1,6 +1,6 @@
 // Kerning extend
 
-%font-kern {
+%font-features {
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
   font-kerning: normal;
@@ -9,7 +9,7 @@
 // Heading extend
 
 %heading {
-  @extend %font-kern;
+  @extend %font-features;
   @include font-smoothing(on);
   font-family: $sans-serif;
   font-weight: 400;
@@ -25,7 +25,7 @@ body {
 }
 
 p {
-  @extend %font-kern;
+  @extend %font-features;
   @include font-smoothing(on);
   font-size: 1rem;
   line-height: 1.4rem;
@@ -69,7 +69,7 @@ h6 {
 }
 
 .meta {
-  @extend %font-kern;
+  @extend %font-features;
   @include font-smoothing(on);
 }
 

@@ -382,7 +382,7 @@ a {
     border-color: salmon;
     text-decoration: none; }
 
-h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta, input {
+h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
      -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;

@@ -2,9 +2,7 @@ $(function() {
   
   'user strict';
 
-  $(function() {
-    FastClick.attach(document.body);
-  });
+  FastClick.attach(document.body);
 
   /**
   *
@@ -35,16 +33,14 @@ $(function() {
   *
   **/
 
-  var doCascade = function (selector, delay) {
+  var doCascade = function (selector, delayNum) {
     $(selector).each(function (i) {
       var item = $(this);
-      setTimeout(function() {
-        item.velocity({ opacity: 1, scale: 1 },{
-          complete: function() {
-            item.addClass('loaded');
-          }
-        });
-      }, delay*i);
+      item.delay(delayNum*i).velocity({ opacity: 1, scale: 1 },{
+        complete: function() {
+          item.addClass('loaded');
+        }
+      });
     });
   };
 
@@ -202,9 +198,7 @@ $(function() {
       $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
       $('.year-item').each(function(i){
         var item = $(this);
-        setTimeout(function() {
-          item.velocity({ opacity: 1 }).addClass('loaded');
-        }, 100*i);
+          item.delay(100*i).velocity({ opacity: 1 }).addClass('loaded');
       });
     }
   });
