@@ -4,8 +4,6 @@
 
   <?php if ( have_posts() ) : ?>
 
-    <?php query_posts($query_string . '&orderby=title&order=ASC');?>
-
     <?php /* Start the Loop */ ?>
     <?php while ( have_posts() ) : the_post(); ?>
 
@@ -28,6 +26,7 @@
     </article><!-- #post-0 -->
 
   <?php endif; ?>
+  
 </div>
 
 <?php get_footer(); ?>
