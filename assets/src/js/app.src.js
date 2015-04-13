@@ -86,7 +86,7 @@ $(function() {
     container.masonry({
       itemSelector: '.gallery-item',
       transitionDuration: '250ms',
-      gutter: 20
+      percentPosition: true
     });
     doCascade('.gallery-item',100);
     $('.illustrator-meta-wrapper-inner').velocity('fadeIn');

@@ -856,8 +856,8 @@ ul {
         -ms-transform: scale(.95);
             transform: scale(.95);
     opacity: 0;
-    width: calc(50% - 20px);
-    margin-bottom: 20px; }
+    width: 50%;
+    padding: 0 20px 20px 0; }
     #illustrator-gallery-container .gallery-item.velocity-animating {
       -webkit-transition: -webkit-transform 500ms;
               transition: transform 500ms; }
@@ -1046,8 +1046,7 @@ ul {
   margin-top: 0;
   margin-bottom: 0; }
 #illustrators .gallery-item {
-  width: 25%;
-  position: relative; }
+  width: 25%; }
   #illustrators .gallery-item a {
     padding: 20px;
     display: block;
