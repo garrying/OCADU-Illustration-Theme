@@ -240,7 +240,7 @@ $(function() {
       homeContainer.masonry({
         itemSelector: '.gallery-item',
         transitionDuration: '250ms',
-        gutter: 0
+        percentPosition: true
       });
       doCascade('.illustrator',100);
       $('.title').velocity({ opacity: 1, scale: 1 });
