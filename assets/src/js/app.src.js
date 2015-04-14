@@ -7,8 +7,6 @@ $(function() {
       this._fastClick();
       this._urlCleanup();
       this._ocadLoader();
-      this._ocadCascade();
-      this._ocadSearch();
       this._ocadSearchPanel();
       this._ocadHeadroom();
       this._ocadYearSelect();
@@ -129,6 +127,9 @@ $(function() {
     },
 
     _ocadSearchPanel: function () {
+      
+      app._ocadSearch();
+
       $('#magnifying-glass').on('click',function(){
         if ($(this).hasClass('reverse')) {
           $(this).removeClass('reverse');
