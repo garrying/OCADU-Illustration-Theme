@@ -1,291 +1,209 @@
 $(function() {
   
-  'user strict';
+  'use strict';
 
-  FastClick.attach(document.body);
+  var app = {  
+    init: function() {
+      this._fastClick();
+      this._urlCleanup();
+      this._ocadLoader();
+      this._ocadCascade();
+      this._ocadSearch();
+      this._ocadSearchPanel();
+      this._ocadHeadroom();
+      this._ocadYearSelect();
+      this._ocadEmojiCanvas();
+      this._ocadHomeLoader();
+      this._ocadPanelsClose();
+      this._ocadGalleryNav();
+      this._ocadUIbinding();
+    },
 
-  /**
-  *
-  * Loader
-  *
-  **/
+    settings: {
+      loader: $('#loader'), 
+      masonryContainer: $('#pack-content'),
+      masonryContainerHome: $('#illustrators'),
+      header: $('#app-head-items')
+    },
 
-  var loaderTarget = $('#loader');
+    _fastClick: function () {
+      FastClick.attach(document.body);
+    },
 
-  var loader = function(e) {
-    if (e === false) {
-      loaderTarget.velocity('fadeOut', { duration: 180 });
-    } else {
-      loaderTarget.velocity('fadeIn', { duration: 180 });
-    }
-  };
-
-  loader(true);
-
-  $(window).load(function() {
-    loader(false);
-  });
-
-
-  /**
-  *
-  * Cascade function
-  *
-  **/
-
-  var doCascade = function (selector, delayNum) {
-    $(selector).each(function (i) {
-      var item = $(this);
-      item.delay(delayNum*i).velocity({ opacity: 1, scale: 1 },{
-        complete: function() {
-          item.addClass('loaded');
-        }
+    _urlCleanup: function () {
+      $('.meta.site a').each(function(){
+        var urlString = $(this).text();
+        var result = urlString.replace(/.*?:\/\//g,'');
+        $(this).text(result);
       });
-    });
-  };
+    },
 
-
-  /**
-  *
-  * Typeahead search
-  *
-  **/
-
-  var illustratorSearch = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: '/wp-json/posts?type=illustrator&filter[posts_per_page]=100&filter[s]=%QUERY',
-    limit: 10
-  });
-   
-  illustratorSearch.initialize();
-   
-  $('.search-field').typeahead(null, {
-    name: 'illustratorName',
-    displayKey: 'title',
-    source: illustratorSearch.ttAdapter()
-  }).on('typeahead:selected', function($e, resultsData){
-    window.location.href = resultsData.link;
-  });
-
-
-  /**
-  *
-  * Packery
-  *
-  **/
-
-  var container = $('#pack-content');
-
-  var galleryImages = [];
-  var itemimgFullsrc;
-  var nextImage;
-  var imageIndex = 1;
-
-  container.imagesLoaded( function() {
-    container.masonry({
-      itemSelector: '.gallery-item',
-      transitionDuration: '250ms',
-      percentPosition: true
-    });
-    doCascade('.gallery-item',100);
-    $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
-
-    container.find('a').each(function(){
-      var y = imageIndex++;
-      $(this).data('index',y);
-      var imageFullurl = $(this).attr('href');
-      galleryImages.push(imageFullurl);
-    });
-
-  });
-
-
-  /**
-  *
-  * Packery item click
-  *
-  **/
-
-  container.on( 'click', '.gallery-item', function( event ) {
-    event.preventDefault();
-    loader(true);
-    itemimgFullsrc = $( event.target ).closest('a').attr('href');
-
-    $('#image-modal-container').html(function (){
-      return '<img id="full-image" src=' + itemimgFullsrc + '>';
-    });
-
-    $('#full-image').imagesLoaded().done(function(){
-      loader(false);
-      $('#image-modal').velocity('fadeIn', { 
-        duration: 180, 
-        begin: function() {
-          $('#pack-content').velocity({scale:0.99, blur:2},'fast');
-        },
-        complete: function() { 
-          $('#full-image').velocity({opacity:1},'fast');
-        } 
-      });
-    });
-
-    imageIndex = $( event.target ).closest('a').data('index');
-
-  });
-
-
-  function nextElement() {
-    loader(true);
-    if (imageIndex === galleryImages.length) {
-      nextImage = galleryImages[0];
-    } else {
-      nextImage = galleryImages[imageIndex];
-    }
-    imageIndex = (imageIndex+1)%(galleryImages.length);
-      
-    $('#full-image').velocity({opacity:0}, {
-      duration: 'fast',
-      complete: function() {
-        var image = new Image();
-        image.src = nextImage;
-        image.onload = function() {
-          $('#full-image').attr('src',this.src);
-          loader(false);
-          $('#full-image').velocity({opacity:1},'fast');
-        };
+    _ocadLoader: function (e) {
+      if (e === false) {
+        app.settings.loader.velocity('fadeOut', { duration: 180 });
+      } else {
+        app.settings.loader.velocity('fadeIn', { duration: 180 });
       }
-    });
+    },
 
-  }
-
-  $('#image-modal-container').on('click','img',function(){
-    nextElement();
-  });
-
-
-  /**
-  *
-  * Clean-up http strings
-  *
-  **/
-
-  $('.meta.site a').each(function(){
-    var urlString = $(this).text();
-    var result = urlString.replace(/.*?:\/\//g,'');
-    $(this).text(result);
-  });
-
-
-  /**
-  *
-  * Year select
-  *
-  **/
-
-  $('#clock').on('click',function(){
-    if ($(this).hasClass('reverse')) {
-      $(this).removeClass('reverse');
-      $('.year-select').velocity('fadeOut', {
-        duration: 180,
-        complete: function(){
-          $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
-        }
-      });
-      $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
-    } else {
-      $(this).addClass('reverse');
-      $('.year-select').velocity('fadeIn', { duration: 180 });
-      $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
-      $('.year-item').each(function(i){
-        var item = $(this);
-          item.delay(100*i).velocity({ opacity: 1 }).addClass('loaded');
-      });
-    }
-  });
-
-
-  /**
-  *
-  * Search panel
-  *
-  **/
-
-  $('#magnifying-glass').on('click',function(){
-    if ($(this).hasClass('reverse')) {
-      $(this).removeClass('reverse');
-      $('.search-container').velocity('fadeOut', { duration: 180 });
-      $('#clock').velocity('fadeIn', { duration: 180 });
-    } else {
-      $(this).addClass('reverse');
-      $('.search-container').velocity('fadeIn', { duration: 180 });
-      $('#clock').velocity('fadeOut', { duration: 180 });
-
-      $('.search-field').focus();
-
-    }
-  });
-
-
-  /**
-   *
-   * Homepage Cascading
-   *
-   **/
-
-  if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
-
-    var homeContainer = $('#illustrators');
-
-    homeContainer.imagesLoaded( function() {
-      homeContainer.masonry({
+    _ocadMasonry: function (selector) {
+      selector.masonry({
         itemSelector: '.gallery-item',
         transitionDuration: '250ms',
         percentPosition: true
       });
-      doCascade('.illustrator',100);
-      $('.title').velocity({ opacity: 1, scale: 1 });
-    });
-  }
+    },
 
-  /**
-  *
-  * Homepage Illustrator effect
-  *
-  **/
+    _ocadCascade: function (selector, delayNum) {
+      $(selector).each(function (i) {
+        var item = $(this);
+        item.delay(delayNum*i).velocity({ opacity: 1, scale: 1 },{
+          complete: function() {
+            item.addClass('loaded');
+          }
+        });
+      });
+    },
 
+    _ocadSearch: function () {
+      var illustratorSearch = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: '/wp-json/posts?type=illustrator&filter[posts_per_page]=100&filter[s]=%QUERY',
+        limit: 10
+      });
+       
+      illustratorSearch.initialize();
+       
+      $('.search-field').typeahead(null, {
+        name: 'illustratorName',
+        displayKey: 'title',
+        source: illustratorSearch.ttAdapter()
+      }).on('typeahead:selected', function($e, resultsData){
+        window.location.href = resultsData.link;
+      });
+    },
 
+    _ocadHeadroom: function () {
+      app.settings.header.headroom({
+        tolerance : {
+          up : 10,
+          down: 5
+        },
+        classes : {
+          // when element is initialised
+          initial : 'sticky',
+          // when scrolling up
+          pinned : 'sticky--pinned',
+          // when scrolling down
+          unpinned : 'sticky--unpinned',
+          // when above offset
+          top : 'sticky--top',
+          // when below offset
+          notTop : 'sticky--not-top'
+        },
+      });
+    },
 
-
-  /**
-  *
-  * Modal dismiss
-  *
-  **/
-
-  var closeAllPanels = function() {
-    $('#image-modal').velocity('fadeOut',{duration: 180 });
-    $('#pack-content').velocity({scale:1},'fast');
-    $('#magnifying-glass, #clock').removeClass('reverse');
-    if ($('.panel').is(':visible')) {
-      $('.panel').velocity('fadeOut', { 
-        duration: 180,
-        complete: function(){
-          $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+    _ocadYearSelect: function () {
+      $('#clock').on('click',function(){
+        if ($(this).hasClass('reverse')) {
+          $(this).removeClass('reverse');
+          $('.year-select').velocity('fadeOut', {
+            duration: 180,
+            complete: function(){
+              $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+            }
+          });
+          $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
+        } else {
+          $(this).addClass('reverse');
+          $('.year-select').velocity('fadeIn', { duration: 180 });
+          $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
+          $('.year-item').each(function(i){
+            var item = $(this);
+            item.delay(100*i).velocity({ opacity: 1 }).addClass('loaded');
+          });
         }
       });
-    }
-    if (!$('#magnifying-glass').is(':visible')) {
-      $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
-    }
-    if (!$('#clock').is(':visible')) {
-      $('#clock').velocity('fadeIn', { duration: 180 });
-    }
-  };
+    },
 
-  var closePanels = function(event) {
-    if (event.type === 'keydown') {
-      closeAllPanels();
-    } else {
+    _ocadSearchPanel: function () {
+      $('#magnifying-glass').on('click',function(){
+        if ($(this).hasClass('reverse')) {
+          $(this).removeClass('reverse');
+          $('.search-container').velocity('fadeOut', { duration: 180 });
+          $('#clock').velocity('fadeIn', { duration: 180 });
+        } else {
+          $(this).addClass('reverse');
+          $('.search-container').velocity('fadeIn', { duration: 180 });
+          $('#clock').velocity('fadeOut', { duration: 180 });
+          $('.search-field').focus();
+        }
+      });
+    },
+
+    _ocadHomeLoader: function () {
+      if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
+        app.settings.masonryContainerHome.imagesLoaded( function() {
+          app._ocadMasonry(app.settings.masonryContainerHome);
+          app._ocadCascade('.illustrator',100);
+          $('.title').velocity({ opacity: 1, scale: 1 });
+        });
+      }
+    },
+
+    _ocadEmojiCanvas: function () {
+      if ($('body').hasClass('error404')) {
+
+        var makeNewPosition = function (){      
+          // Get viewport dimensions (remove the dimension of the div)
+          var h = $(window).height() - 50;
+          var w = $(window).width() - 50;
+          var nh = Math.floor(Math.random() * h)/h * 100;
+          var nw = Math.floor(Math.random() * w)/w * 100;
+          return [nh,nw];
+        };
+
+        var emojiCanvas = function() {
+          $('.emoji').each(function(){
+            var size = Math.round(Math.random()*1);
+            if (size > 0) {
+              size = 'big';
+            } else {
+              size = 'normal';
+            }
+            var newq = makeNewPosition();
+            $(this).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
+          });
+        };
+
+        emojiCanvas();
+        
+      }
+    },
+
+    _ocadPanelsClose: function () {
+      $('#image-modal').velocity('fadeOut',{duration: 180 });
+      $('#pack-content').velocity({scale:1},'fast');
+      $('#magnifying-glass, #clock').removeClass('reverse');
+      if ($('.panel').is(':visible')) {
+        $('.panel').velocity('fadeOut', { 
+          duration: 180,
+          complete: function(){
+            $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+          }
+        });
+      }
+      if (!$('#magnifying-glass').is(':visible')) {
+        $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
+      }
+      if (!$('#clock').is(':visible')) {
+        $('#clock').velocity('fadeIn', { duration: 180 });
+      }
+    },
+
+    _ocadPanelsCloseSelective: function(event) {
       if (!$(event.target).closest('#full-image').length && $('#image-modal').is(':visible')) {
         $('#image-modal').velocity('fadeOut',{duration:180});
         $('#pack-content').velocity({scale:1, blur:0},'fast');
@@ -309,95 +227,112 @@ $(function() {
           $('#clock').velocity('fadeIn', { duration: 180 });
         }
       }
+    },
+
+    _ocadGalleryNav: function () {
+
+      var galleryImages = [];
+      var itemimgFullsrc;
+      var nextImage;
+      var imageIndex = 1;
+
+      app.settings.masonryContainer.imagesLoaded( function() {
+        app._ocadMasonry(app.settings.masonryContainer);
+        app._ocadCascade('.gallery-item',100);
+        $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
+
+        app.settings.masonryContainer.find('a').each(function(){
+          var y = imageIndex++;
+          $(this).data('index',y);
+          var imageFullurl = $(this).attr('href');
+          galleryImages.push(imageFullurl);
+        });
+
+      });
+
+
+      /**
+      * Masonry item click
+      **/
+
+      app.settings.masonryContainer.on( 'click', '.gallery-item', function( event ) {
+        event.preventDefault();
+        app._ocadLoader(true);
+        itemimgFullsrc = $( event.target ).closest('a').attr('href');
+
+        $('#image-modal-container').html(function (){
+          return '<img id="full-image" src=' + itemimgFullsrc + '>';
+        });
+
+        $('#full-image').imagesLoaded().done(function(){
+          app._ocadLoader(false);
+          $('#image-modal').velocity('fadeIn', { 
+            duration: 180, 
+            begin: function() {
+              $('#pack-content').velocity({scale:0.99, blur:2},'fast');
+            },
+            complete: function() { 
+              $('#full-image').velocity({opacity:1},'fast');
+            } 
+          });
+        });
+        imageIndex = $( event.target ).closest('a').data('index');
+      });
+
+
+      function nextElement() {
+        app._ocadLoader(true);
+        if (imageIndex === galleryImages.length) {
+          nextImage = galleryImages[0];
+        } else {
+          nextImage = galleryImages[imageIndex];
+        }
+        imageIndex = (imageIndex+1)%(galleryImages.length);
+          
+        $('#full-image').velocity({opacity:0}, {
+          duration: 'fast',
+          complete: function() {
+            var image = new Image();
+            image.src = nextImage;
+            image.onload = function() {
+              $('#full-image').attr('src',this.src);
+              app._ocadLoader(false);
+              $('#full-image').velocity({opacity:1},'fast');
+            };
+          }
+        });
+      }
+
+      $('#image-modal-container').on('click','img',function(){
+        nextElement();
+      });
+
+    },
+
+    _ocadUIbinding: function () {
+      $('.close-panel').on('click', app._ocadPanelsClose);
+      $(document).on('click', app._ocadPanelsCloseSelective);
+      $(document).keydown(function(e) {
+        if (e.keyCode === 27) {
+          app._ocadPanelsClose();
+        }
+      });
     }
+
   };
 
-
   /**
-  *
-  * Headroom
-  *
+  * Window load ready
   **/
 
-  $('#app-head-items').headroom({
-    tolerance : {
-      up : 10,
-      down: 5
-    },
-    classes : {
-      // when element is initialised
-      initial : 'sticky',
-      // when scrolling up
-      pinned : 'sticky--pinned',
-      // when scrolling down
-      unpinned : 'sticky--unpinned',
-      // when above offset
-      top : 'sticky--top',
-      // when below offset
-      notTop : 'sticky--not-top'
-    },
+  $(window).load(function() {
+    app._ocadLoader(false);
   });
 
-
   /**
-  *
-  * Close panels
-  *
+  * Initialize
   **/
 
-  $('.close-panel').on('click', closeAllPanels);
-
-  $(document).on('click', closePanels );
-
-  $(document).keydown(function(e) {
-    if (e.keyCode === 27) {
-      closePanels(e);
-    }
-  });
-
-
-  /**
-  *
-  * 404
-  *
-  **/
-
-  if ($('body').hasClass('error404')) {
-    
-    var makeNewPosition = function (){      
-      // Get viewport dimensions (remove the dimension of the div)
-      var h = $(window).height() - 50;
-      var w = $(window).width() - 50;
-      var nh = Math.floor(Math.random() * h)/h * 100;
-      var nw = Math.floor(Math.random() * w)/w * 100;
-      return [nh,nw];
-    };
-
-    var emojiCanvas = function() {
-      $('.emoji').each(function(){
-        var size = Math.round(Math.random()*1);
-
-        if (size > 0) {
-          size = 'big';
-        } else {
-          size = 'normal';
-        }
-        var newq = makeNewPosition();
-        $(this).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
-      });
-    };
-
-    emojiCanvas();
-    
-  }
-
-
-  /**
-  *
-  * Initialize Functions
-  *
-  **/
-
-
+  app.init();
 
 });
