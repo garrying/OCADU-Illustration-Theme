@@ -106,11 +106,11 @@ h6 {
 
 .illustrator-nav-single {
   a {
+    color: $white;
     display: block;
     padding: 8px 10px;
     background: none;
     &:hover {
-      color: $white;
       background: $accent;
     }
   }

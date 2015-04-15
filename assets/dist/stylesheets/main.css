@@ -455,11 +455,11 @@ h6 {
       border-color: #6E32FF; }
 
 .illustrator-nav-single a {
+  color: #fff;
   display: block;
   padding: 8px 10px;
   background: none; }
   .illustrator-nav-single a:hover {
-    color: #fff;
     background: #6E32FF; }
 
 .thesis-title {
@@ -819,7 +819,7 @@ ul {
   #illustrator-meta .illustrator-nav-single {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background: #fff;
+    background: #1d1e20;
     position: absolute;
     font-style: italic;
     bottom: 0;
@@ -829,6 +829,7 @@ ul {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
@@ -999,7 +1000,7 @@ ul {
 
 .home {
   margin: 0;
-  background: #1D1E20; }
+  background: #1d1e20; }
   .home #illustrators {
     margin-left: 36%;
     width: 64%; }
