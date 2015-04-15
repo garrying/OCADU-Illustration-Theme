@@ -55,8 +55,8 @@
       </div>
 
       <ul class="illustrator-nav-single">
-        <li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator">↜</span> <span class="truncate name">%title</span>') ); ?></li>
-        <li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator">↝</span>') ); ?></li>
+        <li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">%title</span>') ); ?></li>
+        <li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator"></span>') ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
     </div>
@@ -69,8 +69,8 @@
       print apply_filters( 'the_content', $gallery_shortcode );
     ?>
     <div id="image-modal" class="hidden">
-      <div class="close-panel">
-        <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><g fill="none" stroke="#ffa07a" stroke-linecap="round" stroke-miterlimit="10"><path d="M4.8 5.4L25 25.5M25 5.4L4.8 25.5"/></g></svg>
+      <div class="close-panel alt">
+
       </div>
       <div id="image-modal-container">
         

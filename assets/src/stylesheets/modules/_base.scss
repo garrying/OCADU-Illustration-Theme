@@ -13,8 +13,8 @@ body {
 }
 
 ::selection {
-  background: rgba(salmon, .5);
-  color: $site-font-color;
+  background: lighten($accent, 10%);
+  color: $white;
 }
 
 // Links

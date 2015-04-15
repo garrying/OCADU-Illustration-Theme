@@ -25,42 +25,15 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: height 180ms ease-in-out;
+    transition: background 180ms ease-in-out;
 
     &.loaded {
       opacity: 1;
     }
 
-    &:before,
-    &:after {
-      content: '';
-      height: 2px;
-      position: absolute;
-      background: $accent;
-      width: 30%;
-      top: 50%;
-      right: 0;
-    }
-
-    &:before {
-      left: 0;
-    }
-
-    &:after {
-      right: 0;
-    }
-
-    &.active {
-      height: 150%;
-
-      &:before,
-      &:after {
-        background: $white;
-      }
-    }
-
+    &.active, 
     &:hover {
-      height: 200%;
+      background: darken($accent,5%);
     }
   }
 }
@@ -75,13 +48,10 @@
   letter-spacing: 1px;
 
   .single & {
-    .year-current {
-      opacity: .25;      
-    }
+    opacity: .25;
   }
 
   a {
-    color: $accent;
     background: none;
   }
 }

@@ -107,16 +107,16 @@ module.exports = function (grunt) {
       css: ['assets/dist/stylesheets/{,*/}*.css']
     },
 
-    imagemin: {
-       static: {
-         options: {
-           optimizationLevel: 3
-         },
-         files: {
-           'assets/dist/images/loader.gif': 'assets/src/images/loader.gif'
-         }
-       }
-     },
+    // imagemin: {
+    //    static: {
+    //      options: {
+    //        optimizationLevel: 3
+    //      },
+    //      files: {
+    //        'assets/dist/images/loader.gif': 'assets/src/images/loader.gif'
+    //      }
+    //    }
+    //  },
     
     concat: {
       options: {
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
     'clean',
     'copy',
     'svgmin',
-    'imagemin',
+    // 'imagemin',
     'concat',
     'concurrent:server',
     'autoprefixer'
@@ -201,7 +201,7 @@ module.exports = function (grunt) {
     'copy',
     'uglify',
     'svgmin',
-    'imagemin',
+    // 'imagemin',
     'sass:dist',
     'autoprefixer',
     'cssmin'

@@ -79,7 +79,6 @@
               ?>
             </div>
             <div class="close-panel">
-              <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"><path d="M4.8 5.4L25 25.5M25 5.4L4.8 25.5"/></g></svg>
             </div>
           </div> <!-- .year-Select-->
         </div>
@@ -93,7 +92,6 @@
               <?php get_search_form(); ?>
             </div>
             <div class="close-panel">
-              <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"><path d="M4.8 5.4L25 25.5M25 5.4L4.8 25.5"/></g></svg>
             </div>
           </div>
         </div><!-- .search -->
@@ -113,11 +111,12 @@
 
   <main id="content" role="main">
     <div class="item year-indicator">
-      <span class="year-current"><?php if (isset($selected_year)) { echo $selected_year; } ?></span> 
       <?php if (is_singular('illustrator')) 
-          echo '<a class="year-back" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid"><span>⤴</span></a>';  
+          echo '<a class="year-back" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
+          if (isset($selected_year)) { echo $selected_year; };
+          echo '</a>';  
         ?>
       <?php if (is_archive()) 
-          echo '<a class="year-back" href="/" title="Return to homepage"><span>⤴</span></a>';  
+          echo '<a class="year-back" href="/" title="Return to homepage"></a>';  
         ?>
     </div>

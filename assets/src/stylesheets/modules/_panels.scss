@@ -21,5 +21,13 @@
   position: absolute;
   right: 20px;
   top: 20px;
+  height: 31px;
+  width: 31px;
   z-index: $z-300;
+  background-image: url('../images/close.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  &.alt {
+    background-image: url('../images/close-alt.svg');
+  }
 }

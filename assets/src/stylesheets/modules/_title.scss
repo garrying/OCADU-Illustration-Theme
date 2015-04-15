@@ -3,7 +3,7 @@
   opacity: 0;
   transform: scale(.95);
   position: fixed;
-  padding: 0 20px;
+  padding: 0 0 0 20px;
   top: 20px;
   bottom: 20px;
   width: 35%;
@@ -12,15 +12,11 @@
   transition: flex-grow 1000ms linear;
   justify-content: center;
   z-index: $z-100;
-  color: $site-font-color;
+  color: $white;
 
   a {
     color: $accent;
-    border-color: $accent;
-
-    &:hover {
-      border-color: $white;
-    }
+    background: none;
   }
 
   .title-primary {
@@ -31,7 +27,7 @@
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.55rem;
   }
 
@@ -104,13 +100,19 @@
 }
 
 .home {
-
+  margin: 0;
+  background: #1D1E20;
   #illustrators {
     margin-left: 36%;
     width: 64%;
 
     .gallery-item {
       width: 33.3333333333%;
+
+      a {
+        padding: 0 20px 20px 0;
+        color: $white;
+      }
     }
   }
 }

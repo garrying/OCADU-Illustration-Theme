@@ -58,13 +58,20 @@
 
   .illustrator-nav-single {
     @include font-smoothing(on);
+    background: $white;
     position: absolute;
     font-style: italic;
-    bottom: 40px;
+    bottom: 0;
     left: 0;
     right: 0;
     display: flex;
     justify-content: space-between;
+
+    .nav-previous, .nav-next {
+      float: left;
+      width: 50%;
+      display: block;
+    }
 
     .nav-next {
       text-align: right;
