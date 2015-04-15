@@ -71,6 +71,9 @@ h6 {
 .meta {
   @extend %font-features;
   @include font-smoothing(on);
+  &.phone {
+    font-feature-settings: 'onum' 0, 'tnum' 1;
+  }
 }
 
 .illustrator-meta-name {

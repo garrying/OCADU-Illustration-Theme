@@ -20,18 +20,14 @@ body {
 // Links
 
 a {
-  border-bottom: 1px solid $site-link-color;
   color: $site-link-color;
   text-decoration: none;
-  transition: border-color 180ms ease-in-out;
-
+  background-image: linear-gradient(to bottom, transparent 50%, $accent 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 90%;
   img {
     display: block;
-  }
-
-  &:hover {
-    border-color: $accent;
-    text-decoration: none;
   }
 
   &:focus {

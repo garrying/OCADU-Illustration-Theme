@@ -110,7 +110,7 @@ $(function() {
           $('.year-select').velocity('fadeOut', {
             duration: 180,
             complete: function(){
-              $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+              $('.year-item').velocity({opacity: 0}).removeClass('loaded');
             }
           });
           $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
@@ -120,7 +120,11 @@ $(function() {
           $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
           $('.year-item').each(function(i){
             var item = $(this);
-            item.delay(100*i).velocity({ opacity: 1 }).addClass('loaded');
+            item.delay(100*i).velocity({opacity:1,display:'block'},{
+              complete: function (){
+                item.addClass('loaded');
+              }
+            });
           });
         }
       });
@@ -186,7 +190,7 @@ $(function() {
 
     _ocadPanelsClose: function () {
       $('#image-modal').velocity('fadeOut',{duration: 180 });
-      $('#pack-content').velocity({scale:1},'fast');
+      $('#pack-content').velocity({scale:1, blur:0},'fast');
       $('#magnifying-glass, #clock').removeClass('reverse');
       if ($('.panel').is(':visible')) {
         $('.panel').velocity('fadeOut', { 
@@ -296,9 +300,8 @@ $(function() {
             var image = new Image();
             image.src = nextImage;
             image.onload = function() {
-              $('#full-image').attr('src',this.src);
               app._ocadLoader(false);
-              $('#full-image').velocity({opacity:1},'fast');
+              $('#full-image').attr('src',this.src).velocity({opacity:1},'fast');
             };
           }
         });

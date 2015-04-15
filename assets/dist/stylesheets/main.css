@@ -371,16 +371,15 @@ body {
   color: #333; }
 
 a {
-  border-bottom: 1px solid #333;
   color: #333;
   text-decoration: none;
-  -webkit-transition: border-color 180ms ease-in-out;
-          transition: border-color 180ms ease-in-out; }
+  background-image: -webkit-linear-gradient(top, transparent 50%, salmon 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, salmon 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 90%; }
   a img {
     display: block; }
-  a:hover {
-    border-color: salmon;
-    text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
   text-rendering: optimizeLegibility;
@@ -430,6 +429,10 @@ h6 {
 .meta {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
+  .meta.phone {
+    -webkit-font-feature-settings: 'onum' 0, 'tnum' 1;
+       -moz-font-feature-settings: 'onum' 0, 'tnum' 1;
+            font-feature-settings: 'onum' 0, 'tnum' 1; }
 
 .illustrator-meta-name {
   font-family: 'minion-pro', Times, 'Times New Roman', serif;
@@ -587,7 +590,7 @@ ul {
 
 .search-field {
   padding: 10px 0;
-  box-shadow: 0 2px 0 #fff; }
+  box-shadow: 0 1px 0 #fff; }
   .search-field:focus {
     outline: none; }
 
@@ -608,7 +611,10 @@ ul {
 .tt-dropdown-menu {
   width: 100%; }
   .tt-dropdown-menu p {
-    font-size: 3rem; }
+    font-size: 3rem;
+    line-height: 0.95em;
+    margin: 0;
+    padding: 5px 0; }
 
 .tt-suggestion {
   opacity: .75;
@@ -697,7 +703,7 @@ ul {
   display: -ms-flexbox;
   display: flex;
   color: #fff;
-  border-bottom: none;
+  background: none;
   position: relative;
   letter-spacing: 1px;
   text-align: center;
@@ -751,7 +757,7 @@ ul {
     opacity: .25; }
   .year-indicator a {
     color: salmon;
-    border-bottom: 0; }
+    background: none; }
 
 #app-head {
   position: absolute;
@@ -759,7 +765,7 @@ ul {
   #app-head .logo {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    border-bottom: 0;
+    background: none;
     color: rgba(51, 51, 51, 0.25);
     display: block;
     height: 25px;
@@ -818,11 +824,9 @@ ul {
   #illustrator-meta .illustrator-nav-single {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    opacity: .5;
     position: absolute;
     font-style: italic;
-    padding: 40px 0;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     right: 0;
     display: -webkit-box;
@@ -835,12 +839,6 @@ ul {
             justify-content: space-between; }
     #illustrator-meta .illustrator-nav-single .nav-next {
       text-align: right; }
-    #illustrator-meta .illustrator-nav-single .name {
-      opacity: 0;
-      -webkit-transition: opacity 180ms ease-in-out;
-              transition: opacity 180ms ease-in-out; }
-    #illustrator-meta .illustrator-nav-single:hover .name {
-      opacity: 1; }
   #illustrator-meta .illustrator-meta-wrapper-inner {
     display: none; }
 
@@ -1050,7 +1048,7 @@ ul {
   #illustrators .gallery-item a {
     padding: 20px;
     display: block;
-    border-bottom: 0; }
+    background: none; }
 
 input {
   -moz-osx-font-smoothing: grayscale;

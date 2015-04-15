@@ -5,7 +5,7 @@
   top: 0;
   .logo {
     @include font-smoothing(on);
-    border-bottom: 0;
+    background: none;
     color: rgba($site-font-color, .25);
     display: block;
     height: 25px;
@@ -58,11 +58,9 @@
 
   .illustrator-nav-single {
     @include font-smoothing(on);
-    opacity: .5;
     position: absolute;
     font-style: italic;
-    padding: 40px 0;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     right: 0;
     display: flex;
@@ -70,15 +68,6 @@
 
     .nav-next {
       text-align: right;
-    }
-
-    .name {
-      opacity: 0;
-      transition: opacity 180ms ease-in-out;
-    }
-
-    &:hover .name {
-      opacity: 1;
     }
   }
   .illustrator-meta-wrapper-inner {

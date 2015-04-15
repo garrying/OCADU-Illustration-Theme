@@ -15,7 +15,7 @@
   .year-item {
     display: flex;
     color: $white;
-    border-bottom: none;
+    background: none;
     position: relative;
     letter-spacing: 1px;
     text-align: center;
@@ -82,6 +82,6 @@
 
   a {
     color: $accent;
-    border-bottom: 0;
+    background: none;
   }
 }
