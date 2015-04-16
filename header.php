@@ -26,9 +26,6 @@
   
   <?php wp_head(); ?>
 
-  <script src="//use.typekit.net/gmd4pmi.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
-
 </head>
 
 <body <?php body_class(); ?>>
