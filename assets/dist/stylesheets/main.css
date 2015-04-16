@@ -381,6 +381,29 @@ a {
   a img {
     display: block; }
 
+.screen-reader-shortcut {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
+  color: #6E32FF;
+  background: none;
+  position: absolute;
+  top: 0;
+  left: 60px;
+  padding: 10px;
+  height: 1px;
+  width: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden; }
+  .screen-reader-shortcut:focus {
+    height: auto;
+    width: auto;
+    clip: auto;
+    z-index: 300;
+    top: 0;
+    line-height: 49px;
+    padding: 0 10px; }
+
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
@@ -507,6 +530,7 @@ ul {
   overflow: hidden;
   display: none;
   width: 50%;
+  outline: 0;
   background: -webkit-linear-gradient(45deg, rgba(110, 50, 255, 0.85), #6e32ff);
   background: linear-gradient(45deg, rgba(110, 50, 255, 0.85), #6e32ff);
   -moz-osx-font-smoothing: grayscale;

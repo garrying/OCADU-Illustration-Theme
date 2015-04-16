@@ -112,7 +112,7 @@ $(function() {
             complete: function() {
               $('.year-item').velocity({opacity: 0}).removeClass('loaded');
             }
-          });
+          }).attr('aria-hidden',true);
           $('#magnifying-glass').velocity('fadeIn', { 
             duration: 180,
             complete: function() {
@@ -126,7 +126,7 @@ $(function() {
             complete: function() {
               $('.logo').addClass('invert');
             }
-          });
+          }).attr('aria-hidden',false);
           $('#magnifying-glass').velocity('fadeOut', { duration: 180 });
           $('.year-item').each(function(i){
             var item = $(this);
@@ -152,7 +152,7 @@ $(function() {
             complete: function() {
               $('.logo').removeClass('invert');
             }
-          });
+          }).attr('aria-hidden',true);
           $('#clock').velocity('fadeIn', { duration: 180 });
         } else {
           $(this).addClass('reverse');
@@ -161,7 +161,7 @@ $(function() {
             complete: function() {
               $('.logo').addClass('invert');
             }
-          });
+          }).attr('aria-hidden',false);
           $('#clock').velocity('fadeOut', { duration: 180 });
           $('.search-field').focus();
         }
@@ -218,7 +218,7 @@ $(function() {
           complete: function(){
             $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
           }
-        });
+        }).attr('aria-hidden',true);
       }
       if (!$('#magnifying-glass').is(':visible')) {
         $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
@@ -241,7 +241,7 @@ $(function() {
           complete: function(){
             $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
           }
-        });
+        }).attr('aria-hidden',true);
         if (!$('#magnifying-glass').is(':visible')) {
           $('#magnifying-glass').velocity('fadeIn', { duration: 180 });
         }
@@ -249,7 +249,7 @@ $(function() {
       }
       if (!$(event.target).closest('.search').length && $('.search-container').is(':visible')) {
         $('#magnifying-glass').removeClass('reverse');
-        $('.search-container').velocity('fadeOut', { duration: 180 });
+        $('.search-container').velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
         if (!$('#clock').is(':visible')) {
           $('#clock').velocity('fadeIn', { duration: 180 });
         }

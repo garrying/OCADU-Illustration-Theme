@@ -9,6 +9,7 @@
   overflow: hidden;
   display: none;
   width: 50%;
+  outline: 0;
   background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
   @include font-smoothing(on);
 }

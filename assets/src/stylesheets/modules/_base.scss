@@ -38,3 +38,29 @@ a {
     
   }
 }
+
+// Tab shortcut reveal
+
+.screen-reader-shortcut {
+  @include font-smoothing(on);
+  font-family: $sans-serif;
+  color: $accent;
+  background: none;
+  position: absolute;
+  top: 0;
+  left: 60px;
+  padding: 10px;
+  height: 1px;
+  width: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  &:focus {
+    height: auto;
+    width: auto;
+    clip: auto;
+    z-index: $z-300;
+    top: 0;
+    line-height: 49px;
+    padding: 0 10px;
+  }
+}
