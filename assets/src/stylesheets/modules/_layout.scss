@@ -9,7 +9,7 @@
     color: rgba($site-font-color, .25);
     display: block;
     height: 25px;
-    left: calc(3% + 20px);
+    left: 60px;
     line-height: 25px;
     position: fixed;
     text-align: center;
@@ -40,7 +40,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 0 3%;
+  padding: 0 40px;
 }
 
 #illustrator-meta {
@@ -91,7 +91,11 @@
 #illustrator-gallery-container {
   flex: 1 1 70%;
   margin-top: 20px;
-  max-width: 1240px;
+
+  .gallery {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
 
   .gallery-item {
     transform: scale(.95);

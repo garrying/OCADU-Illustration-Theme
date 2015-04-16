@@ -15,7 +15,7 @@
   color: $white;
 
   a {
-    color: $accent;
+    color: $white;
     background: none;
   }
 
@@ -74,11 +74,7 @@
 .home,
 .archive,
 .search {
-  margin: 0 3%;
-
-  #app-head .logo {
-    display: none;
-  }
+  padding: 0 20px;
 
   #content {
     max-width: 1920px;
@@ -100,7 +96,6 @@
 }
 
 .home {
-  margin: 0;
   background: $site-background-home;
   #illustrators {
     margin-left: 36%;
@@ -110,7 +105,6 @@
       width: 33.3333333333%;
 
       a {
-        padding: 0 20px 20px 0;
         color: $white;
       }
     }
@@ -147,6 +141,7 @@
 }
 
 #illustrators {
+  margin-left: 40px;
 
   .illustrator-meta-container {
     opacity: .5;
@@ -179,7 +174,7 @@
     width: 25%;
 
     a {
-      padding: 20px;
+      padding: 0 20px 20px 0;
       display: block;
       background: none;
     }

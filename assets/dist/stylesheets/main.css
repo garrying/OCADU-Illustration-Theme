@@ -360,7 +360,7 @@ html {
 body {
   color: #333;
   height: 100%;
-  margin-bottom: 5rem; }
+  padding-bottom: 5rem; }
 
 ::-moz-selection {
   background: #9265ff;
@@ -552,7 +552,7 @@ ul {
 
 #clock {
   cursor: pointer;
-  left: calc(3% - 20px);
+  left: 20px;
   position: fixed;
   top: 20px;
   z-index: 300; }
@@ -580,7 +580,7 @@ ul {
 
 #magnifying-glass {
   position: fixed;
-  left: calc(3% - 19px);
+  left: 20px;
   top: 71px;
   z-index: 300;
   cursor: pointer; }
@@ -771,7 +771,7 @@ ul {
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
   top: 45%;
-  left: calc(3% + 4px);
+  left: 40px;
   letter-spacing: 1px; }
   .single .year-indicator {
     opacity: .25; }
@@ -788,7 +788,7 @@ ul {
     color: rgba(51, 51, 51, 0.25);
     display: block;
     height: 25px;
-    left: calc(3% + 20px);
+    left: 60px;
     line-height: 25px;
     position: fixed;
     text-align: center;
@@ -817,7 +817,7 @@ ul {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 3%; }
+  padding: 0 40px; }
 
 #illustrator-meta {
   -webkit-box-flex: 1;
@@ -875,8 +875,10 @@ ul {
   -webkit-flex: 1 1 70%;
       -ms-flex: 1 1 70%;
           flex: 1 1 70%;
-  margin-top: 20px;
-  max-width: 1240px; }
+  margin-top: 20px; }
+  #illustrator-gallery-container .gallery {
+    max-width: 1240px;
+    margin: 0 auto; }
   #illustrator-gallery-container .gallery-item {
     -webkit-transform: scale(.95);
         -ms-transform: scale(.95);
@@ -951,7 +953,7 @@ ul {
   z-index: 100;
   color: #fff; }
   .title a {
-    color: #6E32FF;
+    color: #fff;
     background: none; }
   .title .title-primary {
     font-size: 3.6rem;
@@ -1006,9 +1008,7 @@ ul {
     background-position: 50% 0%; } }
 
 .home, .archive, .search {
-  margin: 0 3%; }
-  .home #app-head .logo, .archive #app-head .logo, .search #app-head .logo {
-    display: none; }
+  padding: 0 20px; }
   .home #content, .archive #content, .search #content {
     max-width: 1920px;
     margin: 0 auto; }
@@ -1026,7 +1026,6 @@ ul {
               transform: scale(1); }
 
 .home {
-  margin: 0;
   background: #1d1e20; }
   .home #illustrators {
     margin-left: 36%;
@@ -1034,7 +1033,6 @@ ul {
     .home #illustrators .gallery-item {
       width: 33.3333333333%; }
       .home #illustrators .gallery-item a {
-        padding: 0 20px 20px 0;
         color: #fff; }
 
 .archive #app-head .logo, .search #app-head .logo {
@@ -1057,30 +1055,32 @@ ul {
     background: none;
     color: #6E32FF; }
 
-#illustrators .illustrator-meta-container {
-  opacity: .5;
-  -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-          transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased; }
-#illustrators .illustrator:hover .illustrator-meta-container {
-  opacity: 1;
-  color: #6E32FF; }
-#illustrators .illustrator-title {
-  font-size: 0.95rem;
-  line-height: 1.2rem;
-  margin-bottom: 0; }
-#illustrators .illustrator-name {
-  font-family: 'minion-pro', Times, 'Times New Roman', serif;
-  font-size: 0.95rem;
-  margin-top: 0;
-  margin-bottom: 0; }
-#illustrators .gallery-item {
-  width: 25%; }
-  #illustrators .gallery-item a {
-    padding: 20px;
-    display: block;
-    background: none; }
+#illustrators {
+  margin-left: 40px; }
+  #illustrators .illustrator-meta-container {
+    opacity: .5;
+    -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+            transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased; }
+  #illustrators .illustrator:hover .illustrator-meta-container {
+    opacity: 1;
+    color: #6E32FF; }
+  #illustrators .illustrator-title {
+    font-size: 0.95rem;
+    line-height: 1.2rem;
+    margin-bottom: 0; }
+  #illustrators .illustrator-name {
+    font-family: 'minion-pro', Times, 'Times New Roman', serif;
+    font-size: 0.95rem;
+    margin-top: 0;
+    margin-bottom: 0; }
+  #illustrators .gallery-item {
+    width: 25%; }
+    #illustrators .gallery-item a {
+      padding: 0 20px 20px 0;
+      display: block;
+      background: none; }
 
 input {
   -moz-osx-font-smoothing: grayscale;
