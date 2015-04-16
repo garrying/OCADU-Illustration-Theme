@@ -774,9 +774,12 @@ ul {
     z-index: 300; }
     #app-head .logo:hover {
       color: #6E32FF; }
+    #app-head .logo.invert {
+      color: #fff; }
   #app-head .sticky--unpinned .logo {
     opacity: 0;
-    top: -20px; }
+    top: 10px;
+    pointer-events: none; }
 
 .single .illustrator {
   display: -webkit-box;

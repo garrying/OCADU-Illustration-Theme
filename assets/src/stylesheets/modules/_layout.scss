@@ -20,11 +20,16 @@
     &:hover {
       color: $accent;
     }
+
+    &.invert {
+      color: $white;
+    }
   }
 
   .sticky--unpinned .logo {
     opacity: 0;
-    top: -20px;
+    top: 10px;
+    pointer-events: none;
   }
 }
 
