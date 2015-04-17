@@ -34,20 +34,19 @@
   <div id="loader"></div>
   <header id="app-head" role="banner">
     <div id="app-head-items" class="heading">
+
+        <div class="heading-inner">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
+          <div id="clock" class="header-item" title="Select year">
+            Year
+          </div> <!-- #clock-->
+          <div id="magnifying-glass" class="header-item" title="Search archive">
+            Search
+          </div>
+        </div>
         
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
 
         <div class="year-select-container">
-          <div id="clock" title="Select year">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 31 31">
-              <path class="clock-face" fill="#999" d="M15.5 1C23.5 1 30 7.5 30 15.5S23.5 30 15.5 30 1 23.5 1 15.5 7.5 1 15.5 1m0-1C6.9 0 0 6.9 0 15.5S6.9 31 15.5 31 31 24.1 31 15.5 24.1 0 15.5 0z"/>
-              <line class="hour-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="15.5" y1="3.7" x2="15.5" y2="19.3"/>
-              <line class="minute-hand" fill="none" stroke="#999999" stroke-linecap="round" stroke-miterlimit="10" x1="11.9" y1="14" x2="22.3" y2="18.3"/>
-            </svg>
-
-          </div> <!-- #clock-->
-
           <?php 
             $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
             if (is_singular('illustrator')) {
@@ -83,9 +82,6 @@
         </div>
 
         <div class="search" role="search">
-          <div id="magnifying-glass" title="Search archive">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 31 31" id="magnify"><path class="glass" fill="#999" d="M13.7 3.8c5.8 0 10.5 4.7 10.5 10.5s-4.7 10.5-10.5 10.5S3.2 20.1 3.2 14.3 7.9 3.8 13.7 3.8m0-1C7.3 2.8 2.2 8 2.2 14.3s5.2 11.5 11.5 11.5 11.5-5.2 11.5-11.5S20 2.8 13.7 2.8z"/><path class="handle" fill="none" stroke="#999" stroke-linecap="round" stroke-miterlimit="10" d="M21.8 22.5l6.4 6.3"/></svg>
-          </div>
           <div class="search-container panel" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
             <div class="search-wrapper">
               <?php get_search_form(); ?>

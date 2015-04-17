@@ -13,7 +13,7 @@
   <div class="title">
     <div class="title-unit">
       <div class="title-unit-init unit">
-        <h1 class="title-primary">OCAD U Illustration</h1>
+        <h1 class="title-primary">OCAD U <br> Illustration</h1>
         <p class="title-secondary">An evolving archive maintained by the Illustration Department at OCAD University.</p>
         <p class="title-third">Featuring work from the graduating class of 2015.</p>
         <p class="message"><a href="/introduction">Introduction from Paul Dallas</a></p>

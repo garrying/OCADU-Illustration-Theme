@@ -1,35 +1,44 @@
 // Global header elements
 
-#app-head {
-  position: absolute;
-  top: 0;
-  .logo {
-    @include font-smoothing(on);
-    background: none;
-    color: rgba($site-font-color, .25);
-    display: block;
-    height: 25px;
-    left: 60px;
-    line-height: 25px;
-    position: fixed;
-    text-align: center;
-    top: 20px;
-    transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
-    z-index: $z-300;
 
-    &:hover {
-      color: $accent;
-    }
+.logo {
+  @include font-smoothing(on);
+  background: none;
+  color: rgba($site-background-home, .25);
+  float: left;
+  transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
 
-    &.invert {
-      color: $white;
-    }
+  &:hover {
+    color: $accent;
   }
 
-  .sticky--unpinned .logo {
-    opacity: 0;
-    top: 10px;
-    pointer-events: none;
+  .home &, &.invert {
+    color: $white;
+  }
+
+}
+
+.sticky--unpinned .logo {
+  opacity: 0.5;
+}
+
+.heading-inner {
+  z-index: $z-300;
+  left: 60px;
+  top: 20px;
+  position: fixed;
+  font-size: 1.25rem;
+  color: $site-background-home;
+  .home & {
+    color: $white;
+  }
+  .header-item {
+    cursor: pointer;
+    float: left;
+    margin-left: 20px;
+    &.reverse {
+      color: $white;
+    }
   }
 }
 
@@ -45,11 +54,11 @@
 
 #illustrator-meta {
   flex: 1 1 30%;
-  padding: 20px;
 
   .illustrator-meta-wrapper {
     position: fixed;
-    width: 25%;
+    width: calc(30% - 65px);
+    left: 60px;
     height: 100%;
     display: flex;
     top: 0;

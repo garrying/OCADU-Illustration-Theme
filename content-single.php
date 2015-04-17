@@ -73,7 +73,7 @@
 
       </div>
       <div id="image-modal-container">
-        
+        <img id="full-image"/>
       </div>
     </div>
   </div>

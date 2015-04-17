@@ -430,6 +430,12 @@ p {
   font-size: 1rem;
   line-height: 1.4rem; }
 
+abbr {
+  letter-spacing: 1px;
+  -webkit-font-feature-settings: 'c2sc', 'smcp';
+     -moz-font-feature-settings: 'c2sc', 'smcp';
+          font-feature-settings: 'c2sc', 'smcp'; }
+
 h1 {
   font-size: 2.618rem;
   font-style: normal; }
@@ -495,6 +501,9 @@ h6 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
   margin: 0 auto;
   max-height: 100%;
   max-width: 100%;
@@ -549,59 +558,6 @@ ul {
   background-position: center center; }
   .close-panel.alt {
     background-image: url('../images/close-alt.svg'); }
-
-#clock {
-  cursor: pointer;
-  left: 20px;
-  position: fixed;
-  top: 20px;
-  z-index: 300; }
-  #clock:hover .hour-hand, #clock.reverse .hour-hand {
-    -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-            transform: rotate(360deg); }
-  #clock:hover .minute-hand, #clock.reverse .minute-hand {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg); }
-  #clock .hour-hand, #clock .minute-hand {
-    -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-    -webkit-transform-origin: 15.5px 15.5px;
-        -ms-transform-origin: 15.5px 15.5px;
-            transform-origin: 15.5px 15.5px;
-    -webkit-transition: -webkit-transform 500ms ease-in-out;
-            transition: transform 500ms ease-in-out; }
-  #clock.reverse .clock-face {
-    fill: #fff; }
-  #clock.reverse .hour-hand, #clock.reverse .minute-hand {
-    stroke: #fff; }
-
-#magnifying-glass {
-  position: fixed;
-  left: 20px;
-  top: 71px;
-  z-index: 300;
-  cursor: pointer; }
-  #magnifying-glass.reverse .handle {
-    stroke: #fff; }
-  #magnifying-glass.reverse .glass {
-    fill: #fff; }
-
-#magnify {
-  -webkit-transition: -webkit-transform 200ms ease-in-out;
-          transition: transform 200ms ease-in-out;
-  -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
-  -webkit-transform-origin: 11.5px 11.5px;
-      -ms-transform-origin: 11.5px 11.5px;
-          transform-origin: 11.5px 11.5px; }
-  #magnify:hover, .reverse #magnify {
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg); }
 
 .search-form {
   padding-top: 55px;
@@ -683,6 +639,9 @@ ul {
   .page .hentry p {
     font-size: 1.25rem;
     line-height: 1.75rem; }
+.page .span1 {
+  float: left;
+  width: 50%; }
 
 .error404-body {
   display: -webkit-box;
@@ -778,32 +737,37 @@ ul {
   .year-indicator a {
     background: none; }
 
-#app-head {
-  position: absolute;
-  top: 0; }
-  #app-head .logo {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    background: none;
-    color: rgba(51, 51, 51, 0.25);
-    display: block;
-    height: 25px;
-    left: 60px;
-    line-height: 25px;
-    position: fixed;
-    text-align: center;
-    top: 20px;
-    -webkit-transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
-            transition: top 500ms ease-in-out, opacity 500ms ease-in-out, color 500ms ease-in-out;
-    z-index: 300; }
-    #app-head .logo:hover {
-      color: #6E32FF; }
-    #app-head .logo.invert {
+.logo {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background: none;
+  color: rgba(29, 30, 32, 0.25);
+  float: left;
+  -webkit-transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
+          transition: opacity 500ms ease-in-out, color 180ms ease-in-out; }
+  .logo:hover {
+    color: #6E32FF; }
+  .home .logo, .logo.invert {
+    color: #fff; }
+
+.sticky--unpinned .logo {
+  opacity: 0.5; }
+
+.heading-inner {
+  z-index: 300;
+  left: 60px;
+  top: 20px;
+  position: fixed;
+  font-size: 1.25rem;
+  color: #1d1e20; }
+  .home .heading-inner {
+    color: #fff; }
+  .heading-inner .header-item {
+    cursor: pointer;
+    float: left;
+    margin-left: 20px; }
+    .heading-inner .header-item.reverse {
       color: #fff; }
-  #app-head .sticky--unpinned .logo {
-    opacity: 0;
-    top: 10px;
-    pointer-events: none; }
 
 .single .illustrator {
   display: -webkit-box;
@@ -823,11 +787,11 @@ ul {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 30%;
       -ms-flex: 1 1 30%;
-          flex: 1 1 30%;
-  padding: 20px; }
+          flex: 1 1 30%; }
   #illustrator-meta .illustrator-meta-wrapper {
     position: fixed;
-    width: 25%;
+    width: calc(30% - 65px);
+    left: 60px;
     height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -953,11 +917,11 @@ ul {
   z-index: 100;
   color: #fff; }
   .title a {
-    color: #fff;
+    color: #6E32FF;
     background: none; }
   .title .title-primary {
-    font-size: 3.6rem;
-    line-height: 2.7rem;
+    font-size: 2.6rem;
+    line-height: 2rem;
     margin-bottom: 0;
     margin-top: 0; }
   .title p {
