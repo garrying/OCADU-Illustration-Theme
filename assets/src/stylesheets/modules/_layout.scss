@@ -12,7 +12,12 @@
     color: $accent;
   }
 
-  .home &, &.invert {
+  .home & {
+    color: $white;
+    opacity: 0.25;
+  }
+
+  &.invert {
     color: $white;
   }
 
@@ -27,15 +32,29 @@
   left: 60px;
   top: 20px;
   position: fixed;
-  font-size: 1.25rem;
   color: $site-background-home;
+  font-size: 1.2rem;
+
   .home & {
     color: $white;
   }
+
   .header-item {
     cursor: pointer;
     float: left;
     margin-left: 20px;
+    background-image: url('../images/underline-w.svg');
+    background-repeat: repeat-x;
+    background-size: 23px 7px;
+    background-position: 0 100%;
+    padding-bottom: 6px;
+    animation: backAnimateSmall 500ms linear infinite;
+    animation-play-state: paused;
+
+    &:hover {
+      animation-play-state: running;
+    }
+
     &.reverse {
       color: $white;
     }

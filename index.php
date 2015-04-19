@@ -13,11 +13,13 @@
   <div class="title">
     <div class="title-unit">
       <div class="title-unit-init unit">
-        <h1 class="title-primary">OCAD U <br> Illustration</h1>
-        <p class="title-secondary">An evolving archive maintained by the Illustration Department at OCAD University.</p>
-        <p class="title-third">Featuring work from the graduating class of 2015.</p>
-        <p class="message"><a href="/introduction">Introduction from Paul Dallas</a></p>
-        <a href="/about" class="colophon">Colophon</a>
+        <p class="title-primary">OCAD University Illustration featuring work from the graduating class of 2015</p>
+        <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015</p>
+        <p><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+        <p class="colophon">
+          Maintained by the Illustration Department at OCAD U<br> <a href="/about">Colophon</a>
+        </p>
+        
       </div>
     </div>
   </div>

@@ -338,6 +338,34 @@ html {
   src: url('../fonts/FoundersGroteskWeb-Bold.eot');
   src: url('../fonts/FoundersGroteskWeb-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/FoundersGroteskWeb-Bold.woff') format('woff'); }
 
+@-webkit-keyframes backAnimate {
+  0% {
+    background-position: 0 100%; }
+
+  100% {
+    background-position: -33px 100%; } }
+
+@keyframes backAnimate {
+  0% {
+    background-position: 0 100%; }
+
+  100% {
+    background-position: -33px 100%; } }
+
+@-webkit-keyframes backAnimateSmall {
+  0% {
+    background-position: 0 100%; }
+
+  100% {
+    background-position: -23px 100%; } }
+
+@keyframes backAnimateSmall {
+  0% {
+    background-position: 0 100%; }
+
+  100% {
+    background-position: -23px 100%; } }
+
 #loader {
   background: url('../images/loader.svg') center center no-repeat;
   position: fixed;
@@ -363,18 +391,18 @@ body {
   padding-bottom: 5rem; }
 
 ::-moz-selection {
-  background: #9265ff;
+  background: #8971ff;
   color: #fff; }
 
 ::selection {
-  background: #9265ff;
+  background: #8971ff;
   color: #fff; }
 
 a {
   color: #333;
   text-decoration: none;
-  background-image: -webkit-linear-gradient(top, transparent 50%, #6E32FF 50%);
-  background-image: linear-gradient(to bottom, transparent 50%, #6E32FF 50%);
+  background-image: -webkit-linear-gradient(top, transparent 50%, #5f3eff 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, #5f3eff 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 90%; }
@@ -385,7 +413,7 @@ a {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
-  color: #6E32FF;
+  color: #5f3eff;
   background: none;
   position: absolute;
   top: 0;
@@ -472,7 +500,7 @@ h6 {
     font-style: normal;
     display: inline-block;
     text-indent: -15px;
-    color: #6E32FF;
+    color: #5f3eff;
     content: '※'; }
 
 .illustrator-meta-detail {
@@ -481,7 +509,7 @@ h6 {
   .illustrator-meta-detail a {
     border-color: #ddd; }
     .illustrator-meta-detail a:hover {
-      border-color: #6E32FF; }
+      border-color: #5f3eff; }
 
 .illustrator-nav-single a {
   color: #fff;
@@ -489,7 +517,7 @@ h6 {
   padding: 8px 10px;
   background: none; }
   .illustrator-nav-single a:hover {
-    background: #6E32FF; }
+    background: #5f3eff; }
 
 .thesis-title {
   font-size: 1rem;
@@ -540,8 +568,8 @@ ul {
   display: none;
   width: 50%;
   outline: 0;
-  background: -webkit-linear-gradient(45deg, rgba(110, 50, 255, 0.85), #6e32ff);
-  background: linear-gradient(45deg, rgba(110, 50, 255, 0.85), #6e32ff);
+  background: -webkit-linear-gradient(45deg, rgba(95, 62, 255, 0.85), #5f3eff);
+  background: linear-gradient(45deg, rgba(95, 62, 255, 0.85), #5f3eff);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
 
@@ -578,11 +606,14 @@ ul {
   .search-form label {
     width: 60%; }
   .search-form .twitter-typeahead {
-    width: 100%; }
+    width: 100%;
+    background-image: url('../images/underline-l-w.svg');
+    background-repeat: repeat-x;
+    background-size: 33px 10px;
+    background-position: 0 100%; }
 
 .search-field {
-  padding: 10px 0;
-  box-shadow: 0 2px 0 #fff; }
+  padding: 10px 0; }
   .search-field:focus {
     outline: none; }
 
@@ -598,7 +629,7 @@ ul {
 .tt-hint {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #5c19ff; }
+  color: #350bff; }
 
 .tt-dropdown-menu {
   width: 100%; }
@@ -719,7 +750,7 @@ ul {
   .year-select .year-item.loaded {
     opacity: 1; }
   .year-select .year-item.active, .year-select .year-item:hover {
-    background: #5c19ff; }
+    background: #4a24ff; }
 
 .year-indicator {
   position: fixed;
@@ -741,13 +772,16 @@ ul {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background: none;
-  color: rgba(29, 30, 32, 0.25);
+  color: rgba(14, 14, 15, 0.25);
   float: left;
   -webkit-transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
           transition: opacity 500ms ease-in-out, color 180ms ease-in-out; }
   .logo:hover {
-    color: #6E32FF; }
-  .home .logo, .logo.invert {
+    color: #5f3eff; }
+  .home .logo {
+    color: #fff;
+    opacity: 0.25; }
+  .logo.invert {
     color: #fff; }
 
 .sticky--unpinned .logo {
@@ -758,14 +792,26 @@ ul {
   left: 60px;
   top: 20px;
   position: fixed;
-  font-size: 1.25rem;
-  color: #1d1e20; }
+  color: #0e0e0f;
+  font-size: 1.2rem; }
   .home .heading-inner {
     color: #fff; }
   .heading-inner .header-item {
     cursor: pointer;
     float: left;
-    margin-left: 20px; }
+    margin-left: 20px;
+    background-image: url('../images/underline-w.svg');
+    background-repeat: repeat-x;
+    background-size: 23px 7px;
+    background-position: 0 100%;
+    padding-bottom: 6px;
+    -webkit-animation: backAnimateSmall 500ms linear infinite;
+            animation: backAnimateSmall 500ms linear infinite;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused; }
+    .heading-inner .header-item:hover {
+      -webkit-animation-play-state: running;
+              animation-play-state: running; }
     .heading-inner .header-item.reverse {
       color: #fff; }
 
@@ -810,7 +856,7 @@ ul {
   #illustrator-meta .illustrator-nav-single {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background: #1d1e20;
+    background: #0e0e0f;
     position: absolute;
     font-style: italic;
     bottom: 0;
@@ -896,7 +942,7 @@ ul {
   padding: 0 0 0 20px;
   top: 20px;
   bottom: 20px;
-  width: 35%;
+  width: 33%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -916,13 +962,24 @@ ul {
           justify-content: center;
   z-index: 100;
   color: #fff; }
-  .title a {
-    color: #6E32FF;
-    background: none; }
+  .title .message {
+    color: #5f3eff;
+    background-image: url('../images/underline.svg');
+    background-repeat: repeat-x;
+    background-size: 33px 10px;
+    background-position: 0 100%;
+    padding-bottom: 10px;
+    -webkit-animation: backAnimate 1s linear infinite;
+            animation: backAnimate 1s linear infinite;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused; }
+    .title .message:hover {
+      -webkit-animation-play-state: running;
+              animation-play-state: running; }
   .title .title-primary {
-    font-size: 2.6rem;
-    line-height: 2rem;
-    margin-bottom: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 2.5rem;
     margin-top: 0; }
   .title p {
     font-size: 1.2rem;
@@ -937,10 +994,15 @@ ul {
         -ms-flex: 0 0 100%;
             flex: 0 0 100%; }
   .title .colophon {
-    border: 0;
     position: absolute;
     bottom: 20px;
-    font-size: .75rem; }
+    font-size: .8rem;
+    opacity: .5; }
+    .title .colophon:hover {
+      opacity: 1; }
+    .title .colophon a {
+      color: #5f3eff;
+      background: none; }
   .title .unit {
     -webkit-flex-shrink: 1;
         -ms-flex-negative: 1;
@@ -950,26 +1012,6 @@ ul {
             transition: -webkit-flex-shrink 1000ms linear;
             transition: -ms-flex-negative 1000ms linear;
             transition: flex-shrink 1000ms linear; }
-
-@-webkit-keyframes backAnimate {
-  0% {
-    background-position: 50% 0%; }
-
-  50% {
-    background-position: 50% 100%; }
-
-  100% {
-    background-position: 50% 0%; } }
-
-@keyframes backAnimate {
-  0% {
-    background-position: 50% 0%; }
-
-  50% {
-    background-position: 50% 100%; }
-
-  100% {
-    background-position: 50% 0%; } }
 
 .home, .archive, .search {
   padding: 0 20px; }
@@ -990,10 +1032,10 @@ ul {
               transform: scale(1); }
 
 .home {
-  background: #1d1e20; }
+  background: #0e0e0f; }
   .home #illustrators {
-    margin-left: 36%;
-    width: 64%; }
+    margin-left: 33.3333333333%;
+    width: 66.6666666667%; }
     .home #illustrators .gallery-item {
       width: 33.3333333333%; }
       .home #illustrators .gallery-item a {
@@ -1013,11 +1055,11 @@ ul {
   text-align: center;
   font-size: 1rem;
   z-index: 100;
-  color: #6E32FF;
+  color: #5f3eff;
   opacity: .5; }
   .search .page-title mark {
     background: none;
-    color: #6E32FF; }
+    color: #5f3eff; }
 
 #illustrators {
   margin-left: 40px; }
@@ -1029,7 +1071,7 @@ ul {
     -webkit-font-smoothing: antialiased; }
   #illustrators .illustrator:hover .illustrator-meta-container {
     opacity: 1;
-    color: #6E32FF; }
+    color: #5f3eff; }
   #illustrators .illustrator-title {
     font-size: 0.95rem;
     line-height: 1.2rem;

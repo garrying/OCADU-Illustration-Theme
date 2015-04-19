@@ -123,7 +123,7 @@ $(function() {
           $('.year-select').velocity('fadeIn', { 
             duration: 180
           }).attr('aria-hidden',false);
-          $('#magnifying-glass').velocity({opacity: 0, display: 'none'}, { duration: 180 });
+          $('#magnifying-glass').velocity({opacity: 0.3}, { duration: 180 });
           $('.year-item').each(function(i){
             var item = $(this);
             item.delay(100*i).velocity({opacity:1,display:'block'},{
@@ -154,7 +154,7 @@ $(function() {
           $('.search-container').velocity('fadeIn', {
             duration: 180
           }).attr('aria-hidden',false);
-          $('#clock').velocity({ opacity: 0, display: 'none'}, { duration: 180 });
+          $('#clock').velocity({ opacity: 0.3}, { duration: 180 });
           $('.search-field').focus();
         }
       });
