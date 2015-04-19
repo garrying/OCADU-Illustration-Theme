@@ -143,7 +143,7 @@ module.exports = function (grunt) {
         files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
         tasks: ['sass:server', 'autoprefixer'],
         options: {
-          livereload: true,
+          livereload: true
         },
       },
     },
