@@ -625,15 +625,16 @@ ul {
 .search-field {
   padding: 10px 0;
   background: none;
-  display: block; }
+  display: block;
+  width: 100%; }
   .search-field:focus {
     outline: none; }
 
 .search-submit {
   background: none;
   color: #fff;
-  font-size: 1rem;
-  margin-top: 24px; }
+  font-size: 1.2rem;
+  margin-top: 23px; }
 
 .tt-hint {
   -moz-osx-font-smoothing: grayscale;
