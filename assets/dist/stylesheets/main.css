@@ -1012,7 +1012,6 @@ ul {
   z-index: 100;
   left: 30%;
   right: 0;
-  background: rgba(242, 242, 242, 0.75);
   bottom: 0; }
   @media screen and (max-width: 768px) {
     #image-modal {

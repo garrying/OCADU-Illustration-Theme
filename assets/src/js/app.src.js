@@ -156,7 +156,7 @@ $(function() {
           $('.search-container').velocity('fadeIn', {
             duration: 180
           }).attr('aria-hidden',false);
-          $('#clock').velocity({ opacity: 0.3}, { duration: 180 });
+          $('#clock').velocity({ opacity: 0.3 }, { duration: 180 });
           $('.search-field').focus();
         }
       });
@@ -204,7 +204,7 @@ $(function() {
 
     _ocadPanelsClose: function () {
       $('#image-modal').velocity('fadeOut',{duration: 180 });
-      $('#pack-content').velocity({scale:1, blur:0},'fast');
+      $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       $('.header-item').removeClass('reverse').velocity({ opacity: 1, display:'block' }, { duration: 180 });
       if ($('.panel').is(':visible')) {
         $('.panel').velocity('fadeOut', { 
@@ -222,7 +222,7 @@ $(function() {
     _ocadPanelsCloseSelective: function(event) {
       if (!$(event.target).closest('#full-image').length && $('#image-modal').is(':visible')) {
         $('#image-modal').velocity('fadeOut',{duration:180});
-        $('#pack-content').velocity({scale:1, blur:0},'fast');
+        $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       }
       if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
         $('#clock').removeClass('reverse');
@@ -285,7 +285,7 @@ $(function() {
           $('#image-modal').velocity('fadeIn', { 
             duration: 180, 
             begin: function() {
-              $('#pack-content').velocity({scale:0.99, blur:2},'fast');
+              $('#pack-content').velocity({scale:0.99, blur:2, opacity:0.25},'fast');
             },
             complete: function() { 
               $('#full-image').velocity({opacity:1},'fast');
@@ -322,6 +322,16 @@ $(function() {
         nextElement();
       });
 
+      // keyboard work navigation
+
+      $(document).keydown(function(e){
+        if ($('#image-modal').is(':visible')) {
+          if (e.keyCode === 39) {
+            nextElement();
+          }
+        }
+      });
+
     },
 
     _ocadCursor: function() {
@@ -342,15 +352,19 @@ $(function() {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective);
       $(document).keydown(function(e) {
+        
         if (e.keyCode === 27) {
           app._ocadPanelsClose();
         }
-        console.log(app.settings.prevItem);
-        if (e.keyCode === 37 && app.settings.prevItem.length) {
-          window.location = app.settings.prevItem.attr('href');
-        } else if (e.keyCode === 39 && app.settings.nextItem.length) {
-          window.location = app.settings.nextItem.attr('href');
+
+        if (!$('#image-modal').is(':visible')) {
+          if (e.keyCode === 37 && app.settings.prevItem.length) {
+            window.location = app.settings.prevItem.attr('href');
+          } else if (e.keyCode === 39 && app.settings.nextItem.length) {
+            window.location = app.settings.nextItem.attr('href');
+          }
         }
+
       });
     }
   };
