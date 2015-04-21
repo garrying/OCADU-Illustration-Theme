@@ -329,7 +329,7 @@ $(function() {
         }
       }).mousemove(function(e){
         if (!$(e.target).closest('#full-image').length) {
-          $('.image-modal-tip').css('top',(e.pageY+10)+'px').css('left',(e.pageX+10)+'px');
+          $('.image-modal-tip').css('top',(e.clientY + 5)+'px').css('left',(e.clientX + 5)+'px');
         }
       }).mouseout(function(){
         $('.image-modal-tip').html('');
