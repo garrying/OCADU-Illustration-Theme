@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <div class="error404-body">
+  <div class="error-body">
     <div class="emoji-container">
       <span class="emoji">👍</span>
       <span class="emoji">👎</span>

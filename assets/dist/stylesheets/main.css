@@ -366,7 +366,7 @@ html {
   100% {
     background-position: -23px 100%; } }
 
-#loader {
+.loader {
   background: url('../images/loader.svg') center center no-repeat;
   position: fixed;
   top: 50%;
@@ -381,11 +381,11 @@ html {
   display: none; }
 
 html {
-  background: #f2f2f2;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent; }
 
 body {
+  background: #f2f2f2;
   color: #333;
   height: 100%;
   padding-bottom: 5rem; }
@@ -433,20 +433,20 @@ a {
     padding: 0 10px; }
 
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
-  text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
      -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
           font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
   -webkit-font-kerning: normal;
      -moz-font-kerning: normal;
-          font-kerning: normal; }
+          font-kerning: normal;
+  text-rendering: optimizeLegibility; }
 
 h1, h2, h3, h4, h5, h6, .heading, .year-indicator {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
-  font-weight: 400;
   font-style: normal;
+  font-weight: 400;
   line-height: 1.6rem; }
 
 body {
@@ -459,10 +459,10 @@ p {
   line-height: 1.4rem; }
 
 abbr {
-  letter-spacing: 1px;
   -webkit-font-feature-settings: 'c2sc', 'smcp';
      -moz-font-feature-settings: 'c2sc', 'smcp';
-          font-feature-settings: 'c2sc', 'smcp'; }
+          font-feature-settings: 'c2sc', 'smcp';
+  letter-spacing: 1px; }
 
 h1 {
   font-size: 2.618rem;
@@ -492,39 +492,27 @@ h6 {
             font-feature-settings: 'onum' 0, 'tnum' 1; }
 
 .illustrator-meta-name {
+  display: inline-block;
   font-family: 'minion-pro', Times, 'Times New Roman', serif;
-  font-style: italic;
   font-size: 1rem;
-  display: inline-block; }
+  font-style: italic; }
   .illustrator-meta-name:before {
-    font-style: normal;
-    display: inline-block;
-    text-indent: -15px;
     color: #5f3eff;
-    content: '※'; }
+    content: '※';
+    display: inline-block;
+    font-style: normal;
+    text-indent: -15px; }
 
 .illustrator-meta-detail {
   font-size: 1rem;
   font-style: italic; }
-  .illustrator-meta-detail a {
-    border-color: #ddd; }
-    .illustrator-meta-detail a:hover {
-      border-color: #5f3eff; }
-
-.illustrator-nav-single a {
-  color: #fff;
-  display: block;
-  padding: 8px 10px;
-  background: none; }
-  .illustrator-nav-single a:hover {
-    background: #5f3eff; }
 
 .thesis-title {
   font-size: 1rem;
   line-height: 1.2rem; }
 
 #full-image {
-  cursor: e-resize;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -550,6 +538,15 @@ figure {
   display: block;
   height: auto;
   max-width: 100%; }
+
+.image-modal-tip {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
+  position: fixed;
+  z-index: 600;
+  padding: 5px;
+  color: #5f3eff; }
 
 ul {
   margin: 0;
@@ -577,15 +574,28 @@ ul {
   cursor: pointer;
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 24px;
   height: 31px;
   width: 31px;
   z-index: 300;
   background-image: url('../images/close.svg');
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  background-color: transparent;
+  border: 0; }
   .close-panel.alt {
     background-image: url('../images/close-alt.svg'); }
+
+.panel-colophon {
+  color: #fff;
+  font-size: 2rem;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-family: sans-serif;
+  font-weight: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 
 .search-form {
   padding-top: 55px;
@@ -613,18 +623,17 @@ ul {
     background-position: 0 100%; }
 
 .search-field {
-  padding: 10px 0; }
+  padding: 10px 0;
+  background: none;
+  display: block; }
   .search-field:focus {
     outline: none; }
 
 .search-submit {
-  display: none;
   background: none;
   color: #fff;
-  padding: 10px 0; }
-
-.search-container .screen-reader-text {
-  display: none; }
+  font-size: 1rem;
+  margin-top: 24px; }
 
 .tt-hint {
   -moz-osx-font-smoothing: grayscale;
@@ -643,12 +652,11 @@ ul {
   opacity: .75;
   -webkit-transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
           transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out; }
-
-.tt-suggestion.tt-cursor {
-  opacity: 1;
-  cursor: pointer;
-  width: 100%;
-  text-indent: 5px; }
+  .tt-suggestion.tt-cursor {
+    opacity: 1;
+    cursor: pointer;
+    width: 100%;
+    text-indent: 5px; }
 
 .page #content {
   display: -webkit-box;
@@ -674,7 +682,7 @@ ul {
   float: left;
   width: 50%; }
 
-.error404-body {
+.error-body {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -692,9 +700,9 @@ ul {
   bottom: 0;
   right: 0;
   left: 0; }
-  .error404-body .emoji {
+  .error-body .emoji {
     position: absolute; }
-    .error404-body .emoji.big {
+    .error-body .emoji.big {
       font-size: 60px; }
 
 .year-select .year-select-wrapper {
@@ -722,7 +730,7 @@ ul {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 5% 0; }
+  padding: 39px 0; }
 .year-select .year-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -764,7 +772,7 @@ ul {
   left: 40px;
   letter-spacing: 1px; }
   .single .year-indicator {
-    opacity: .25; }
+    opacity: .75; }
   .year-indicator a {
     background: none; }
 
@@ -780,12 +788,12 @@ ul {
     color: #5f3eff; }
   .home .logo {
     color: #fff;
-    opacity: 0.25; }
+    opacity: .25; }
   .logo.invert {
     color: #fff; }
 
 .sticky--unpinned .logo {
-  opacity: 0.5; }
+  opacity: .5; }
 
 .heading-inner {
   z-index: 300;
@@ -813,7 +821,9 @@ ul {
       -webkit-animation-play-state: running;
               animation-play-state: running; }
     .heading-inner .header-item.reverse {
-      color: #fff; }
+      color: #fff;
+      -webkit-animation-play-state: running;
+              animation-play-state: running; }
 
 .single .illustrator {
   display: -webkit-box;
@@ -827,16 +837,16 @@ ul {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 40px; }
+  padding: 0 20px; }
 
-#illustrator-meta {
+.illustrator-meta {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 30%;
       -ms-flex: 1 1 30%;
           flex: 1 1 30%; }
-  #illustrator-meta .illustrator-meta-wrapper {
+  .illustrator-meta .illustrator-meta-wrapper {
     position: fixed;
-    width: calc(30% - 65px);
+    width: calc(30% - 70px);
     left: 60px;
     height: 100%;
     display: -webkit-box;
@@ -851,9 +861,9 @@ ul {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center; }
-  #illustrator-meta .illustrator-meta-description {
+  .illustrator-meta .illustrator-meta-description {
     width: 100%; }
-  #illustrator-meta .illustrator-nav-single {
+  .illustrator-meta .illustrator-nav-single {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background: #0e0e0f;
@@ -871,39 +881,46 @@ ul {
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between; }
-    #illustrator-meta .illustrator-nav-single .nav-previous, #illustrator-meta .illustrator-nav-single .nav-next {
+    .illustrator-meta .illustrator-nav-single .nav-previous, .illustrator-meta .illustrator-nav-single .nav-next {
       float: left;
       width: 50%;
       display: block; }
-    #illustrator-meta .illustrator-nav-single .nav-next {
+    .illustrator-meta .illustrator-nav-single .nav-next {
       text-align: right; }
-  #illustrator-meta .illustrator-meta-wrapper-inner {
-    display: none; }
+    .illustrator-meta .illustrator-nav-single a {
+      color: #fff;
+      display: block;
+      padding: 8px 10px;
+      background: none; }
+      .illustrator-meta .illustrator-nav-single a:hover {
+        background: #5f3eff; }
 
-#illustrator-gallery-container {
+.illustrator-gallery-container {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 70%;
       -ms-flex: 1 1 70%;
           flex: 1 1 70%;
   margin-top: 20px; }
-  #illustrator-gallery-container .gallery {
+  .illustrator-gallery-container .gallery {
     max-width: 1240px;
     margin: 0 auto; }
-  #illustrator-gallery-container .gallery-item {
+  .illustrator-gallery-container .gallery-item {
     -webkit-transform: scale(.95);
         -ms-transform: scale(.95);
             transform: scale(.95);
     opacity: 0;
     width: 50%;
     padding: 0 20px 20px 0; }
-    #illustrator-gallery-container .gallery-item.velocity-animating {
+    .illustrator-gallery-container .gallery-item:nth-child(even) {
+      margin-right: -20px; }
+    .illustrator-gallery-container .gallery-item.velocity-animating {
       -webkit-transition: -webkit-transform 500ms;
               transition: transform 500ms; }
-    #illustrator-gallery-container .gallery-item.loaded {
+    .illustrator-gallery-container .gallery-item.loaded {
       -webkit-transform: scale(1);
           -ms-transform: scale(1);
               transform: scale(1); }
-  #illustrator-gallery-container a {
+  .illustrator-gallery-container a {
     cursor: -webkit-zoom-in;
     cursor: zoom-in; }
 
@@ -911,7 +928,7 @@ ul {
   position: fixed;
   top: 0;
   z-index: 100;
-  left: 31%;
+  left: 30%;
   right: 0;
   background: rgba(242, 242, 242, 0.75);
   bottom: 0; }
@@ -939,10 +956,10 @@ ul {
       -ms-transform: scale(.95);
           transform: scale(.95);
   position: fixed;
-  padding: 0 0 0 20px;
   top: 20px;
+  left: 60px;
   bottom: 20px;
-  width: 33%;
+  width: calc(33.3333333333% - 60px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -985,7 +1002,6 @@ ul {
     font-size: 1.2rem;
     line-height: 1.55rem; }
   .title .title-unit {
-    padding: 20px;
     -webkit-align-self: center;
         -ms-flex-item-align: center;
             align-self: center;
@@ -996,22 +1012,11 @@ ul {
   .title .colophon {
     position: absolute;
     bottom: 20px;
-    font-size: .8rem;
-    opacity: .5; }
+    font-size: .8rem; }
     .title .colophon:hover {
       opacity: 1; }
     .title .colophon a {
-      color: #5f3eff;
       background: none; }
-  .title .unit {
-    -webkit-flex-shrink: 1;
-        -ms-flex-negative: 1;
-            flex-shrink: 1;
-    -webkit-transition: -webkit-flex-shrink 1000ms linear;
-    -webkit-transition: -webkit-flex-shrink 1000ms linear;
-            transition: -webkit-flex-shrink 1000ms linear;
-            transition: -ms-flex-negative 1000ms linear;
-            transition: flex-shrink 1000ms linear; }
 
 .home, .archive, .search {
   padding: 0 20px; }
@@ -1034,6 +1039,7 @@ ul {
 .home {
   background: #0e0e0f; }
   .home #illustrators {
+    padding-top: 20px;
     margin-left: 33.3333333333%;
     width: 66.6666666667%; }
     .home #illustrators .gallery-item {
@@ -1041,8 +1047,8 @@ ul {
       .home #illustrators .gallery-item a {
         color: #fff; }
 
-.archive #app-head .logo, .search #app-head .logo {
-  display: block; }
+.archive #illustrators, .search #illustrators {
+  margin-top: 70px; }
 
 .search .page-title {
   -moz-osx-font-smoothing: grayscale;
@@ -1053,13 +1059,12 @@ ul {
   right: 3%;
   left: 3%;
   text-align: center;
-  font-size: 1rem;
-  z-index: 100;
-  color: #5f3eff;
-  opacity: .5; }
+  font-size: 1.2rem;
+  z-index: 100; }
   .search .page-title mark {
-    background: none;
-    color: #5f3eff; }
+    background: #5f3eff;
+    color: #fff;
+    padding: 0 5px; }
 
 #illustrators {
   margin-left: 40px; }
@@ -1067,6 +1072,7 @@ ul {
     opacity: .5;
     -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
             transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    margin-bottom: 1em;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
   #illustrators .illustrator:hover .illustrator-meta-container {
@@ -1093,12 +1099,6 @@ input {
   -webkit-font-smoothing: antialiased;
   border: 0;
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif; }
-
-input[type=search] {
-  background: none;
-  border: 0;
-  display: block;
-  width: 100%; }
 
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.75); }

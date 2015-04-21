@@ -18,7 +18,7 @@ $(function() {
     },
 
     settings: {
-      loader: $('#loader'), 
+      loader: $('.loader'), 
       masonryContainer: $('#pack-content'),
       masonryContainerHome: $('#illustrators'),
       header: $('#app-head-items')
@@ -164,8 +164,8 @@ $(function() {
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
         app.settings.masonryContainerHome.imagesLoaded( function() {
           app._ocadMasonry(app.settings.masonryContainerHome);
-          app._ocadCascade('.illustrator',100);
-          $('.title').velocity({ opacity: 1, scale: 1 });
+          app._ocadCascade('.illustrator',200);
+          $('.title').velocity({ opacity: 1, scale: 1 },'slow');
         });
       }
     },
@@ -212,7 +212,9 @@ $(function() {
           }
         }).attr('aria-hidden',true);
       }
-      $('.logo').removeClass('invert');
+      if ($('.logo').hasClass('invert')) {
+        $('.logo').removeClass('invert');
+      }
     },
 
     _ocadPanelsCloseSelective: function(event) {
@@ -229,12 +231,13 @@ $(function() {
           }
         }).attr('aria-hidden',true);
         $('#magnifying-glass').velocity({ opacity: 1, display:'block' }, { duration: 180 });
-                $('.logo').removeClass('invert');
       }
       if (!$(event.target).closest('.search').length && $('.search-container').is(':visible')) {
         $('#magnifying-glass').removeClass('reverse');
         $('.search-container').velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
         $('#clock').velocity({ opacity: 1, display:'block' }, { duration: 180 });
+      }
+      if (!$(event.target).closest('.panel, #clock, #magnifying-glass').length) {
         $('.logo').removeClass('invert');
       }
     },
@@ -276,6 +279,7 @@ $(function() {
 
         $('#full-image').imagesLoaded().done(function(){
           app._ocadLoader(false);
+          app._ocadCursor();
           $('#image-modal').velocity('fadeIn', { 
             duration: 180, 
             begin: function() {
@@ -318,6 +322,20 @@ $(function() {
 
     },
 
+    _ocadCursor: function() {
+      $('#image-modal-container').mouseover(function(e){
+        if (!$(e.target).closest('#full-image').length) {
+          $('#full-image-tip').html('Close');
+        }
+      }).mousemove(function(e){
+        if (!$(e.target).closest('#full-image').length) {
+          $('#full-image-tip').css('top',(e.pageY+10)+'px').css('left',(e.pageX+10)+'px');
+        }
+      }).mouseout(function(){
+        $('#full-image-tip').html('');
+      });
+    },
+
     _ocadUIbinding: function () {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective);
@@ -327,7 +345,6 @@ $(function() {
         }
       });
     }
-
   };
 
   /**

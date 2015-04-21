@@ -1,9 +1,9 @@
 <article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
 
-  <div id="illustrator-meta" role="complementary">
+  <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
-      <div class="illustrator-meta-wrapper-inner">
+      <div class="illustrator-meta-wrapper-inner hidden">
         <div class="illustrator-meta-description">
 
           <?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
@@ -63,15 +63,14 @@
 
   </div><!-- #illustrator-meta -->
   
-  <div id="illustrator-gallery-container">
+  <div class="illustrator-gallery-container">
     <?php
       $gallery_shortcode = '[gallery size="medium" link="file" columns="0"]';
       print apply_filters( 'the_content', $gallery_shortcode );
     ?>
     <div id="image-modal" class="hidden">
-      <div class="close-panel alt">
-
-      </div>
+      <button class="close-panel alt" title="Close full view" aria-labelledby="Close full view"></button>
+      <div class="image-modal-tip"></div>
       <div id="image-modal-container">
         <img id="full-image"/>
       </div>

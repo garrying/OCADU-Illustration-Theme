@@ -31,7 +31,7 @@
 <body <?php body_class(); ?>>
   <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
 
-  <div id="loader"></div>
+  <div class="loader"></div>
   <header id="app-head" role="banner">
     <div id="app-head-items" class="heading">
 
@@ -76,8 +76,8 @@
               }
               ?>
             </div>
-            <div class="close-panel" title="Close panel">
-            </div>
+            <button class="close-panel" title="Close panel" aria-labelledby="Close search panel"></button>
+            <a href="/about" class="panel-colophon">✌</a>
           </div> <!-- .year-Select-->
         </div>
 
@@ -86,8 +86,8 @@
             <div class="search-wrapper">
               <?php get_search_form(); ?>
             </div>
-            <div class="close-panel" title="Close panel">
-            </div>
+            <button class="close-panel" title="Close search panel" aria-labelledby="Close search panel"></button>
+            <a href="/about" class="panel-colophon">✌</a>
           </div>
         </div><!-- .search -->
        
@@ -105,7 +105,7 @@
 
 
   <main id="content" role="main">
-    <div class="item year-indicator">
+    <div class="year-indicator">
       <?php if (is_singular('illustrator')) 
           echo '<a class="year-back" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
           if (isset($selected_year)) { echo $selected_year; };

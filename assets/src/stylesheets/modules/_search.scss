@@ -21,6 +21,8 @@
 
 .search-field {
   padding: 10px 0;
+  background: none;
+  display: block;
 
   &:focus {
     outline: none;
@@ -28,17 +30,14 @@
 }
 
 .search-submit {
-  display: none;
   background: none;
   color: $white;
-  padding: 10px 0;
+  font-size: 1rem;
+  margin-top: 24px;
 }
 
 .search-container {
   @extend %panels;
-  .screen-reader-text {
-    display: none;
-  }
 }
 
 
@@ -63,11 +62,10 @@
 .tt-suggestion {
   opacity: .75;
   transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
-}
-
-.tt-suggestion.tt-cursor {
-  opacity: 1;
-  cursor: pointer;
-  width: 100%;
-  text-indent: 5px;
+  &.tt-cursor {
+    opacity: 1;
+    cursor: pointer;
+    width: 100%;
+    text-indent: 5px;
+  }
 }

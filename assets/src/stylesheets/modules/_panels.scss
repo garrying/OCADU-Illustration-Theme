@@ -21,14 +21,30 @@
   cursor: pointer;
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 24px;
   height: 31px;
   width: 31px;
   z-index: $z-300;
   background-image: url('../images/close.svg');
   background-repeat: no-repeat;
   background-position: center center;
+  background-color: transparent;
+  border: 0;
+
   &.alt {
     background-image: url('../images/close-alt.svg');
   }
+}
+
+// Colophon
+
+.panel-colophon {
+  color: $white;
+  font-size: 2rem;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-family: sans-serif;
+  font-weight: normal;
+  @include font-smoothing(on);
 }

@@ -3,8 +3,6 @@
 $serif: 'minion-pro', Times, 'Times New Roman', serif;
 $sans-serif: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
 
-$sans-serif-bold-weight: 700;
-
 // Colours
 
 $site-background: #f2f2f2;
@@ -19,8 +17,14 @@ $accent: #5f3eff;
 $white: #fff;
 $black: #000;
 
+// Breakpoints
+
+$medium: 1120px;
+$small: 500px;
+
 // Z-index
 
 $z-100: 100;
 $z-200: 200;
 $z-300: 300;
+$z-600: 600;

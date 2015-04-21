@@ -13,7 +13,7 @@
 
   .home & {
     color: $white;
-    opacity: 0.25;
+    opacity: .25;
   }
 
   &.invert {
@@ -23,7 +23,7 @@
 }
 
 .sticky--unpinned .logo {
-  opacity: 0.5;
+  opacity: .5;
 }
 
 .heading-inner {
@@ -56,6 +56,7 @@
 
     &.reverse {
       color: $white;
+      animation-play-state: running;
     }
   }
 }
@@ -67,15 +68,15 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
-#illustrator-meta {
+.illustrator-meta {
   flex: 1 1 30%;
 
   .illustrator-meta-wrapper {
     position: fixed;
-    width: calc(30% - 65px);
+    width: calc(30% - 70px);
     left: 60px;
     height: 100%;
     display: flex;
@@ -100,7 +101,8 @@
     box-shadow: 0 1px 1px 0 rgba($black, .05);
     justify-content: space-between;
 
-    .nav-previous, .nav-next {
+    .nav-previous,
+    .nav-next {
       float: left;
       width: 50%;
       display: block;
@@ -109,13 +111,21 @@
     .nav-next {
       text-align: right;
     }
-  }
-  .illustrator-meta-wrapper-inner {
-    display: none;
+
+    a {
+      color: $white;
+      display: block;
+      padding: 8px 10px;
+      background: none;
+      
+      &:hover {
+        background: $accent;
+      }
+    }
   }
 }
 
-#illustrator-gallery-container {
+.illustrator-gallery-container {
   flex: 1 1 70%;
   margin-top: 20px;
 
@@ -129,6 +139,10 @@
     opacity: 0;
     width: 50%;
     padding: 0 20px 20px 0;
+
+    &:nth-child(even) {
+      margin-right: -20px;
+    }
 
     &.velocity-animating {
       transition: transform 500ms;
@@ -148,7 +162,7 @@
   position: fixed;
   top: 0;
   z-index: $z-100;
-  left: 31%;
+  left: 30%;
   right: 0;
   background: rgba($site-background,.75);
   bottom: 0;

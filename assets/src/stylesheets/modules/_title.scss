@@ -3,10 +3,10 @@
   opacity: 0;
   transform: scale(.95);
   position: fixed;
-  padding: 0 0 0 20px;
   top: 20px;
+  left: 60px;
   bottom: 20px;
-  width: 33%;
+  width: calc(33.3333333333% - 60px);
   display: flex;
   flex-grow: 1;
   transition: flex-grow 1000ms linear;
@@ -42,7 +42,6 @@
   }
 
   .title-unit {
-    padding: 20px;
     align-self: center;
     flex: 0 0 100%;
   }
@@ -51,19 +50,14 @@
     position: absolute;
     bottom: 20px;
     font-size: .8rem;
-    opacity: .5;
+    
     &:hover {
       opacity: 1;
     }
+
     a {
-      color: $accent;
       background: none;
     }
-  }
-
-  .unit {
-    flex-shrink: 1;
-    transition: flex-shrink 1000ms linear;
   }
 }
 
@@ -98,6 +92,7 @@
   background: $site-background-home;
 
   #illustrators {
+    padding-top: 20px;
     margin-left: 33.3333333333%;
     width: 66.6666666667%;
   
@@ -113,9 +108,8 @@
 
 .archive,
 .search {
-
-  #app-head .logo {
-    display: block;
+  #illustrators { 
+    margin-top: 70px;
   }
 }
 
@@ -128,14 +122,13 @@
     right: 3%;
     left: 3%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     z-index: $z-100;
-    color: $accent;
-    opacity: .5;
 
     mark {
-      background: none;
-      color: $accent;
+      background: $accent;
+      color: $white;
+      padding: 0 5px;
     }
   }
 }
@@ -146,6 +139,7 @@
   .illustrator-meta-container {
     opacity: .5;
     transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    margin-bottom: 1em;
     @include font-smoothing(on);
   }
 

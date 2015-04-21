@@ -1,5 +1,5 @@
 #full-image {
-  cursor: e-resize;
+  cursor: pointer;
   display: flex;
   flex-shrink: 0;
   margin: 0 auto;
@@ -24,4 +24,15 @@ figure {
   display: block;
   height: auto;
   max-width: 100%;
+}
+
+// Full image tip
+
+.image-modal-tip {
+  @include font-smoothing(on);
+  font-family: $sans-serif;
+  position: fixed;
+  z-index: $z-600;
+  padding: 5px;
+  color: $accent;
 }
