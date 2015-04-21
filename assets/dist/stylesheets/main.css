@@ -331,7 +331,8 @@ html {
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  display: block; }
 
 @font-face {
   font-family: 'FoundersGroteskWeb-Bold';
@@ -389,6 +390,9 @@ body {
   color: #333;
   height: 100%;
   padding-bottom: 5rem; }
+  @media screen and (max-width: 768px) {
+    body {
+      padding-top: 60px; } }
 
 ::-moz-selection {
   background: #8971ff;
@@ -569,6 +573,12 @@ ul {
   background: linear-gradient(45deg, rgba(95, 62, 255, 0.85), #5f3eff);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (max-width: 1000px) {
+    .search-container, .year-select {
+      width: 75%; } }
+  @media screen and (max-width: 500px) {
+    .search-container, .year-select {
+      width: 100%; } }
 
 .close-panel {
   cursor: pointer;
@@ -614,13 +624,22 @@ ul {
           align-items: center;
   font-size: 3rem; }
   .search-form label {
-    width: 60%; }
+    width: 70%; }
   .search-form .twitter-typeahead {
     width: 100%;
     background-image: url('../images/underline-l-w.svg');
     background-repeat: repeat-x;
     background-size: 33px 10px;
     background-position: 0 100%; }
+  @media screen and (max-width: 768px) {
+    .search-form {
+      font-size: 3rem;
+      padding-top: 70px; }
+      .search-form label {
+        width: 85%; } }
+  @media screen and (max-width: 500px) {
+    .search-form {
+      font-size: 2rem; } }
 
 .search-field {
   padding: 10px 0;
@@ -635,6 +654,9 @@ ul {
   color: #fff;
   font-size: 1.2rem;
   margin-top: 23px; }
+  @media screen and (max-width: 768px) {
+    .search-submit {
+      margin-top: 10px; } }
 
 .tt-hint {
   -moz-osx-font-smoothing: grayscale;
@@ -772,10 +794,23 @@ ul {
   top: 45%;
   left: 40px;
   letter-spacing: 1px; }
+  @media screen and (max-width: 710px) {
+    .year-indicator {
+      display: none; } }
   .single .year-indicator {
     opacity: .75; }
   .year-indicator a {
     background: none; }
+
+@media screen and (max-width: 768px) {
+  .archive .year-indicator {
+    margin-top: 70px;
+    text-align: center;
+    display: block;
+    position: static;
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg); } }
 
 .logo {
   -moz-osx-font-smoothing: grayscale;
@@ -803,6 +838,9 @@ ul {
   position: fixed;
   color: #0e0e0f;
   font-size: 1.2rem; }
+  @media screen and (max-width: 768px) {
+    .heading-inner {
+      left: 20px; } }
   .home .heading-inner {
     color: #fff; }
   .heading-inner .header-item {
@@ -845,6 +883,12 @@ ul {
   -webkit-flex: 1 1 30%;
       -ms-flex: 1 1 30%;
           flex: 1 1 30%; }
+  @media screen and (max-width: 768px) {
+    .illustrator-meta {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 100%;
+          -ms-flex: 1 1 100%;
+              flex: 1 1 100%; } }
   .illustrator-meta .illustrator-meta-wrapper {
     position: fixed;
     width: calc(30% - 70px);
@@ -862,6 +906,16 @@ ul {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center; }
+    @media screen and (max-width: 768px) {
+      .illustrator-meta .illustrator-meta-wrapper {
+        position: static;
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin: 0 auto; } }
+    @media screen and (max-width: 500px) {
+      .illustrator-meta .illustrator-meta-wrapper {
+        width: 100%; } }
   .illustrator-meta .illustrator-meta-description {
     width: 100%; }
   .illustrator-meta .illustrator-nav-single {
@@ -882,6 +936,13 @@ ul {
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between; }
+    @media screen and (max-width: 768px) {
+      .illustrator-meta .illustrator-nav-single {
+        position: fixed;
+        bottom: 0;
+        z-index: 300;
+        width: 100%;
+        background: rgba(14, 14, 15, 0.5); } }
     .illustrator-meta .illustrator-nav-single .nav-previous, .illustrator-meta .illustrator-nav-single .nav-next {
       float: left;
       width: 50%;
@@ -902,6 +963,12 @@ ul {
       -ms-flex: 1 1 70%;
           flex: 1 1 70%;
   margin-top: 20px; }
+  @media screen and (max-width: 768px) {
+    .illustrator-gallery-container {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 100%;
+          -ms-flex: 1 1 100%;
+              flex: 1 1 100%; } }
   .illustrator-gallery-container .gallery {
     max-width: 1240px;
     margin: 0 auto; }
@@ -910,8 +977,12 @@ ul {
         -ms-transform: scale(.95);
             transform: scale(.95);
     opacity: 0;
-    width: 50%;
-    padding: 0 20px 20px 0; }
+    padding: 0 20px 20px 0;
+    width: 50%; }
+    @media screen and (max-width: 1020px) {
+      .illustrator-gallery-container .gallery-item {
+        width: 100%;
+        padding-right: 0; } }
     .illustrator-gallery-container .gallery-item:nth-child(even) {
       margin-right: -20px; }
     .illustrator-gallery-container .gallery-item.velocity-animating {
@@ -933,6 +1004,9 @@ ul {
   right: 0;
   background: rgba(242, 242, 242, 0.75);
   bottom: 0; }
+  @media screen and (max-width: 768px) {
+    #image-modal {
+      left: 0; } }
 
 #image-modal-container {
   -webkit-box-align: center;
@@ -960,6 +1034,7 @@ ul {
   top: 20px;
   left: 60px;
   bottom: 20px;
+  padding-right: 20px;
   width: calc(33.3333333333% - 60px);
   display: -webkit-box;
   display: -webkit-flex;
@@ -980,6 +1055,19 @@ ul {
           justify-content: center;
   z-index: 100;
   color: #fff; }
+  @media screen and (max-width: 1035px) {
+    .title {
+      width: calc(50% - 60px); } }
+  @media screen and (max-width: 768px) {
+    .title {
+      width: 50%;
+      left: 20px;
+      background: rgba(14, 14, 15, 0.8);
+      top: 0;
+      bottom: 0; } }
+  @media screen and (max-width: 500px) {
+    .title {
+      width: 100%; } }
   .title .message {
     color: #5f3eff;
     background-image: url('../images/underline.svg');
@@ -1043,13 +1131,34 @@ ul {
     padding-top: 20px;
     margin-left: 33.3333333333%;
     width: 66.6666666667%; }
+    @media screen and (max-width: 1035px) {
+      .home #illustrators {
+        margin-left: 50%;
+        width: 50%; } }
+    @media screen and (max-width: 768px) {
+      .home #illustrators {
+        padding-top: 70px;
+        margin-left: 0;
+        width: 100%; } }
     .home #illustrators .gallery-item {
       width: 33.3333333333%; }
+      @media screen and (max-width: 1035px) {
+        .home #illustrators .gallery-item {
+          width: 50%; } }
+      @media screen and (max-width: 1020px) {
+        .home #illustrators .gallery-item {
+          width: 50%; } }
+      @media screen and (max-width: 500px) {
+        .home #illustrators .gallery-item {
+          width: 100%; } }
       .home #illustrators .gallery-item a {
         color: #fff; }
 
 .archive #illustrators, .search #illustrators {
   margin-top: 70px; }
+  @media screen and (max-width: 768px) {
+    .archive #illustrators, .search #illustrators {
+      margin-top: 20px; } }
 
 .search .page-title {
   -moz-osx-font-smoothing: grayscale;
@@ -1069,6 +1178,9 @@ ul {
 
 #illustrators {
   margin-left: 40px; }
+  @media screen and (max-width: 768px) {
+    #illustrators {
+      margin-left: 0; } }
   #illustrators .illustrator-meta-container {
     opacity: .5;
     -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
@@ -1090,10 +1202,22 @@ ul {
     margin-bottom: 0; }
   #illustrators .gallery-item {
     width: 25%; }
+    @media screen and (max-width: 1020px) {
+      #illustrators .gallery-item {
+        width: 33.3333333333%; } }
+    @media screen and (max-width: 768px) {
+      #illustrators .gallery-item {
+        width: 50%; } }
+    @media screen and (max-width: 500px) {
+      #illustrators .gallery-item {
+        width: 100%; } }
     #illustrators .gallery-item a {
       padding: 0 20px 20px 0;
       display: block;
       background: none; }
+      @media screen and (max-width: 500px) {
+        #illustrators .gallery-item a {
+          padding-right: 0; } }
 
 input {
   -moz-osx-font-smoothing: grayscale;

@@ -10,6 +10,9 @@ body {
   color: $site-font-color;
   height: 100%;
   padding-bottom: 5rem;
+  @media screen and (max-width: $medium-vertical-vp) {
+    padding-top: 60px;
+  }
 }
 
 ::selection {

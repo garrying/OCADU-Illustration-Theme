@@ -47,11 +47,25 @@
   left: 40px;
   letter-spacing: 1px;
 
+  @media screen and (max-width: 710px) {
+    display: none;
+  }
+
   .single & {
     opacity: .75;
   }
 
   a {
     background: none;
+  }
+}
+
+.archive .year-indicator {
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-top: 70px;
+    text-align: center;
+    display: block;
+    position: static;
+    transform: rotate(0deg);
   }
 }

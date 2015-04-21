@@ -7,7 +7,7 @@
   font-size: 3rem;
 
   label {
-    width: 60%;
+    width: 70%;
   }
 
   .twitter-typeahead {
@@ -16,6 +16,18 @@
     background-repeat: repeat-x;
     background-size: 33px 10px;
     background-position: 0 100%;
+  }
+
+  @media screen and (max-width: $medium-vertical-vp) {
+    font-size: 3rem;
+    padding-top: 70px;
+    label {
+      width: 85%;
+    }
+  }
+
+  @media screen and (max-width: $small-vp) {
+    font-size: 2rem;
   }
 }
 
@@ -35,6 +47,9 @@
   color: $white;
   font-size: 1.2rem;
   margin-top: 23px;
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-top: 10px;
+  }
 }
 
 .search-container {

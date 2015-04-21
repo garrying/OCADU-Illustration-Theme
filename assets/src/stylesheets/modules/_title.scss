@@ -6,6 +6,7 @@
   top: 20px;
   left: 60px;
   bottom: 20px;
+  padding-right: 20px;
   width: calc(33.3333333333% - 60px);
   display: flex;
   flex-grow: 1;
@@ -13,6 +14,20 @@
   justify-content: center;
   z-index: $z-100;
   color: $white;
+
+  @media screen and (max-width: 1035px) {
+    width: calc(50% - 60px);
+  }
+  @media screen and (max-width: $medium-vertical-vp) {
+    width: 50%;
+    left: 20px;
+    background: rgba($site-background-home,0.8);
+    top: 0;
+    bottom: 0; 
+  }
+  @media screen and (max-width: $small-vp) {
+    width: 100%;
+  }
 
   .message {
     color: $accent;
@@ -95,9 +110,29 @@
     padding-top: 20px;
     margin-left: 33.3333333333%;
     width: 66.6666666667%;
+    
+    @media screen and (max-width: 1035px) {
+      margin-left: 50%;
+      width: 50%;
+    }
+
+    @media screen and (max-width: $medium-vertical-vp) {
+      padding-top: 70px;
+      margin-left: 0;
+      width: 100%;
+    }
   
     .gallery-item {
       width: 33.3333333333%;
+      @media screen and (max-width: 1035px) {
+        width: 50%;
+      }
+      @media screen and (max-width: $medium-vp) {
+        width: 50%;
+      }
+      @media screen and (max-width: $small-vp) {
+        width: 100%;
+      }
 
       a {
         color: $white;
@@ -110,6 +145,9 @@
 .search {
   #illustrators { 
     margin-top: 70px;
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-top: 20px;
+    }
   }
 }
 
@@ -135,6 +173,9 @@
 
 #illustrators {
   margin-left: 40px;
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-left: 0;
+  }
 
   .illustrator-meta-container {
     opacity: .5;
@@ -166,9 +207,24 @@
 
   .gallery-item {
     width: 25%;
+    
+    @media screen and (max-width: $medium-vp) {
+      width: 33.3333333333%;
+    }
+  
+    @media screen and (max-width: $medium-vertical-vp) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 100%;
+    }
 
     a {
       padding: 0 20px 20px 0;
+      @media screen and (max-width: $small-vp) {
+        padding-right: 0;
+      }
       display: block;
       background: none;
     }

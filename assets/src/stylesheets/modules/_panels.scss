@@ -12,6 +12,12 @@
   outline: 0;
   background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
   @include font-smoothing(on);
+  @media screen and (max-width: $medium-panels-vp) { 
+    width: 75%;
+  }
+  @media screen and (max-width: $small-vp) {
+    width: 100%;
+  }
 }
 
 
