@@ -112,7 +112,7 @@
     @media screen and (max-width: $medium-vertical-vp) { 
       position: fixed;
       bottom: 0;
-      z-index: $z-300;
+      z-index: $z-100;
       width: 100%;
       background: rgba($site-background-home,0.5);
     }

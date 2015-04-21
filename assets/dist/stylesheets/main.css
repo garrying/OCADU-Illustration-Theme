@@ -950,7 +950,7 @@ ul {
       .illustrator-meta .illustrator-nav-single {
         position: fixed;
         bottom: 0;
-        z-index: 300;
+        z-index: 100;
         width: 100%;
         background: rgba(14, 14, 15, 0.5); } }
     .illustrator-meta .illustrator-nav-single .nav-previous, .illustrator-meta .illustrator-nav-single .nav-next {
