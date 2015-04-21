@@ -636,7 +636,7 @@ ul {
       font-size: 3rem;
       padding-top: 70px; }
       .search-form label {
-        width: 85%; } }
+        width: 80%; } }
   @media screen and (max-width: 500px) {
     .search-form {
       font-size: 2rem; } }
@@ -692,15 +692,25 @@ ul {
           justify-content: center;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  padding: 0 3%; }
+          flex-flow: row wrap; }
 .page .hentry {
   margin: 100px auto 0 auto;
   max-width: 850px;
   padding: 0 10%; }
+  @media screen and (max-width: 768px) {
+    .page .hentry {
+      margin-top: 50px; } }
+  @media screen and (max-width: 500px) {
+    .page .hentry {
+      margin-top: 0;
+      padding: 0 20px; } }
   .page .hentry p {
     font-size: 1.25rem;
     line-height: 1.75rem; }
+    @media screen and (max-width: 500px) {
+      .page .hentry p {
+        font-size: 1.1rem;
+        line-height: 1.5rem; } }
 .page .span1 {
   float: left;
   width: 50%; }

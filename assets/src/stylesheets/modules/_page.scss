@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    padding: 0 3%;
   }
 
   .hentry {
@@ -12,8 +11,21 @@
     max-width: 850px;
     padding: 0 10%;
 
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      margin-top: 0;
+      padding: 0 20px;
+    }
+
     p {
       font-size: 1.25rem;
+      @media screen and (max-width: $small-vp) {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+      }
       line-height: 1.75rem;
     }
   }

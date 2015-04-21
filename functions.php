@@ -47,7 +47,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      * Add custom image size
      */
 
-    add_image_size( 'illustrator-home-thumbnail', 480 );
+    add_image_size( 'illustrator-small', 300 );
 
   }
 endif;
