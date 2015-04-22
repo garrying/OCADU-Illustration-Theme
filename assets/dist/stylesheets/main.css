@@ -1085,7 +1085,8 @@ ul {
       bottom: 0; } }
   @media screen and (max-width: 500px) {
     .title {
-      width: 100%; } }
+      width: 100%;
+      display: none; } }
   .title .message {
     color: #e75a62;
     background-image: url('../images/underline.svg');
@@ -1153,6 +1154,9 @@ ul {
         padding-top: 70px;
         margin-left: 0;
         width: 100%; } }
+    @media screen and (max-width: 500px) {
+      .home #illustrators {
+        width: calc(100% + 20px); } }
     .home #illustrators .gallery-item {
       width: 33.3333333333%; }
       @media screen and (max-width: 1035px) {
@@ -1161,9 +1165,6 @@ ul {
       @media screen and (max-width: 1020px) {
         .home #illustrators .gallery-item {
           width: 50%; } }
-      @media screen and (max-width: 500px) {
-        .home #illustrators .gallery-item {
-          width: 100%; } }
       .home #illustrators .gallery-item a {
         color: #fff; }
 
@@ -1208,10 +1209,11 @@ ul {
   #illustrators .illustrator-title {
     font-size: 0.95rem;
     line-height: 1.2rem;
-    margin-bottom: 0; }
+    margin-bottom: 5px; }
   #illustrators .illustrator-name {
     font-family: 'minion-pro', Times, 'Times New Roman', serif;
     font-size: 0.95rem;
+    line-height: 1.2rem;
     margin-top: 0;
     margin-bottom: 0; }
   #illustrators .gallery-item {
@@ -1221,14 +1223,11 @@ ul {
         width: 33.3333333333%; } }
     @media screen and (max-width: 500px) {
       #illustrators .gallery-item {
-        width: 100%; } }
+        width: 50%; } }
     #illustrators .gallery-item a {
       padding: 0 20px 20px 0;
       display: block;
       background: none; }
-      @media screen and (max-width: 500px) {
-        #illustrators .gallery-item a {
-          padding-right: 0; } }
 
 input {
   -moz-osx-font-smoothing: grayscale;

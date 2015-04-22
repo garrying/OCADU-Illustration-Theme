@@ -27,6 +27,7 @@
   }
   @media screen and (max-width: $small-vp) {
     width: 100%;
+    display: none;
   }
 
   .message {
@@ -105,7 +106,7 @@
     padding-top: 20px;
     margin-left: 33.3333333333%;
     width: 66.6666666667%;
-    
+
     @media screen and (max-width: 1035px) {
       margin-left: 50%;
       width: 50%;
@@ -116,17 +117,20 @@
       margin-left: 0;
       width: 100%;
     }
+
+    @media screen and (max-width: $small-vp) {
+      width: calc(100% + 20px);
+    }
   
     .gallery-item {
       width: 33.3333333333%;
+
       @media screen and (max-width: 1035px) {
         width: 50%;
       }
+
       @media screen and (max-width: $medium-vp) {
         width: 50%;
-      }
-      @media screen and (max-width: $small-vp) {
-        width: 100%;
       }
 
       a {
@@ -168,6 +172,7 @@
 
 #illustrators {
   margin-left: 40px;
+  
   @media screen and (max-width: $medium-vertical-vp) {
     margin-left: 0;
     margin-right: -20px;
@@ -191,12 +196,13 @@
   .illustrator-title {
     font-size: 0.95rem;
     line-height: 1.2rem;
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
 
   .illustrator-name {
     font-family: $serif;
     font-size: 0.95rem;
+    line-height: 1.2rem;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -209,14 +215,11 @@
     }
 
     @media screen and (max-width: $small-vp) {
-      width: 100%;
+      width: 50%;
     }
 
     a {
       padding: 0 20px 20px 0;
-      @media screen and (max-width: $small-vp) {
-        padding-right: 0;
-      }
       display: block;
       background: none;
     }
