@@ -26,7 +26,8 @@ $(function() {
       prevItem: $('.nav-previous a'),
       logo: $('.logo'),
       yearSelect: $('#year-select-link'),
-      searchLink: $('#search-link')
+      searchLink: $('#search-link'),
+      searchField: $('.search-field')
     },
 
     _fastClick: function () {
@@ -78,7 +79,7 @@ $(function() {
        
       illustratorSearch.initialize();
        
-      $('.search-field').typeahead({
+      app.settings.searchField.typeahead({
         hint: false
         },{
         name: 'illustratorName',
