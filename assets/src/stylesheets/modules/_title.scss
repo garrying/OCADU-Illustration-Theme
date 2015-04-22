@@ -170,6 +170,7 @@
   margin-left: 40px;
   @media screen and (max-width: $medium-vertical-vp) {
     margin-left: 0;
+    margin-right: -20px;
   }
 
   .illustrator-meta-container {
@@ -203,12 +204,8 @@
   .gallery-item {
     width: 25%;
     
-    @media screen and (max-width: $medium-vp) {
-      width: 33.3333333333%;
-    }
-  
     @media screen and (max-width: $medium-vertical-vp) {
-      width: 50%;
+      width: 33.3333333333%;
     }
 
     @media screen and (max-width: $small-vp) {

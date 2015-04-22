@@ -247,7 +247,7 @@ $(function() {
         $('.search-container').velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
         app.settings.yearSelect.velocity({ opacity: 1, display:'block' }, { duration: 180 });
       }
-      if (!$(event.target).closest('.panel, #year-select, #search').length) {
+      if (!$(event.target).closest('.panel, #year-select-link, #search-link').length) {
         app.settings.logo.removeClass('invert');
       }
     },

@@ -828,7 +828,7 @@ ul {
   -webkit-font-smoothing: antialiased;
   background: none;
   color: rgba(14, 14, 15, 0.25);
-  display: inline;
+  float: left;
   -webkit-transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
           transition: opacity 500ms ease-in-out, color 180ms ease-in-out; }
   .logo:hover {
@@ -858,7 +858,7 @@ ul {
     color: #fff; }
   .heading-inner .header-item {
     cursor: pointer;
-    display: inline;
+    float: left;
     margin-left: 20px;
     background-image: url('../images/underline-w.svg');
     background-repeat: repeat-x;
@@ -984,7 +984,8 @@ ul {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 100%;
           -ms-flex: 1 1 100%;
-              flex: 1 1 100%; } }
+              flex: 1 1 100%;
+      max-width: 600px; } }
   .illustrator-gallery-container .gallery {
     max-width: 1240px;
     margin: 0 auto; }
@@ -995,7 +996,7 @@ ul {
     opacity: 0;
     padding: 0 20px 20px 0;
     width: 50%; }
-    @media screen and (max-width: 1020px) {
+    @media screen and (max-width: 500px) {
       .illustrator-gallery-container .gallery-item {
         width: 100%;
         padding-right: 0; } }
@@ -1190,7 +1191,8 @@ ul {
   margin-left: 40px; }
   @media screen and (max-width: 768px) {
     #illustrators {
-      margin-left: 0; } }
+      margin-left: 0;
+      margin-right: -20px; } }
   #illustrators .illustrator-meta-container {
     opacity: .5;
     -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
@@ -1212,12 +1214,9 @@ ul {
     margin-bottom: 0; }
   #illustrators .gallery-item {
     width: 25%; }
-    @media screen and (max-width: 1020px) {
-      #illustrators .gallery-item {
-        width: 33.3333333333%; } }
     @media screen and (max-width: 768px) {
       #illustrators .gallery-item {
-        width: 50%; } }
+        width: 33.3333333333%; } }
     @media screen and (max-width: 500px) {
       #illustrators .gallery-item {
         width: 100%; } }
