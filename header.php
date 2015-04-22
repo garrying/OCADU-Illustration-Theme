@@ -37,10 +37,10 @@
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
-          <div id="clock" class="header-item" title="Select year">
+          <div id="year-select-link" class="header-item" title="Select year">
             Year
-          </div> <!-- #clock-->
-          <div id="magnifying-glass" class="header-item" title="Search archive">
+          </div>
+          <div id="search-link" class="header-item" title="Search archive">
             Search
           </div>
         </div>

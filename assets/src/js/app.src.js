@@ -23,7 +23,10 @@ $(function() {
       masonryContainerHome: $('#illustrators'),
       header: $('#app-head-items'),
       nextItem: $('.nav-next a'),
-      prevItem: $('.nav-previous a')
+      prevItem: $('.nav-previous a'),
+      logo: $('.logo'),
+      yearSelect: $('#year-select-link'),
+      searchLink: $('#search-link')
     },
 
     _fastClick: function () {
@@ -108,7 +111,7 @@ $(function() {
     },
 
     _ocadYearSelect: function () {
-      $('#clock').on('click',function(){
+      app.settings.yearSelect.on('click',function(){
         if ($(this).hasClass('reverse')) {
           $(this).removeClass('reverse');
           $('.year-select').velocity('fadeOut', {
@@ -117,17 +120,17 @@ $(function() {
               $('.year-item').velocity({opacity: 0}).removeClass('loaded');
             }
           }).attr('aria-hidden',true);
-          $('#magnifying-glass').velocity('fadeIn', { 
+          app.settings.searchLink.velocity('fadeIn', { 
             duration: 180
           });
-          $('.logo').removeClass('invert');
+          app.settings.logo.removeClass('invert');
         } else {
           $(this).addClass('reverse');
-          $('.logo').addClass('invert');
+          app.settings.logo.addClass('invert');
           $('.year-select').velocity('fadeIn', { 
             duration: 180
           }).attr('aria-hidden',false);
-          $('#magnifying-glass').velocity({opacity: 0.3}, { duration: 180 });
+          app.settings.searchLink.velocity({opacity: 0.3}, { duration: 180 });
           $('.year-item').each(function(i){
             var item = $(this);
             item.delay(100*i).velocity({opacity:1,display:'block'},{
@@ -144,22 +147,24 @@ $(function() {
       
       app._ocadSearch();
 
-      $('#magnifying-glass').on('click',function(){
+      app.settings.searchLink.on('click',function(){
         if ($(this).hasClass('reverse')) {
           $(this).removeClass('reverse');
-          $('.logo').removeClass('invert');
+          app.settings.logo.removeClass('invert');
           $('.search-container').velocity('fadeOut', { 
             duration: 180
           }).attr('aria-hidden',true);
-          $('#clock').velocity('fadeIn', { duration: 180 });
+          app.settings.yearSelect.velocity('fadeIn', { duration: 180 });
         } else {
           $(this).addClass('reverse');
-          $('.logo').addClass('invert');
+          app.settings.logo.addClass('invert');
           $('.search-container').velocity('fadeIn', {
             duration: 180
           }).attr('aria-hidden',false);
-          $('#clock').velocity({ opacity: 0.3 }, { duration: 180 });
-          $('.search-field').focus();
+          app.settings.yearSelect.velocity({ opacity: 0.3 }, { duration: 180 });
+          setTimeout(function(){
+            $('.search-field').focus();            
+          }, 0);
         }
       });
     },
@@ -216,8 +221,8 @@ $(function() {
           }
         }).attr('aria-hidden',true);
       }
-      if ($('.logo').hasClass('invert')) {
-        $('.logo').removeClass('invert');
+      if (app.settings.logo.hasClass('invert')) {
+        app.settings.logo.removeClass('invert');
       }
     },
 
@@ -227,22 +232,22 @@ $(function() {
         $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       }
       if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
-        $('#clock').removeClass('reverse');
+        app.settings.yearSelect.removeClass('reverse');
         $('.year-select').velocity('fadeOut', { 
           duration: 180,
           complete: function(){
             $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
           }
         }).attr('aria-hidden',true);
-        $('#magnifying-glass').velocity({ opacity: 1, display:'block' }, { duration: 180 });
+        app.settings.searchLink.velocity({ opacity: 1, display:'block' }, { duration: 180 });
       }
       if (!$(event.target).closest('.search').length && $('.search-container').is(':visible')) {
-        $('#magnifying-glass').removeClass('reverse');
+        app.settings.searchLink.removeClass('reverse');
         $('.search-container').velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
-        $('#clock').velocity({ opacity: 1, display:'block' }, { duration: 180 });
+        app.settings.yearSelect.velocity({ opacity: 1, display:'block' }, { duration: 180 });
       }
-      if (!$(event.target).closest('.panel, #clock, #magnifying-glass').length) {
-        $('.logo').removeClass('invert');
+      if (!$(event.target).closest('.panel, #year-select, #search').length) {
+        app.settings.logo.removeClass('invert');
       }
     },
 

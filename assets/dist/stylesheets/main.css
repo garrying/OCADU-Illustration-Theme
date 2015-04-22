@@ -604,11 +604,12 @@ ul {
   left: 20px;
   font-family: sans-serif;
   font-weight: normal;
+  background: none;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
 
 .search-form {
-  padding-top: 55px;
+  padding-top: 70px;
   color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
