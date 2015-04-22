@@ -36,12 +36,7 @@
     background-size: 30px 10px;
     background-position: 0 100%;
     padding-bottom: 8px;
-    animation: backAnimate 1s linear infinite;
-    animation-play-state: paused;
-
-    &:hover {
-      animation-play-state: running;
-    }
+    animation: backAnimate 2s linear infinite;
   }
 
   .title-primary {
