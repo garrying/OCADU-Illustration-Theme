@@ -265,10 +265,11 @@ $(function() {
 
       if ($('body').hasClass('single')) {
 
+        $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
+
         $(app.settings.masonryContainer).imagesLoaded().done(function() {
           app._ocadMasonry(app.settings.masonryContainer);
           app._ocadCascade('.gallery-item',100);
-          $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
 
           $(app.settings.masonryContainer).find('a').each(function(){
            var y = imageIndex++;
