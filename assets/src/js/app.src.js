@@ -19,8 +19,8 @@ $(function() {
 
     settings: {
       loader: $('.loader'), 
-      masonryContainer: $('#pack-content'),
-      masonryContainerHome: $('#illustrators'),
+      masonryContainer: '#pack-content',
+      masonryContainerHome: '#illustrators',
       header: $('#app-head-items'),
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
@@ -51,11 +51,14 @@ $(function() {
     },
 
     _ocadMasonry: function (selector) {
-      selector.masonry({
+
+      var container = document.querySelector(selector);
+      var msnry = new Masonry( container, {
         itemSelector: '.gallery-item',
         transitionDuration: '250ms',
         percentPosition: true
       });
+
     },
 
     _ocadCascade: function (selector, delayNum) {
@@ -173,7 +176,7 @@ $(function() {
     _ocadHomeLoader: function () {
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
         $('.title').velocity({ opacity: 1, scale: 1 },'slow');
-        app.settings.masonryContainerHome.imagesLoaded().done(function() {
+        $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
             app._ocadMasonry(app.settings.masonryContainerHome);
             app._ocadCascade('.illustrator',200);
           }
@@ -260,26 +263,28 @@ $(function() {
       var nextImage;
       var imageIndex = 1;
 
-      app.settings.masonryContainer.imagesLoaded( function() {
-        app._ocadMasonry(app.settings.masonryContainer);
-        app._ocadCascade('.gallery-item',100);
-        $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
+      if ($('body').hasClass('single')) {
 
-        app.settings.masonryContainer.find('a').each(function(){
-          var y = imageIndex++;
-          $(this).data('index',y);
-          var imageFullurl = $(this).attr('href');
-          galleryImages.push(imageFullurl);
+        $(app.settings.masonryContainer).imagesLoaded().done(function() {
+          app._ocadMasonry(app.settings.masonryContainer);
+          app._ocadCascade('.gallery-item',100);
+          $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
+
+          $(app.settings.masonryContainer).find('a').each(function(){
+           var y = imageIndex++;
+           $(this).data('index',y);
+           var imageFullurl = $(this).attr('href');
+           galleryImages.push(imageFullurl);
+          });
         });
 
-      });
-
+      }
 
       /**
       * Masonry item click
       **/
 
-      app.settings.masonryContainer.on( 'click', '.gallery-item', function( event ) {
+      $(app.settings.masonryContainer).on( 'click', '.gallery-item', function( event ) {
         event.preventDefault();
         app._ocadLoader(true);
         itemimgFullsrc = $( event.target ).closest('a').attr('href');
