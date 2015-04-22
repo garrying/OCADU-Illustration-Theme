@@ -75,7 +75,9 @@ $(function() {
        
       illustratorSearch.initialize();
        
-      $('.search-field').typeahead(null, {
+      $('.search-field').typeahead({
+        hint: false
+        },{
         name: 'illustratorName',
         displayKey: 'title',
         source: illustratorSearch.ttAdapter()

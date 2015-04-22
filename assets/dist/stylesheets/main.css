@@ -344,14 +344,14 @@ html {
     background-position: 0 100%; }
 
   100% {
-    background-position: -33px 100%; } }
+    background-position: -30px 100%; } }
 
 @keyframes backAnimate {
   0% {
     background-position: 0 100%; }
 
   100% {
-    background-position: -33px 100%; } }
+    background-position: -30px 100%; } }
 
 @-webkit-keyframes backAnimateSmall {
   0% {
@@ -629,7 +629,7 @@ ul {
     width: 100%;
     background-image: url('../images/underline-l-w.svg');
     background-repeat: repeat-x;
-    background-size: 33px 10px;
+    background-size: 30px 10px;
     background-position: 0 100%; }
   @media screen and (max-width: 768px) {
     .search-form {
@@ -859,7 +859,7 @@ ul {
     margin-left: 20px;
     background-image: url('../images/underline-w.svg');
     background-repeat: repeat-x;
-    background-size: 23px 7px;
+    background-size: 23px 8px;
     background-position: 0 100%;
     padding-bottom: 6px;
     -webkit-animation: backAnimateSmall 500ms linear infinite;
@@ -1081,9 +1081,9 @@ ul {
     color: #e75a62;
     background-image: url('../images/underline.svg');
     background-repeat: repeat-x;
-    background-size: 33px 10px;
+    background-size: 30px 10px;
     background-position: 0 100%;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     -webkit-animation: backAnimate 1s linear infinite;
             animation: backAnimate 1s linear infinite;
     -webkit-animation-play-state: paused;
