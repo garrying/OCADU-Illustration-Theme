@@ -172,11 +172,12 @@ $(function() {
 
     _ocadHomeLoader: function () {
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
-        app.settings.masonryContainerHome.imagesLoaded( function() {
-          app._ocadMasonry(app.settings.masonryContainerHome);
-          app._ocadCascade('.illustrator',200);
-          $('.title').velocity({ opacity: 1, scale: 1 },'slow');
-        });
+        $('.title').velocity({ opacity: 1, scale: 1 },'slow');
+        app.settings.masonryContainerHome.imagesLoaded().done(function() {
+            app._ocadMasonry(app.settings.masonryContainerHome);
+            app._ocadCascade('.illustrator',200);
+          }
+        );
       }
     },
 
