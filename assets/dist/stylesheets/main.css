@@ -713,8 +713,8 @@ ul {
         font-size: 1.1rem;
         line-height: 1.5rem; } }
 .page .span1 {
-  float: left;
-  width: 50%; }
+  width: 50%;
+  float: left; }
 
 .error-body {
   display: -webkit-box;
@@ -828,7 +828,7 @@ ul {
   -webkit-font-smoothing: antialiased;
   background: none;
   color: rgba(14, 14, 15, 0.25);
-  float: left;
+  display: inline;
   -webkit-transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
           transition: opacity 500ms ease-in-out, color 180ms ease-in-out; }
   .logo:hover {
@@ -858,7 +858,7 @@ ul {
     color: #fff; }
   .heading-inner .header-item {
     cursor: pointer;
-    float: left;
+    display: inline;
     margin-left: 20px;
     background-image: url('../images/underline-w.svg');
     background-repeat: repeat-x;
@@ -957,14 +957,17 @@ ul {
         width: 100%;
         background: rgba(14, 14, 15, 0.5); } }
     .illustrator-meta .illustrator-nav-single .nav-previous, .illustrator-meta .illustrator-nav-single .nav-next {
-      float: left;
-      width: 50%;
-      display: block; }
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      width: 50%; }
     .illustrator-meta .illustrator-nav-single .nav-next {
       text-align: right; }
     .illustrator-meta .illustrator-nav-single a {
       color: #fff;
       display: block;
+      width: 100%;
       padding: 8px 10px;
       background: none; }
       .illustrator-meta .illustrator-nav-single a:hover {

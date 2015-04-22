@@ -4,7 +4,7 @@
   @include font-smoothing(on);
   background: none;
   color: rgba($site-background-home, .25);
-  float: left;
+  display: inline;
   transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
 
   &:hover {
@@ -47,7 +47,7 @@
 
   .header-item {
     cursor: pointer;
-    float: left;
+    display: inline;
     margin-left: 20px;
     background-image: url('../images/underline-w.svg');
     background-repeat: repeat-x;
@@ -130,9 +130,8 @@
 
     .nav-previous,
     .nav-next {
-      float: left;
+      display: flex;
       width: 50%;
-      display: block;
     }
 
     .nav-next {
@@ -142,6 +141,7 @@
     a {
       color: $white;
       display: block;
+      width: 100%;
       padding: 8px 10px;
       background: none;
       
