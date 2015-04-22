@@ -22,9 +22,11 @@
 
 }
 
-.sticky--unpinned .logo {
-  opacity: .5;
-}
+.sticky--unpinned {
+  .heading-inner {
+    opacity: .25;
+  }
+} 
 
 .heading-inner {
   z-index: $z-300;
@@ -33,6 +35,8 @@
   position: fixed;
   color: $site-background-home;
   font-size: 1.2rem;
+  transition: opacity 180ms ease-in-out;
+
   @media screen and (max-width: $medium-vertical-vp) {
    left: 20px;
   }

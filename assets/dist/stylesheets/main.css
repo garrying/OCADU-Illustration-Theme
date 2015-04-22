@@ -839,8 +839,8 @@ ul {
   .logo.invert {
     color: #fff; }
 
-.sticky--unpinned .logo {
-  opacity: .5; }
+.sticky--unpinned .heading-inner {
+  opacity: .25; }
 
 .heading-inner {
   z-index: 300;
@@ -848,7 +848,9 @@ ul {
   top: 20px;
   position: fixed;
   color: #0e0e0f;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  -webkit-transition: opacity 180ms ease-in-out;
+          transition: opacity 180ms ease-in-out; }
   @media screen and (max-width: 768px) {
     .heading-inner {
       left: 20px; } }
