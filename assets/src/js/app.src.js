@@ -165,7 +165,7 @@ $(function() {
           app.settings.yearSelect.velocity({ opacity: 0.3 }, { duration: 180 });
           setTimeout(function(){
             $('.search-field').focus();            
-          }, 0);
+          }, 100);
         }
       });
     },
