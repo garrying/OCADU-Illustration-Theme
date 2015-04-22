@@ -26,6 +26,11 @@
   .heading-inner {
     opacity: .25;
   }
+  &:hover {
+    .heading-inner {
+      opacity: 1;
+    }
+  }
 } 
 
 .heading-inner {

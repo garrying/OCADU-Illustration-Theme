@@ -841,6 +841,8 @@ ul {
 
 .sticky--unpinned .heading-inner {
   opacity: .25; }
+.sticky--unpinned:hover .heading-inner {
+  opacity: 1; }
 
 .heading-inner {
   z-index: 300;
