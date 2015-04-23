@@ -29,7 +29,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
+  <a class="screen-reader-shortcut heading" tabindex="1" href="#main">Skip to main content</a>
 
   <div class="loader"></div>
   <header role="banner">
@@ -37,12 +37,12 @@
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
-          <div id="year-select-link" class="header-item" title="Select year">
+          <button id="year-select-link" class="header-item" title="Select year">
             Year
-          </div>
-          <div id="search-link" class="header-item" title="Search archive">
+          </button>
+          <button id="search-link" class="header-item" title="Search archive">
             Search
-          </div>
+          </button>
         </div>
         
 
@@ -77,7 +77,7 @@
               ?>
             </div>
             <button class="close-panel" title="Close panel" aria-labelledby="Close search panel"></button>
-            <a href="/about" class="panel-colophon"></a>
+            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
           </div> <!-- .year-Select-->
         </div>
 
@@ -87,7 +87,7 @@
               <?php get_search_form(); ?>
             </div>
             <button class="close-panel" title="Close search panel" aria-labelledby="Close search panel"></button>
-            <a href="/about" class="panel-colophon"></a>
+            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
           </div>
         </div><!-- .search -->
        

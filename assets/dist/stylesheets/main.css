@@ -418,9 +418,8 @@ a {
 .screen-reader-shortcut {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
-  color: #e75a62;
-  background: none;
+  color: #fff;
+  background: #e75a62;
   position: absolute;
   top: 0;
   left: 60px;
@@ -831,10 +830,13 @@ ul {
     cursor: pointer;
     float: left;
     margin-left: 20px;
+    line-height: 1.1em;
     background-image: url('../images/underline-w.svg');
+    background-color: transparent;
     background-repeat: repeat-x;
     background-size: 23px 8px;
     background-position: 0 100%;
+    border: 0;
     padding-bottom: 6px;
     -webkit-animation: backAnimateSmall 500ms linear infinite;
             animation: backAnimateSmall 500ms linear infinite;
@@ -901,47 +903,48 @@ ul {
         width: 100%; } }
   .illustrator-meta .illustrator-meta-description {
     width: 100%; }
-  .illustrator-meta .illustrator-nav-single {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    background: #0e0e0f;
-    position: absolute;
-    font-style: italic;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+.illustrator-nav-single {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background: #0e0e0f;
+  position: absolute;
+  font-style: italic;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  @media screen and (max-width: 768px) {
+    .illustrator-nav-single {
+      position: fixed;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      background: rgba(14, 14, 15, 0.5); } }
+  .illustrator-nav-single .nav-previous, .illustrator-nav-single .nav-next {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between; }
-    @media screen and (max-width: 768px) {
-      .illustrator-meta .illustrator-nav-single {
-        position: fixed;
-        bottom: 0;
-        z-index: 100;
-        width: 100%;
-        background: rgba(14, 14, 15, 0.5); } }
-    .illustrator-meta .illustrator-nav-single .nav-previous, .illustrator-meta .illustrator-nav-single .nav-next {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 50%; }
-    .illustrator-meta .illustrator-nav-single .nav-next {
-      text-align: right; }
-    .illustrator-meta .illustrator-nav-single a {
-      color: #fff;
-      display: block;
-      width: 100%;
-      padding: 8px 10px;
-      background: none; }
-      .illustrator-meta .illustrator-nav-single a:hover {
-        background: #e75a62; }
+    width: 50%; }
+  .illustrator-nav-single .nav-next {
+    text-align: right; }
+  .illustrator-nav-single a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    background: none; }
+    .illustrator-nav-single a:hover {
+      background: #e75a62; }
 
 .illustrator-gallery-container {
   -webkit-box-flex: 1;

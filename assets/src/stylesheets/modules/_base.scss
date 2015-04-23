@@ -39,9 +39,8 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
-  font-family: $sans-serif;
-  color: $accent;
-  background: none;
+  color: $white;
+  background: $accent;
   position: absolute;
   top: 0;
   left: 60px;
