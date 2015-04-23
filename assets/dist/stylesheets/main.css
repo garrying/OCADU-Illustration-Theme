@@ -1063,10 +1063,20 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #fff; }
+  color: #fff;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: opacity 180ms ease-in-out;
+          transition: opacity 180ms ease-in-out; }
+  @media screen and (max-width: 768px) {
+    .title {
+      background: rgba(14, 14, 15, 0.8); } }
   @media screen and (max-width: 1035px) {
     .title {
-      width: calc(50% - 60px); } }
+      width: calc(40% - 60px); } }
   @media screen and (max-width: 500px) {
     .title {
       width: 100%;
@@ -1082,9 +1092,12 @@ ul {
             animation: backAnimate 2s linear infinite; }
   .title .title-primary {
     font-size: 2rem;
-    line-height: 2.5rem;
+    line-height: 1.2em;
     margin-bottom: 2.5rem;
     margin-top: 0; }
+    @media screen and (max-width: 768px) {
+      .title .title-primary {
+        margin-right: 20px; } }
   .title p {
     font-size: 1.2rem;
     line-height: 1.55rem; }
@@ -1103,36 +1116,29 @@ ul {
     .title .colophon:hover {
       opacity: 1; }
     .title .colophon a {
+      color: #e75a62;
       background: none; }
   .title.velocity-animating {
     -webkit-transition: -webkit-transform 500ms;
             transition: transform 500ms; }
-  .title .title-wrapper {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-transition: opacity 180ms ease-in-out;
-            transition: opacity 180ms ease-in-out; }
-    @media screen and (max-width: 768px) {
-      .title .title-wrapper {
-        background: rgba(14, 14, 15, 0.8); } }
+  .title.loaded {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
   @media screen and (max-width: 768px) {
     .title {
       width: 50%;
-      left: 20px;
+      left: 0;
       top: 0;
-      bottom: 0; }
-      .title.sticky--unpinned .title-wrapper {
+      bottom: 0;
+      padding-left: 20px;
+      padding-right: 0; }
+      .title.sticky--unpinned {
         opacity: 0;
-        visibility: visible; }
-      .title.sticky--pinned .title-wrapper {
-        opacity: 1;
-        visibility: visible; } }
+        pointer-events: none; }
+      .title.sticky--pinned {
+        opacity: 1; } }
 
 .home, .archive, .search {
   padding: 0 20px; }
@@ -1157,25 +1163,34 @@ ul {
   .home #illustrators {
     padding-top: 20px;
     margin-left: 33.3333333333%;
-    width: 66.6666666667%; }
+    width: calc(66.6666666667% + 20px); }
     @media screen and (max-width: 1035px) {
       .home #illustrators {
-        margin-left: 50%;
-        width: 50%; } }
+        margin-left: 40%;
+        width: calc(60% + 20px); } }
     @media screen and (max-width: 768px) {
       .home #illustrators {
         padding-top: 70px;
         margin-left: 0;
-        width: 100%; } }
+        width: calc(100% + 20px); } }
     @media screen and (max-width: 500px) {
       .home #illustrators {
         width: calc(100% + 20px); } }
     .home #illustrators .gallery-item {
       width: 33.3333333333%; }
+      @media screen and (min-width: 1470px) {
+        .home #illustrators .gallery-item {
+          width: 25%; } }
       @media screen and (max-width: 1035px) {
         .home #illustrators .gallery-item {
           width: 50%; } }
       @media screen and (max-width: 1020px) {
+        .home #illustrators .gallery-item {
+          width: 50%; } }
+      @media screen and (max-width: 768px) {
+        .home #illustrators .gallery-item {
+          width: 25%; } }
+      @media screen and (max-width: 500px) {
         .home #illustrators .gallery-item {
           width: 50%; } }
       .home #illustrators .gallery-item a {
@@ -1216,6 +1231,9 @@ ul {
     margin-bottom: 1em;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
+    @media screen and (max-width: 700px) and (min-width: 499px) {
+      #illustrators .illustrator-meta-container {
+        display: none; } }
   #illustrators .illustrator:hover .illustrator-meta-container {
     opacity: 1;
     color: #e75a62; }
@@ -1231,6 +1249,9 @@ ul {
     margin-bottom: 0; }
   #illustrators .gallery-item {
     width: 25%; }
+    @media screen and (min-width: 1350px) {
+      #illustrators .gallery-item {
+        width: 20%; } }
     @media screen and (max-width: 768px) {
       #illustrators .gallery-item {
         width: 33.3333333333%; } }

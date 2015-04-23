@@ -184,6 +184,7 @@ $(function() {
     _ocadHomeLoader: function () {
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
         app.settings.homeTitle.velocity({ opacity: 1, scale: 1, display: 'flex'}, 'slow', function(){
+          $(this).addClass('loaded').removeAttr('style');
           app._ocadHeadroom('.title');
         });
         $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
@@ -191,6 +192,9 @@ $(function() {
             app._ocadCascade('.illustrator',200);
           }
         );
+
+        $('.title-primary').fitText(1.2);
+
       }
     },
 

@@ -11,16 +11,14 @@
   }
   ?>
   <div class="title">
-    <div class="title-wrapper">
-      <div class="title-unit">
-        <div class="title-unit-init unit">
-          <p class="title-primary">OCAD University Illustration featuring work from the graduating class of 2015</p>
-          <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015</p>
-          <p><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
-          <p class="colophon">
-            Maintained by the Illustration Department at OCAD U<br> <a href="/about">Colophon</a>
-          </p>
-        </div>
+    <div class="title-unit">
+      <div class="title-unit-init unit">
+        <p class="title-primary">OCAD University Illustration featuring work from the graduating class of 2015</p>
+        <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015</p>
+        <p><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+        <p class="colophon">
+          Maintained by the Illustration Department at OCAD U<br> <a href="/about">Colophon</a>
+        </p>
       </div>
     </div>
   </div>

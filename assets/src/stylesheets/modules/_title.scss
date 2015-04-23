@@ -12,9 +12,15 @@
   justify-content: center;
   z-index: $z-100;
   color: $white;
+  display: flex;
+  justify-content: center;
+  transition: opacity 180ms ease-in-out;
+  @media screen and (max-width: $medium-vertical-vp) {
+    background: rgba($site-background-home,0.8);
+  }
 
   @media screen and (max-width: 1035px) {
-    width: calc(50% - 60px);
+    width: calc(40% - 60px);
   }
   
   @media screen and (max-width: $small-vp) {
@@ -34,9 +40,12 @@
 
   .title-primary {
     font-size: 2rem;
-    line-height: 2.5rem;
+    line-height: 1.2em;
     margin-bottom: 2.5rem;
     margin-top: 0;
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-right: 20px;
+    }
   }
 
   p {
@@ -59,6 +68,7 @@
     }
 
     a {
+      color: $accent;
       background: none;
     }
   }
@@ -67,34 +77,27 @@
     transition: transform 500ms;
   }
 
-  .title-wrapper {
-    display: flex;
-    justify-content: center;
-    transition: opacity 180ms ease-in-out;
-    @media screen and (max-width: $medium-vertical-vp) {
-      background: rgba($site-background-home,0.8);
-    }
+  &.loaded {
+    transform: scale(1);
+    opacity: 1;
   }
 
   @media screen and (max-width: $medium-vertical-vp) {
     
     width: 50%;
-    left: 20px;
+    left: 0;
     top: 0;
-    bottom: 0; 
+    bottom: 0;
+    padding-left: 20px;
+    padding-right: 0;
 
     &.sticky--unpinned {
-      .title-wrapper {
-        opacity: 0;
-        visibility: visible;
-      }
+      opacity: 0;
+      pointer-events: none;
     }
 
     &.sticky--pinned {
-      .title-wrapper {
-        opacity: 1;
-        visibility: visible;
-      }
+      opacity: 1;
     }
   }
 }
@@ -132,17 +135,17 @@
   #illustrators {
     padding-top: 20px;
     margin-left: 33.3333333333%;
-    width: 66.6666666667%;
+    width: calc(66.6666666667% + 20px);
 
     @media screen and (max-width: 1035px) {
-      margin-left: 50%;
-      width: 50%;
+      margin-left: 40%;
+      width: calc(60% + 20px);
     }
 
     @media screen and (max-width: $medium-vertical-vp) {
       padding-top: 70px;
       margin-left: 0;
-      width: 100%;
+      width: calc(100% + 20px);
     }
 
     @media screen and (max-width: $small-vp) {
@@ -152,11 +155,23 @@
     .gallery-item {
       width: 33.3333333333%;
 
-      @media screen and (max-width: 1035px) {
+      @media screen and (min-width: $large-vp) {
+        width: 25%;
+      }
+
+      @media screen and (max-width: 1035px)  {
         width: 50%;
       }
 
       @media screen and (max-width: $medium-vp) {
+        width: 50%;
+      }
+      
+      @media screen and (max-width: $medium-vertical-vp) {
+        width: 25%;
+      }
+
+      @media screen and (max-width: $small-vp) {
         width: 50%;
       }
 
@@ -210,6 +225,10 @@
     transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
     margin-bottom: 1em;
     @include font-smoothing(on);
+
+    @media screen and (max-width: 700px) and (min-width: 499px) {
+      display: none;
+    }
   }
 
   .illustrator:hover {
@@ -236,6 +255,10 @@
 
   .gallery-item {
     width: 25%;
+
+    @media screen and (min-width: 1350px) {
+      width: 20%;
+    }
     
     @media screen and (max-width: $medium-vertical-vp) {
       width: 33.3333333333%;
