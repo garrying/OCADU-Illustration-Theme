@@ -182,11 +182,6 @@
 
     @media screen and (max-width: $small-vp) { 
       width: 100%;
-      padding-right: 0;
-    }
-
-    &:nth-child(even) {
-      margin-right: -20px;
     }
 
     &.velocity-animating {

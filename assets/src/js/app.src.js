@@ -197,7 +197,6 @@ $(function() {
           this.each(function(i){
           $(this).replaceWith($(shuffled[i]));
         });
-        console.log(shuffled);
         return $(shuffled);
       };
 
