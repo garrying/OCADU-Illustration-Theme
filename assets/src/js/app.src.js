@@ -21,7 +21,8 @@ $(function() {
       loader: $('.loader'), 
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
-      header: $('#app-head-items'),
+      homeTitle: $('.title'),
+      header: $('.app-head-items'),
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       logo: $('.logo'),
@@ -93,8 +94,15 @@ $(function() {
       });
     },
 
-    _ocadHeadroom: function () {
-      app.settings.header.headroom({
+    _ocadHeadroom: function (element) {
+
+      if (element === undefined) {
+        element = app.settings.header;
+      } else {
+        element = $(element);
+      }
+
+      element.headroom({
         tolerance : {
           up : 10,
           down: 5
@@ -110,7 +118,7 @@ $(function() {
           top : 'sticky--top',
           // when below offset
           notTop : 'sticky--not-top'
-        },
+        }
       });
     },
 
@@ -175,7 +183,9 @@ $(function() {
 
     _ocadHomeLoader: function () {
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
-        $('.title').velocity({ opacity: 1, scale: 1 },'slow');
+        app.settings.homeTitle.velocity({ opacity: 1, scale: 1, display: 'flex'}, 'slow', function(){
+          app._ocadHeadroom('.title');
+        });
         $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
             app._ocadMasonry(app.settings.masonryContainerHome);
             app._ocadCascade('.illustrator',200);

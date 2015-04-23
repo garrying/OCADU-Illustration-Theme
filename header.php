@@ -32,8 +32,8 @@
   <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
 
   <div class="loader"></div>
-  <header id="app-head" role="banner">
-    <div id="app-head-items" class="heading">
+  <header role="banner">
+    <div class="app-head-items heading">
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
