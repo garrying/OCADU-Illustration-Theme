@@ -12,11 +12,10 @@
   justify-content: center;
   z-index: $z-100;
   color: $white;
-  display: flex;
-  justify-content: center;
   transition: opacity 180ms ease-in-out;
+
   @media screen and (max-width: $medium-vertical-vp) {
-    background: rgba($site-background-home,0.8);
+    background: rgba($site-background-home, .8);
   }
 
   @media screen and (max-width: 1035px) {
@@ -83,7 +82,6 @@
   }
 
   @media screen and (max-width: $medium-vertical-vp) {
-    
     width: 50%;
     left: 0;
     top: 0;
