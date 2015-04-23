@@ -39,7 +39,7 @@ $(function() {
     },
 
     _urlCleanup: function () {
-      $('.meta.site a').each(function(){
+      $('.site-url').each(function(){
         var urlString = $(this).text();
         var result = urlString.replace(/.*?:\/\//g,'');
         $(this).text(result);

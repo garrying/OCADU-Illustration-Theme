@@ -347,8 +347,12 @@ add_action('wp_head', 'ocadu_prefetch');
 
 function ocadu_gallery_filter( $attr ) {
   global $post;
-  $attr['alt'] = "Illustration by ". get_the_title() .""; 
-  $attr['title'] = "Click to View";
+  $attr['alt'] = "Illustration by ". get_the_title() ."";
+  if (is_home() || is_archive()) {
+    $attr['title'] = get_the_title();
+  } else {
+    $attr['title'] = 'Enlarge';
+  }
   return $attr; 
 }
 

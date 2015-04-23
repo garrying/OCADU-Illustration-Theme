@@ -53,21 +53,6 @@ h3 {
   font-size: 3.8rem;
 }
 
-h4 {
-  @extend %heading;
-  font-size: 3.1rem;
-}
-
-h5 {
-  @extend %heading;
-  font-size: 2.8rem;
-}
-
-h6 {
-  @extend %heading;
-  font-size: 2.2rem;
-}
-
 .heading {
   @extend %heading;
 }
@@ -75,29 +60,26 @@ h6 {
 .meta {
   @extend %font-features;
   @include font-smoothing(on);
-  &.phone {
+  font-style: italic;
+
+  .phone {
     font-feature-settings: 'onum' 0, 'tnum' 1;
   }
-}
 
-.illustrator-meta-name {
-  display: inline-block;
-  font-family: $serif;
-  font-size: 1rem;
-  font-style: italic;
-
-  &:before {
-    color: $accent;
-    content: '※';
+  .illustrator-meta-name {
     display: inline-block;
-    font-style: normal;
-    text-indent: -15px;
-  }
-}
+    font-family: $serif;
+    font-size: 1rem;
+    font-style: italic;
 
-.illustrator-meta-detail {
-  font-size: 1rem;
-  font-style: italic;
+    &:before {
+      color: $accent;
+      content: '※';
+      display: inline-block;
+      font-style: normal;
+      text-indent: -15px;
+    }
+  }
 }
 
 .thesis-title {

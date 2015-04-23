@@ -1,17 +1,15 @@
 %panels {
   font-family: $sans-serif;
-  font-weight: 200;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   z-index: $z-200;
-  overflow: hidden;
+  overflow-y: scroll;
   display: none;
   width: 50%;
   outline: 0;
   background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
-  @include font-smoothing(on);
   @media screen and (max-width: $medium-panels-vp) { 
     width: 75%;
   }
@@ -19,7 +17,6 @@
     width: 100%;
   }
 }
-
 
 // Close button
 

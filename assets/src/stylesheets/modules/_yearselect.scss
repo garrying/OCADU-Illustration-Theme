@@ -46,10 +46,6 @@
   left: 40px;
   letter-spacing: 1px;
 
-  @media screen and (max-width: 710px) {
-    display: none;
-  }
-
   .single & {
     opacity: .75;
   }
@@ -66,5 +62,9 @@
 
   a {
     background: none;
+  }
+
+  @media screen and (max-width: 710px) {
+    display: none;
   }
 }

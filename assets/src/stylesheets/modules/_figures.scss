@@ -1,13 +1,3 @@
-.image-modal-full-image {
-  cursor: pointer;
-  display: flex;
-  flex-shrink: 0;
-  margin: 0 auto;
-  max-height: 100%;
-  max-width: 100%;
-  opacity: 0;
-}
-
 figure {
   margin: 0;
 
@@ -30,4 +20,16 @@ figure {
   z-index: $z-600;
   padding: 5px;
   color: $accent;
+}
+
+// Full image
+
+.image-modal-full-image {
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0;
 }

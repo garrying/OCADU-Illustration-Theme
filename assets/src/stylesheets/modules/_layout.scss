@@ -76,11 +76,10 @@
 
 // Illustrator page layout
 
-.single .illustrator {
+.single-illustrator {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 0 20px;
 }
 
 .illustrator-meta {

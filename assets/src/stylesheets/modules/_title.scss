@@ -96,52 +96,15 @@
   }
 }
 
+// Illustrator unit
 
-// Homepage
+.illustrator {
+  transform: scale(.95);
+  opacity: 0;
+  width: 25%;
 
-.home,
-.archive,
-.search {
-  padding: 0 20px;
-
-  .illustrator {
-    transform: scale(.95);
-    opacity: 0;
-    width: 25%;
-
-    a {
-      padding: 0 20px 20px 0;
-      display: block;
-      background: none;
-    }
-
-    &:hover {
-      .illustrator-meta-container {
-        opacity: 1;
-        color: $accent;
-      }
-    }
-
-    &.velocity-animating {
-      transition: transform 500ms;
-    }
-
-    &.loaded {
-      transform: scale(1);
-    }
-
-    @media screen and (min-width: 1350px) {
-      width: 20%;
-    }
-    
-    @media screen and (max-width: $medium-vertical-vp) {
-      width: 33.3333333333%;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      width: 50%;
-    }
-
+  .home & {
+    width: 33.3333333333%;
   }
 
   .illustrator-meta-container {
@@ -166,13 +129,48 @@
   .illustrator-name {
     font-family: $serif;
   }
+
+  a {
+    padding: 0 20px 20px 0;
+    display: block;
+    background: none;
+  }
+
+  &:hover {
+    .illustrator-meta-container {
+      opacity: 1;
+      color: $accent;
+    }
+  }
+
+  &.velocity-animating {
+    transition: transform 500ms;
+  }
+
+  &.loaded {
+    transform: scale(1);
+  }
+
+  @media screen and (min-width: 1350px) {
+    width: 20%;
+  }
+  
+  @media screen and (max-width: $medium-vertical-vp) {
+    width: 33.3333333333%;
+  }
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+  }
+
 }
+
+// Homepage
 
 .home {
   background: $site-background-home;
 
   .illustrator {
-    width: 33.3333333333%;
 
     @media screen and (min-width: $large-vp) {
       width: 25%;
@@ -200,23 +198,21 @@
   }
 }
 
-.search {
-  .page-title {
-    @include font-smoothing(on);
-    margin: 0;
-    position: fixed;
-    top: 20px;
-    right: 3%;
-    left: 3%;
-    text-align: center;
-    font-size: 1.2rem;
-    z-index: $z-100;
+.search-title {
+  @include font-smoothing(on);
+  margin: 0;
+  position: fixed;
+  top: 20px;
+  right: 3%;
+  left: 3%;
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: $z-100;
 
-    mark {
-      background: $accent;
-      color: $white;
-      padding: 0 5px;
-    }
+  mark {
+    background: $accent;
+    color: $white;
+    padding: 0 5px;
   }
 }
 

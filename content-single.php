@@ -1,4 +1,4 @@
-<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/CreativeWork">
+<article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
 
   <div class="illustrator-meta" role="complementary">
@@ -23,31 +23,31 @@
 
         </div>
 
-        <div class="illustrator-meta-detail" itemscope itemtype="http://schema.org/Person">
+        <div class="meta" itemscope itemtype="http://schema.org/Person">
           <header class="illustrator-meta-header">
             <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
           </header><!-- .entry-header -->
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-            <div class="meta site truncate u-url" itemprop="url">
-              <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?></a>
+            <div class="truncate u-url" itemprop="url">
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?></a>
               </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-            <div class="meta site truncate u-url" itemprop="url">
-              <a title="Visit Illustrator's Website" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?></a>
+            <div class="truncate u-url" itemprop="url">
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-            <div class="meta email truncate u-email" itemprop="email">
+            <div class="email truncate u-email" itemprop="email">
               <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-            <div class="meta phone p-tel" itemprop="telephone">
+            <div class="phone p-tel" itemprop="telephone">
               <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
             </div>
           <?php endif; ?>

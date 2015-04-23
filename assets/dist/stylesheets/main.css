@@ -391,7 +391,7 @@ body {
   background: #f2f2f2;
   color: #333;
   height: 100%;
-  padding-bottom: 5rem; }
+  padding: 0 20px 5rem 20px; }
   @media screen and (max-width: 768px) {
     body {
       padding-top: 60px; } }
@@ -438,7 +438,7 @@ a {
     line-height: 49px;
     padding: 0 10px; }
 
-h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
+h1, h2, h3, .heading, .year-indicator, p, .meta {
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
      -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
           font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
@@ -447,7 +447,7 @@ h1, h2, h3, h4, h5, h6, .heading, .year-indicator, p, .meta {
           font-kerning: normal;
   text-rendering: optimizeLegibility; }
 
-h1, h2, h3, h4, h5, h6, .heading, .year-indicator {
+h1, h2, h3, .heading, .year-indicator {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
@@ -480,56 +480,29 @@ h2 {
 h3 {
   font-size: 3.8rem; }
 
-h4 {
-  font-size: 3.1rem; }
-
-h5 {
-  font-size: 2.8rem; }
-
-h6 {
-  font-size: 2.2rem; }
-
 .meta {
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased; }
-  .meta.phone {
+  -webkit-font-smoothing: antialiased;
+  font-style: italic; }
+  .meta .phone {
     -webkit-font-feature-settings: 'onum' 0, 'tnum' 1;
        -moz-font-feature-settings: 'onum' 0, 'tnum' 1;
             font-feature-settings: 'onum' 0, 'tnum' 1; }
-
-.illustrator-meta-name {
-  display: inline-block;
-  font-family: 'minion-pro', Times, 'Times New Roman', serif;
-  font-size: 1rem;
-  font-style: italic; }
-  .illustrator-meta-name:before {
-    color: #e75a62;
-    content: '※';
+  .meta .illustrator-meta-name {
     display: inline-block;
-    font-style: normal;
-    text-indent: -15px; }
-
-.illustrator-meta-detail {
-  font-size: 1rem;
-  font-style: italic; }
+    font-family: 'minion-pro', Times, 'Times New Roman', serif;
+    font-size: 1rem;
+    font-style: italic; }
+    .meta .illustrator-meta-name:before {
+      color: #e75a62;
+      content: '※';
+      display: inline-block;
+      font-style: normal;
+      text-indent: -15px; }
 
 .thesis-title {
   font-size: 1rem;
   line-height: 1.2rem; }
-
-.image-modal-full-image {
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-  margin: 0 auto;
-  max-height: 100%;
-  max-width: 100%;
-  opacity: 0; }
 
 figure {
   margin: 0; }
@@ -549,6 +522,20 @@ figure {
   padding: 5px;
   color: #e75a62; }
 
+.image-modal-full-image {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0; }
+
 ul {
   margin: 0;
   padding: 0;
@@ -556,20 +543,17 @@ ul {
 
 .search-container, .year-select {
   font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
-  font-weight: 200;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   z-index: 200;
-  overflow: hidden;
+  overflow-y: scroll;
   display: none;
   width: 50%;
   outline: 0;
   background: -webkit-linear-gradient(45deg, rgba(231, 90, 98, 0.85), #e75a62);
-  background: linear-gradient(45deg, rgba(231, 90, 98, 0.85), #e75a62);
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased; }
+  background: linear-gradient(45deg, rgba(231, 90, 98, 0.85), #e75a62); }
   @media screen and (max-width: 1000px) {
     .search-container, .year-select {
       width: 75%; } }
@@ -637,18 +621,22 @@ ul {
       font-size: 2rem; } }
 
 .search-field {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  border: 0;
   padding: 10px 0;
   background: none;
   display: block;
-  width: 100%; }
+  width: 100%;
+  font-family: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif; }
   .search-field:focus {
     outline: 0; }
 
 .search-submit {
   background: none;
-  color: #fff;
   font-size: 1.2rem;
-  margin-top: 23px; }
+  margin-top: 23px;
+  border: 0; }
   @media screen and (max-width: 768px) {
     .search-submit {
       margin-top: 10px; } }
@@ -787,9 +775,6 @@ ul {
   top: 45%;
   left: 40px;
   letter-spacing: 1px; }
-  @media screen and (max-width: 710px) {
-    .year-indicator {
-      display: none; } }
   .single .year-indicator {
     opacity: .75; }
   @media screen and (max-width: 768px) {
@@ -803,6 +788,9 @@ ul {
               transform: rotate(0deg); } }
   .year-indicator a {
     background: none; }
+  @media screen and (max-width: 710px) {
+    .year-indicator {
+      display: none; } }
 
 .logo {
   -moz-osx-font-smoothing: grayscale;
@@ -860,7 +848,7 @@ ul {
       -webkit-animation-play-state: running;
               animation-play-state: running; }
 
-.single .illustrator {
+.single-illustrator {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -871,8 +859,7 @@ ul {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0 20px; }
+          justify-content: center; }
 
 .illustrator-meta {
   -webkit-box-flex: 1;
@@ -1114,38 +1101,15 @@ ul {
       .title.sticky--pinned {
         opacity: 1; } }
 
-.home, .archive, .search {
-  padding: 0 20px; }
-  .home .illustrator, .archive .illustrator, .search .illustrator {
-    -webkit-transform: scale(.95);
-        -ms-transform: scale(.95);
-            transform: scale(.95);
-    opacity: 0;
-    width: 25%; }
-    .home .illustrator a, .archive .illustrator a, .search .illustrator a {
-      padding: 0 20px 20px 0;
-      display: block;
-      background: none; }
-    .home .illustrator:hover .illustrator-meta-container, .archive .illustrator:hover .illustrator-meta-container, .search .illustrator:hover .illustrator-meta-container {
-      opacity: 1;
-      color: #e75a62; }
-    .home .illustrator.velocity-animating, .archive .illustrator.velocity-animating, .search .illustrator.velocity-animating {
-      -webkit-transition: -webkit-transform 500ms;
-              transition: transform 500ms; }
-    .home .illustrator.loaded, .archive .illustrator.loaded, .search .illustrator.loaded {
-      -webkit-transform: scale(1);
-          -ms-transform: scale(1);
-              transform: scale(1); }
-    @media screen and (min-width: 1350px) {
-      .home .illustrator, .archive .illustrator, .search .illustrator {
-        width: 20%; } }
-    @media screen and (max-width: 768px) {
-      .home .illustrator, .archive .illustrator, .search .illustrator {
-        width: 33.3333333333%; } }
-    @media screen and (max-width: 500px) {
-      .home .illustrator, .archive .illustrator, .search .illustrator {
-        width: 50%; } }
-  .home .illustrator-meta-container, .archive .illustrator-meta-container, .search .illustrator-meta-container {
+.illustrator {
+  -webkit-transform: scale(.95);
+      -ms-transform: scale(.95);
+          transform: scale(.95);
+  opacity: 0;
+  width: 25%; }
+  .home .illustrator {
+    width: 33.3333333333%; }
+  .illustrator .illustrator-meta-container {
     opacity: .5;
     -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
             transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
@@ -1155,38 +1119,59 @@ ul {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
     @media screen and (max-width: 700px) and (min-width: 499px) {
-      .home .illustrator-meta-container, .archive .illustrator-meta-container, .search .illustrator-meta-container {
+      .illustrator .illustrator-meta-container {
         display: none; } }
-  .home .illustrator-title, .archive .illustrator-title, .search .illustrator-title {
+  .illustrator .illustrator-title {
     margin-bottom: 5px;
     font-size: 1em;
     line-height: 1.2em; }
-  .home .illustrator-name, .archive .illustrator-name, .search .illustrator-name {
+  .illustrator .illustrator-name {
     font-family: 'minion-pro', Times, 'Times New Roman', serif; }
+  .illustrator a {
+    padding: 0 20px 20px 0;
+    display: block;
+    background: none; }
+  .illustrator:hover .illustrator-meta-container {
+    opacity: 1;
+    color: #e75a62; }
+  .illustrator.velocity-animating {
+    -webkit-transition: -webkit-transform 500ms;
+            transition: transform 500ms; }
+  .illustrator.loaded {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+  @media screen and (min-width: 1350px) {
+    .illustrator {
+      width: 20%; } }
+  @media screen and (max-width: 768px) {
+    .illustrator {
+      width: 33.3333333333%; } }
+  @media screen and (max-width: 500px) {
+    .illustrator {
+      width: 50%; } }
 
 .home {
   background: #0e0e0f; }
-  .home .illustrator {
-    width: 33.3333333333%; }
-    @media screen and (min-width: 1470px) {
-      .home .illustrator {
-        width: 25%; } }
-    @media screen and (max-width: 1035px) {
-      .home .illustrator {
-        width: 50%; } }
-    @media screen and (max-width: 1020px) {
-      .home .illustrator {
-        width: 50%; } }
-    @media screen and (max-width: 768px) {
-      .home .illustrator {
-        width: 25%; } }
-    @media screen and (max-width: 500px) {
-      .home .illustrator {
-        width: 50%; } }
-    .home .illustrator a {
-      color: #fff; }
+  @media screen and (min-width: 1470px) {
+    .home .illustrator {
+      width: 25%; } }
+  @media screen and (max-width: 1035px) {
+    .home .illustrator {
+      width: 50%; } }
+  @media screen and (max-width: 1020px) {
+    .home .illustrator {
+      width: 50%; } }
+  @media screen and (max-width: 768px) {
+    .home .illustrator {
+      width: 25%; } }
+  @media screen and (max-width: 500px) {
+    .home .illustrator {
+      width: 50%; } }
+  .home .illustrator a {
+    color: #fff; }
 
-.search .page-title {
+.search-title {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   margin: 0;
@@ -1197,7 +1182,7 @@ ul {
   text-align: center;
   font-size: 1.2rem;
   z-index: 100; }
-  .search .page-title mark {
+  .search-title mark {
     background: #e75a62;
     color: #fff;
     padding: 0 5px; }
