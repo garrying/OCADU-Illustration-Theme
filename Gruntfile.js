@@ -130,9 +130,7 @@ module.exports = function (grunt) {
     
     watch: {
       js: {
-        files: [
-          '<%= jshint.all %>', 'assets/src/js/lib/*.js'
-        ],
+        files: ['<%= jshint.all %>', 'assets/src/js/lib/*.js'],
         tasks: ['jshint','concat']
       },
       svg: {
@@ -141,10 +139,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer'],
-        options: {
-          livereload: true
-        },
+        tasks: ['sass:server', 'autoprefixer']
       },
     },
     

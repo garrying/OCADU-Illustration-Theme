@@ -38,7 +38,7 @@
   width: 100%;
 
   &:focus {
-    outline: none;
+    outline: 0;
   }
 }
 
@@ -78,6 +78,7 @@
 .tt-suggestion {
   opacity: .75;
   transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
+  
   &.tt-cursor {
     opacity: 1;
     cursor: pointer;

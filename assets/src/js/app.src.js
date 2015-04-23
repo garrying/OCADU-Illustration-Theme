@@ -45,9 +45,9 @@ $(function() {
 
     _ocadLoader: function (e) {
       if (e === false) {
-        app.settings.loader.velocity('fadeOut', { duration: 180 });
+        app.settings.loader.velocity('fadeOut', 'slow');
       } else {
-        app.settings.loader.velocity('fadeIn', { duration: 180 });
+        app.settings.loader.velocity('fadeIn', 'fast');
       }
     },
 
@@ -182,6 +182,29 @@ $(function() {
     },
 
     _ocadHomeLoader: function () {
+
+      $.fn.shuffle = function() {
+        var allElems = this.get(),
+            getRandom = function(max) {
+              return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+              var random = getRandom(allElems.length),
+                  randEl = $(allElems[random]).clone(true)[0];
+                  allElems.splice(random, 1);
+              return randEl;
+           });
+          this.each(function(i){
+          $(this).replaceWith($(shuffled[i]));
+        });
+        console.log(shuffled);
+        return $(shuffled);
+      };
+
+      if ($('body').hasClass('home')) {
+        $('.gallery-item').shuffle();
+      }
+
       if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
         app.settings.homeTitle.velocity({ opacity: 1, scale: 1, display: 'flex'}, 'slow', function(){
           $(this).addClass('loaded').removeAttr('style');
