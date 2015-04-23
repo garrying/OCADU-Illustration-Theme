@@ -19,7 +19,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      * Add image size 
      */
     
-    add_image_size( 'illustrator-social', 600, 315, true );
+    add_image_size( 'illustrator-social', 600 );
 
     /**
      * Let WordPress Manage The Document Title
