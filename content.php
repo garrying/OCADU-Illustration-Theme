@@ -5,7 +5,7 @@
     </figure>
     <div class="illustrator-meta-container">
       <h1 class="illustrator-title p-name"><?php echo get_post_meta($post->ID, 'illu_title', true); ?></h1>
-      <h2 class="illustrator-name p-author"><?php the_title(); ?></h2>
+      <span class="illustrator-name p-author"><?php the_title(); ?></span>
     </div>
   </a>
 </article><!-- <?php the_title(); ?> -->

@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div id="illustrators">
+  <div id="illustrators" class="illustrators-grid home-grid">
     <?php if ( $home_index->have_posts() ) : ?>
 
       <?php /* Start the Loop */ ?>

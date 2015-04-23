@@ -62,10 +62,6 @@
     bottom: 20px;
     font-size: .8rem;
     
-    &:hover {
-      opacity: 1;
-    }
-
     a {
       color: $accent;
       background: none;
@@ -108,14 +104,23 @@
 .search {
   padding: 0 20px;
 
-  #content {
-    max-width: 1920px;
-    margin: 0 auto;
-  }
-
   .illustrator {
     transform: scale(.95);
     opacity: 0;
+    width: 25%;
+
+    a {
+      padding: 0 20px 20px 0;
+      display: block;
+      background: none;
+    }
+
+    &:hover {
+      .illustrator-meta-container {
+        opacity: 1;
+        color: $accent;
+      }
+    }
 
     &.velocity-animating {
       transition: transform 500ms;
@@ -124,68 +129,73 @@
     &.loaded {
       transform: scale(1);
     }
+
+    @media screen and (min-width: 1350px) {
+      width: 20%;
+    }
+    
+    @media screen and (max-width: $medium-vertical-vp) {
+      width: 33.3333333333%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 50%;
+    }
+
+  }
+
+  .illustrator-meta-container {
+    opacity: .5;
+    transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    margin-bottom: 1em;
+    font-size: 0.95em;
+    line-height: 1.2em;
+    @include font-smoothing(on);
+
+    @media screen and (max-width: 700px) and (min-width: 499px) {
+      display: none;
+    }
+  }
+
+  .illustrator-title {
+    margin-bottom: 5px;
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+
+  .illustrator-name {
+    font-family: $serif;
   }
 }
 
 .home {
   background: $site-background-home;
 
-  #illustrators {
-    padding-top: 20px;
-    margin-left: 33.3333333333%;
-    width: calc(66.6666666667% + 20px);
+  .illustrator {
+    width: 33.3333333333%;
 
-    @media screen and (max-width: 1035px) {
-      margin-left: 40%;
-      width: calc(60% + 20px);
+    @media screen and (min-width: $large-vp) {
+      width: 25%;
     }
 
+    @media screen and (max-width: 1035px)  {
+      width: 50%;
+    }
+
+    @media screen and (max-width: $medium-vp) {
+      width: 50%;
+    }
+    
     @media screen and (max-width: $medium-vertical-vp) {
-      padding-top: 70px;
-      margin-left: 0;
-      width: calc(100% + 20px);
+      width: 25%;
     }
 
     @media screen and (max-width: $small-vp) {
-      width: calc(100% + 20px);
+      width: 50%;
     }
-  
-    .gallery-item {
-      width: 33.3333333333%;
 
-      @media screen and (min-width: $large-vp) {
-        width: 25%;
-      }
-
-      @media screen and (max-width: 1035px)  {
-        width: 50%;
-      }
-
-      @media screen and (max-width: $medium-vp) {
-        width: 50%;
-      }
-      
-      @media screen and (max-width: $medium-vertical-vp) {
-        width: 25%;
-      }
-
-      @media screen and (max-width: $small-vp) {
-        width: 50%;
-      }
-
-      a {
-        color: $white;
-      }
-    }
-  }
-}
-
-.archive,
-.search {
-  #illustrators { 
-    margin-top: 70px;
-    @media screen and (max-width: $medium-vertical-vp) {
-      margin-top: 20px;
+    a {
+      color: $white;
     }
   }
 }
@@ -210,66 +220,37 @@
   }
 }
 
-#illustrators {
+.illustrators-grid {
   margin-left: 40px;
+  margin-top: 70px;
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-top: 20px;
+  }
+
+  &.home-grid {
+    margin-top: 0;
+    padding-top: 20px;
+    margin-left: 33.3333333333%;
+    width: calc(66.6666666667% + 20px);
+
+    @media screen and (max-width: 1035px) {
+      margin-left: 40%;
+      width: calc(60% + 20px);
+    }
+
+    @media screen and (max-width: $medium-vertical-vp) {
+      padding-top: 70px;
+      margin-left: 0;
+      width: calc(100% + 20px);
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: calc(100% + 20px);
+    }
+  }
   
   @media screen and (max-width: $medium-vertical-vp) {
     margin-left: 0;
     margin-right: -20px;
-  }
-
-  .illustrator-meta-container {
-    opacity: .5;
-    transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-    margin-bottom: 1em;
-    @include font-smoothing(on);
-
-    @media screen and (max-width: 700px) and (min-width: 499px) {
-      display: none;
-    }
-  }
-
-  .illustrator:hover {
-
-    .illustrator-meta-container {
-      opacity: 1;
-      color: $accent;
-    }
-  }
-
-  .illustrator-title {
-    font-size: 0.95rem;
-    line-height: 1.2rem;
-    margin-bottom: 5px;
-  }
-
-  .illustrator-name {
-    font-family: $serif;
-    font-size: 0.95rem;
-    line-height: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .gallery-item {
-    width: 25%;
-
-    @media screen and (min-width: 1350px) {
-      width: 20%;
-    }
-    
-    @media screen and (max-width: $medium-vertical-vp) {
-      width: 33.3333333333%;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      width: 50%;
-    }
-
-    a {
-      padding: 0 20px 20px 0;
-      display: block;
-      background: none;
-    }
   }
 }

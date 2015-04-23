@@ -517,7 +517,7 @@ h6 {
   font-size: 1rem;
   line-height: 1.2rem; }
 
-#full-image {
+.image-modal-full-image {
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -539,11 +539,6 @@ figure {
     height: auto;
     margin: 0 auto;
     max-width: 100%; }
-
-.wp-post-image {
-  display: block;
-  height: auto;
-  max-width: 100%; }
 
 .image-modal-tip {
   -moz-osx-font-smoothing: grayscale;
@@ -681,18 +676,6 @@ ul {
     width: 100%;
     text-indent: 5px; }
 
-.page #content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap; }
 .page .hentry {
   margin: 100px auto 0 auto;
   max-width: 850px;
@@ -771,9 +754,7 @@ ul {
   display: flex;
   color: #fff;
   background: none;
-  position: relative;
   letter-spacing: 1px;
-  text-align: center;
   font-size: 2rem;
   width: 100%;
   height: 100%;
@@ -811,18 +792,17 @@ ul {
       display: none; } }
   .single .year-indicator {
     opacity: .75; }
+  @media screen and (max-width: 768px) {
+    .archive .year-indicator {
+      margin-top: 70px;
+      text-align: center;
+      display: block;
+      position: static;
+      -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+              transform: rotate(0deg); } }
   .year-indicator a {
     background: none; }
-
-@media screen and (max-width: 768px) {
-  .archive .year-indicator {
-    margin-top: 70px;
-    text-align: center;
-    display: block;
-    position: static;
-    -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-            transform: rotate(0deg); } }
 
 .logo {
   -moz-osx-font-smoothing: grayscale;
@@ -1016,7 +996,7 @@ ul {
     cursor: -webkit-zoom-in;
     cursor: zoom-in; }
 
-#image-modal {
+.image-modal-wrapper {
   position: fixed;
   top: 0;
   z-index: 100;
@@ -1024,10 +1004,10 @@ ul {
   right: 0;
   bottom: 0; }
   @media screen and (max-width: 768px) {
-    #image-modal {
+    .image-modal-wrapper {
       left: 0; } }
 
-#image-modal-container {
+.image-modal-container {
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -1109,8 +1089,6 @@ ul {
     position: absolute;
     bottom: 20px;
     font-size: .8rem; }
-    .title .colophon:hover {
-      opacity: 1; }
     .title .colophon a {
       color: #e75a62;
       background: none; }
@@ -1138,14 +1116,19 @@ ul {
 
 .home, .archive, .search {
   padding: 0 20px; }
-  .home #content, .archive #content, .search #content {
-    max-width: 1920px;
-    margin: 0 auto; }
   .home .illustrator, .archive .illustrator, .search .illustrator {
     -webkit-transform: scale(.95);
         -ms-transform: scale(.95);
             transform: scale(.95);
-    opacity: 0; }
+    opacity: 0;
+    width: 25%; }
+    .home .illustrator a, .archive .illustrator a, .search .illustrator a {
+      padding: 0 20px 20px 0;
+      display: block;
+      background: none; }
+    .home .illustrator:hover .illustrator-meta-container, .archive .illustrator:hover .illustrator-meta-container, .search .illustrator:hover .illustrator-meta-container {
+      opacity: 1;
+      color: #e75a62; }
     .home .illustrator.velocity-animating, .archive .illustrator.velocity-animating, .search .illustrator.velocity-animating {
       -webkit-transition: -webkit-transform 500ms;
               transition: transform 500ms; }
@@ -1153,50 +1136,55 @@ ul {
       -webkit-transform: scale(1);
           -ms-transform: scale(1);
               transform: scale(1); }
+    @media screen and (min-width: 1350px) {
+      .home .illustrator, .archive .illustrator, .search .illustrator {
+        width: 20%; } }
+    @media screen and (max-width: 768px) {
+      .home .illustrator, .archive .illustrator, .search .illustrator {
+        width: 33.3333333333%; } }
+    @media screen and (max-width: 500px) {
+      .home .illustrator, .archive .illustrator, .search .illustrator {
+        width: 50%; } }
+  .home .illustrator-meta-container, .archive .illustrator-meta-container, .search .illustrator-meta-container {
+    opacity: .5;
+    -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+            transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    margin-bottom: 1em;
+    font-size: 0.95em;
+    line-height: 1.2em;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased; }
+    @media screen and (max-width: 700px) and (min-width: 499px) {
+      .home .illustrator-meta-container, .archive .illustrator-meta-container, .search .illustrator-meta-container {
+        display: none; } }
+  .home .illustrator-title, .archive .illustrator-title, .search .illustrator-title {
+    margin-bottom: 5px;
+    font-size: 1em;
+    line-height: 1.2em; }
+  .home .illustrator-name, .archive .illustrator-name, .search .illustrator-name {
+    font-family: 'minion-pro', Times, 'Times New Roman', serif; }
 
 .home {
   background: #0e0e0f; }
-  .home #illustrators {
-    padding-top: 20px;
-    margin-left: 33.3333333333%;
-    width: calc(66.6666666667% + 20px); }
+  .home .illustrator {
+    width: 33.3333333333%; }
+    @media screen and (min-width: 1470px) {
+      .home .illustrator {
+        width: 25%; } }
     @media screen and (max-width: 1035px) {
-      .home #illustrators {
-        margin-left: 40%;
-        width: calc(60% + 20px); } }
+      .home .illustrator {
+        width: 50%; } }
+    @media screen and (max-width: 1020px) {
+      .home .illustrator {
+        width: 50%; } }
     @media screen and (max-width: 768px) {
-      .home #illustrators {
-        padding-top: 70px;
-        margin-left: 0;
-        width: calc(100% + 20px); } }
+      .home .illustrator {
+        width: 25%; } }
     @media screen and (max-width: 500px) {
-      .home #illustrators {
-        width: calc(100% + 20px); } }
-    .home #illustrators .gallery-item {
-      width: 33.3333333333%; }
-      @media screen and (min-width: 1470px) {
-        .home #illustrators .gallery-item {
-          width: 25%; } }
-      @media screen and (max-width: 1035px) {
-        .home #illustrators .gallery-item {
-          width: 50%; } }
-      @media screen and (max-width: 1020px) {
-        .home #illustrators .gallery-item {
-          width: 50%; } }
-      @media screen and (max-width: 768px) {
-        .home #illustrators .gallery-item {
-          width: 25%; } }
-      @media screen and (max-width: 500px) {
-        .home #illustrators .gallery-item {
-          width: 50%; } }
-      .home #illustrators .gallery-item a {
-        color: #fff; }
-
-.archive #illustrators, .search #illustrators {
-  margin-top: 70px; }
-  @media screen and (max-width: 768px) {
-    .archive #illustrators, .search #illustrators {
-      margin-top: 20px; } }
+      .home .illustrator {
+        width: 50%; } }
+    .home .illustrator a {
+      color: #fff; }
 
 .search .page-title {
   -moz-osx-font-smoothing: grayscale;
@@ -1214,50 +1202,33 @@ ul {
     color: #fff;
     padding: 0 5px; }
 
-#illustrators {
-  margin-left: 40px; }
+.illustrators-grid {
+  margin-left: 40px;
+  margin-top: 70px; }
   @media screen and (max-width: 768px) {
-    #illustrators {
+    .illustrators-grid {
+      margin-top: 20px; } }
+  .illustrators-grid.home-grid {
+    margin-top: 0;
+    padding-top: 20px;
+    margin-left: 33.3333333333%;
+    width: calc(66.6666666667% + 20px); }
+    @media screen and (max-width: 1035px) {
+      .illustrators-grid.home-grid {
+        margin-left: 40%;
+        width: calc(60% + 20px); } }
+    @media screen and (max-width: 768px) {
+      .illustrators-grid.home-grid {
+        padding-top: 70px;
+        margin-left: 0;
+        width: calc(100% + 20px); } }
+    @media screen and (max-width: 500px) {
+      .illustrators-grid.home-grid {
+        width: calc(100% + 20px); } }
+  @media screen and (max-width: 768px) {
+    .illustrators-grid {
       margin-left: 0;
       margin-right: -20px; } }
-  #illustrators .illustrator-meta-container {
-    opacity: .5;
-    -webkit-transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-            transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
-    margin-bottom: 1em;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased; }
-    @media screen and (max-width: 700px) and (min-width: 499px) {
-      #illustrators .illustrator-meta-container {
-        display: none; } }
-  #illustrators .illustrator:hover .illustrator-meta-container {
-    opacity: 1;
-    color: #e75a62; }
-  #illustrators .illustrator-title {
-    font-size: 0.95rem;
-    line-height: 1.2rem;
-    margin-bottom: 5px; }
-  #illustrators .illustrator-name {
-    font-family: 'minion-pro', Times, 'Times New Roman', serif;
-    font-size: 0.95rem;
-    line-height: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 0; }
-  #illustrators .gallery-item {
-    width: 25%; }
-    @media screen and (min-width: 1350px) {
-      #illustrators .gallery-item {
-        width: 20%; } }
-    @media screen and (max-width: 768px) {
-      #illustrators .gallery-item {
-        width: 33.3333333333%; } }
-    @media screen and (max-width: 500px) {
-      #illustrators .gallery-item {
-        width: 50%; } }
-    #illustrators .gallery-item a {
-      padding: 0 20px 20px 0;
-      display: block;
-      background: none; }
 
 input {
   -moz-osx-font-smoothing: grayscale;

@@ -198,7 +198,7 @@
   }
 }
 
-#image-modal {
+.image-modal-wrapper {
   position: fixed;
   top: 0;
   z-index: $z-100;
@@ -210,7 +210,7 @@
   }
 }
 
-#image-modal-container {
+.image-modal-container {
   align-items: center;
   bottom: 10px;
   display: flex;

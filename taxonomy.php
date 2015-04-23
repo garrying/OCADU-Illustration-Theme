@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="illustrators">
+<div id="illustrators" class="illustrators-grid">
 
   <?php if ( have_posts() ) : ?>
 

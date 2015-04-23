@@ -1,4 +1,4 @@
-#full-image {
+.image-modal-full-image {
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
@@ -20,11 +20,6 @@ figure {
   }
 }
 
-.wp-post-image {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
 
 // Full image tip
 

@@ -16,9 +16,7 @@
     display: flex;
     color: $white;
     background: none;
-    position: relative;
     letter-spacing: 1px;
-    text-align: center;
     font-size: 2rem;
     width: 100%;
     height: 100%;
@@ -56,17 +54,17 @@
     opacity: .75;
   }
 
+  .archive & {
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-top: 70px;
+      text-align: center;
+      display: block;
+      position: static;
+      transform: rotate(0deg);
+    }
+  }
+
   a {
     background: none;
-  }
-}
-
-.archive .year-indicator {
-  @media screen and (max-width: $medium-vertical-vp) {
-    margin-top: 70px;
-    text-align: center;
-    display: block;
-    position: static;
-    transform: rotate(0deg);
   }
 }
