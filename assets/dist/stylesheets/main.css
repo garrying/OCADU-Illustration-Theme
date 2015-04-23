@@ -368,7 +368,6 @@ html {
     background-position: -23px 100%; } }
 
 .loader {
-  background: url('../images/loader.svg') center center no-repeat;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -379,7 +378,10 @@ html {
   pointer-events: none;
   z-index: 300;
   opacity: 0;
-  display: none; }
+  display: none;
+  background-image: url('../images/underline.svg');
+  -webkit-animation: backAnimate 500ms linear infinite;
+          animation: backAnimate 500ms linear infinite; }
 
 html {
   overflow-x: hidden;
@@ -991,6 +993,9 @@ ul {
   .illustrator-gallery-container .gallery {
     max-width: 1240px;
     margin: 0 auto; }
+    @media screen and (max-width: 768px) {
+      .illustrator-gallery-container .gallery {
+        margin-right: -20px; } }
   .illustrator-gallery-container .gallery-item {
     -webkit-transform: scale(.95);
         -ms-transform: scale(.95);
@@ -1064,11 +1069,6 @@ ul {
           justify-content: center;
   z-index: 100;
   color: #fff;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-transition: opacity 180ms ease-in-out;
           transition: opacity 180ms ease-in-out; }
   @media screen and (max-width: 768px) {

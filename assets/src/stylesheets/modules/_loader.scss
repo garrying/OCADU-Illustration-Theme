@@ -1,7 +1,6 @@
 // Loader
 
 .loader {
-  background: url('../images/loader.svg') center center no-repeat;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -13,4 +12,6 @@
   z-index: $z-300;
   opacity: 0;
   display: none;
+  background-image: url('../images/underline.svg');
+  animation: backAnimate 500ms linear infinite;
 }

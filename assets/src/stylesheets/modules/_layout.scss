@@ -160,13 +160,18 @@
 .illustrator-gallery-container {
   flex: 1 1 70%;
   margin-top: 20px;
+  
   @media screen and (max-width: $medium-vertical-vp) { 
     flex: 1 1 100%;
     max-width: 600px;
   }
+
   .gallery {
     max-width: 1240px;
     margin: 0 auto;
+    @media screen and (max-width: $medium-vertical-vp) { 
+      margin-right: -20px;
+    }
   }
 
   .gallery-item {
