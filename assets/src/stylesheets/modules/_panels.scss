@@ -45,13 +45,11 @@
 // Colophon
 
 .panel-colophon {
-  color: $white;
-  font-size: 2rem;
   position: fixed;
+  width: 16px;
+  height: 23px;
   bottom: 20px;
   left: 20px;
-  font-family: sans-serif;
-  font-weight: normal;
-  background: none;
-  @include font-smoothing(on);
+  background: url('../images/peace.svg');
+  background-repeat: no-repeat;
 }

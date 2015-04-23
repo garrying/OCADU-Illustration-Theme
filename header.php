@@ -77,7 +77,7 @@
               ?>
             </div>
             <button class="close-panel" title="Close panel" aria-labelledby="Close search panel"></button>
-            <a href="/about" class="panel-colophon">✌</a>
+            <a href="/about" class="panel-colophon"></a>
           </div> <!-- .year-Select-->
         </div>
 
@@ -87,7 +87,7 @@
               <?php get_search_form(); ?>
             </div>
             <button class="close-panel" title="Close search panel" aria-labelledby="Close search panel"></button>
-            <a href="/about" class="panel-colophon">✌</a>
+            <a href="/about" class="panel-colophon"></a>
           </div>
         </div><!-- .search -->
        
