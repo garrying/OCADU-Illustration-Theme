@@ -251,7 +251,7 @@ $(function() {
         $('.panel').velocity('fadeOut', { 
           duration: 180,
           complete: function(){
-            $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+            $('.year-item').velocity({ opacity: 0, display: 'flex' },'fast').removeClass('loaded');
           }
         }).attr('aria-hidden',true);
       }
@@ -265,14 +265,7 @@ $(function() {
       }
 
       if (!$(event.target).closest('.panel, .header-item').length && $('.panel').is(':visible')) {
-        app.settings.logo.removeClass('invert');
-        $('.header-item').removeClass('inactive reverse');
-        $('.panel').velocity('fadeOut', { 
-          duration: 180,
-          complete: function(){
-            $('.year-item').velocity({opacity:0,display:'flex'},'fast').removeClass('loaded');
-          }
-        }).attr('aria-hidden',true);
+        app._ocadPanelsClose();
       }
 
     },
