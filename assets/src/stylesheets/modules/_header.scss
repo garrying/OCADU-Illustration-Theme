@@ -1,0 +1,90 @@
+// Global header elements
+
+.logo {
+  @include font-smoothing(on);
+  background: none;
+  color: rgba($site-background-home, .25);
+  float: left;
+  transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
+
+  &:hover {
+    color: $accent;
+  }
+
+  .home & {
+    color: $white;
+    opacity: .25;
+  }
+
+  &.invert {
+    color: $white;
+  }
+
+}
+
+.sticky--unpinned {
+  .heading-inner {
+    opacity: .25;
+  }
+  
+  &:hover {
+    .heading-inner {
+      opacity: 1;
+    }
+  }
+} 
+
+.heading-inner {
+  z-index: $z-300;
+  left: 60px;
+  top: 20px;
+  position: fixed;
+  color: $site-background-home;
+  font-size: 1.2rem;
+  transition: opacity 180ms ease-in-out;
+
+  @media screen and (max-width: $medium-vertical-vp) {
+   left: 20px;
+  }
+
+  .home & {
+    color: $white;
+  }
+}
+
+.header-item {
+  cursor: pointer;
+  float: left;
+  margin-left: 20px;
+  line-height: 1.1em;
+  background-image: url('../images/underline-w.svg');
+  background-color: transparent;
+  background-repeat: repeat-x;
+  background-size: 23px 8px;
+  background-position: 0 100%;
+  border: 0;
+  padding-bottom: 6px;
+  animation: backAnimateSmall 500ms linear infinite;
+  animation-play-state: paused;
+  transition: color 180ms ease-in-out, opacity 180ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: $accent;
+    animation-play-state: running;
+  }
+
+  &.inactive {
+    opacity: .3;
+
+    &:hover,
+    &:focus {
+      color: $site-background-home;
+    }
+  }
+
+  &.reverse {
+    color: $white;
+    animation-play-state: running;
+  }
+}

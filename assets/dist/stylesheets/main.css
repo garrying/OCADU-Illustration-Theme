@@ -850,7 +850,7 @@ ul {
     -webkit-animation-play-state: running;
             animation-play-state: running; }
   .header-item.inactive {
-    opacity: 0.3; }
+    opacity: .3; }
     .header-item.inactive:hover, .header-item.inactive:focus {
       color: #0e0e0f; }
   .header-item.reverse {
