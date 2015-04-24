@@ -129,24 +129,18 @@ $(function() {
       app.settings.yearSelect.on('click',function(){
         if ($(this).hasClass('reverse')) {
           $(this).removeClass('reverse');
-          $('.year-select').velocity('fadeOut', {
-            duration: 180,
-            complete: function() {
-              $('.year-item').velocity({opacity: 0}).removeClass('loaded');
-            }
-          }).attr('aria-hidden',true);
-          app.settings.searchLink.removeClass('inactive');
-          app.settings.logo.removeClass('invert');
+          app._ocadPanelsClose();
         } else {
-          $(this).addClass('reverse');
+          $('.panel').velocity('fadeOut','fast');
+          $(this).addClass('reverse').removeClass('inactive');
           app.settings.logo.addClass('invert');
           $('.year-select').velocity('fadeIn', { 
             duration: 180
           }).attr('aria-hidden',false);
-          app.settings.searchLink.addClass('inactive');
+          app.settings.searchLink.addClass('inactive').removeClass('reverse');
           $('.year-item').each(function(i){
             var item = $(this);
-            item.delay(100*i).velocity({opacity:1,display:'block'},{
+            item.delay(100*i).velocity({opacity:1,display:'flex'},{
               complete: function() {
                 item.addClass('loaded');
               }
@@ -162,19 +156,16 @@ $(function() {
 
       app.settings.searchLink.on('click',function(){
         if ($(this).hasClass('reverse')) {
-          $(this).removeClass('reverse inactive');
-          app.settings.logo.removeClass('invert');
-          app.settings.searchContainer.velocity('fadeOut', { 
-            duration: 180
-          }).attr('aria-hidden',true);
-          app.settings.yearSelect.removeClass('inactive');
+          $(this).removeClass('reverse');
+          app._ocadPanelsClose();
         } else {
-          $(this).addClass('reverse');
+          $('.panel').velocity('fadeOut','fast');
+          $(this).addClass('reverse').removeClass('inactive');
           app.settings.logo.addClass('invert');
           app.settings.searchContainer.velocity('fadeIn', {
             duration: 180
           }).attr('aria-hidden',false);
-          app.settings.yearSelect.addClass('inactive');
+          app.settings.yearSelect.addClass('inactive').removeClass('reverse');
           setTimeout(function(){
             $('.search-field').focus();            
           }, 100);
@@ -252,9 +243,10 @@ $(function() {
     },
 
     _ocadPanelsClose: function () {
-      app.settings.imageModal.velocity('fadeOut',{duration: 180 });
-      $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       $('.header-item').removeClass('reverse inactive');
+      app.settings.imageModal.velocity('fadeOut',{duration: 180 });
+      app.settings.logo.removeClass('invert');
+      $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       if ($('.panel').is(':visible')) {
         $('.panel').velocity('fadeOut', { 
           duration: 180,
@@ -263,36 +255,26 @@ $(function() {
           }
         }).attr('aria-hidden',true);
       }
-      if (app.settings.logo.hasClass('invert')) {
-        app.settings.logo.removeClass('invert');
-      }
     },
 
     _ocadPanelsCloseSelective: function(event) {
+
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut',{duration:180});
         $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
       }
-      if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
-        app.settings.yearSelect.removeClass('reverse');
-        app.settings.searchLink.removeClass('inactive');
-        $('.year-select').velocity('fadeOut', { 
+
+      if (!$(event.target).closest('.panel, .header-item').length && $('.panel').is(':visible')) {
+        app.settings.logo.removeClass('invert');
+        $('.header-item').removeClass('inactive reverse');
+        $('.panel').velocity('fadeOut', { 
           duration: 180,
           complete: function(){
-            $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
+            $('.year-item').velocity({opacity:0,display:'flex'},'fast').removeClass('loaded');
           }
         }).attr('aria-hidden',true);
       }
-      if (!$(event.target).closest('.search-container').length && app.settings.searchContainer.is(':visible')) {
-        app.settings.searchLink.removeClass('reverse');
-        app.settings.yearSelect.removeClass('inactive');
-        app.settings.searchContainer.velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
-      }
-      if (!$(event.target).closest('.panel, #year-select-link, #search-link').length) {
-        app.settings.logo.removeClass('invert');
-        $('.header-item').removeClass('inactive');
 
-      }
     },
 
     _ocadGalleryNav: function () {
