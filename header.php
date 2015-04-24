@@ -63,7 +63,7 @@
             }
           ?>
 
-          <div class="year-select panel" tabindex="-1" role="dialog" aria-labelledby="yearSelectModal" aria-hidden="true">
+          <div class="year-select panel" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="year-select-wrapper">
               <?php foreach( $grad_year as $year ) {
                 if (isset($selected_year) && $selected_year == $year->name) {
@@ -76,30 +76,19 @@
               }
               ?>
             </div>
-            <button class="close-panel" title="Close panel" aria-labelledby="Close search panel"></button>
+            <button class="close-panel" title="Close panel" aria-label="Close search panel"></button>
             <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
           </div> <!-- .year-Select-->
         </div>
 
-        <div class="search" role="search">
-          <div class="search-container panel" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-            <div class="search-wrapper">
-              <?php get_search_form(); ?>
-            </div>
-            <button class="close-panel" title="Close search panel" aria-labelledby="Close search panel"></button>
-            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
+        <div class="search-container panel" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="search-wrapper">
+            <?php get_search_form(); ?>
           </div>
-        </div><!-- .search -->
+          <button class="close-panel" title="Close search panel" aria-label="Close search panel"></button>
+          <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
+        </div><!-- search -->
        
-        <nav id="access" class="hidden" role="navigation">
-          <h3 class="hidden"><?php _e( 'Main menu', 'ocaduillustration' ); ?></h3>
-          <?php wp_nav_menu( array( 
-            'container' =>false,
-            'menu_class' => 'nav',
-            'theme_location' => 'primary' )
-            ); ?>     
-        </nav><!-- #access -->
-
     </div><!-- .heading -->
   </header><!-- #app-head -->
 

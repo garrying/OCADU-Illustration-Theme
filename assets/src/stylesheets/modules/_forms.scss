@@ -5,6 +5,13 @@ input {
   font-family: $sans-serif;
 }
 
+.btn,
+button {
+  &:focus {
+    outline: thin dotted;
+  }
+}
+
 // Placeholder styling
 
 ::-webkit-input-placeholder {

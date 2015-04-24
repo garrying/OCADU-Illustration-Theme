@@ -135,9 +135,7 @@ $(function() {
               $('.year-item').velocity({opacity: 0}).removeClass('loaded');
             }
           }).attr('aria-hidden',true);
-          app.settings.searchLink.velocity('fadeIn', { 
-            duration: 180
-          });
+          app.settings.searchLink.removeClass('inactive');
           app.settings.logo.removeClass('invert');
         } else {
           $(this).addClass('reverse');
@@ -145,7 +143,7 @@ $(function() {
           $('.year-select').velocity('fadeIn', { 
             duration: 180
           }).attr('aria-hidden',false);
-          app.settings.searchLink.velocity({opacity: 0.3}, { duration: 180 });
+          app.settings.searchLink.addClass('inactive');
           $('.year-item').each(function(i){
             var item = $(this);
             item.delay(100*i).velocity({opacity:1,display:'block'},{
@@ -164,19 +162,19 @@ $(function() {
 
       app.settings.searchLink.on('click',function(){
         if ($(this).hasClass('reverse')) {
-          $(this).removeClass('reverse');
+          $(this).removeClass('reverse inactive');
           app.settings.logo.removeClass('invert');
           app.settings.searchContainer.velocity('fadeOut', { 
             duration: 180
           }).attr('aria-hidden',true);
-          app.settings.yearSelect.velocity('fadeIn', { duration: 180 });
+          app.settings.yearSelect.removeClass('inactive');
         } else {
           $(this).addClass('reverse');
           app.settings.logo.addClass('invert');
           app.settings.searchContainer.velocity('fadeIn', {
             duration: 180
           }).attr('aria-hidden',false);
-          app.settings.yearSelect.velocity({ opacity: 0.3 }, { duration: 180 });
+          app.settings.yearSelect.addClass('inactive');
           setTimeout(function(){
             $('.search-field').focus();            
           }, 100);
@@ -256,7 +254,7 @@ $(function() {
     _ocadPanelsClose: function () {
       app.settings.imageModal.velocity('fadeOut',{duration: 180 });
       $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
-      $('.header-item').removeClass('reverse').velocity({ opacity: 1, display:'block' }, { duration: 180 });
+      $('.header-item').removeClass('reverse inactive');
       if ($('.panel').is(':visible')) {
         $('.panel').velocity('fadeOut', { 
           duration: 180,
@@ -277,21 +275,23 @@ $(function() {
       }
       if (!$(event.target).closest('.year-select-container').length && $('.year-select').is(':visible')) {
         app.settings.yearSelect.removeClass('reverse');
+        app.settings.searchLink.removeClass('inactive');
         $('.year-select').velocity('fadeOut', { 
           duration: 180,
           complete: function(){
             $('.year-item').velocity({ opacity: 0 }).removeClass('loaded');
           }
         }).attr('aria-hidden',true);
-        app.settings.searchLink.velocity({ opacity: 1, display:'block' }, { duration: 180 });
       }
-      if (!$(event.target).closest('.search').length && app.settings.searchContainer.is(':visible')) {
+      if (!$(event.target).closest('.search-container').length && app.settings.searchContainer.is(':visible')) {
         app.settings.searchLink.removeClass('reverse');
+        app.settings.yearSelect.removeClass('inactive');
         app.settings.searchContainer.velocity('fadeOut', { duration: 180 }).attr('aria-hidden',true);
-        app.settings.yearSelect.velocity({ opacity: 1, display:'block' }, { duration: 180 });
       }
       if (!$(event.target).closest('.panel, #year-select-link, #search-link').length) {
         app.settings.logo.removeClass('invert');
+        $('.header-item').removeClass('inactive');
+
       }
     },
 

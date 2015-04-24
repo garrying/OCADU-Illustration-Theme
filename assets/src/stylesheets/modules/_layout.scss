@@ -49,30 +49,39 @@
   .home & {
     color: $white;
   }
+}
 
-  .header-item {
-    cursor: pointer;
-    float: left;
-    margin-left: 20px;
-    line-height: 1.1em;
-    background-image: url('../images/underline-w.svg');
-    background-color: transparent;
-    background-repeat: repeat-x;
-    background-size: 23px 8px;
-    background-position: 0 100%;
-    border: 0;
-    padding-bottom: 6px;
-    animation: backAnimateSmall 500ms linear infinite;
-    animation-play-state: paused;
+.header-item {
+  cursor: pointer;
+  float: left;
+  margin-left: 20px;
+  line-height: 1.1em;
+  background-image: url('../images/underline-w.svg');
+  background-color: transparent;
+  background-repeat: repeat-x;
+  background-size: 23px 8px;
+  background-position: 0 100%;
+  border: 0;
+  padding-bottom: 6px;
+  animation: backAnimateSmall 500ms linear infinite;
+  animation-play-state: paused;
+  transition: color 180ms ease-in-out, opacity 180ms ease-in-out;
 
-    &:hover {
-      animation-play-state: running;
+  &:hover, &:focus {
+    color: $accent;
+    animation-play-state: running;
+  }
+
+  &.inactive {
+    opacity: 0.3;
+    &:hover, &:focus {
+      color: $site-background-home;
     }
+  }
 
-    &.reverse {
-      color: $white;
-      animation-play-state: running;
-    }
+  &.reverse {
+    color: $white;
+    animation-play-state: running;
   }
 }
 
@@ -153,7 +162,8 @@
     padding: 8px 10px;
     background: none;
     
-    &:hover {
+    &:hover, &:focus {
+      outline: 0;
       background: $accent;
     }
   }
@@ -196,7 +206,12 @@
   }
 
   a {
+    display: block;
     cursor: zoom-in;
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 3px 1px rgba($accent,0.5);
+    }
   }
 }
 
