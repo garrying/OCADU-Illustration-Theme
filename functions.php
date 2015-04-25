@@ -226,11 +226,16 @@ add_filter('excerpt_more', 'ocadu_new_excerpt_more');
  * Get Social Image
  */
 
-function get_socialimage() {
+function get_socialimage($imageType = "fb") {
   global $post, $posts;
 
-  if(is_single() && has_post_thumbnail($post->ID) ) {
-    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'illustrator-social', '' );
+  if (is_single() && has_post_thumbnail($post->ID) ) {
+    if ($imageType == 'twitter') {
+      $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'illustrator-social-twitter', '' );
+    } else {
+      $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium', '' );
+    }
+
     $socialimg = $src[0];
   } else {
     $socialimg = '';
@@ -264,7 +269,7 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta name="twitter:description" content="'. $the_excerpt .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage("twitter") .'">' . "\n";
 
   }
   if (is_home() || is_archive()) {
