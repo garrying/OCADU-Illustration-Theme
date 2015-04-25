@@ -21,14 +21,9 @@
   }
 
   @media screen and (max-width: $small-vp) {
-    display: none;
-  }
-}
-
-@media screen and (max-width: $small-vp) {
-  .small-vp-logo {
-    display: block;
-    opacity: 1;
+    width: 8.1ch;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 

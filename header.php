@@ -37,7 +37,6 @@
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo small-vp-logo hidden" rel="home" title="OCAD U Illustration">OCAD U Illu</a>
           <button id="year-select-link" class="header-item" title="Select year">
             Year
           </button>
