@@ -1,72 +1,34 @@
-.year-select {
-  @extend %panels;
-
-  .year-select-wrapper {
-    height: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    align-content: stretch;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 50px 0;
-  }
-
-  .year-item {
-    display: flex;
-    color: $white;
-    background: none;
-    letter-spacing: 1px;
-    font-size: 2rem;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: background 180ms ease-in-out;
-
-    &.loaded {
-      opacity: 1;
-    }
-
-    &.active, 
-    &:hover {
-      background-image: url('../images/underline-l-w.svg');
-      animation: backAnimate 600ms linear infinite;
-    }
-  }
+.year-select-wrapper {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 50px 0;
 }
 
-.year-indicator {
-  @extend %heading;
-  position: fixed;
-  transform-origin: left bottom;
-  transform: rotate(-90deg);
-  top: 45%;
-  left: 40px;
-  letter-spacing: 1px;
+.year-item {
+  display: flex;
+  color: $white;
   background: none;
-  transition: color 180ms ease-in-out;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: background 180ms ease-in-out;
+ 
+  &.loaded {
+    opacity: 1;
+  }
 
+  &.active, 
   &:hover {
-    color: $accent;
-  }
-
-  .single & {
-    opacity: .75;
-  }
-
-  .archive & {
-    @media screen and (max-width: $medium-vertical-vp) {
-      margin-top: 70px;
-      text-align: center;
-      display: block;
-      position: static;
-      transform: rotate(0deg);
-    }
-  }
-
-  @media screen and (max-width: 710px) {
-    display: none;
+    background-image: url('../images/underline-l-w.svg');
+    animation: backAnimate 600ms linear infinite;
   }
 }

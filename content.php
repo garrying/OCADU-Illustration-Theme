@@ -1,5 +1,5 @@
 <article <?php post_class('gallery-item'); ?> role="article" data-id="<?php echo the_ID(); ?>">
-  <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+  <a href="<?php the_permalink() ?>" class="illustrator-link" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
     <figure>
       <?php the_post_thumbnail('illustrator-small', array('alt' => 'Thumbnail of '.get_the_title().'', 'title' => ''.get_the_title().'' )); ?>
     </figure>

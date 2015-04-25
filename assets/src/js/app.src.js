@@ -22,7 +22,7 @@ $(function() {
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
       homeTitle: $('.title'),
-      header: $('.app-head-items'),
+      header: $('.heading-inner'),
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       logo: $('.logo'),
@@ -100,6 +100,9 @@ $(function() {
 
       if (element === undefined) {
         element = app.settings.header;
+        app.settings.header.mouseover(function(){
+          $(this).removeClass('sticky-unpinned');
+        });
       } else {
         element = $(element);
       }
@@ -113,13 +116,13 @@ $(function() {
           // when element is initialised
           initial : 'sticky',
           // when scrolling up
-          pinned : 'sticky--pinned',
+          pinned : 'sticky-pinned',
           // when scrolling down
-          unpinned : 'sticky--unpinned',
+          unpinned : 'sticky-unpinned',
           // when above offset
-          top : 'sticky--top',
+          top : 'sticky-top',
           // when below offset
-          notTop : 'sticky--not-top'
+          notTop : 'sticky-not-top'
         }
       });
     },

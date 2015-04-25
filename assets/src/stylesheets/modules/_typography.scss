@@ -61,20 +61,20 @@ h3 {
   .phone {
     font-feature-settings: 'onum' 0, 'tnum' 1;
   }
+}
 
-  .illustrator-meta-name {
+.illustrator-meta-name {
+  display: inline-block;
+  font-family: $serif;
+  font-size: 1rem;
+  font-style: italic;
+
+  &:before {
+    color: $accent;
+    content: '※';
     display: inline-block;
-    font-family: $serif;
-    font-size: 1rem;
-    font-style: italic;
-
-    &:before {
-      color: $accent;
-      content: '※';
-      display: inline-block;
-      font-style: normal;
-      text-indent: -15px;
-    }
+    font-style: normal;
+    text-indent: -15px;
   }
 }
 

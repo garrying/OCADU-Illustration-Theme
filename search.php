@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <h1 class="search-title">
+  <h1 class="search-title section-indicator section-indicator-index">
     <?php printf('Search Results for <mark>%s</mark>', get_search_query() ); ?>
   </h1>
   <div id="illustrators" class="illustrators-grid">

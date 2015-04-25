@@ -37,6 +37,7 @@
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo small-vp-logo hidden" rel="home" title="OCAD U Illustration">OCAD U Illu</a>
           <button id="year-select-link" class="header-item" title="Select year">
             Year
           </button>
@@ -95,13 +96,13 @@
 
   <main id="content" role="main">
     <?php if (is_singular('illustrator')) {
-      echo '<a class="year-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
-      if (isset($selected_year)) { echo $selected_year; };
-      echo '</a>';  
-    }
-        if (is_archive()) {
-              echo '<a class="year-indicator" href="/" title="Return to homepage">';
-              if (isset($selected_year)) { echo $selected_year; };
-              echo '</a>';  
-            }
-      ?>
+        echo '<a class="section-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
+        if (isset($selected_year)) { echo $selected_year; };
+        echo '</a>';  
+      }
+      if (is_archive()) {
+        echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
+        if (isset($selected_year)) { echo $selected_year; };
+        echo '</a>';  
+      }
+    ?>

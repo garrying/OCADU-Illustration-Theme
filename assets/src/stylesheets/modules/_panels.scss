@@ -1,4 +1,4 @@
-%panels {
+.panel {
   font-family: $sans-serif;
   position: fixed;
   top: 0;
@@ -10,7 +10,7 @@
   width: 50%;
   outline: 0;
   background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
-  @media screen and (max-width: $medium-panels-vp) { 
+  @media screen and (max-width: $medium-vp) { 
     width: 75%;
   }
   @media screen and (max-width: $small-vp) {
@@ -24,7 +24,7 @@
   cursor: pointer;
   position: absolute;
   right: 20px;
-  top: 24px;
+  top: 18px;
   height: 31px;
   width: 31px;
   z-index: $z-300;

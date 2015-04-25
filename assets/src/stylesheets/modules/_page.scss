@@ -40,12 +40,12 @@
   bottom: 0;
   right: 0;
   left: 0;
+}
 
-  .emoji {
-    position: absolute;
+.emoji {
+  position: absolute;
 
-    &.big {
-      font-size: 60px;
-    }
+  &.big {
+    font-size: 60px;
   }
 }

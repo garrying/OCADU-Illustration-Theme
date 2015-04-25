@@ -21,13 +21,21 @@
   @media screen and (max-width: $medium-vertical-vp) {
     font-size: 3rem;
     padding-top: 70px;
+    
     label {
       width: 80%;
     }
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: $small-horizontal-vp) {
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: $small-vp) {
+    font-size: 1.7rem;
+    label {
+      width: 70%;
+    }
   }
 }
 
@@ -39,6 +47,8 @@
   display: block;
   width: 100%;
   font-family: $sans-serif;
+  border-radius: 0;
+  -webkit-appearance: none;
 
   &:focus {
     outline: 0;
@@ -56,11 +66,6 @@
   }
 }
 
-.search-container {
-  @extend %panels;
-}
-
-
 // Typeahead
 
 .tt-hint {
@@ -76,6 +81,9 @@
     line-height: 0.95em;
     margin: 0;
     padding: 5px 0;
+    @media screen and (max-width: $small-horizontal-vp) {
+      font-size: 2rem;
+    }
   }
 }
 

@@ -10,8 +10,6 @@ $site-font-color: #333;
 
 $site-background-home: #0e0e0f;
 
-$site-link-color: #333;
-
 $accent: #e75a62;
 
 $white: #fff;
@@ -19,10 +17,10 @@ $black: #000;
 
 // Breakpoints
 
-$large-vp: 1470px;
-$medium-vp: 1020px;
-$medium-panels-vp: 1000px;
+$large-vp: 1350px;
+$medium-vp: 1024px;
 $medium-vertical-vp: 768px;
+$small-horizontal-vp: 600px;
 $small-vp: 500px;
 
 // Z-index
