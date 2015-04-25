@@ -94,11 +94,14 @@
 
 
   <main id="content" role="main">
-    <?php if (is_singular('illustrator')) 
-        echo '<a class="year-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
-        if (isset($selected_year)) { echo $selected_year; };
-        echo '</a>';  
-      ?>
-    <?php if (is_archive()) 
-        echo '<a class="year-indicator" href="/" title="Return to homepage"></a>';  
+    <?php if (is_singular('illustrator')) {
+      echo '<a class="year-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
+      if (isset($selected_year)) { echo $selected_year; };
+      echo '</a>';  
+    }
+        if (is_archive()) {
+              echo '<a class="year-indicator" href="/" title="Return to homepage">';
+              if (isset($selected_year)) { echo $selected_year; };
+              echo '</a>';  
+            }
       ?>
