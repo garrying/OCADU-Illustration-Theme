@@ -397,4 +397,11 @@ function ocadu_simplify_post_class($classes) {
 
 add_filter('post_class', 'ocadu_simplify_post_class');
 
+/**
+ * Remove emoji
+ */
+
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
 ?>
