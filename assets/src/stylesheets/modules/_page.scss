@@ -1,32 +1,33 @@
-.page {
+.page-inner {
+  margin: 100px auto 0 auto;
+  max-width: 850px;
+  padding: 0 10%;
 
-  .hentry {
-    margin: 100px auto 0 auto;
-    max-width: 850px;
-    padding: 0 10%;
-
-    @media screen and (max-width: $medium-vertical-vp) {
-      margin-top: 50px;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      margin-top: 0;
-      padding: 0 20px;
-    }
-
-    p {
-      font-size: 1.25rem;
-      @media screen and (max-width: $small-vp) {
-        font-size: 1.1rem;
-        line-height: 1.5rem;
-      }
-      line-height: 1.75rem;
-    }
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-top: 50px;
   }
-  
+
+  @media screen and (max-width: $small-vp) {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  p,
+  .faculty-list {
+    font-size: 1.25rem;
+    @media screen and (max-width: $small-vp) {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+    line-height: 1.75rem;
+  }
+}
+
+.faculty-list {
+  display: flex;
+
   .span1 {
     width: 50%;
-    float: left;
   }
 }
 

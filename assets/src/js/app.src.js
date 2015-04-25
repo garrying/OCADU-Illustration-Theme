@@ -40,8 +40,7 @@ $(function() {
 
     _urlCleanup: function () {
       $('.site-url').each(function(){
-        var urlString = $(this).text();
-        var result = urlString.replace(/.*?:\/\//g,'');
+        var result = $(this).text().replace(/.*?:\/\//g,'');
         $(this).text(result);
       });
     },
@@ -59,7 +58,7 @@ $(function() {
       var container = document.querySelector(selector);
       var msnry = new Masonry( container, {
         itemSelector: '.gallery-item',
-        transitionDuration: '250ms',
+        transitionDuration: '0',
         percentPosition: true
       });
 
@@ -246,7 +245,7 @@ $(function() {
       $('.header-item').removeClass('reverse inactive');
       app.settings.imageModal.velocity('fadeOut',{duration: 180 });
       app.settings.logo.removeClass('invert');
-      $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
+      $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
       if ($('.panel').is(':visible')) {
         $('.panel').velocity('fadeOut', { 
           duration: 180,
@@ -261,7 +260,7 @@ $(function() {
 
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut',{duration:180});
-        $('#pack-content').velocity({scale:1, blur:0, opacity:1},'fast');
+        $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
       }
 
       if (!$(event.target).closest('.panel, .header-item').length && $('.panel').is(':visible')) {
@@ -286,10 +285,10 @@ $(function() {
           app._ocadCascade('.gallery-item',100);
 
           $(app.settings.masonryContainer).find('a').each(function(){
-           var y = imageIndex++;
-           $(this).data('index',y);
-           var imageFullurl = $(this).attr('href');
-           galleryImages.push(imageFullurl);
+            var y = imageIndex++;
+            $(this).data('index',y);
+            var imageFullurl = $(this).attr('href');
+            galleryImages.push(imageFullurl);
           });
         });
 
@@ -303,9 +302,10 @@ $(function() {
         event.preventDefault();
         app._ocadLoader(true);
         itemimgFullsrc = $( event.target ).closest('a').attr('href');
+        imageIndex = $( event.target ).closest('a').data('index');
 
         $('.image-modal-container').html(function (){
-          return '<img id="full-image" class="image-modal-full-image" src=' + itemimgFullsrc + '>';
+          return '<img id="full-image" class="image-modal-full-image" alt="Full image" src=' + itemimgFullsrc + '>';
         });
 
         $('#full-image').imagesLoaded().done(function(){
@@ -314,14 +314,14 @@ $(function() {
           app.settings.imageModal.velocity('fadeIn', { 
             duration: 180, 
             begin: function() {
-              $('#pack-content').velocity({scale:0.99, blur:2, opacity:0.25},'fast');
+              $(app.settings.masonryContainer).velocity({scale:0.99, blur:2, opacity:0.25},'fast');
             },
             complete: function() { 
               $('#full-image').velocity({opacity:1},'fast');
             } 
           });
         });
-        imageIndex = $( event.target ).closest('a').data('index');
+
       });
 
 
@@ -379,8 +379,7 @@ $(function() {
 
     _ocadUIbinding: function () {
       $('.close-panel').on('click', app._ocadPanelsClose);
-      $(document).on('click', app._ocadPanelsCloseSelective);
-      $(document).keydown(function(e) {
+      $(document).on('click', app._ocadPanelsCloseSelective).keydown(function(e) {
         
         if (e.keyCode === 27) {
           app._ocadPanelsClose();

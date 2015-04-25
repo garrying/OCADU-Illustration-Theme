@@ -5,5 +5,5 @@
   "undef": true,
   "unused": true,
   "jquery": true,
-  "predef": [ "Bloodhound", "FastClick"]
+  "predef": [ "Bloodhound", "FastClick", "Masonry"]
 }

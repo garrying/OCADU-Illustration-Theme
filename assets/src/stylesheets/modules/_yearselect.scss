@@ -45,6 +45,12 @@
   top: 45%;
   left: 40px;
   letter-spacing: 1px;
+  background: none;
+  transition: color 180ms ease-in-out;
+
+  &:hover {
+    color: $accent;
+  }
 
   .single & {
     opacity: .75;
@@ -58,10 +64,6 @@
       position: static;
       transform: rotate(0deg);
     }
-  }
-
-  a {
-    background: none;
   }
 
   @media screen and (max-width: 710px) {

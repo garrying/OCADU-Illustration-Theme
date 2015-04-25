@@ -391,7 +391,8 @@ body {
   background: #f2f2f2;
   color: #333;
   height: 100%;
-  padding: 0 20px 5rem 20px; }
+  padding: 0 20px 5rem 20px;
+  font: 100%/1.6 'minion-pro', Times, 'Times New Roman', serif; }
   @media screen and (max-width: 768px) {
     body {
       padding-top: 60px; } }
@@ -453,9 +454,6 @@ h1, h2, h3, .heading, .year-indicator {
   font-style: normal;
   font-weight: 400;
   line-height: 1.6rem; }
-
-body {
-  font: 100%/1.6 'minion-pro', Times, 'Times New Roman', serif; }
 
 p {
   -moz-osx-font-smoothing: grayscale;
@@ -663,27 +661,32 @@ ul {
     width: 100%;
     text-indent: 5px; }
 
-.page .hentry {
+.page-inner {
   margin: 100px auto 0 auto;
   max-width: 850px;
   padding: 0 10%; }
   @media screen and (max-width: 768px) {
-    .page .hentry {
+    .page-inner {
       margin-top: 50px; } }
   @media screen and (max-width: 500px) {
-    .page .hentry {
+    .page-inner {
       margin-top: 0;
-      padding: 0 20px; } }
-  .page .hentry p {
+      padding: 0; } }
+  .page-inner p, .page-inner .faculty-list {
     font-size: 1.25rem;
     line-height: 1.75rem; }
     @media screen and (max-width: 500px) {
-      .page .hentry p {
+      .page-inner p, .page-inner .faculty-list {
         font-size: 1.1rem;
         line-height: 1.5rem; } }
-.page .span1 {
-  width: 50%;
-  float: left; }
+
+.faculty-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .faculty-list .span1 {
+    width: 50%; }
 
 .error-body {
   display: -webkit-box;
@@ -773,7 +776,12 @@ ul {
           transform: rotate(-90deg);
   top: 45%;
   left: 40px;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  background: none;
+  -webkit-transition: color 180ms ease-in-out;
+          transition: color 180ms ease-in-out; }
+  .year-indicator:hover {
+    color: #e75a62; }
   .single .year-indicator {
     opacity: .75; }
   @media screen and (max-width: 768px) {
@@ -785,8 +793,6 @@ ul {
       -webkit-transform: rotate(0deg);
           -ms-transform: rotate(0deg);
               transform: rotate(0deg); } }
-  .year-indicator a {
-    background: none; }
   @media screen and (max-width: 710px) {
     .year-indicator {
       display: none; } }

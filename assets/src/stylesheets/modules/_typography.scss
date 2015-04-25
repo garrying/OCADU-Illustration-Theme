@@ -19,10 +19,6 @@
 
 // Base
 
-body {
-  font: 100%/1.6 $serif;
-}
-
 p {
   @extend %font-features;
   @include font-smoothing(on);
