@@ -205,7 +205,7 @@ $(function() {
         });
         $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
             app._ocadMasonry(app.settings.masonryContainerHome);
-            app._ocadCascade('.illustrator',200);
+            app._ocadCascade('.illustrator',100);
           }
         );
 
