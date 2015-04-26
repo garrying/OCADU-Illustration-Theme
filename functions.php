@@ -226,8 +226,13 @@ function get_socialimage($imageType = "fb") {
     $socialimg = '';
   }
 
-  if(empty($socialimg))
+  if ($imageType == 'twitter-index') {
+    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg';
+  }
+
+  if (empty($socialimg)) {
     $socialimg = get_template_directory_uri() . '/thumb.jpg';
+  }
 
   return $socialimg;
 }
@@ -278,7 +283,7 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. $socialTitle .'">' . "\n";
     echo '<meta name="twitter:description" content="'. $socialDescription .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage("twitter-index") .'">' . "\n";
 
     echo '<meta name="description" content="'. $socialDescription .'">' . "\n";
 
