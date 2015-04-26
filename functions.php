@@ -273,21 +273,24 @@ function ocadu_social_meta() {
 
   }
   if (is_home() || is_archive()) {
+    $socialDescription = "An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.";
     if (is_home()) {
-      echo '<meta property="og:title" content="'. get_bloginfo("name") .'">' . "\n";
+      $socialTitle = get_bloginfo("name");
     } else {
       $selected_year = single_term_title('', false);
-      echo '<meta property="og:title" content="'. get_bloginfo("name") ." ". $selected_year .'">' . "\n";
+      $socialTitle = get_bloginfo("name") .' '. $selected_year;
     }
+
+    echo '<meta property="og:title" content="'. $socialTitle .'">' . "\n";
     echo '<meta property="og:url" content="'. site_url() .'">' . "\n";
     echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
-    echo '<meta property="og:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.">' . "\n";
+    echo '<meta property="og:description" content="'. $socialDescription .'">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="'. get_bloginfo("name") .'">' . "\n";
-    echo '<meta name="twitter:description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.">' . "\n";
+    echo '<meta name="twitter:title" content="'. $socialTitle .'">' . "\n";
+    echo '<meta name="twitter:description" content="'. $socialDescription .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
 
   }
