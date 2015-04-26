@@ -242,7 +242,7 @@ function get_socialimage($imageType = "fb") {
   }
 
   if(empty($socialimg))
-    $socialimg = get_template_directory_uri() . '/thumb.png';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg';
 
   return $socialimg;
 }
