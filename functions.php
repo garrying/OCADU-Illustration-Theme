@@ -158,21 +158,6 @@ add_filter('gallery_style', 'ocadu_gallery_style_override', 99);
 add_filter('use_default_gallery_style', '__return_false');
 
 /**
- * Clean titles for image attachments
- */
-  
-// function set_page_title($title) {
-//   if (wp_attachment_is_image()) {
-//     global $post;
-//     $postparent = get_the_title($post->post_parent) . " | ";
-//     $title = $postparent;
-//   }
-//   return $title;
-// }
-
-// add_filter('wp_title', 'set_page_title');
-
-/**
  * Reduce nav classes, leaving only 'current-menu-item'
  */
 
@@ -261,7 +246,7 @@ function ocadu_social_meta() {
     $the_excerpt = wptexturize(strip_tags($post->post_content));
     echo '<meta property="og:url" content="'. get_permalink() .'">' . "\n";
     echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
-    echo '<meta property="og:type" content="article"/>' . "\n";
+    echo '<meta property="og:type" content="article">' . "\n";
     echo '<meta property="og:description" content="'. $the_excerpt .'">' . "\n";
     echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
 
@@ -270,6 +255,8 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta name="twitter:description" content="'. $the_excerpt .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. get_socialimage("twitter") .'">' . "\n";
+
+    echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
 
   }
   if (is_home() || is_archive()) {
@@ -293,24 +280,11 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:description" content="'. $socialDescription .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. get_socialimage() .'">' . "\n";
 
+    echo '<meta name="description" content="'. $socialDescription .'">' . "\n";
+
   }
   echo '<!-- end social meta -->' . "\n";
 
-}
-
-/**
- * General description meta
- */
-
-function ocadu_plain_description() {
-  if (is_singular() && is_attachment() !== true) {
-    global $post;
-    $the_excerpt = strip_tags($post->post_content);
-    echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
-  }
-  if (is_home() || is_archive()) {
-    echo '<meta name="description" content="An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.">' . "\n";
-  }
 }
 
 
@@ -346,7 +320,6 @@ function ocadu_prefetch() {
 }
 
 add_action('wp_head', 'ocadu_social_meta');
-add_action('wp_head', 'ocadu_plain_description');
 add_action('wp_head', 'ocadu_prefetch');
 
 /**
