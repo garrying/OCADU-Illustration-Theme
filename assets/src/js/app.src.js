@@ -209,7 +209,7 @@ $(function() {
           }
         );
 
-        $('.title-primary').fitText(1.2);
+        $('.title-primary').fitText(1.05);
 
       }
     },
