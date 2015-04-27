@@ -39,7 +39,7 @@ $(function() {
 
     _ocadLoader: function (e) {
       if (e === false) {
-        app.settings.loader.velocity('fadeOut', 'slow');
+        app.settings.loader.velocity('fadeOut', 'fast');
       } else {
         app.settings.loader.velocity('fadeIn', 'fast');
       }
@@ -270,7 +270,7 @@ $(function() {
       var galleryImages = [];
       var itemimgFullsrc;
       var nextImage;
-      var imageIndex = 1;
+      var imageIndex = 0;
 
       if ($('body').hasClass('single')) {
 
@@ -322,15 +322,25 @@ $(function() {
       });
 
 
-      function nextElement() {
+      function nextElement(direction) {
         app._ocadLoader(true);
-        if (imageIndex === galleryImages.length) {
-          nextImage = galleryImages[0];
+
+        if (direction === 'reverse') {
+          --imageIndex;
         } else {
-          nextImage = galleryImages[imageIndex];
+          ++imageIndex;
         }
-        imageIndex = (imageIndex+1)%(galleryImages.length);
-          
+
+        if (imageIndex === galleryImages.length) {
+          imageIndex = 0;
+        }
+
+        if (imageIndex === -1) {
+          imageIndex = galleryImages.length - 1;
+        }
+
+        nextImage = galleryImages[imageIndex];
+
         $('#full-image').velocity({opacity:0}, {
           duration: 'fast',
           complete: function() {
@@ -342,6 +352,7 @@ $(function() {
             };
           }
         });
+
       }
 
       $('.image-modal-container').on('click','img',function(){
@@ -354,6 +365,9 @@ $(function() {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
             nextElement();
+          }
+          if (e.keyCode === 37) {
+            nextElement('reverse');
           }
         }
       });
