@@ -45,6 +45,7 @@
   @include font-smoothing(on);
   background: $site-background-home;
   position: absolute;
+  transition: opacity 180ms ease-in-out;
 
   @media screen and (max-width: $medium-vertical-vp) { 
     position: fixed;
@@ -52,6 +53,11 @@
     z-index: $z-100;
     width: 100%;
     background: rgba($site-background-home, .5);
+
+    &.inactive {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
   font-style: italic;
   bottom: 0;

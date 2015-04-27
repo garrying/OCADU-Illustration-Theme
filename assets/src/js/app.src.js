@@ -256,6 +256,7 @@ $(function() {
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut',{duration:180});
         $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
+        $('.illustrator-nav-single').removeClass('inactive');
       }
 
       if (!$(event.target).closest('.panel, .header-item').length && $('.panel').is(':visible')) {
@@ -310,6 +311,7 @@ $(function() {
             duration: 180, 
             begin: function() {
               $(app.settings.masonryContainer).velocity({scale:0.99, blur:2, opacity:0.25},'fast');
+              $('.illustrator-nav-single').addClass('inactive');
             },
             complete: function() { 
               $('#full-image').velocity({opacity:1},'fast');
