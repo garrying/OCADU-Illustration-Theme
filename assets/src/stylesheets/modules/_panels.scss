@@ -28,14 +28,15 @@
   height: 31px;
   width: 31px;
   z-index: $z-300;
-  background-image: url('../images/close.svg');
+  background-image: url('../images/sprite.svg');
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 0 0;
   background-color: transparent;
   border: 0;
 
   &.alt {
-    background-image: url('../images/close-alt.svg');
+    background-image: url('../images/sprite.svg');
+    background-position: 100% 0;
   }
 }
 
@@ -47,6 +48,7 @@
   height: 23px;
   bottom: 20px;
   left: 20px;
-  background: url('../images/peace.svg');
+  background: url('../images/sprite.svg');
   background-repeat: no-repeat;
+  background-position: 0 100%;
 }

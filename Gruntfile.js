@@ -72,6 +72,27 @@ module.exports = function (grunt) {
       }
     },
 
+    svg_sprite: {
+      target: {
+        expand: true,
+        cwd: 'assets/src/images',
+        src: 'sprite/*.svg',
+        dest: 'assets/src/images'
+      },
+
+      options: {
+        mode: {
+          css: {     // Activate the «css» mode
+            sprite: '../sprite',
+            bust: false,
+            render: {
+              scss: false  // Activate CSS output (with default options)
+            }
+          }
+        }
+      }
+    },
+
     cssmin: {
       options: {
         keepSpecialComments: 0
@@ -184,6 +205,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'clean',
     'copy',
+    'svg_sprite',
     'svgmin',
     // 'imagemin',
     'concat',
@@ -195,6 +217,7 @@ module.exports = function (grunt) {
     'clean',
     'copy',
     'uglify',
+    'svg_sprite',
     'svgmin',
     // 'imagemin',
     'sass:dist',
