@@ -1,6 +1,5 @@
 <article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
-
   <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
       <div class="illustrator-meta-wrapper-inner hidden">
@@ -32,8 +31,8 @@
             <div class="truncate u-url" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>">
                 <?php 
-                  $url = parse_url(esc_url( get_post_meta($post->ID, 'illu_sites', true) ));  
-                  $url = $url['host'];
+                  $url = esc_url( get_post_meta($post->ID, 'illu_sites', true) );  
+                  $url = preg_replace('#^https?://#', '', $url);
                   echo $url;
                 ?>
               </a>
@@ -44,8 +43,8 @@
             <div class="truncate u-url" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>">
                 <?php 
-                  $url = parse_url(esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ));  
-                  $url = $url['host'];
+                  $url = esc_url( get_post_meta($post->ID, 'illu_sites_2', true) );  
+                  $url = preg_replace('#^https?://#', '', $url);
                   echo $url;
                 ?>
               </a>
