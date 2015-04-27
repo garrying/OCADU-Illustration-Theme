@@ -5,7 +5,6 @@ $(function() {
   var app = {  
     init: function() {
       this._fastClick();
-      this._urlCleanup();
       this._ocadLoader();
       this._ocadSearchPanel();
       this._ocadHeadroom();
@@ -36,13 +35,6 @@ $(function() {
 
     _fastClick: function () {
       FastClick.attach(document.body);
-    },
-
-    _urlCleanup: function () {
-      $('.site-url').each(function(){
-        var result = $(this).text().replace(/.*?:\/\//g,'');
-        $(this).text(result);
-      });
     },
 
     _ocadLoader: function (e) {

@@ -30,13 +30,25 @@
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
             <div class="truncate u-url" itemprop="url">
-              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?></a>
-              </div>
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>">
+                <?php 
+                  $url = parse_url(esc_url( get_post_meta($post->ID, 'illu_sites', true) ));  
+                  $url = $url['host'];
+                  echo $url;
+                ?>
+              </a>
+            </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
             <div class="truncate u-url" itemprop="url">
-              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>"><?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?></a>
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>">
+                <?php 
+                  $url = parse_url(esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ));  
+                  $url = $url['host'];
+                  echo $url;
+                ?>
+              </a>
             </div>
           <?php endif; ?>
 
