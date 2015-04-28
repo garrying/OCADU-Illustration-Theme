@@ -128,16 +128,16 @@ module.exports = function (grunt) {
       css: ['assets/dist/stylesheets/{,*/}*.css']
     },
 
-    // imagemin: {
-    //    static: {
-    //      options: {
-    //        optimizationLevel: 3
-    //      },
-    //      files: {
-    //        'assets/dist/images/loader.gif': 'assets/src/images/loader.gif'
-    //      }
-    //    }
-    //  },
+    rev: {
+      dist: {
+        files: {
+          src: [
+            'assets/dist/stylesheets/main.css',
+            'assets/dist/js/app.min.js'
+          ]
+        }
+      }
+    },
     
     concat: {
       options: {
