@@ -207,7 +207,6 @@ module.exports = function (grunt) {
     'copy',
     'svg_sprite',
     'svgmin',
-    // 'imagemin',
     'concat',
     'concurrent:server',
     'autoprefixer'
@@ -219,10 +218,11 @@ module.exports = function (grunt) {
     'uglify',
     'svg_sprite',
     'svgmin',
-    // 'imagemin',
     'sass:dist',
     'autoprefixer',
-    'cssmin'
+    'cssmin',
+    'rev',
+    'usemin'
   ]);
 
   grunt.registerTask('dev', [
