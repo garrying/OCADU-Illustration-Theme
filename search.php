@@ -22,7 +22,7 @@
         <h1 class="entry-title"><?php _e( 'No Matches &#9785;', 'ocaduillustration' ); ?></h1>
         <p><?php _e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.', 'ocaduillustration' ); ?></p>
       </header><!-- .entry-header -->
-    </article><!-- #post-0 -->
+    </article><!-- .error-body -->
 
   <?php endif; ?>
   </div>

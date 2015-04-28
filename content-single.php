@@ -25,7 +25,7 @@
         <div class="meta" itemscope itemtype="http://schema.org/Person">
           <header class="illustrator-meta-header">
             <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
-          </header><!-- .entry-header -->
+          </header><!-- .illustrator-meta-header -->
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
             <div class="truncate u-url" itemprop="url">
@@ -72,7 +72,7 @@
 
     </div>
 
-  </div><!-- #illustrator-meta -->
+  </div><!-- .illustrator-meta -->
   
   <div class="illustrator-gallery-container">
     <?php
@@ -88,4 +88,4 @@
     </div>
   </div>
 
-</article><!-- Illustrator content -->
+</article><!-- .single-illustrator -->

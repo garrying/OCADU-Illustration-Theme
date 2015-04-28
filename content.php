@@ -8,4 +8,4 @@
       <span class="illustrator-name p-author"><?php the_title(); ?></span>
     </div>
   </a>
-</article><!-- <?php the_title(); ?> -->
+</article>

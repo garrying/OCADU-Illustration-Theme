@@ -13,9 +13,9 @@
    \ \_____\ \____/ \ \_\ \_\ \____/    \ \_____\    /\______/ \ \____/  \ \_\ \____/
     \/_____/\/___/   \/_/\/_/\/___/      \/_____/    \/_____/   \/___/    \/_/\/___/ 
                                                                                      
-  * 　✷   ·  　　 ✵  .· .* 　✷   ·  　　 ✵  .· . * 　✷       .* 
-   ✧　　　　　 ✹ 　   ✧ · ˚  ✺  *  　            ✺ 　 .  ˚ .      ✺ 　
-    *  　　　　 .    · 　  ✺ 　　　 ✹  ˚  ✧ ✵  ˚  ✺  *  　
+  * 　✷   ·  　　 ✵  .· .* 　✷   ·  　　 ✵  .· . * 　✷       .* 　 ✵  .·　 ✵  .· . 
+   ✧　　　　　 ✹ 　   ✧ · ˚  ✺  *  　            ✺ 　 .  ˚ .      ✺ 　 　   ✧ 
+    *  　　　　 .    · 　  ✺ 　　　 ✹  ˚  ✧ ✵  ˚  ✺  *  　.    ·   ✧ ✵  ˚  ✺    .· .* 
 -->
 
 <head>
@@ -45,7 +45,6 @@
           </button>
         </div>
         
-
         <div class="year-select-container">
           <?php 
             $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
@@ -78,7 +77,7 @@
             </div>
             <button class="close-panel hide-text" title="Close panel" aria-label="Close search panel">Close</button>
             <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
-          </div> <!-- .year-Select-->
+          </div> <!-- .year-Select-wrapper-->
         </div>
 
         <div class="search-container panel" tabindex="-1" role="dialog" aria-hidden="true">
@@ -89,8 +88,8 @@
           <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
         </div><!-- search -->
        
-    </div><!-- .heading -->
-  </header><!-- #app-head -->
+    </div><!-- .app-head-items -->
+  </header><!-- header -->
 
 
   <main id="content" role="main">
