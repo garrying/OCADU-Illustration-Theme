@@ -187,22 +187,22 @@ $(function() {
       };
 
       if ($('body').hasClass('home')) {
-        $('.gallery-item').shuffle();
-      }
 
-      if ($('body').hasClass('home') || $('body').hasClass('archive') || $('body').hasClass('search') ) {
+        $('.title-primary').fitText(1.05);
+        $('.gallery-item').shuffle();
+
         app.settings.homeTitle.velocity({ opacity: 1, scale: 1, display: 'flex'}, 'slow', function(){
           $(this).addClass('loaded').removeAttr('style');
           app._ocadHeadroom('.title');
         });
+      }
+
+      if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
             app._ocadMasonry(app.settings.masonryContainerHome);
             app._ocadCascade('.illustrator',100);
           }
         );
-
-        $('.title-primary').fitText(1.05);
-
       }
     },
 
