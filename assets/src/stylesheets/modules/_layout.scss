@@ -22,6 +22,7 @@
     top: 0;
     flex-flow: row wrap;
     align-items: center;
+    transition: opacity 180ms ease-in-out;
 
     @media screen and (max-width: $medium-vertical-vp) {
       position: static;
@@ -29,6 +30,10 @@
       max-width: 600px;
       height: auto;
       margin: 0 auto;
+      
+      &.inactive {
+        opacity: .3;
+      }
     }
 
     @media screen and (max-width: $small-vp) { 
