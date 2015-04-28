@@ -80,10 +80,10 @@
       print apply_filters( 'the_content', $gallery_shortcode );
     ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
-      <button class="close-panel alt hide-text" title="Close full view" aria-labelledby="Close full view">Close</button>
+      <button class="close-panel alt hide-text" title="Close full view" aria-label="Close full view">Close</button>
       <div class="image-modal-tip"></div>
       <div class="image-modal-container">
-        <img id="full-image"/>
+        <img id="full-image" alt="Full illustration" src=""/>
       </div>
     </div>
   </div>

@@ -301,7 +301,7 @@ $(function() {
         imageIndex = $( event.target ).closest('a').data('index');
 
         $('.image-modal-container').html(function (){
-          return '<img id="full-image" class="image-modal-full-image" alt="Full image" src=' + itemimgFullsrc + '>';
+          return '<img id="full-image" class="image-modal-full-image" alt="Full illustration" src=' + itemimgFullsrc + '>';
         });
 
         $('#full-image').imagesLoaded().done(function(){
