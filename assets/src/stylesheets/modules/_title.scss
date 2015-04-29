@@ -27,6 +27,10 @@
     display: none;
   }
 
+  @media screen and (max-height: 400px) and (max-width: $medium-vertical-vp) {
+    display: none;
+  }
+
   .message {
     color: $accent;
     background-image: url('../images/underline.svg');
@@ -35,6 +39,7 @@
     background-position: 0 100%;
     padding-bottom: 8px;
     animation: backAnimate 2s linear infinite;
+    font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1, 'dlig' 1;
   }
 
   .title-primary {
