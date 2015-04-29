@@ -9,7 +9,7 @@
             
             <?php
               $title_illu = esc_html( get_post_meta($post->ID, 'illu_title', true) );
-              echo '<h2 class="thesis-title p-name" itemprop="name">' . $title_illu . '</h2>';
+              echo '<h2 class="thesis-title" itemprop="name">' . $title_illu . '</h2>';
             ?>            
           
           <?php endif; ?>
@@ -28,7 +28,7 @@
           </header><!-- .illustrator-meta-header -->
             
           <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-            <div class="truncate u-url" itemprop="url">
+            <div class="truncate" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>">
                 <?php 
                   $url = esc_url( get_post_meta($post->ID, 'illu_sites', true) );  
@@ -40,7 +40,7 @@
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-            <div class="truncate u-url" itemprop="url">
+            <div class="truncate" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>">
                 <?php 
                   $url = esc_url( get_post_meta($post->ID, 'illu_sites_2', true) );  
@@ -52,13 +52,13 @@
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-            <div class="email truncate u-email" itemprop="email">
+            <div class="email truncate" itemprop="email">
               <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-            <div class="phone p-tel" itemprop="telephone">
+            <div class="phone" itemprop="telephone">
               <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
             </div>
           <?php endif; ?>
