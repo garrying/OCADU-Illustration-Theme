@@ -171,6 +171,10 @@
     width: 50%;
   }
 
+  @media screen and (min-width: $extra-large-vp) {
+    width: 12.5%;
+  }
+
 }
 
 // Homepage
@@ -194,6 +198,10 @@
 
     @media screen and (max-width: $small-vp) {
       width: 50%;
+    }
+
+    @media screen and (min-width: $extra-large-vp) {
+      width: 20%;
     }
 
     a {

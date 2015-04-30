@@ -109,7 +109,7 @@ add_action('wp_enqueue_scripts', 'ocadu_scripts');
  */
 
 function ocadu_styles() {
-  wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/51331569.main.css');
+  wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/40b0f5ec.main.css');
   wp_enqueue_style('ocadustyles');
 }
 
