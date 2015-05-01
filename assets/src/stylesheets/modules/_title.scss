@@ -30,6 +30,11 @@
   @media screen and (max-height: 400px) and (max-width: $medium-vertical-vp) {
     display: none;
   }
+  
+  .message-wrapper {
+    display: block;
+    margin-top: 1.25em;
+  }
 
   .message {
     color: $accent;
@@ -53,9 +58,8 @@
     }
   }
 
-  p {
-    font-size: 1.2rem;
-    line-height: 1.55rem;
+  .title-secondary {
+    line-height: 1.25em;
   }
 
   .title-unit {

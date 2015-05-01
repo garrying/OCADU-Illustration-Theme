@@ -14,8 +14,7 @@
     <div class="title-unit">
       <div class="title-unit-init unit">
         <p class="title-primary">OCAD U Illustration featuring work from the graduating class of 2015</p>
-        <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015</p>
-        <p><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+        <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015 <span class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></span></p>
         <p class="colophon">
           Maintained by the Illustration Department at OCAD U<br> <a class="heading" href="/about">About</a>
         </p>

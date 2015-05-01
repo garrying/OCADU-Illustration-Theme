@@ -44,11 +44,6 @@ h2 {
   font-size: 1.618rem;
 }
 
-h3 {
-  @extend %heading;
-  font-size: 3.8rem;
-}
-
 .heading {
   @extend %heading;
 }

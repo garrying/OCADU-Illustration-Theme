@@ -189,6 +189,7 @@ $(function() {
       if ($('body').hasClass('home')) {
 
         $('.title-primary').fitText(1.05);
+        $('.title-secondary').fitText(2.25, {minFontSize: '13px'});
         $('.gallery-item').shuffle();
 
         app.settings.homeTitle.velocity({ opacity: 1, scale: 1, display: 'flex'}, 'slow', function(){

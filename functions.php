@@ -96,7 +96,7 @@ if (!function_exists('ocadu_scripts')) {
       wp_deregister_script('jquery');
       wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', '','',true);
       wp_enqueue_script('jquery');
-      wp_register_script('app', get_template_directory_uri().'/assets/dist/js/8eb52a96.app.min.js', array('jquery'), '', true);
+      wp_register_script('app', get_template_directory_uri().'/assets/dist/js/2fac0813.app.min.js', array('jquery'), '', true);
       wp_enqueue_script('app');
     }
   }
@@ -109,7 +109,7 @@ add_action('wp_enqueue_scripts', 'ocadu_scripts');
  */
 
 function ocadu_styles() {
-  wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/40b0f5ec.main.css');
+  wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/stylesheets/0c3f3a3f.main.css');
   wp_enqueue_style('ocadustyles');
 }
 
