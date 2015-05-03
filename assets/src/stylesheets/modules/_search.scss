@@ -73,25 +73,17 @@
   color: darken($accent, 10%);
 }
 
-.tt-dropdown-menu {
-  width: 100%;
-  
-  p {
-    font-size: 3rem;
-    line-height: 0.95em;
-    margin: 0;
-    padding: 5px 0;
-    @media screen and (max-width: $small-horizontal-vp) {
-      font-size: 2rem;
-    }
-  }
-}
-
 .tt-suggestion {
   opacity: .75;
   transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
-  
-  &.tt-cursor {
+  font-size: 3rem;
+  line-height: 0.95em;
+  margin: 0;
+  padding: 5px 0;
+  @media screen and (max-width: $small-horizontal-vp) {
+    font-size: 2rem;
+  }
+  &.tt-cursor, &:hover {
     opacity: 1;
     cursor: pointer;
     width: 100%;

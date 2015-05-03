@@ -71,8 +71,10 @@ $(function() {
       var illustratorSearch = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: '/wp-json/posts?type=illustrator&filter[posts_per_page]=100&filter[s]=%QUERY',
-        limit: 10
+        remote: {
+          url: '/wp-json/posts?type=illustrator&filter[posts_per_page]=100&filter[s]=%QUERY',
+          wildcard: '%QUERY'
+        }
       });
        
       illustratorSearch.initialize();
@@ -82,8 +84,9 @@ $(function() {
         },{
         name: 'illustratorName',
         displayKey: 'title',
-        source: illustratorSearch.ttAdapter()
-      }).on('typeahead:selected', function($e, resultsData){
+        source: illustratorSearch,
+        limit: 10
+      }).on('typeahead:select', function($e, resultsData){
         window.location.href = resultsData.link;
       });
     },
