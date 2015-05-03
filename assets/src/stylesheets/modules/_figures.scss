@@ -1,0 +1,34 @@
+figure {
+  margin: 0;
+
+  img {
+    box-shadow: 0 1px 1px 0 rgba($black, .05);
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
+// Full image tip
+
+.image-modal-tip {
+  @include font-smoothing(on);
+  font-family: $sans-serif;
+  position: fixed;
+  z-index: $z-600;
+  padding: 5px;
+  color: rgba($accent,0.5);
+}
+
+// Full image
+
+.image-modal-full-image {
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0;
+}

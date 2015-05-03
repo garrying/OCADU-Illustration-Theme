@@ -1,0 +1,263 @@
+.title {
+  @include font-smoothing(on);
+  opacity: 0;
+  transform: scale(.95);
+  position: fixed;
+  top: 20px;
+  left: 60px;
+  bottom: 20px;
+  padding-right: 20px;
+  width: calc(33.3333333333% - 60px);
+  display: flex;
+  justify-content: center;
+  z-index: $z-100;
+  color: $white;
+  transition: opacity 180ms ease-in-out;
+
+  @media screen and (max-width: $medium-vertical-vp) {
+    background: rgba($site-background-home, .8);
+  }
+
+  @media screen and (max-width: $medium-vp) {
+    width: calc(40% - 60px);
+  }
+  
+  @media screen and (max-width: $small-vp) {
+    width: 100%;
+    display: none;
+  }
+
+  @media screen and (max-height: 400px) and (max-width: $medium-vertical-vp) {
+    display: none;
+  }
+  
+  .message-wrapper {
+    display: block;
+    margin-top: 1.25em;
+  }
+
+  .message {
+    color: $accent;
+    background-image: url('../images/underline.svg');
+    background-repeat: repeat-x;
+    background-size: 30px 10px;
+    background-position: 0 100%;
+    padding-bottom: 8px;
+    animation: backAnimate 2s linear infinite;
+    font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1, 'dlig' 1;
+  }
+
+  .title-primary {
+    font-size: 2rem;
+    line-height: 1em;
+    margin-bottom: 1em;
+    margin-top: 0;
+    font-family: $sans-serif;
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-right: 20px;
+    }
+  }
+
+  .title-secondary {
+    line-height: 1.25em;
+  }
+
+  .title-unit {
+    align-self: center;
+    flex: 0 0 100%;
+  }
+
+  .colophon {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.85em;
+    line-height: 1.1em;
+    margin-bottom: 0;
+    
+    a {
+      color: $accent;
+      background: none;
+    }
+  }
+
+  &.velocity-animating {
+    transition: transform 500ms;
+  }
+
+  &.loaded {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  @media screen and (max-width: $medium-vertical-vp) {
+    width: 50%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding-left: 20px;
+    padding-right: 0;
+
+    &.sticky-unpinned {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &.sticky-pinned {
+      opacity: 1;
+    }
+  }
+}
+
+// Illustrator unit
+
+.illustrator {
+  transform: scale(.95);
+  opacity: 0;
+  width: 25%;
+
+  .home & {
+    width: 33.3333333333%;
+  }
+
+  .illustrator-meta-container {
+    opacity: .5;
+    transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
+    margin-bottom: 1em;
+    font-size: 0.95em;
+    line-height: 1.2em;
+    @include font-smoothing(on);
+
+    @media screen and (max-width: $medium-vertical-vp) {
+      display: none;
+    }
+  }
+
+  .illustrator-title {
+    margin-bottom: 5px;
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+
+  .illustrator-name {
+    font-family: $serif;
+  }
+
+  .illustrator-link {
+    padding: 0 20px 20px 0;
+    display: block;
+    background: none;
+  }
+
+  &:hover {
+    .illustrator-meta-container {
+      opacity: 1;
+      color: $accent;
+    }
+  }
+
+  &.velocity-animating {
+    transition: transform 500ms;
+  }
+
+  &.loaded {
+    transform: scale(1);
+  }
+
+  @media screen and (min-width: $large-vp) {
+    width: 20%;
+  }
+  
+  @media screen and (max-width: $medium-vertical-vp) {
+    width: 33.3333333333%;
+  }
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+  }
+
+  @media screen and (min-width: $extra-large-vp) {
+    width: 12.5%;
+  }
+
+}
+
+// Homepage
+
+.home {
+  background: $site-background-home;
+
+  .illustrator {
+
+    @media screen and (min-width: $large-vp) {
+      width: 25%;
+    }
+
+    @media screen and (max-width: $medium-vp) {
+      width: 50%;
+    }
+    
+    @media screen and (max-width: $medium-vertical-vp) {
+      width: 25%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: $extra-large-vp) {
+      width: 20%;
+    }
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.search-title {
+  @include font-smoothing(on);
+  font-size: 1.2rem;
+  top: 55%;
+  z-index: $z-100;
+  letter-spacing: 0;
+
+  mark {
+    background: transparent;
+    color: $accent;
+    padding: 0 5px;
+  }
+}
+
+.illustrators-grid {
+  margin-left: 40px;
+  margin-top: 70px;
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-top: 20px;
+  }
+
+  &.home-grid {
+    margin-top: 0;
+    padding-top: 20px;
+    margin-left: 33.3333333333%;
+    width: calc(66.6666666667% + 20px);
+
+    @media screen and (max-width: $medium-vp) {
+      margin-left: 40%;
+      width: calc(60% + 20px);
+    }
+
+    @media screen and (max-width: $medium-vertical-vp) {
+      margin-left: 0;
+      width: calc(100% + 20px);
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: calc(100% + 20px);
+    }
+  }
+  
+  @media screen and (max-width: $medium-vertical-vp) {
+    margin-left: 0;
+    margin-right: -20px;
+  }
+}

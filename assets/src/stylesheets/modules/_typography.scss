@@ -1,0 +1,79 @@
+// Kerning extend
+
+%font-features {
+  font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+// Heading extend
+
+%heading {
+  @extend %font-features;
+  @include font-smoothing(on);
+  font-family: $sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6rem;
+}
+
+// Base
+
+p {
+  @extend %font-features;
+  @include font-smoothing(on);
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+abbr {
+  font-feature-settings: 'c2sc', 'smcp';
+  letter-spacing: 1px;
+}
+
+// Headings
+
+h1 {
+  @extend %heading;
+  font-size: 2.618rem;
+  font-style: normal;
+}
+
+h2 {
+  @extend %heading;
+  font-size: 1.618rem;
+}
+
+.heading {
+  @extend %heading;
+}
+
+.meta {
+  @extend %font-features;
+  @include font-smoothing(on);
+  font-style: italic;
+
+  .phone {
+    font-feature-settings: 'onum' 0, 'tnum' 1;
+  }
+}
+
+.illustrator-meta-name {
+  display: inline-block;
+  font-family: $serif;
+  font-size: 1rem;
+  font-style: italic;
+
+  &:before {
+    color: $accent;
+    content: '※';
+    display: inline-block;
+    font-style: normal;
+    text-indent: -15px;
+  }
+}
+
+.thesis-title {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}

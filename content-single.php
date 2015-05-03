@@ -1,69 +1,91 @@
-<article <?php post_class(); ?> role="article">
-	<section id="illustrator-meta-container" data-spy="affix" data-offset-top="52">
-		<aside id="illustrator-meta" role="complementary">
-			<header class="entry-header">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header><!-- .entry-header -->
-				
-			<?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
-				<div class="info site"><a title="Visit Illustrator's Website" target="_blank" href="<?php echo get_post_meta($post->ID, 'illu_sites', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites', true) ?></a></div>
-			<?php endif; ?>
+<article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
-			<?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
-				<div class="info site"><a title="Visit Illustrator's Website" target="_blank" href="<?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?>"><?php echo get_post_meta($post->ID, 'illu_sites_2', true) ?></a></div>
-			<?php endif; ?>
+  <div class="illustrator-meta" role="complementary">
+    <div class="illustrator-meta-wrapper">
+      <div class="illustrator-meta-wrapper-inner hidden">
+        <div class="illustrator-meta-description">
 
-			<?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
-				<div class="info email"><a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo get_post_meta($post->ID, 'illu_email', true) ?></a></div>
-			<?php endif; ?>
+          <?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
+            
+            <?php
+              $title_illu = esc_html( get_post_meta($post->ID, 'illu_title', true) );
+              echo '<h2 class="thesis-title" itemprop="name">' . $title_illu . '</h2>';
+            ?>            
+          
+          <?php endif; ?>
 
-			<?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
-				<div class="info phone"><?php echo get_post_meta($post->ID, 'illu_phone', true) ?></div>
-			<?php endif; ?>
+          <?php the_content(); ?>
 
-			<div class="description">
+          <meta itemprop="description" content="<?php $text = strip_tags(get_the_content()); echo wptexturize($text); ?>">
+          <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
+          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID)); echo $image ?>">
 
-				<?php if ( get_post_meta($post->ID, 'illu_title', true) ) : ?>
-					
-					<?php
-						$title_illu = get_post_meta($post->ID, 'illu_title', true);
-						$text = '<h2 class="thesis-title">' . $title_illu . '</h2>' . get_the_content(); 
-						echo apply_filters('the_content', $text);
-					?>
+        </div>
 
-				<?php else: ?>
-					
-					<?php 
-						$text = get_the_content(); 
-						echo apply_filters('the_content', $text); 
-					?>
-				
-				<?php endif; ?>
+        <div class="meta" itemscope itemtype="http://schema.org/Person">
+          <header class="illustrator-meta-header">
+            <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
+          </header><!-- .illustrator-meta-header -->
+            
+          <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
+            <div class="truncate" itemprop="url">
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites', true) ) ?>">
+                <?php 
+                  $url = esc_url( get_post_meta($post->ID, 'illu_sites', true) );  
+                  $url = preg_replace('#^https?://#', '', $url);
+                  echo $url;
+                ?>
+              </a>
+            </div>
+          <?php endif; ?>
 
-			</div>
+          <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
+            <div class="truncate" itemprop="url">
+              <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta($post->ID, 'illu_sites_2', true) ) ?>">
+                <?php 
+                  $url = esc_url( get_post_meta($post->ID, 'illu_sites_2', true) );  
+                  $url = preg_replace('#^https?://#', '', $url);
+                  echo $url;
+                ?>
+              </a>
+            </div>
+          <?php endif; ?>
 
-			<footer class="nav-single">
-				<nav id="nav-single">
-					<ul class="normalized">
-						<?php if ( get_post_type() == 'event' ) : ?>
-							<li class="nav-previous"><?php next_post_link_plus( array('order_by' => 'post_date', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
-							<li class="nav-next"><?php previous_post_link_plus( array('order_by' => 'post_date', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span>%title</span>') ); ?></li>
-						<?php else : ?>
-							<li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator">○</span> <span class="truncate">%title</span>') ); ?></li>
-							<li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate">%title</span> <span class="indicator">●</span>') ); ?></li>
-						<?php endif; ?>
-					</ul>
-				</nav><!-- #nav-single -->
-			</footer><!-- .nav-single -->
+          <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
+            <div class="email truncate" itemprop="email">
+              <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta($post->ID, 'illu_email', true) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
+            </div>
+          <?php endif; ?>
 
-		</aside><!-- aside -->
-	</section>
-	
-	<section id="illustrator-gallery-container">
-		<?php
-			$gallery_shortcode = '[gallery size="medium" link="file" itemtag="div" icontag="div" columns="0"]';
-			print apply_filters( 'the_content', $gallery_shortcode );
-		?>
-	</section>
+          <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
+            <div class="phone" itemprop="telephone">
+              <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
 
-</article><!-- <?php the_title(); ?> -->
+      <ul class="illustrator-nav-single">
+        <li class="nav-previous"><?php previous_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">%title</span>') ); ?></li>
+        <li class="nav-next"><?php next_post_link_plus( array('order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator"></span>') ); ?></li>
+      </ul><!-- .llustrator-nav-single -->
+
+    </div>
+
+  </div><!-- .illustrator-meta -->
+  
+  <div class="illustrator-gallery-container">
+    <?php
+      $gallery_shortcode = '[gallery size="medium" link="file" columns="0"]';
+      print apply_filters( 'the_content', $gallery_shortcode );
+    ?>
+    <div id="image-modal" class="image-modal-wrapper hidden">
+      <button class="close-panel alt hide-text" title="Close full view" aria-label="Close full view">Close</button>
+      <div class="image-modal-tip"></div>
+      <div class="image-modal-container">
+        <img id="full-image" alt="Full illustration" src=""/>
+      </div>
+    </div>
+  </div>
+
+</article><!-- .single-illustrator -->

@@ -1,0 +1,33 @@
+// Animated hyperlinks
+
+@-webkit-keyframes backAnimate {
+  0% {background-position: 0 100%;}
+  100% {background-position: -30px 100%;}
+}
+
+@-moz-keyframes backAnimate {
+  0% {background-position: 0 100%;}
+  100% {background-position: -30px 100%;}
+}
+
+@keyframes backAnimate { 
+  0% {background-position: 0 100%;}
+  100% {background-position: -30px 100%;}
+}
+
+// Animated hyperlinks small
+
+@-webkit-keyframes backAnimateSmall {
+  0% {background-position: 0 100%;}
+  100% {background-position: -23px 100%;}
+}
+
+@-moz-keyframes backAnimateSmall {
+  0% {background-position: 0 100%;}
+  100% {background-position: -23px 100%;}
+}
+
+@keyframes backAnimateSmall { 
+  0% {background-position: 0 100%;}
+  100% {background-position: -23px 100%;}
+}

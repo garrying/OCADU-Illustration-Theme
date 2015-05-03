@@ -1,0 +1,55 @@
+.panel {
+  font-family: $sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: $z-200;
+  overflow-y: scroll;
+  display: none;
+  width: 50%;
+  outline: 0;
+  background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
+  @media screen and (max-width: $medium-vp) { 
+    width: 75%;
+  }
+  @media screen and (max-width: $small-vp) {
+    width: 100%;
+  }
+}
+
+// Close button
+
+.close-panel {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  height: 31px;
+  width: 31px;
+  z-index: $z-300;
+  padding: 0;
+  background-image: url('../images/sprite.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: transparent;
+  border: 0;
+
+  &.alt {
+    background-image: url('../images/sprite.svg');
+    background-position: 100% 0;
+  }
+}
+
+// Colophon
+
+.panel-colophon {
+  position: fixed;
+  width: 16px;
+  height: 23px;
+  bottom: 20px;
+  left: 20px;
+  background: url('../images/sprite.svg');
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}

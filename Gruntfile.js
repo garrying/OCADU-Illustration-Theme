@@ -11,13 +11,14 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
+        force: true,
         reporter: require('jshint-stylish')
       },
       all: [
-        'Gruntfile.js',
-        'assets/src/js/app.src.js',
+        'assets/src/js/app.src.js'
       ]
     },
+    
     uglify: {
       dist: {
         files: {
@@ -28,27 +29,70 @@ module.exports = function (grunt) {
         }
       }
     },
-    compass: {
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    sass: {
       options: {
-        sassDir: 'assets/src/stylesheets',
-        cssDir: 'assets/dist/stylesheets',
-        generatedImagesDir: 'assets/dist/images',
-        imagesDir: 'assets/dist/images',
-        httpImagesPath: '/wp-content/themes/ocaduillustration/assets/dist/images',
-        relativeAssets: true,
-        assetCacheBuster: false
-      },
+        sourceMap: true
+        },
       dist: {
         options: {
-          generatedImagesDir: 'assets/dist/images'
-        }
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'assets/src/stylesheets',
+          src: ['*.{scss,sass}'],
+          dest: 'assets/dist/stylesheets',
+          ext: '.css'
+        }]
       },
       server: {
-        options: {
-          debugInfo: false
+        files: [{
+          expand: true,
+          cwd: 'assets/src/stylesheets',
+          src: ['*.{scss,sass}'],
+          dest: 'assets/dist/stylesheets',
+          ext: '.css'
+        }]
+      }
+    },
+
+    autoprefixer: {
+      options: {
+        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'assets/dist/stylesheets/',
+          src: '{,*/}*.css',
+          dest: 'assets/dist/stylesheets/'
+        }]
+      }
+    },
+
+    svg_sprite: {
+      target: {
+        expand: true,
+        cwd: 'assets/src/images',
+        src: 'sprite/*.svg',
+        dest: 'assets/src/images'
+      },
+
+      options: {
+        mode: {
+          css: {     // Activate the «css» mode
+            sprite: '../sprite',
+            bust: false,
+            render: {
+              scss: false  // Activate CSS output (with default options)
+            }
+          }
         }
       }
     },
+
     cssmin: {
       options: {
         keepSpecialComments: 0
@@ -60,6 +104,7 @@ module.exports = function (grunt) {
         dest: 'assets/dist/stylesheets/',
       }
     },
+    
     svgmin: {
       dist: {
         files: [{
@@ -70,17 +115,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-    rev: {
-      dist: {
-        files: {
-          src: [
-            'assets/dist/js/{,*/}*.js',
-            'assets/dist/stylesheets/{,*/}*.css',
-            'assets/dist/images/{,*/}*.{gif,jpeg,jpg,png,webp,svg}'
-          ]
-        }
-      }
-    },
+        
     usemin: {
       options: {
         dirs: ['assets/dist'],
@@ -92,6 +127,18 @@ module.exports = function (grunt) {
       html: ['functions.php'],
       css: ['assets/dist/stylesheets/{,*/}*.css']
     },
+
+    rev: {
+      dist: {
+        files: {
+          src: [
+            'assets/dist/stylesheets/main.css',
+            'assets/dist/js/app.min.js'
+          ]
+        }
+      }
+    },
+    
     concat: {
       options: {
         separator: ';',
@@ -101,22 +148,22 @@ module.exports = function (grunt) {
         dest: 'assets/dist/js/app.min.js',
       },
     },
+    
     watch: {
       js: {
-        files: [
-          '<%= jshint.all %>'
-        ],
-        tasks: ['concat']
+        files: ['<%= jshint.all %>', 'assets/src/js/lib/*.js'],
+        tasks: ['jshint','concat']
       },
       svg: {
         files: 'assets/src/images/*.svg',
         tasks: ['svgmin']
       },
-      compass: {
+      sass: {
         files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server']
+        tasks: ['sass:server', 'autoprefixer']
       },
     },
+    
     clean: {
       dist: {
         files: [{
@@ -129,9 +176,27 @@ module.exports = function (grunt) {
         }]
       }
     },
+
+    copy: {
+      main: {
+        flatten: true,
+        expand: true,
+        cwd: 'assets/src/fonts/',
+        src: '**',
+        dest: 'assets/dist/fonts/'
+      },
+    },
+
+    parker: {
+      options: {},
+      src: [
+        'assets/dist/stylesheets/{,*/}*.css'
+      ],
+    },
+    
     concurrent: {
       server: [
-        'compass:server'
+        'sass:server'
       ]
     }
   });
@@ -139,17 +204,25 @@ module.exports = function (grunt) {
   // Register tasks
   grunt.registerTask('default', [
     'clean',
+    'copy',
+    'svg_sprite',
     'svgmin',
     'concat',
-    'concurrent:server'
+    'concurrent:server',
+    'autoprefixer'
   ]);
 
   grunt.registerTask('build', [
     'clean',
+    'copy',
     'uglify',
+    'svg_sprite',
     'svgmin',
-    'compass',
-    'cssmin'
+    'sass:dist',
+    'autoprefixer',
+    'cssmin',
+    'rev',
+    'usemin'
   ]);
 
   grunt.registerTask('dev', [

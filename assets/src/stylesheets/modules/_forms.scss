@@ -1,0 +1,31 @@
+input {
+  @extend %font-kern;
+  @include font-smoothing(on);
+  border: 0;
+  font-family: $sans-serif;
+}
+
+.btn,
+button {
+  &:focus {
+    outline: thin dotted;
+  }
+}
+
+// Placeholder styling
+
+::-webkit-input-placeholder {
+  color: rgba($white, .75);
+}
+
+:-moz-placeholder {
+  color: rgba($white, .75);  
+}
+
+::-moz-placeholder {
+  color: rgba($white, .75);  
+}
+
+:-ms-input-placeholder {  
+  color: rgba($white, .75);  
+}
