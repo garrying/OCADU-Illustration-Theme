@@ -4,7 +4,6 @@
   @include font-smoothing(on);
   background: none;
   color: rgba($site-background-home, .25);
-  float: left;
   transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
 
   &:hover {
@@ -51,13 +50,9 @@
   .home & {
     color: $white;
   }
-
-
 }
 
 .header-item {
-  cursor: pointer;
-  float: left;
   margin-left: 20px;
   line-height: 1.1em;
   background-image: url('../images/underline-w.svg');
