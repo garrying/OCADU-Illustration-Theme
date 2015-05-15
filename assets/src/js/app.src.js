@@ -57,14 +57,18 @@ $(function() {
     },
 
     _ocadCascade: function (selector, delayNum) {
-      $(selector).each(function (i) {
-        var item = $(this);
-        item.delay(delayNum*i).velocity({ opacity: 1, scale: 1 },{
-          complete: function() {
-            item.addClass('loaded');
-          }
+      
+      var item = document.querySelectorAll(selector);
+      var velocityComplete = function(ele) {
+        $(ele).addClass('loaded');
+      };
+
+      for (var i = 0, items = item.length; i < items; i++) {
+        $(item[i]).delay(delayNum*i).velocity({ opacity: 1, scale: 1 },{
+          complete: velocityComplete
         });
-      });
+      }
+
     },
 
     _ocadSearch: function () {
@@ -222,20 +226,18 @@ $(function() {
           return [nh,nw];
         };
 
-        var emojiCanvas = function() {
-          $('.emoji').each(function(){
-            var size = Math.round(Math.random()*1);
-            if (size > 0) {
-              size = 'big';
-            } else {
-              size = 'normal';
-            }
-            var newq = makeNewPosition();
-            $(this).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
-          });
-        };
+        var el = document.querySelectorAll('.emoji');
 
-        emojiCanvas();
+        for (var i = 0, len = el.length; i < len; i++) { 
+          var size = Math.round(Math.random()*1);
+          if (size > 0) {
+            size = 'big';
+          } else {
+            size = 'normal';
+          }
+          var newq = makeNewPosition();
+          $(el[i]).addClass(size).css({ top: newq[0]+'%', left: newq[1]+'%' });
+        }
         
       }
     },
@@ -275,6 +277,7 @@ $(function() {
       var itemimgFullsrc;
       var nextImage;
       var imageIndex = 0;
+      var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
 
@@ -284,12 +287,12 @@ $(function() {
           app._ocadMasonry(app.settings.masonryContainer);
           app._ocadCascade('.gallery-item',100);
 
-          $(app.settings.masonryContainer).find('a').each(function(){
-            var y = imageIndex++;
-            $(this).data('index',y);
-            var imageFullurl = $(this).attr('href');
+          for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
+            $(masonryItemAnchor[i]).data('index',i);
+            var imageFullurl = $(masonryItemAnchor[i]).attr('href');
             galleryImages.push(imageFullurl);
-          });
+          }
+
         });
 
       }
@@ -298,11 +301,11 @@ $(function() {
       * Masonry item click
       **/
 
-      $(app.settings.masonryContainer).on( 'click', '.gallery-item', function( event ) {
+      $(app.settings.masonryContainer).on( 'click', '.gallery-icon-anchor', function( event ) {
         event.preventDefault();
         app._ocadLoader(true);
-        itemimgFullsrc = $( event.target ).closest('a').attr('href');
-        imageIndex = $( event.target ).closest('a').data('index');
+        itemimgFullsrc = $(this).attr('href');
+        imageIndex = $(this).data('index');
 
         $('.image-modal-container').html(function (){
           return '<img id="full-image" class="image-modal-full-image" alt="Full illustration" src=' + itemimgFullsrc + '>';

@@ -96,7 +96,7 @@ if (!function_exists('ocadu_scripts')) {
       wp_deregister_script('jquery');
       wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', '','',true);
       wp_enqueue_script('jquery');
-      wp_register_script('app', get_template_directory_uri().'/assets/dist/js/8730b977.app.min.js', array('jquery'), '', true);
+      wp_register_script('app', get_template_directory_uri().'/assets/dist/js/9b1a7cd0.app.min.js', array('jquery'), '', true);
       wp_enqueue_script('app');
     }
   }
@@ -352,7 +352,7 @@ function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
   $thumbnailURL = wp_get_attachment_image_src($id,'medium')[0];
   if ( ! $permalink ) {
-    $markup = str_replace( '<a href', '<a data-thumbnail="'. $thumbnailURL .'"  href', $markup );
+    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-thumbnail="'. $thumbnailURL .'"  href', $markup );
   }
   return $markup;
 }
