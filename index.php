@@ -4,8 +4,7 @@
     $args = array(
         'taxonomy' => 'gradyear',
         'post_type' => 'illustrator',
-        'term' => $grad_year[0]->name,
-        'orderby' => 'rand'
+        'term' => $grad_year[0]->name
         );
     $home_index = new WP_Query($args);
   }
