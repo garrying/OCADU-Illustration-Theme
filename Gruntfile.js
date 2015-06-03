@@ -8,10 +8,25 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
+
+    watch: {
+      js: {
+        files: ['assets/src/js/app.src.js', 'assets/src/js/lib/*.js'],
+        tasks: ['concat']
+      },
+      svg: {
+        files: 'assets/src/images/*.svg',
+        tasks: ['svgmin']
+      },
+      sass: {
+        files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
+        tasks: ['sass:server', 'autoprefixer']
+      },
+    },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        force: true,
         reporter: require('jshint-stylish')
       },
       all: [
@@ -148,22 +163,7 @@ module.exports = function (grunt) {
         dest: 'assets/dist/js/app.min.js',
       },
     },
-    
-    watch: {
-      js: {
-        files: ['assets/src/js/app.src.js', 'assets/src/js/lib/*.js'],
-        tasks: ['concat']
-      },
-      svg: {
-        files: 'assets/src/images/*.svg',
-        tasks: ['svgmin']
-      },
-      sass: {
-        files: ['assets/src/stylesheets/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
-      },
-    },
-    
+        
     clean: {
       dist: {
         files: [{
