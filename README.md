@@ -2,13 +2,14 @@
 
 ### A theme for OCAD U's Illustration Department by [Garry Ing](http://garrying.com/ "Link to garrying.com")
 
-Currently working on *Wordpress 4.2.1*
+Currently working on *Wordpress 4.2.2*
 
 ## Getting Started
 
-- Working on Grunt `~0.4.5`
-- Run `npm install`
-- `grunt dev`
+- Working on Gulp `3.9.0`
+- `npm install`
+- `bower install`
+- `gulp serve` or `gulp build`
 
 ## Requirements
 
