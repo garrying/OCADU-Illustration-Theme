@@ -19,7 +19,7 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-gulp.task('styles', function () {
+gulp.task('styles', function() {
   return gulp.src('assets/src/styles/main.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
@@ -34,7 +34,7 @@ gulp.task('styles', function () {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('jshint', function () {
+gulp.task('jshint', function() {
   return gulp.src('assets/src/js/*.js')
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
@@ -54,7 +54,7 @@ gulp.task('scripts', ['jshint', 'bower'], function() {
     .pipe(gulp.dest('assets/dist/js'));
 });
 
-gulp.task('images', function () {
+gulp.task('images', function() {
   return gulp.src('assets/src/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
@@ -66,12 +66,12 @@ gulp.task('images', function () {
     .pipe(gulp.dest('assets/dist/images'));
 });
 
-gulp.task('fonts', function () {
+gulp.task('fonts', function() {
   return gulp.src('assets/src/fonts/**/*.{eot,svg,ttf,woff,woff2}')
     .pipe(gulp.dest('assets/dist/fonts'));
 });
 
-gulp.task('minify', function () {
+gulp.task('minify', function() {
   return gulp.src('assets/dist/**/*')
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
@@ -80,7 +80,7 @@ gulp.task('minify', function () {
 
 gulp.task('clean', require('del').bind(null, ['assets/dist']));
 
-gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], function () {
+gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], function() {
 
   browserSync.init({
     proxy: "ocaduillustration.dev"
@@ -97,11 +97,11 @@ gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], function () {
 
 });
 
-gulp.task('build', ['styles', 'images', 'fonts', 'scripts'], function () {
+gulp.task('build', ['styles', 'images', 'fonts', 'scripts'], function() {
   gulp.start('minify');
   return gulp.src('assets/dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean'], function() {
   gulp.start('minify');
 });
