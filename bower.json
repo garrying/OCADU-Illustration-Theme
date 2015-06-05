@@ -1,0 +1,19 @@
+{
+  "name": "ocaduillustration",
+  "private": true,
+  "dependencies": {
+    "fastclick": "~1.0.6",
+    "velocity": "~1.2.2",
+    "headroom.js": "~0.7.0",
+    "imagesloaded": "~3.1.8",
+    "FitText.js": "~1.2.0",
+    "masonry": "~3.3.0",
+    "typeahead.js": "~0.11.1"
+  },
+  "overrides": {
+    "masonry": {
+      "main": "dist/masonry.pkgd.min.js",
+      "dependencies": null
+    }
+  }
+}

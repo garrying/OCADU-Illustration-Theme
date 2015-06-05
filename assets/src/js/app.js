@@ -54,6 +54,8 @@ $(function() {
         percentPosition: true
       });
 
+      msnry.layout();
+      
     },
 
     _ocadCascade: function (selector, delayNum) {
