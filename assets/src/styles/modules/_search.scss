@@ -1,10 +1,10 @@
 .search-form {
-  padding-top: 70px;
-  color: $white;
   display: flex;
+  padding-top: 70px;
+  font-size: 3rem;
+  color: $white;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
 
   label {
     width: 70%;
@@ -12,16 +12,16 @@
 
   .twitter-typeahead {
     width: 100%;
-    background-image: url('../images/underline-l-w.svg');
+    background-image: url("../images/underline-l-w.svg");
     background-repeat: repeat-x;
-    background-size: 30px 10px;
     background-position: 0 100%;
+    background-size: 30px 10px;
   }
 
   @media screen and (max-width: $medium-vertical-vp) {
-    font-size: 3rem;
     padding-top: 70px;
-    
+    font-size: 3rem;
+
     label {
       width: 80%;
     }
@@ -33,6 +33,7 @@
 
   @media screen and (max-width: $small-vp) {
     font-size: 1.7rem;
+    
     label {
       width: 70%;
     }
@@ -41,24 +42,20 @@
 
 .search-field {
   @include font-smoothing(on);
-  border: 0;
-  padding: 10px 0;
-  background: none;
   display: block;
   width: 100%;
+  padding: 10px 0;
   font-family: $sans-serif;
+  background: none;
+  border: 0;
   border-radius: 0;
   -webkit-appearance: none;
-
-  &:focus {
-    outline: 0;
-  }
 }
 
 .search-submit {
-  background: none;
-  font-size: 1.2rem;
   margin-top: 23px;
+  font-size: 1.2rem;
+  background: none;
   border: 0;
   
   @media screen and (max-width: $medium-vertical-vp) {
@@ -74,19 +71,22 @@
 }
 
 .tt-suggestion {
-  opacity: .75;
-  transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
+  padding: 5px 0;
+  margin: 0;
   font-size: 3rem;
   line-height: 0.95em;
-  margin: 0;
-  padding: 5px 0;
+  opacity: 0.75;
+  transition: opacity 180ms ease-in-out, text-indent 180ms ease-in-out;
+  
   @media screen and (max-width: $small-horizontal-vp) {
     font-size: 2rem;
   }
-  &.tt-cursor, &:hover {
-    opacity: 1;
-    cursor: pointer;
+
+  &.tt-cursor, 
+  &:hover {
     width: 100%;
     text-indent: 5px;
+    cursor: pointer;
+    opacity: 1;
   }
 }

@@ -1,38 +1,49 @@
 .panel {
-  font-family: $sans-serif;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   z-index: $z-200;
-  overflow-y: scroll;
-  display: none;
   width: 50%;
-  outline: 0;
-  background: linear-gradient(45deg, rgba($accent, .85), rgba($accent, 1));
+  height: 100%;
+  overflow-y: scroll;
+  font-family: $sans-serif;
+  visibility: hidden;
+  background: linear-gradient(45deg, rgba($accent, 0.85), rgba($accent, 1));
+  outline: 2px solid darken($accent, 2%);
+  opacity: 0;
+  transition: opacity ease-out 180ms, visibility ease-out 0s 180ms;
+  transform: translate3d(0, 0, 0);
+  
   @media screen and (max-width: $medium-vp) { 
     width: 75%;
   }
+  
   @media screen and (max-width: $small-vp) {
     width: 100%;
+  }
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
   }
 }
 
 // Close button
 
 .close-panel {
-  cursor: pointer;
   position: absolute;
-  right: 20px;
   top: 18px;
-  height: 31px;
-  width: 31px;
+  right: 20px;
   z-index: $z-300;
+  width: 31px;
+  height: 31px;
   padding: 0;
-  background-image: url('../images/sprite.svg');
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url("../images/sprite.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
-  background-color: transparent;
   border: 0;
 
   &.alt {
@@ -44,11 +55,11 @@
 
 .panel-colophon {
   position: fixed;
-  width: 16px;
-  height: 23px;
   bottom: 20px;
   left: 20px;
-  background: url('../images/sprite.svg');
+  width: 16px;
+  height: 23px;
+  background: url("../images/sprite.svg");
   background-repeat: no-repeat;
   background-position: 0 100%;
 }

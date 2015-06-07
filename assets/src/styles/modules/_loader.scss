@@ -4,14 +4,14 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
+  z-index: $z-300;
+  display: none;
   width: 100px;
   height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
   pointer-events: none;
-  z-index: $z-300;
+  background-image: url("../images/underline.svg");
   opacity: 0;
-  display: none;
-  background-image: url('../images/underline.svg');
   animation: backAnimate 1s linear infinite;
 }

@@ -2,8 +2,8 @@
 
 .logo {
   @include font-smoothing(on);
+  color: rgba($site-background-home, 0.25);
   background: none;
-  color: rgba($site-background-home, .25);
   transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
 
   &:hover {
@@ -12,7 +12,7 @@
 
   .home & {
     color: $white;
-    opacity: .25;
+    opacity: 0.25;
   }
 
   &.invert {
@@ -27,16 +27,16 @@
 }
 
 .heading-inner {
-  z-index: $z-300;
-  left: 60px;
-  top: 20px;
   position: fixed;
-  color: $site-background-home;
+  top: 20px;
+  left: 60px;
+  z-index: $z-300;
   font-size: 1.2rem;
+  color: $site-background-home;
   transition: opacity 180ms ease-in-out;
   
   &.sticky-unpinned {
-    opacity: .25;
+    opacity: 0.25;
   }
 
   &:hover {
@@ -44,7 +44,7 @@
   }
 
   @media screen and (max-width: $medium-vertical-vp) {
-   left: 20px;
+    left: 20px;
   }
 
   .home & {
@@ -53,19 +53,20 @@
 }
 
 .header-item {
+  padding-top: 2px;
+  padding-bottom: 6px;
+
   margin-left: 20px;
   line-height: 1.1em;
-  background-image: url('../images/underline-w.svg');
   background-color: transparent;
+  background-image: url("../images/underline-w.svg");
   background-repeat: repeat-x;
-  background-size: 23px 8px;
   background-position: 0 100%;
+  background-size: 23px 8px;
   border: 0;
-  padding-bottom: 6px;
-  padding-top: 2px;
+  transition: color 180ms ease-in-out, opacity 180ms ease-in-out;
   animation: backAnimateSmall 500ms linear infinite;
   animation-play-state: paused;
-  transition: color 180ms ease-in-out, opacity 180ms ease-in-out;
 
   &:hover,
   &:focus {
@@ -74,7 +75,7 @@
   }
 
   &.inactive {
-    opacity: .3;
+    opacity: 0.3;
 
     &:hover,
     &:focus {
@@ -93,8 +94,8 @@
   }
   
   @media screen and (max-width: $small-vp) {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -103,20 +104,20 @@
 .section-indicator {
   @extend %heading;
   position: fixed;
-  transform-origin: left bottom;
-  transform: rotate(-90deg);
   top: 45%;
   left: 40px;
   letter-spacing: 1px;
   background: none;
   transition: color 180ms ease-in-out;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
 
   &:hover {
     color: $accent;
   }
 
   .single & {
-    opacity: .75;
+    opacity: 0.75;
   }
 
   @media screen and (max-width: 710px) {
@@ -126,9 +127,9 @@
 
 .section-indicator-index {
   @media screen and (max-width: $medium-vertical-vp) {
-    text-align: center;
-    display: block;
     position: static;
+    display: block;
+    text-align: center;
     transform: rotate(0deg);
   }
 }

@@ -6,9 +6,8 @@ $(function() {
     init: function() {
       this._fastClick();
       this._ocadLoader();
-      this._ocadSearchPanel();
       this._ocadHeadroom();
-      this._ocadYearSelect();
+      this._ocadPanelSelectButtons();
       this._ocadEmojiCanvas();
       this._ocadHomeLoader();
       this._ocadPanelsClose();
@@ -25,8 +24,6 @@ $(function() {
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       logo: $('.logo'),
-      yearSelect: $('#year-select-link'),
-      searchLink: $('#search-link'),
       searchField: $('.search-field'),
       imageModal: $('#image-modal'),
       searchContainer: $('.search-container'),
@@ -128,19 +125,22 @@ $(function() {
       });
     },
 
-    _ocadYearSelect: function () {
-      app.settings.yearSelect.on('click',function(){
-        if ($(this).hasClass('reverse')) {
-          $(this).removeClass('reverse');
-          app._ocadPanelsClose();
-        } else {
-          $('.panel').velocity('fadeOut','fast');
-          $(this).addClass('reverse').removeClass('inactive');
-          app.settings.logo.addClass('invert');
-          $('.year-select').velocity('fadeIn', { 
-            duration: 180
-          }).attr('aria-hidden',false);
-          app.settings.searchLink.addClass('inactive').removeClass('reverse');
+    _ocadPanelSelect: function (e) {
+
+      var targetPanel = $(e).data('panel');
+
+      if ($(e).hasClass('reverse')) {
+        $(e).removeClass('reverse');
+        app._ocadPanelsClose();
+      } else {
+        $('.panel').removeClass('visible');
+        $('.header-item').addClass('inactive').removeClass('reverse');
+        app.settings.logo.addClass('invert');
+
+        $(e).addClass('reverse').removeClass('inactive');
+        $('.'+targetPanel).addClass('visible').attr('aria-hidden',false).focus();
+
+        if (targetPanel === 'year-select') {
           $('.year-item').each(function(i){
             var item = $(this);
             item.delay(100*i).velocity({opacity:1,display:'flex'},{
@@ -150,29 +150,15 @@ $(function() {
             });
           });
         }
-      });
+      }
     },
 
-    _ocadSearchPanel: function () {
-      
+    _ocadPanelSelectButtons: function () {
+
       app._ocadSearch();
 
-      app.settings.searchLink.on('click',function(){
-        if ($(this).hasClass('reverse')) {
-          $(this).removeClass('reverse');
-          app._ocadPanelsClose();
-        } else {
-          $('.panel').velocity('fadeOut','fast');
-          $(this).addClass('reverse').removeClass('inactive');
-          app.settings.logo.addClass('invert');
-          app.settings.searchContainer.velocity('fadeIn', {
-            duration: 180
-          }).attr('aria-hidden',false);
-          app.settings.yearSelect.addClass('inactive').removeClass('reverse');
-          setTimeout(function(){
-            $('.search-field').focus();            
-          }, 100);
-        }
+      $('.header-item').on('click',function(){
+        app._ocadPanelSelect(this);
       });
     },
 
@@ -185,19 +171,19 @@ $(function() {
         })();
 
         var shuffled = (function(){
-            var l = allElems.length, ret = [];
-            while (l--) {
-                var random = Math.floor(Math.random() * allElems.length),
-                    randEl = allElems[random].cloneNode(true);
-                allElems.splice(random, 1);
-                ret[ret.length] = randEl;
-            }
-            return ret; 
+          var l = allElems.length, ret = [];
+          while (l--) {
+            var random = Math.floor(Math.random() * allElems.length),
+              randEl = allElems[random].cloneNode(true);
+            allElems.splice(random, 1);
+            ret[ret.length] = randEl;
+          }
+          return ret; 
         })(), l = elems.length;
 
         while (l--) {
-            elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
-            elems[l].parentNode.removeChild(elems[l]);
+          elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
+          elems[l].parentNode.removeChild(elems[l]);
         }
     },
 
@@ -258,13 +244,9 @@ $(function() {
       app.settings.imageModal.velocity('fadeOut',{duration: 180 });
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
-      if ($('.panel').is(':visible')) {
-        $('.panel').velocity('fadeOut', { 
-          duration: 180,
-          complete: function(){
-            $('.year-item').velocity({ opacity: 0, display: 'flex' },'fast').removeClass('loaded');
-          }
-        }).attr('aria-hidden',true);
+      if ($('.panel').hasClass('visible')) {
+        $('.panel').removeClass('visible').attr('aria-hidden',true).blur();
+        $('.year-item').velocity({ opacity: 0, display: 'flex' },'fast').removeClass('loaded');
       }
     },
 
@@ -276,7 +258,7 @@ $(function() {
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
       }
 
-      if (!$(event.target).closest('.panel, .header-item').length && $('.panel').is(':visible')) {
+      if (!$(event.target).closest('.panel, .header-item').length && $('.panel').hasClass('visible')) {
         app._ocadPanelsClose();
       }
 

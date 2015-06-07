@@ -6,19 +6,20 @@ html {
 }
 
 body {
-  background: $site-background;
-  color: $site-font-color;
   height: 100%;
-  padding: 0 20px 80px 20px;
+  padding: 0 20px 80px;
   font: 100%/1.6 $serif;
+  color: $site-font-color;
+  background: $site-background;
+
   @media screen and (max-width: $medium-vertical-vp) {
     padding-top: 60px;
   }
 }
 
 ::selection {
-  background: lighten($accent, 10%);
   color: $white;
+  background: lighten($accent, 10%);
 }
 
 // Links
@@ -28,8 +29,8 @@ a {
   text-decoration: none;
   background-image: linear-gradient(to bottom, transparent 50%, $accent 50%);
   background-repeat: repeat-x;
-  background-size: 2px 2px;
   background-position: 0 90%;
+  background-size: 2px 2px;
 
   img {
     display: block;
@@ -40,24 +41,24 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
-  color: $white;
-  background: $accent;
   position: absolute;
   top: 0;
   left: 60px;
-  padding: 10px;
-  height: 1px;
   width: 1px;
-  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  padding: 10px;
   overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  color: $white;
+  background: $accent;
   
   &:focus {
-    height: auto;
-    width: auto;
-    clip: auto;
-    z-index: $z-600;
     top: 2;
-    line-height: 49px;
+    z-index: $z-600;
+    width: auto;
+    height: auto;
     padding: 0 10px;
+    clip: auto;
+    line-height: 49px;
   }
 }

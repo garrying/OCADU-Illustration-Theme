@@ -2,11 +2,11 @@ figure {
   margin: 0;
 
   img {
-    box-shadow: 0 1px 1px 0 rgba($black, .05);
     display: block;
+    max-width: 100%;
     height: auto;
     margin: 0 auto;
-    max-width: 100%;
+    box-shadow: 0 1px 1px 0 rgba($black, 0.05);
   }
 }
 
@@ -14,21 +14,46 @@ figure {
 
 .image-modal-tip {
   @include font-smoothing(on);
-  font-family: $sans-serif;
   position: fixed;
   z-index: $z-600;
   padding: 5px;
-  color: rgba($accent,0.5);
+  font-family: $sans-serif;
+  color: rgba($accent, 0.5);
+}
+
+// Full image modal
+
+.image-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 30%;
+  z-index: $z-100;
+
+  @media screen and (max-width: $medium-vertical-vp) { 
+    left: 0;
+  }
+}
+
+.image-modal-container {
+  position: absolute;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
 }
 
 // Full image
 
 .image-modal-full-image {
-  cursor: pointer;
   display: flex;
   flex-shrink: 0;
-  margin: 0 auto;
-  max-height: 100%;
   max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
   opacity: 0;
 }

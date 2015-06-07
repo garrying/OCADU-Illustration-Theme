@@ -1,20 +1,21 @@
 .page-inner {
-  margin: 100px auto 0 auto;
   max-width: 850px;
   padding: 0 10%;
+  margin: 100px auto 0;
 
   @media screen and (max-width: $medium-vertical-vp) {
     margin-top: 50px;
   }
 
   @media screen and (max-width: $small-vp) {
-    margin-top: 0;
     padding: 0;
+    margin-top: 0;
   }
 
   p,
   .faculty-list {
     font-size: 1.25rem;
+
     @media screen and (max-width: $small-vp) {
       font-size: 1.1rem;
       line-height: 1.5rem;
@@ -32,14 +33,14 @@
 }
 
 .error-body {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
 .emoji {

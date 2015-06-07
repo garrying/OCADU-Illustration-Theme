@@ -1,25 +1,25 @@
 .year-select-wrapper {
-  height: 100%;
   display: flex;
+  height: 100%;
   flex-wrap: nowrap;
   align-items: center;
   align-content: stretch;
   justify-content: space-between;
-  flex-direction: column;
   padding: 50px 0;
+  flex-direction: column;
 }
 
 .year-item {
   display: flex;
-  color: $white;
-  background: none;
-  letter-spacing: 1px;
-  font-size: 2rem;
   width: 100%;
   height: 100%;
+  font-size: 2rem;
+  color: $white;
+  letter-spacing: 1px;
+  background: none;
+  opacity: 0;
   align-items: center;
   justify-content: center;
-  opacity: 0;
   transition: background 180ms ease-in-out;
  
   &.loaded {
@@ -28,7 +28,7 @@
 
   &.active, 
   &:hover {
-    background-image: url('../images/underline-l-w.svg');
+    background-image: url("../images/underline-l-w.svg");
     animation: backAnimate 600ms linear infinite;
   }
 }

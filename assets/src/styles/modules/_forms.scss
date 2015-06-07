@@ -1,8 +1,8 @@
 input {
-  @extend %font-kern;
+  @extend %font-features;
   @include font-smoothing(on);
-  border: 0;
   font-family: $sans-serif;
+  border: 0;
 }
 
 .btn,
@@ -15,17 +15,17 @@ button {
 // Placeholder styling
 
 ::-webkit-input-placeholder {
-  color: rgba($white, .75);
+  color: rgba($white, 0.75);
 }
 
 :-moz-placeholder {
-  color: rgba($white, .75);  
+  color: rgba($white, 0.75);  
 }
 
 ::-moz-placeholder {
-  color: rgba($white, .75);  
+  color: rgba($white, 0.75);  
 }
 
 :-ms-input-placeholder {  
-  color: rgba($white, .75);  
+  color: rgba($white, 0.75);  
 }

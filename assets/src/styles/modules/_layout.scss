@@ -15,14 +15,14 @@
 
   .illustrator-meta-wrapper {
     position: fixed;
-    width: calc(30% - 70px);
-    left: 60px;
-    height: 100%;
-    display: flex;
     top: 0;
+    left: 60px;
+    display: flex;
+    width: calc(30% - 70px);
+    height: 100%;
+    transition: opacity 180ms ease-in-out;
     flex-flow: row wrap;
     align-items: center;
-    transition: opacity 180ms ease-in-out;
 
     @media screen and (max-width: $medium-vertical-vp) {
       position: static;
@@ -32,7 +32,7 @@
       margin: 0 auto;
       
       &.inactive {
-        opacity: .3;
+        opacity: 0.3;
       }
     }
 
@@ -48,29 +48,29 @@
 
 .illustrator-nav-single {
   @include font-smoothing(on);
-  background: $site-background-home;
   position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  font-style: italic;
+  background: $site-background-home;
+  box-shadow: 0 1px 1px 0 rgba($black, 0.05);
   transition: opacity 180ms ease-in-out;
+  justify-content: space-between;
 
   @media screen and (max-width: $medium-vertical-vp) { 
     position: fixed;
     bottom: 0;
     z-index: $z-100;
     width: 100%;
-    background: rgba($site-background-home, .5);
+    background: rgba($site-background-home, 0.5);
 
     &.inactive {
-      opacity: 0;
       pointer-events: none;
+      opacity: 0;
     }
   }
-  font-style: italic;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  box-shadow: 0 1px 1px 0 rgba($black, .05);
-  justify-content: space-between;
 
   .nav-previous,
   .nav-next {
@@ -83,27 +83,26 @@
   }
 
   a {
-    color: $white;
     display: block;
     width: 100%;
     padding: 8px 10px;
+    color: $white;
     background: none;
     
     &:hover,
     &:focus {
-      outline: 0;
       background: $accent;
     }
   }
 }
 
 .illustrator-gallery-container {
-  flex: 1 1 70%;
   margin-top: 20px;
-  
+  flex: 1 1 70%;
+
   @media screen and (max-width: $medium-vertical-vp) { 
-    flex: 1 1 100%;
     max-width: 600px;
+    flex: 1 1 100%;
   }
 
   .gallery {
@@ -115,10 +114,10 @@
   }
 
   .gallery-item {
-    transform: scale(.95);
-    opacity: 0;
-    padding: 0 20px 20px 0;
     width: 50%;
+    padding: 0 20px 20px 0;
+    opacity: 0;
+    transform: scale(0.95);
 
     @media screen and (max-width: $small-vp) { 
       width: 100%;
@@ -139,30 +138,7 @@
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 3px 1px rgba($accent, .5);
+      box-shadow: 0 0 3px 1px rgba($accent, 0.5);
     }
   }
-}
-
-.image-modal-wrapper {
-  position: fixed;
-  top: 0;
-  z-index: $z-100;
-  left: 30%;
-  right: 0;
-  bottom: 0;
-
-  @media screen and (max-width: $medium-vertical-vp) { 
-    left: 0;
-  }
-}
-
-.image-modal-container {
-  align-items: center;
-  bottom: 10px;
-  display: flex;
-  left: 10px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
 }
