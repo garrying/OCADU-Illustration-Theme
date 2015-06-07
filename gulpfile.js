@@ -83,7 +83,7 @@ gulp.task('clean', require('del').bind(null, ['assets/dist']));
 gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], function() {
 
   browserSync.init({
-    proxy: "ocaduillustration.dev"
+    proxy: 'ocaduillustration.dev'
   });
 
   gulp.watch([
