@@ -11,7 +11,7 @@
   background: linear-gradient(45deg, rgba($accent, 0.85), rgba($accent, 1));
   outline: 2px solid darken($accent, 2%);
   opacity: 0;
-  transition: opacity ease-out 180ms, visibility ease-out 0s 180ms;
+  transition: opacity ease-out 300ms, visibility ease-out 0s 300ms;
   transform: translate3d(0, 0, 0);
   
   @media screen and (max-width: $medium-vp) { 
@@ -25,7 +25,7 @@
   &.visible {
     visibility: visible;
     opacity: 1;
-    transition-delay: 0s;
+    transition: opacity 300ms ease-out;
   }
 }
 
