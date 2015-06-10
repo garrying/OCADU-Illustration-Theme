@@ -1,28 +1,28 @@
 // Vendor styles (e.g. normalize, bootstrap)
 
-@import 'vendor/normalize';
+@import "vendor/normalize";
 
 // Component styles (e.g. mixins, vars)
 
-@import 'components/boxsizing';
-@import 'components/variables';
-@import 'components/mixins';
-@import 'components/helpers';
-@import 'components/fontface';
-@import 'components/animation';
+@import "components/boxsizing";
+@import "components/variables";
+@import "components/mixins";
+@import "components/helpers";
+@import "components/fontface";
+@import "components/animation";
 
 // Modules styles (e.g. layouts, typography)
 
-@import 'modules/loader';
-@import 'modules/base';
-@import 'modules/typography';
-@import 'modules/figures';
-@import 'modules/lists';
-@import 'modules/panels';
-@import 'modules/search';
-@import 'modules/page';
-@import 'modules/yearselect';
-@import 'modules/header';
-@import 'modules/layout';
-@import 'modules/title';
-@import 'modules/forms';
+@import "modules/loader";
+@import "modules/base";
+@import "modules/typography";
+@import "modules/figures";
+@import "modules/lists";
+@import "modules/panels";
+@import "modules/search";
+@import "modules/page";
+@import "modules/yearselect";
+@import "modules/header";
+@import "modules/layout";
+@import "modules/title";
+@import "modules/forms";

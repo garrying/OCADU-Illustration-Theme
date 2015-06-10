@@ -4,8 +4,6 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -31,15 +29,13 @@ gulp.task('styles', function() {
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('assets/dist/styles'))
-    .pipe(reload({stream: true}));
+    .pipe($.livereload());
 });
 
 gulp.task('jshint', function() {
   return gulp.src('assets/src/js/*.js')
-    .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+    .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('bower', function() {
@@ -82,14 +78,12 @@ gulp.task('clean', require('del').bind(null, ['assets/dist']));
 
 gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], function() {
 
-  browserSync.init({
-    proxy: 'ocaduillustration.dev'
-  });
+  $.livereload.listen();
 
   gulp.watch([
     'assets/dist/js/**/*.js',
     'assets/dist/images/**/*',
-  ]).on('change', reload);
+  ]);
 
   gulp.watch('assets/src/styles/**/*.scss', ['styles']);
   gulp.watch('assets/src/images/**/*', ['images']);
