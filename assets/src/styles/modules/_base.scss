@@ -18,8 +18,7 @@ body {
 }
 
 ::selection {
-  color: $white;
-  background: lighten($accent, 10%);
+  background: rgba($accent, 0.25);
 }
 
 // Links

@@ -54,7 +54,7 @@
   left: 0;
   display: flex;
   font-style: italic;
-  background: $site-background-home;
+  background: rgba($accent, 0.25);
   box-shadow: 0 1px 1px 0 rgba($black, 0.05);
   transition: opacity 180ms ease-in-out;
   justify-content: space-between;
@@ -86,12 +86,12 @@
     display: block;
     width: 100%;
     padding: 8px 10px;
-    color: $white;
     background: none;
+    transition: background 180ms ease-out;
     
     &:hover,
     &:focus {
-      background: $accent;
+      background: rgba($accent, 0.5);
     }
   }
 }

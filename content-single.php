@@ -82,9 +82,7 @@
     <div id="image-modal" class="image-modal-wrapper hidden">
       <button class="close-panel alt hide-text" title="Close full view" aria-label="Close full view">Close</button>
       <div class="image-modal-tip"></div>
-      <div class="image-modal-container">
-        <img id="full-image" alt="Full illustration" src=""/>
-      </div>
+      <div class="image-modal-container"></div>
     </div>
   </div>
 
