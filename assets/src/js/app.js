@@ -43,7 +43,6 @@ $(function() {
     },
 
     _ocadMasonry: function (selector) {
-
       var container = document.querySelector(selector);
       var msnry = new Masonry( container, {
         itemSelector: '.gallery-item',
@@ -264,7 +263,7 @@ $(function() {
 
     },
 
-    _ocadGalleryNav: function () {
+    _ocadGalleryNav: function() {
 
       var galleryImages = [];
       var itemimgFullsrc;
@@ -291,6 +290,22 @@ $(function() {
       }
 
       /**
+      * Creates initial image element
+      **/
+
+      var imageModalSetter = function(imageSource) {
+        $('.image-modal-container').html(function() {
+          var image = new Image();
+          image.alt = 'Full illustration';
+          image.className = 'image-modal-full-image';
+          image.id = 'full-image';
+          image.src = imageSource;
+
+          return image;
+        });
+      };
+
+      /**
       * Masonry item click
       **/
 
@@ -299,11 +314,9 @@ $(function() {
         app._ocadLoader(true);
         itemimgFullsrc = $(this).attr('href');
         imageIndex = $(this).data('index');
-
-        $('.image-modal-container').html(function (){
-          return '<img id="full-image" class="image-modal-full-image" alt="Full illustration" src=' + itemimgFullsrc + '>';
-        });
-
+        
+        imageModalSetter(itemimgFullsrc);
+        
         $('#full-image').imagesLoaded().done(function(){
           app._ocadLoader(false);
           app._ocadCursor();
@@ -321,6 +334,9 @@ $(function() {
 
       });
 
+      /**
+      * Handles progressing through the gallery
+      **/
 
       function nextElement(direction) {
         app._ocadLoader(true);
@@ -355,13 +371,19 @@ $(function() {
 
       }
 
-      $('.image-modal-container').on('click','img',function(){
+      /**
+      * Click event for cycling through images
+      **/
+
+      $('.image-modal-container').on('click','img',function() {
         nextElement();
       });
 
-      // keyboard work navigation
+      /**
+      * Keyboard event for cycling through images
+      **/
 
-      $(document).keydown(function(e){
+      $(document).keydown(function(e) {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
             nextElement();
@@ -375,20 +397,20 @@ $(function() {
     },
 
     _ocadCursor: function() {
-      $('.image-modal-container').mouseover(function(e){
+      $('.image-modal-container').mouseover(function(e) {
         if (!$(e.target).closest('#full-image').length) {
           app.settings.imageModalTip.html('Close');
         }
-      }).mousemove(function(e){
+      }).mousemove(function(e) {
         if (!$(e.target).closest('#full-image').length) {
           app.settings.imageModalTip.css('top',(e.clientY + 5)+'px').css('left',(e.clientX + 5)+'px');
         }
-      }).mouseout(function(){
+      }).mouseout(function() {
         app.settings.imageModalTip.html('');
       });
     },
 
-    _ocadUIbinding: function () {
+    _ocadUIbinding: function() {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective).keydown(function(e) {
         
