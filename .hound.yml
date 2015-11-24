@@ -1,0 +1,13 @@
+scss:
+  enabled: true
+  config_file: .scss-lint.yml
+
+ruby:
+  enabled: false
+
+coffeescript:
+  enabled: false
+
+javascript:
+  enabled: true
+  config_file: .jshintrc
