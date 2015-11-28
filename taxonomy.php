@@ -19,11 +19,11 @@
 
     <article class="post no-results not-found">
       <header class="entry-header">
-        <h1 class="entry-title"><?php _e( 'Nothing Found', 'ocaduillustration' ); ?></h1>
+        <h1 class="entry-title"><?php esc_html_e( 'Nothing Found', 'ocaduillustration' ); ?></h1>
       </header><!-- .entry-header -->
 
       <div class="entry-content">
-        <p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'ocaduillustration' ); ?></p>
+        <p><?php esc_html_e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'ocaduillustration' ); ?></p>
       </div><!-- .entry-content -->
     </article><!-- #post-0 -->
 
