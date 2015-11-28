@@ -8,8 +8,19 @@
 
   <!-- Include the WordPress ruleset, with exclusions. -->
   <rule ref="WordPress">
+    <!-- Excludes -->
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+    <exclude name="Squiz.Commenting.FileComment.Missing" />
+
+    <!-- Redfined -->
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+          <property name="indent" value="4"/>
+          <property name="tabIndent" value="true"/>
+        </properties>
+      </rule>
   </rule>
 </ruleset>
