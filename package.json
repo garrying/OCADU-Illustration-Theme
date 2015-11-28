@@ -11,16 +11,32 @@
     "gulp-concat": "^2.5.2",
     "gulp-concat-vendor": "0.0.4",
     "gulp-csso": "^1.0.0",
+    "gulp-eslint": "^1.1.1",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.2.1",
-    "gulp-jshint": "^1.11.0",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-sass": "^2.0.1",
     "gulp-size": "^1.2.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
-    "jshint-stylish": "^2.0.0",
     "main-bower-files": "^2.8.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "jquery": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
   }
 }

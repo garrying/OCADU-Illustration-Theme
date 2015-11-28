@@ -32,10 +32,10 @@ gulp.task('styles', function() {
     .pipe($.livereload());
 });
 
-gulp.task('jshint', function() {
+gulp.task('eslint', function() {
   return gulp.src('assets/src/js/*.js')
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'));
+    .pipe($.eslint())
+    .pipe($.eslint.format())
 });
 
 gulp.task('bower', function() {
@@ -45,7 +45,7 @@ gulp.task('bower', function() {
     .pipe(gulp.dest('assets/dist/js'));
 });
 
-gulp.task('scripts', ['jshint', 'bower'], function() {
+gulp.task('scripts', ['eslint', 'bower'], function() {
   return gulp.src('assets/src/js/*.js')
     .pipe(gulp.dest('assets/dist/js'));
 });
