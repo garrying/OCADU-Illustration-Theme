@@ -1,5 +1,4 @@
 <?php
-
 /**
 *
 * OCAD U Illustration Setup

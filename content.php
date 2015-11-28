@@ -4,7 +4,7 @@
       <?php the_post_thumbnail( 'illustrator-small', array( 'alt' => 'Thumbnail of '.get_the_title().'', 'title' => ''.get_the_title().'' ) ); ?>
     </figure>
     <div class="illustrator-meta-container">
-      <h1 class="illustrator-title p-name"><?php echo get_post_meta( $post->ID, 'illu_title', true ); ?></h1>
+      <h1 class="illustrator-title p-name"><?php esc_html_e( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
       <span class="illustrator-name p-author"><?php the_title(); ?></span>
     </div>
   </a>

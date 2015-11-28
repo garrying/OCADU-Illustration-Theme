@@ -45,8 +45,8 @@
           </button>
         </div>
         
-        <?php 
-          $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC'); 
+        <?php
+          $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC');
           if (is_singular('illustrator')) {
             // Selected menu state for individual items
             $terms = get_the_terms( $post->ID , 'gradyear' );
@@ -64,7 +64,7 @@
         <div class="year-select panel" aria-hidden="true" tabindex="-1">
           <div class="year-select-wrapper">
             <?php foreach( $grad_year as $year ) {
-              if (isset($selected_year) && $selected_year == $year->name) {
+              if ( isset($selected_year) && $selected_year == $year->name ) {
                 echo "<a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
               } else {
                 echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
@@ -94,11 +94,11 @@
     <?php if (is_singular('illustrator')) {
         echo '<a class="section-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
         if (isset($selected_year)) { echo $selected_year; };
-        echo '</a>';  
+        echo '</a>';
       }
       if (is_archive()) {
         echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
         if (isset($selected_year)) { echo $selected_year; };
-        echo '</a>';  
+        echo '</a>';
       }
     ?>
