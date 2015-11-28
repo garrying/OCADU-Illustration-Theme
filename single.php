@@ -4,6 +4,6 @@
 
     <?php get_template_part( 'content', 'single' ); ?>
 
-  <?php endwhile; // end of the loop. ?>
+  <?php endwhile; // End of the loop. ?>
 
 <?php get_footer(); ?>

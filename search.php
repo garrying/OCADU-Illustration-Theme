@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
   <h1 class="search-title section-indicator section-indicator-index">
-    <?php printf('Search Results for <mark>%s</mark>', get_search_query() ); ?>
+    <?php printf( 'Search Results for <mark>%s</mark>', get_search_query() ); ?>
   </h1>
   <div id="illustrators" class="illustrators-grid">
   <?php if ( have_posts() ) : ?>
-    <?php query_posts($query_string . '&orderby=title&order=ASC');?><!-- Query by Title -->
+    <?php query_posts( $query_string . '&orderby=title&order=ASC' );?><!-- Query by Title -->
     <?php /* Start the Loop */ ?>
     <?php while ( have_posts() ) : the_post(); ?>
 
