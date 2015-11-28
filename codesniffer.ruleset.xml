@@ -11,15 +11,15 @@
     <!-- Excludes -->
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Squiz.Commenting.FileComment.Missing" />
 
     <!-- Redfined -->
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
-          <property name="indent" value="4"/>
-          <property name="tabIndent" value="true"/>
+          <property name="indent" value="2"/>
+          <property name="tabIndent" value="false"/>
         </properties>
       </rule>
   </rule>
