@@ -8,7 +8,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
     add_theme_support( 'post-thumbnails' );
 
     /*
-     * Add image size 
+     * Add image size
      */
     add_image_size( 'illustrator-social-twitter', 560 );
 
@@ -200,7 +200,7 @@ add_filter( 'excerpt_more', 'ocadu_new_excerpt_more' );
 /**
  * Get Social Image
  */
-function get_socialimage( $imageType = "fb" ) {
+function get_socialimage( $imageType = 'fb' ) {
   global $post, $posts;
 
   if ( is_single() && has_post_thumbnail( $post->ID ) ) {
@@ -232,7 +232,7 @@ function get_socialimage( $imageType = "fb" ) {
 function ocadu_social_meta() {
   echo "\n" . '<!-- social meta -->' . "\n";
   echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
-  echo '<meta property="og:site_name" content="'. get_bloginfo( "name" ) .'">' . "\n";
+  echo '<meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
     $the_excerpt = wptexturize(strip_tags($post->post_content));
@@ -246,18 +246,18 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta name="twitter:description" content="'. $the_excerpt .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage( "twitter" ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter' ) .'">' . "\n";
 
     echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
 
   }
   if ( is_home() || is_archive() ) {
-    $socialDescription = "An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.";
+    $socialDescription = 'An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.';
     if (is_home()) {
-      $socialTitle = get_bloginfo( "name" );
+      $socialTitle = get_bloginfo( 'name' );
     } else {
       $selected_year = single_term_title( '', false );
-      $socialTitle = get_bloginfo( "name" ) .' '. $selected_year;
+      $socialTitle = get_bloginfo( 'name' ) .' '. $selected_year;
     }
 
     echo '<meta property="og:title" content="'. $socialTitle .'">' . "\n";
@@ -270,7 +270,7 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. $socialTitle .'">' . "\n";
     echo '<meta name="twitter:description" content="'. $socialDescription .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage( "twitter-index" ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter-index' ) .'">' . "\n";
 
     echo '<meta name="description" content="'. $socialDescription .'">' . "\n";
 
@@ -285,9 +285,9 @@ function ocadu_remove_tax_name( $title, $sep, $seplocation ) {
 
     // Determines position of separator
     if ( 'right' == $seplocation ) {
-      $title = $term_title . " $sep " . get_bloginfo( "name" );
+      $title = $term_title . " $sep " . get_bloginfo( 'name' );
     } else {
-      $title = get_bloginfo( "name" ) . " $sep " . $term_title;
+      $title = get_bloginfo( 'name' ) . " $sep " . $term_title;
     }
   }
 
@@ -321,13 +321,13 @@ add_action( 'wp_head', 'ocadu_prefetch' );
  */
 function ocadu_gallery_filter( $attr ) {
   global $post;
-  $attr['alt'] = "Illustration by ". get_the_title() ."";
+  $attr['alt'] = 'Illustration by '. get_the_title() .'';
   if ( is_home() || is_archive() ) {
     $attr['title'] = get_the_title();
   } else {
     $attr['title'] = 'Enlarge';
   }
-  return $attr; 
+  return $attr;
 }
 
 add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
@@ -359,7 +359,7 @@ function ocadu_simplify_post_class( $classes ) {
     || ( strpos( $class, 'type-' ) !== false )
     || ( strpos( $class, 'status-' ) !== false )
     || ( strpos( $class, 'category-' ) !== false )
-    || $class == "" ) {
+    || $class == '' ) {
       unset( $classes[$id] );
     }
 
