@@ -14,6 +14,10 @@
     <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Squiz.Commenting.FileComment.Missing" />
+    <exclude name="WordPress.VIP.RestrictedFunctions" />
+    <exclude name="Squiz.Commenting.FunctionComment.Missing" />
+    <exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
+    <exclude name="Squiz.Commenting.ClassComment.Missing" />
 
     <!-- Redfined -->
     <rule ref="Generic.WhiteSpace.ScopeIndent">
@@ -23,8 +27,4 @@
         </properties>
       </rule>
   </rule>
-
-  <rule ref="WordPress-VIP">
-    <exclude name="WordPress.VIP.RestrictedFunctions" />
-  </rule> 
 </ruleset>
