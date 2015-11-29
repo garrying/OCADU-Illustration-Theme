@@ -23,4 +23,8 @@
         </properties>
       </rule>
   </rule>
+
+  <rule ref="WordPress-VIP">
+    <exclude name="WordPress.VIP.RestrictedFunctions" />
+  </rule> 
 </ruleset>
