@@ -47,7 +47,7 @@
         
         <?php
           $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
-          if ( is_singular('illustrator') ) {
+          if ( is_singular( 'illustrator' ) ) {
             // Selected menu state for individual items.
             $terms = get_the_terms( $post->ID , 'gradyear' );
             foreach ( $terms as $term ) {
@@ -55,7 +55,7 @@
             }
           } else {
             $taxonomy = get_queried_object();
-            if ( isset($taxonomy) ) {
+            if ( isset( $taxonomy ) ) {
               $selected_year = $taxonomy->name;
             }
           }
@@ -63,13 +63,13 @@
 
         <div class="year-select panel" aria-hidden="true" tabindex="-1">
           <div class="year-select-wrapper">
-            <?php foreach( $grad_year as $year ) {
-              if ( isset($selected_year) && $selected_year == $year->name ) {
-                echo "<a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
+            <?php foreach ( $grad_year as $year ) {
+              if ( isset( $selected_year ) && $selected_year == $year->name ) {
+                echo "<a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
               } else {
-                echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
+                echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
               }
-                echo $year->name;
+                esc_html_e( $year->name );
               echo '</a>';
             }
             ?>
@@ -91,17 +91,17 @@
 
 
   <main id="content" role="main">
-    <?php if ( is_singular('illustrator') ) {
-        echo '<a class="section-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
-        if ( isset($selected_year) ) {
-          echo $selected_year;
+    <?php if ( is_singular( 'illustrator' ) ) {
+        echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">';
+        if ( isset( $selected_year ) ) {
+          esc_html_e( $selected_year );
         };
         echo '</a>';
       }
       if ( is_archive() ) {
         echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
-        if ( isset($selected_year) ) {
-          echo $selected_year;
+        if ( isset( $selected_year ) ) {
+          esc_html_e( $selected_year );
         };
         echo '</a>';
       }
