@@ -42,9 +42,9 @@
           <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
             <div class="truncate" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ) ?>">
-                <?php 
+                <?php
                   $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
-                  $url = preg_replace('#^https?://#', '', $url);
+                  $url = preg_replace( '#^https?://#', '', $url );
                   esc_html_e( $url );
                 ?>
               </a>
@@ -53,13 +53,13 @@
 
           <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
             <div class="email truncate" itemprop="email">
-              <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
+              <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?></a>
             </div>
           <?php endif; ?>
 
           <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
             <div class="phone" itemprop="telephone">
-              <?php esc_html_e( get_post_meta($post->ID, 'illu_phone', true) ) ?>
+              <?php esc_html_e( get_post_meta( $post->ID, 'illu_phone', true ) ) ?>
             </div>
           <?php endif; ?>
         </div>

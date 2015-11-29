@@ -31,7 +31,11 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      */
 
     add_theme_support( 'html5', array(
-      'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+      'search-form',
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'caption'
     ));
 
     /**
@@ -73,7 +77,7 @@ function ocadu_head_cleanup() {
   add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts
 }
 
-add_action('init', 'ocadu_head_cleanup');
+add_action( 'init', 'ocadu_head_cleanup' );
 
 /**
  * Remove WP version from scripts
@@ -89,9 +93,9 @@ function remove_wp_ver_css_js( $src ) {
  * Load some scripts please.
  */
  
-if (!function_exists('ocadu_scripts')) {
+if ( !function_exists('ocadu_scripts') ) {
   function ocadu_scripts() {
-    if (!is_admin()) {
+    if ( !is_admin() ) {
       wp_deregister_script('jquery');
       wp_register_script('libs', get_template_directory_uri().'/assets/dist/js/libs.js', '', '', true);
       wp_enqueue_script('libs');
@@ -120,7 +124,18 @@ add_action('wp_enqueue_scripts', 'ocadu_styles');
 
 function ocadu_body_class( $wp_classes, $extra_classes )
 {
-  $whitelist = array( 'home', 'archive', 'page', 'single', 'category', 'tag', 'error404', 'logged-in', 'admin-bar', 'search' );
+  $whitelist = array(
+    'home',
+    'archive',
+    'page',
+    'single',
+    'category',
+    'tag',
+    'error404',
+    'logged-in',
+    'admin-bar',
+    'search'
+  );
   $wp_classes = array_intersect( $wp_classes, $whitelist );
   return array_merge( $wp_classes, (array) $extra_classes );
 }
@@ -131,7 +146,7 @@ add_filter('body_class', 'ocadu_body_class', 10, 2);
  * Display navigation to next/previous pages when applicable
  */
 
-if (!function_exists('ocadu_content_nav')) :
+if ( !function_exists('ocadu_content_nav') ) :
 function ocadu_content_nav( $nav_id ) {
   global $wp_query;
 
@@ -153,24 +168,24 @@ function ocadu_gallery_style_override() {
   return "<div id='pack-content' class='gallery'>";
 }
 
-add_filter('gallery_style', 'ocadu_gallery_style_override', 99);
-add_filter('use_default_gallery_style', '__return_false');
+add_filter( 'gallery_style', 'ocadu_gallery_style_override', 99 );
+add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
  * Reduce nav classes, leaving only 'current-menu-item'
  */
 
 function ocadu_nav_class_filter( $var ) {
-  return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+  return is_array($var) ? array_intersect( $var, array('current-menu-item') ) : '';
 }
 
-add_filter('nav_menu_css_class', 'ocadu_nav_class_filter', 100, 1);
+add_filter( 'nav_menu_css_class', 'ocadu_nav_class_filter', 100, 1 );
 
 /**
  * Add page slug as nav IDs
  */
 
-function cleanname($v) {
+function cleanname( $v ) {
   $v = preg_replace('/[^a-zA-Z0-9s]/', '', $v);
   $v = str_replace(' ', '-', $v);
   $v = strtolower($v);
@@ -187,7 +202,7 @@ add_filter( 'nav_menu_item_id', 'ocadu_nav_id_filter', 10, 2 );
  * Limit Search to Illustrators and Events
  */
 
-function ocadu_search_filter($query) {
+function ocadu_search_filter( $query ) {
   if ($query->is_search) {
     $query->set('post_type',array('illustrator'));
   }
@@ -200,7 +215,7 @@ add_filter('pre_get_posts','ocadu_search_filter');
  * Use proper ellipses for excerpts
  */
 
-function ocadu_new_excerpt_more($more) {
+function ocadu_new_excerpt_more( $more ) {
   return '&hellip;';
 }
 
@@ -349,7 +364,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
-  $thumbnailURL = wp_get_attachment_image_src($id,'medium')[0];
+  $thumbnailURL = wp_get_attachment_image_src( $id,'medium' )[0];
   if ( ! $permalink ) {
     $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-thumbnail="'. $thumbnailURL .'"  href', $markup );
   }
@@ -362,25 +377,25 @@ add_filter( 'wp_get_attachment_link', 'ocadu_modify_attachment_link', 10, 4 );
  * Simplify post classes
  */
 
-function ocadu_simplify_post_class($classes) {
+function ocadu_simplify_post_class( $classes ) {
   global $post;
 
-  foreach($classes as $id => $class)
+  foreach( $classes as $id => $class )
 
-    if( (strpos($class, "tag-") !== false) 
-    || (strpos($class, "format-") !== false)
-    || (strpos($class, "type-") !== false) 
-    || (strpos($class, "status-") !== false)
-    || (strpos($class, "category-") !== false)
-    || $class == "")
+    if( ( strpos( $class, 'tag-' ) !== false ) 
+    || ( strpos( $class, 'format-' ) !== false )
+    || ( strpos( $class, 'type-' ) !== false ) 
+    || ( strpos( $class, 'status-' ) !== false )
+    || ( strpos( $class, 'category-' ) !== false )
+    || $class == "" )
     {
-      unset($classes[$id]);
+      unset( $classes[$id] );
     }
 
   return $classes;
 }
 
-add_filter('post_class', 'ocadu_simplify_post_class');
+add_filter( 'post_class', 'ocadu_simplify_post_class' );
 
 /**
  * Remove emoji
