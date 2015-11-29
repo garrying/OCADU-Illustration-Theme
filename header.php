@@ -46,16 +46,16 @@
         </div>
         
         <?php
-          $grad_year = get_terms('gradyear', 'hide_empty=1&order=DESC');
-          if (is_singular('illustrator')) {
-            // Selected menu state for individual items
+          $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
+          if ( is_singular('illustrator') ) {
+            // Selected menu state for individual items.
             $terms = get_the_terms( $post->ID , 'gradyear' );
             foreach ( $terms as $term ) {
               $selected_year = $term->name;
             }
           } else {
             $taxonomy = get_queried_object();
-            if (isset($taxonomy)) {
+            if ( isset($taxonomy) ) {
               $selected_year = $taxonomy->name;
             }
           }
@@ -70,7 +70,7 @@
                 echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ".$year->name."'>";
               }
                 echo $year->name;
-              echo "</a>";
+              echo '</a>';
             }
             ?>
           </div>
@@ -91,14 +91,18 @@
 
 
   <main id="content" role="main">
-    <?php if (is_singular('illustrator')) {
+    <?php if ( is_singular('illustrator') ) {
         echo '<a class="section-indicator" href="/year/'. $term->slug .'" title="Return to '.$term->name.' grid">';
-        if (isset($selected_year)) { echo $selected_year; };
+        if ( isset($selected_year) ) {
+          echo $selected_year;
+        };
         echo '</a>';
       }
-      if (is_archive()) {
+      if ( is_archive() ) {
         echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
-        if (isset($selected_year)) { echo $selected_year; };
+        if ( isset($selected_year) ) {
+          echo $selected_year;
+        };
         echo '</a>';
       }
     ?>
