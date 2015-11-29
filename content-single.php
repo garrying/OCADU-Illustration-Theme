@@ -16,9 +16,9 @@
 
           <?php the_content(); ?>
 
-          <meta itemprop="description" content="<?php $text = strip_tags( get_the_content() ); echo wptexturize($text); ?>">
+          <meta itemprop="description" content="<?php $text = strip_tags( get_the_content() ); esc_html_e( wptexturize( $text ) ) ?>">
           <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
-          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); echo $image ?>">
+          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ); esc_html_e( $image ) ?>">
 
         </div>
 
@@ -27,47 +27,47 @@
             <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
           </header><!-- .illustrator-meta-header -->
             
-          <?php if ( get_post_meta($post->ID, 'illu_sites', true) ) : ?>
+          <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
             <div class="truncate" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ) ?>">
                 <?php
-                  $url = esc_url( get_post_meta($post->ID, 'illu_sites', true) );
-                  $url = preg_replace('#^https?://#', '', $url);
-                  echo $url;
+                  $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
+                  $url = preg_replace( '#^https?://#', '', $url );
+                  esc_html_e( $url );
                 ?>
               </a>
             </div>
           <?php endif; ?>
 
-          <?php if ( get_post_meta($post->ID, 'illu_sites_2', true) ) : ?>
+          <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
             <div class="truncate" itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ) ?>">
                 <?php 
-                  $url = esc_url( get_post_meta($post->ID, 'illu_sites_2', true) );
+                  $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $url = preg_replace('#^https?://#', '', $url);
-                  echo $url;
+                  esc_html_e( $url );
                 ?>
               </a>
             </div>
           <?php endif; ?>
 
-          <?php if ( get_post_meta($post->ID, 'illu_email', true) ) : ?>
+          <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
             <div class="email truncate" itemprop="email">
-              <a title="Email <?php the_title(); ?>" href="mailto:<?php echo get_post_meta( $post->ID, 'illu_email', true ) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
+              <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta($post->ID, 'illu_email', true) ) ?></a>
             </div>
           <?php endif; ?>
 
-          <?php if ( get_post_meta($post->ID, 'illu_phone', true) ) : ?>
+          <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
             <div class="phone" itemprop="telephone">
-              <?php echo get_post_meta($post->ID, 'illu_phone', true) ?>
+              <?php esc_html_e( get_post_meta($post->ID, 'illu_phone', true) ) ?>
             </div>
           <?php endif; ?>
         </div>
       </div>
 
       <ul class="illustrator-nav-single">
-        <li class="nav-previous"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">%title</span>') ); ?></li>
-        <li class="nav-next"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator"></span>') ); ?></li>
+        <li class="nav-previous"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">%title</span>' ) ); ?></li>
+        <li class="nav-next"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator"></span>' ) ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
     </div>
