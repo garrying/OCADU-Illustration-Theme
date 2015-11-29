@@ -1,10 +1,4 @@
 <?php
-/**
-*
-* OCAD U Illustration Setup
-*
-**/
-
 if ( ! function_exists( 'ocadu_setup' ) ) :
   function ocadu_setup() {
 
@@ -35,7 +29,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
       'comment-form',
       'comment-list',
       'gallery',
-      'caption'
+      'caption',
     ));
 
     /**
@@ -96,16 +90,16 @@ function remove_wp_ver_css_js( $src ) {
 if ( !function_exists('ocadu_scripts') ) {
   function ocadu_scripts() {
     if ( !is_admin() ) {
-      wp_deregister_script('jquery');
-      wp_register_script('libs', get_template_directory_uri().'/assets/dist/js/libs.js', '', '', true);
-      wp_enqueue_script('libs');
-      wp_register_script('app', get_template_directory_uri().'/assets/dist/js/app.js', '', '', true);
-      wp_enqueue_script('app');
+      wp_deregister_script( 'jquery' );
+      wp_register_script( 'libs', get_template_directory_uri().'/assets/dist/js/libs.js', '', '', true );
+      wp_enqueue_script( 'libs' );
+      wp_register_script( 'app', get_template_directory_uri().'/assets/dist/js/app.js', '', '', true );
+      wp_enqueue_script( 'app' );
     }
   }
 }
 
-add_action('wp_enqueue_scripts', 'ocadu_scripts');
+add_action( 'wp_enqueue_scripts', 'ocadu_scripts' );
 
 /**
  * Load some styles please.
@@ -116,14 +110,13 @@ function ocadu_styles() {
   wp_enqueue_style('ocadustyles');
 }
 
-add_action('wp_enqueue_scripts', 'ocadu_styles');
+add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
 
 /**
  * Clean up body_class output
  */
 
-function ocadu_body_class( $wp_classes, $extra_classes )
-{
+function ocadu_body_class( $wp_classes, $extra_classes ) {
   $whitelist = array(
     'home',
     'archive',
@@ -140,7 +133,7 @@ function ocadu_body_class( $wp_classes, $extra_classes )
   return array_merge( $wp_classes, (array) $extra_classes );
 }
 
-add_filter('body_class', 'ocadu_body_class', 10, 2);
+add_filter( 'body_class', 'ocadu_body_class', 10, 2 );
 
 /**
  * Display navigation to next/previous pages when applicable
@@ -209,7 +202,7 @@ function ocadu_search_filter( $query ) {
   return $query;
 }
 
-add_filter('pre_get_posts','ocadu_search_filter');
+add_filter( 'pre_get_posts','ocadu_search_filter' );
 
 /**
  * Use proper ellipses for excerpts
@@ -219,7 +212,7 @@ function ocadu_new_excerpt_more( $more ) {
   return '&hellip;';
 }
 
-add_filter('excerpt_more', 'ocadu_new_excerpt_more');
+add_filter( 'excerpt_more', 'ocadu_new_excerpt_more' );
 
 /**
  * Get Social Image
@@ -338,8 +331,8 @@ function ocadu_prefetch() {
   }
 }
 
-add_action('wp_head', 'ocadu_social_meta');
-add_action('wp_head', 'ocadu_prefetch');
+add_action( 'wp_head', 'ocadu_social_meta' );
+add_action( 'wp_head', 'ocadu_prefetch' );
 
 /**
  * Hijack image titles for copyright alt
