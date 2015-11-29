@@ -32,7 +32,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      * Add custom menu using wp_nav_menu()
      */
     register_nav_menus( array(
-      'primary' => __('Primary Navigation', 'ocaduillustration'),
+      'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
     ));
 
     /**
@@ -49,18 +49,18 @@ add_action( 'after_setup_theme', 'ocadu_setup' );
  * Wordpress Default Header Cleanup
  */
 function ocadu_head_cleanup() {
-  remove_action( 'wp_head', 'feed_links_extra', 3 ); // Category Feeds
-  remove_action( 'wp_head', 'feed_links', 2 ); // Post and Comment Feeds
-  remove_action( 'wp_head', 'rsd_link' ); // EditURI link
-  remove_action( 'wp_head', 'wlwmanifest_link' ); // Windows Live Writer
-  remove_action( 'wp_head', 'index_rel_link' ); // index link
-  remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // previous link
-  remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link
-  remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts
-  remove_action( 'wp_head', 'wp_generator' ); // WP version
-  remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); // Shortlinks
-  add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove WP version from css
-  add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts
+  remove_action( 'wp_head', 'feed_links_extra', 3 ); // Category Feeds.
+  remove_action( 'wp_head', 'feed_links', 2 ); // Post and Comment Feeds.
+  remove_action( 'wp_head', 'rsd_link' ); // EditURI link.
+  remove_action( 'wp_head', 'wlwmanifest_link' ); // Windows Live Writer.
+  remove_action( 'wp_head', 'index_rel_link' ); // index link.
+  remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // previous link.
+  remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link.
+  remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts.
+  remove_action( 'wp_head', 'wp_generator' ); // WP version.
+  remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); // Shortlinks.
+  add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove WP version from css.
+  add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts.
 }
 
 add_action( 'init', 'ocadu_head_cleanup' );
@@ -95,8 +95,8 @@ add_action( 'wp_enqueue_scripts', 'ocadu_scripts' );
  * Load some styles please.
  */
 function ocadu_styles() {
-  wp_register_style('ocadustyles', get_template_directory_uri().'/assets/dist/styles/main.css');
-  wp_enqueue_style('ocadustyles');
+  wp_register_style( 'ocadustyles', get_template_directory_uri().'/assets/dist/styles/main.css' );
+  wp_enqueue_style( 'ocadustyles' );
 }
 
 add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
@@ -126,7 +126,7 @@ add_filter( 'body_class', 'ocadu_body_class', 10, 2 );
 /**
  * Display navigation to next/previous pages when applicable
  */
-if ( !function_exists('ocadu_content_nav') ) :
+if ( !function_exists( 'ocadu_content_nav' ) ) :
 function ocadu_content_nav( $nav_id ) {
   global $wp_query;
 
@@ -153,9 +153,8 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 /**
  * Reduce nav classes, leaving only 'current-menu-item'
  */
-
 function ocadu_nav_class_filter( $var ) {
-  return is_array( $var ) ? array_intersect( $var, array('current-menu-item') ) : '';
+  return is_array( $var ) ? array_intersect( $var, array( 'current-menu-item' ) ) : '';
 }
 
 add_filter( 'nav_menu_css_class', 'ocadu_nav_class_filter', 100, 1 );
@@ -181,7 +180,7 @@ add_filter( 'nav_menu_item_id', 'ocadu_nav_id_filter', 10, 2 );
  */
 function ocadu_search_filter( $query ) {
   if ($query->is_search) {
-    $query->set(' post_type', array('illustrator') );
+    $query->set( 'post_type', array( 'illustrator' ) );
   }
   return $query;
 }
@@ -219,7 +218,7 @@ function get_socialimage( $imageType = 'fb' ) {
     $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg';
   }
 
-  if ( empty($socialimg) ) {
+  if ( empty( $socialimg ) ) {
     $socialimg = get_template_directory_uri() . '/thumb.jpg';
   }
 
@@ -235,7 +234,7 @@ function ocadu_social_meta() {
   echo '<meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = wptexturize(strip_tags($post->post_content));
+    $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
     echo '<meta property="og:url" content="'. get_permalink() .'">' . "\n";
     echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
@@ -253,7 +252,7 @@ function ocadu_social_meta() {
   }
   if ( is_home() || is_archive() ) {
     $socialDescription = 'An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.';
-    if (is_home()) {
+    if ( is_home() ) {
       $socialTitle = get_bloginfo( 'name' );
     } else {
       $selected_year = single_term_title( '', false );
