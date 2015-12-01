@@ -72,8 +72,9 @@ add_action( 'init', 'ocadu_head_cleanup' );
  */
 function remove_wp_ver_css_js( $src ) {
   $verVar = strpos( $src, 'ver=' );
-  if ( $verVar )
+  if ( $verVar ) {
     $src = remove_query_arg( 'ver', $src );
+  }
   return $src;
 }
 
@@ -217,7 +218,7 @@ function get_socialimage( $imageType = 'fb' ) {
   global $post, $posts;
 
   if ( is_single() && has_post_thumbnail( $post->ID ) ) {
-    if ( 'twitter' == $imageType) {
+    if ( 'twitter' == $imageType ) {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-social-twitter', '' );
     } else {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', '' );
@@ -373,8 +374,7 @@ add_filter( 'wp_get_attachment_link', 'ocadu_modify_attachment_link', 10, 4 );
 function ocadu_simplify_post_class( $classes ) {
   global $post;
 
-  foreach ( $classes as $id => $class )
-
+  foreach ( $classes as $id => $class ) {
     if ( ( strpos( $class, 'tag-' ) !== false )
     || ( strpos( $class, 'format-' ) !== false )
     || ( strpos( $class, 'type-' ) !== false )
@@ -383,7 +383,7 @@ function ocadu_simplify_post_class( $classes ) {
     || '' == $class ) {
       unset( $classes[$id] );
     }
-
+  }
   return $classes;
 }
 
