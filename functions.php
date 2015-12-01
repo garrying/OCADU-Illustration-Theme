@@ -217,7 +217,7 @@ function get_socialimage( $imageType = 'fb' ) {
   global $post, $posts;
 
   if ( is_single() && has_post_thumbnail( $post->ID ) ) {
-    if ( $imageType == 'twitter' ) {
+    if ( 'twitter' == $imageType) {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-social-twitter', '' );
     } else {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', '' );
@@ -228,7 +228,7 @@ function get_socialimage( $imageType = 'fb' ) {
     $socialimg = '';
   }
 
-  if ( $imageType == 'twitter-index' ) {
+  if ( 'twitter-index' == $imageType ) {
     $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg';
   }
 
@@ -259,9 +259,9 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta name="twitter:description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter' ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. esc_url( get_socialimage( 'twitter' ) ) .'">' . "\n";
 
-    echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
+    echo '<meta name="description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
 
   }
   if ( is_home() || is_archive() ) {
@@ -283,7 +283,7 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. esc_html( $socialTitle ) .'">' . "\n";
     echo '<meta name="twitter:description" content="'. esc_html( $socialDescription ) .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter-index' ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="'. esc_url( get_socialimage( 'twitter-index' ) ).'">' . "\n";
 
     echo '<meta name="description" content="'. esc_html( $socialDescription ) .'">' . "\n";
 
@@ -380,7 +380,7 @@ function ocadu_simplify_post_class( $classes ) {
     || ( strpos( $class, 'type-' ) !== false )
     || ( strpos( $class, 'status-' ) !== false )
     || ( strpos( $class, 'category-' ) !== false )
-    || $class == '' ) {
+    || '' == $class ) {
       unset( $classes[$id] );
     }
 
