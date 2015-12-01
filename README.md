@@ -1,8 +1,8 @@
-# OCAD U Illustration Wordpress Theme
+# OCAD U Illustration Wordpress Theme [![Build Status](https://travis-ci.org/garrying/OCADU-Illustration-Theme.svg)](https://travis-ci.org/garrying/OCADU-Illustration-Theme)
 
 ### A theme for OCAD U's Illustration Department by [Garry Ing](http://garrying.com/ "Link to garrying.com")
 
-Currently working on *Wordpress 4.2.2*
+Currently working on *Wordpress 4.3.1*
 
 ## Getting Started
 
