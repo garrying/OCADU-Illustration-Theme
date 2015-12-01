@@ -245,20 +245,20 @@ function get_socialimage( $imageType = 'fb' ) {
 function ocadu_social_meta() {
   echo "\n" . '<!-- social meta -->' . "\n";
   echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
-  echo '<meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'">' . "\n";
+  echo '<meta property="og:site_name" content="'. esc_html( get_bloginfo( 'name' ) ) .'">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
     $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
-    echo '<meta property="og:url" content="'. get_permalink() .'">' . "\n";
+    echo '<meta property="og:url" content="'. esc_url( get_permalink() ) .'">' . "\n";
     echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
-    echo '<meta property="og:description" content="'. $the_excerpt .'">' . "\n";
-    echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
+    echo '<meta property="og:description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
+    echo '<meta property="og:image" content="'. esc_url( get_socialimage() ) .'">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
-    echo '<meta name="twitter:description" content="'. $the_excerpt .'">' . "\n";
+    echo '<meta name="twitter:description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter' ) .'">' . "\n";
 
     echo '<meta name="description" content="'. $the_excerpt .'">' . "\n";
@@ -273,19 +273,19 @@ function ocadu_social_meta() {
       $socialTitle = get_bloginfo( 'name' ) .' '. $selected_year;
     }
 
-    echo '<meta property="og:title" content="'. $socialTitle .'">' . "\n";
-    echo '<meta property="og:url" content="'. site_url() .'">' . "\n";
-    echo '<meta property="og:image" content="'. get_socialimage() .'">' . "\n";
-    echo '<meta property="og:description" content="'. $socialDescription .'">' . "\n";
+    echo '<meta property="og:title" content="'. esc_html( $socialTitle ) .'">' . "\n";
+    echo '<meta property="og:url" content="'. esc_url( site_url() ) .'">' . "\n";
+    echo '<meta property="og:image" content="'. esc_url( get_socialimage() ) .'">' . "\n";
+    echo '<meta property="og:description" content="'. esc_html( $socialDescription ) .'">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="'. $socialTitle .'">' . "\n";
-    echo '<meta name="twitter:description" content="'. $socialDescription .'">' . "\n";
+    echo '<meta name="twitter:title" content="'. esc_html( $socialTitle ) .'">' . "\n";
+    echo '<meta name="twitter:description" content="'. esc_html( $socialDescription ) .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. get_socialimage( 'twitter-index' ) .'">' . "\n";
 
-    echo '<meta name="description" content="'. $socialDescription .'">' . "\n";
+    echo '<meta name="description" content="'. esc_html( $socialDescription ) .'">' . "\n";
 
   }
   echo '<!-- end social meta -->' . "\n";
