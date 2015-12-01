@@ -71,7 +71,8 @@ add_action( 'init', 'ocadu_head_cleanup' );
  * @return string
  */
 function remove_wp_ver_css_js( $src ) {
-  if ( strpos( $src, 'ver=' ) )
+  $verVar = strpos( $src, 'ver=' );
+  if ( $verVar )
     $src = remove_query_arg( 'ver', $src );
   return $src;
 }
@@ -81,7 +82,7 @@ function remove_wp_ver_css_js( $src ) {
  */
 if ( ! function_exists( 'ocadu_scripts' ) ) {
   function ocadu_scripts() {
-    if ( !is_admin() ) {
+    if ( ! is_admin() ) {
       wp_deregister_script( 'jquery' );
       wp_register_script( 'libs', get_template_directory_uri().'/assets/dist/js/libs.js', '', '', true );
       wp_enqueue_script( 'libs' );
@@ -209,6 +210,8 @@ add_filter( 'excerpt_more', 'ocadu_new_excerpt_more' );
 
 /**
  * Get Social Image
+ * @param string $imageType string to determine if the type is facebook or twitter.
+ * @return string
  */
 function get_socialimage( $imageType = 'fb' ) {
   global $post, $posts;
@@ -293,7 +296,7 @@ function ocadu_remove_tax_name( $title, $sep, $seplocation ) {
   if ( is_tax() ) {
     $term_title = single_term_title( '', false );
 
-    // Determines position of separator
+    // Determines position of separator.
     if ( 'right' == $seplocation ) {
       $title = $term_title . " $sep " . get_bloginfo( 'name' );
     } else {
@@ -318,8 +321,8 @@ function ocadu_prefetch() {
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
-    echo '<link rel="prefetch" href="'.$theUrl.'">' . "\n";
-    echo '<link rel="prerender" href="'.$theUrl.'">' . "\n";
+    echo '<link rel="prefetch" href="'.esc_url( $theUrl ).'">' . "\n";
+    echo '<link rel="prerender" href="'.esc_url( $theUrl ).'">' . "\n";
   }
 }
 

@@ -19,6 +19,7 @@
     <exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
     <exclude name="Squiz.Commenting.ClassComment.Missing" />
     <exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+    <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
 
     <!-- Redfined -->
     <rule ref="Generic.WhiteSpace.ScopeIndent">
