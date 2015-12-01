@@ -381,7 +381,7 @@ function ocadu_simplify_post_class( $classes ) {
     || ( strpos( $class, 'status-' ) !== false )
     || ( strpos( $class, 'category-' ) !== false )
     || '' == $class ) {
-      unset( $classes[$id] );
+      unset( $classes[ $id ] );
     }
   }
   return $classes;
