@@ -67,6 +67,8 @@ add_action( 'init', 'ocadu_head_cleanup' );
 
 /**
  * Remove WP version from scripts
+ * @param string $src provides function with string to remove version numbers.
+ * @return string
  */
 function remove_wp_ver_css_js( $src ) {
   if ( strpos( $src, 'ver=' ) )
@@ -77,7 +79,7 @@ function remove_wp_ver_css_js( $src ) {
 /**
  * Load some scripts please.
  */
-if ( !function_exists( 'ocadu_scripts' ) ) {
+if ( ! function_exists( 'ocadu_scripts' ) ) {
   function ocadu_scripts() {
     if ( !is_admin() ) {
       wp_deregister_script( 'jquery' );
@@ -103,6 +105,9 @@ add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
 
 /**
  * Clean up body_class output
+ * @param string $wp_classes input classes from wordpress.
+ * @param array $extra_classes extra classes to add to body class.
+ * @return array
  */
 function ocadu_body_class( $wp_classes, $extra_classes ) {
   $whitelist = array(
@@ -126,13 +131,13 @@ add_filter( 'body_class', 'ocadu_body_class', 10, 2 );
 /**
  * Display navigation to next/previous pages when applicable
  */
-if ( !function_exists( 'ocadu_content_nav' ) ) :
+if ( ! function_exists( 'ocadu_content_nav' ) ) :
 function ocadu_content_nav( $nav_id ) {
   global $wp_query;
 
   if ( $wp_query->max_num_pages > 1 ) : ?>
-    <nav id="<?php echo $nav_id; ?>">
-      <h3 class="assistive-text"><?php _e( 'Post navigation', 'ocaduillustration' ); ?></h3>
+    <nav id="<?php esc_attr_e( $nav_id ); ?>">
+      <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocaduillustration' ); ?></h3>
       <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
       <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
     </nav><!-- #nav-above -->
@@ -152,6 +157,8 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
  * Reduce nav classes, leaving only 'current-menu-item'
+ * @param array $var takes the default wp menu classes.
+ * @return array
  */
 function ocadu_nav_class_filter( $var ) {
   return is_array( $var ) ? array_intersect( $var, array( 'current-menu-item' ) ) : '';
@@ -161,6 +168,7 @@ add_filter( 'nav_menu_css_class', 'ocadu_nav_class_filter', 100, 1 );
 
 /**
  * Add page slug as nav IDs
+ * @param string $v normalizes navigation ids.
  */
 function cleanname( $v ) {
   $v = preg_replace( '/[^a-zA-Z0-9s]/', '', $v );
@@ -177,9 +185,10 @@ add_filter( 'nav_menu_item_id', 'ocadu_nav_id_filter', 10, 2 );
 
 /**
  * Limit Search to Illustrators and Events
+ * @param string $query limits default search to just Illustrators.
  */
 function ocadu_search_filter( $query ) {
-  if ($query->is_search) {
+  if ( $query->is_search ) {
     $query->set( 'post_type', array( 'illustrator' ) );
   }
   return $query;
@@ -189,6 +198,8 @@ add_filter( 'pre_get_posts','ocadu_search_filter' );
 
 /**
  * Use proper ellipses for excerpts
+ * @param string $more more text to proper ellipses.
+ * @return string
  */
 function ocadu_new_excerpt_more( $more ) {
   return '&hellip;';
@@ -317,6 +328,8 @@ add_action( 'wp_head', 'ocadu_prefetch' );
 
 /**
  * Hijack image titles for copyright alt
+ * @param string $attr takes gallery image attributes.
+ * @return string
  */
 function ocadu_gallery_filter( $attr ) {
   global $post;
@@ -333,6 +346,10 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
 /**
  * Adding data attributes to clean stuff up
+ * @param mixed $markup regular markup from gallery.
+ * @param integer $id the post id.
+ * @param mixed $size size of gallery item.
+ * @param string $permalink the link to the asset.
  */
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
@@ -347,6 +364,8 @@ add_filter( 'wp_get_attachment_link', 'ocadu_modify_attachment_link', 10, 4 );
 
 /**
  * Simplify post classes
+ * @param array $classes takes the post class and cleans it.
+ * @return array
  */
 function ocadu_simplify_post_class( $classes ) {
   global $post;
