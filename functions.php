@@ -211,14 +211,14 @@ add_filter( 'excerpt_more', 'ocadu_new_excerpt_more' );
 
 /**
  * Get Social Image
- * @param string $imageType string to determine if the type is facebook or twitter.
+ * @param string $image_type string to determine if the type is facebook or twitter.
  * @return string
  */
-function get_socialimage( $imageType = 'fb' ) {
+function get_socialimage( $image_type = 'fb' ) {
   global $post, $posts;
 
   if ( is_single() && has_post_thumbnail( $post->ID ) ) {
-    if ( 'twitter' == $imageType ) {
+    if ( 'twitter' == $image_type ) {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-social-twitter', '' );
     } else {
       $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', '' );
@@ -229,7 +229,7 @@ function get_socialimage( $imageType = 'fb' ) {
     $socialimg = '';
   }
 
-  if ( 'twitter-index' == $imageType ) {
+  if ( 'twitter-index' == $image_type ) {
     $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg';
   }
 
@@ -266,27 +266,27 @@ function ocadu_social_meta() {
 
   }
   if ( is_home() || is_archive() ) {
-    $socialDescription = 'An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.';
+    $social_description = 'An archive and showcase presented by the Illustration Department at OCAD U featuring work from the graduating class of 2015.';
     if ( is_home() ) {
-      $socialTitle = get_bloginfo( 'name' );
+      $social_title = get_bloginfo( 'name' );
     } else {
       $selected_year = single_term_title( '', false );
-      $socialTitle = get_bloginfo( 'name' ) .' '. $selected_year;
+      $social_title = get_bloginfo( 'name' ) .' '. $selected_year;
     }
 
-    echo '<meta property="og:title" content="'. esc_html( $socialTitle ) .'">' . "\n";
+    echo '<meta property="og:title" content="'. esc_html( $social_title ) .'">' . "\n";
     echo '<meta property="og:url" content="'. esc_url( site_url() ) .'">' . "\n";
     echo '<meta property="og:image" content="'. esc_url( get_socialimage() ) .'">' . "\n";
-    echo '<meta property="og:description" content="'. esc_html( $socialDescription ) .'">' . "\n";
+    echo '<meta property="og:description" content="'. esc_html( $social_description ) .'">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="'. esc_html( $socialTitle ) .'">' . "\n";
-    echo '<meta name="twitter:description" content="'. esc_html( $socialDescription ) .'">' . "\n";
+    echo '<meta name="twitter:title" content="'. esc_html( $social_title ) .'">' . "\n";
+    echo '<meta name="twitter:description" content="'. esc_html( $social_description ) .'">' . "\n";
     echo '<meta name="twitter:image:src" content="'. esc_url( get_socialimage( 'twitter-index' ) ).'">' . "\n";
 
-    echo '<meta name="description" content="'. esc_html( $socialDescription ) .'">' . "\n";
+    echo '<meta name="description" content="'. esc_html( $social_description ) .'">' . "\n";
 
   }
   echo '<!-- end social meta -->' . "\n";
@@ -315,15 +315,15 @@ add_filter( 'wp_title', 'ocadu_remove_tax_name', 10, 3 );
  */
 function ocadu_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
-    $theUrl = next_post_link_plus( array(
+    $the_url = next_post_link_plus( array(
       'order_by' => 'post_title',
       'in_same_tax' => true,
       'return' => 'href',
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
-    echo '<link rel="prefetch" href="'.esc_url( $theUrl ).'">' . "\n";
-    echo '<link rel="prerender" href="'.esc_url( $theUrl ).'">' . "\n";
+    echo '<link rel="prefetch" href="'.esc_url( $the_url ).'">' . "\n";
+    echo '<link rel="prerender" href="'.esc_url( $the_url ).'">' . "\n";
   }
 }
 
@@ -357,9 +357,9 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
  */
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
-  $thumbnailURL = wp_get_attachment_image_src( $id,'medium' )[0];
+  $thumbnail_url = wp_get_attachment_image_src( $id,'medium' )[0];
   if ( ! $permalink ) {
-    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-thumbnail="'. $thumbnailURL .'"  href', $markup );
+    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-thumbnail="'. $thumbnail_url .'"  href', $markup );
   }
   return $markup;
 }
