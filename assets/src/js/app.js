@@ -1,3 +1,5 @@
+/*global FastClick:false, Masonry:false, Bloodhound:false*/
+
 $(function() {
   
   'use strict';
@@ -74,7 +76,7 @@ $(function() {
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-          url: '/wp-json/posts?type=illustrator&filter[posts_per_page]=100&filter[s]=%QUERY',
+          url: '/wp-json/wp/v2/illustrator?filter[s]=%QUERY',
           wildcard: '%QUERY'
         }
       });
@@ -85,7 +87,9 @@ $(function() {
         hint: false
         },{
         name: 'illustratorName',
-        displayKey: 'title',
+        displayKey: function(item) {
+          return item.title.rendered;
+        },
         source: illustratorSearch,
         limit: 10
       }).on('typeahead:select', function($e, resultsData){
