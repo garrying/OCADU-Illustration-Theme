@@ -71,8 +71,8 @@ add_action( 'init', 'ocadu_head_cleanup' );
  * @return string
  */
 function remove_wp_ver_css_js( $src ) {
-  $verVar = strpos( $src, 'ver=' );
-  if ( $verVar ) {
+  $ver_var = strpos( $src, 'ver=' );
+  if ( $ver_var ) {
     $src = remove_query_arg( 'ver', $src );
   }
   return $src;
