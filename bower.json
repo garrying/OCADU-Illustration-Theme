@@ -3,11 +3,11 @@
   "private": true,
   "dependencies": {
     "fastclick": "~1.0.6",
-    "velocity": "~1.2.2",
+    "velocity": "~1.2.3",
     "headroom.js": "~0.7.0",
-    "imagesloaded": "~3.1.8",
+    "imagesloaded": "~4.0.0",
     "FitText.js": "~1.2.0",
-    "masonry": "~3.3.0",
+    "masonry": "~3.3.2",
     "typeahead.js": "~0.11.1"
   },
   "overrides": {
@@ -20,7 +20,10 @@
       "dependencies": null
     },
     "headroom.js": {
-      "main": ["dist/headroom.js", "dist/jQuery.headroom.js"]
+      "main": [
+        "dist/headroom.js",
+        "dist/jQuery.headroom.js"
+      ]
     },
     "velocity": {
       "main": "./velocity.js"
