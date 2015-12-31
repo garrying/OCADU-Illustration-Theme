@@ -23,10 +23,10 @@
 
     <!-- Redfined -->
     <rule ref="Generic.WhiteSpace.ScopeIndent">
-        <properties>
-          <property name="indent" value="2"/>
-          <property name="tabIndent" value="false"/>
-        </properties>
-      </rule>
+      <properties>
+        <property name="indent" value="2"/>
+        <property name="tabIndent" value="false"/>
+      </properties>
+    </rule>
   </rule>
 </ruleset>
