@@ -2,7 +2,6 @@
 
 .logo {
   @include font-smoothing(on);
-  color: rgba($site-background-home, 0.25);
   background: none;
   transition: opacity 500ms ease-in-out, color 180ms ease-in-out;
 
@@ -11,12 +10,7 @@
   }
 
   .home & {
-    color: $white;
     opacity: 0.25;
-  }
-
-  &.invert {
-    color: $white;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -27,28 +21,15 @@
 }
 
 .heading-inner {
-  position: fixed;
-  top: 20px;
-  left: 60px;
   z-index: $z-300;
-  font-size: 1.2rem;
-  color: $site-background-home;
   transition: opacity 180ms ease-in-out;
-  
+
   &.sticky-unpinned {
     opacity: 0.25;
   }
 
   &:hover {
     opacity: 1;
-  }
-
-  @media screen and (max-width: $medium-vertical-vp) {
-    left: 20px;
-  }
-
-  .home & {
-    color: $white;
   }
 }
 
@@ -59,7 +40,6 @@
   margin-left: 20px;
   line-height: 1.1em;
   background-color: transparent;
-  background-image: url("../images/underline-w.svg");
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 23px 8px;
@@ -84,7 +64,6 @@
   }
 
   &.reverse {
-    color: $white;
     animation-play-state: running;
   }
 
@@ -103,10 +82,6 @@
 
 .section-indicator {
   @extend %heading;
-  position: fixed;
-  top: 45%;
-  left: 40px;
-  letter-spacing: 1px;
   background: none;
   transition: color 180ms ease-in-out;
   transform: rotate(-90deg);

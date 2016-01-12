@@ -8,7 +8,7 @@ html {
 body {
   height: 100%;
   padding: 0 20px 80px;
-  font: 100%/1.6 $serif;
+  font: 100%/1.6 $sans-serif;
   color: $site-font-color;
   background: $site-background;
 
@@ -25,11 +25,6 @@ body {
 
 a {
   color: $site-font-color;
-  text-decoration: none;
-  background-image: linear-gradient(to bottom, transparent 50%, $accent 50%);
-  background-repeat: repeat-x;
-  background-position: 0 90%;
-  background-size: 2px 2px;
 
   img {
     display: block;
@@ -40,16 +35,10 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
-  position: absolute;
-  top: 0;
   left: 60px;
   width: 1px;
   height: 1px;
-  padding: 10px;
-  overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
-  color: $white;
-  background: $accent;
   
   &:focus {
     top: 2;

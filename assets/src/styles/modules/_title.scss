@@ -1,14 +1,8 @@
 .title {
   @include font-smoothing(on);
-  position: fixed;
-  top: 20px;
-  bottom: 20px;
-  left: 60px;
   z-index: $z-100;
   display: flex;
   width: calc(33.3333333333% - 60px);
-  padding-right: 20px;
-  color: $white;
   opacity: 0;
   transition: opacity 180ms ease-in-out;
   transform: scale(0.95);
@@ -21,7 +15,7 @@
   @media screen and (max-width: $medium-vp) {
     width: calc(40% - 60px);
   }
-  
+
   @media screen and (max-width: $small-vp) {
     display: none;
     width: 100%;
@@ -30,16 +24,14 @@
   @media screen and (max-height: 400px) and (max-width: $medium-vertical-vp) {
     display: none;
   }
-  
+
   .message-wrapper {
     display: block;
-    margin-top: 1.25em;
   }
 
   .message {
     padding-bottom: 8px;
     color: $accent;
-    background-image: url("../images/underline.svg");
     background-repeat: repeat-x;
     background-position: 0 100%;
     background-size: 30px 10px;
@@ -48,19 +40,11 @@
   }
 
   .title-primary {
-    margin-top: 0;
-    margin-bottom: 1em;
     font-family: $sans-serif;
-    font-size: 2rem;
-    line-height: 1em;
-
-    @media screen and (max-width: $medium-vertical-vp) {
-      margin-right: 20px;
-    }
   }
 
   .title-secondary {
-    line-height: 1.25em;
+  
   }
 
   .title-unit {
@@ -69,15 +53,8 @@
   }
 
   .colophon {
-    position: absolute;
-    bottom: 20px;
-    margin-bottom: 0;
-    font-size: 0.813em;
-    line-height: 1.1em;
-    
     a {
       color: $accent;
-      background: none;
     }
   }
 
@@ -112,20 +89,15 @@
 // Illustrator unit
 
 .illustrator {
-  transform: scale(0.95);
-  opacity: 0;
   width: 25%;
+  opacity: 0;
+  transform: scale(0.95);
 
   .home & {
     width: 33.3333333333%;
   }
 
   .illustrator-meta-container {
-    margin-bottom: 1em;
-    font-size: 0.95em;
-    line-height: 1.2em;
-    opacity: 0.5;
-    transition: opacity 140ms ease-in-out, color 140ms ease-in-out;
 
     @include font-smoothing(on);
 
@@ -134,14 +106,8 @@
     }
   }
 
-  .illustrator-title {
-    margin-bottom: 5px;
-    font-size: 1em;
-    line-height: 1.2em;
-  }
-
   .illustrator-name {
-    font-family: $serif;
+    font-family: $sans-serif;
   }
 
   .illustrator-link {
@@ -168,7 +134,7 @@
   @media screen and (min-width: $large-vp) {
     width: 20%;
   }
-  
+
   @media screen and (max-width: $medium-vertical-vp) {
     width: 33.3333333333%;
   }
@@ -197,7 +163,7 @@
     @media screen and (max-width: $medium-vp) {
       width: 50%;
     }
-    
+
     @media screen and (max-width: $medium-vertical-vp) {
       width: 25%;
     }
@@ -209,10 +175,6 @@
     @media screen and (min-width: $extra-large-vp) {
       width: 20%;
     }
-
-    a {
-      color: $white;
-    }
   }
 }
 
@@ -220,8 +182,6 @@
   @include font-smoothing(on);
   top: 55%;
   z-index: $z-100;
-  font-size: 1.2rem;
-  letter-spacing: 0;
 
   mark {
     color: $accent;
@@ -230,36 +190,21 @@
 }
 
 .illustrators-grid {
-  margin-top: 70px;
-  margin-left: 40px;
-
-  @media screen and (max-width: $medium-vertical-vp) {
-    margin-top: 20px;
-  }
 
   &.home-grid {
     width: calc(66.6666666667% + 20px);
     padding-top: 20px;
-    margin-top: 0;
-    margin-left: 33.3333333333%;
 
     @media screen and (max-width: $medium-vp) {
       width: calc(60% + 20px);
-      margin-left: 40%;
     }
 
     @media screen and (max-width: $medium-vertical-vp) {
       width: calc(100% + 20px);
-      margin-left: 0;
     }
 
     @media screen and (max-width: $small-vp) {
       width: calc(100% + 20px);
     }
-  }
-  
-  @media screen and (max-width: $medium-vertical-vp) {
-    margin-right: -20px;
-    margin-left: 0;
   }
 }

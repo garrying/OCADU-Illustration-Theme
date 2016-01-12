@@ -1,17 +1,11 @@
 // Loader
 
 .loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
   z-index: $z-300;
   display: none;
   width: 100px;
   height: 100px;
-  margin-top: -50px;
-  margin-left: -50px;
   pointer-events: none;
-  background-image: url("../images/underline.svg");
   opacity: 0;
   animation: backAnimate 1s linear infinite;
 }

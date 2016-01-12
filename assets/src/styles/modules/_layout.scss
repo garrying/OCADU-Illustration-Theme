@@ -8,13 +8,12 @@
 
 .illustrator-meta {
   flex: 1 1 30%;
-  
-  @media screen and (max-width: $medium-vertical-vp) { 
+
+  @media screen and (max-width: $medium-vertical-vp) {
     flex: 1 1 100%;
   }
 
   .illustrator-meta-wrapper {
-    position: fixed;
     top: 0;
     left: 60px;
     display: flex;
@@ -30,13 +29,13 @@
       max-width: 600px;
       height: auto;
       margin: 0 auto;
-      
+
       &.inactive {
         opacity: 0.3;
       }
     }
 
-    @media screen and (max-width: $small-vp) { 
+    @media screen and (max-width: $small-vp) {
       width: 100%;
     }
   }
@@ -48,10 +47,6 @@
 
 .illustrator-nav-single {
   @include font-smoothing(on);
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: flex;
   font-style: italic;
   background: rgba($accent, 0.25);
@@ -59,8 +54,7 @@
   transition: opacity 180ms ease-in-out;
   justify-content: space-between;
 
-  @media screen and (max-width: $medium-vertical-vp) { 
-    position: fixed;
+  @media screen and (max-width: $medium-vertical-vp) {
     bottom: 0;
     z-index: $z-100;
     width: 100%;
@@ -88,7 +82,7 @@
     padding: 8px 10px;
     background: none;
     transition: background 180ms ease-out;
-    
+
     &:hover,
     &:focus {
       background: rgba($accent, 0.5);
@@ -100,7 +94,7 @@
   margin-top: 20px;
   flex: 1 1 70%;
 
-  @media screen and (max-width: $medium-vertical-vp) { 
+  @media screen and (max-width: $medium-vertical-vp) {
     max-width: 600px;
     flex: 1 1 100%;
   }
@@ -108,9 +102,6 @@
   .gallery {
     max-width: 1240px;
     margin: 0 auto;
-    @media screen and (max-width: $medium-vertical-vp) { 
-      margin-right: -20px;
-    }
   }
 
   .gallery-item {
@@ -119,7 +110,7 @@
     opacity: 0;
     transform: scale(0.95);
 
-    @media screen and (max-width: $small-vp) { 
+    @media screen and (max-width: $small-vp) {
       width: 100%;
     }
 

@@ -1,16 +1,16 @@
 // Typography
 
 $serif: 'minion-pro', Times, 'Times New Roman', serif;
-$sans-serif: 'FoundersGroteskWeb-Bold', Helvetica, Arial, sans-serif;
+$sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // Colours
 
 $site-background: #f2f2f2;
 $site-font-color: #333;
 
-$site-background-home: #0e0e0f;
+$site-background-home: $site-background;
 
-$accent: #e75a62;
+$accent: #0000ff;
 
 $white: #fff;
 $black: #000;
