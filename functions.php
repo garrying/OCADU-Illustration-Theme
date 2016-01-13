@@ -365,13 +365,13 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
 /**
  * Adding data attributes to clean stuff up
- * 
+ *
  * @param mixed $markup regular markup from gallery.
- * 
+ *
  * @param integer $id the post id.
- * 
+ *
  * @param mixed $size size of gallery item.
- * 
+ *
  * @param string $permalink the link to the asset.
  */
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
