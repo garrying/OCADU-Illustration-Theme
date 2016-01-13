@@ -67,7 +67,9 @@ add_action( 'init', 'ocadu_head_cleanup' );
 
 /**
  * Remove WP version from scripts
+ * 
  * @param string $src provides function with string to remove version numbers.
+ * 
  * @return string
  */
 function remove_wp_ver_css_js( $src ) {
@@ -107,8 +109,11 @@ add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
 
 /**
  * Clean up body_class output
+ * 
  * @param string $wp_classes input classes from wordpress.
+ * 
  * @param array $extra_classes extra classes to add to body class.
+ * 
  * @return array
  */
 function ocadu_body_class( $wp_classes, $extra_classes ) {
@@ -170,6 +175,7 @@ add_filter( 'nav_menu_css_class', 'ocadu_nav_class_filter', 100, 1 );
 
 /**
  * Add page slug as nav IDs
+ * 
  * @param string $v normalizes navigation ids.
  */
 function cleanname( $v ) {
@@ -187,6 +193,7 @@ add_filter( 'nav_menu_item_id', 'ocadu_nav_id_filter', 10, 2 );
 
 /**
  * Limit Search to Illustrators and Events
+ * 
  * @param string $query limits default search to just Illustrators.
  */
 function ocadu_search_filter( $query ) {
@@ -200,7 +207,9 @@ add_filter( 'pre_get_posts','ocadu_search_filter' );
 
 /**
  * Use proper ellipses for excerpts
+ * 
  * @param string $more more text to proper ellipses.
+ * 
  * @return string
  */
 function ocadu_new_excerpt_more( $more ) {
@@ -211,7 +220,9 @@ add_filter( 'excerpt_more', 'ocadu_new_excerpt_more' );
 
 /**
  * Get Social Image
+ * 
  * @param string $image_type string to determine if the type is facebook or twitter.
+ * 
  * @return string
  */
 function get_socialimage( $image_type = 'fb' ) {
@@ -332,7 +343,9 @@ add_action( 'wp_head', 'ocadu_prefetch' );
 
 /**
  * Hijack image titles for copyright alt
+ * 
  * @param string $attr takes gallery image attributes.
+ * 
  * @return string
  */
 function ocadu_gallery_filter( $attr ) {
@@ -350,9 +363,13 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
 
 /**
  * Adding data attributes to clean stuff up
+ * 
  * @param mixed $markup regular markup from gallery.
+ * 
  * @param integer $id the post id.
+ * 
  * @param mixed $size size of gallery item.
+ * 
  * @param string $permalink the link to the asset.
  */
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
@@ -368,7 +385,9 @@ add_filter( 'wp_get_attachment_link', 'ocadu_modify_attachment_link', 10, 4 );
 
 /**
  * Simplify post classes
+ * 
  * @param array $classes takes the post class and cleans it.
+ * 
  * @return array
  */
 function ocadu_simplify_post_class( $classes ) {
