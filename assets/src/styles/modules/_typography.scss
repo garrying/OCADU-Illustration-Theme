@@ -1,7 +1,7 @@
 // Kerning extend
 
 %font-features {
-  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: "kern", "liga", "clig", "calt";
   font-variant-ligatures: common-ligatures, contextual;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
@@ -23,7 +23,7 @@ p {
 }
 
 abbr {
-  font-feature-settings: 'c2sc', 'smcp';
+  font-feature-settings: "c2sc", "smcp";
 }
 
 // Headings
@@ -39,18 +39,4 @@ h2 {
 
 .heading {
   @extend %heading;
-}
-
-.meta {
-  @extend %font-features;
-  @include font-smoothing(on);
-  font-style: italic;
-
-  .phone {
-    font-feature-settings: 'onum' 0, 'tnum' 1;
-  }
-}
-
-.illustrator-meta-name {
-  font-family: $sans-serif;
 }

@@ -7,14 +7,9 @@ html {
 
 body {
   height: 100%;
-  padding: 0 20px 80px;
-  font: 100%/1.6 $sans-serif;
+  font: 100% / 1.6 $sans-serif;
   color: $site-font-color;
   background: $site-background;
-
-  @media screen and (max-width: $medium-vertical-vp) {
-    padding-top: 60px;
-  }
 }
 
 ::selection {
@@ -39,14 +34,11 @@ a {
   width: 1px;
   height: 1px;
   clip: rect(1px, 1px, 1px, 1px);
-  
+
   &:focus {
-    top: 2;
     z-index: $z-600;
     width: auto;
     height: auto;
-    padding: 0 10px;
     clip: auto;
-    line-height: 49px;
   }
 }

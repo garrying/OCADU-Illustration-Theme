@@ -2,7 +2,6 @@ input {
   @extend %font-features;
   @include font-smoothing(on);
   font-family: $sans-serif;
-  border: 0;
 }
 
 .btn,

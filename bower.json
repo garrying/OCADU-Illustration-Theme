@@ -4,9 +4,7 @@
   "dependencies": {
     "fastclick": "~1.0.6",
     "velocity": "~1.2.3",
-    "headroom.js": "~0.7.0",
     "imagesloaded": "~4.0.0",
-    "FitText.js": "~1.2.0",
     "masonry": "~3.3.2",
     "typeahead.js": "~0.11.1",
     "jquery-pjax": "~1.9.6"
@@ -19,12 +17,6 @@
     "imagesloaded": {
       "main": "imagesloaded.pkgd.min.js",
       "dependencies": null
-    },
-    "headroom.js": {
-      "main": [
-        "dist/headroom.js",
-        "dist/jQuery.headroom.js"
-      ]
     },
     "velocity": {
       "main": "./velocity.js"

@@ -77,7 +77,7 @@
   <div class="illustrator-gallery-container">
     <?php echo do_shortcode( '[gallery size="medium" link="file" columns="0"]' ); ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
-      <button class="close-panel alt hide-text" title="Close full view" aria-label="Close full view">Close</button>
+      <button class="close-panel" title="Close full view" aria-label="Close full view">Close</button>
       <div class="image-modal-tip"></div>
       <div class="image-modal-container"></div>
     </div>

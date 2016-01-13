@@ -20,9 +20,8 @@
 
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f2f2f2">
   
   <?php wp_head(); ?>
 
@@ -62,19 +61,19 @@
         ?>
 
         <div class="year-select panel" aria-hidden="true" tabindex="-1">
-          <div class="year-select-wrapper">
+          <ul class="year-select-wrapper">
             <?php foreach ( $grad_year as $year ) {
               if ( isset( $selected_year ) && $selected_year == $year->name ) {
-                echo "<a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
+                echo "<li><a class='year-item active' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
               } else {
-                echo "<a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
+                echo "<li><a class='year-item' href='". esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From ". esc_html( $year->name ) ."'>";
               }
                 esc_html_e( $year->name );
-              echo '</a>';
+              echo '</a></li>';
             }
             ?>
-          </div>
-          <button class="close-panel hide-text" title="Close panel" aria-label="Close search panel">Close</button>
+          </ul>
+          <button class="close-panel" title="Close panel" aria-label="Close search panel">Close</button>
           <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
         </div> <!-- year-select-->
 
@@ -82,13 +81,12 @@
           <div class="search-wrapper">
             <?php get_search_form(); ?>
           </div>
-          <button class="close-panel hide-text" title="Close search panel" aria-label="Close search panel">Close</button>
+          <button class="close-panel" title="Close search panel" aria-label="Close search panel">Close</button>
           <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
         </div><!-- search -->
        
     </div><!-- .app-head-items -->
   </header><!-- header -->
-
 
   <main id="content" role="main">
     <?php if ( is_singular( 'illustrator' ) ) {

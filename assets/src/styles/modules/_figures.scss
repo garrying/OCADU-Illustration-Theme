@@ -9,39 +9,3 @@ figure {
     box-shadow: 0 1px 1px 0 rgba($black, 0.05);
   }
 }
-
-// Full image tip
-
-.image-modal-tip {
-  @include font-smoothing(on);
-  z-index: $z-600;
-  font-family: $sans-serif;
-  color: rgba($accent, 0.5);
-}
-
-// Full image modal
-
-.image-modal-wrapper {
-  z-index: $z-100;
-
-  @media screen and (max-width: $medium-vertical-vp) { 
-    left: 0;
-  }
-}
-
-.image-modal-container {
-  align-items: center;
-  display: flex;
-}
-
-// Full image
-
-.image-modal-full-image {
-  display: flex;
-  flex-shrink: 0;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0 auto;
-  cursor: pointer;
-  opacity: 0;
-}
