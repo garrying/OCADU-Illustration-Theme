@@ -1,7 +1,7 @@
-<?php if ( !isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
+<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
     <?php get_header(); ?>
   <?php else : ?>
-    <title><?php wp_title( '&#8211;', true, 'right');?></title>
+    <title><?php wp_title( '&#8211;', true, 'right' );?></title>
 <?php endif; ?>
 
 <?php if ( is_archive() ) {
@@ -44,6 +44,6 @@
   <?php endif; ?>
 </div>
 
-<?php if ( !isset($_SERVER['HTTP_X_PJAX']) ) : ?>
+<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
   <?php get_footer(); ?>
 <?php endif; ?>

@@ -1,7 +1,7 @@
 <?php if ( is_singular( 'illustrator' ) ) {
     $term = get_the_terms( $post->ID, 'gradyear' )[0];
     echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">';
-    if ( isset( $term->name) ) {
+    if ( isset( $term->name ) ) {
       esc_html_e( $term->name );
     };
     echo '</a>';
