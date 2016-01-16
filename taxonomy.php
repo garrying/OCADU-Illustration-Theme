@@ -1,4 +1,18 @@
-<?php get_header(); ?>
+<?php if ( !isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
+    <?php get_header(); ?>
+  <?php else : ?>
+    <title><?php wp_title( '&#8211;', true, 'right');?></title>
+<?php endif; ?>
+
+<?php if ( is_archive() ) {
+    $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+    echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
+    if ( isset( $selected_year->name ) ) {
+      esc_html_e( $selected_year->name );
+    };
+    echo '</a>';
+  }
+?>
 
 <div id="illustrators" class="illustrators-grid">
 
@@ -30,4 +44,6 @@
   <?php endif; ?>
 </div>
 
-<?php get_footer(); ?>
+<?php if ( !isset($_SERVER['HTTP_X_PJAX']) ) : ?>
+  <?php get_footer(); ?>
+<?php endif; ?>

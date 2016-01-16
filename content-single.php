@@ -1,8 +1,18 @@
+<?php if ( is_singular( 'illustrator' ) ) {
+    $term = get_the_terms( $post->ID, 'gradyear' )[0];
+    echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">';
+    if ( isset( $term->name) ) {
+      esc_html_e( $term->name );
+    };
+    echo '</a>';
+  }
+?>
+
 <article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
   <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
-      <div class="illustrator-meta-wrapper-inner hidden">
+      <div class="illustrator-meta-wrapper-inner">
         <div class="illustrator-meta-description">
 
           <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>

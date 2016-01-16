@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php if ( !isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
+    <?php get_header(); ?>
+  <?php else : ?>
+    <title><?php wp_title( '&#8211;', true, 'right'); bloginfo('name'); ?></title>
+<?php endif; ?>
+  
   <?php if ( is_home() || is_front_page() ) {
     $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
     $args = array(
@@ -45,4 +50,6 @@
     <?php endif; ?>
   </div>
       
-<?php get_footer(); ?>
+<?php if ( !isset($_SERVER['HTTP_X_PJAX']) ) : ?>
+  <?php get_footer(); ?>
+<?php endif; ?>

@@ -7,6 +7,7 @@ $(function() {
   var app = {  
     init: function() {
       this._fastClick();
+      this._pjax();
       this._ocadLoader();
       this._ocadPanelSelectButtons();
       this._ocadHomeLoader();
@@ -16,6 +17,7 @@ $(function() {
     },
 
     settings: {
+      contentContainer: '#content',
       loader: $('.loader'), 
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
@@ -23,6 +25,10 @@ $(function() {
       prevItem: $('.nav-previous a'),
       searchField: $('.search-field'),
       imageModal: $('#image-modal')
+    },
+
+    _pjax: function () {
+      $(document).pjax('a', app.settings.contentContainer);
     },
 
     _fastClick: function () {

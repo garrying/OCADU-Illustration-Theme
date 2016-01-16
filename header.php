@@ -27,7 +27,7 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> id="content-container">
   <a class="screen-reader-shortcut heading" tabindex="1" href="#main">Skip to main content</a>
 
   <div class="loader"></div>
@@ -89,18 +89,3 @@
   </header><!-- header -->
 
   <main id="content" role="main">
-    <?php if ( is_singular( 'illustrator' ) ) {
-        echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">';
-        if ( isset( $selected_year ) ) {
-          esc_html_e( $selected_year );
-        };
-        echo '</a>';
-      }
-      if ( is_archive() ) {
-        echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
-        if ( isset( $selected_year ) ) {
-          esc_html_e( $selected_year );
-        };
-        echo '</a>';
-      }
-    ?>
