@@ -7,14 +7,13 @@
   <description>A custom set of code standard rules to check for WordPress themes.</description>
 
   <!-- Include the WordPress ruleset, with exclusions. -->
-  <rule ref="WordPress-Core">
+  <rule ref="WordPress">
     <!-- Excludes -->
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
     <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Squiz.Commenting.FileComment.Missing" />
-    <exclude name="WordPress.VIP.RestrictedFunctions" />
     <exclude name="Squiz.Commenting.FunctionComment.Missing" />
     <exclude name="Squiz.Commenting.ClassComment.Missing" />
     <exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
