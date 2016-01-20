@@ -145,7 +145,6 @@ $(function() {
     _ocadGalleryNav: function() {
 
       var galleryImages = [];
-      var itemimgFullsrc;
       var nextImage;
       var imageIndex = 0;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
@@ -159,8 +158,13 @@ $(function() {
 
           for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
             $(masonryItemAnchor[i]).data('index',i);
-            var imageFullurl = $(masonryItemAnchor[i]).attr('href');
-            galleryImages.push(imageFullurl);
+            var imageElement = $(masonryItemAnchor[i]);
+            var imageSet = {
+              url: imageElement.attr('href'),
+              srcset: imageElement.data('srcset'),
+              sizes: imageElement.data('sizes')
+            };
+            galleryImages.push(imageSet);
           }
 
         });
@@ -172,15 +176,13 @@ $(function() {
       **/
 
       var imageModalSetter = function(imageSource) {
-        $('.image-modal-container').html(function() {
-          var image = new Image();
-          image.alt = 'Full illustration';
-          image.className = 'image-modal-full-image';
-          image.id = 'full-image';
-          image.src = imageSource;
-
-          return image;
-        });
+        var image = new Image();
+        image.alt = 'Full illustration';
+        image.id = 'full-image';
+        image.src = imageSource.attr('href');
+        image.srcset = imageSource.data('srcset');
+        image.sizes = imageSource.data('sizes');
+        return image;
       };
 
       /**
@@ -190,10 +192,10 @@ $(function() {
       $(app.settings.masonryContainer).on( 'click', '.gallery-icon-anchor', function( event ) {
         event.preventDefault();
         app._ocadLoader(true);
-        itemimgFullsrc = $(this).attr('href');
-        imageIndex = $(this).data('index');
+        var itemImage = $(this);
+        imageIndex = itemImage.data('index');
         
-        imageModalSetter(itemimgFullsrc);
+        $('.image-modal-container').html(imageModalSetter(itemImage));
         
         $('#full-image').imagesLoaded().done(function(){
           app._ocadLoader(false);
@@ -234,16 +236,17 @@ $(function() {
 
         nextImage = galleryImages[imageIndex];
 
-        $('#full-image').velocity({opacity:0}, {
-          duration: 'fast',
-          complete: function() {
-            var image = new Image();
-            image.src = nextImage;
-            image.onload = function() {
-              app._ocadLoader(false);
-              $('#full-image').attr('src',this.src).velocity({opacity:1},'fast');
-            };
-          }
+        $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
+        .then( function() {
+          var image = document.getElementById('full-image');
+          image.src = nextImage.url;
+          image.srcset = nextImage.srcset;
+          image.sizes = nextImage.sizes;
+
+          image.onload = function() {
+            app._ocadLoader(false);
+            $('#full-image').velocity('fadeIn','fast');
+          };
         });
 
       }

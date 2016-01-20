@@ -376,9 +376,11 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocadu_gallery_filter' );
  */
 function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
-  $thumbnail_url = wp_get_attachment_image_src( $id,'medium' )[0];
+  $image_url = wp_get_attachment_image_src( $id,'medium' )[0];
+  $image_srcset = wp_get_attachment_image_srcset( $id );
+  $image_sizes = wp_get_attachment_image_sizes( $id, 'full' );
   if ( ! $permalink ) {
-    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-thumbnail="'. $thumbnail_url .'"  href', $markup );
+    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="'. $image_srcset .'" data-sizes="'. $image_sizes .'" href', $markup );
   }
   return $markup;
 }
