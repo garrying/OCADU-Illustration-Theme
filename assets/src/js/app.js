@@ -111,6 +111,9 @@ $(function() {
     },
 
     _ocadHomeLoader: function () {
+      if ($('body').hasClass('home')) {
+        app._ocadShuffle( document.querySelectorAll('.gallery-item') );
+      }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
             app._ocadMasonry(app.settings.masonryContainerHome);
