@@ -7,7 +7,6 @@ $(function() {
   var app = {  
     init: function() {
       this._fastClick();
-      this._ocadLoader();
       this._ocadPanelSelectButtons();
       this._ocadHomeLoader();
       this._ocadPanelsClose();
@@ -148,8 +147,6 @@ $(function() {
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
-
-        $('.illustrator-meta-wrapper-inner').velocity('fadeIn');
 
         $(app.settings.masonryContainer).imagesLoaded().done(function() {
           app._ocadMasonry(app.settings.masonryContainer);
