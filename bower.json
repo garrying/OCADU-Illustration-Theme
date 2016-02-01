@@ -2,11 +2,11 @@
   "name": "ocaduillustration",
   "private": true,
   "dependencies": {
-    "fastclick": "~1.0.6",
-    "velocity": "~1.2.3",
+    "fastclick": "^1.0.6",
+    "velocity": "^1.2.3",
     "imagesloaded": "^4.1.0",
     "masonry": "^4.0.0",
-    "typeahead.js": "~0.11.1",
+    "typeahead.js": "^0.11.1",
     "jquery-pjax": "^1.9.6"
   },
   "overrides": {
