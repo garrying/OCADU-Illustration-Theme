@@ -4,7 +4,7 @@ $(function() {
   
   'use strict';
 
-  var app = {  
+  var app = {
     init: function() {
       this._fastClick();
       this._ocadPanelSelectButtons();

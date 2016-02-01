@@ -28,7 +28,7 @@
 </head>
 
 <body <?php body_class(); ?> id="content-container">
-  <a class="screen-reader-shortcut heading" tabindex="1" href="#main">Skip to main content</a>
+  <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
 
   <div class="loader"><h1>Loading...</h1></div>
   <header role="banner">
@@ -88,4 +88,4 @@
     </div><!-- .app-head-items -->
   </header><!-- header -->
 
-  <main id="content" role="main">
+  <main id="main" role="main">

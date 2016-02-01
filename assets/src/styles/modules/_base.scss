@@ -19,7 +19,7 @@ body {
 // Links
 
 a {
-  color: $site-font-color;
+  color: $accent;
 
   img {
     display: block;
@@ -30,13 +30,17 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
+  position: absolute;
   left: 60px;
   width: 1px;
   height: 1px;
+  margin: 0;
+  overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 
   &:focus {
-    z-index: $z-600;
+    top: 0;
+    z-index: $z-important;
     width: auto;
     height: auto;
     clip: auto;

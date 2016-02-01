@@ -16,12 +16,10 @@
         <div class="illustrator-meta-description">
 
           <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
-            
             <?php
-              $title_illu = esc_html( get_post_meta( $post->ID, 'illu_title', true ) );
-              echo '<h2 class="thesis-title" itemprop="name">' .  esc_html_e( $title_illu ) . '</h2>';
+              $title_illu = get_post_meta( $post->ID, 'illu_title', true );
+              echo '<h2 class="thesis-title" itemprop="name">' . esc_html( $title_illu ) . '</h2>';
             ?>
-          
           <?php endif; ?>
 
           <?php the_content(); ?>
@@ -83,7 +81,7 @@
     </div>
 
   </div><!-- .illustrator-meta -->
-  
+
   <div class="illustrator-gallery-container">
     <?php echo do_shortcode( '[gallery size="medium" link="file" columns="0"]' ); ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
