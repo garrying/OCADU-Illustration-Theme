@@ -43,7 +43,7 @@
             Search
           </button>
         </div>
-        
+
         <?php
           $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
           if ( is_singular( 'illustrator' ) ) {

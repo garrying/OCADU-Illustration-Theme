@@ -150,19 +150,18 @@ $(function() {
 
         $(app.settings.masonryContainer).imagesLoaded().done(function() {
           app._ocadMasonry(app.settings.masonryContainer);
-
-          for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
-            $(masonryItemAnchor[i]).data('index',i);
-            var imageElement = $(masonryItemAnchor[i]);
-            var imageSet = {
-              url: imageElement.attr('href'),
-              srcset: imageElement.data('srcset'),
-              sizes: imageElement.data('sizes')
-            };
-            galleryImages.push(imageSet);
-          }
-
         });
+
+        for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
+          $(masonryItemAnchor[i]).data('index',i);
+          var imageElement = $(masonryItemAnchor[i]);
+          var imageSet = {
+            url: imageElement.attr('href'),
+            srcset: imageElement.data('srcset'),
+            sizes: imageElement.data('sizes')
+          };
+          galleryImages.push(imageSet);
+        }
 
       }
 
