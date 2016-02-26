@@ -42,6 +42,9 @@ gulp.task('bower', () => {
 
 gulp.task('scripts', ['lint', 'bower'], () => {
   return gulp.src('assets/src/js/*.js')
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('assets/dist/js'));
 });
 
