@@ -28,7 +28,11 @@
   <ul class="amp-wp-meta">
     <?php $this->load_parts( apply_filters( 'amp_post_template_meta_parts', array( 'meta-author', 'meta-time', 'meta-taxonomy' ) ) ); ?>
   </ul>
-  <?php echo $this->get( 'post_amp_content' ); // amphtml content; no kses ?>
+  <?php
+    // @codingStandardsIgnoreStart
+    echo $this->get( 'post_amp_content' ); // AMPHTML content; no kses.
+    // @codingStandardsIgnoreEnd
+  ?>
   <ul class="amp-wp-meta" itemscope itemtype="http://schema.org/Person">
     <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) : ?>
       <li class="truncate" itemprop="url">
