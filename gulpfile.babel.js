@@ -1,8 +1,12 @@
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import mainBowerFiles from 'main-bower-files';
-import browserSync from 'browser-sync';
-import del from 'del';
+var gulp = require('gulp');
+var gulpLoadPlugins = require('gulp-load-plugins');
+var browserSync = require('browser-sync');
+var del = require('del');
+
+var babelify = require('babelify');
+var browserify = require('browserify');
+var buffer = require('vinyl-buffer');
+var source = require('vinyl-source-stream');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -34,17 +38,12 @@ function lint(files, options) {
 
 gulp.task('lint', lint('assets/src/js/*.js'));
 
-gulp.task('bower', () => {
-  return gulp.src(mainBowerFiles())
-    .pipe($.concat('libs.js'))
-    .pipe(gulp.dest('assets/dist/js'));
-});
-
-gulp.task('scripts', ['lint', 'bower'], () => {
-  return gulp.src('assets/src/js/*.js')
-    .pipe($.sourcemaps.init())
-    .pipe($.babel())
-    .pipe($.sourcemaps.write())
+gulp.task('scripts', ['lint'], () => {
+  return browserify('assets/src/js/app.js')
+    .transform(babelify)
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
     .pipe(gulp.dest('assets/dist/js'));
 });
 

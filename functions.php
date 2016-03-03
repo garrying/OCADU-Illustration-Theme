@@ -87,8 +87,6 @@ if ( ! function_exists( 'ocadu_scripts' ) ) {
   function ocadu_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'jquery' );
-      wp_register_script( 'libs', get_template_directory_uri().'/assets/dist/js/libs.js', '', '', true );
-      wp_enqueue_script( 'libs' );
       wp_register_script( 'app', get_template_directory_uri().'/assets/dist/js/app.js', '', '', true );
       wp_enqueue_script( 'app' );
     }

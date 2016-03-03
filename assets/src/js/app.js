@@ -1,7 +1,14 @@
-/*global FastClick:false, Masonry:false, Bloodhound:false*/
+var $ = require('jquery');
+window.jQuery = window.$ = $;
+require('typeahead.js');
+require('velocity-animate');
+require('imagesloaded');
+var Masonry = require('masonry-layout');
+var FastClick = require('fastclick');
+var Bloodhound = require('bloodhound');
 
 $(function() {
-  
+
   'use strict';
 
   var app = {
@@ -16,7 +23,7 @@ $(function() {
 
     settings: {
       contentContainer: '#content',
-      loader: $('.loader'), 
+      loader: $('.loader'),
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
       nextItem: $('.nav-next a'),
@@ -26,7 +33,7 @@ $(function() {
     },
 
     _fastClick: function () {
-      FastClick.attach(document.body);
+      FastClick(document.body);
     },
 
     _ocadLoader: function (e) {
@@ -46,7 +53,7 @@ $(function() {
       });
 
       msnry.layout();
-      
+
     },
 
     _ocadSearch: function () {
@@ -58,9 +65,9 @@ $(function() {
           wildcard: '%QUERY'
         }
       });
-       
+
       illustratorSearch.initialize();
-       
+
       app.settings.searchField.typeahead({
         hint: false
         },{
@@ -95,7 +102,7 @@ $(function() {
             allElems.splice(random, 1);
             ret[ret.length] = randEl;
           }
-          return ret; 
+          return ret;
         })(), l = elems.length;
 
         while (l--) {
@@ -188,20 +195,20 @@ $(function() {
         app._ocadLoader(true);
         var itemImage = $(this);
         imageIndex = itemImage.data('index');
-        
+
         $('.image-modal-container').html(imageModalSetter(itemImage));
-        
+
         $('#full-image').imagesLoaded().done(function(){
           app._ocadLoader(false);
-          app.settings.imageModal.velocity('fadeIn', { 
-            duration: 180, 
+          app.settings.imageModal.velocity('fadeIn', {
+            duration: 180,
             begin: function() {
               $(app.settings.masonryContainer).velocity({opacity:0.25},'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
             },
-            complete: function() { 
+            complete: function() {
               $('#full-image').velocity({opacity:1},'fast');
-            } 
+            }
           });
         });
 
@@ -273,7 +280,7 @@ $(function() {
     _ocadUIbinding: function() {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective).keydown(function(e) {
-        
+
         if (e.keyCode === 27) {
           app._ocadPanelsClose();
         }
