@@ -98,11 +98,17 @@ add_action( 'wp_enqueue_scripts', 'ocadu_scripts' );
 /**
  * Load some styles please.
  */
+function ocadu_fonts() {
+  wp_register_style( 'ocadufonts', 'https://fonts.typotheque.com/WF-006672-009232.css' );
+  wp_enqueue_style( 'ocadufonts' );
+}
+
 function ocadu_styles() {
   wp_register_style( 'ocadustyles', get_template_directory_uri().'/assets/dist/styles/main.css' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
+add_action( 'wp_enqueue_scripts', 'ocadu_fonts' );
 add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
 
 /**

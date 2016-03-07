@@ -22,7 +22,6 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width,maximum-scale=1.0,initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" />
-  <link rel="stylesheet" href="https://fonts.typotheque.com/WF-006672-009232.css" type="text/css" />
   <?php wp_head(); ?>
 
 </head>
