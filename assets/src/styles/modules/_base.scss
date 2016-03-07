@@ -7,7 +7,7 @@ html {
 
 body {
   height: 100%;
-  font: 100% / 1.6 $sans-serif;
+  font: 87.5% / 1.6 $sans-serif;
   color: $site-font-color;
   background: $site-background;
 }
@@ -20,6 +20,7 @@ body {
 
 a {
   color: $accent;
+  text-decoration: none;
 
   img {
     display: block;

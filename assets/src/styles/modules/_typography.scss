@@ -1,3 +1,8 @@
+// Modular scale
+
+$ms-base: 1em;
+$ms-ratio: $golden;
+
 // Kerning extend
 
 %font-features {
@@ -13,6 +18,8 @@
   @extend %font-features;
   @include font-smoothing(on);
   font-family: $sans-serif;
+  font-size: ms(1);
+  font-weight: normal;
 }
 
 // Base
@@ -20,6 +27,11 @@
 p {
   @extend %font-features;
   @include font-smoothing(on);
+}
+
+em {
+  font-family: "Neutral Regular Italic";
+  font-style: normal;
 }
 
 abbr {

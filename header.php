@@ -22,7 +22,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width,maximum-scale=1.0,initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" />
-  
+  <link rel="stylesheet" href="https://fonts.typotheque.com/WF-006672-009232.css" type="text/css" />
   <?php wp_head(); ?>
 
 </head>
@@ -32,7 +32,7 @@
 
   <div class="loader"><h1>Loading...</h1></div>
   <header role="banner">
-    <div class="app-head-items heading">
+    <div class="app-head-items">
 
         <div class="heading-inner">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
