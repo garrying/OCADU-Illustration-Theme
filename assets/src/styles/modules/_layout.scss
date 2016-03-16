@@ -1,0 +1,103 @@
+.single-illustrator {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.illustrator-gallery-container {
+  flex: 1 1 70%;
+  .gallery-item {
+    width: 50%;
+  }
+}
+
+.illustrator-meta {
+  flex: 1 1 30%;
+  .illustrator-meta-wrapper {
+    position: fixed;
+    top: 0;
+    left: 40px;
+    display: flex;
+    width: calc(30% - 70px);
+    height: 100%;
+    transition: opacity 180ms ease-in-out;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    font-size: 0.929em;
+
+    p {
+      margin-top: 0;
+    }
+
+    h1, h2 {
+      font-size: 1em;
+      line-height: 1em;
+    }
+
+    .thesis-title {
+      line-height: 1.4em;
+    }
+  }
+
+  .illustrator-meta-description {
+    margin-bottom: 2em;
+    p {
+      margin-left: 0.5em;
+    }
+  }
+
+  .meta {
+    line-height: 1.85em;
+
+    div {
+      padding-left: 0.5em;
+    }
+  }
+}
+
+.illustrator-nav-single {
+  align-self: flex-end;
+  display: flex;
+  flex-grow: 1;
+  a {
+    border-image: none;
+    border-bottom: 4px solid $accent;
+    display: block;
+    padding: 10px;
+  }
+  .nav-previous, .nav-next {
+    flex-grow: 1;
+  }
+  .nav-next {
+    text-align: right;
+  }
+  .section-indicator {
+    white-space: nowrap;
+  }
+}
+
+.image-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 30%;
+  z-index: 100;
+
+  .image-modal-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  #full-image {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

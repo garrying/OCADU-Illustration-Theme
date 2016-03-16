@@ -7,7 +7,7 @@ var Masonry = require('masonry-layout');
 var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
 
-$(function() {
+( function() {
 
   'use strict';
 
@@ -203,7 +203,7 @@ $(function() {
           app.settings.imageModal.velocity('fadeIn', {
             duration: 180,
             begin: function() {
-              $(app.settings.masonryContainer).velocity({opacity:0.25},'fast');
+              $(app.settings.masonryContainer).velocity({opacity:0},'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
             },
             complete: function() {
@@ -311,4 +311,4 @@ $(function() {
 
   app.init();
 
-});
+})();

@@ -7,7 +7,7 @@ html {
 
 body {
   height: 100%;
-  font: 87.5% / 1.6 $sans-serif;
+  font: 87.5% / 1.5 $sans-serif;
   color: $site-font-color;
   background: $site-background;
 }
@@ -21,6 +21,17 @@ body {
 a {
   color: $accent;
   text-decoration: none;
+
+  border-width: 0 0 3px;
+  border-image-source: url("../images/wavy.b.svg");
+  border-image-slice: 0 0 3 0;
+  border-image-width: 3px 6px;
+  border-image-outset: 0 6px 1px 6px;
+  border-image-repeat: repeat;
+
+  &:hover {
+    border-image: none;
+  }
 
   img {
     display: block;

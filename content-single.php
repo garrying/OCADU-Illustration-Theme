@@ -1,13 +1,3 @@
-<?php if ( is_singular( 'illustrator' ) ) {
-    $term = get_the_terms( $post->ID, 'gradyear' )[0];
-    echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">';
-    if ( isset( $term->name ) ) {
-      esc_html_e( $term->name );
-    };
-    echo '</a>';
-  }
-?>
-
 <article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
 
   <div class="illustrator-meta" role="complementary">
@@ -36,7 +26,7 @@
           </header><!-- .illustrator-meta-header -->
             
           <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
-            <div class="truncate" itemprop="url">
+            <div itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ) ?>">
                 <?php
                   $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
@@ -48,7 +38,7 @@
           <?php endif; ?>
 
           <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
-            <div class="truncate" itemprop="url">
+            <div itemprop="url">
               <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ) ?>">
                 <?php
                   $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
@@ -60,7 +50,7 @@
           <?php endif; ?>
 
           <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-            <div class="email truncate" itemprop="email">
+            <div class="email" itemprop="email">
               <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?></a>
             </div>
           <?php endif; ?>
@@ -74,8 +64,17 @@
       </div>
 
       <ul class="illustrator-nav-single">
-        <li class="nav-previous"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">%title</span>' ) ); ?></li>
-        <li class="nav-next"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span> <span class="indicator"></span>' ) ); ?></li>
+        <?php if ( is_singular( 'illustrator' ) ) {
+            $term = get_the_terms( $post->ID, 'gradyear' )[0];
+            echo '<a class="section-indicator" href="/year/'. esc_html( $term->slug ) .'" title="Return to '. esc_html( $term->name ) .' grid">↵ ';
+            if ( isset( $term->name ) ) {
+              esc_html_e( $term->name );
+            };
+            echo '</a>';
+          }
+        ?>
+        <li class="nav-previous truncate"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">⤺ %title</span>' ) ); ?></li>
+        <li class="nav-next truncate"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title ⤻</span> <span class="indicator"></span>' ) ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
     </div>

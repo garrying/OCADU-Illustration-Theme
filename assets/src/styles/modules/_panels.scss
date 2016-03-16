@@ -1,0 +1,10 @@
+.panel {
+  display: none;
+}
+
+button {
+  @extend %font-features;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
