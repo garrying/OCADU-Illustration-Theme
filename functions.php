@@ -299,7 +299,7 @@ function ocadu_social_meta() {
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="' . esc_html( $social_title ) .'">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_html( $social_title ) . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $social_description ) . '">' . "\n";
     echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter-index' ) ) . '">' . "\n";
 
