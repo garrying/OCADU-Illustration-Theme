@@ -65,7 +65,7 @@
               if ( isset( $selected_year ) && $selected_year == $year->name ) {
                 echo "<li><a class='year-item active' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
               } else {
-                echo "<li><a class='year-item' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) )."' title='View Work From " . esc_html( $year->name ) . "'>";
+                echo "<li><a class='year-item' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
               }
                 esc_html_e( $year->name );
               echo '</a></li>';
