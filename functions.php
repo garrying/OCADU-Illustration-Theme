@@ -87,7 +87,7 @@ if ( ! function_exists( 'ocadu_scripts' ) ) {
   function ocadu_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'jquery' );
-      wp_register_script( 'app', get_template_directory_uri().'/assets/dist/js/app.js', '', '', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/js/app.js', '', '', true );
       wp_enqueue_script( 'app' );
     }
   }
@@ -104,7 +104,7 @@ function ocadu_fonts() {
 }
 
 function ocadu_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri().'/assets/dist/styles/main.css' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/styles/main.css' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -192,7 +192,7 @@ function cleanname( $v ) {
 }
 
 function ocadu_nav_id_filter( $id, $item ) {
-  return 'nav-'.cleanname( $item->title );
+  return 'nav-' . cleanname( $item->title );
 }
 
 add_filter( 'nav_menu_item_id', 'ocadu_nav_id_filter', 10, 2 );
@@ -263,23 +263,23 @@ function get_socialimage( $image_type = 'fb' ) {
 function ocadu_social_meta() {
   echo "\n" . '<!-- social meta -->' . "\n";
   echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
-  echo '<meta property="og:site_name" content="'. esc_html( get_bloginfo( 'name' ) ) .'">' . "\n";
+  echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) .'">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
     $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
-    echo '<meta property="og:url" content="'. esc_url( get_permalink() ) .'">' . "\n";
-    echo '<meta property="og:title" content="'. get_the_title() .'">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url( get_permalink() ) .'">' . "\n";
+    echo '<meta property="og:title" content="' . get_the_title() .'">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
-    echo '<meta property="og:description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
-    echo '<meta property="og:image" content="'. esc_url( get_socialimage() ) .'">' . "\n";
+    echo '<meta property="og:description" content="' . esc_html( $the_excerpt ) .'">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( get_socialimage() ) .'">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="'. get_the_title() .'">' . "\n";
-    echo '<meta name="twitter:description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. esc_url( get_socialimage( 'twitter' ) ) .'">' . "\n";
+    echo '<meta name="twitter:title" content="' . get_the_title() .'">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_html( $the_excerpt ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter' ) ) .'">' . "\n";
 
-    echo '<meta name="description" content="'. esc_html( $the_excerpt ) .'">' . "\n";
+    echo '<meta name="description" content="' . esc_html( $the_excerpt ) .'">' . "\n";
 
   }
   if ( is_home() || is_archive() ) {
@@ -288,22 +288,22 @@ function ocadu_social_meta() {
       $social_title = get_bloginfo( 'name' );
     } else {
       $selected_year = single_term_title( '', false );
-      $social_title = get_bloginfo( 'name' ) .' '. $selected_year;
+      $social_title = get_bloginfo( 'name' ) .' ' . $selected_year;
     }
 
-    echo '<meta property="og:title" content="'. esc_html( $social_title ) .'">' . "\n";
-    echo '<meta property="og:url" content="'. esc_url( site_url() ) .'">' . "\n";
-    echo '<meta property="og:image" content="'. esc_url( get_socialimage() ) .'">' . "\n";
-    echo '<meta property="og:description" content="'. esc_html( $social_description ) .'">' . "\n";
+    echo '<meta property="og:title" content="' . esc_html( $social_title ) .'">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url( site_url() ) .'">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( get_socialimage() ) .'">' . "\n";
+    echo '<meta property="og:description" content="' . esc_html( $social_description ) .'">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="'. esc_html( $social_title ) .'">' . "\n";
-    echo '<meta name="twitter:description" content="'. esc_html( $social_description ) .'">' . "\n";
-    echo '<meta name="twitter:image:src" content="'. esc_url( get_socialimage( 'twitter-index' ) ).'">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_html( $social_title ) .'">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_html( $social_description ) .'">' . "\n";
+    echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter-index' ) ) .'">' . "\n";
 
-    echo '<meta name="description" content="'. esc_html( $social_description ) .'">' . "\n";
+    echo '<meta name="description" content="' . esc_html( $social_description ) . '">' . "\n";
 
   }
   echo '<!-- end social meta -->' . "\n";
@@ -339,8 +339,8 @@ function ocadu_prefetch() {
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
-    echo '<link rel="prefetch" href="'.esc_url( $the_url ).'">' . "\n";
-    echo '<link rel="prerender" href="'.esc_url( $the_url ).'">' . "\n";
+    echo '<link rel="prefetch" href="' . esc_url( $the_url ) . '">' . "\n";
+    echo '<link rel="prerender" href="' . esc_url( $the_url ) . '">' . "\n";
   }
 }
 
@@ -356,7 +356,7 @@ add_action( 'wp_head', 'ocadu_prefetch' );
  */
 function ocadu_gallery_filter( $attr ) {
   global $post;
-  $attr['alt'] = 'Illustration by '. get_the_title() .'';
+  $attr['alt'] = 'Illustration by ' . get_the_title() . '';
   if ( is_home() || is_archive() ) {
     $attr['title'] = get_the_title();
   } else {
@@ -384,7 +384,7 @@ function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   $image_srcset = wp_get_attachment_image_srcset( $id );
   $image_sizes = wp_get_attachment_image_sizes( $id, 'full' );
   if ( ! $permalink ) {
-    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="'. $image_srcset .'" data-sizes="'. $image_sizes .'" href', $markup );
+    $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="' . $image_srcset . '" data-sizes="' . $image_sizes . '" href', $markup );
   }
   return $markup;
 }
