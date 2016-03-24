@@ -10,6 +10,7 @@ body {
   font: 87.5% / 1.5 $sans-serif;
   color: $site-font-color;
   background: $site-background;
+  @include font-smoothing(on);
 }
 
 ::selection {
