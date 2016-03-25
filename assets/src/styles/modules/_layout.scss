@@ -6,6 +6,7 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
+
   .gallery-item {
     width: 50%;
   }
@@ -29,7 +30,8 @@
       margin-top: 0;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
       font-size: 1em;
       line-height: 1em;
     }
@@ -41,6 +43,7 @@
 
   .illustrator-meta-description {
     margin-bottom: 2em;
+
     p {
       margin-left: 0.5em;
     }
@@ -59,18 +62,23 @@
   align-self: flex-end;
   display: flex;
   flex-grow: 1;
+
   a {
     border-image: none;
     border-bottom: 4px solid $accent;
     display: block;
     padding: 10px;
   }
-  .nav-previous, .nav-next {
+
+  .nav-previous,
+  .nav-next {
     flex-grow: 1;
   }
+
   .nav-next {
     text-align: right;
   }
+
   .section-indicator {
     white-space: nowrap;
   }

@@ -1,3 +1,22 @@
+# This is the lint file for .scss files. It uses https://github.com/brigade/scss-lint
+# to search through .scss files and point out errors.
+# You can view these errors in your editor. To read about all the linters, visit
+# https://github.com/brigade/scss-lint/blob/fe04ca9de2d1cf1b28122fb3add7116bef995edd/lib/scss_lint/linter/README.md
+#
+# These settings are always up for debate, if you would like to change a setting,
+# feel free to make a pr and cc @github/css. Change is always good :)
+
+scss_files: "assets/src/styles/**/*.scss"
+
+plugin_directories:
+
+# List of gem names to load custom linters from (make sure they are already
+# installed)
+plugin_gems: []
+
+# Default severity of all linters.
+severity: error
+
 linters:
   BangFormat:
     enabled: true
@@ -9,7 +28,10 @@ linters:
 
   BorderZero:
     enabled: true
-    convention: zero # or `none`
+    convention: zero
+
+  ChainedClasses:
+    enabled: false
 
   ColorKeyword:
     enabled: true
@@ -18,7 +40,9 @@ linters:
     enabled: false
 
   Comment:
-    enabled: false
+    enabled: true
+    allowed: ^[\/*!]
+    style: silent
 
   DebugStatement:
     enabled: true
@@ -26,12 +50,15 @@ linters:
   DeclarationOrder:
     enabled: false
 
+  DisableLinterReason:
+    enabled: true
+
   DuplicateProperty:
     enabled: true
 
   ElsePlacement:
     enabled: true
-    style: same_line # or 'new_line'
+    style: same_line
 
   EmptyLineBetweenBlocks:
     enabled: true
@@ -40,24 +67,26 @@ linters:
   EmptyRule:
     enabled: false
 
+  ExtendDirective:
+    enabled: true
+
   FinalNewline:
     enabled: true
     present: true
 
   HexLength:
     enabled: true
-    style: short # or 'long'
+    style: short
 
   HexNotation:
     enabled: true
-    style: lowercase # or 'uppercase'
+    style: lowercase
 
   HexValidation:
     enabled: true
 
   IdSelector:
-    enabled: false
-    severity: warning
+    enabled: true
 
   ImportantRule:
     enabled: false
@@ -70,7 +99,7 @@ linters:
   Indentation:
     enabled: true
     allow_non_nested_indentation: false
-    character: space # or 'tab'
+    character: space
     width: 2
 
   LeadingZero:
@@ -83,10 +112,12 @@ linters:
 
   NameFormat:
     enabled: false
+    allow_leading_underscore: false
+    convention: hyphenated_lowercase
 
   NestingDepth:
     enabled: true
-    max_depth: 5
+    max_depth: 3
 
   PlaceholderInExtend:
     enabled: false
@@ -97,7 +128,6 @@ linters:
   PropertySortOrder:
     enabled: true
     ignore_unspecified: true
-    severity: warning
     order:
       - position
       - top
@@ -272,29 +302,37 @@ linters:
   PropertySpelling:
     enabled: true
     extra_properties: []
+    disabled_properties: []
 
   PropertyUnits:
     enabled: false
-    global: ['em', 'rem', '%'] # Allow relative units globally
-    properties:
-      border: ['px'] # Only pixels
-      line-height: [] # No units allowed
-      margin: ['em', 'rem']
+    global: [
+      'ch', 'em', 'ex', 'rem',                 # Font-relative lengths
+      'cm', 'in', 'mm', 'pc', 'pt', 'px', 'q', # Absolute lengths
+      'vh', 'vw', 'vmin', 'vmax',              # Viewport-percentage lengths
+      'deg', 'grad', 'rad', 'turn',            # Angle
+      'ms', 's',                               # Duration
+      'Hz', 'kHz',                             # Frequency
+      'dpi', 'dpcm', 'dppx',                   # Resolution
+      '%']                                     # Other
+    properties: {}
+
+  PseudoElement:
+    enabled: true
 
   QualifyingElement:
-    enabled: false
+    enabled: true
     allow_element_with_attribute: false
     allow_element_with_class: false
     allow_element_with_id: false
-    severity: warning
 
   SelectorDepth:
     enabled: true
-    max_depth: 4
+    max_depth: 3
 
   SelectorFormat:
     enabled: true
-    convention: ^((?!js\-))[a-z1-2\-\_]+
+    convention: hyphenated_lowercase
 
   Shorthand:
     enabled: true
@@ -311,14 +349,14 @@ linters:
 
   SpaceAfterPropertyColon:
     enabled: true
-    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+    style: one_space
 
   SpaceAfterPropertyName:
     enabled: true
 
   SpaceBeforeBrace:
     enabled: true
-    style: space # or 'new_line'
+    style: space
     allow_single_line_padding: true
 
   SpaceBetweenParens:
@@ -330,6 +368,12 @@ linters:
     style: double_quotes
 
   TrailingSemicolon:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+
+  TransitionAll:
     enabled: true
 
   TrailingZero:
