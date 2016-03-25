@@ -40,7 +40,7 @@ gulp.task('lint', lint('assets/src/js/*.js'));
 
 gulp.task('scripts', ['lint'], () => {
   return browserify('assets/src/js/app.js')
-    .transform(babelify)
+    .transform(babelify, { presets: ['es2015'] })
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
