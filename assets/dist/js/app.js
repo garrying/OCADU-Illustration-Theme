@@ -1,4 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
 var $ = require('jquery');
 window.jQuery = window.$ = $;
 require('typeahead.js');
@@ -13,11 +15,10 @@ var Bloodhound = require('bloodhound');
   'use strict';
 
   var app = {
-    init: function () {
+    init: function init() {
       this._fastClick();
       this._ocadPanelSelectButtons();
       this._ocadHomeLoader();
-      this._ocadPanelsClose();
       this._ocadGalleryNav();
       this._ocadUIbinding();
     },
@@ -30,14 +31,15 @@ var Bloodhound = require('bloodhound');
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       searchField: $('.search-field'),
-      imageModal: $('#image-modal')
+      imageModal: $('#image-modal'),
+      imageIndex: 0
     },
 
-    _fastClick: function () {
+    _fastClick: function _fastClick() {
       FastClick(document.body);
     },
 
-    _ocadLoader: function (e) {
+    _ocadLoader: function _ocadLoader(e) {
       if (e === false) {
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
@@ -45,7 +47,7 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadMasonry: function (selector) {
+    _ocadMasonry: function _ocadMasonry(selector) {
       var container = document.querySelector(selector);
       var msnry = new Masonry(container, {
         itemSelector: '.gallery-item',
@@ -56,7 +58,7 @@ var Bloodhound = require('bloodhound');
       msnry.layout();
     },
 
-    _ocadSearch: function () {
+    _ocadSearch: function _ocadSearch() {
       var illustratorSearch = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -72,7 +74,7 @@ var Bloodhound = require('bloodhound');
         hint: false
       }, {
         name: 'illustratorName',
-        displayKey: function (item) {
+        displayKey: function displayKey(item) {
           return item.title.rendered;
         },
         source: illustratorSearch,
@@ -82,11 +84,11 @@ var Bloodhound = require('bloodhound');
       });
     },
 
-    _ocadPanelSelectButtons: function () {
+    _ocadPanelSelectButtons: function _ocadPanelSelectButtons() {
       app._ocadSearch();
     },
 
-    _ocadShuffle: function (elems) {
+    _ocadShuffle: function _ocadShuffle(elems) {
 
       var allElems = function () {
         var ret = [],
@@ -116,7 +118,7 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadHomeLoader: function () {
+    _ocadHomeLoader: function _ocadHomeLoader() {
       if ($('body').hasClass('home')) {
         app._ocadShuffle(document.querySelectorAll('.gallery-item'));
       }
@@ -127,7 +129,7 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadPanelsClose: function () {
+    _ocadPanelsClose: function _ocadPanelsClose() {
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       $(app.settings.masonryContainer).velocity({ scale: 1, blur: 0, opacity: 1 }, 'fast');
       if ($('.panel').hasClass('visible')) {
@@ -136,7 +138,7 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadPanelsCloseSelective: function (event) {
+    _ocadPanelsCloseSelective: function _ocadPanelsCloseSelective(event) {
 
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut', { duration: 180 });
@@ -149,11 +151,10 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadGalleryNav: function () {
+    _ocadGalleryNav: function _ocadGalleryNav() {
 
       var galleryImages = [];
       var nextImage;
-      var imageIndex = 0;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
@@ -178,7 +179,7 @@ var Bloodhound = require('bloodhound');
       * Creates initial image element
       **/
 
-      var imageModalSetter = function (imageSource) {
+      var imageModalSetter = function imageModalSetter(imageSource) {
         var image = new Image();
         image.alt = 'Full illustration';
         image.id = 'full-image';
@@ -196,7 +197,7 @@ var Bloodhound = require('bloodhound');
         event.preventDefault();
         app._ocadLoader(true);
         var itemImage = $(this);
-        imageIndex = itemImage.data('index');
+        app.settings.imageIndex = itemImage.data('index');
 
         $('.image-modal-container').html(imageModalSetter(itemImage));
 
@@ -204,11 +205,11 @@ var Bloodhound = require('bloodhound');
           app._ocadLoader(false);
           app.settings.imageModal.velocity('fadeIn', {
             duration: 180,
-            begin: function () {
+            begin: function begin() {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
             },
-            complete: function () {
+            complete: function complete() {
               $('#full-image').velocity({ opacity: 1 }, 'fast');
             }
           });
@@ -223,20 +224,20 @@ var Bloodhound = require('bloodhound');
         app._ocadLoader(true);
 
         if (direction === 'reverse') {
-          --imageIndex;
+          --app.settings.imageIndex;
         } else {
-          ++imageIndex;
+          ++app.settings.imageIndex;
         }
 
-        if (imageIndex === galleryImages.length) {
-          imageIndex = 0;
+        if (app.settings.imageIndex === galleryImages.length) {
+          app.settings.imageIndex = 0;
         }
 
-        if (imageIndex === -1) {
-          imageIndex = galleryImages.length - 1;
+        if (app.settings.imageIndex === -1) {
+          app.settings.imageIndex = galleryImages.length - 1;
         }
 
-        nextImage = galleryImages[imageIndex];
+        nextImage = galleryImages[app.settings.imageIndex];
 
         $.Velocity.animate($('#full-image'), 'fadeOut', 'fast').then(function () {
           var image = document.getElementById('full-image');
@@ -275,7 +276,7 @@ var Bloodhound = require('bloodhound');
       });
     },
 
-    _ocadUIbinding: function () {
+    _ocadUIbinding: function _ocadUIbinding() {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective).keydown(function (e) {
 

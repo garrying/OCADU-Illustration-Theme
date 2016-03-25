@@ -16,7 +16,6 @@ var Bloodhound = require('bloodhound');
       this._fastClick();
       this._ocadPanelSelectButtons();
       this._ocadHomeLoader();
-      this._ocadPanelsClose();
       this._ocadGalleryNav();
       this._ocadUIbinding();
     },
@@ -29,7 +28,8 @@ var Bloodhound = require('bloodhound');
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       searchField: $('.search-field'),
-      imageModal: $('#image-modal')
+      imageModal: $('#image-modal'),
+      imageIndex: 0
     },
 
     _fastClick: function () {
@@ -150,7 +150,6 @@ var Bloodhound = require('bloodhound');
 
       var galleryImages = [];
       var nextImage;
-      var imageIndex = 0;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
@@ -194,7 +193,7 @@ var Bloodhound = require('bloodhound');
         event.preventDefault();
         app._ocadLoader(true);
         var itemImage = $(this);
-        imageIndex = itemImage.data('index');
+        app.settings.imageIndex = itemImage.data('index');
 
         $('.image-modal-container').html(imageModalSetter(itemImage));
 
@@ -222,20 +221,20 @@ var Bloodhound = require('bloodhound');
         app._ocadLoader(true);
 
         if (direction === 'reverse') {
-          --imageIndex;
+          --app.settings.imageIndex;
         } else {
-          ++imageIndex;
+          ++app.settings.imageIndex;
         }
 
-        if (imageIndex === galleryImages.length) {
-          imageIndex = 0;
+        if (app.settings.imageIndex === galleryImages.length) {
+          app.settings.imageIndex = 0;
         }
 
-        if (imageIndex === -1) {
-          imageIndex = galleryImages.length - 1;
+        if (app.settings.imageIndex === -1) {
+          app.settings.imageIndex = galleryImages.length - 1;
         }
 
-        nextImage = galleryImages[imageIndex];
+        nextImage = galleryImages[app.settings.imageIndex];
 
         $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
         .then( function() {
