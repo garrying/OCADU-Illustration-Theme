@@ -202,6 +202,15 @@ var Bloodhound = require('bloodhound');
       };
 
       /**
+      * Updates miniview to corresponding element
+      **/
+
+      var miniViewUpdate = function miniViewUpdate(item) {
+        $('.mini-item-inner').removeClass('active');
+        $('.mini-item-inner').eq(item).addClass('active');
+      };
+
+      /**
       * Masonry item click
       **/
 
@@ -226,6 +235,8 @@ var Bloodhound = require('bloodhound');
             }
           });
         });
+
+        miniViewUpdate(app.settings.imageIndex);
       });
 
       /**
@@ -262,6 +273,8 @@ var Bloodhound = require('bloodhound');
             $('#full-image').velocity('fadeIn', 'fast');
           };
         });
+
+        miniViewUpdate(app.settings.imageIndex);
       }
 
       /**
