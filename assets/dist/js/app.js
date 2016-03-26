@@ -6,6 +6,7 @@ window.jQuery = window.$ = $;
 require('typeahead.js');
 require('velocity-animate');
 require('imagesloaded');
+require('./libs/jquery-text-mix');
 var Masonry = require('masonry-layout');
 var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
@@ -21,6 +22,7 @@ var Bloodhound = require('bloodhound');
       this._ocadHomeLoader();
       this._ocadGalleryNav();
       this._ocadUIbinding();
+      this._ocadTextScramblerMoments();
     },
 
     settings: {
@@ -37,6 +39,22 @@ var Bloodhound = require('bloodhound');
 
     _fastClick: function _fastClick() {
       FastClick(document.body);
+    },
+
+    _ocadTextScrambler: function _ocadTextScrambler(ele, originText, newText, duration) {
+      var t = $(ele);
+      t.hover(function () {
+        t.textMix(newText, duration, 'linear');
+      }, function () {
+        t.textMix(originText, duration, 'linear');
+      });
+    },
+
+    _ocadTextScramblerMoments: function _ocadTextScramblerMoments() {
+      var thesis = $('.thesis-title');
+      var illustrator = $('.illustrator-meta-name');
+      app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
+      app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
     },
 
     _ocadLoader: function _ocadLoader(e) {
@@ -335,7 +353,620 @@ var Bloodhound = require('bloodhound');
   app.init();
 })();
 
-},{"bloodhound":12,"fastclick":4,"imagesloaded":7,"jquery":8,"masonry-layout":9,"typeahead.js":13,"velocity-animate":14}],2:[function(require,module,exports){
+},{"./libs/jquery-text-mix":2,"bloodhound":15,"fastclick":6,"imagesloaded":9,"jquery":10,"masonry-layout":12,"typeahead.js":16,"velocity-animate":17}],2:[function(require,module,exports){
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+/* text-mix - v0.3.0 - 2015-05-10 */
+// Uses Node, AMD or browser globals to create a module.
+//
+// https://github.com/umdjs/umd/blob/master/returnExports.js
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['levenshtein'], factory);
+  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like enviroments that support module.exports,
+    // like Node.
+    module.exports = factory(require('levenshtein'));
+  } else {
+    // Browser globals (root is window)
+    root.textMix = factory(root.Levenshtein);
+  }
+})(undefined, function (Levenshtein) {
+  'use strict';
+
+  var utils = {
+    // from jQuery, MIT license
+    isNumeric: function isNumeric(obj) {
+      return !isNaN(parseFloat(obj)) && isFinite(obj);
+    }
+  };
+
+  var debug = function debug() {
+    if (false) console.log.apply(console, arguments);
+  };
+
+  var NOOP = 'noop',
+      SUB = 'sub',
+      INSERT = 'ins',
+      DELETION = 'del';
+
+  // cache creation of Levenshtein matrix
+  var matrixMemory = {},
+      cachedLevenshtein = function cachedLevenshtein(text1, text2) {
+    var mmKey = text1 + ' ' + text2;
+    if (!matrixMemory[mmKey]) {
+      matrixMemory[mmKey] = new Levenshtein(text1, text2);
+    }
+    return matrixMemory[mmKey];
+  };
+
+  // An iteration step through a Levenshtein matrix (reverse backwards)
+  var next = function next(matrix, startX, startY) {
+    // http://stackoverflow.com/questions/5849139/levenshtein-distance-inferring-the-edit-operations-from-the-matrix
+    // assert startY > matrix.length
+    // assert startX > matrix[0].length
+    var val = matrix[startY][startX],
+        nextX = startX,
+        nextY = startY,
+        operation,
+        diag = Infinity,
+        up = Infinity,
+        left = Infinity;
+    if (startY > 0) {
+      up = matrix[startY - 1][startX];
+    }
+    if (startX > 0) {
+      left = matrix[startY][startX - 1];
+    }
+    if (startX > 0 && startY > 0) {
+      diag = matrix[startY - 1][startX - 1];
+    }
+    var min = Math.min(up, left, diag);
+    // console.log('val:', val, 'up:', up, 'diag:', diag, 'left:', left, 'min:', min);
+    if (diag === 0 || diag <= min) {
+      nextX = startX - 1;
+      nextY = startY - 1;
+      if (diag < val) {
+        operation = SUB;
+      } else if (diag === val) {
+        // NOOP sometimes should be SUB
+        operation = NOOP;
+      }
+    } else if (left === 0 || left <= min) {
+      operation = INSERT;
+      nextX = startX - 1;
+    } else {
+      operation = DELETION;
+      nextY = startY - 1;
+    }
+    return [min, operation, nextX, nextY];
+  };
+
+  // Traverse a path through the Levenshtein matrix
+  function traverse(text1, text2, iterations) {
+    var lev = cachedLevenshtein(text1, text2);
+    if (lev.distance === 0) {
+      // text1 == text2
+      return text1;
+    }
+    var matrix = lev.getMatrix(),
+        startY = matrix.length - 1,
+        startX = matrix[0].length - 1,
+        out,
+        ret = text2.split('');
+
+    debug('traverse', text1, text2, iterations);
+    debug(lev.inspect());
+    while (iterations-- && (startX || startY)) {
+      out = next(matrix, startX, startY);
+      debug('.next', 'iterations:', iterations, 'startX:', startX, 'startY:', startY);
+      debug('..out:', out);
+      startX = out[2];
+      startY = out[3];
+      switch (out[1]) {
+        case NOOP:
+          ++iterations;
+        // NOOP sometimes should be SUB
+        /* falls through */
+        case SUB:
+          ret[startY] = text1[startX];
+          break;
+        case INSERT:
+          ret.splice(startY, 0, text1[startX]);
+          break;
+        case DELETION:
+          ret.splice(startX, 1);
+          break;
+      }
+      debug('..ret:', ret.join(''));
+    }
+    return ret.join('');
+  }
+
+  // helper for `stringMix`
+  // @returns {char} The character between text1 and text2 at index idx
+  var _pick = function _pick(text1, text2, idx, amount) {
+    // assert idx < Math.max(text1.length, text2.length)
+    var n_max = Math.max(text1.length, text2.length);
+    if (idx >= text1.length) {
+      return text2[idx];
+    } else if (idx >= text2.length) {
+      return text1[idx];
+    }
+    // left to right:
+    return idx < amount * n_max ? text2[idx] : text1[idx];
+    // random method:
+    // return (Math.random() < amount) ? text2[idx]: text1[idx];
+  };
+
+  function reverse(s) {
+    return s.split('').reverse().join('');
+  }
+
+  // Simple tween between two strings
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Number} amount - The amount to tween, between 0.0 and 1.0 for LTR
+  //                          and 0.0 to -1.0 for RTL
+  function stringMix(text1, text2, amount) {
+    var newLength = text1.length + Math.floor((text2.length - text1.length) * Math.abs(amount)),
+        out = '',
+        i;
+    if (amount < 0) {
+      var rt1 = reverse(text1);
+      var rt2 = reverse(text2);
+      for (i = 0; i < newLength; i++) {
+        out += _pick(rt1, rt2, i, -amount);
+      }
+      return reverse(out);
+    } else {
+      for (i = 0; i < newLength; i++) {
+        out += _pick(text1, text2, i, amount);
+      }
+      return out;
+    }
+  }
+
+  // Tween between two numbers
+  function numberMix(num1, num2, amount) {
+    // FIXME sig digs
+    return Math.round(num1 + (num2 - num1) * amount);
+  }
+
+  // Splits a sentence into words
+  // Demo: http://youtu.be/M7FIvfx5J10
+  var get_words = function get_words(text) {
+    return text.split(' ');
+    // return [text];
+  };
+
+  // Tween text between two values
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Number} amount - The amount to tween, between 0.0 and 1.0
+  // @param {Object} [options] - Any additional options
+  // @param {bool} [options.rtl] - Text is right-to-left
+  var textMix = function textMix(text1, text2, amount, options) {
+    var words1 = get_words(text1),
+        words2 = get_words(text2),
+        n_max = Math.max(words1.length, words2.length),
+        out = [],
+        w1,
+        w2;
+    for (var i = 0; i < n_max; i++) {
+      w1 = words1[i];
+      w2 = words2[i];
+      if (utils.isNumeric(w1) && utils.isNumeric(w2)) {
+        out.push(numberMix(parseFloat(w1), parseFloat(w2), amount));
+      } else if (!w1 || !w1.length || !w2 || !w2.length) {
+        out.push(stringMix(w1 || '', w2 || '', options && options.rtl ? -amount : amount));
+      } else {
+        var d = cachedLevenshtein(w1, w2).distance;
+        if (options && options.rtl) {
+          out.push(traverse(w2, w1, Math.round(amount * d)));
+        } else {
+          out.push(traverse(w1, w2, d - Math.round(amount * d)));
+        }
+      }
+    }
+    return out.join(' ');
+  };
+
+  // Variation of `textMix` to use with `mix`.
+  var _textMix = function _textMix(tweenFuncs, amount) {
+    var out = [],
+        tweenFunc,
+        _amount;
+    for (var i = 0; i < tweenFuncs.length; i++) {
+      tweenFunc = tweenFuncs[i];
+      if (tweenFunc.distance) {
+        // need to convert amount to an iteration count
+        _amount = Math.round(amount * tweenFunc.distance);
+        if (!tweenFunc.rtl) {
+          _amount = tweenFunc.distance - _amount;
+        }
+      } else {
+        _amount = amount;
+      }
+      out.push(tweenFunc.func(tweenFunc.a, tweenFunc.b, _amount));
+    }
+    return out.join(' ');
+  };
+
+  // A version of textMix optimized for use with the same words
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Object} [options] - Any additional options
+  // @param {bool} [options.rtl] - Text is right-to-left
+  // @returns {Function}
+  function mix(text1, text2, options) {
+    var words1 = get_words(text1),
+        words2 = get_words(text2);
+    var n_max = Math.max(words1.length, words2.length);
+    var tweenFuncs = [];
+    var w1, w2;
+    for (var i = 0; i < n_max; i++) {
+      w1 = words1[i];
+      w2 = words2[i];
+      if (utils.isNumeric(w1) && utils.isNumeric(w2)) {
+        tweenFuncs.push({ func: numberMix, a: parseFloat(w1), b: parseFloat(w2) });
+      } else if (!w1 || !w1.length || !w2 || !w2.length) {
+        tweenFuncs.push({ func: stringMix, a: w1 || '', b: w2 || '' });
+      } else {
+        var d = cachedLevenshtein(w1, w2).distance;
+        if (options && options.rtl) {
+          tweenFuncs.push({ func: traverse, a: w2, b: w1, distance: d, rtl: true });
+        } else {
+          tweenFuncs.push({ func: traverse, a: w1, b: w2, distance: d });
+        }
+      }
+    }
+    return function (amount) {
+      return _textMix(tweenFuncs, amount);
+    };
+  }
+
+  return {
+    traverse: traverse,
+    stringMix: stringMix,
+    numberMix: numberMix,
+    textMix: textMix,
+    mix: mix
+  };
+});
+
+// Uses CommonJS, AMD or browser globals to create a jQuery plugin.
+//
+// https://github.com/umdjs/umd/blob/master/jqueryPluginCommonjs.js
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery', 'text-mix'], factory);
+  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    // Node/CommonJS
+    factory(require('jquery'), require('./text-mix'));
+  } else {
+    // Browser globals
+    factory(jQuery, textMix);
+  }
+})(function ($, textMix) {
+
+  $.fn.textMix = function (newText, duration, easing, complete) {
+    // Built on http://api.jquery.com/animate/
+    var self = this,
+        oldText = this.text(),
+        mix = textMix.mix(oldText, newText),
+        options = {
+      easing: 'linear',
+      step: function step(now) {
+        self.text(mix(now));
+      }
+    };
+    if (duration) {
+      options.duration = duration;
+    }
+    if (easing) {
+      options.easing = easing;
+    }
+    if (complete) {
+      options.complete = complete;
+    }
+
+    return $({ foo: 0 }).animate({ foo: 1 }, options);
+  };
+});
+
+},{"./text-mix":3,"jquery":10,"levenshtein":11}],3:[function(require,module,exports){
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+/* text-mix - v0.3.0 - 2015-05-10 */
+// Uses Node, AMD or browser globals to create a module.
+//
+// https://github.com/umdjs/umd/blob/master/returnExports.js
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['levenshtein'], factory);
+  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like enviroments that support module.exports,
+    // like Node.
+    module.exports = factory(require('levenshtein'));
+  } else {
+    // Browser globals (root is window)
+    root.textMix = factory(root.Levenshtein);
+  }
+})(undefined, function (Levenshtein) {
+  'use strict';
+
+  var utils = {
+    // from jQuery, MIT license
+    isNumeric: function isNumeric(obj) {
+      return !isNaN(parseFloat(obj)) && isFinite(obj);
+    }
+  };
+
+  var debug = function debug() {
+    if (false) console.log.apply(console, arguments);
+  };
+
+  var NOOP = 'noop',
+      SUB = 'sub',
+      INSERT = 'ins',
+      DELETION = 'del';
+
+  // cache creation of Levenshtein matrix
+  var matrixMemory = {},
+      cachedLevenshtein = function cachedLevenshtein(text1, text2) {
+    var mmKey = text1 + ' ' + text2;
+    if (!matrixMemory[mmKey]) {
+      matrixMemory[mmKey] = new Levenshtein(text1, text2);
+    }
+    return matrixMemory[mmKey];
+  };
+
+  // An iteration step through a Levenshtein matrix (reverse backwards)
+  var next = function next(matrix, startX, startY) {
+    // http://stackoverflow.com/questions/5849139/levenshtein-distance-inferring-the-edit-operations-from-the-matrix
+    // assert startY > matrix.length
+    // assert startX > matrix[0].length
+    var val = matrix[startY][startX],
+        nextX = startX,
+        nextY = startY,
+        operation,
+        diag = Infinity,
+        up = Infinity,
+        left = Infinity;
+    if (startY > 0) {
+      up = matrix[startY - 1][startX];
+    }
+    if (startX > 0) {
+      left = matrix[startY][startX - 1];
+    }
+    if (startX > 0 && startY > 0) {
+      diag = matrix[startY - 1][startX - 1];
+    }
+    var min = Math.min(up, left, diag);
+    // console.log('val:', val, 'up:', up, 'diag:', diag, 'left:', left, 'min:', min);
+    if (diag === 0 || diag <= min) {
+      nextX = startX - 1;
+      nextY = startY - 1;
+      if (diag < val) {
+        operation = SUB;
+      } else if (diag === val) {
+        // NOOP sometimes should be SUB
+        operation = NOOP;
+      }
+    } else if (left === 0 || left <= min) {
+      operation = INSERT;
+      nextX = startX - 1;
+    } else {
+      operation = DELETION;
+      nextY = startY - 1;
+    }
+    return [min, operation, nextX, nextY];
+  };
+
+  // Traverse a path through the Levenshtein matrix
+  function traverse(text1, text2, iterations) {
+    var lev = cachedLevenshtein(text1, text2);
+    if (lev.distance === 0) {
+      // text1 == text2
+      return text1;
+    }
+    var matrix = lev.getMatrix(),
+        startY = matrix.length - 1,
+        startX = matrix[0].length - 1,
+        out,
+        ret = text2.split('');
+
+    debug('traverse', text1, text2, iterations);
+    debug(lev.inspect());
+    while (iterations-- && (startX || startY)) {
+      out = next(matrix, startX, startY);
+      debug('.next', 'iterations:', iterations, 'startX:', startX, 'startY:', startY);
+      debug('..out:', out);
+      startX = out[2];
+      startY = out[3];
+      switch (out[1]) {
+        case NOOP:
+          ++iterations;
+        // NOOP sometimes should be SUB
+        /* falls through */
+        case SUB:
+          ret[startY] = text1[startX];
+          break;
+        case INSERT:
+          ret.splice(startY, 0, text1[startX]);
+          break;
+        case DELETION:
+          ret.splice(startX, 1);
+          break;
+      }
+      debug('..ret:', ret.join(''));
+    }
+    return ret.join('');
+  }
+
+  // helper for `stringMix`
+  // @returns {char} The character between text1 and text2 at index idx
+  var _pick = function _pick(text1, text2, idx, amount) {
+    // assert idx < Math.max(text1.length, text2.length)
+    var n_max = Math.max(text1.length, text2.length);
+    if (idx >= text1.length) {
+      return text2[idx];
+    } else if (idx >= text2.length) {
+      return text1[idx];
+    }
+    // left to right:
+    return idx < amount * n_max ? text2[idx] : text1[idx];
+    // random method:
+    // return (Math.random() < amount) ? text2[idx]: text1[idx];
+  };
+
+  function reverse(s) {
+    return s.split('').reverse().join('');
+  }
+
+  // Simple tween between two strings
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Number} amount - The amount to tween, between 0.0 and 1.0 for LTR
+  //                          and 0.0 to -1.0 for RTL
+  function stringMix(text1, text2, amount) {
+    var newLength = text1.length + Math.floor((text2.length - text1.length) * Math.abs(amount)),
+        out = '',
+        i;
+    if (amount < 0) {
+      var rt1 = reverse(text1);
+      var rt2 = reverse(text2);
+      for (i = 0; i < newLength; i++) {
+        out += _pick(rt1, rt2, i, -amount);
+      }
+      return reverse(out);
+    } else {
+      for (i = 0; i < newLength; i++) {
+        out += _pick(text1, text2, i, amount);
+      }
+      return out;
+    }
+  }
+
+  // Tween between two numbers
+  function numberMix(num1, num2, amount) {
+    // FIXME sig digs
+    return Math.round(num1 + (num2 - num1) * amount);
+  }
+
+  // Splits a sentence into words
+  // Demo: http://youtu.be/M7FIvfx5J10
+  var get_words = function get_words(text) {
+    return text.split(' ');
+    // return [text];
+  };
+
+  // Tween text between two values
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Number} amount - The amount to tween, between 0.0 and 1.0
+  // @param {Object} [options] - Any additional options
+  // @param {bool} [options.rtl] - Text is right-to-left
+  var textMix = function textMix(text1, text2, amount, options) {
+    var words1 = get_words(text1),
+        words2 = get_words(text2),
+        n_max = Math.max(words1.length, words2.length),
+        out = [],
+        w1,
+        w2;
+    for (var i = 0; i < n_max; i++) {
+      w1 = words1[i];
+      w2 = words2[i];
+      if (utils.isNumeric(w1) && utils.isNumeric(w2)) {
+        out.push(numberMix(parseFloat(w1), parseFloat(w2), amount));
+      } else if (!w1 || !w1.length || !w2 || !w2.length) {
+        out.push(stringMix(w1 || '', w2 || '', options && options.rtl ? -amount : amount));
+      } else {
+        var d = cachedLevenshtein(w1, w2).distance;
+        if (options && options.rtl) {
+          out.push(traverse(w2, w1, Math.round(amount * d)));
+        } else {
+          out.push(traverse(w1, w2, d - Math.round(amount * d)));
+        }
+      }
+    }
+    return out.join(' ');
+  };
+
+  // Variation of `textMix` to use with `mix`.
+  var _textMix = function _textMix(tweenFuncs, amount) {
+    var out = [],
+        tweenFunc,
+        _amount;
+    for (var i = 0; i < tweenFuncs.length; i++) {
+      tweenFunc = tweenFuncs[i];
+      if (tweenFunc.distance) {
+        // need to convert amount to an iteration count
+        _amount = Math.round(amount * tweenFunc.distance);
+        if (!tweenFunc.rtl) {
+          _amount = tweenFunc.distance - _amount;
+        }
+      } else {
+        _amount = amount;
+      }
+      out.push(tweenFunc.func(tweenFunc.a, tweenFunc.b, _amount));
+    }
+    return out.join(' ');
+  };
+
+  // A version of textMix optimized for use with the same words
+  // @param {String} text1 - The starting text
+  // @param {String} text2 - The ending text
+  // @param {Object} [options] - Any additional options
+  // @param {bool} [options.rtl] - Text is right-to-left
+  // @returns {Function}
+  function mix(text1, text2, options) {
+    var words1 = get_words(text1),
+        words2 = get_words(text2);
+    var n_max = Math.max(words1.length, words2.length);
+    var tweenFuncs = [];
+    var w1, w2;
+    for (var i = 0; i < n_max; i++) {
+      w1 = words1[i];
+      w2 = words2[i];
+      if (utils.isNumeric(w1) && utils.isNumeric(w2)) {
+        tweenFuncs.push({ func: numberMix, a: parseFloat(w1), b: parseFloat(w2) });
+      } else if (!w1 || !w1.length || !w2 || !w2.length) {
+        tweenFuncs.push({ func: stringMix, a: w1 || '', b: w2 || '' });
+      } else {
+        var d = cachedLevenshtein(w1, w2).distance;
+        if (options && options.rtl) {
+          tweenFuncs.push({ func: traverse, a: w2, b: w1, distance: d, rtl: true });
+        } else {
+          tweenFuncs.push({ func: traverse, a: w1, b: w2, distance: d });
+        }
+      }
+    }
+    return function (amount) {
+      return _textMix(tweenFuncs, amount);
+    };
+  }
+
+  return {
+    traverse: traverse,
+    stringMix: stringMix,
+    numberMix: numberMix,
+    textMix: textMix,
+    mix: mix
+  };
+});
+
+},{"levenshtein":11}],4:[function(require,module,exports){
 /**
  * matchesSelector v2.0.1
  * matchesSelector( element, '.selector' )
@@ -390,7 +1021,7 @@ var Bloodhound = require('bloodhound');
 
 }));
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -501,7 +1132,7 @@ return EvEmitter;
 
 }));
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 ;(function () {
 	'use strict';
 
@@ -1344,7 +1975,7 @@ return EvEmitter;
 	}
 }());
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * Fizzy UI utils v2.0.1
  * MIT license
@@ -1581,7 +2212,7 @@ return utils;
 
 }));
 
-},{"desandro-matches-selector":2}],6:[function(require,module,exports){
+},{"desandro-matches-selector":4}],8:[function(require,module,exports){
 /*!
  * getSize v2.0.2
  * measure size of elements
@@ -1792,7 +2423,7 @@ return getSize;
 
 });
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
  * JavaScript is all like "You images are done yet or what?"
@@ -2164,7 +2795,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":3}],8:[function(require,module,exports){
+},{"ev-emitter":5}],10:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -12008,7 +12639,115 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
+(function(root, factory){
+  if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
+    define(function(){
+      return factory(root);
+    });
+  } else if (typeof module == 'object' && module && module.exports) {
+    module.exports = factory(root);
+  } else {
+    root.Levenshtein = factory(root);
+  }
+}(this, function(root){
+
+  function forEach( array, fn ) { var i, length
+    i = -1
+    length = array.length
+    while ( ++i < length )
+      fn( array[ i ], i, array )
+  }
+
+  function map( array, fn ) { var result
+    result = Array( array.length )
+    forEach( array, function ( val, i, array ) {
+      result[i] = fn( val, i, array )
+    })
+    return result
+  }
+
+  function reduce( array, fn, accumulator ) {
+    forEach( array, function( val, i, array ) {
+      accumulator = fn( val, i, array )
+    })
+    return accumulator
+  }
+
+  // Levenshtein distance
+  function Levenshtein( str_m, str_n ) { var previous, current, matrix
+    // Constructor
+    matrix = this._matrix = []
+
+    // Sanity checks
+    if ( str_m == str_n )
+      return this.distance = 0
+    else if ( str_m == '' )
+      return this.distance = str_n.length
+    else if ( str_n == '' )
+      return this.distance = str_m.length
+    else {
+      // Danger Will Robinson
+      previous = [ 0 ]
+      forEach( str_m, function( v, i ) { i++, previous[ i ] = i } )
+
+      matrix[0] = previous
+      forEach( str_n, function( n_val, n_idx ) {
+        current = [ ++n_idx ]
+        forEach( str_m, function( m_val, m_idx ) {
+          m_idx++
+          if ( str_m.charAt( m_idx - 1 ) == str_n.charAt( n_idx - 1 ) )
+            current[ m_idx ] = previous[ m_idx - 1 ]
+          else
+            current[ m_idx ] = Math.min
+              ( previous[ m_idx ]     + 1   // Deletion
+              , current[  m_idx - 1 ] + 1   // Insertion
+              , previous[ m_idx - 1 ] + 1   // Subtraction
+              )
+        })
+        previous = current
+        matrix[ matrix.length ] = previous
+      })
+
+      return this.distance = current[ current.length - 1 ]
+    }
+  }
+
+  Levenshtein.prototype.toString = Levenshtein.prototype.inspect = function inspect ( no_print ) { var matrix, max, buff, sep, rows
+    matrix = this.getMatrix()
+    max = reduce( matrix,function( m, o ) {
+      return Math.max( m, reduce( o, Math.max, 0 ) )
+    }, 0 )
+    buff = Array( ( max + '' ).length ).join( ' ' )
+
+    sep = []
+    while ( sep.length < (matrix[0] && matrix[0].length || 0) )
+      sep[ sep.length ] = Array( buff.length + 1 ).join( '-' )
+    sep = sep.join( '-+' ) + '-'
+
+    rows = map( matrix, function( row ) { var cells
+      cells = map( row, function( cell ) {
+        return ( buff + cell ).slice( - buff.length )
+      })
+      return cells.join( ' |' ) + ' '
+    })
+
+    return rows.join( "\n" + sep + "\n" )
+  }
+
+  Levenshtein.prototype.getMatrix = function () {
+    return this._matrix.slice()
+  }
+
+  Levenshtein.prototype.valueOf = function() {
+    return this.distance
+  }
+
+  return Levenshtein
+
+}));
+
+},{}],12:[function(require,module,exports){
 /*!
  * Masonry v4.0.0
  * Cascading grid layout library
@@ -12215,7 +12954,7 @@ return jQuery;
 
 }));
 
-},{"get-size":6,"outlayer":11}],10:[function(require,module,exports){
+},{"get-size":8,"outlayer":14}],13:[function(require,module,exports){
 /**
  * Outlayer Item
  */
@@ -12757,7 +13496,7 @@ return Item;
 
 }));
 
-},{"ev-emitter":3,"get-size":6}],11:[function(require,module,exports){
+},{"ev-emitter":5,"get-size":8}],14:[function(require,module,exports){
 /*!
  * Outlayer v2.0.1
  * the brains and guts of a layout library
@@ -13656,7 +14395,7 @@ return Outlayer;
 
 }));
 
-},{"./item":10,"ev-emitter":3,"fizzy-ui-utils":5,"get-size":6}],12:[function(require,module,exports){
+},{"./item":13,"ev-emitter":5,"fizzy-ui-utils":7,"get-size":8}],15:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
@@ -14575,7 +15314,7 @@ return Outlayer;
     }();
     return Bloodhound;
 });
-},{"jquery":8}],13:[function(require,module,exports){
+},{"jquery":10}],16:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
@@ -16114,7 +16853,7 @@ return Outlayer;
         }
     })();
 });
-},{"jquery":8}],14:[function(require,module,exports){
+},{"jquery":10}],17:[function(require,module,exports){
 /*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
 
 /*************************

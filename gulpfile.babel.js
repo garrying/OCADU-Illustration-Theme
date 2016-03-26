@@ -31,8 +31,7 @@ function lint(files, options) {
     return gulp.src(files)
       .pipe(reload({stream: true, once: true}))
       .pipe($.eslint(options))
-      .pipe($.eslint.format())
-      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+      .pipe($.eslint.format());
   };
 }
 
@@ -78,6 +77,7 @@ gulp.task('serve', ['styles', 'fonts', 'images', 'scripts'], () => {
   browserSync({
     proxy: 'ocaduillustration.dev',
     notify: false,
+    open: false,
     port: 9000
   });
 

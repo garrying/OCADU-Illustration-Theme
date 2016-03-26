@@ -26,7 +26,7 @@
 <body <?php body_class(); ?> id="content-container">
   <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
 
-  <div class="loader"><h1>Loading...</h1></div>
+  <div class="loader"><h1 class="loader-text">Loading</h1></div>
   <header role="banner">
     <div class="app-head-items">
 

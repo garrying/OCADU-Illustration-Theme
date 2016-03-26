@@ -7,6 +7,7 @@
 .illustrator-gallery-container {
   flex: 1 1 70%;
   background: #f1f1f1;
+  min-height: 100vh;
 
   .gallery {
     margin: 0 1%;
@@ -60,6 +61,8 @@
     h2 {
       font-size: 1em;
       line-height: 1em;
+      padding: 0.67em 0;
+      margin: 0;
     }
 
     .thesis-title {
@@ -92,6 +95,7 @@
   align-self: flex-end;
   display: flex;
   flex-grow: 1;
+  max-width: 100%;
 
   a {
     border-image: none;
@@ -110,10 +114,14 @@
 
   .nav-next {
     text-align: right;
+    a {
+      padding-right: 20px;
+    }
   }
 
   .section-indicator {
     white-space: nowrap;
+    padding-left: 0.5em;
   }
 }
 

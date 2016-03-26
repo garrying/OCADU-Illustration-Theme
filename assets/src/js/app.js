@@ -3,6 +3,7 @@ window.jQuery = window.$ = $;
 require('typeahead.js');
 require('velocity-animate');
 require('imagesloaded');
+require('./libs/jquery-text-mix');
 var Masonry = require('masonry-layout');
 var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
@@ -18,6 +19,7 @@ var Bloodhound = require('bloodhound');
       this._ocadHomeLoader();
       this._ocadGalleryNav();
       this._ocadUIbinding();
+      this._ocadTextScramblerMoments();
     },
 
     settings: {
@@ -34,6 +36,22 @@ var Bloodhound = require('bloodhound');
 
     _fastClick: function () {
       FastClick(document.body);
+    },
+
+    _ocadTextScrambler: function (ele, originText, newText, duration) {
+      var t = $(ele);
+      t.hover(() => {
+        t.textMix(newText, duration, 'linear');
+      }, () => {
+        t.textMix(originText, duration, 'linear');
+      });
+    },
+
+    _ocadTextScramblerMoments: function () {
+      var thesis = $('.thesis-title');
+      var illustrator = $('.illustrator-meta-name');
+      app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
+      app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
     },
 
     _ocadLoader: function (e) {
