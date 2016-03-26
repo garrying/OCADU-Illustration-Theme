@@ -66,7 +66,7 @@
       <ul class="illustrator-nav-single">
         <?php if ( is_singular( 'illustrator' ) ) {
             $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          echo '<a class="section-indicator" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' grid">↵ ';
+          echo '<a class="section-indicator" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' grid">✺ ';
             if ( isset( $term->name ) ) {
               esc_html_e( $term->name );
             };
@@ -84,8 +84,11 @@
   <div class="illustrator-gallery-container">
     <?php echo do_shortcode( '[gallery size="medium" link="file" columns="0"]' ); ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
-      <button class="close-panel" title="Close full view" aria-label="Close full view">Close</button>
-      <div class="image-modal-tip"></div>
+          <div class="miniview-container">
+        <div class="miniview image-modal-miniview">
+        </div>
+      </div>
+      <button class="close-panel hide-text" title="Close full view" aria-label="Close full view">Close</button>
       <div class="image-modal-container"></div>
     </div>
   </div>

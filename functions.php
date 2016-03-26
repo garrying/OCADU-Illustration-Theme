@@ -160,7 +160,7 @@ endif;
  * Remove inline css from gallery shortcode
  */
 function ocadu_gallery_style_override() {
-  return "<div id='pack-content' class='gallery'>";
+  return "<div id='pack-content' class='gallery'><div class='grid-sizer'></div><div class='gutter-sizer'></div><div class='grid-item'></div>";
 }
 
 add_filter( 'gallery_style', 'ocadu_gallery_style_override', 99 );

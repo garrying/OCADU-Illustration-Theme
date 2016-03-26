@@ -16,6 +16,7 @@ $ms-ratio: $golden;
 
 %heading {
   @extend %font-features;
+  color: $black;
   font-family: $sans-serif;
   font-size: ms(1);
   font-weight: normal;

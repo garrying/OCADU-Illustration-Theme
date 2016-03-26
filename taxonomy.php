@@ -16,6 +16,9 @@
 
 <div id="illustrators" class="illustrators-grid">
 
+  <div class="grid-sizer"></div>
+  <div class="gutter-sizer"></div>
+  
   <?php if ( have_posts() ) : ?>
 
     <?php query_posts( $query_string . '&orderby=title&order=ASC' );?>

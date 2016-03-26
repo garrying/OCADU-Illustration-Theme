@@ -52,6 +52,8 @@ var Bloodhound = require('bloodhound');
       var msnry = new Masonry(container, {
         itemSelector: '.gallery-item',
         transitionDuration: '0',
+        columnWidth: '.grid-sizer',
+        gutter: '.gutter-sizer',
         percentPosition: true
       });
 
@@ -169,10 +171,20 @@ var Bloodhound = require('bloodhound');
           var imageSet = {
             url: imageElement.attr('href'),
             srcset: imageElement.data('srcset'),
-            sizes: imageElement.data('sizes')
+            sizes: imageElement.data('sizes'),
+            width: imageElement.find('img').attr('width'),
+            height: imageElement.find('img').attr('height')
           };
           galleryImages.push(imageSet);
         }
+
+        // Miniviewer constructor
+
+        var miniView = document.querySelector('.miniview');
+        var miniViewItem = function miniViewItem(item) {
+          miniView.innerHTML += '<div class="mini-item"><canvas class="mini-item-inner" width="' + item.width + '" height="' + item.height + '"></canvas></div>';
+        };
+        galleryImages.map(miniViewItem);
       }
 
       /**

@@ -27,6 +27,9 @@
     </div>
   </div>
   <div id="illustrators" class="illustrators-grid home-grid">
+    <div class="grid-sizer"></div>
+    <div class="gutter-sizer"></div>
+
     <?php if ( $home_index->have_posts() ) : ?>
 
       <?php /* Start the Loop */ ?>

@@ -6,20 +6,46 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
+  background: #f1f1f1;
 
+  .gallery {
+    margin: 0 1%;
+  }
+
+  .grid-sizer,
   .gallery-item {
-    width: 50%;
+    width: 49.5%;
+    margin-bottom: 1%;
+  }
+
+  .gutter-sizer {
+    width: 1%;
+  }
+}
+
+.illustrators-grid {
+  .grid-sizer, .gallery-item {
+    width: 24.25%;
+    margin-bottom: 1%;
+  }
+  .gutter-sizer {
+    width: 1%;
   }
 }
 
 .illustrator-meta {
   flex: 1 1 30%;
+  font-size: 0.857em;
+  position: relative;
+  box-shadow: 0 2px 0 4px rgba(#000,0.05);
+  z-index: 20;
+
   .illustrator-meta-wrapper {
     position: fixed;
     top: 0;
     left: 40px;
     display: flex;
-    width: calc(30% - 70px);
+    width: calc(30% - 40px);
     height: 100%;
     transition: opacity 180ms ease-in-out;
     flex-flow: row wrap;
@@ -39,6 +65,10 @@
     .thesis-title {
       line-height: 1.4em;
     }
+  }
+
+  .illustrator-meta-wrapper-inner {
+    margin-right: 20px;
   }
 
   .illustrator-meta-description {
@@ -73,6 +103,9 @@
   .nav-previous,
   .nav-next {
     flex-grow: 1;
+    &:empty {
+      display: none;
+    }
   }
 
   .nav-next {
@@ -91,21 +124,46 @@
   bottom: 0;
   left: 30%;
   z-index: 100;
+  background: #0e0e0f;
 
   .image-modal-container {
     display: flex;
     position: absolute;
     align-items: center;
     justify-content: center;
-    top: 10px;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
+    top: 2%;
+    right: 2%;
+    bottom: 2%;
+    left: 2%;
   }
 
   #full-image {
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
+  }
+}
+
+.miniview-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 110;
+}
+
+.miniview {
+  width: 30px;
+  column-count: 2;
+  column-gap: 2px;
+  line-height: 16px;
+  .mini-item {
+    display: inline-block;
+    width: 100%;
+  }
+  .mini-item-inner {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid rgba($white, 0.1);
   }
 }

@@ -31,10 +31,10 @@
     <div class="app-head-items">
 
         <div class="heading-inner">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a><br>
           <button id="year-select-link" data-panel="year-select" class="header-item" title="Select year">
             Year
-          </button>
+          </button><br>
           <button id="search-link" data-panel="search-container" class="header-item" title="Search archive">
             Search
           </button>

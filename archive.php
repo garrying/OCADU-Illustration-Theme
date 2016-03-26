@@ -2,6 +2,9 @@
 
 <div id="illustrators" class="illustrators-grid">
 
+  <div class="grid-sizer"></div>
+  <div class="gutter-sizer"></div>
+
   <?php if ( have_posts() ) : ?>
 
     <?php /* Start the Loop */ ?>
