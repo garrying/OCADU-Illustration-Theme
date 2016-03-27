@@ -31,13 +31,15 @@
     <div class="app-head-items">
 
         <div class="heading-inner">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a><br>
-          <button id="year-select-link" data-panel="year-select" class="header-item" title="Select year">
-            Year
-          </button><br>
-          <button id="search-link" data-panel="search-container" class="header-item" title="Search archive">
-            Search
-          </button>
+          <div class="logo-wrapper">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
+          </div>
+          <div class="header-item-wrapper">
+            <button id="year-select-link" data-panel="year-select" class="header-item" title="Navigate years">Years</button>
+          </div>
+          <div class="header-item-wrapper">
+            <button id="search-link" data-panel="search-container" class="header-item" title="Search archives">Search</button>
+          </div>
         </div>
 
         <?php

@@ -1,5 +1,10 @@
 .logo {
   border-image: none;
+  font-weight: 700;
+}
+
+.logo-wrapper {
+  margin-bottom: 0.5em;
 }
 
 .heading-inner {
@@ -7,5 +12,8 @@
   top: 20px;
   left: 40px;
   z-index: 300;
-  font-size: 0.857em;
+
+  .header-item {
+    padding: 0.25em 0;
+  }
 }

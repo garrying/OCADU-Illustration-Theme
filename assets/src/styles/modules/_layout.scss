@@ -22,13 +22,19 @@
   .gutter-sizer {
     width: 1%;
   }
+
+  .gallery-item {
+    opacity: 0;
+  }
 }
 
 .illustrators-grid {
-  .grid-sizer, .gallery-item {
+  .grid-sizer,
+  .gallery-item {
     width: 24.25%;
     margin-bottom: 1%;
   }
+
   .gutter-sizer {
     width: 1%;
   }
@@ -38,7 +44,7 @@
   flex: 1 1 30%;
   font-size: 0.857em;
   position: relative;
-  box-shadow: 0 2px 0 4px rgba(#000,0.05);
+  box-shadow: 0 2px 0 4px rgba($black, 0.05);
   z-index: 20;
 
   .illustrator-meta-wrapper {
@@ -107,6 +113,7 @@
   .nav-previous,
   .nav-next {
     flex-grow: 1;
+
     &:empty {
       display: none;
     }
@@ -114,14 +121,21 @@
 
   .nav-next {
     text-align: right;
+
     a {
       padding-right: 20px;
     }
   }
 
   .section-indicator {
-    white-space: nowrap;
+    font-weight: 700;
     padding-left: 0.5em;
+    white-space: nowrap;
+
+    .indicator {
+      font-weight: 400;
+      margin-right: 4px;
+    }
   }
 }
 
@@ -143,15 +157,6 @@
     right: 2%;
     bottom: 2%;
     left: 2%;
-  }
-
-  #full-image {
-    user-select: none;
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
-    z-index: 120;
   }
 }
 
@@ -177,7 +182,7 @@
     display: block;
     max-width: 100%;
     height: auto;
-    border: 1px solid rgba($white, 0.05);
+    border: 1px solid rgba($white, 0.1);
     transition: border 500ms ease-in-out;
 
     &.active {

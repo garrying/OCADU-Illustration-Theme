@@ -50,8 +50,12 @@ var Bloodhound = require('bloodhound');
     _ocadTextScramblerMoments: function () {
       var thesis = $('.thesis-title');
       var illustrator = $('.illustrator-meta-name');
+      var yearSelect = $('#year-select-link');
+      var searchSelect = $('#search-link');
       app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
       app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
+      app._ocadTextScrambler(yearSelect, yearSelect.text(), yearSelect.text() + ', spanning 2009 to 2016', 500);
+      app._ocadTextScrambler(searchSelect, searchSelect.text(), searchSelect.text() + ' the archives', 500);
     },
 
     _ocadLoader: function (e) {
@@ -71,9 +75,19 @@ var Bloodhound = require('bloodhound');
         gutter: '.gutter-sizer',
         percentPosition: true
       });
-
       msnry.layout();
+    },
 
+     _ocadCascade: function (selector, delayNum) {
+      var item = document.querySelectorAll(selector);
+      var velocityComplete = function(ele) {
+        $(ele).addClass('loaded');
+      };
+      for (var i = 0, items = item.length; i < items; i++) {
+        $(item[i]).delay(delayNum*i).velocity({ opacity: 1 },{
+          complete: velocityComplete
+        });
+      }
     },
 
     _ocadSearch: function () {
@@ -143,9 +157,14 @@ var Bloodhound = require('bloodhound');
       }
     },
 
+    _ocadPanelsCloseFullImage: function() {
+      app.settings.imageModal.velocity('fadeOut',{duration: 180});
+      $('#full-image').velocity({translateY:'15px'},'fast');
+    },
+
     _ocadPanelsClose: function () {
-      app.settings.imageModal.velocity('fadeOut',{duration: 180 });
-      $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
+      app._ocadPanelsCloseFullImage();
+      $(app.settings.masonryContainer).velocity({opacity:1},'fast');
       if ($('.panel').hasClass('visible')) {
         $('.panel').removeClass('visible').attr('aria-hidden',true).blur();
         $('.year-item').velocity({ opacity: 0, display: 'flex' },'fast').removeClass('loaded');
@@ -153,17 +172,15 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadPanelsCloseSelective: function(event) {
-
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
-        app.settings.imageModal.velocity('fadeOut',{duration:180});
-        $(app.settings.masonryContainer).velocity({scale:1, blur:0, opacity:1},'fast');
+        app._ocadPanelsCloseFullImage();
+        $(app.settings.masonryContainer).velocity({opacity:1},'fast');
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
       }
 
       if (!$(event.target).closest('.panel').length && $('.panel').hasClass('visible')) {
         app._ocadPanelsClose();
       }
-
     },
 
     _ocadGalleryNav: function() {
@@ -176,6 +193,7 @@ var Bloodhound = require('bloodhound');
 
         $(app.settings.masonryContainer).imagesLoaded().done(function() {
           app._ocadMasonry(app.settings.masonryContainer);
+          app._ocadCascade('.gallery-item',100);
         });
 
         for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
@@ -243,6 +261,7 @@ var Bloodhound = require('bloodhound');
             begin: function() {
               $(app.settings.masonryContainer).velocity({opacity:0},'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
+              $('#full-image').velocity({translateY:'0'});
             },
             complete: function() {
               $('#full-image').velocity({opacity:1},'fast');

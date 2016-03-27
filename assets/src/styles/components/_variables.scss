@@ -1,6 +1,6 @@
 // Typography
 
-$sans-serif: 'Neutral Regular', Helvetica, Arial, sans-serif;
+$sans-serif: 'Neutral', Helvetica, Arial, sans-serif;
 $serif: Georgia,Times,Times New Roman,serif;
 
 // Colours
@@ -14,6 +14,10 @@ $accent: #000;
 
 $white: #fff;
 $black: #000;
+
+// Easings
+
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 // Breakpoints
 
