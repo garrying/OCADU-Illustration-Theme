@@ -59,28 +59,32 @@
         ?>
 
         <div class="year-select panel" aria-hidden="true" tabindex="-1">
-          <ul class="year-select-wrapper">
-            <?php foreach ( $grad_year as $year ) {
-              if ( isset( $selected_year ) && $selected_year == $year->name ) {
-                echo "<li><a class='year-item active' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
-              } else {
-                echo "<li><a class='year-item' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+          <div class="panel-inner">
+            <ul class="year-select-wrapper">
+              <?php foreach ( $grad_year as $year ) {
+                if ( isset( $selected_year ) && $selected_year == $year->name ) {
+                  echo "<li><a class='year-item active' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                } else {
+                  echo "<li><a class='year-item' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                }
+                  esc_html_e( $year->name );
+                echo '</a></li>';
               }
-                esc_html_e( $year->name );
-              echo '</a></li>';
-            }
-            ?>
-          </ul>
-          <button class="close-panel" title="Close panel" aria-label="Close search panel">Close</button>
-          <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
+              ?>
+            </ul>
+            <button class="close-panel hide-text" title="Close panel" aria-label="Close search panel">Close</button>
+            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
+          </div>
         </div> <!-- year-select-->
 
         <div class="search-container panel" aria-hidden="true" tabindex="-1">
-          <div class="search-wrapper">
-            <?php get_search_form(); ?>
+          <div class="panel-inner">
+            <div class="search-wrapper">
+              <?php get_search_form(); ?>
+            </div>
+            <button class="close-panel hide-text" title="Close search panel" aria-label="Close search panel">Close</button>
+            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
           </div>
-          <button class="close-panel" title="Close search panel" aria-label="Close search panel">Close</button>
-          <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
         </div><!-- search -->
        
     </div><!-- .app-head-items -->

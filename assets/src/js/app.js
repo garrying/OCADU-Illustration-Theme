@@ -24,6 +24,7 @@ var Bloodhound = require('bloodhound');
 
     settings: {
       contentContainer: '#content',
+      logo: $('.logo'),
       loader: $('.loader'),
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
@@ -56,6 +57,7 @@ var Bloodhound = require('bloodhound');
       app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
       app._ocadTextScrambler(yearSelect, yearSelect.text(), yearSelect.text() + ', spanning 2009 to 2016', 500);
       app._ocadTextScrambler(searchSelect, searchSelect.text(), searchSelect.text() + ' the archives', 500);
+      // app._ocadTextScrambler(logo, logo.text(), logo.text() + ' featuring work from the graduating class of 2016', 500);
     },
 
     _ocadLoader: function (e) {
@@ -116,33 +118,65 @@ var Bloodhound = require('bloodhound');
       });
     },
 
+    _ocadPanelSelect: function (e) {
+
+      var targetPanel = $(e).data('panel');
+
+      if ($(e).hasClass('reverse')) {
+        $(e).removeClass('reverse');
+        app._ocadPanelsClose();
+      } else {
+        $('.panel.visible').removeClass('visible').velocity({translateX:'-100%'},'fast');
+        $('.year-item').velocity({ opacity: 0, translateX:'-20px', display: 'flex' },'fast').removeClass('loaded');
+        $('.header-item').addClass('inactive').removeClass('reverse');
+        app.settings.logo.addClass('invert');
+
+        $(e).addClass('reverse').removeClass('inactive');
+        $('.'+targetPanel).velocity({translateX:['-4%','-100%']},{duration: 200, easing:[0.175, 0.885, 0.32, 1.14]}).addClass('visible').attr('aria-hidden',false).focus();
+        $('.illustrator-meta').velocity({opacity: .2},'fast');
+
+        if (targetPanel === 'year-select') {
+          $('.year-item').each(function(i){
+            var item = $(this);
+            item.delay(100*i).velocity({opacity:1, translateX:['0px','-40px'], transformdisplay:'flex'},{
+              easing:[0.175, 0.885, 0.32, 1.24],
+              complete: function() {
+                item.addClass('loaded');
+              }
+            });
+          });
+        }
+      }
+    },
+
     _ocadPanelSelectButtons: function () {
       app._ocadSearch();
+      $('.header-item').on('click',function(){
+        app._ocadPanelSelect(this);
+      });
     },
 
     _ocadShuffle: function (elems) {
-
       var allElems = (function(){
-      var ret = [], l = elems.length;
-      while (l--) { ret[ret.length] = elems[l]; }
-      return ret;
-        })();
-
-        var shuffled = (function(){
-          var l = allElems.length, ret = [];
-          while (l--) {
-            var random = Math.floor(Math.random() * allElems.length),
-              randEl = allElems[random].cloneNode(true);
-            allElems.splice(random, 1);
-            ret[ret.length] = randEl;
-          }
-          return ret;
-        })(), l = elems.length;
-
+        var ret = [], l = elems.length;
+        while (l--) { ret[ret.length] = elems[l]; }
+        return ret;
+      })();
+      var shuffled = (function(){
+        var l = allElems.length, ret = [];
         while (l--) {
-          elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
-          elems[l].parentNode.removeChild(elems[l]);
+          var random = Math.floor(Math.random() * allElems.length),
+            randEl = allElems[random].cloneNode(true);
+          allElems.splice(random, 1);
+          ret[ret.length] = randEl;
         }
+        return ret;
+      })(), l = elems.length;
+
+      while (l--) {
+        elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
+        elems[l].parentNode.removeChild(elems[l]);
+      }
     },
 
     _ocadHomeLoader: function () {
@@ -163,22 +197,25 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadPanelsClose: function () {
-      app._ocadPanelsCloseFullImage();
+      $('.illustrator-meta').velocity({opacity: 1}, 'fast');
+      $('.header-item').removeClass('reverse inactive');
+      app.settings.imageModal.velocity('fadeOut',{duration: 180 });
+      app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({opacity:1},'fast');
       if ($('.panel').hasClass('visible')) {
-        $('.panel').removeClass('visible').attr('aria-hidden',true).blur();
-        $('.year-item').velocity({ opacity: 0, display: 'flex' },'fast').removeClass('loaded');
+        $('.panel.visible').removeClass('visible').attr('aria-hidden',true).blur().velocity({translateX:'-100%'}, 'fast');
+        $('.year-item').velocity({ opacity: 0, translateX:'-40px', display: 'flex' },'fast').removeClass('loaded');
       }
     },
 
     _ocadPanelsCloseSelective: function(event) {
       if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
-        app._ocadPanelsCloseFullImage();
+        app.settings.imageModal.velocity('fadeOut',{duration:180});
         $(app.settings.masonryContainer).velocity({opacity:1},'fast');
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
       }
 
-      if (!$(event.target).closest('.panel').length && $('.panel').hasClass('visible')) {
+      if (!$(event.target).closest('.panel, .header-item').length && $('.panel').hasClass('visible')) {
         app._ocadPanelsClose();
       }
     },

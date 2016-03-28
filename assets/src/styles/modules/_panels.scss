@@ -1,5 +1,31 @@
 .panel {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(30% - 20px);
+  z-index: 200;
+  outline: 0;
+  transform: translateX(-100%);
+  background: $off-black;
+  box-shadow: 0 2px 0 4px rgba($black, 0.05);
+  color: $white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.panel-inner {
+  padding-left: calc(4% + 40px);
+}
+
+.year-item {
+  display: block;
+  opacity: 0;
+  font-size: ms(2);
+  border: 0;
+  color: $white;
+  transform: translateX(-20px);
 }
 
 .close-panel {
