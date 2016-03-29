@@ -190,3 +190,26 @@
     }
   }
 }
+
+.screen-reader-shortcut {
+  @include font-smoothing(on);
+  position: absolute;
+  top: 0;
+  left: 60px;
+  width: 1px;
+  height: 1px;
+  padding: 10px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  color: $white;
+
+  &:focus {
+    top: 2;
+    z-index: 600;
+    width: auto;
+    height: auto;
+    padding: 0 10px;
+    clip: auto;
+    line-height: 49px;
+  }
+}
