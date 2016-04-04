@@ -118,6 +118,10 @@ var Bloodhound = require('bloodhound');
         limit: 10
       }).on('typeahead:select', function ($e, resultsData) {
         window.location.href = resultsData.link;
+      }).on('typeahead:asyncrequest', function () {
+        $('.search-loader').velocity('stop').velocity('fadeIn', 'fast');
+      }).on('typeahead:asyncreceive', function () {
+        $('.search-loader').velocity('stop').velocity('fadeOut', 'fast');
       });
     },
 

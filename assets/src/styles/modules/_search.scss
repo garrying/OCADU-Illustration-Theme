@@ -5,41 +5,78 @@
 .search-form {
   display: flex;
   margin-top: 10em;
-  .twitter-typeahead {
-    vertical-align: bottom;
+  align-items: center;
+
+  label {
+    position: relative;
+    width: 100%;
   }
+
+  .twitter-typeahead {
+    width: 100%;
+  }
+
   .search-field {
-    font-size: ms(1);
-    padding: 1em;
-    background: rgba($white, 0.02);
-    border: 0;
     width: 100%;
     box-sizing: border-box;
+    padding: 1em 20px;
+    font-size: ms(1);
+    background: transparent;
+    border: 1px solid rgba($white, 0.02);
+    transition: background 300ms ease-in-out;
     @include font-smoothing(on);
 
-    &:focus {
-      outline: 0;
+    &:focus,
+    &:hover {
       background: rgba($white, 0.05);
+      outline: 0;
     }
   }
+
   .search-submit {
     @include font-smoothing(on);
-    line-height: 1em;
-    background: rgba($white, 0.05);;
-    font-size: ms(1);
-    padding: 1em;
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    margin-left: 15px;
+    background: url("../images/search.svg") no-repeat center center;
   }
+
+  .tt-hint {
+    color: rgba($white, 0.05);
+  }
+
   .tt-menu {
-    font-size: ms(1);
     width: 100%;
+    font-size: ms(1);
   }
+
   .tt-suggestion {
     width: 100%;
-    padding: 1em;
+    padding: 1em 20px;
+    cursor: pointer;
     background: rgba($white, 0.02);
     transition: background, 300ms, ease-in-out;
+
     &:hover {
       background: rgba($white, 0.05);
     }
   }
+}
+
+// Search Loader
+
+.search-loader {
+  position: absolute;
+  top: 150%;
+  left: calc(50% - 1em/2);
+  display: none;
+  width: 1em;
+  height: 1em;
+  background: $white;
+  border-radius: 50%;
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
 }

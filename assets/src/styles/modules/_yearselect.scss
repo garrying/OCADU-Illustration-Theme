@@ -1,0 +1,59 @@
+.year-select {
+
+  .panel-inner {
+    height: 100%;
+    padding-top: 150px;
+    padding-bottom: 80px;
+  }
+}
+
+.year-select-wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.year-item {
+  display: block;
+  font-size: ms(2);
+  color: $white;
+  border: 0;
+  opacity: 0;
+  transform: translateX(-20px);
+
+  &.active {
+
+    &:hover::after {
+      animation-name: shake;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    &::after {
+      display: inline-flex;
+      width: 0.8em;
+      height: 0.8em;
+      margin-left: 0.8em;
+      content: "";
+      background: $white;
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+  }
+}
