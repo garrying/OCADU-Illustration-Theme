@@ -214,7 +214,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadPanelsCloseSelective: function(event) {
-      if (!$(event.target).closest('#full-image').length && app.settings.imageModal.is(':visible')) {
+      if (!$(event.target).closest('#full-image, .miniview').length && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut',{duration:180});
         $(app.settings.masonryContainer).velocity({opacity:1},'fast');
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
@@ -242,6 +242,7 @@ var Bloodhound = require('bloodhound');
           $(masonryItemAnchor[i]).data('index',i);
           var imageElement = $(masonryItemAnchor[i]);
           var imageSet = {
+            index: i,
             url: imageElement.attr('href'),
             srcset: imageElement.data('srcset'),
             sizes: imageElement.data('sizes'),
@@ -255,11 +256,31 @@ var Bloodhound = require('bloodhound');
 
         var miniView = document.querySelector('.miniview');
         var miniViewItem = function(item){
-          miniView.innerHTML += '<div class="mini-item"><canvas class="mini-item-inner" width="'+ item.width +'" height="'+ item.height +'"></canvas></div>';
+          miniView.innerHTML += '<div class="mini-item" data-index="'+ item.index +'"><canvas class="mini-item-inner" width="'+ item.width +'" height="'+ item.height +'"></canvas></div>';
         }
         galleryImages.map(miniViewItem);
 
       }
+
+      /**
+      * Updates miniview to corresponding element
+      **/
+
+      var miniViewUpdate = function(item) {
+        $('.mini-item-inner').removeClass('active');
+        $('.mini-item-inner').eq(item).addClass('active');
+      };
+
+      /**
+      * Click event for miniview navigation
+      **/
+
+      $('.miniview').on('click','.mini-item', function(){
+        var selectedImage = galleryImages[$(this).data('index')];
+        app.settings.imageIndex = $(this).data('index');
+        miniViewUpdate(app.settings.imageIndex);
+        modalImageChanger(selectedImage);
+      });
 
       /**
       * Creates initial image element
@@ -273,15 +294,6 @@ var Bloodhound = require('bloodhound');
         image.srcset = imageSource.data('srcset');
         image.sizes = imageSource.data('sizes');
         return image;
-      };
-
-      /**
-      * Updates miniview to corresponding element
-      **/
-
-      var miniViewUpdate = function(item) {
-        $('.mini-item-inner').removeClass('active');
-        $('.mini-item-inner').eq(item).addClass('active');
       };
 
       /**
@@ -316,6 +328,25 @@ var Bloodhound = require('bloodhound');
       });
 
       /**
+      * Modal image changer
+      **/
+
+      function modalImageChanger (imageItem) {
+        $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
+        .then( function() {
+          var image = document.getElementById('full-image');
+          image.src = imageItem.url;
+          image.srcset = imageItem.srcset;
+          image.sizes = imageItem.sizes;
+
+          image.onload = function() {
+            app._ocadLoader(false);
+            $('#full-image').velocity('fadeIn','fast');
+          };
+        });
+      }
+
+      /**
       * Handles progressing through the gallery
       **/
 
@@ -338,19 +369,7 @@ var Bloodhound = require('bloodhound');
 
         nextImage = galleryImages[app.settings.imageIndex];
 
-        $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
-        .then( function() {
-          var image = document.getElementById('full-image');
-          image.src = nextImage.url;
-          image.srcset = nextImage.srcset;
-          image.sizes = nextImage.sizes;
-
-          image.onload = function() {
-            app._ocadLoader(false);
-            $('#full-image').velocity('fadeIn','fast');
-          };
-        });
-
+        modalImageChanger(nextImage);
         miniViewUpdate(app.settings.imageIndex);
 
       }
