@@ -133,6 +133,8 @@ var Bloodhound = require('bloodhound');
       } else {
         $('.panel.visible').removeClass('visible').velocity({translateX:'-100%'},'fast');
         $('.year-item').velocity({ opacity: 0, translateX:'-20px', display: 'flex' },'fast').removeClass('loaded');
+        $('.panel-colophon').velocity({ opacity: 0, translateX:['-40px', '0px']},'fast');
+
         $('.header-item').addClass('inactive').removeClass('reverse');
         app.settings.logo.addClass('invert');
 
@@ -147,6 +149,9 @@ var Bloodhound = require('bloodhound');
               easing:[0.175, 0.885, 0.32, 1.24],
               complete: function() {
                 item.addClass('loaded');
+                if (i === $('.year-item').length - 1) {
+                  $('.panel-colophon').velocity({translateX:['0px','-40px'], opacity: 1},{duration: 200, easing:[0.175, 0.885, 0.32, 1.14]});
+                }
               }
             });
           });
@@ -210,6 +215,7 @@ var Bloodhound = require('bloodhound');
       if ($('.panel').hasClass('visible')) {
         $('.panel.visible').removeClass('visible').attr('aria-hidden',true).blur().velocity({translateX:'-100%'}, 'fast');
         $('.year-item').velocity({ opacity: 0, translateX:'-40px', display: 'flex' },'fast').removeClass('loaded');
+        $('.panel-colophon').velocity({ opacity: 0, translateX:['-40px', '0px']},'fast');
       }
     },
 

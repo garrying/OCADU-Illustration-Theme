@@ -64,9 +64,9 @@
               <?php foreach ( $grad_year as $year ) {
                 $yearenglishnum = $year->description;
                 if ( isset( $selected_year ) && $selected_year == $year->name ) {
-                  echo "<li><a class='year-item active' data-engnum='" . esc_html ( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' data-engnum='" . esc_html ( $yearenglishnum ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                  echo "<li class='year-list-item'><a class='year-item active' data-engnum='" . esc_html ( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' data-engnum='" . esc_html ( $yearenglishnum ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
                 } else {
-                  echo "<li><a class='year-item' data-engnum='" . esc_html ( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                  echo "<li class='year-list-item'><a class='year-item' data-engnum='" . esc_html ( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
                 }
                   esc_html_e( $year->name );
                 echo '</a></li>';
@@ -84,7 +84,6 @@
               <?php get_search_form(); ?>
             </div>
             <button class="close-panel hide-text" title="Close search panel" aria-label="Close search panel">Close</button>
-            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
           </div>
         </div><!-- search -->
        

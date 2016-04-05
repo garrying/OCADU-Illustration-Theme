@@ -38,3 +38,16 @@ button {
   border: 0;
   padding: 0;
 }
+
+.panel-colophon {
+  opacity: 0;
+  border: 0;
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  z-index: 120;
+  color: $white;
+  width: 18px;
+  height: 25px;
+  background: url('../images/colophon.svg') no-repeat;
+}
