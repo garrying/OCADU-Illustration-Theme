@@ -14,21 +14,33 @@
 
   .twitter-typeahead {
     width: 100%;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(-90deg, $off-black, rgba($off-black, 0));
+      height: 100%;
+      width: 40px;
+    }
   }
 
   .search-field {
     width: 100%;
     box-sizing: border-box;
-    padding: 1em 20px;
+    padding: 1em 0;
     font-size: ms(1);
     background: transparent;
     border: 1px solid rgba($white, 0.02);
-    transition: background 300ms ease-in-out;
+    border-width: 0 0 1px 0;
+    transition: border 300ms ease-in-out;
     @include font-smoothing(on);
 
     &:focus,
     &:hover {
-      background: rgba($white, 0.05);
+      border-color: rgba($white, 0.25);
       outline: 0;
     }
   }

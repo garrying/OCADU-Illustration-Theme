@@ -158,6 +158,9 @@ var Bloodhound = require('bloodhound');
             });
           });
         }
+        if (targetPanel == 'search-container') {
+          app.settings.searchField.focus();
+        }
       }
     },
 
@@ -288,6 +291,7 @@ var Bloodhound = require('bloodhound');
 
       $('.miniview').on('click', '.mini-item', function () {
         var selectedImage = galleryImages[$(this).data('index')];
+        app._ocadLoader(true);
         app.settings.imageIndex = $(this).data('index');
         miniViewUpdate(app.settings.imageIndex);
         modalImageChanger(selectedImage);
