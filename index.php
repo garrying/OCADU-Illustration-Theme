@@ -18,13 +18,18 @@
   <div class="title">
     <div class="title-unit">
       <div class="title-unit-init unit">
-        <p class="title-primary">OCAD U Illustration featuring work from the graduating class of 2015</p>
-        <p class="title-secondary">Coinciding with the 100th Annual Graduate Exhibition. April 29 to May 3, 2015 <span class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></span></p>
-        <p class="colophon">
-          Maintained by the Illustration Department at OCAD U<br> <a class="heading" href="/about">About</a>
-        </p>
+        <p class="title-secondary">Coinciding with the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
+        <p class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+      </div>
+      <div class="title-unit-illustrator unit hidden">
+        <p class="title-illustrator"></p>
+        <p class="title-author"></p>
       </div>
     </div>
+    <p class="colophon">
+      <a href="/about" class="home-colophon"><span class="hidden">About</span></a>
+      <small>Illustration Department at OCAD U</small>
+    </p>
   </div>
   <div id="illustrators" class="illustrators-grid home-grid">
     <div class="grid-sizer"></div>

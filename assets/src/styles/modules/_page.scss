@@ -1,0 +1,98 @@
+.home-grid {
+  width: 61.8vw;
+  transform: translatex(40vw);
+  transition: transform 200ms $easeOutBack;
+
+  &:hover {
+    transform: translatex(38.2vw);
+    .gallery-item {
+      opacity: 0.5;
+    }
+  }
+
+  &.illustrators-grid .grid-sizer {
+    display: none;
+    width: 32.3333333333%;
+  }
+
+  &.illustrators-grid .gutter-sizer {
+    width: 1%;
+  }
+
+  .illustrator-title {
+    font-size: 0.857em;
+    margin-bottom: 0;
+  }
+  .illustrator-name {
+    font-size: 0.857em;
+    margin-bottom: 0;
+  }
+
+  &.illustrators-grid .gallery-item {
+    width: 32.3333333333%;
+    margin-bottom: 1%;
+    transition: opacity 200ms $easeOutBack;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .illustrator-meta-container {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 0.857em;
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 0;
+  padding-left: 40px;
+  left: 0;
+  bottom: 0;
+  width: 38.2vw;
+  z-index: 1;
+
+  .title-unit {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .title-secondary,
+  .title-illustrator {
+    font-size: 2.2vw;
+  }
+
+  .title-illustrator {
+    margin: 0;
+  }
+
+  .message,
+  .title-author {
+    border-bottom: 0;
+    font-size: 1.2vw;;
+  }
+}
+
+.home-colophon {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 5px;
+  border: 0;
+  bottom: 20px;
+  right: 25px;
+  z-index: 120;
+  color: $white;
+  width: 18px;
+  height: 25px;
+  background: url('../images/colophon.b.svg') no-repeat;
+}
+
+
+.colophon {
+  margin: 0 0 20px 0;
+}

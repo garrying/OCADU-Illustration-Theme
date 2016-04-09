@@ -59,6 +59,26 @@ var Bloodhound = require('bloodhound');
       app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
       app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
       app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
+     
+      $('.home-grid').hover(() => {
+        $('.title-unit-init').velocity('fadeOut','fast', () => {
+          $('.title-unit-illustrator').velocity('stop').velocity('fadeIn','fast');
+        });
+      }, () => {
+        $('.title-unit-illustrator').velocity('fadeOut','fast', () => {
+          $('.title-unit-init').velocity('stop').velocity('fadeIn','fast');
+        });
+      });
+
+      $('.gallery-item').hover((ele) => {
+        var illustrationTitle = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-title').text();
+        var illustrationAuthor = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-name').text();
+        $('.title-illustrator').textMix(illustrationTitle, 1000, 'linear');
+        $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
+      }, () => {
+        $('.title-illustrator').textMix($('.title-illustrator').text(), 1000, 'linear');
+      });
+      
     },
 
     _ocadLoader: function (e) {
