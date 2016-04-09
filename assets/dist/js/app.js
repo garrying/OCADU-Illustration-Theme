@@ -56,11 +56,12 @@ var Bloodhound = require('bloodhound');
       var illustrator = $('.illustrator-meta-name');
       var yearSelect = $('#year-select-link');
       var searchSelect = $('#search-link');
+      var logo = $('.logo');
       app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
       app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
-      app._ocadTextScrambler(yearSelect, yearSelect.text(), yearSelect.text() + ', spanning 2009 to 2016', 500);
-      app._ocadTextScrambler(searchSelect, searchSelect.text(), searchSelect.text() + ' the archives', 500);
-      // app._ocadTextScrambler(logo, logo.text(), logo.text() + ' featuring work from the graduating class of 2016', 500);
+      app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
+      app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
+      app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
     },
 
     _ocadLoader: function _ocadLoader(e) {

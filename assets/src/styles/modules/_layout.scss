@@ -103,12 +103,18 @@
   display: flex;
   flex-grow: 1;
   max-width: 100%;
+  border-bottom: 4px solid $accent;
+  transition: border 300ms $easeOutBack;
+  
+  &:hover {
+    border-bottom-width: 8px;
+  }
 
   a {
-    border-image: none;
-    border-bottom: 4px solid $accent;
     display: block;
     padding: 10px;
+    border-image: none;
+    transition: color 300ms $easeOutBack;
   }
 
   .nav-previous,
@@ -117,6 +123,14 @@
 
     &:empty {
       display: none;
+    }
+
+    a {
+      color: $site-font-color;
+
+      &:hover {
+        color: $black;
+      }
     }
   }
 
@@ -169,14 +183,14 @@
 }
 
 .miniview {
-  width: 22px;
+  width: 2vw;
   column-count: 2;
   column-gap: 2px;
   line-height: 0;
   transition: width 300ms $easeOutBack;
 
   &:hover {
-    width: 33px;
+    width: 3vw;
   }
 
   .mini-item {
