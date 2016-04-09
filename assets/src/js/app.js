@@ -40,7 +40,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadTextScrambler: function (ele, originText, newText, duration) {
-      var t = $(ele);
+      let t = $(ele);
       t.hover(() => {
         t.textMix(newText, duration, 'linear');
       }, () => {
@@ -49,13 +49,13 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadTextScramblerMoments: function () {
-      var thesis = $('.thesis-title');
-      var illustrator = $('.illustrator-meta-name');
-      var yearSelect = $('#year-select-link');
-      var searchSelect = $('#search-link');
-      var logo = $('.logo');
-      app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
-      app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
+      let thesis = $('.thesis-title');
+      let illustrator = $('.illustrator-meta-name');
+      let yearSelect = $('#year-select-link');
+      let searchSelect = $('#search-link');
+      let logo = $('.logo');
+      app._ocadTextScrambler(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
+      app._ocadTextScrambler(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
       app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
       app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
       app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
@@ -70,15 +70,16 @@ var Bloodhound = require('bloodhound');
         });
       });
 
-      $('.gallery-item').hover((ele) => {
-        var illustrationTitle = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-title').text();
-        var illustrationAuthor = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-name').text();
+      $('.gallery-item').hover( ele => {
+        let targetItem = $(ele.target).parentsUntil('.gallery-item');
+        let illustrationTitle = targetItem.find('.illustrator-title').text();
+        let illustrationAuthor = targetItem.find('.illustrator-name').text();
         $('.title-illustrator').textMix(illustrationTitle, 1000, 'linear');
         $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
       }, () => {
         $('.title-illustrator').textMix($('.title-illustrator').text(), 1000, 'linear');
       });
-      
+
     },
 
     _ocadLoader: function (e) {
@@ -285,7 +286,7 @@ var Bloodhound = require('bloodhound');
         // Miniviewer constructor
 
         var miniView = document.querySelector('.miniview');
-        var miniViewItem = function(item){
+        var miniViewItem = item => {
           miniView.innerHTML += '<div class="mini-item" data-index="'+ item.index +'"><canvas class="mini-item-inner" width="'+ item.width +'" height="'+ item.height +'"></canvas></div>';
         }
         galleryImages.map(miniViewItem);
@@ -296,7 +297,7 @@ var Bloodhound = require('bloodhound');
       * Updates miniview to corresponding element
       **/
 
-      var miniViewUpdate = function(item) {
+      var miniViewUpdate = item => {
         $('.mini-item-inner').removeClass('active');
         $('.mini-item-inner').eq(item).addClass('active');
       };
@@ -317,7 +318,7 @@ var Bloodhound = require('bloodhound');
       * Creates initial image element
       **/
 
-      var imageModalSetter = function(imageSource) {
+      var imageModalSetter = imageSource => {
         var image = new Image();
         image.alt = 'Full illustration';
         image.id = 'full-image';
@@ -362,7 +363,7 @@ var Bloodhound = require('bloodhound');
       * Modal image changer
       **/
 
-      function modalImageChanger (imageItem) {
+      var modalImageChanger = imageItem => {
         $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
         .then( function() {
           var image = document.getElementById('full-image');
@@ -381,7 +382,7 @@ var Bloodhound = require('bloodhound');
       * Handles progressing through the gallery
       **/
 
-      function nextElement(direction) {
+      var nextElement = direction => {
         app._ocadLoader(true);
 
         if (direction === 'reverse') {

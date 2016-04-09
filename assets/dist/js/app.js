@@ -74,8 +74,9 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.gallery-item').hover(function (ele) {
-        var illustrationTitle = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-title').text();
-        var illustrationAuthor = $(ele.target).parentsUntil('.gallery-item').find('.illustrator-name').text();
+        var targetItem = $(ele.target).parentsUntil('.gallery-item');
+        var illustrationTitle = targetItem.find('.illustrator-title').text();
+        var illustrationAuthor = targetItem.find('.illustrator-name').text();
         $('.title-illustrator').textMix(illustrationTitle, 1000, 'linear');
         $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
       }, function () {
@@ -365,7 +366,7 @@ var Bloodhound = require('bloodhound');
       * Modal image changer
       **/
 
-      function modalImageChanger(imageItem) {
+      var modalImageChanger = function modalImageChanger(imageItem) {
         $.Velocity.animate($('#full-image'), 'fadeOut', 'fast').then(function () {
           var image = document.getElementById('full-image');
           image.src = imageItem.url;
@@ -377,13 +378,13 @@ var Bloodhound = require('bloodhound');
             $('#full-image').velocity('fadeIn', 'fast');
           };
         });
-      }
+      };
 
       /**
       * Handles progressing through the gallery
       **/
 
-      function nextElement(direction) {
+      var nextElement = function nextElement(direction) {
         app._ocadLoader(true);
 
         if (direction === 'reverse') {
@@ -404,7 +405,7 @@ var Bloodhound = require('bloodhound');
 
         modalImageChanger(nextImage);
         miniViewUpdate(app.settings.imageIndex);
-      }
+      };
 
       /**
       * Click event for cycling through images
