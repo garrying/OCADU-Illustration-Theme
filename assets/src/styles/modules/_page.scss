@@ -1,18 +1,23 @@
 .home-grid {
-  width: 61.8vw;
-  transform: translatex(40vw);
+  width: 71.8vw;
+  transform: translatex(35vw);
   transition: transform 200ms $easeOutBack;
 
   &:hover {
-    transform: translatex(38.2vw);
+    transform: translatex(28.2vw);
     .gallery-item {
-      opacity: 0.5;
+      opacity: 0.25;
+      filter: grayscale(1);
     }
   }
 
   &.illustrators-grid .grid-sizer {
     display: none;
     width: 32.3333333333%;
+    
+    @media (min-width: $medium-vp) {
+      width: 24%;
+    }
   }
 
   &.illustrators-grid .gutter-sizer {
@@ -31,9 +36,15 @@
   &.illustrators-grid .gallery-item {
     width: 32.3333333333%;
     margin-bottom: 1%;
-    transition: opacity 200ms $easeOutBack;
+    transition: opacity 300ms $easeOutBack, filter 400ms $easeOutBack;
+
+    @media (min-width: $medium-vp) {
+      width: 24%;
+    }
+
     &:hover {
       opacity: 1;
+      filter: grayscale(0);
     }
   }
 
@@ -53,7 +64,7 @@
   padding-left: 40px;
   left: 0;
   bottom: 0;
-  width: 38.2vw;
+  width: 28.2vw;
   z-index: 1;
 
   .title-unit {
@@ -65,8 +76,9 @@
   .title-secondary,
   .title-illustrator {
     margin-top: 0;
-    font-size: 2.2vw;
+    font-size: 2.5vw;
     line-height: 1.3em;
+    white-space: nowrap;
   }
 
   .title-illustrator {

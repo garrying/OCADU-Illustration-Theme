@@ -6,11 +6,14 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  background: #f1f1f1;
   min-height: 100vh;
 
   .gallery {
-    margin: 0 1%;
+    margin: 1%;
+  }
+
+  .grid-sizer {
+    display: none;
   }
 
   .grid-sizer,
@@ -44,7 +47,6 @@
   flex: 1 1 30%;
   font-size: 0.857em;
   position: relative;
-  box-shadow: 0 2px 0 4px rgba($black, 0.05);
   z-index: 20;
 
   .illustrator-meta-wrapper {

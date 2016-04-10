@@ -18,7 +18,7 @@
   <div class="title">
     <div class="title-unit">
       <div class="title-unit-init unit">
-        <p class="title-secondary">Coinciding with the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
+        <p class="title-secondary">Part of the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
         <p class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
       <div class="title-unit-illustrator unit hidden">
