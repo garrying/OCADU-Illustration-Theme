@@ -35,6 +35,7 @@ var Bloodhound = require('bloodhound');
       prevItem: $('.nav-previous a'),
       searchField: $('.search-field'),
       imageModal: $('#image-modal'),
+      searchLoader: $('.search-loader'),
       imageIndex: 0
     },
 
@@ -84,7 +85,9 @@ var Bloodhound = require('bloodhound');
       });
     },
 
-    _ocadLoader: function _ocadLoader(e) {
+    _ocadLoader: function _ocadLoader() {
+      var e = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
       if (e === false) {
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
@@ -137,12 +140,12 @@ var Bloodhound = require('bloodhound');
         },
         source: illustratorSearch,
         limit: 10
-      }).on('typeahead:select', function ($e, resultsData) {
+      }).on('typeahead:select', function (resultsData) {
         window.location.href = resultsData.link;
       }).on('typeahead:asyncrequest', function () {
-        $('.search-loader').velocity('stop').velocity('fadeIn', 'fast');
+        app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast');
       }).on('typeahead:asyncreceive', function () {
-        $('.search-loader').velocity('stop').velocity('fadeOut', 'fast');
+        app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast');
       });
     },
 
@@ -311,11 +314,10 @@ var Bloodhound = require('bloodhound');
       **/
 
       $('.miniview').on('click', '.mini-item', function () {
-        var selectedImage = galleryImages[$(this).data('index')];
-        app._ocadLoader(true);
+        app._ocadLoader();
         app.settings.imageIndex = $(this).data('index');
         miniViewUpdate(app.settings.imageIndex);
-        modalImageChanger(selectedImage);
+        modalImageChanger();
       });
 
       /**
@@ -338,7 +340,7 @@ var Bloodhound = require('bloodhound');
 
       $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', function (event) {
         event.preventDefault();
-        app._ocadLoader(true);
+        app._ocadLoader();
         var itemImage = $(this);
         app.settings.imageIndex = itemImage.data('index');
 
@@ -366,7 +368,9 @@ var Bloodhound = require('bloodhound');
       * Modal image changer
       **/
 
-      var modalImageChanger = function modalImageChanger(imageItem) {
+      var modalImageChanger = function modalImageChanger() {
+        var imageItem = arguments.length <= 0 || arguments[0] === undefined ? galleryImages[app.settings.imageIndex] : arguments[0];
+
         $.Velocity.animate($('#full-image'), 'fadeOut', 'fast').then(function () {
           var image = document.getElementById('full-image');
           image.src = imageItem.url;
@@ -385,7 +389,7 @@ var Bloodhound = require('bloodhound');
       **/
 
       var nextElement = function nextElement(direction) {
-        app._ocadLoader(true);
+        app._ocadLoader();
 
         if (direction === 'reverse') {
           --app.settings.imageIndex;
