@@ -1,7 +1,7 @@
 .home-grid {
   width: 71.8vw;
   transform: translatex(35vw);
-  transition: transform 200ms $easeOutBack;
+  transition: transform 800ms $easeOutExpo;
 
   &:hover {
     transform: translatex(28.2vw);

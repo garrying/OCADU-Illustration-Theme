@@ -165,7 +165,7 @@ var Bloodhound = require('bloodhound');
         app.settings.logo.addClass('invert');
 
         $(e).addClass('reverse').removeClass('inactive');
-        $('.' + targetPanel).velocity({ translateX: ['-4%', '-100%'] }, { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] }).addClass('visible').attr('aria-hidden', false).focus();
+        $('.' + targetPanel).velocity({ translateX: ['-4%', '-100%'] }, { duration: 800, easing: [0.19, 1, 0.22, 1] }).addClass('visible').attr('aria-hidden', false).focus();
         $('.illustrator-meta').velocity({ opacity: .2 }, 'fast');
 
         if (targetPanel === 'year-select') {
