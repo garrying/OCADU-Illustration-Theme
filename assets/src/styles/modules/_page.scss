@@ -73,6 +73,10 @@
     align-items: center;
   }
 
+  .title-unit-illustrator {
+    pointer-events: none;
+  }
+
   .title-secondary,
   .title-illustrator {
     margin-top: 0;
@@ -87,8 +91,8 @@
 
   .message,
   .title-author {
+    font-size: 1.2vw;
     border-bottom: 0;
-    font-size: 1.2vw;;
   }
 }
 
@@ -103,10 +107,36 @@
   color: $white;
   width: 18px;
   height: 25px;
-  background: url('../images/colophon.b.svg') no-repeat;
+  background: url("../images/colophon.b.svg") no-repeat;
+}
+
+.colophon {
+  position: absolute;
+  bottom: 0;
+  margin: 0 0 20px;
+}
+
+.page-inner {
+  font-size: 1.10em;
+  max-width: 850px;
+  padding: 0 10%;
+  margin: 50px auto 100px;
+
+  .entry-title {
+    font-size: ms(2);
+  }
 }
 
 
-.colophon {
-  margin: 0 0 20px 0;
+.faculty-list {
+  display: flex;
+
+  abbr {
+    letter-spacing: 1px;
+    font-variant: small-caps;
+  }
+
+  .span1 {
+    width: 50%;
+  }
 }

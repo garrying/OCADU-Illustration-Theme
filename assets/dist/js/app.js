@@ -75,6 +75,7 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.gallery-item').hover(function (ele) {
+        app._ocadPanelsClose();
         var targetItem = $(ele.target).parentsUntil('.gallery-item');
         var illustrationTitle = targetItem.find('.illustrator-title').text();
         var illustrationAuthor = targetItem.find('.illustrator-name').text();
@@ -353,10 +354,10 @@ var Bloodhound = require('bloodhound');
             begin: function begin() {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
-              $('#full-image').velocity({ translateY: '0' });
+              $('#full-image').velocity({ translateY: [0, 10] }, [0.175, 0.885, 0.32, 1.275]);
             },
             complete: function complete() {
-              $('#full-image').velocity({ opacity: 1 }, 'fast');
+              $('#full-image').velocity({ opacity: 1 });
             }
           });
         });
@@ -371,7 +372,7 @@ var Bloodhound = require('bloodhound');
       var modalImageChanger = function modalImageChanger() {
         var imageItem = arguments.length <= 0 || arguments[0] === undefined ? galleryImages[app.settings.imageIndex] : arguments[0];
 
-        $.Velocity.animate($('#full-image'), 'fadeOut', 'fast').then(function () {
+        $.Velocity.animate($('#full-image'), { opacity: 0, translateY: '-10px' }, [0.175, 0.885, 0.32, 1.275]).then(function () {
           var image = document.getElementById('full-image');
           image.src = imageItem.url;
           image.srcset = imageItem.srcset;
@@ -379,7 +380,7 @@ var Bloodhound = require('bloodhound');
 
           image.onload = function () {
             app._ocadLoader(false);
-            $('#full-image').velocity('fadeIn', 'fast');
+            $('#full-image').velocity({ opacity: 1, translateY: [0, '10px'] }, [0.175, 0.885, 0.32, 1.275]);
           };
         });
       };

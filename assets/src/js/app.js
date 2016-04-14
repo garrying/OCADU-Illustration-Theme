@@ -72,6 +72,7 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.gallery-item').hover( ele => {
+        app._ocadPanelsClose();
         let targetItem = $(ele.target).parentsUntil('.gallery-item');
         let illustrationTitle = targetItem.find('.illustrator-title').text();
         let illustrationAuthor = targetItem.find('.illustrator-name').text();
@@ -346,10 +347,10 @@ var Bloodhound = require('bloodhound');
             begin: function() {
               $(app.settings.masonryContainer).velocity({opacity:0},'fast');
               $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
-              $('#full-image').velocity({translateY:'0'});
+              $('#full-image').velocity({translateY:[0,10]}, [0.175, 0.885, 0.32, 1.275]);
             },
             complete: function() {
-              $('#full-image').velocity({opacity:1},'fast');
+              $('#full-image').velocity({opacity:1});
             }
           });
         });
@@ -363,7 +364,7 @@ var Bloodhound = require('bloodhound');
       **/
 
       var modalImageChanger = (imageItem=galleryImages[app.settings.imageIndex]) => {
-        $.Velocity.animate($('#full-image'), 'fadeOut', 'fast')
+        $.Velocity.animate($('#full-image'), {opacity: 0, translateY: '-10px'}, [0.175, 0.885, 0.32, 1.275])
         .then( function() {
           var image = document.getElementById('full-image');
           image.src = imageItem.url;
@@ -372,7 +373,7 @@ var Bloodhound = require('bloodhound');
 
           image.onload = function() {
             app._ocadLoader(false);
-            $('#full-image').velocity('fadeIn','fast');
+            $('#full-image').velocity({opacity: 1, translateY:[ 0, '10px' ]}, [0.175, 0.885, 0.32, 1.275]);
           };
         });
       }
