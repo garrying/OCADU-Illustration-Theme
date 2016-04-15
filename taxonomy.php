@@ -6,15 +6,15 @@
 
 <?php if ( is_archive() ) {
     $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-    echo '<a class="section-indicator section-indicator-index" href="/" title="Return to homepage">';
+    echo '<div class="section-indicator-index"><span class="section-indicator" href="/" title="Return to homepage">';
     if ( isset( $selected_year->name ) ) {
       esc_html_e( $selected_year->name );
     };
-    echo '</a>';
+    echo '</span></div>';
   }
 ?>
 
-<div id="illustrators" class="illustrators-grid">
+<div id="illustrators" class="illustrators-grid archive-grid">
 
   <div class="grid-sizer"></div>
   <div class="gutter-sizer"></div>

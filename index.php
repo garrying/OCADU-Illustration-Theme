@@ -22,7 +22,7 @@
         <p class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
       <div class="title-unit-illustrator unit hidden">
-        <p class="title-illustrator"></p>
+        <div class="title-illustration"></div>
         <p class="title-author"></p>
       </div>
     </div>

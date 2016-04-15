@@ -56,12 +56,20 @@ var Bloodhound = require('bloodhound');
       let yearSelect = $('#year-select-link');
       let searchSelect = $('#search-link');
       let logo = $('.logo');
+      let sectionIndicator = $('.section-indicator');
       app._ocadTextScrambler(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
       app._ocadTextScrambler(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
       app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
       app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
       app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
-     
+      app._ocadTextScrambler(sectionIndicator , sectionIndicator.text(), `The Graduating Class of ${sectionIndicator.text()}`, 500);
+
+      sectionIndicator.hover(() => {
+        $(app.settings.masonryContainerHome).addClass('blur');
+      }, () => {
+        $(app.settings.masonryContainerHome).removeClass('blur');
+      });
+
       $('.home-grid').hover(() => {
         $('.title-unit-init').velocity('fadeOut','fast', () => {
           $('.title-unit-illustrator').velocity('stop').velocity('fadeIn','fast');
@@ -77,10 +85,15 @@ var Bloodhound = require('bloodhound');
         let targetItem = $(ele.target).parentsUntil('.gallery-item');
         let illustrationTitle = targetItem.find('.illustrator-title').text();
         let illustrationAuthor = targetItem.find('.illustrator-name').text();
-        $('.title-illustrator').textMix(illustrationTitle, 1000, 'linear');
+        if (illustrationTitle.length === 0) {
+          $('.title-illustration').addClass('empty');
+        } else {
+          $('.title-illustration').removeClass('empty');
+        }
+        $('.title-illustration').textMix(illustrationTitle, 1000, 'linear');
         $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
       }, () => {
-        $('.title-illustrator').textMix($('.title-illustrator').text(), 1000, 'linear');
+        $('.title-illustration').textMix($('.title-illustration').text(), 1000, 'linear');
       });
 
     },

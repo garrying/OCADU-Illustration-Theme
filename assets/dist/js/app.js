@@ -59,11 +59,19 @@ var Bloodhound = require('bloodhound');
       var yearSelect = $('#year-select-link');
       var searchSelect = $('#search-link');
       var logo = $('.logo');
+      var sectionIndicator = $('.section-indicator');
       app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
       app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
       app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
       app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
       app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
+      app._ocadTextScrambler(sectionIndicator, sectionIndicator.text(), 'The Graduating Class of ' + sectionIndicator.text(), 500);
+
+      sectionIndicator.hover(function () {
+        $(app.settings.masonryContainerHome).addClass('blur');
+      }, function () {
+        $(app.settings.masonryContainerHome).removeClass('blur');
+      });
 
       $('.home-grid').hover(function () {
         $('.title-unit-init').velocity('fadeOut', 'fast', function () {
@@ -80,10 +88,15 @@ var Bloodhound = require('bloodhound');
         var targetItem = $(ele.target).parentsUntil('.gallery-item');
         var illustrationTitle = targetItem.find('.illustrator-title').text();
         var illustrationAuthor = targetItem.find('.illustrator-name').text();
-        $('.title-illustrator').textMix(illustrationTitle, 1000, 'linear');
+        if (illustrationTitle.length === 0) {
+          $('.title-illustration').addClass('empty');
+        } else {
+          $('.title-illustration').removeClass('empty');
+        }
+        $('.title-illustration').textMix(illustrationTitle, 1000, 'linear');
         $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
       }, function () {
-        $('.title-illustrator').textMix($('.title-illustrator').text(), 1000, 'linear');
+        $('.title-illustration').textMix($('.title-illustration').text(), 1000, 'linear');
       });
     },
 
