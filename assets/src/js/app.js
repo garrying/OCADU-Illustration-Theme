@@ -4,6 +4,7 @@ require('typeahead.js');
 require('velocity-animate');
 require('imagesloaded');
 require('./libs/jquery-text-mix');
+require('lazysizes');
 var Masonry = require('masonry-layout');
 var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
@@ -220,10 +221,7 @@ var Bloodhound = require('bloodhound');
         app._ocadShuffle( document.querySelectorAll('.gallery-item') );
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
-        $(app.settings.masonryContainerHome).imagesLoaded().done(function() {
-            app._ocadMasonry(app.settings.masonryContainerHome);
-          }
-        );
+        app._ocadMasonry(app.settings.masonryContainerHome);
       }
     },
 

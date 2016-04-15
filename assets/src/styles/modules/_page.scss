@@ -18,6 +18,10 @@
     @media (min-width: $medium-vp) {
       width: 24%;
     }
+
+    @media (max-width: $small-vp) {
+      width: 49%;
+    }
   }
 
   &.illustrators-grid .gutter-sizer {
@@ -42,6 +46,10 @@
       width: 24%;
     }
 
+    @media (max-width: $small-vp) {
+      width: 49%;
+    }
+
     &:hover {
       opacity: 1;
       filter: grayscale(0);
@@ -50,6 +58,29 @@
 
   .illustrator-meta-container {
     display: none;
+  }
+
+  .illustrator-image {
+
+    img {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 300ms ease-in-out, filter 800ms ease-in-out;
+      filter: grayscale(1);
+    }
+
+    .lazyloaded {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
+
+  .illustrator-placeholder {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
