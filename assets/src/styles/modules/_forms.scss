@@ -2,6 +2,11 @@ input {
   @extend %font-features;
   @include font-smoothing(on);
   font-family: $sans-serif;
+  border-radius: 0;
+}
+
+input[type=search] {
+  -webkit-appearance: none;
 }
 
 .btn,

@@ -1,5 +1,5 @@
 .title {
-  font-size: 0.857em;
+  font-size: 1vw;
   position: fixed;
   display: flex;
   flex-wrap: wrap;
@@ -11,6 +11,16 @@
   bottom: 0;
   width: 28.2vw;
   z-index: 1;
+
+  @media screen and (max-width: $medium-vp)  {
+    width: 30vw;
+    font-size: 1.5vw;
+    padding-left: 20px;
+  }
+
+  @media screen and (max-width: $small-vp)  {
+    display: none;
+  }
 
   .title-unit {
     display: flex;
@@ -25,13 +35,14 @@
 
   .title-primary {
     margin: 0 0 0.5em;
-    font-size: 2.5vw;
+    font-size: 2.5em;
     line-height: 1.3em;
     white-space: nowrap;
+    pointer-events: none;
   }
 
   .title-secondary {
-    font-size: 1.2vw;
+    font-size: 1.2em;
   }
 
   .empty {

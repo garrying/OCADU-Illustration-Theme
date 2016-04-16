@@ -17,6 +17,13 @@ body {
   background: $yellow;
 }
 
+// Mark
+
+mark {
+  background: transparent;
+  color: $black;
+}
+
 // Links
 
 a {

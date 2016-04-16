@@ -66,7 +66,7 @@
       <ul class="illustrator-nav-single">
         <?php if ( is_singular( 'illustrator' ) ) {
             $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          echo '<a class="section-indicator" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"><span class="indicator">✺</span> ';
+          echo '<a class="section-indicator" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"><span class="indicator">☀</span> ';
             if ( isset( $term->name ) ) {
               esc_html_e( $term->name );
             };

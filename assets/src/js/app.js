@@ -146,7 +146,7 @@ var Bloodhound = require('bloodhound');
         },
         source: illustratorSearch,
         limit: 10
-      }).on('typeahead:select', resultsData => {
+      }).on('typeahead:select', ($e, resultsData) => {
         window.location.href = resultsData.link;
       }).on('typeahead:asyncrequest', () => {
         app.settings.searchLoader.velocity('stop').velocity('fadeIn','fast');

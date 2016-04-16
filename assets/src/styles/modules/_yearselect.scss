@@ -2,8 +2,13 @@
 
   .panel-inner {
     height: 100%;
-    padding-top: 150px;
-    padding-bottom: 80px;
+    padding-top: 140px;
+    padding-bottom: 60px;
+
+    @media screen and (max-width: $small-vp) {
+      padding-bottom: 20px;
+      padding-top: 50px;
+    }
   }
 }
 
@@ -18,34 +23,36 @@
 .year-item {
   display: block;
   font-size: ms(2);
+
+  @media screen and (max-width: $small-vp) {
+    font-size: ms(1);
+  }
   color: $white;
   border: 0;
   opacity: 0;
-  transition: text-indent 300ms $easeOutBack;
+  transition: margin-left 300ms $easeOutBack;
   transform: translateX(-20px);
 
   &:hover,
   &:focus {
-    text-indent: 10px;
+    margin-left: 10px;
     outline-color: $white;
   }
 
   &.active {
 
-    &:hover::after {
-      animation-name: shake;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-    }
-
     &::after {
       display: inline-flex;
-      width: 0.8em;
-      height: 0.8em;
-      margin-left: 0.8em;
-      content: "";
-      background: $white;
-      border-radius: 50%;
+      height: 1em;
+      width: 1em;
+      line-height: 1em;
+      margin-left: 0.25em;
+      content: "☀";
+      animation-name: spin;
+      animation-duration: 10s;
+      animation-iteration-count:  infinite;
+      animation-timing-function: linear;
+      transform-origin: 51% 53%;
     }
   }
 }

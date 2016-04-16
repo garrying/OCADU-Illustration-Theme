@@ -2,6 +2,17 @@
   width: 75vw;
   margin: 0 auto;
 
+  @media screen and (max-width: $medium-vp) {
+    width: 85vw;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: $small-vp) {
+    width: 100vw;
+    padding: 20px;
+    margin: 50px 0 0 0;
+  }
+
   .gallery-item {
     margin-bottom: 10%;
   }
@@ -10,8 +21,18 @@
 .home-grid {
   transform: translatex(35vw);
 
+  @media screen and (max-width: $small-vp) {
+    width: 100vw;
+    padding: 20px;
+    margin: 50px 0 0 0;
+    transform: translatex(0);
+  }
+
   &:hover {
     transform: translatex(28.2vw);
+    @media screen and (max-width: $small-vp) {
+      transform: translatex(0);
+    }
   }
 
   .illustrator-meta-container {
@@ -54,6 +75,15 @@
     height: 100%;
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: $medium-vp)  {
+      font-size: 4vw;
+      left: 20px;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      display: none;
+    }
   }
 
   .section-indicator {
@@ -73,13 +103,23 @@
   color: $white;
   vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
+  background-size: contain;
   border: 0;
+
+  @media screen and (max-width: $medium-vp)  {
+    display: none;
+  }
 }
 
 .colophon {
   position: absolute;
   bottom: 0;
   margin: 0 0 20px;
+  font-size: 0.8rem;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
 }
 
 .page-inner {
@@ -87,6 +127,16 @@
   padding: 0 10%;
   margin: 50px auto 100px;
   font-size: 1.1em;
+
+  @media screen and (max-width: $small-vp) {
+    font-size: 1em;
+    padding: 0 20px;
+    margin-top: 8em;
+  }
+
+  @media screen and (max-width: $medium-vp) {
+    max-width: 700px;
+  }
 
   .entry-title {
     font-size: ms(2);

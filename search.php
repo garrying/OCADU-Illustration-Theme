@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-  <h1 class="search-title section-indicator section-indicator-index">
+  <div id="illustrators" class="grid illustrators-grid archive-grid">
+  <h1 class="search-title">
     <?php printf( 'Search Results for <mark>%s</mark>', get_search_query() ); ?>
   </h1>
-  <div id="illustrators" class="grid illustrators-grid">
   <?php if ( have_posts() ) : ?>
     <?php query_posts( $query_string . '&orderby=title&order=ASC' );?><!-- Query by Title -->
     <?php /* Start the Loop */ ?>
@@ -20,7 +20,7 @@
     <article class="error-body">
       <header class="entry-header">
         <h1 class="entry-title"><?php esc_html_e( 'No Matches &#9785;', 'ocaduillustration' ); ?></h1>
-        <p><?php esc_html_e( 'Sorry, but nothing matched your search criteria. <br />Please try again with some different keywords.', 'ocaduillustration' ); ?></p>
+        <p><?php esc_html_e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'ocaduillustration' ); ?></p>
       </header><!-- .entry-header -->
     </article><!-- .error-body -->
 

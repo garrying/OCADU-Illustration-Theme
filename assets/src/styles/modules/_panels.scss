@@ -13,11 +13,24 @@
   display: flex;
   align-content: center;
   align-items: center;
+  will-change: transform;
+
+  @media screen and (max-width: $medium-vp)  {
+    width: 40vw;
+  }
+
+  @media screen and (max-width: $small-vp)  {
+    width: calc(100vw - 44px);
+  }
+
 }
 
 .panel-inner {
   padding-left: calc(4% + 40px);
   width: 100%;
+  @media screen and (max-width: $medium-vp) {
+    margin-left: -20px;
+  }
 }
 
 .close-panel {
@@ -30,6 +43,10 @@
   width: 22px;
   height: 22px;
   background: url('../images/close.svg') no-repeat;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
 }
 
 button {
