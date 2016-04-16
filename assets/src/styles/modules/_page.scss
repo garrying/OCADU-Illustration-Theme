@@ -1,74 +1,8 @@
-.illustrators-grid {
-  width: 71.8vw;
-  transition: transform 800ms $easeOutExpo;
+.archive-grid {
+  margin: 0 auto;
 
-  &.blur,
-  &:hover {
-
-    .gallery-item {
-      filter: grayscale(1);
-      opacity: 0.25;
-    }
-  }
-
-  .grid-sizer,
   .gallery-item {
-    width: 32.3333333333%;
-    margin-bottom: 1%;
-    transition: opacity 300ms $easeOutBack, filter 400ms $easeOutBack;
-
-    @media (min-width: $medium-vp) {
-      width: 24%;
-    }
-
-    @media (max-width: $small-vp) {
-      width: 49%;
-    }
-
-    &:hover {
-      filter: grayscale(0);
-      opacity: 1;
-    }
-  }
-
-  .grid-sizer {
-    display: none;
-  }
-
-  .gutter-sizer {
-    width: 1%;
-  }
-
-  .illustrator-title, .illustrator-name {
-    font-size: 0.857em;
-    margin-bottom: 0;
-  }
-
-  .illustrator-name {
-    color: $site-font-color;
-  }
-}
-
-.illustrator-image {
-
-  img {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 300ms ease-in-out, filter 800ms ease-in-out;
-    filter: grayscale(1);
-  }
-
-  .lazyloaded {
-    opacity: 1;
-    filter: grayscale(0);
-  }
-
-  .illustrator-placeholder {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    margin-bottom: 5%;
   }
 }
 
@@ -84,91 +18,61 @@
   }
 }
 
-.archive-grid {
-  margin: 0 auto;
+.illustrator-image {
+  position: relative;
 
-  &.illustrators-grid .gallery-item {
-    margin-bottom: 2%;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: grayscale(1);
+    opacity: 0;
+    transition: opacity 300ms ease-in-out, filter 800ms ease-in-out;
+  }
+
+  .lazyloaded {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+
+  .illustrator-placeholder {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
 .archive {
+
   .section-indicator-index {
-    border: 0;
     position: fixed;
     left: 40px;
+    z-index: 1;
     font-size: 2.5vw;
+    border: 0;
     height: 100%;
     display: flex;
-    z-index: 1;
     align-items: center;
   }
 
   .section-indicator {
-    border: 0;
     cursor: help;
+    border: 0;
   }
-}
-
-.title {
-  font-size: 0.857em;
-  position: fixed;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  top: 0;
-  padding-left: 40px;
-  left: 0;
-  bottom: 0;
-  width: 28.2vw;
-  z-index: 1;
-
-  .title-unit {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-  }
-
-  .title-unit-illustrator {
-    pointer-events: none;
-  }
-
-  .title-secondary,
-  .title-illustration {
-    margin: 0 0 0.5em;
-    font-size: 2.5vw;
-    line-height: 1.3em;
-    white-space: nowrap;
-  }
-
-  .message,
-  .title-author {
-    font-size: 1.2vw;
-  }
-
-  .empty {
-    display: none;
-
-    & + .title-author {
-      font-size: 2.5vw;
-    }
-  }
-
 }
 
 .home-colophon {
-  display: inline-block;
-  vertical-align: bottom;
-  margin-right: 5px;
-  border: 0;
-  bottom: 20px;
   right: 25px;
+  bottom: 20px;
   z-index: 120;
-  color: $white;
+  display: inline-block;
   width: 18px;
   height: 25px;
+  margin-right: 5px;
+  color: $white;
+  vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
+  border: 0;
 }
 
 .colophon {
@@ -178,24 +82,18 @@
 }
 
 .page-inner {
-  font-size: 1.10em;
   max-width: 850px;
   padding: 0 10%;
   margin: 50px auto 100px;
+  font-size: 1.10em;
 
   .entry-title {
     font-size: ms(2);
   }
 }
 
-
 .faculty-list {
   display: flex;
-
-  abbr {
-    letter-spacing: 1px;
-    font-variant: small-caps;
-  }
 
   .span1 {
     width: 50%;

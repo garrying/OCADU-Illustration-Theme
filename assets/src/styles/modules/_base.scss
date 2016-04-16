@@ -43,18 +43,22 @@ a {
 .screen-reader-shortcut {
   @include font-smoothing(on);
   position: absolute;
-  left: 60px;
+  top: 0;
+  left: 40px;
   width: 1px;
   height: 1px;
-  margin: 0;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
+  color: $white;
+  border: 0;
+  background: $off-black;
 
   &:focus {
-    top: 0;
-    z-index: $z-important;
+    z-index: 600;
     width: auto;
     height: auto;
+    padding: 0 10px;
     clip: auto;
+    line-height: 49px;
   }
 }

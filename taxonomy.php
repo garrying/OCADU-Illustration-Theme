@@ -1,8 +1,4 @@
-<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
-    <?php get_header(); ?>
-  <?php else : ?>
-    <title><?php wp_title( '&#8211;', true, 'right' );?></title>
-<?php endif; ?>
+<?php get_header(); ?>
 
 <?php if ( is_archive() ) {
     $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
@@ -14,10 +10,7 @@
   }
 ?>
 
-<div id="illustrators" class="illustrators-grid archive-grid">
-
-  <div class="grid-sizer"></div>
-  <div class="gutter-sizer"></div>
+<div id="illustrators" class="grid illustrators-grid archive-grid">
   
   <?php if ( have_posts() ) : ?>
 
@@ -47,6 +40,4 @@
   <?php endif; ?>
 </div>
 
-<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
-  <?php get_footer(); ?>
-<?php endif; ?>
+<?php get_footer(); ?>

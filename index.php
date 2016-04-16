@@ -1,9 +1,4 @@
-<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
-    <?php get_header(); ?>
-  <?php else : ?>
-    <title><?php wp_title( '&#8211;', true, 'right' );
-    bloginfo( 'name' ); ?></title>
-<?php endif; ?>
+<?php get_header(); ?>
   
   <?php if ( is_home() || is_front_page() ) {
     $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
@@ -18,12 +13,12 @@
   <div class="title">
     <div class="title-unit">
       <div class="title-unit-init unit">
-        <p class="title-secondary">Part of the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
-        <p class="message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+        <p class="title-primary">Part of the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
+        <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
-      <div class="title-unit-illustrator unit hidden">
-        <div class="title-illustration"></div>
-        <p class="title-author"></p>
+      <div class="title-unit-illustrator unit">
+        <div class="title-primary title-illustration"></div>
+        <p class="title-secondary title-author"></p>
       </div>
     </div>
     <p class="colophon">
@@ -31,9 +26,7 @@
       <small>Illustration Department at OCAD U</small>
     </p>
   </div>
-  <div id="illustrators" class="illustrators-grid home-grid">
-    <div class="grid-sizer"></div>
-    <div class="gutter-sizer"></div>
+  <div id="illustrators" class="grid illustrators-grid home-grid">
 
     <?php if ( $home_index->have_posts() ) : ?>
 
@@ -59,6 +52,4 @@
     <?php endif; ?>
   </div>
 
-<?php if ( ! isset( $_SERVER['HTTP_X_PJAX'] ) ) : ?>
-  <?php get_footer(); ?>
-<?php endif; ?>
+<?php get_footer(); ?>

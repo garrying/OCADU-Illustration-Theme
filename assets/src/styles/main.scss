@@ -9,7 +9,6 @@
 @import "components/variables";
 @import "components/mixins";
 @import "components/helpers";
-@import "components/fontface";
 @import "components/animation";
 
 // Modules styles (e.g. layouts, typography)
@@ -19,6 +18,8 @@
 @import "modules/typography";
 @import "modules/figures";
 @import "modules/lists";
+@import "modules/forms";
+@import "modules/bricks";
 @import "modules/panels";
 @import "modules/search";
 @import "modules/page";
@@ -26,4 +27,3 @@
 @import "modules/header";
 @import "modules/layout";
 @import "modules/title";
-@import "modules/forms";

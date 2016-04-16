@@ -6,36 +6,18 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  min-height: 100vh;
-
-  .gallery {
-    margin: 1%;
-  }
-
-  .grid-sizer {
-    display: none;
-  }
-
-  .grid-sizer,
-  .gallery-item {
-    width: 49.5%;
-    margin-bottom: 1%;
-  }
-
-  .gutter-sizer {
-    width: 1%;
-  }
 
   .gallery-item {
+    margin: 0 0 2% 2%;
     opacity: 0;
   }
 }
 
 .illustrator-meta {
   flex: 1 1 30%;
+  z-index: 20;
   font-size: 0.857em;
   position: relative;
-  z-index: 20;
 
   .illustrator-meta-wrapper {
     position: fixed;
@@ -44,10 +26,10 @@
     display: flex;
     width: calc(30% - 40px);
     height: 100%;
-    transition: opacity 180ms ease-in-out;
     flex-flow: row wrap;
     align-items: flex-end;
     font-size: 0.929em;
+    transition: opacity 180ms ease-in-out;
 
     p {
       margin-top: 0;
@@ -55,10 +37,10 @@
 
     h1,
     h2 {
-      font-size: 1em;
-      line-height: 1em;
       padding: 0.67em 0;
       margin: 0;
+      font-size: 1em;
+      line-height: 1em;
     }
 
     .thesis-title {
@@ -95,16 +77,21 @@
   max-width: 100%;
   border-bottom: 4px solid $accent;
   transition: border 300ms $easeOutBack;
-  
+
   &:hover {
     border-bottom-width: 8px;
   }
 
   a {
     display: block;
+    color: $site-font-color;
     padding: 10px;
     border-image: none;
     transition: color 300ms $easeOutBack;
+
+    &:hover {
+      color: $black;
+    }
   }
 
   .nav-previous,
@@ -113,14 +100,6 @@
 
     &:empty {
       display: none;
-    }
-
-    a {
-      color: $site-font-color;
-
-      &:hover {
-        color: $black;
-      }
     }
   }
 
@@ -133,13 +112,13 @@
   }
 
   .section-indicator {
-    font-weight: 700;
     padding-left: 0.5em;
+    font-weight: 700;
     white-space: nowrap;
 
     .indicator {
-      font-weight: 400;
       margin-right: 4px;
+      font-weight: 400;
     }
   }
 }
@@ -184,18 +163,18 @@
   }
 
   .mini-item {
-    cursor: pointer;
     width: 100%;
     padding-bottom: 2px;
+    cursor: pointer;
   }
 
   .mini-item-inner {
     display: block;
     max-width: 100%;
     height: auto;
+    padding: 2px;
     border: 1px solid rgba($white, 0.1);
     transition: border 300ms ease-in-out, background 300ms ease-in-out;
-    padding: 2px;
 
     &.active,
     &:hover {
@@ -205,28 +184,5 @@
     &:hover {
       background: rgba($white, 0.25);
     }
-  }
-}
-
-.screen-reader-shortcut {
-  @include font-smoothing(on);
-  position: absolute;
-  top: 0;
-  left: 60px;
-  width: 1px;
-  height: 1px;
-  padding: 10px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  color: $white;
-
-  &:focus {
-    top: 2;
-    z-index: 600;
-    width: auto;
-    height: auto;
-    padding: 0 10px;
-    clip: auto;
-    line-height: 49px;
   }
 }

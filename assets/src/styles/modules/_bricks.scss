@@ -1,0 +1,83 @@
+.grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.illustrators-grid {
+  width: 71.8vw;
+  transition: transform 800ms $easeOutExpo;
+
+  &.blur,
+  &:hover {
+    .gallery-item {
+      filter: grayscale(1);
+      opacity: 0.25;
+    }
+  }
+
+  .gallery-item {
+    margin: 0 0 4% 4%;
+    transition: opacity 300ms $easeOutBack, filter 400ms $easeOutBack;
+
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+  }
+
+  .illustrator-title,
+  .illustrator-name {
+    margin-bottom: 0;
+    font-size: 0.857em;
+  }
+
+  .illustrator-name {
+    color: $site-font-color;
+  }
+
+  .bricklayer-column:last-child {
+    .gallery-item {
+      margin-right: 0;
+    }
+  }
+}
+
+.gallery-grid {
+  margin-top: 1%;
+
+  .bricklayer-column-sizer {
+    width: 50%;
+    display: none;
+
+    @media screen and (min-width: $large-vp) {
+      width: 25%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 100%;
+    }
+  }
+}
+
+.bricklayer-column-sizer {
+  display: none;
+  width: 33.333%;
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: $smallest-vp) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: $medium-vp) {
+    width: 25%;
+  }
+}
+
+.bricklayer-column {
+  flex: 1;
+}

@@ -1,0 +1,45 @@
+.title {
+  font-size: 0.857em;
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 0;
+  padding-left: 40px;
+  left: 0;
+  bottom: 0;
+  width: 28.2vw;
+  z-index: 1;
+
+  .title-unit {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .title-unit-illustrator {
+    display: none;
+    pointer-events: none;
+  }
+
+  .title-primary {
+    margin: 0 0 0.5em;
+    font-size: 2.5vw;
+    line-height: 1.3em;
+    white-space: nowrap;
+  }
+
+  .title-secondary {
+    font-size: 1.2vw;
+  }
+
+  .empty {
+    display: none;
+
+    & +
+    .title-author {
+      font-size: 2.5vw;
+    }
+  }
+}

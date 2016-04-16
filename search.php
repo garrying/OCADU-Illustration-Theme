@@ -3,7 +3,7 @@
   <h1 class="search-title section-indicator section-indicator-index">
     <?php printf( 'Search Results for <mark>%s</mark>', get_search_query() ); ?>
   </h1>
-  <div id="illustrators" class="illustrators-grid">
+  <div id="illustrators" class="grid illustrators-grid">
   <?php if ( have_posts() ) : ?>
     <?php query_posts( $query_string . '&orderby=title&order=ASC' );?><!-- Query by Title -->
     <?php /* Start the Loop */ ?>

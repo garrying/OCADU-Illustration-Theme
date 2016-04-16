@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: calc(30% - 20px);
+  width: $max-panel-width;
   z-index: 200;
   outline: 0;
   transform: translateX(-100%);

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="illustrators" class="illustrators-grid archive-grid">
+<div id="illustrators" class="grid illustrators-grid archive-grid">
 
   <div class="grid-sizer"></div>
   <div class="gutter-sizer"></div>

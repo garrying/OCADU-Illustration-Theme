@@ -10,7 +10,6 @@
   left: calc(50% - 2px);
   width: 4px;
   height: 24vh;
-  background-size: 200% 200%;
   background: linear-gradient( 0deg,
       #76b84e 0%,
       #f8c130 30%,
@@ -22,9 +21,11 @@
   animation: AnimationName 1s linear infinite;
 }
 
-
-
 @keyframes AnimationName { 
-    0%{background-position:50% 0%}
-    100%{background-position:50% 200%}
+  0% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 50% 200%
+  }
 }

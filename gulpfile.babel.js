@@ -20,9 +20,10 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['last 1 version']}))
+    .pipe($.autoprefixer({browsers: ['last 2 versions']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('assets/dist/styles'))
+    .pipe($.size())
     .pipe(reload({stream: true}));
 });
 
@@ -43,7 +44,8 @@ gulp.task('scripts', ['lint'], () => {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(gulp.dest('assets/dist/js'));
+    .pipe(gulp.dest('assets/dist/js'))
+    .pipe($.size());
 });
 
 gulp.task('images', () => {

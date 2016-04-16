@@ -1,3 +1,6 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }]*/
+/*global Bricklayer*/
+
 var $ = require('jquery');
 window.jQuery = window.$ = $;
 require('typeahead.js');
@@ -5,7 +8,7 @@ require('velocity-animate');
 require('imagesloaded');
 require('./libs/jquery-text-mix');
 require('lazysizes');
-var Masonry = require('masonry-layout');
+require('bricklayer');
 var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
 
@@ -80,7 +83,7 @@ var Bloodhound = require('bloodhound');
         });
       });
 
-      $('.gallery-item').hover( ele => {
+      $('.illustrators-grid .gallery-item').hover( ele => {
         app._ocadPanelsClose();
         let targetItem = $(ele.target).parentsUntil('.gallery-item');
         let illustrationTitle = targetItem.find('.illustrator-title').text();
@@ -107,15 +110,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadMasonry: function (selector) {
-      var container = document.querySelector(selector);
-      var msnry = new Masonry( container, {
-        itemSelector: '.gallery-item',
-        transitionDuration: '0',
-        columnWidth: '.grid-sizer',
-        gutter: '.gutter-sizer',
-        percentPosition: true
-      });
-      msnry.layout();
+      let msnry = new Bricklayer(document.querySelector(selector));
     },
 
      _ocadCascade: function (selector, delayNum) {
