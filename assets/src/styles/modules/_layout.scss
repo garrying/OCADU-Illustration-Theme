@@ -8,16 +8,16 @@
   flex: 1 1 70%;
 
   .gallery-item {
-    margin: 0 0 2% 2%;
+    margin: 0 2% 2% 0;
     opacity: 0;
   }
 }
 
 .illustrator-meta {
-  flex: 1 1 30%;
+  position: relative;
   z-index: 20;
   font-size: 0.857em;
-  position: relative;
+  flex: 1 1 30%;
 
   .illustrator-meta-wrapper {
     position: fixed;
@@ -84,8 +84,8 @@
 
   a {
     display: block;
-    color: $site-font-color;
     padding: 10px;
+    color: $site-font-color;
     border-image: none;
     transition: color 300ms $easeOutBack;
 
@@ -133,21 +133,21 @@
   background: $off-black;
 
   .image-modal-container {
-    display: flex;
     position: absolute;
-    align-items: center;
-    justify-content: center;
     top: 2%;
     right: 2%;
     bottom: 2%;
     left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .miniview-container {
   position: absolute;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   z-index: 130;
 }
 

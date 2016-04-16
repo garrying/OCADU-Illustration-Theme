@@ -50,8 +50,8 @@ a {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   color: $white;
-  border: 0;
   background: $off-black;
+  border: 0;
 
   &:focus {
     z-index: 600;

@@ -8,6 +8,7 @@
 .illustrators-grid {
   width: 71.8vw;
   transition: transform 800ms $easeOutExpo;
+  will-change: transform;
 
   &.blur,
   &:hover {
@@ -18,7 +19,7 @@
   }
 
   .gallery-item {
-    margin: 0 0 4% 4%;
+    margin: 0 4% 4% 0;
     transition: opacity 300ms $easeOutBack, filter 400ms $easeOutBack;
 
     &:hover {
@@ -48,8 +49,8 @@
   margin-top: 1%;
 
   .bricklayer-column-sizer {
-    width: 50%;
     display: none;
+    width: 50%;
 
     @media screen and (min-width: $large-vp) {
       width: 25%;

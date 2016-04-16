@@ -1,8 +1,9 @@
 .archive-grid {
+  width: 75vw;
   margin: 0 auto;
 
   .gallery-item {
-    margin-bottom: 5%;
+    margin-bottom: 10%;
   }
 }
 
@@ -36,9 +37,9 @@
   }
 
   .illustrator-placeholder {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
   }
 }
 
@@ -85,7 +86,7 @@
   max-width: 850px;
   padding: 0 10%;
   margin: 50px auto 100px;
-  font-size: 1.10em;
+  font-size: 1.1em;
 
   .entry-title {
     font-size: ms(2);
