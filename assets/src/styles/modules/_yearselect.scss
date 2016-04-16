@@ -21,11 +21,13 @@
   color: $white;
   border: 0;
   opacity: 0;
-  transform: translateX(-20px);
   transition: text-indent 300ms $easeOutBack;
+  transform: translateX(-20px);
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-indent: 10px;
+    outline-color: $white;
   }
 
   &.active {
