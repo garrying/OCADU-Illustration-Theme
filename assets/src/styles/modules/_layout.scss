@@ -1,7 +1,6 @@
 .single-illustrator {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
 }
 
 .illustrator-gallery-container {
@@ -64,22 +63,22 @@
     }
 
     @media screen and (max-width: $medium-vp) {
-      width: 31%;
       left: 20px;
+      width: 31%;
     }
 
     @media screen and (max-width: $small-vp) {
-      font-size: 1em;
-      margin: 60px 0 0 0;
-      padding: 0 20px;
-      width: 100%;
       position: static;
+      width: 100%;
+      padding: 0 20px;
+      margin: 60px 0 0;
+      font-size: 1em;
     }
   }
 
   .illustrator-meta-wrapper-inner {
     width: 100%;
-    
+
     @media screen and (max-width: $small-vp) {
       margin-right: 0;
     }
@@ -111,13 +110,14 @@
   transition: border 300ms $easeOutBack;
 
   @media screen and (max-width: $small-vp) {
-    border-bottom: 0;
     margin-top: 2em;
-    border-top: 1px solid rgba($accent,0.1);
+    border-bottom: 1px solid rgba($accent, 0.1);
   }
 
   &:hover {
-    border-bottom-width: 8px;
+    @media screen and (min-width: $small-vp) {
+      border-bottom-width: 8px;
+    }
   }
 
   a {
@@ -146,22 +146,22 @@
 
     a {
       padding-right: 20px;
-      
+
       @media screen and (max-width: $small-vp) {
         padding-right: 0;
       }
     }
   }
 
-  .section-indicator {
+  .section-indicator-single {
     padding-left: 0.5em;
     font-weight: 700;
     white-space: nowrap;
+  }
 
-    .indicator {
-      margin-right: 4px;
-      font-weight: 400;
-    }
+  .indicator {
+    margin-right: 4px;
+    font-weight: 400;
   }
 }
 
@@ -173,7 +173,7 @@
   left: 30%;
   z-index: 400;
   background: $off-black;
-  
+
   @media screen and (max-width: $medium-vp)  {
     left: 0;
   }
@@ -195,7 +195,7 @@
   right: 20px;
   bottom: 20px;
   z-index: 130;
-  
+
   @media screen and (max-width: $small-vp) {
     display: none;
   }

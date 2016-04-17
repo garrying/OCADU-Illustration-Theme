@@ -1,11 +1,7 @@
 .logo {
-  border-image: none;
   font-weight: 700;
+  border-image: none;
   transition: color 300ms ease-in-out;
-
-  &.invert {
-    color: $white;
-  }
 }
 
 .logo-wrapper {
@@ -19,26 +15,26 @@
   z-index: 300;
 
   @media screen and (max-width: $small-vp) {
-    left: 20px;
     right: 20px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
   }
 
-  @media screen and (max-width: $medium-vp)  {
+  @media screen and (max-width: $medium-vp) {
     left: 20px;
   }
+}
 
-  .header-item {
-    padding: 0.25em 0;
-    transition: color 300ms ease-in-out;
-    @media screen and (max-width: $small-vp) {
-      padding: 0;
-    }
+.header-item {
+  padding: 0.25em 0;
+  transition: color 300ms ease-in-out;
 
-    &.reverse {
-      color: $white;
-    }
+  @media screen and (max-width: $small-vp) {
+    padding: 0;
   }
+}
+
+.invert {
+  color: $white;
 }

@@ -66,15 +66,15 @@
       <ul class="illustrator-nav-single">
         <?php if ( is_singular( 'illustrator' ) ) {
             $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          echo '<a class="section-indicator" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"><span class="indicator">✺</span> ';
+          echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"><span class="indicator">✺</span> ';
             if ( isset( $term->name ) ) {
               esc_html_e( $term->name );
             };
             echo '</a>';
           }
         ?>
-        <li class="nav-previous truncate"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="indicator"></span> <span class="truncate name">⤺ %title</span>' ) ); ?></li>
-        <li class="nav-next truncate"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title ⤻</span> <span class="indicator"></span>' ) ); ?></li>
+        <li class="nav-previous truncate"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">⤺ %title</span>' ) ); ?></li>
+        <li class="nav-next truncate"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title ⤻</span>' ) ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
     </div>

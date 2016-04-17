@@ -13,8 +13,8 @@
       </div>
     </figure>
     <div class="illustrator-meta-container">
-      <h1 class="illustrator-title p-name"><?php esc_html_e( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
-      <span class="illustrator-name p-author"><?php the_title(); ?></span>
+      <h1 class="illustrator-meta-label illustrator-title p-name"><?php esc_html_e( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
+      <span class="illustrator-meta-label illustrator-name p-author"><?php the_title(); ?></span>
     </div>
   </a>
 </article>

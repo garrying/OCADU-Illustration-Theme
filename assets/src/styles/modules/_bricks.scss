@@ -28,8 +28,7 @@
     }
   }
 
-  .illustrator-title,
-  .illustrator-name {
+  .illustrator-meta-label {
     margin-bottom: 0;
     font-size: 0.857em;
   }
@@ -49,15 +48,18 @@
   margin-top: 1%;
 
   .bricklayer-column-sizer {
-    display: none;
     width: 50%;
 
     @media screen and (min-width: $large-vp) {
-      width: 25%;
+      width: 33.3333333333%;
     }
+  }
 
-    @media screen and (max-width: $smallest-vp) {
-      width: 100%;
+  @media screen and (max-width: $small-vp) {
+    .bricklayer-column:last-child {
+      .gallery-item {
+        margin-right: 0;
+      }
     }
   }
 }

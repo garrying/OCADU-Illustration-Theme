@@ -2,14 +2,12 @@
 
 .loader {
   position: fixed;
-  pointer-events: none;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
   top: calc(50% - 12vh);
   left: calc(50% - 2px);
+  z-index: 999;
   width: 4px;
   height: 24vh;
+  pointer-events: none;
   background: linear-gradient( 0deg,
       #76b84e 0%,
       #f8c130 30%,
@@ -18,14 +16,5 @@
       #2c3b9a 80%,
       #03a4d8 100%);
   background-size: 200% 200%;
-  animation: AnimationName 1s linear infinite;
-}
-
-@keyframes AnimationName { 
-  0% {
-    background-position: 50% 0%;
-  }
-  100% {
-    background-position: 50% 200%
-  }
+  animation: cycle 1s linear infinite;
 }

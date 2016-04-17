@@ -164,18 +164,18 @@ var Bloodhound = require('bloodhound');
 
       var targetPanel = $(e).data('panel');
 
-      if ($(e).hasClass('reverse')) {
-        $(e).removeClass('reverse');
+      if ($(e).hasClass('invert')) {
+        $(e).removeClass('invert');
         app._ocadPanelsClose();
       } else {
         $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast');
         $('.year-item').velocity({ opacity: 0, translateX: '-20px', display: 'flex' }, 'fast').removeClass('loaded');
         $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
 
-        $('.header-item').addClass('inactive').removeClass('reverse');
+        $('.header-item').addClass('inactive').removeClass('invert');
         app.settings.logo.addClass('invert');
 
-        $(e).addClass('reverse').removeClass('inactive');
+        $(e).addClass('invert').removeClass('inactive');
         $('.' + targetPanel).velocity({ translateX: ['-4%', '-100%'] }, { duration: 800, easing: [0.19, 1, 0.22, 1] }).addClass('visible').attr('aria-hidden', false).focus();
         $('.illustrator-meta').velocity({ opacity: .2 }, 'fast');
 
@@ -250,7 +250,7 @@ var Bloodhound = require('bloodhound');
 
     _ocadPanelsClose: function _ocadPanelsClose() {
       $('.illustrator-meta').velocity({ opacity: 1 }, 'fast');
-      $('.header-item').removeClass('reverse inactive');
+      $('.header-item').removeClass('invert inactive');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
