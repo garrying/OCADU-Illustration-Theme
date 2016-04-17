@@ -9,11 +9,11 @@
           $image_height = $image_data[2];
         ?>
         <?php the_post_thumbnail( 'illustrator-small', array( 'src' => '', 'srcset' => ' ', 'data-src' => $image_data[0], 'data-sizes' => 'auto', 'data-srcset' => $image_srcset, 'class' => 'lazyload', 'alt' => 'Thumbnail of ' . get_the_title() . '', 'title' => '' . get_the_title() . '' ) ); ?>
-        <canvas class="illustrator-placeholder" height="<?php echo $image_height; ?>" width="<?php echo $image_width; ?>"></canvas>
+        <canvas class="illustrator-placeholder" height="<?php echo esc_attr( $image_height ); ?>" width="<?php echo esc_attr( $image_width ); ?>"></canvas>
       </div>
     </figure>
     <div class="illustrator-meta-container">
-      <h1 class="illustrator-meta-label illustrator-title p-name"><?php esc_html_e( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
+      <h1 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
       <span class="illustrator-meta-label illustrator-name p-author"><?php the_title(); ?></span>
     </div>
   </a>
