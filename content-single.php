@@ -51,7 +51,7 @@
 
           <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
             <div class="email" itemprop="email">
-              <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?></a>
+              <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?></a>
             </div>
           <?php endif; ?>
 
