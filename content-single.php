@@ -14,9 +14,9 @@
 
           <?php the_content(); ?>
 
-          <meta itemprop="description" content="<?php $text = strip_tags( get_the_content() ); esc_html_e( wptexturize( $text ) ) ?>">
+          <meta itemprop="description" content="<?php $text = strip_tags( get_the_content() ); echo esc_html( wptexturize( $text ) ) ?>">
           <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
-          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ); esc_html_e( $image ) ?>">
+          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ); echo esc_html( $image ) ?>">
 
         </div>
 
@@ -31,7 +31,7 @@
                 <?php
                   $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $url = preg_replace( '#^https?://#', '', $url );
-                  esc_html_e( $url );
+                  echo esc_html( $url );
                 ?>
               </a>
             </div>
@@ -43,7 +43,7 @@
                 <?php
                   $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $url = preg_replace( '#^https?://#', '', $url );
-                  esc_html_e( $url );
+                  echo esc_html( $url );
                 ?>
               </a>
             </div>
@@ -57,7 +57,7 @@
 
           <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
             <div class="phone" itemprop="telephone">
-              <?php esc_html_e( get_post_meta( $post->ID, 'illu_phone', true ) ) ?>
+              <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ) ?>
             </div>
           <?php endif; ?>
         </div>
@@ -65,14 +65,13 @@
 
       <ul class="illustrator-nav-single">
         <?php if ( is_singular( 'illustrator' ) ) {
-            $term = get_the_terms( $post->ID, 'gradyear' )[0];
+          $term = get_the_terms( $post->ID, 'gradyear' )[0];
           echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"><span class="indicator">✺</span> ';
-            if ( isset( $term->name ) ) {
-              esc_html_e( $term->name );
-            };
-            echo '</a>';
-          }
-        ?>
+          if ( isset( $term->name ) ) {
+            echo esc_html( $term->name );
+          };
+          echo '</a>';
+          }?>
         <li class="nav-previous truncate"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">⤺ %title</span>' ) ); ?></li>
         <li class="nav-next truncate"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title ⤻</span>' ) ); ?></li>
       </ul><!-- .llustrator-nav-single -->
