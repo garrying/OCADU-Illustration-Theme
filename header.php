@@ -68,7 +68,7 @@
                 } else {
                   echo "<li class='year-list-item'><a class='year-item' data-engnum='" . esc_html( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
                 }
-                  esc_html_e( $year->name );
+                echo esc_html( $year->name );
                 echo '</a></li>';
               }
               ?>
