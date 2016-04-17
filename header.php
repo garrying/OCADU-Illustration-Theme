@@ -62,14 +62,12 @@
           <div class="panel-inner">
             <ul class="year-select-wrapper">
               <?php foreach ( $grad_year as $year ) {
-                $yearenglishnum = $year->description;
                 if ( isset( $selected_year ) && $selected_year == $year->name ) {
-                  echo "<li class='year-list-item'><a class='year-item active' data-engnum='" . esc_html( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' data-engnum='" . esc_html( $yearenglishnum ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                  $selected_year_class = 'active';
                 } else {
-                  echo "<li class='year-list-item'><a class='year-item' data-engnum='" . esc_html( $yearenglishnum ) . "' data-numyear='" . esc_html( $year->name ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>";
+                  $selected_year_class = '';
                 }
-                echo esc_html( $year->name );
-                echo '</a></li>';
+                echo "<li class='year-list-item'><a class='year-item " . $selected_year_class . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a></li>";
               }
               ?>
             </ul>
