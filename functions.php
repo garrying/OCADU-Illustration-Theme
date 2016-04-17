@@ -147,7 +147,7 @@ function ocadu_content_nav( $nav_id ) {
   global $wp_query;
 
   if ( $wp_query->max_num_pages > 1 ) : ?>
-    <nav id="<?php esc_attr_e( $nav_id ); ?>">
+    <nav id="<?php echo esc_attr( $nav_id ); ?>">
       <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocaduillustration' ); ?></h3>
       <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
       <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>

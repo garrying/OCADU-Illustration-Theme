@@ -67,7 +67,7 @@
                 } else {
                   $selected_year_class = '';
                 }
-                echo "<li class='year-list-item'><a class='year-item " . $selected_year_class . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a></li>";
               }
               ?>
             </ul>
