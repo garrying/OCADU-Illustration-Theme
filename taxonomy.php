@@ -4,7 +4,7 @@
     $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) )->name;
     echo '<div class="section-indicator-index"><span class="section-indicator" href="/" title="Return to homepage">';
     if ( isset( $selected_year ) ) {
-      esc_html_e( $selected_year );
+      echo esc_html( $selected_year );
     };
     echo '</span></div>';
   }
