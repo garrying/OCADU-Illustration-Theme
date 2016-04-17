@@ -40,7 +40,7 @@
           <?php
             $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) );
             $url = preg_replace( '#^https?://#', '', $url );
-            esc_html_e( $url );
+            echo esc_html( $url );
           ?>
         </a>
       </li>
@@ -52,7 +52,7 @@
           <?php
             $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) );
             $url = preg_replace( '#^https?://#', '', $url );
-            esc_html_e( $url );
+            echo esc_html( $url );
           ?>
         </a>
       </li>
@@ -60,13 +60,13 @@
 
     <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) : ?>
       <li class="email truncate" itemprop="email">
-        <a title="Email <?php the_title(); ?>" href="mailto:<?php esc_html_e( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?></a>
+        <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?></a>
       </li>
     <?php endif; ?>
 
     <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) : ?>
       <li class="phone" itemprop="telephone">
-        <?php esc_html_e( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) ?>
+        <?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) ?>
       </li>
     <?php endif; ?>
   </div>
