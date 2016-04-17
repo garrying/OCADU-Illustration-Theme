@@ -150,3 +150,19 @@
     width: 50%;
   }
 }
+
+.error-body {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75vw;
+
+  @media screen and (max-width: $small-vp) {
+    font-size: 3.5vw;
+  }
+}

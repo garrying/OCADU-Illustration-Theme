@@ -15,11 +15,6 @@
     .gallery-item {
       filter: grayscale(1);
       opacity: 0.25;
-
-      @media screen and (max-width: $small-vp) {
-        filter: grayscale(0);
-        opacity: 1;
-      }
     }
   }
 
@@ -61,7 +56,7 @@
       width: 25%;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: $smallest-vp) {
       width: 100%;
     }
   }
@@ -90,4 +85,21 @@
 
 .bricklayer-column {
   flex: 1;
+}
+
+// Touchevent Cases
+
+.touchevents {
+
+  .illustrators-grid {
+
+    &.blur,
+    &:hover {
+
+      .gallery-item {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+    }
+  }
 }

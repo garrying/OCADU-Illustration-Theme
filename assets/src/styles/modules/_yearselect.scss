@@ -43,16 +43,15 @@
 
     &::after {
       display: inline-flex;
-      height: 1em;
-      width: 1em;
       line-height: 1em;
       margin-left: 0.25em;
-      content: "☀";
+      font-size: 1.2em;
+      content: "✺";
       animation-name: spin;
       animation-duration: 10s;
       animation-iteration-count:  infinite;
       animation-timing-function: linear;
-      transform-origin: 51% 53%;
+      transform-origin: 50% 55%;
     }
   }
 }

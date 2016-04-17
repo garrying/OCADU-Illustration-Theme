@@ -6,6 +6,7 @@
 
 var $ = require('jquery');
 window.jQuery = window.$ = $;
+require('./libs/modernizr-custom');
 require('typeahead.js');
 require('velocity-animate');
 require('imagesloaded');
@@ -477,7 +478,7 @@ var Bloodhound = require('bloodhound');
   app.init();
 })();
 
-},{"./libs/jquery-text-mix":2,"bloodhound":11,"bricklayer":4,"fastclick":6,"imagesloaded":7,"jquery":8,"lazysizes":9,"typeahead.js":12,"velocity-animate":13}],2:[function(require,module,exports){
+},{"./libs/jquery-text-mix":2,"./libs/modernizr-custom":3,"bloodhound":12,"bricklayer":5,"fastclick":7,"imagesloaded":8,"jquery":9,"lazysizes":10,"typeahead.js":13,"velocity-animate":14}],2:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -804,7 +805,70 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   };
 });
 
-},{"./text-mix":3,"jquery":8,"levenshtein":10}],3:[function(require,module,exports){
+},{"./text-mix":4,"jquery":9,"levenshtein":11}],3:[function(require,module,exports){
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+/*! modernizr 3.3.1 (Custom Build) | MIT *
+ * http://modernizr.com/download/?-touchevents-setclasses !*/
+!function (e, n, t) {
+  function o(e, n) {
+    return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
+  }function s() {
+    var e, n, t, s, a, i, r;for (var l in c) {
+      if (c.hasOwnProperty(l)) {
+        if (e = [], n = c[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
+          e.push(n.options.aliases[t].toLowerCase());
+        }for (s = o(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) {
+          i = e[a], r = i.split("."), 1 === r.length ? Modernizr[r[0]] = s : (!Modernizr[r[0]] || Modernizr[r[0]] instanceof Boolean || (Modernizr[r[0]] = new Boolean(Modernizr[r[0]])), Modernizr[r[0]][r[1]] = s), f.push((s ? "" : "no-") + r.join("-"));
+        }
+      }
+    }
+  }function a(e) {
+    var n = u.className,
+        t = Modernizr._config.classPrefix || "";if (p && (n = n.baseVal), Modernizr._config.enableJSClass) {
+      var o = new RegExp("(^|\\s)" + t + "no-js(\\s|$)");n = n.replace(o, "$1" + t + "js$2");
+    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), p ? u.className.baseVal = n : u.className = n);
+  }function i() {
+    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : p ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
+  }function r() {
+    var e = n.body;return e || (e = i(p ? "svg" : "body"), e.fake = !0), e;
+  }function l(e, t, o, s) {
+    var a,
+        l,
+        f,
+        c,
+        d = "modernizr",
+        p = i("div"),
+        h = r();if (parseInt(o, 10)) for (; o--;) {
+      f = i("div"), f.id = s ? s[o] : d + (o + 1), p.appendChild(f);
+    }return a = i("style"), a.type = "text/css", a.id = "s" + d, (h.fake ? h : p).appendChild(a), h.appendChild(p), a.styleSheet ? a.styleSheet.cssText = e : a.appendChild(n.createTextNode(e)), p.id = d, h.fake && (h.style.background = "", h.style.overflow = "hidden", c = u.style.overflow, u.style.overflow = "hidden", u.appendChild(h)), l = t(p, e), h.fake ? (h.parentNode.removeChild(h), u.style.overflow = c, u.offsetHeight) : p.parentNode.removeChild(p), !!l;
+  }var f = [],
+      c = [],
+      d = { _version: "3.3.1", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
+      var t = this;setTimeout(function () {
+        n(t[e]);
+      }, 0);
+    }, addTest: function addTest(e, n, t) {
+      c.push({ name: e, fn: n, options: t });
+    }, addAsyncTest: function addAsyncTest(e) {
+      c.push({ name: null, fn: e });
+    } },
+      Modernizr = function Modernizr() {};Modernizr.prototype = d, Modernizr = new Modernizr();var u = n.documentElement,
+      p = "svg" === u.nodeName.toLowerCase(),
+      h = d._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];d._prefixes = h;var m = d.testStyles = l;Modernizr.addTest("touchevents", function () {
+    var t;if ("ontouchstart" in e || e.DocumentTouch && n instanceof DocumentTouch) t = !0;else {
+      var o = ["@media (", h.join("touch-enabled),("), "heartz", ")", "{#modernizr{top:9px;position:absolute}}"].join("");m(o, function (e) {
+        t = 9 === e.offsetTop;
+      });
+    }return t;
+  }), s(), a(f), delete d.addTest, delete d.addAsyncTest;for (var v = 0; v < Modernizr._q.length; v++) {
+    Modernizr._q[v]();
+  }e.Modernizr = Modernizr;
+}(window, document);
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -1090,7 +1154,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   };
 });
 
-},{"levenshtein":10}],4:[function(require,module,exports){
+},{"levenshtein":11}],5:[function(require,module,exports){
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -1282,7 +1346,7 @@ if (jQuery !== undefined) {
 
 },{}]},{},[1]);
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -1393,7 +1457,7 @@ return EvEmitter;
 
 }));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 ;(function () {
 	'use strict';
 
@@ -2236,7 +2300,7 @@ return EvEmitter;
 	}
 }());
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
  * JavaScript is all like "You images are done yet or what?"
@@ -2608,7 +2672,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":5}],8:[function(require,module,exports){
+},{"ev-emitter":6}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.3
  * http://jquery.com/
@@ -12452,7 +12516,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function(window, factory) {
 	var lazySizes = factory(window, window.document);
 	window.lazySizes = lazySizes;
@@ -13150,7 +13214,7 @@ return jQuery;
 }
 ));
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function(root, factory){
   if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
     define(function(){
@@ -13258,7 +13322,7 @@ return jQuery;
 
 }));
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
@@ -14177,7 +14241,7 @@ return jQuery;
     }();
     return Bloodhound;
 });
-},{"jquery":8}],12:[function(require,module,exports){
+},{"jquery":9}],13:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
@@ -15716,7 +15780,7 @@ return jQuery;
         }
     })();
 });
-},{"jquery":8}],13:[function(require,module,exports){
+},{"jquery":9}],14:[function(require,module,exports){
 /*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
 
 /*************************

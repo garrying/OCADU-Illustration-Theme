@@ -3,6 +3,7 @@
 
 var $ = require('jquery');
 window.jQuery = window.$ = $;
+require('./libs/modernizr-custom');
 require('typeahead.js');
 require('velocity-animate');
 require('imagesloaded');

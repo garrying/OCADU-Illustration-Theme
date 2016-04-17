@@ -11,6 +11,10 @@ body {
   color: $site-font-color;
   background: $site-background;
   @include font-smoothing(on);
+
+  @media screen and (min-width: $large-vp)  {
+    font-size: 150%;
+  }
 }
 
 ::selection {
