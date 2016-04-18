@@ -78,12 +78,26 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.home-grid').hover(function () {
-        $('.title-unit-init').velocity('stop').velocity('fadeOut', 'fast', function () {
-          $('.title-unit-illustrator').velocity('stop').velocity('fadeIn', 'fast');
+        $('.title-unit-init').velocity('stop').velocity({ opacity: 0, translateX: '-10px' }, {
+          display: 'none',
+          easing: [0.19, 1, 0.22, 1],
+          duration: 'fast',
+          complete: function complete() {
+            $('.title-unit-illustrator').velocity('stop').velocity({ opacity: 1, translateX: [0, 40] }, {
+              display: 'block',
+              easing: [0.19, 1, 0.22, 1],
+              duration: '1000ms'
+            });
+          }
         });
       }, function () {
-        $('.title-unit-illustrator').velocity('stop').velocity('fadeOut', 'fast', function () {
-          $('.title-unit-init').velocity('stop').velocity('fadeIn', 'fast');
+        $('.title-unit-illustrator').velocity('stop').velocity({ opacity: 0, translateX: '40px' }, {
+          display: 'none',
+          easing: [0.19, 1, 0.22, 1],
+          duration: 'fast',
+          complete: function complete() {
+            $('.title-unit-init').velocity('stop').velocity({ opacity: 1, translateX: '0px' }, { display: 'block' }, 'fast');
+          }
         });
       });
 
