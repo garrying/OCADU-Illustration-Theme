@@ -14,8 +14,8 @@
 
   @media screen and (max-width: $medium-vp)  {
     width: 30vw;
-    font-size: 1.5vw;
     padding-left: 20px;
+    font-size: 1.5vw;
   }
 
   @media screen and (max-width: $small-vp)  {
@@ -23,16 +23,32 @@
   }
 
   .title-unit {
+    position: absolute;
+    top: 0;
     display: flex;
+    height: 100%;
+    visibility: hidden;
     flex-grow: 1;
     justify-content: center;
     flex-direction: column;
-    pointer-events: none;
+    opacity: 0;
+    transition: transform 800ms $easeOutExpo, opacity 800ms $easeOutExpo, visibility 800ms $easeOutExpo;
+    will-change: transform;
+  }
+
+  .title-unit-init {
+    transform: translateX(-40px);
   }
 
   .title-unit-illustrator {
-    display: none;
     pointer-events: none;
+    transform: translateX(40px);
+  }
+
+  .active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .title-primary {
