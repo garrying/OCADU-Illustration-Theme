@@ -10,7 +10,7 @@
   @media screen and (max-width: $small-vp) {
     width: 100vw;
     padding: 20px;
-    margin: 50px 0 0 0;
+    margin: 50px 0 0;
   }
 
   .gallery-item {
@@ -24,12 +24,13 @@
   @media screen and (max-width: $small-vp) {
     width: 100vw;
     padding: 20px;
-    margin: 50px 0 0 0;
+    margin: 50px 0 0;
     transform: translatex(0);
   }
 
   &:hover {
     transform: translatex(28.2vw);
+
     @media screen and (max-width: $small-vp) {
       transform: translatex(0);
     }
@@ -70,15 +71,15 @@
     position: fixed;
     left: 40px;
     z-index: 1;
+    display: flex;
+    height: 100%;
     font-size: 2.5vw;
     border: 0;
-    height: 100%;
-    display: flex;
     align-items: center;
 
     @media screen and (max-width: $medium-vp)  {
-      font-size: 4vw;
       left: 20px;
+      font-size: 4vw;
     }
 
     @media screen and (max-width: $small-vp) {
@@ -129,9 +130,9 @@
   font-size: 1.1em;
 
   @media screen and (max-width: $small-vp) {
-    font-size: 1em;
     padding: 0 20px;
     margin-top: 8em;
+    font-size: 1em;
   }
 
   @media screen and (max-width: $medium-vp) {
