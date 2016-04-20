@@ -5,3 +5,21 @@ ul {
   margin: 0;
   list-style-type: none;
 }
+
+// Definition Lists
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+
+  dd {
+    margin: 0;
+    width: 88%;
+    margin-bottom: 1em;
+  }
+
+  dt {
+    margin-right: 2%;
+    width: 10%;
+  }
+}
