@@ -34,6 +34,7 @@
     opacity: 0;
     transition: transform 800ms $easeOutExpo, opacity 800ms $easeOutExpo, visibility 800ms $easeOutExpo;
     will-change: transform;
+    color: $black;
   }
 
   .title-unit-init {
@@ -41,7 +42,6 @@
   }
 
   .title-unit-illustrator {
-    color: $black;
     pointer-events: none;
     transform: translateX(40px);
   }
