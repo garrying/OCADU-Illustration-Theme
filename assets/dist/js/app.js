@@ -72,15 +72,19 @@ var Bloodhound = require('bloodhound');
       app._ocadTextScrambler(sectionIndicator, sectionIndicator.text(), 'The Graduating Class of ' + sectionIndicator.text(), 500);
 
       sectionIndicator.hover(function () {
+        $('body').addClass('grid-focus');
         $(app.settings.masonryContainerHome).addClass('blur');
       }, function () {
+        $('body').removeClass('grid-focus');
         $(app.settings.masonryContainerHome).removeClass('blur');
       });
 
       $('.home-grid').hover(function () {
         $('.title-unit-illustrator').toggleClass('active');
         $('.title-unit-init').toggleClass('active');
+        $('body').addClass('grid-focus');
       }, function () {
+        $('body').removeClass('grid-focus');
         $('.title-unit-init').toggleClass('active');
         $('.title-unit-illustrator').toggleClass('active');
       });

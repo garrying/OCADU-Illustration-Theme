@@ -106,7 +106,7 @@
   display: flex;
   flex-grow: 1;
   max-width: 100%;
-  border-bottom: 4px solid $accent;
+  border-bottom: 4px solid $light-pink;
   transition: border 300ms $easeOutBack;
 
   @media screen and (max-width: $small-vp) {
@@ -172,7 +172,7 @@
   bottom: 0;
   left: 30%;
   z-index: 400;
-  background: $off-black;
+  background: lighten(#0e0e0f, 10%);
 
   @media screen and (max-width: $medium-vp)  {
     left: 0;

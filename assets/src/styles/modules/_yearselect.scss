@@ -42,16 +42,21 @@
   &.active {
 
     &::after {
-      display: inline-flex;
+      display: inline-block;
       line-height: 1em;
       margin-left: 0.25em;
       font-size: 1.2em;
-      content: "✺";
+      content: "";
+      width: 0.8em;
+      height: 0.8em;
+      margin-bottom: -0.08em;
       animation-name: spin;
       animation-duration: 10s;
       animation-iteration-count:  infinite;
       animation-timing-function: linear;
-      transform-origin: 50% 55%;
+      transform-origin: 50% 50%;
+      background: url('../images/asterisk.svg') no-repeat;
+      background-size: contain;
     }
   }
 }
