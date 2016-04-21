@@ -13,7 +13,7 @@
   &.blur,
   &:hover {
     .gallery-item {
-      filter: grayscale(1);
+      filter: grayscale(1) contrast(135%);
       opacity: 0.25;
     }
   }
