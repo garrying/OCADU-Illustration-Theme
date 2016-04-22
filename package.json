@@ -10,6 +10,9 @@
     "browser-sync": "^2.12.1",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-base": "^1.0.3",
+    "eslint-plugin-import": "^1.5.0",
     "fastclick": "^1.0.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -40,21 +43,6 @@
     "typeahead.js": "./node_modules/typeahead.js/dist/typeahead.jquery.js"
   },
   "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "node": true,
-      "browser": true,
-      "jquery": true,
-      "es6": true
-    },
-    "ecmaFeatures": {
-      "modules": true
-    },
-    "rules": {
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
+    "extends": "airbnb-base"
   }
 }

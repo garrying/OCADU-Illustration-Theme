@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }]*/
-/*global Bricklayer*/
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }] */
+/* global Bricklayer */
 
 var $ = require('jquery');
 window.jQuery = window.$ = $;
@@ -90,10 +90,10 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.illustrators-grid .gallery-item').hover(function (ele) {
-        app._ocadPanelsClose();
         var targetItem = $(ele.target).parentsUntil('.gallery-item');
         var illustrationTitle = targetItem.find('.illustrator-title').text();
         var illustrationAuthor = targetItem.find('.illustrator-name').text();
+        app._ocadPanelsClose();
         if (illustrationTitle.length === 0) {
           $('.title-illustration').addClass('empty');
         } else {
@@ -278,39 +278,41 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadGalleryNav: function _ocadGalleryNav() {
-
       var galleryImages = [];
       var nextImage;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
+        var i, items;
 
-        $(app.settings.masonryContainer).imagesLoaded().done(function () {
-          app._ocadMasonry(app.settings.masonryContainer);
-          app._ocadCascade('.gallery-item', 100);
-        });
+        (function () {
+          $(app.settings.masonryContainer).imagesLoaded().done(function () {
+            app._ocadMasonry(app.settings.masonryContainer);
+            app._ocadCascade('.gallery-item', 100);
+          });
 
-        for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
-          $(masonryItemAnchor[i]).data('index', i);
-          var imageElement = $(masonryItemAnchor[i]);
-          var imageSet = {
-            index: i,
-            url: imageElement.attr('href'),
-            srcset: imageElement.data('srcset'),
-            sizes: imageElement.data('sizes'),
-            width: imageElement.find('img').attr('width'),
-            height: imageElement.find('img').attr('height')
+          for (i = 0, items = masonryItemAnchor.length; i < items; i++) {
+            $(masonryItemAnchor[i]).data('index', i);
+            var imageElement = $(masonryItemAnchor[i]);
+            var imageSet = {
+              index: i,
+              url: imageElement.attr('href'),
+              srcset: imageElement.data('srcset'),
+              sizes: imageElement.data('sizes'),
+              width: imageElement.find('img').attr('width'),
+              height: imageElement.find('img').attr('height')
+            };
+            galleryImages.push(imageSet);
+          }
+
+          // Miniviewer constructor
+
+          var miniView = document.querySelector('.miniview');
+          var miniViewItem = function miniViewItem(item) {
+            miniView.innerHTML += '<div class="mini-item" data-index="' + item.index + '"><canvas class="mini-item-inner" width="' + item.width + '" height="' + item.height + '"></canvas></div>';
           };
-          galleryImages.push(imageSet);
-        }
-
-        // Miniviewer constructor
-
-        var miniView = document.querySelector('.miniview');
-        var miniViewItem = function miniViewItem(item) {
-          miniView.innerHTML += '<div class="mini-item" data-index="' + item.index + '"><canvas class="mini-item-inner" width="' + item.width + '" height="' + item.height + '"></canvas></div>';
-        };
-        galleryImages.map(miniViewItem);
+          galleryImages.map(miniViewItem);
+        })();
       }
 
       /**

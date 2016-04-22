@@ -1,7 +1,7 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }]*/
-/*global Bricklayer*/
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }] */
+/* global Bricklayer */
 
-var $ = require('jquery');
+const $ = require('jquery');
 window.jQuery = window.$ = $;
 require('./libs/modernizr-custom');
 require('typeahead.js');
@@ -10,8 +10,8 @@ require('imagesloaded');
 require('./libs/jquery-text-mix');
 require('lazysizes');
 require('bricklayer');
-var FastClick = require('fastclick');
-var Bloodhound = require('bloodhound');
+const FastClick = require('fastclick');
+const Bloodhound = require('bloodhound');
 
 ( function() {
 
@@ -38,15 +38,15 @@ var Bloodhound = require('bloodhound');
       searchField: $('.search-field'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
-      imageIndex: 0
+      imageIndex: 0,
     },
 
     _fastClick: function () {
       FastClick(document.body);
     },
 
-    _ocadTextScrambler: function (ele, originText, newText, duration) {
-      let t = $(ele);
+    _ocadTextScrambler: (ele, originText, newText, duration) => {
+      const t = $(ele);
       t.hover(() => {
         t.textMix(newText, duration, 'linear');
       }, () => {
@@ -55,12 +55,12 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadTextScramblerMoments: function () {
-      let thesis = $('.thesis-title');
-      let illustrator = $('.illustrator-meta-name');
-      let yearSelect = $('#year-select-link');
-      let searchSelect = $('#search-link');
-      let logo = $('.logo');
-      let sectionIndicator = $('.section-indicator');
+      const thesis = $('.thesis-title');
+      const illustrator = $('.illustrator-meta-name');
+      const yearSelect = $('#year-select-link');
+      const searchSelect = $('#search-link');
+      const logo = $('.logo');
+      const sectionIndicator = $('.section-indicator');
       app._ocadTextScrambler(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
       app._ocadTextScrambler(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
       app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
@@ -87,10 +87,10 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.illustrators-grid .gallery-item').hover( ele => {
+        const targetItem = $(ele.target).parentsUntil('.gallery-item');
+        const illustrationTitle = targetItem.find('.illustrator-title').text();
+        const illustrationAuthor = targetItem.find('.illustrator-name').text();
         app._ocadPanelsClose();
-        let targetItem = $(ele.target).parentsUntil('.gallery-item');
-        let illustrationTitle = targetItem.find('.illustrator-title').text();
-        let illustrationAuthor = targetItem.find('.illustrator-name').text();
         if (illustrationTitle.length === 0) {
           $('.title-illustration').addClass('empty');
         } else {
@@ -101,12 +101,11 @@ var Bloodhound = require('bloodhound');
       }, () => {
         $('.title-illustration').textMix($('.title-illustration').text(), 1000, 'linear');
       });
-
     },
 
     _ocadLoader: (e = true) => {
       if (e === false) {
-        $('body').removeAttr( 'style' );
+        $('body').removeAttr('style');
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
         $('body').css('cursor', 'progress');
@@ -114,8 +113,8 @@ var Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadMasonry: function (selector) {
-      let msnry = new Bricklayer(document.querySelector(selector));
+    _ocadMasonry: selector => {
+      const msnry = new Bricklayer(document.querySelector(selector));
     },
 
      _ocadCascade: function (selector, delayNum) {
@@ -124,20 +123,20 @@ var Bloodhound = require('bloodhound');
         $(ele).addClass('loaded');
       };
       for (var i = 0, items = item.length; i < items; i++) {
-        $(item[i]).delay(delayNum*i).velocity({ opacity: 1 },{
-          complete: velocityComplete
+        $(item[i]).delay(delayNum*i).velocity({ opacity: 1 }, {
+          complete: velocityComplete,
         });
       }
     },
 
     _ocadSearch: function () {
-      var illustratorSearch = new Bloodhound({
+      const illustratorSearch = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
           url: '/wp-json/wp/v2/illustrator?filter[s]=%QUERY',
-          wildcard: '%QUERY'
-        }
+          wildcard: '%QUERY',
+        },
       });
 
       illustratorSearch.initialize();
@@ -201,18 +200,18 @@ var Bloodhound = require('bloodhound');
 
     _ocadPanelSelectButtons: function () {
       app._ocadSearch();
-      $('.header-item').on('click',function(){
+      $('.header-item').on('click', function () {
         app._ocadPanelSelect(this);
       });
     },
 
     _ocadShuffle: function (elems) {
-      var allElems = (function(){
+      var allElems = (function() {
         var ret = [], l = elems.length;
         while (l--) { ret[ret.length] = elems[l]; }
         return ret;
       })();
-      var shuffled = (function(){
+      var shuffled = (function() {
         var l = allElems.length, ret = [];
         while (l--) {
           var random = Math.floor(Math.random() * allElems.length),
@@ -220,8 +219,9 @@ var Bloodhound = require('bloodhound');
           allElems.splice(random, 1);
           ret[ret.length] = randEl;
         }
-        return ret;
-      })(), l = elems.length;
+          return ret;
+        })(),
+        l = elems.length;
 
       while (l--) {
         elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
@@ -231,7 +231,7 @@ var Bloodhound = require('bloodhound');
 
     _ocadHomeLoader: function () {
       if ($('body').hasClass('home')) {
-        app._ocadShuffle( document.querySelectorAll('.gallery-item') );
+        app._ocadShuffle(document.querySelectorAll('.gallery-item'));
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         app._ocadMasonry(app.settings.masonryContainerHome);
@@ -239,8 +239,8 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadPanelsCloseFullImage: function() {
-      app.settings.imageModal.velocity('fadeOut',{duration: 180});
-      $('#full-image').velocity({translateY:'15px'},'fast');
+      app.settings.imageModal.velocity('fadeOut', { duration: 180 });
+      $('#full-image').velocity({ translateY: '15px' }, 'fast');
     },
 
     _ocadPanelsClose: function () {
@@ -258,8 +258,8 @@ var Bloodhound = require('bloodhound');
 
     _ocadPanelsCloseSelective: function(event) {
       if (!$(event.target).closest('#full-image, .miniview').length && app.settings.imageModal.is(':visible')) {
-        app.settings.imageModal.velocity('fadeOut',{duration:180});
-        $(app.settings.masonryContainer).velocity({opacity:1},'fast');
+        app.settings.imageModal.velocity('fadeOut', { duration: 180 });
+        $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
       }
 
@@ -269,13 +269,11 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadGalleryNav: function() {
-
       var galleryImages = [];
       var nextImage;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
-
         $(app.settings.masonryContainer).imagesLoaded().done(function() {
           app._ocadMasonry(app.settings.masonryContainer);
           app._ocadCascade('.gallery-item',100);
@@ -283,33 +281,32 @@ var Bloodhound = require('bloodhound');
 
         for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
           $(masonryItemAnchor[i]).data('index',i);
-          var imageElement = $(masonryItemAnchor[i]);
-          var imageSet = {
+          const imageElement = $(masonryItemAnchor[i]);
+          const imageSet = {
             index: i,
             url: imageElement.attr('href'),
             srcset: imageElement.data('srcset'),
             sizes: imageElement.data('sizes'),
             width: imageElement.find('img').attr('width'),
-            height: imageElement.find('img').attr('height')
+            height: imageElement.find('img').attr('height'),
           };
           galleryImages.push(imageSet);
         }
 
         // Miniviewer constructor
 
-        var miniView = document.querySelector('.miniview');
-        var miniViewItem = item => {
+        const miniView = document.querySelector('.miniview');
+        const miniViewItem = item => {
           miniView.innerHTML += '<div class="mini-item" data-index="'+ item.index +'"><canvas class="mini-item-inner" width="'+ item.width +'" height="'+ item.height +'"></canvas></div>';
-        }
+        };
         galleryImages.map(miniViewItem);
-
       }
 
       /**
       * Updates miniview to corresponding element
       **/
 
-      var miniViewUpdate = item => {
+      const miniViewUpdate = item => {
         $('.mini-item-inner').removeClass('active');
         $('.mini-item-inner').eq(item).addClass('active');
       };
@@ -318,7 +315,7 @@ var Bloodhound = require('bloodhound');
       * Click event for miniview navigation
       **/
 
-      $('.miniview').on('click','.mini-item', function() {
+      $('.miniview').on('click', '.mini-item', function () {
         app._ocadLoader();
         app.settings.imageIndex = $(this).data('index');
         miniViewUpdate(app.settings.imageIndex);
@@ -329,8 +326,8 @@ var Bloodhound = require('bloodhound');
       * Creates initial image element
       **/
 
-      var imageModalSetter = imageSource => {
-        var image = new Image();
+      const imageModalSetter = imageSource => {
+        const image = new Image();
         image.alt = 'Full illustration';
         image.id = 'full-image';
         image.src = imageSource.attr('href');
@@ -343,10 +340,10 @@ var Bloodhound = require('bloodhound');
       * Masonry item click
       **/
 
-      $(app.settings.masonryContainer).on( 'click', '.gallery-icon-anchor', function( event ) {
+      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', function( event ) {
         event.preventDefault();
         app._ocadLoader();
-        var itemImage = $(this);
+        const itemImage = $(this);
         app.settings.imageIndex = itemImage.data('index');
 
         $('.image-modal-container').html(imageModalSetter(itemImage));
@@ -361,38 +358,37 @@ var Bloodhound = require('bloodhound');
             },
             complete: function() {
               $('#full-image').velocity({opacity:1});
-            }
+            },
           });
         });
 
         miniViewUpdate(app.settings.imageIndex);
-
       });
 
       /**
       * Modal image changer
       **/
 
-      var modalImageChanger = (imageItem=galleryImages[app.settings.imageIndex]) => {
+      const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
         $.Velocity.animate($('#full-image'), {opacity: 0, translateY: '-10px'}, [0.175, 0.885, 0.32, 1.275])
-        .then( function() {
-          var image = document.getElementById('full-image');
+        .then(() => {
+          const image = document.getElementById('full-image');
           image.src = imageItem.url;
           image.srcset = imageItem.srcset;
           image.sizes = imageItem.sizes;
 
-          image.onload = function() {
+          image.onload = () => {
             app._ocadLoader(false);
             $('#full-image').velocity({opacity: 1, translateY:[ 0, '10px' ]}, [0.175, 0.885, 0.32, 1.275]);
           };
         });
-      }
+      };
 
       /**
       * Handles progressing through the gallery
       **/
 
-      var nextElement = direction => {
+      const nextElement = direction => {
         app._ocadLoader();
 
         if (direction === 'reverse') {
@@ -413,14 +409,13 @@ var Bloodhound = require('bloodhound');
 
         modalImageChanger(nextImage);
         miniViewUpdate(app.settings.imageIndex);
-
-      }
+      };
 
       /**
       * Click event for cycling through images
       **/
 
-      $('.image-modal-container').on('click','img',function() {
+      $('.image-modal-container').on('click', 'img', () => {
         nextElement();
       });
 
@@ -428,7 +423,7 @@ var Bloodhound = require('bloodhound');
       * Keyboard event for cycling through images
       **/
 
-      $(document).keydown(function(e) {
+      $(document).keydown(e => {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
             nextElement();
@@ -438,7 +433,6 @@ var Bloodhound = require('bloodhound');
           }
         }
       });
-
     },
 
     _ocadUIbinding: function() {
@@ -456,9 +450,8 @@ var Bloodhound = require('bloodhound');
             window.location = app.settings.nextItem.attr('href');
           }
         }
-
       });
-    }
+    },
   };
 
   /**
@@ -474,5 +467,4 @@ var Bloodhound = require('bloodhound');
   **/
 
   app.init();
-
 })();
