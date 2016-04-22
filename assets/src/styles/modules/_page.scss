@@ -95,14 +95,10 @@
 }
 
 .home-colophon {
-  right: 25px;
-  bottom: 20px;
-  z-index: 120;
   display: inline-block;
-  width: 18px;
-  height: 25px;
-  margin-right: 5px;
-  color: $white;
+  width: 1.1em;
+  height: 1.75em;
+  margin-right: 0.2em;
   vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
   background-size: contain;
@@ -118,6 +114,7 @@
   bottom: 0;
   margin: 0 0 20px;
   font-size: 0.8rem;
+  color: $black;
 
   @media screen and (max-width: $small-vp) {
     display: none;

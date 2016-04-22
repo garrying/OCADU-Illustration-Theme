@@ -23,7 +23,7 @@ body {
 }
 
 ::selection {
-  background: $yellow;
+  background: darken($light-pink, 5%);
 }
 
 // Mark

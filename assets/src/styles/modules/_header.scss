@@ -30,11 +30,23 @@
   padding: 0.25em 0;
   transition: color 300ms ease-in-out;
 
+  &:hover {
+    color: $black;
+  }
+
   @media screen and (max-width: $small-vp) {
     padding: 0;
   }
 }
 
+.inactive:hover {
+  color: $white;
+}
+
 .invert {
   color: $white;
+
+  &:hover {
+    color: $white;
+  }
 }

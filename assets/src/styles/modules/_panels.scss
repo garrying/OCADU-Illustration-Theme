@@ -26,8 +26,9 @@
 }
 
 .panel-inner {
-  padding-left: calc(4% + 40px);
   width: 100%;
+  padding-left: calc(4% + 40px);
+
   @media screen and (max-width: $medium-vp) {
     margin-left: -20px;
   }
@@ -42,7 +43,7 @@
   right: 20px;
   width: 22px;
   height: 22px;
-  background: url('../images/close.svg') no-repeat;
+  background: url("../images/close.svg") no-repeat;
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -64,7 +65,8 @@ button {
   right: 25px;
   z-index: 120;
   color: $white;
-  width: 18px;
-  height: 25px;
-  background: url('../images/colophon.svg') no-repeat;
+  width: 1.1em;
+  height: 1.75em;
+  background: url("../images/colophon.svg") no-repeat;
+  background-size: contain;
 }

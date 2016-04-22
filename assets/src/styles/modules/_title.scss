@@ -55,7 +55,7 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-size: 2.5em;
-    line-height: 1.3em;
+    line-height: 1.5em;
     white-space: nowrap;
     pointer-events: none;
   }
@@ -75,5 +75,20 @@
 
   a {
     pointer-events: auto;
+  }
+
+  .asterisk {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-bottom: -4px;
+    margin-right: 0.2em;
+    animation-name: spin;
+    animation-duration: 20s;
+    animation-iteration-count:  infinite;
+    animation-timing-function: linear;
+    width: 1em;
+    height: 1em;
+    background: url("../images/asterisk.b.svg") no-repeat;
+    background-size: contain;
   }
 }

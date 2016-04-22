@@ -185,7 +185,7 @@ var Bloodhound = require('bloodhound');
               complete: function() {
                 item.addClass('loaded');
                 if (i === $('.year-item').length - 1) {
-                  $('.panel-colophon').velocity({translateX:['0px','-40px'], opacity: 1},{duration: 200, easing:[0.175, 0.885, 0.32, 1.14]});
+                  $('.panel-colophon').velocity({translateX:['0px','-40px'], opacity: 0.5},{duration: 200, easing:[0.175, 0.885, 0.32, 1.14]});
                 }
               }
             });

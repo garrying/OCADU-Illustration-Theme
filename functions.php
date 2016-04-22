@@ -108,8 +108,9 @@ function ocadu_styles() {
   wp_enqueue_style( 'ocadustyles' );
 }
 
-add_action( 'wp_enqueue_scripts', 'ocadu_fonts' );
 add_action( 'wp_enqueue_scripts', 'ocadu_styles' );
+add_action( 'wp_enqueue_scripts', 'ocadu_fonts' );
+
 
 /**
  * Clean up body_class output
