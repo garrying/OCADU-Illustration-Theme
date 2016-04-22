@@ -110,8 +110,10 @@ var Bloodhound = require('bloodhound');
       var e = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
 
       if (e === false) {
+        $('body').removeAttr('style');
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
+        $('body').css('cursor', 'progress');
         app.settings.loader.velocity('fadeIn', 'fast');
       }
     },
@@ -363,7 +365,6 @@ var Bloodhound = require('bloodhound');
             duration: 180,
             begin: function begin() {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-              $('.illustrator-nav-single, .illustrator-meta-wrapper').addClass('inactive');
               $('#full-image').velocity({ translateY: [0, 10] }, [0.175, 0.885, 0.32, 1.275]);
             },
             complete: function complete() {
