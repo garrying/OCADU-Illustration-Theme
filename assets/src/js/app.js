@@ -1,4 +1,7 @@
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }] */
+/* eslint
+no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }],
+no-underscore-dangle: ["off"]
+*/
 /* global Bricklayer */
 
 const $ = require('jquery');
@@ -13,10 +16,7 @@ require('bricklayer');
 const FastClick = require('fastclick');
 const Bloodhound = require('bloodhound');
 
-( function() {
-
-  'use strict';
-
+(function () {
   var app = {
     init: function() {
       this._fastClick();
@@ -45,15 +45,6 @@ const Bloodhound = require('bloodhound');
       FastClick(document.body);
     },
 
-    _ocadTextScrambler: (ele, originText, newText, duration) => {
-      const t = $(ele);
-      t.hover(() => {
-        t.textMix(newText, duration, 'linear');
-      }, () => {
-        t.textMix(originText, duration, 'linear');
-      });
-    },
-
     _ocadTextScramblerMoments: function () {
       const thesis = $('.thesis-title');
       const illustrator = $('.illustrator-meta-name');
@@ -61,12 +52,20 @@ const Bloodhound = require('bloodhound');
       const searchSelect = $('#search-link');
       const logo = $('.logo');
       const sectionIndicator = $('.section-indicator');
-      app._ocadTextScrambler(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
-      app._ocadTextScrambler(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
-      app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
-      app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
-      app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
-      app._ocadTextScrambler(sectionIndicator , sectionIndicator.text(), `The Graduating Class of ${sectionIndicator.text()}`, 500);
+      const textMixer = (ele, originText, newText, duration) => {
+        const t = $(ele);
+        t.hover(() => {
+          t.textMix(newText, duration, 'linear');
+        }, () => {
+          t.textMix(originText, duration, 'linear');
+        });
+      };
+      textMixer(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
+      textMixer(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
+      textMixer(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
+      textMixer(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
+      textMixer(logo, logo.text(), 'The Graduating Class of 2016', 500);
+      textMixer(sectionIndicator, sectionIndicator.text(), `The Graduating Class of ${sectionIndicator.text()}`, 500);
 
       sectionIndicator.hover(() => {
         $('body').addClass('grid-focus');
@@ -86,7 +85,7 @@ const Bloodhound = require('bloodhound');
         $('.title-unit-illustrator').toggleClass('active');
       });
 
-      $('.illustrators-grid .gallery-item').hover( ele => {
+      $('.illustrators-grid .gallery-item').hover(ele => {
         const targetItem = $(ele.target).parentsUntil('.gallery-item');
         const illustrationTitle = targetItem.find('.illustrator-title').text();
         const illustrationAuthor = targetItem.find('.illustrator-name').text();
@@ -117,13 +116,14 @@ const Bloodhound = require('bloodhound');
       const msnry = new Bricklayer(document.querySelector(selector));
     },
 
-     _ocadCascade: function (selector, delayNum) {
-      var item = document.querySelectorAll(selector);
-      var velocityComplete = function(ele) {
+    _ocadCascade: (selector, delayNum) => {
+      const item = document.querySelectorAll(selector);
+      const velocityComplete = ele => {
         $(ele).addClass('loaded');
       };
+
       for (var i = 0, items = item.length; i < items; i++) {
-        $(item[i]).delay(delayNum*i).velocity({ opacity: 1 }, {
+        $(item[i]).delay(delayNum * i).velocity({ opacity: 1 }, {
           complete: velocityComplete,
         });
       }
@@ -142,51 +142,50 @@ const Bloodhound = require('bloodhound');
       illustratorSearch.initialize();
 
       app.settings.searchField.typeahead({
-        hint: false
-        },{
+        hint: false,
+      }, {
         name: 'illustratorName',
         displayKey: item => {
           return item.title.rendered;
         },
         source: illustratorSearch,
-        limit: 10
+        limit: 10,
       }).on('typeahead:select', ($e, resultsData) => {
         window.location.href = resultsData.link;
       }).on('typeahead:asyncrequest', () => {
-        app.settings.searchLoader.velocity('stop').velocity('fadeIn','fast');
+        app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast');
       }).on('typeahead:asyncreceive', () => {
-        app.settings.searchLoader.velocity('stop').velocity('fadeOut','fast');
+        app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast');
       });
     },
 
     _ocadPanelSelect: function (e) {
-
-      var targetPanel = $(e).data('panel');
+      const targetPanel = $(e).data('panel');
 
       if ($(e).hasClass('invert')) {
         $(e).removeClass('invert');
         app._ocadPanelsClose();
       } else {
-        $('.panel.visible').removeClass('visible').velocity({translateX:'-100%'},'fast');
-        $('.year-item').velocity({ opacity: 0, translateX:'-20px', display: 'flex' },'fast').removeClass('loaded');
-        $('.panel-colophon').velocity({ opacity: 0, translateX:['-40px', '0px']},'fast');
+        $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast');
+        $('.year-item').velocity({ opacity: 0, translateX: '-20px', display: 'flex' }, 'fast').removeClass('loaded');
+        $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
 
         $('.header-item').addClass('inactive').removeClass('invert');
         app.settings.logo.addClass('invert');
 
         $(e).addClass('invert').removeClass('inactive');
-        $('.'+targetPanel).velocity({translateX:['-4%','-100%']},{duration: 800, easing:[0.19, 1, 0.22, 1]}).addClass('visible').attr('aria-hidden',false).focus();
-        $('.illustrator-meta').velocity({opacity: .2},'fast');
+        $('.' + targetPanel).velocity({ translateX: ['-4%', '-100%'] }, { duration: 800, easing: [0.19, 1, 0.22, 1] }).addClass('visible').attr('aria-hidden', false).focus();
+        $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
-          $('.year-item').each(function(i){
+          $('.year-item').each(function (i) {
             var item = $(this);
-            item.delay(100*i).velocity({opacity:1, translateX:['0px','-40px'], transformdisplay:'flex'},{
-              easing:[0.175, 0.885, 0.32, 1.24],
+            item.delay(100 * i).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, {
+              easing: [0.175, 0.885, 0.32, 1.24],
               complete: function() {
                 item.addClass('loaded');
                 if (i === $('.year-item').length - 1) {
-                  $('.panel-colophon').velocity({translateX:['0px','-40px'], opacity: 0.5},{duration: 200, easing:[0.175, 0.885, 0.32, 1.14]});
+                  $('.panel-colophon').velocity({ translateX: ['0px', '-40px'], opacity: 0.5 }, { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] });
                 }
               }
             });
@@ -244,15 +243,15 @@ const Bloodhound = require('bloodhound');
     },
 
     _ocadPanelsClose: function () {
-      $('.illustrator-meta').velocity({opacity: 1}, 'fast');
+      $('.illustrator-meta').velocity({ opacity: 1 }, 'fast');
       $('.header-item').removeClass('invert inactive');
-      app.settings.imageModal.velocity('fadeOut',{duration: 180 });
+      app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
-      $(app.settings.masonryContainer).velocity({opacity:1},'fast');
+      $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
       if ($('.panel').hasClass('visible')) {
-        $('.panel.visible').removeClass('visible').attr('aria-hidden',true).blur().velocity({translateX:'-100%'}, 'fast');
-        $('.year-item').velocity({ opacity: 0, translateX:'-40px', display: 'flex' },'fast').removeClass('loaded');
-        $('.panel-colophon').velocity({ opacity: 0, translateX:['-40px', '0px']},'fast');
+        $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur().velocity({ translateX: '-100%' }, 'fast');
+        $('.year-item').velocity({ opacity: 0, translateX: '-40px', display: 'flex' }, 'fast').removeClass('loaded');
+        $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
       }
     },
 
@@ -340,7 +339,7 @@ const Bloodhound = require('bloodhound');
       * Masonry item click
       **/
 
-      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', function( event ) {
+      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', function (event) {
         event.preventDefault();
         app._ocadLoader();
         const itemImage = $(this);
@@ -348,16 +347,16 @@ const Bloodhound = require('bloodhound');
 
         $('.image-modal-container').html(imageModalSetter(itemImage));
 
-        $('#full-image').imagesLoaded().done(function(){
+        $('#full-image').imagesLoaded().done(() => {
           app._ocadLoader(false);
           app.settings.imageModal.velocity('fadeIn', {
             duration: 180,
-            begin: function() {
-              $(app.settings.masonryContainer).velocity({opacity:0},'fast');
-              $('#full-image').velocity({translateY:[0,10]}, [0.175, 0.885, 0.32, 1.275]);
+            begin: () => {
+              $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
+              $('#full-image').velocity({ translateY: [0, 10] }, [0.175, 0.885, 0.32, 1.275]);
             },
-            complete: function() {
-              $('#full-image').velocity({opacity:1});
+            complete: () => {
+              $('#full-image').velocity({ opacity: 1 });
             },
           });
         });
@@ -370,7 +369,7 @@ const Bloodhound = require('bloodhound');
       **/
 
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
-        $.Velocity.animate($('#full-image'), {opacity: 0, translateY: '-10px'}, [0.175, 0.885, 0.32, 1.275])
+        $.Velocity.animate($('#full-image'), { opacity: 0, translateY: '-10px' }, [0.175, 0.885, 0.32, 1.275])
         .then(() => {
           const image = document.getElementById('full-image');
           image.src = imageItem.url;
@@ -379,7 +378,7 @@ const Bloodhound = require('bloodhound');
 
           image.onload = () => {
             app._ocadLoader(false);
-            $('#full-image').velocity({opacity: 1, translateY:[ 0, '10px' ]}, [0.175, 0.885, 0.32, 1.275]);
+            $('#full-image').velocity({ opacity: 1, translateY: [0, '10px'] }, [0.175, 0.885, 0.32, 1.275]);
           };
         });
       };
@@ -437,7 +436,7 @@ const Bloodhound = require('bloodhound');
 
     _ocadUIbinding: function() {
       $('.close-panel').on('click', app._ocadPanelsClose);
-      $(document).on('click', app._ocadPanelsCloseSelective).keydown(function(e) {
+      $(document).on('click', app._ocadPanelsCloseSelective).keydown(function (e) {
 
         if (e.keyCode === 27) {
           app._ocadPanelsClose();
@@ -458,7 +457,7 @@ const Bloodhound = require('bloodhound');
   * Window load ready
   **/
 
-  $(window).load(function() {
+  $(window).load(() => {
     app._ocadLoader(false);
   });
 

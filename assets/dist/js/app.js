@@ -1,7 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }] */
+/* eslint
+no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }],
+no-underscore-dangle: ["off"]
+*/
 /* global Bricklayer */
 
 var $ = require('jquery');
@@ -17,9 +20,6 @@ var FastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
 
 (function () {
-
-  'use strict';
-
   var app = {
     init: function init() {
       this._fastClick();
@@ -48,15 +48,6 @@ var Bloodhound = require('bloodhound');
       FastClick(document.body);
     },
 
-    _ocadTextScrambler: function _ocadTextScrambler(ele, originText, newText, duration) {
-      var t = $(ele);
-      t.hover(function () {
-        t.textMix(newText, duration, 'linear');
-      }, function () {
-        t.textMix(originText, duration, 'linear');
-      });
-    },
-
     _ocadTextScramblerMoments: function _ocadTextScramblerMoments() {
       var thesis = $('.thesis-title');
       var illustrator = $('.illustrator-meta-name');
@@ -64,12 +55,20 @@ var Bloodhound = require('bloodhound');
       var searchSelect = $('#search-link');
       var logo = $('.logo');
       var sectionIndicator = $('.section-indicator');
-      app._ocadTextScrambler(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
-      app._ocadTextScrambler(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
-      app._ocadTextScrambler(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
-      app._ocadTextScrambler(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
-      app._ocadTextScrambler(logo, logo.text(), 'The Graduating Class of 2016', 500);
-      app._ocadTextScrambler(sectionIndicator, sectionIndicator.text(), 'The Graduating Class of ' + sectionIndicator.text(), 500);
+      var textMixer = function textMixer(ele, originText, newText, duration) {
+        var t = $(ele);
+        t.hover(function () {
+          t.textMix(newText, duration, 'linear');
+        }, function () {
+          t.textMix(originText, duration, 'linear');
+        });
+      };
+      textMixer(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
+      textMixer(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
+      textMixer(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
+      textMixer(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
+      textMixer(logo, logo.text(), 'The Graduating Class of 2016', 500);
+      textMixer(sectionIndicator, sectionIndicator.text(), 'The Graduating Class of ' + sectionIndicator.text(), 500);
 
       sectionIndicator.hover(function () {
         $('body').addClass('grid-focus');
@@ -127,6 +126,7 @@ var Bloodhound = require('bloodhound');
       var velocityComplete = function velocityComplete(ele) {
         $(ele).addClass('loaded');
       };
+
       for (var i = 0, items = item.length; i < items; i++) {
         $(item[i]).delay(delayNum * i).velocity({ opacity: 1 }, {
           complete: velocityComplete
@@ -165,7 +165,6 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadPanelSelect: function _ocadPanelSelect(e) {
-
       var targetPanel = $(e).data('panel');
 
       if ($(e).hasClass('invert')) {
@@ -181,7 +180,7 @@ var Bloodhound = require('bloodhound');
 
         $(e).addClass('invert').removeClass('inactive');
         $('.' + targetPanel).velocity({ translateX: ['-4%', '-100%'] }, { duration: 800, easing: [0.19, 1, 0.22, 1] }).addClass('visible').attr('aria-hidden', false).focus();
-        $('.illustrator-meta').velocity({ opacity: .2 }, 'fast');
+        $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
           $('.year-item').each(function (i) {
