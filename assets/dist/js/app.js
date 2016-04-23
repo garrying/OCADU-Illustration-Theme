@@ -229,8 +229,8 @@ var Bloodhound = require('bloodhound');
 
     _ocadPanelSelectButtons: function _ocadPanelSelectButtons() {
       app._ocadSearch();
-      $('.header-item').on('click', function () {
-        app._ocadPanelSelect(this);
+      $('.header-item').on('click', function (ele) {
+        app._ocadPanelSelect(ele.target);
       });
     },
 
@@ -303,19 +303,17 @@ var Bloodhound = require('bloodhound');
 
     _ocadGalleryNav: function _ocadGalleryNav() {
       var galleryImages = [];
-      var nextImage;
+      var nextImage = void 0;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if ($('body').hasClass('single')) {
-        var i, items;
-
         (function () {
           $(app.settings.masonryContainer).imagesLoaded().done(function () {
             app._ocadMasonry(app.settings.masonryContainer);
             app._ocadCascade('.gallery-item', 100);
           });
 
-          for (i = 0, items = masonryItemAnchor.length; i < items; i++) {
+          for (var i = 0, items = masonryItemAnchor.length; i < items; i++) {
             $(masonryItemAnchor[i]).data('index', i);
             var imageElement = $(masonryItemAnchor[i]);
             var imageSet = {
@@ -333,7 +331,7 @@ var Bloodhound = require('bloodhound');
 
           var miniView = document.querySelector('.miniview');
           var miniViewItem = function miniViewItem(item) {
-            miniView.innerHTML += '<div class="mini-item" data-index="' + item.index + '"><canvas class="mini-item-inner" width="' + item.width + '" height="' + item.height + '"></canvas></div>';
+            miniView.innerHTML += '\n            <div class="mini-item">\n              <canvas data-index="' + item.index + '" class="mini-item-inner"\n              width="' + item.width + '" height="' + item.height + '">\n              </canvas>\n            </div>';
           };
           galleryImages.map(miniViewItem);
         })();
@@ -369,7 +367,7 @@ var Bloodhound = require('bloodhound');
       $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', function (event) {
         event.preventDefault();
         app._ocadLoader();
-        var itemImage = $(this);
+        var itemImage = $(event.currentTarget);
         app.settings.imageIndex = itemImage.data('index');
 
         $('.image-modal-container').html(imageModalSetter(itemImage));
@@ -415,9 +413,9 @@ var Bloodhound = require('bloodhound');
       * Click event for miniview navigation
       **/
 
-      $('.miniview').on('click', '.mini-item', function () {
+      $('.miniview').on('click', '.mini-item', function (ele) {
         app._ocadLoader();
-        app.settings.imageIndex = $(this).data('index');
+        app.settings.imageIndex = $(ele.target).data('index');
         miniViewUpdate(app.settings.imageIndex);
         modalImageChanger();
       });
