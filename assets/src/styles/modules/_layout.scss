@@ -107,17 +107,10 @@
   flex-grow: 1;
   max-width: 100%;
   border-bottom: 4px solid $light-pink;
-  transition: border 300ms $easeOutBack;
 
   @media screen and (max-width: $small-vp) {
     margin-top: 2em;
     border-bottom: 1px solid rgba($accent, 0.1);
-  }
-
-  &:hover {
-    @media screen and (min-width: $small-vp) {
-      border-bottom-width: 8px;
-    }
   }
 
   a {
@@ -220,6 +213,7 @@
     width: 100%;
     padding-bottom: 2px;
     cursor: pointer;
+    break-inside: avoid;
   }
 
   .mini-item-inner {

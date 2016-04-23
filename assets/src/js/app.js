@@ -40,6 +40,7 @@ const Bloodhound = require('bloodhound');
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
       imageIndex: 0,
+      easeOutBack: [0.175, 0.885, 0.32, 1.275],
     },
 
     _fastClick: () => {
@@ -192,13 +193,13 @@ const Bloodhound = require('bloodhound');
             const item = $(ele);
             item.delay(100 * index).velocity(
               { opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' },
-              { easing: [0.175, 0.885, 0.32, 1.24],
+              { easing: app.settings.easeOutBack,
               complete: () => {
                 item.addClass('loaded');
                 if (index === $('.year-item').length - 1) {
                   $('.panel-colophon').velocity(
                     { translateX: ['0px', '-40px'], opacity: 0.5 },
-                    { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] });
+                    { duration: 200, easing: app.settings.easeOutBack });
                 }
               },
             });
@@ -366,7 +367,7 @@ const Bloodhound = require('bloodhound');
             duration: 180,
             begin: () => {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-              $('#full-image').velocity({ translateY: [0, 10] }, [0.175, 0.885, 0.32, 1.275]);
+              $('#full-image').velocity({ translateY: [0, 10] }, app.settings.easeOutBack);
             },
             complete: () => {
               $('#full-image').velocity({ opacity: 1 });
@@ -385,7 +386,7 @@ const Bloodhound = require('bloodhound');
         $.Velocity.animate(
           $('#full-image'),
           { opacity: 0, translateY: '-10px' },
-          [0.175, 0.885, 0.32, 1.275]
+          app.settings.easeOutBack
         ).then(() => {
           const image = document.getElementById('full-image');
           image.src = imageItem.url;
@@ -396,7 +397,7 @@ const Bloodhound = require('bloodhound');
             app._ocadLoader(false);
             $('#full-image').velocity(
               { opacity: 1, translateY: [0, '10px'] },
-              [0.175, 0.885, 0.32, 1.275]
+              app.settings.easeOutBack
             );
           };
         });

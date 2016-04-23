@@ -42,7 +42,8 @@ var Bloodhound = require('bloodhound');
       searchField: $('.search-field'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
-      imageIndex: 0
+      imageIndex: 0,
+      easeOutBack: [0.175, 0.885, 0.32, 1.275]
     },
 
     _fastClick: function _fastClick() {
@@ -211,11 +212,11 @@ var Bloodhound = require('bloodhound');
         if (targetPanel === 'year-select') {
           $('.year-item').each(function (index, ele) {
             var item = $(ele);
-            item.delay(100 * index).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, { easing: [0.175, 0.885, 0.32, 1.24],
+            item.delay(100 * index).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, { easing: app.settings.easeOutBack,
               complete: function complete() {
                 item.addClass('loaded');
                 if (index === $('.year-item').length - 1) {
-                  $('.panel-colophon').velocity({ translateX: ['0px', '-40px'], opacity: 0.5 }, { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] });
+                  $('.panel-colophon').velocity({ translateX: ['0px', '-40px'], opacity: 0.5 }, { duration: 200, easing: app.settings.easeOutBack });
                 }
               }
             });
@@ -378,7 +379,7 @@ var Bloodhound = require('bloodhound');
             duration: 180,
             begin: function begin() {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-              $('#full-image').velocity({ translateY: [0, 10] }, [0.175, 0.885, 0.32, 1.275]);
+              $('#full-image').velocity({ translateY: [0, 10] }, app.settings.easeOutBack);
             },
             complete: function complete() {
               $('#full-image').velocity({ opacity: 1 });
@@ -396,7 +397,7 @@ var Bloodhound = require('bloodhound');
       var modalImageChanger = function modalImageChanger() {
         var imageItem = arguments.length <= 0 || arguments[0] === undefined ? galleryImages[app.settings.imageIndex] : arguments[0];
 
-        $.Velocity.animate($('#full-image'), { opacity: 0, translateY: '-10px' }, [0.175, 0.885, 0.32, 1.275]).then(function () {
+        $.Velocity.animate($('#full-image'), { opacity: 0, translateY: '-10px' }, app.settings.easeOutBack).then(function () {
           var image = document.getElementById('full-image');
           image.src = imageItem.url;
           image.srcset = imageItem.srcset;
@@ -404,7 +405,7 @@ var Bloodhound = require('bloodhound');
 
           image.onload = function () {
             app._ocadLoader(false);
-            $('#full-image').velocity({ opacity: 1, translateY: [0, '10px'] }, [0.175, 0.885, 0.32, 1.275]);
+            $('#full-image').velocity({ opacity: 1, translateY: [0, '10px'] }, app.settings.easeOutBack);
           };
         });
       };
