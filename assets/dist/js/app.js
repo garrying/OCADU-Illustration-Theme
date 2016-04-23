@@ -16,18 +16,18 @@ require('imagesloaded');
 require('./libs/jquery-text-mix');
 require('lazysizes');
 require('bricklayer');
-var FastClick = require('fastclick');
+var fastClick = require('fastclick');
 var Bloodhound = require('bloodhound');
 
 (function () {
   var app = {
     init: function init() {
-      this._fastClick();
-      this._ocadPanelSelectButtons();
-      this._ocadHomeLoader();
-      this._ocadGalleryNav();
-      this._ocadUIbinding();
-      this._ocadTextScramblerMoments();
+      app._fastClick();
+      app._ocadPanelSelectButtons();
+      app._ocadHomeLoader();
+      app._ocadGalleryNav();
+      app._ocadUIbinding();
+      app._ocadTextScramblerMoments();
     },
 
     settings: {
@@ -45,7 +45,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _fastClick: function _fastClick() {
-      FastClick(document.body);
+      fastClick(document.body);
     },
 
     _ocadTextScramblerMoments: function _ocadTextScramblerMoments() {
@@ -122,16 +122,18 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadCascade: function _ocadCascade(selector, delayNum) {
-      var item = document.querySelectorAll(selector);
+      var i = 0;
+      var items = document.querySelectorAll(selector);
       var velocityComplete = function velocityComplete(ele) {
         $(ele).addClass('loaded');
       };
 
-      for (var i = 0, items = item.length; i < items; i++) {
-        $(item[i]).delay(delayNum * i).velocity({ opacity: 1 }, {
+      Array.from(items).forEach(function (item) {
+        $(item).delay(delayNum * i).velocity({ opacity: 1 }, {
           complete: velocityComplete
         });
-      }
+        i = ++i;
+      });
     },
 
     _ocadSearch: function _ocadSearch() {
@@ -185,8 +187,7 @@ var Bloodhound = require('bloodhound');
         if (targetPanel === 'year-select') {
           $('.year-item').each(function (i) {
             var item = $(this);
-            item.delay(100 * i).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, {
-              easing: [0.175, 0.885, 0.32, 1.24],
+            item.delay(100 * i).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, { easing: [0.175, 0.885, 0.32, 1.24],
               complete: function complete() {
                 item.addClass('loaded');
                 if (i === $('.year-item').length - 1) {
@@ -196,7 +197,7 @@ var Bloodhound = require('bloodhound');
             });
           });
         }
-        if (targetPanel == 'search-container') {
+        if (targetPanel === 'search-container') {
           app.settings.searchField.focus();
         }
       }
@@ -211,25 +212,25 @@ var Bloodhound = require('bloodhound');
 
     _ocadShuffle: function _ocadShuffle(elems) {
       var allElems = function () {
-        var ret = [],
-            l = elems.length;
+        var ret = [];
+        var l = elems.length;
         while (l--) {
           ret[ret.length] = elems[l];
         }
         return ret;
       }();
       var shuffled = function () {
-        var l = allElems.length,
-            ret = [];
+        var l = allElems.length;
+        var ret = [];
         while (l--) {
-          var random = Math.floor(Math.random() * allElems.length),
-              randEl = allElems[random].cloneNode(true);
+          var random = Math.floor(Math.random() * allElems.length);
+          var randEl = allElems[random].cloneNode(true);
           allElems.splice(random, 1);
           ret[ret.length] = randEl;
         }
         return ret;
-      }(),
-          l = elems.length;
+      }();
+      var l = elems.length;
 
       while (l--) {
         elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
@@ -324,17 +325,6 @@ var Bloodhound = require('bloodhound');
       };
 
       /**
-      * Click event for miniview navigation
-      **/
-
-      $('.miniview').on('click', '.mini-item', function () {
-        app._ocadLoader();
-        app.settings.imageIndex = $(this).data('index');
-        miniViewUpdate(app.settings.imageIndex);
-        modalImageChanger();
-      });
-
-      /**
       * Creates initial image element
       **/
 
@@ -398,6 +388,17 @@ var Bloodhound = require('bloodhound');
       };
 
       /**
+      * Click event for miniview navigation
+      **/
+
+      $('.miniview').on('click', '.mini-item', function () {
+        app._ocadLoader();
+        app.settings.imageIndex = $(this).data('index');
+        miniViewUpdate(app.settings.imageIndex);
+        modalImageChanger();
+      });
+
+      /**
       * Handles progressing through the gallery
       **/
 
@@ -451,7 +452,6 @@ var Bloodhound = require('bloodhound');
     _ocadUIbinding: function _ocadUIbinding() {
       $('.close-panel').on('click', app._ocadPanelsClose);
       $(document).on('click', app._ocadPanelsCloseSelective).keydown(function (e) {
-
         if (e.keyCode === 27) {
           app._ocadPanelsClose();
         }
@@ -1159,7 +1159,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 },{"levenshtein":11}],5:[function(require,module,exports){
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -1335,20 +1334,19 @@ var Bricklayer;
     }());
     Bricklayer.Container = Container;
 })(Bricklayer || (Bricklayer = {}));
-window["Bricklayer"] = Bricklayer.Container;
-if (jQuery !== undefined) {
-    (function ($) {
-        $.fn.bricklayer = function (options) {
-            $(this).forEach(function () {
-                var instance = new Bricklayer.Container(this, options);
-                $(this).data('bricklayer', instance);
-            });
-            return this;
-        };
-    })(jQuery);
-}
-
-},{}]},{},[1]);
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(function () { return factory(); });
+    }
+    else if (typeof window !== "undefined" && root === window) {
+        root.Bricklayer = factory();
+    }
+    else if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    }
+}(typeof window !== "undefined" ? window : this, function () {
+    return Bricklayer.Container;
+}));
 
 },{}],6:[function(require,module,exports){
 /**
