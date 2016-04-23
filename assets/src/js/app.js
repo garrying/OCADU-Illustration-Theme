@@ -1,6 +1,7 @@
 /* eslint
 no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }],
-no-underscore-dangle: ["off"]
+no-underscore-dangle: ["off"],
+import/no-unresolved: [2, { amd: true }]
 */
 /* global Bricklayer */
 
@@ -16,7 +17,7 @@ require('bricklayer');
 const fastClick = require('fastclick');
 const Bloodhound = require('bloodhound');
 
-(function () {
+(() => {
   const app = {
     init: () => {
       app._fastClick();
@@ -50,7 +51,6 @@ const Bloodhound = require('bloodhound');
       const illustrator = $('.illustrator-meta-name');
       const yearSelect = $('#year-select-link');
       const searchSelect = $('#search-link');
-      const logo = $('.logo');
       const sectionIndicator = $('.section-indicator');
       const textMixer = (ele, originText, newText, duration = 500) => {
         const t = $(ele);
@@ -66,7 +66,7 @@ const Bloodhound = require('bloodhound');
           newText: `${illustrator.text()}, class of ${$('.year-item.active').text()}` },
         { ele: yearSelect, newText: 'Spanning 2009 to 2016' },
         { ele: searchSelect, newText: 'Looking for someone?' },
-        { ele: logo, newText: 'The Graduating Class of 2016' },
+        { ele: app.settings.logo, newText: 'The Graduating Class of 2016' },
         { ele: sectionIndicator,
           newText: `The Graduating Class of ${sectionIndicator.text()}` },
       ];
@@ -120,9 +120,7 @@ const Bloodhound = require('bloodhound');
       }
     },
 
-    _ocadMasonry: selector => {
-      const msnry = new Bricklayer(document.querySelector(selector));
-    },
+    _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
     _ocadCascade: (selector, delayNum) => {
       let i = 0;

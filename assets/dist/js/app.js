@@ -3,7 +3,8 @@
 
 /* eslint
 no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }],
-no-underscore-dangle: ["off"]
+no-underscore-dangle: ["off"],
+import/no-unresolved: [2, { amd: true }]
 */
 /* global Bricklayer */
 
@@ -53,7 +54,6 @@ var Bloodhound = require('bloodhound');
       var illustrator = $('.illustrator-meta-name');
       var yearSelect = $('#year-select-link');
       var searchSelect = $('#search-link');
-      var logo = $('.logo');
       var sectionIndicator = $('.section-indicator');
       var textMixer = function textMixer(ele, originText, newText) {
         var duration = arguments.length <= 3 || arguments[3] === undefined ? 500 : arguments[3];
@@ -66,7 +66,7 @@ var Bloodhound = require('bloodhound');
         });
       };
       var mixElements = [{ ele: thesis, newText: thesis.text() + ' by ' + illustrator.text() }, { ele: illustrator,
-        newText: illustrator.text() + ', class of ' + $('.year-item.active').text() }, { ele: yearSelect, newText: 'Spanning 2009 to 2016' }, { ele: searchSelect, newText: 'Looking for someone?' }, { ele: logo, newText: 'The Graduating Class of 2016' }, { ele: sectionIndicator,
+        newText: illustrator.text() + ', class of ' + $('.year-item.active').text() }, { ele: yearSelect, newText: 'Spanning 2009 to 2016' }, { ele: searchSelect, newText: 'Looking for someone?' }, { ele: app.settings.logo, newText: 'The Graduating Class of 2016' }, { ele: sectionIndicator,
         newText: 'The Graduating Class of ' + sectionIndicator.text() }];
 
       var _iteratorNormalCompletion = true;
@@ -142,7 +142,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadMasonry: function _ocadMasonry(selector) {
-      var msnry = new Bricklayer(document.querySelector(selector));
+      return new Bricklayer(document.querySelector(selector));
     },
 
     _ocadCascade: function _ocadCascade(selector, delayNum) {
