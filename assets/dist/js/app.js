@@ -405,7 +405,7 @@ var Bloodhound = require('bloodhound');
 
           image.onload = function () {
             app._ocadLoader(false);
-            $('#full-image').velocity({ opacity: 1, translateY: [0, '10px'] }, app.settings.easeOutBack);
+            $('#full-image').velocity('stop').velocity({ opacity: 1, translateY: [0, '10px'] }, app.settings.easeOutBack);
           };
         });
       };

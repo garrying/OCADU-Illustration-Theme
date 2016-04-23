@@ -395,7 +395,7 @@ const Bloodhound = require('bloodhound');
 
           image.onload = () => {
             app._ocadLoader(false);
-            $('#full-image').velocity(
+            $('#full-image').velocity('stop').velocity(
               { opacity: 1, translateY: [0, '10px'] },
               app.settings.easeOutBack
             );
