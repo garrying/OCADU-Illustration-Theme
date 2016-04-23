@@ -55,7 +55,9 @@ var Bloodhound = require('bloodhound');
       var searchSelect = $('#search-link');
       var logo = $('.logo');
       var sectionIndicator = $('.section-indicator');
-      var textMixer = function textMixer(ele, originText, newText, duration) {
+      var textMixer = function textMixer(ele, originText, newText) {
+        var duration = arguments.length <= 3 || arguments[3] === undefined ? 500 : arguments[3];
+
         var t = $(ele);
         t.hover(function () {
           t.textMix(newText, duration, 'linear');
@@ -63,12 +65,34 @@ var Bloodhound = require('bloodhound');
           t.textMix(originText, duration, 'linear');
         });
       };
-      textMixer(thesis, thesis.text(), thesis.text() + ' by ' + illustrator.text(), 500);
-      textMixer(illustrator, illustrator.text(), illustrator.text() + ', class of ' + $('.year-item.active').text(), 500);
-      textMixer(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
-      textMixer(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
-      textMixer(logo, logo.text(), 'The Graduating Class of 2016', 500);
-      textMixer(sectionIndicator, sectionIndicator.text(), 'The Graduating Class of ' + sectionIndicator.text(), 500);
+      var mixElements = [{ ele: thesis, newText: thesis.text() + ' by ' + illustrator.text() }, { ele: illustrator,
+        newText: illustrator.text() + ', class of ' + $('.year-item.active').text() }, { ele: yearSelect, newText: 'Spanning 2009 to 2016' }, { ele: searchSelect, newText: 'Looking for someone?' }, { ele: logo, newText: 'The Graduating Class of 2016' }, { ele: sectionIndicator,
+        newText: 'The Graduating Class of ' + sectionIndicator.text() }];
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = mixElements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          textMixer(item.ele, item.ele.text(), item.newText);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
 
       sectionIndicator.hover(function () {
         $('body').addClass('grid-focus');
@@ -185,12 +209,12 @@ var Bloodhound = require('bloodhound');
         $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
-          $('.year-item').each(function (i) {
-            var item = $(this);
-            item.delay(100 * i).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, { easing: [0.175, 0.885, 0.32, 1.24],
+          $('.year-item').each(function (index, ele) {
+            var item = $(ele);
+            item.delay(100 * index).velocity({ opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' }, { easing: [0.175, 0.885, 0.32, 1.24],
               complete: function complete() {
                 item.addClass('loaded');
-                if (i === $('.year-item').length - 1) {
+                if (index === $('.year-item').length - 1) {
                   $('.panel-colophon').velocity({ translateX: ['0px', '-40px'], opacity: 0.5 }, { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] });
                 }
               }

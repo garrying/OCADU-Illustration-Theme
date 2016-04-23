@@ -52,7 +52,7 @@ const Bloodhound = require('bloodhound');
       const searchSelect = $('#search-link');
       const logo = $('.logo');
       const sectionIndicator = $('.section-indicator');
-      const textMixer = (ele, originText, newText, duration) => {
+      const textMixer = (ele, originText, newText, duration = 500) => {
         const t = $(ele);
         t.hover(() => {
           t.textMix(newText, duration, 'linear');
@@ -60,12 +60,20 @@ const Bloodhound = require('bloodhound');
           t.textMix(originText, duration, 'linear');
         });
       };
-      textMixer(thesis, thesis.text(), `${thesis.text()} by ` + illustrator.text(), 500);
-      textMixer(illustrator, illustrator.text(), `${illustrator.text()}, class of ${$('.year-item.active').text()}`, 500);
-      textMixer(yearSelect, yearSelect.text(), 'Spanning 2009 to 2016', 500);
-      textMixer(searchSelect, searchSelect.text(), 'Looking for someone?', 500);
-      textMixer(logo, logo.text(), 'The Graduating Class of 2016', 500);
-      textMixer(sectionIndicator, sectionIndicator.text(), `The Graduating Class of ${sectionIndicator.text()}`, 500);
+      const mixElements = [
+        { ele: thesis, newText: `${thesis.text()} by ${illustrator.text()}` },
+        { ele: illustrator,
+          newText: `${illustrator.text()}, class of ${$('.year-item.active').text()}` },
+        { ele: yearSelect, newText: 'Spanning 2009 to 2016' },
+        { ele: searchSelect, newText: 'Looking for someone?' },
+        { ele: logo, newText: 'The Graduating Class of 2016' },
+        { ele: sectionIndicator,
+          newText: `The Graduating Class of ${sectionIndicator.text()}` },
+      ];
+
+      for (const item of mixElements) {
+        textMixer(item.ele, item.ele.text(), item.newText);
+      }
 
       sectionIndicator.hover(() => {
         $('body').addClass('grid-focus');
@@ -184,14 +192,14 @@ const Bloodhound = require('bloodhound');
         $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
-          $('.year-item').each(function (i) {
-            var item = $(this);
-            item.delay(100 * i).velocity(
+          $('.year-item').each((index, ele) => {
+            const item = $(ele);
+            item.delay(100 * index).velocity(
               { opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' },
               { easing: [0.175, 0.885, 0.32, 1.24],
               complete: () => {
                 item.addClass('loaded');
-                if (i === $('.year-item').length - 1) {
+                if (index === $('.year-item').length - 1) {
                   $('.panel-colophon').velocity(
                     { translateX: ['0px', '-40px'], opacity: 0.5 },
                     { duration: 200, easing: [0.175, 0.885, 0.32, 1.14] });
