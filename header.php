@@ -24,7 +24,7 @@
 </head>
 
 <body <?php body_class(); ?> id="content-container">
-  <a class="screen-reader-shortcut" tabindex="1" href="#main">Skip to main content</a>
+  <a class="screen-reader-shortcut" href="#main">Skip to main content</a>
 
   <div class="loader"><h1 class="loader-text hidden">Loading</h1></div>
   <header role="banner">
