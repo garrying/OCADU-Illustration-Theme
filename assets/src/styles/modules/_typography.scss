@@ -5,7 +5,7 @@ $ms-ratio: $golden;
 
 // Kerning extend
 
-%font-features {
+@mixin font-features {
   font-feature-settings: "kern", "liga", "clig", "calt";
   font-variant-ligatures: common-ligatures, contextual;
   font-kerning: normal;
@@ -14,8 +14,8 @@ $ms-ratio: $golden;
 
 // Heading extend
 
-%heading {
-  @extend %font-features;
+@mixin heading-features {
+  @include font-features;
   font-family: $sans-serif;
   font-size: ms(1);
   font-weight: normal;
@@ -25,7 +25,7 @@ $ms-ratio: $golden;
 // Base
 
 p {
-  @extend %font-features;
+  @include font-features;
   font-weight: normal;
 }
 
@@ -38,14 +38,14 @@ abbr {
 // Headings
 
 h1 {
-  @extend %heading;
+  @include heading-features;
   font-style: normal;
 }
 
 h2 {
-  @extend %heading;
+  @include heading-features;
 }
 
 .heading {
-  @extend %heading;
+  @include heading-features;
 }

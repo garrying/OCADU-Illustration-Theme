@@ -36,7 +36,7 @@ mark {
 // Links
 
 a {
-  color: $accent;
+  color: $black;
   text-decoration: none;
   border-width: 0 0 3px;
   border-image-source: url("../images/wavy.b.svg");
@@ -70,7 +70,7 @@ a {
   border: 0;
 
   &:focus {
-    z-index: 600;
+    z-index: $z-important;
     width: auto;
     height: auto;
     padding: 0 10px;

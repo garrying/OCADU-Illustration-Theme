@@ -1,5 +1,5 @@
 input {
-  @extend %font-features;
+  @include font-features;
   @include font-smoothing(on);
   font-family: $sans-serif;
   border-radius: 0;
@@ -9,8 +9,12 @@ input[type=search] {
   -webkit-appearance: none;
 }
 
-.btn,
 button {
+  @include font-features;
+  padding: 0;
+  background: transparent;
+  border: 0;
+
   &:focus {
     outline: thin dotted;
   }

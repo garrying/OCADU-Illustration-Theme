@@ -4,7 +4,7 @@
   position: fixed;
   top: calc(50% - 12vh);
   left: calc(50% - 2px);
-  z-index: 999;
+  z-index: $z-important;
   width: 2px;
   height: 24vh;
   pointer-events: none;

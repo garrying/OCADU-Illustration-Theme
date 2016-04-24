@@ -22,7 +22,6 @@
 
 .illustrator-meta {
   position: relative;
-  z-index: 20;
   font-size: 0.857em;
   flex: 1 1 30%;
 
@@ -106,7 +105,7 @@
 
   @media screen and (max-width: $small-vp) {
     margin-top: 2em;
-    border-bottom: 1px solid rgba($accent, 0.1);
+    border-bottom: 1px solid rgba($black, 0.1);
   }
 
   a {
@@ -160,7 +159,7 @@
   right: 0;
   bottom: 0;
   left: 30%;
-  z-index: 400;
+  z-index: $z-foreground;
   background: lighten(#0e0e0f, 2%);
 
   @media screen and (max-width: $medium-vp)  {
@@ -183,7 +182,7 @@
   position: absolute;
   right: 20px;
   bottom: 20px;
-  z-index: 130;
+  z-index: $z-foreground;
 
   @media screen and (max-width: $small-vp) {
     display: none;

@@ -3,21 +3,13 @@
 $sans-serif: 'Neutral', Helvetica, Arial, sans-serif;
 
 // Colours
-
-$site-background: #fff;
-$site-font-color: #555;
-
-$site-background-home: $site-background;
-
-$accent: #000;
-
 $white: #fff;
 $black: #000;
-
 $off-black: #0e0e0f;
-
 $light-pink: #faeded;
-$yellow: #ff0;
+
+$site-background: $white;
+$site-font-color: #555;
 
 // Easings
 
@@ -26,7 +18,7 @@ $easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // Panel widths
 
-$max-panel-width: 30vw;
+$panel-width: 30vw;
 
 // Breakpoints
 

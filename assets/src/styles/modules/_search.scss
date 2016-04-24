@@ -34,7 +34,7 @@
     font-size: ms(1);
     background: transparent;
     border: 1px solid rgba($white, 0.02);
-    border-width: 0 0 1px 0;
+    border-width: 0 0 1px;
     transition: border 300ms ease-in-out;
     @include font-smoothing(on);
 
@@ -79,8 +79,8 @@
 // Search Index
 
 .search-title {
-  color: $site-font-color;
   padding: 4em 0;
+  color: $site-font-color;
 }
 
 .error-body {

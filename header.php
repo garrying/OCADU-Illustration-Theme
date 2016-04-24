@@ -35,10 +35,10 @@
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
           </div>
           <div class="header-item-wrapper">
-            <button id="year-select-link" data-panel="year-select" class="header-item" title="Navigate years">Years</button>
+            <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">Years</button>
           </div>
           <div class="header-item-wrapper">
-            <button id="search-link" data-panel="search-container" class="header-item" title="Search archives">Search</button>
+            <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item" title="Search archives">Search</button>
           </div>
         </div>
 
@@ -58,7 +58,7 @@
           }
         ?>
 
-        <div class="year-select panel" aria-hidden="true" tabindex="-1">
+        <div id="panel-year-select" class="year-select panel" aria-hidden="true" tabindex="-1">
           <div class="panel-inner">
             <ul class="year-select-wrapper">
               <?php foreach ( $grad_year as $year ) {
@@ -76,7 +76,7 @@
           </div>
         </div> <!-- year-select-->
 
-        <div class="search-container panel" aria-hidden="true" tabindex="-1">
+        <div id="panel-search" class="search-container panel" aria-hidden="true" tabindex="-1">
           <div class="panel-inner">
             <div class="search-wrapper">
               <?php get_search_form(); ?>

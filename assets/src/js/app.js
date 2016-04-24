@@ -173,7 +173,8 @@ const Bloodhound = require('bloodhound');
         $(e).removeClass('invert');
         app._ocadPanelsClose();
       } else {
-        $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast');
+        $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast')
+          .attr('aria-hidden', true);
         $('.year-item').velocity(
           { opacity: 0, translateX: '-20px', display: 'flex' }, 'fast').removeClass('loaded');
         $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
@@ -283,6 +284,7 @@ const Bloodhound = require('bloodhound');
 
       if (!$(event.target).closest('.panel, .header-item').length
         && $('.panel').hasClass('visible')) {
+        $('.panel').attr('aria-hidden', true);
         app._ocadPanelsClose();
       }
     },
@@ -341,8 +343,9 @@ const Bloodhound = require('bloodhound');
 
       const imageModalSetter = imageSource => {
         const image = new Image();
-        image.alt = 'Full illustration';
+        image.alt = 'Full sized illustration';
         image.id = 'full-image';
+        image.className = 'image-modal-container-full-image';
         image.src = imageSource.attr('href');
         image.srcset = imageSource.data('srcset');
         image.sizes = imageSource.data('sizes');

@@ -1,16 +1,16 @@
 .panel {
   position: fixed;
   top: 0;
-  left: 0;
   bottom: 0;
-  width: $max-panel-width;
-  z-index: 200;
-  outline: 0;
-  transform: translateX(-100%);
-  background: $off-black;
-  box-shadow: 0 2px 0 4px rgba($black, 0.05);
-  color: $white;
+  left: 0;
+  z-index: $z-middle;
   display: flex;
+  width: $panel-width;
+  color: $white;
+  background: $off-black;
+  outline: 0;
+  box-shadow: 0 2px 0 4px rgba($black, 0.05);
+  transform: translateX(-100%);
   align-content: center;
   align-items: center;
   will-change: transform;
@@ -35,14 +35,14 @@
 }
 
 .close-panel {
-  z-index: 400;
-  display: block;
   position: absolute;
-  cursor: pointer;
   top: 20px;
   right: 20px;
+  z-index: $z-foreground;
+  display: block;
   width: 22px;
   height: 22px;
+  cursor: pointer;
   background: url("../images/close.svg") no-repeat;
 
   @media screen and (max-width: $small-vp) {
@@ -50,23 +50,16 @@
   }
 }
 
-button {
-  @extend %font-features;
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
 .panel-colophon {
-  opacity: 0;
-  border: 0;
   position: fixed;
-  bottom: 20px;
   right: 25px;
-  z-index: 120;
-  color: $white;
+  bottom: 20px;
+  z-index: $z-background;
   width: 1.1em;
   height: 1.75em;
+  opacity: 0;
+  border: 0;
+  color: $white;
   background: url("../images/colophon.svg") no-repeat;
   background-size: contain;
 }

@@ -12,7 +12,7 @@
   position: fixed;
   top: 20px;
   left: 40px;
-  z-index: 300;
+  z-index: $z-foreground;
 
   @media screen and (max-width: $small-vp) {
     right: 20px;
