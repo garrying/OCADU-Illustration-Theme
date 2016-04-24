@@ -19,7 +19,9 @@
 }
 
 .home-grid {
-  transform: translatex(35vw);
+  @media screen and (min-width: $small-vp) {
+    transform: translatex(35vw);
+  }
 
   @media screen and (max-width: $small-vp) {
     width: 100vw;
@@ -28,9 +30,17 @@
     transform: translatex(0);
   }
 
-  &:hover {
+  .no-touchevents &:hover {
     transform: translatex(28.2vw);
 
+    @media screen and (max-width: $small-vp) {
+      transform: translatex(0);
+    }
+  }
+
+  .touchevents & {
+    transform: translatex(28.2vw);
+    
     @media screen and (max-width: $small-vp) {
       transform: translatex(0);
     }

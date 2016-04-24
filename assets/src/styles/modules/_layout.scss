@@ -17,10 +17,6 @@
   .gallery-item {
     margin: 0 2% 2% 0;
     opacity: 0;
-
-    @media screen and (max-width: $smallest-vp)  {
-      margin: 2% 0;
-    }
   }
 }
 

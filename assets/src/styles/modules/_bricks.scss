@@ -54,14 +54,6 @@
       width: 33.3333333333%;
     }
   }
-
-  @media screen and (max-width: $small-vp) {
-    .bricklayer-column:last-child {
-      .gallery-item {
-        margin-right: 0;
-      }
-    }
-  }
 }
 
 .bricklayer-column-sizer {
