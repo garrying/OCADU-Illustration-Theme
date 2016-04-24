@@ -28,6 +28,7 @@
 
 .header-item {
   padding: 0.25em 0;
+  color: rgba($black, 0.5);
   transition: color 300ms ease-in-out;
 
   &:hover {
@@ -39,8 +40,12 @@
   }
 }
 
-.inactive:hover {
-  color: $white;
+.inactive {
+  color: rgba($white, 0.3);
+
+  &:hover {
+    color: $white;
+  }
 }
 
 .invert {

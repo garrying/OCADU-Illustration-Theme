@@ -4,46 +4,22 @@
   bottom: 0;
   left: 0;
   z-index: 1;
+  display: flex;
+  width: 28.2vw;
+  padding-left: 40px;
   font-size: 1.2vw;
   flex-direction: column;
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-left: 40px;
-  width: 28.2vw;
 
-  @media screen and (max-width: $medium-vp)  {
+  @media screen and (max-width: $medium-vp) {
     width: 30vw;
     padding-left: 20px;
     font-size: 1.5vw;
   }
 
-  @media screen and (max-width: $small-vp)  {
+  @media screen and (max-width: $small-vp) {
     display: none;
-  }
-
-  .title-unit {
-    position: absolute;
-    top: 0;
-    display: flex;
-    height: 100%;
-    color: $black;
-    pointer-events: none;
-    visibility: hidden;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: center;
-    opacity: 0;
-    transition: transform 800ms $easeOutExpo, opacity 800ms $easeOutExpo, visibility 800ms $easeOutExpo;
-    will-change: transform;
-  }
-
-  .title-unit-init {
-    transform: translateX(-40px);
-  }
-
-  .title-unit-illustrator {
-    transform: translateX(40px);
   }
 
   .active {
@@ -76,19 +52,49 @@
   a {
     pointer-events: auto;
   }
+}
 
-  .asterisk {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-right: 0.2em;
-    margin-bottom: -4px;
-    vertical-align: baseline;
-    background: url("../images/asterisk.b.svg") no-repeat;
-    background-size: contain;
-    animation-name: spin;
-    animation-duration: 20s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.title-unit {
+  position: absolute;
+  top: 0;
+  display: flex;
+  height: 100%;
+  color: $black;
+  pointer-events: none;
+  visibility: hidden;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  opacity: 0;
+  transition: transform 800ms $easeOutExpo, opacity 800ms $easeOutExpo, visibility 800ms $easeOutExpo;
+  will-change: transform;
+}
+
+.title-unit-init {
+  transform: translateX(-40px);
+
+  @media screen and (min-width: $medium-vp) {
+    &.active {
+      pointer-events: auto;
+    }
   }
+}
+
+.title-unit-illustrator {
+  transform: translateX(40px);
+}
+
+.asterisk {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  margin-bottom: -4px;
+  vertical-align: baseline;
+  background: url("../images/asterisk.b.svg") no-repeat;
+  background-size: contain;
+  animation-name: spin;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
