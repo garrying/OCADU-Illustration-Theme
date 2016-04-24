@@ -24,7 +24,7 @@
       </div>
     </div>
     <p class="colophon">
-      <a href="/about" class="home-colophon"><span class="hidden">About</span></a>
+      <a href="/about" class="home-colophon hide-text" title="About OCAD U Illustration">About</a>
       <small>Illustration Department at OCAD U</small>
     </p>
   </div>

@@ -1,16 +1,16 @@
 .title {
-  font-size: 1.2vw;
   position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 1.2vw;
+  flex-direction: column;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   justify-content: space-around;
-  top: 0;
   padding-left: 40px;
-  left: 0;
-  bottom: 0;
   width: 28.2vw;
-  z-index: 1;
 
   @media screen and (max-width: $medium-vp)  {
     width: 30vw;
@@ -79,16 +79,16 @@
 
   .asterisk {
     display: inline-block;
-    vertical-align: baseline;
-    margin-bottom: -4px;
-    margin-right: 0.2em;
-    animation-name: spin;
-    animation-duration: 20s;
-    animation-iteration-count:  infinite;
-    animation-timing-function: linear;
     width: 1em;
     height: 1em;
+    margin-right: 0.2em;
+    margin-bottom: -4px;
+    vertical-align: baseline;
     background: url("../images/asterisk.b.svg") no-repeat;
     background-size: contain;
+    animation-name: spin;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
 }

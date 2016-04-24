@@ -72,7 +72,7 @@
               ?>
             </ul>
             <button class="close-panel hide-text" title="Close panel" aria-label="Close search panel">Close</button>
-            <a href="/about" class="panel-colophon" title="About OCAD U Illustration"><span class="hidden">About OCAD U Illustration</span></a>
+            <a href="/about" class="panel-colophon hide-text" title="About OCAD U Illustration">About OCAD U Illustration</a>
           </div>
         </div> <!-- year-select-->
 
