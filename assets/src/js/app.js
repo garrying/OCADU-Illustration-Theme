@@ -29,6 +29,7 @@ const Bloodhound = require('bloodhound');
     },
 
     settings: {
+      documentBody: $('body'),
       contentContainer: '#content',
       logo: $('.logo'),
       loader: $('.loader'),
@@ -77,19 +78,19 @@ const Bloodhound = require('bloodhound');
       }
 
       sectionIndicator.hover(() => {
-        $('body').addClass('grid-focus');
+        app.settings.documentBody.addClass('grid-focus');
         $(app.settings.masonryContainerHome).addClass('blur');
       }, () => {
-        $('body').removeClass('grid-focus');
+        app.settings.documentBody.removeClass('grid-focus');
         $(app.settings.masonryContainerHome).removeClass('blur');
       });
 
       $('.home-grid').hover(() => {
         $('.title-unit-illustrator').toggleClass('active');
         $('.title-unit-init').toggleClass('active');
-        $('body').addClass('grid-focus');
+        app.settings.documentBody.addClass('grid-focus');
       }, () => {
-        $('body').removeClass('grid-focus');
+        app.settings.documentBody.removeClass('grid-focus');
         $('.title-unit-init').toggleClass('active');
         $('.title-unit-illustrator').toggleClass('active');
       });
@@ -113,10 +114,10 @@ const Bloodhound = require('bloodhound');
 
     _ocadLoader: (e = true) => {
       if (e === false) {
-        $('body').removeAttr('style');
+        app.settings.documentBody.removeAttr('style');
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
-        $('body').css('cursor', 'progress');
+        app.settings.documentBody.css('cursor', 'progress');
         app.settings.loader.velocity('fadeIn', 'fast');
       }
     },
@@ -246,7 +247,7 @@ const Bloodhound = require('bloodhound');
     },
 
     _ocadHomeLoader: () => {
-      if ($('body').hasClass('home')) {
+      if (app.settings.documentBody.hasClass('home')) {
         app._ocadShuffle(document.querySelectorAll('.gallery-item'));
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
@@ -294,7 +295,7 @@ const Bloodhound = require('bloodhound');
       let nextImage;
       const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
-      if ($('body').hasClass('single')) {
+      if (app.settings.documentBody.hasClass('single')) {
         $(app.settings.masonryContainer).imagesLoaded().done(() => {
           app._ocadMasonry(app.settings.masonryContainer);
           app._ocadCascade('.gallery-item', 100);

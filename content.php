@@ -1,4 +1,4 @@
-<article <?php post_class( 'gallery-item' ); ?> role="article" data-id="<?php echo the_ID(); ?>">
+<article <?php post_class( 'gallery-item' ); ?> role="article">
   <a href="<?php the_permalink() ?>" class="illustrator-link" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
     <figure>
       <div class="illustrator-image">

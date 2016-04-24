@@ -32,6 +32,7 @@ var Bloodhound = require('bloodhound');
     },
 
     settings: {
+      documentBody: $('body'),
       contentContainer: '#content',
       logo: $('.logo'),
       loader: $('.loader'),
@@ -96,19 +97,19 @@ var Bloodhound = require('bloodhound');
       }
 
       sectionIndicator.hover(function () {
-        $('body').addClass('grid-focus');
+        app.settings.documentBody.addClass('grid-focus');
         $(app.settings.masonryContainerHome).addClass('blur');
       }, function () {
-        $('body').removeClass('grid-focus');
+        app.settings.documentBody.removeClass('grid-focus');
         $(app.settings.masonryContainerHome).removeClass('blur');
       });
 
       $('.home-grid').hover(function () {
         $('.title-unit-illustrator').toggleClass('active');
         $('.title-unit-init').toggleClass('active');
-        $('body').addClass('grid-focus');
+        app.settings.documentBody.addClass('grid-focus');
       }, function () {
-        $('body').removeClass('grid-focus');
+        app.settings.documentBody.removeClass('grid-focus');
         $('.title-unit-init').toggleClass('active');
         $('.title-unit-illustrator').toggleClass('active');
       });
@@ -134,10 +135,10 @@ var Bloodhound = require('bloodhound');
       var e = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
 
       if (e === false) {
-        $('body').removeAttr('style');
+        app.settings.documentBody.removeAttr('style');
         app.settings.loader.velocity('fadeOut', 'fast');
       } else {
-        $('body').css('cursor', 'progress');
+        app.settings.documentBody.css('cursor', 'progress');
         app.settings.loader.velocity('fadeIn', 'fast');
       }
     },
@@ -264,7 +265,7 @@ var Bloodhound = require('bloodhound');
     },
 
     _ocadHomeLoader: function _ocadHomeLoader() {
-      if ($('body').hasClass('home')) {
+      if (app.settings.documentBody.hasClass('home')) {
         app._ocadShuffle(document.querySelectorAll('.gallery-item'));
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
@@ -308,7 +309,7 @@ var Bloodhound = require('bloodhound');
       var nextImage = void 0;
       var masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
-      if ($('body').hasClass('single')) {
+      if (app.settings.documentBody.hasClass('single')) {
         (function () {
           $(app.settings.masonryContainer).imagesLoaded().done(function () {
             app._ocadMasonry(app.settings.masonryContainer);
