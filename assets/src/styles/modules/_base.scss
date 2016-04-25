@@ -38,6 +38,7 @@ mark {
 a {
   color: $black;
   text-decoration: none;
+  border-style: solid;
   border-width: 0 0 3px;
   border-image-source: url("../images/wavy.b.svg");
   border-image-slice: 0 0 3 0;
@@ -46,6 +47,7 @@ a {
   border-image-repeat: repeat;
 
   &:hover {
+    border-style: none;
     border-image: none;
   }
 

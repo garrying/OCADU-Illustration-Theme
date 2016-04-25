@@ -6,8 +6,8 @@
     padding-bottom: 60px;
 
     @media screen and (max-width: $small-vp) {
-      padding-bottom: 20px;
       padding-top: 50px;
+      padding-bottom: 20px;
     }
   }
 }
@@ -22,16 +22,16 @@
 
 .year-item {
   display: block;
-  font-size: ms(2);
-
-  @media screen and (max-width: $small-vp) {
-    font-size: ms(1);
-  }
+  font-size: $ms-2;
   color: $white;
   border: 0;
   opacity: 0;
   transition: margin-left 300ms $easeOutBack;
   transform: translateX(-20px);
+
+  @media screen and (max-width: $small-vp) {
+    font-size: $ms-1;
+  }
 
   &:hover,
   &:focus {
@@ -43,20 +43,20 @@
 
     &::after {
       display: inline-block;
-      line-height: 1em;
-      margin-left: 0.25em;
-      font-size: 1.2em;
-      content: "";
       width: 0.8em;
       height: 0.8em;
       margin-bottom: -0.08em;
+      margin-left: 0.25em;
+      font-size: 1.2em;
+      line-height: 1em;
+      content: "";
+      background: url("../images/asterisk.svg") no-repeat;
+      background-size: contain;
+      transform-origin: 50% 50%;
       animation-name: spin;
       animation-duration: 20s;
-      animation-iteration-count:  infinite;
       animation-timing-function: linear;
-      transform-origin: 50% 50%;
-      background: url('../images/asterisk.svg') no-repeat;
-      background-size: contain;
+      animation-iteration-count: infinite;
     }
   }
 }

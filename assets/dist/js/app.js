@@ -1215,6 +1215,9 @@ var Bricklayer;
             this.element = document.createElement("div");
             this.element.className = className;
         }
+        SimpleElement.prototype.destroy = function () {
+            this.element.parentNode.removeChild(this.element);
+        };
         return SimpleElement;
     }());
     var Ruler = (function (_super) {
@@ -1242,7 +1245,6 @@ var Bricklayer;
             if (options === void 0) { options = DEFAULTS; }
             this.element = element;
             this.options = options;
-            this.ruler = new Ruler(options.rulerClassName);
             this.build();
             this.buildResponsive();
         }
@@ -1276,7 +1278,18 @@ var Bricklayer;
             this.element.addEventListener("bricklayer." + eventName, handler);
             return this;
         };
+        Container.prototype.redraw = function () {
+            this.checkColumnCount(false);
+            this.reorderElements(this.columnCount);
+        };
+        Container.prototype.destroy = function () {
+            var _this = this;
+            this.ruler.destroy();
+            toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
+            toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
+        };
         Container.prototype.build = function () {
+            this.ruler = new Ruler(this.options.rulerClassName);
             this.elements = this.getElementsInOrder();
             this.element.insertBefore(this.ruler.element, this.element.firstChild);
         };
@@ -1293,21 +1306,21 @@ var Bricklayer;
             return this.element.querySelectorAll(":scope > ." + this.options.columnClassName);
         };
         Container.prototype.findMinHeightColumn = function () {
-            var allColumns = this.getColumns();
-            var column = toArray(allColumns).sort(function (a, b) {
-                var aHeight = a.offsetHeight;
-                var bHeight = b.offsetHeight;
-                return aHeight > bHeight ? 1 : (aHeight == bHeight ? 0 : -1);
-            });
-            return column[0];
+            var allColumns = toArray(this.getColumns());
+            var heights = allColumns.map(function (column) { return column.offsetHeight; });
+            var minHeight = Math.min.apply(null, heights);
+            return allColumns[heights.indexOf(minHeight)];
         };
         Container.prototype.getElementsInOrder = function () {
             return this.element.querySelectorAll(":scope > *:not(." + this.options.columnClassName + "):not(." + this.options.rulerClassName + ")");
         };
-        Container.prototype.checkColumnCount = function () {
+        Container.prototype.checkColumnCount = function (publish) {
+            if (publish === void 0) { publish = true; }
             var columnCount = this.getColumnCount();
             if (this.columnCount !== columnCount) {
-                triggerEvent(this.element, "bricklayer.breakpoint", { columnCount: columnCount });
+                if (publish) {
+                    triggerEvent(this.element, "bricklayer.breakpoint", { columnCount: columnCount });
+                }
                 this.columnCount = columnCount;
             }
         };

@@ -14,14 +14,12 @@ const reload = browserSync.reload;
 gulp.task('styles', () => {
   return gulp.src('assets/src/styles/main.scss')
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['last 2 versions']}))
-    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('assets/dist/styles'))
     .pipe($.size())
     .pipe(reload({stream: true}));

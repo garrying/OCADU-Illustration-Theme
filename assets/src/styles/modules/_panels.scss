@@ -57,9 +57,9 @@
   z-index: $z-background;
   width: 1.1em;
   height: 1.75em;
-  opacity: 0;
-  border: 0;
   color: $white;
   background: url("../images/colophon.svg") no-repeat;
   background-size: contain;
+  border: 0;
+  opacity: 0;
 }
