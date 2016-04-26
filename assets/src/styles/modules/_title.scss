@@ -7,7 +7,7 @@
   display: flex;
   width: 28.2vw;
   padding-left: 40px;
-  font-size: 1.2vw;
+  font-size: 1.25vw;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -66,7 +66,7 @@
   flex-grow: 1;
   justify-content: center;
   opacity: 0;
-  transition: transform 800ms $easeOutExpo, opacity 800ms $easeOutExpo, visibility 800ms $easeOutExpo;
+  transition: transform 800ms $easeOutExpo, opacity 300ms $easeOutExpo, visibility 800ms $easeOutExpo;
   will-change: transform;
 }
 
@@ -81,7 +81,8 @@
 }
 
 .title-unit-illustrator {
-  transform: translateX(40px);
+  transition: transform 1000ms $easeOutExpo;
+  transform: translateX(80px);
 }
 
 .asterisk {

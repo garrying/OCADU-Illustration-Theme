@@ -18,12 +18,12 @@ body {
   }
 
   &.grid-focus {
-    background: $light-pink;
+    background: $hover-accent;
   }
 }
 
 ::selection {
-  background: darken($light-pink, 5%);
+  background: darken($hover-accent, 5%);
 }
 
 // Mark

@@ -1719,7 +1719,7 @@ button:focus {
   display: flex;
   width: 28.2vw;
   padding-left: 40px;
-  font-size: 1.2vw;
+  font-size: 1.25vw;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -1796,9 +1796,9 @@ button:focus {
       -ms-flex-pack: center;
           justify-content: center;
   opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: opacity 300ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1), opacity 300ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1), opacity 300ms cubic-bezier(0.19, 1, 0.22, 1), visibility 800ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
   will-change: transform;
 }
 
@@ -1814,8 +1814,11 @@ button:focus {
 }
 
 .title-unit-illustrator {
-  -webkit-transform: translateX(40px);
-          transform: translateX(40px);
+  transition: -webkit-transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translateX(80px);
+          transform: translateX(80px);
 }
 
 .asterisk {
