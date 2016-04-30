@@ -786,6 +786,12 @@ button:focus {
   margin-right: 0;
 }
 
+@-moz-document url-prefix() {
+  .illustrators-grid {
+    will-change: transform;
+  }
+}
+
 .gallery-grid {
   margin-top: 1%;
 }
@@ -1761,6 +1767,7 @@ button:focus {
 
 .title .title-secondary {
   font-size: 1.2em;
+  margin-bottom: 0;
 }
 
 .title .empty {
