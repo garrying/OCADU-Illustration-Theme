@@ -8,7 +8,6 @@
 .illustrators-grid {
   width: 71.8vw;
   transition: transform 800ms $easeOutExpo;
-  will-change: transform;
 
   &.blur,
   &:hover {
