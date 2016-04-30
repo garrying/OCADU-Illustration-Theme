@@ -73,6 +73,7 @@
 
 .title-unit-init {
   transform: translateX(-40px);
+  font-size: 0.825em;
 
   @media screen and (min-width: $medium-vp) {
     &.active {
