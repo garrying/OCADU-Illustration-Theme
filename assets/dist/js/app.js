@@ -105,13 +105,13 @@ var Bloodhound = require('bloodhound');
       });
 
       $('.home-grid').hover(function () {
-        $('.title-unit-illustrator').toggleClass('active');
-        $('.title-unit-init').toggleClass('active');
+        $('.title-unit-illustrator').addClass('active');
+        $('.title-unit-init').removeClass('active');
         app.settings.documentBody.addClass('grid-focus');
       }, function () {
         app.settings.documentBody.removeClass('grid-focus');
-        $('.title-unit-init').toggleClass('active');
-        $('.title-unit-illustrator').toggleClass('active');
+        $('.title-unit-init').addClass('active');
+        $('.title-unit-illustrator').removeClass('active');
       });
 
       $('.illustrators-grid .gallery-item').hover(function (ele) {
