@@ -75,7 +75,11 @@
 
   @media screen and (min-width: $medium-vp) {
     &.active {
-      pointer-events: auto;
+      pointer-events: none;
+
+      .unit {
+        pointer-events: auto;
+      }
     }
   }
 }
