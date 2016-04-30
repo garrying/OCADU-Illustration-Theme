@@ -1765,7 +1765,7 @@ button:focus {
 }
 
 .title .title-primary {
-  margin: 0 0 0.5em;
+  margin: 0;
   font-size: 2.5em;
   line-height: 1.5em;
   white-space: nowrap;
