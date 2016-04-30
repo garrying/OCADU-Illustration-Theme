@@ -25,6 +25,7 @@ const Bloodhound = require('bloodhound');
       app._ocadHomeLoader();
       app._ocadGalleryNav();
       app._ocadUIbinding();
+      app._ocadGridFocus();
       app._ocadTextScramblerMoments();
     },
 
@@ -46,6 +47,26 @@ const Bloodhound = require('bloodhound');
 
     _fastClick: () => {
       fastClick(document.body);
+    },
+
+    _ocadGridFocus: () => {
+      $('.section-indicator').hover(() => {
+        app.settings.documentBody.addClass('grid-focus');
+        $(app.settings.masonryContainerHome).addClass('blur');
+      }, () => {
+        app.settings.documentBody.removeClass('grid-focus');
+        $(app.settings.masonryContainerHome).removeClass('blur');
+      });
+
+      $('.home-grid').hover(() => {
+        $('.title-unit-illustrator').addClass('active');
+        $('.title-unit-init').removeClass('active');
+        app.settings.documentBody.addClass('grid-focus');
+      }, () => {
+        app.settings.documentBody.removeClass('grid-focus');
+        $('.title-unit-init').addClass('active');
+        $('.title-unit-illustrator').removeClass('active');
+      });
     },
 
     _ocadTextScramblerMoments: () => {
@@ -76,24 +97,6 @@ const Bloodhound = require('bloodhound');
       for (const item of mixElements) {
         textMixer(item.ele, item.ele.text(), item.newText);
       }
-
-      sectionIndicator.hover(() => {
-        app.settings.documentBody.addClass('grid-focus');
-        $(app.settings.masonryContainerHome).addClass('blur');
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $(app.settings.masonryContainerHome).removeClass('blur');
-      });
-
-      $('.home-grid').hover(() => {
-        $('.title-unit-illustrator').addClass('active');
-        $('.title-unit-init').removeClass('active');
-        app.settings.documentBody.addClass('grid-focus');
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $('.title-unit-init').addClass('active');
-        $('.title-unit-illustrator').removeClass('active');
-      });
 
       $('.illustrators-grid .gallery-item').hover(ele => {
         const targetItem = $(ele.target).parentsUntil('.gallery-item');
