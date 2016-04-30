@@ -655,6 +655,7 @@ figure img {
 
 .gallery-icon-anchor {
   cursor: zoom-in;
+  border: 0;
 }
 
 .gallery-icon-anchor img {
