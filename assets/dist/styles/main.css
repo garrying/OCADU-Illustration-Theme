@@ -1718,7 +1718,7 @@ button:focus {
   display: flex;
   width: 28.2vw;
   padding-left: 40px;
-  font-size: 1.25vw;
+  font-size: 1.285vw;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
