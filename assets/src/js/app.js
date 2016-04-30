@@ -103,6 +103,7 @@ const Bloodhound = require('bloodhound');
         const illustrationTitle = targetItem.find('.illustrator-title').text();
         const illustrationAuthor = targetItem.find('.illustrator-name').text();
         app._ocadPanelsClose();
+        app.settings.documentBody.addClass('grid-focus');
         $('.title-unit-illustrator').addClass('active');
         $('.title-unit-init').removeClass('active');
         if (illustrationTitle.length === 0) {
