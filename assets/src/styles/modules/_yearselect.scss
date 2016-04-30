@@ -24,7 +24,7 @@
   display: block;
   font-size: $ms-2;
   color: $white;
-  border: 0;
+  background: none;
   opacity: 0;
   transition: margin-left 300ms $easeOutBack;
   transform: translateX(-20px);

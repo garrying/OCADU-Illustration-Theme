@@ -537,20 +537,16 @@ mark {
 }
 
 a {
+  padding-bottom: 5px;
   color: #000;
   text-decoration: none;
-  border-style: solid;
-  border-width: 0 0 3px;
-  border-image-source: url("../images/wavy.b.svg");
-  border-image-slice: 0 0 3 0;
-  border-image-width: 3px 6px;
-  border-image-outset: 0 6px 1px 6px;
-  border-image-repeat: repeat;
+  background: url("../images/wavy.b.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
 }
 
 a:hover {
-  border-style: none;
-  border-image: none;
+  background: none;
 }
 
 a img {
@@ -569,7 +565,6 @@ a img {
   clip: rect(1px, 1px, 1px, 1px);
   color: #fff;
   background: #0e0e0f;
-  border: 0;
 }
 
 .screen-reader-shortcut:focus {
@@ -655,7 +650,7 @@ figure img {
 
 .gallery-icon-anchor {
   cursor: zoom-in;
-  border: 0;
+  background: none;
 }
 
 .gallery-icon-anchor img {
@@ -924,8 +919,12 @@ button:focus {
   color: #fff;
   background: url("../images/colophon.svg") no-repeat;
   background-size: contain;
-  border: 0;
   opacity: 0;
+}
+
+.panel-colophon:hover {
+  background: url("../images/colophon.svg") no-repeat;
+  background-size: contain;
 }
 
 .search-container {
@@ -1156,7 +1155,7 @@ button:focus {
   display: flex;
   height: 100%;
   font-size: 2.5vw;
-  border: 0;
+  background: none;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1178,7 +1177,6 @@ button:focus {
 .archive .section-indicator {
   color: #000;
   cursor: help;
-  border: 0;
 }
 
 .home-colophon {
@@ -1189,7 +1187,6 @@ button:focus {
   vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
   background-size: contain;
-  border: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1309,7 +1306,7 @@ button:focus {
   display: block;
   font-size: 2.6180340252em;
   color: #fff;
-  border: 0;
+  background: none;
   opacity: 0;
   transition: margin-left 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-transform: translateX(-20px);
@@ -1352,8 +1349,7 @@ button:focus {
 
 .logo {
   font-weight: 700;
-  border-style: none;
-  border-image: none;
+  background: none;
   transition: color 300ms ease-in-out;
 }
 
@@ -1580,8 +1576,7 @@ button:focus {
   display: block;
   padding: 10px;
   color: #555;
-  border-style: none;
-  border-image: none;
+  background: none;
   transition: color 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
