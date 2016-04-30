@@ -1462,6 +1462,12 @@ button:focus {
           flex: 1 1 30%;
 }
 
+@media screen and (max-width: 1024px) {
+  .illustrator-meta {
+    font-size: 0.857em;
+  }
+}
+
 @media screen and (max-width: 667px) {
   .illustrator-meta {
     -webkit-flex-basis: 100%;

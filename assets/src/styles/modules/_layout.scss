@@ -25,6 +25,10 @@
   font-size: 0.92em;
   flex: 1 1 30%;
 
+  @media screen and (max-width: $medium-vp) {
+    font-size: 0.857em;
+  }
+
   @media screen and (max-width: $small-vp) {
     flex-basis: 100%;
   }
