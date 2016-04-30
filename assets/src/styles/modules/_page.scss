@@ -92,7 +92,7 @@
     display: flex;
     height: 100%;
     font-size: 2.5vw;
-    border: 0;
+    background: none;
     align-items: center;
 
     @media screen and (max-width: $medium-vp)  {
@@ -108,7 +108,6 @@
   .section-indicator {
     color: $black;
     cursor: help;
-    border: 0;
   }
 }
 
@@ -120,7 +119,6 @@
   vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
   background-size: contain;
-  border: 0;
 
   @media screen and (max-width: $medium-vp)  {
     display: none;

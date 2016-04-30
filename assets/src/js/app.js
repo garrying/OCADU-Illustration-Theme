@@ -25,6 +25,7 @@ const Bloodhound = require('bloodhound');
       app._ocadHomeLoader();
       app._ocadGalleryNav();
       app._ocadUIbinding();
+      app._ocadGridFocus();
       app._ocadTextScramblerMoments();
     },
 
@@ -46,6 +47,26 @@ const Bloodhound = require('bloodhound');
 
     _fastClick: () => {
       fastClick(document.body);
+    },
+
+    _ocadGridFocus: () => {
+      $('.section-indicator').hover(() => {
+        app.settings.documentBody.addClass('grid-focus');
+        $(app.settings.masonryContainerHome).addClass('blur');
+      }, () => {
+        app.settings.documentBody.removeClass('grid-focus');
+        $(app.settings.masonryContainerHome).removeClass('blur');
+      });
+
+      $('.home-grid').hover(() => {
+        $('.title-unit-illustrator').addClass('active');
+        $('.title-unit-init').removeClass('active');
+        app.settings.documentBody.addClass('grid-focus');
+      }, () => {
+        app.settings.documentBody.removeClass('grid-focus');
+        $('.title-unit-init').addClass('active');
+        $('.title-unit-illustrator').removeClass('active');
+      });
     },
 
     _ocadTextScramblerMoments: () => {
@@ -77,29 +98,16 @@ const Bloodhound = require('bloodhound');
         textMixer(item.ele, item.ele.text(), item.newText);
       }
 
-      sectionIndicator.hover(() => {
-        app.settings.documentBody.addClass('grid-focus');
-        $(app.settings.masonryContainerHome).addClass('blur');
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $(app.settings.masonryContainerHome).removeClass('blur');
-      });
-
-      $('.home-grid').hover(() => {
-        $('.title-unit-illustrator').toggleClass('active');
-        $('.title-unit-init').toggleClass('active');
-        app.settings.documentBody.addClass('grid-focus');
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $('.title-unit-init').toggleClass('active');
-        $('.title-unit-illustrator').toggleClass('active');
-      });
-
       $('.illustrators-grid .gallery-item').hover(ele => {
         const targetItem = $(ele.target).parentsUntil('.gallery-item');
         const illustrationTitle = targetItem.find('.illustrator-title').text();
         const illustrationAuthor = targetItem.find('.illustrator-name').text();
         app._ocadPanelsClose();
+        if (app.settings.documentBody.hasClass('home')) {
+          app.settings.documentBody.addClass('grid-focus');
+        }
+        $('.title-unit-illustrator').addClass('active');
+        $('.title-unit-init').removeClass('active');
         if (illustrationTitle.length === 0) {
           $('.title-illustration').addClass('empty');
         } else {

@@ -22,8 +22,12 @@
 
 .illustrator-meta {
   position: relative;
-  font-size: 0.857em;
+  font-size: 0.925em;
   flex: 1 1 30%;
+
+  @media screen and (max-width: $medium-vp) {
+    font-size: 0.857em;
+  }
 
   @media screen and (max-width: $small-vp) {
     flex-basis: 100%;
@@ -112,8 +116,7 @@
     display: block;
     padding: 10px;
     color: $site-font-color;
-    border-style: none;
-    border-image: none;
+    background: none;
     transition: color 300ms $easeOutBack;
 
     &:hover {

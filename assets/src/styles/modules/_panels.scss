@@ -60,6 +60,10 @@
   color: $white;
   background: url("../images/colophon.svg") no-repeat;
   background-size: contain;
-  border: 0;
   opacity: 0;
+
+  &:hover {
+    background: url("../images/colophon.svg") no-repeat;
+    background-size: contain;
+  }
 }

@@ -36,19 +36,15 @@ mark {
 // Links
 
 a {
+  padding-bottom: 5px;
   color: $black;
   text-decoration: none;
-  border-style: solid;
-  border-width: 0 0 3px;
-  border-image-source: url("../images/wavy.b.svg");
-  border-image-slice: 0 0 3 0;
-  border-image-width: 3px 6px;
-  border-image-outset: 0 6px 1px 6px;
-  border-image-repeat: repeat;
+  background: url("../images/wavy.b.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
 
   &:hover {
-    border-style: none;
-    border-image: none;
+    background: none;
   }
 
   img {
@@ -69,7 +65,6 @@ a {
   clip: rect(1px, 1px, 1px, 1px);
   color: $white;
   background: $off-black;
-  border: 0;
 
   &:focus {
     z-index: $z-important;

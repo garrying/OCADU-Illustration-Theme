@@ -43,6 +43,12 @@
   }
 }
 
+@-moz-document url-prefix() {
+  .illustrators-grid {
+    will-change: transform;
+  }
+}
+
 .gallery-grid {
   margin-top: 1%;
 

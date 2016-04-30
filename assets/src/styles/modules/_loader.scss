@@ -9,9 +9,12 @@
   height: 24vh;
   pointer-events: none;
   background: linear-gradient( 0deg,
-      $off-black 0%,
-      $white 50%,
-      $off-black 100%);
+    #76b84e 0%,
+    #f8c130 30%,
+    #e92a2f 50%,
+    #ec0a88 65%,
+    #2c3b9a 80%,
+    #03a4d8 100%);
   background-size: 200% 200%;
   animation: cycle 1s linear infinite;
 }
