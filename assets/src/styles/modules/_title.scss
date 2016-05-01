@@ -72,8 +72,8 @@
 }
 
 .title-unit-init {
-  transform: translateX(-40px);
   font-size: 0.825em;
+  transform: translateX(-40px);
 
   @media screen and (min-width: $medium-vp) {
     &.active {
@@ -87,6 +87,7 @@
 }
 
 .title-unit-illustrator {
+  color: $white;
   transition: transform 1000ms $easeOutExpo;
   transform: translateX(80px);
 }

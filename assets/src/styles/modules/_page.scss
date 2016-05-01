@@ -108,6 +108,11 @@
   .section-indicator {
     color: $black;
     cursor: help;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+      color: $white;
+    }
   }
 }
 
