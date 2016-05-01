@@ -13,15 +13,27 @@
     margin: 50px 0 0;
   }
 
-  .gallery-item {
-    margin-bottom: 10%;
-  }
-
   .illustrator-meta-container {
     margin: 0.67em 0;
 
     .illustrator-title {
       margin: 0;
+    }
+  }
+
+  &:hover {
+
+    .gallery-item {
+      opacity: 0.9;
+    }
+  }
+
+  .gallery-item {
+    margin-bottom: 10%;
+
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
     }
   }
 }
