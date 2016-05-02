@@ -314,7 +314,7 @@ const Bloodhound = require('bloodhound');
           const imageElement = $(masonryItemAnchor[i]);
           const imageSet = {
             index: i,
-            url: imageElement.attr('href'),
+            url: imageElement.data('src-large'),
             srcset: imageElement.data('srcset'),
             sizes: imageElement.data('sizes'),
             width: imageElement.find('img').attr('width'),
@@ -355,7 +355,7 @@ const Bloodhound = require('bloodhound');
         image.alt = 'Full sized illustration';
         image.id = 'full-image';
         image.className = 'image-modal-container-full-image';
-        image.src = imageSource.attr('href');
+        image.src = imageSource.data('src-large');
         image.srcset = imageSource.data('srcset');
         image.sizes = imageSource.data('sizes');
         return image;
