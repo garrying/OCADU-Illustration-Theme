@@ -136,9 +136,16 @@
   vertical-align: bottom;
   background: url("../images/colophon.b.svg") no-repeat;
   background-size: contain;
+  transition: transform 180ms $easeOutBack;
 
   @media screen and (max-width: $medium-vp)  {
     display: none;
+  }
+
+  &:hover {
+    transform: rotate(25deg);
+    background: url("../images/colophon.b.svg") no-repeat;
+    background-size: contain;
   }
 }
 
