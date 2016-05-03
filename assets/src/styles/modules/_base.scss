@@ -10,7 +10,7 @@ body {
   font: 87.5% / 1.5 $sans-serif;
   color: $site-font-color;
   background: $site-background;
-  transition: background 300ms ease-in-out;
+  transition: background 200ms ease-in-out;
   @include font-smoothing(on);
 
   @media screen and (min-width: $large-vp)  {

@@ -141,7 +141,8 @@
   @media screen and (max-width: $medium-vp)  {
     display: none;
   }
-
+  
+  .grid-focus &,
   &:hover {
     background: url("../images/colophon.b.svg") no-repeat;
     background-size: contain;
