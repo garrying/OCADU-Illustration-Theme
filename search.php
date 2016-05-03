@@ -20,7 +20,7 @@
     <article class="error-body">
       <header class="entry-header">
         <h1 class="entry-title"><?php esc_html_e( 'No Matches &#9785;', 'ocaduillustration' ); ?></h1>
-        <p><?php esc_html_e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'ocaduillustration' ); ?></p>
+        <p>Sorry, but nothing matched your search criteria.<br> Please try again with some different keywords.</p>
       </header><!-- .entry-header -->
     </article><!-- .error-body -->
 

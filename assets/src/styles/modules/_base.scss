@@ -23,7 +23,7 @@ body {
 }
 
 ::selection {
-  background: darken($hover-accent, 5%);
+  background: rgba($hover-accent, 0.25);
 }
 
 // Mark

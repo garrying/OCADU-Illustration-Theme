@@ -81,10 +81,11 @@
 .search-title {
   padding: 4em 0;
   color: $site-font-color;
-}
 
-.error-body {
-  padding: 4em 0;
+  @media screen and (max-width: $small-vp) {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 // Search Loader
