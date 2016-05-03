@@ -143,9 +143,9 @@
   }
 
   &:hover {
-    transform: rotate(25deg);
     background: url("../images/colophon.b.svg") no-repeat;
     background-size: contain;
+    transform: rotate(15deg);
   }
 }
 
