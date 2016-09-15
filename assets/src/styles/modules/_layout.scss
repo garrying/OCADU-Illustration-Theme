@@ -1,6 +1,10 @@
 .single-illustrator {
   display: flex;
   flex-flow: row wrap;
+
+  @media screen and (max-width: $small-vp) {
+    flex-flow: column;
+  }
 }
 
 .illustrator-gallery-container {
