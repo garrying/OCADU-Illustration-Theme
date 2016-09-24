@@ -12,6 +12,10 @@
     margin: 50px auto 0;
   }
 
+  @media screen and (max-width: $smallest-vp) {
+    flex-direction: column;
+  }
+
   .illustrator-meta-container {
     margin: 0.67em 0;
 
