@@ -499,7 +499,7 @@ const Bloodhound = require('bloodhound');
   * Window load ready
   **/
 
-  $(window).load(() => {
+  $(window).on('load', () => {
     app._ocadLoader(false);
   });
 
