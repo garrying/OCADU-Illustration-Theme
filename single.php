@@ -3,4 +3,3 @@
     get_template_part( 'content', 'single' );
   endwhile;
   get_footer();
-?>
