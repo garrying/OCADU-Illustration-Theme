@@ -1,21 +1,20 @@
 /* eslint
-no-unused-vars: ["error", { "varsIgnorePattern": "msnry" }],
 no-underscore-dangle: ["off"],
 import/no-unresolved: [2, { amd: true }]
 */
 /* global Bricklayer */
 
 const $ = require('jquery');
+
 window.jQuery = window.$ = $;
 require('./libs/modernizr-custom');
-require('typeahead.js');
+require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('imagesloaded');
 require('./libs/jquery-text-mix');
 require('lazysizes');
 require('bricklayer');
 const fastClick = require('fastclick');
-const Bloodhound = require('bloodhound');
 
 (() => {
   const app = {
@@ -38,7 +37,7 @@ const Bloodhound = require('bloodhound');
       masonryContainerHome: '#illustrators',
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
-      searchField: $('.search-field'),
+      searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
       imageIndex: 0,
@@ -98,7 +97,7 @@ const Bloodhound = require('bloodhound');
         textMixer(item.ele, item.ele.text(), item.newText);
       }
 
-      $('.illustrators-grid .gallery-item').hover(ele => {
+      $('.illustrators-grid .gallery-item').hover((ele) => {
         const targetItem = $(ele.target).parentsUntil('.gallery-item');
         const illustrationTitle = targetItem.find('.illustrator-title').text();
         const illustrationAuthor = targetItem.find('.illustrator-name').text();
@@ -135,7 +134,7 @@ const Bloodhound = require('bloodhound');
     _ocadCascade: (selector, delayNum) => {
       let i = 0;
       const items = document.querySelectorAll(selector);
-      const velocityComplete = ele => {
+      const velocityComplete = (ele) => {
         $(ele).addClass('loaded');
       };
 
@@ -143,39 +142,36 @@ const Bloodhound = require('bloodhound');
         $(item).delay(delayNum * i).velocity({ opacity: 1 }, {
           complete: velocityComplete,
         });
-        i = ++i;
+        i += 1;
       });
     },
 
     _ocadSearch: () => {
-      const illustratorSearch = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-          url: '/wp-json/wp/v2/illustrator?filter[s]=%QUERY',
-          wildcard: '%QUERY',
+      app.settings.searchField.autocomplete({
+        serviceUrl: '/wp-json/wp/v2/illustrator',
+        paramName: 'search',
+        lookupLimit: 10,
+        appendTo: '.search-wrapper',
+        showNoSuggestionNotice: true,
+        onSearchStart: () => {
+          app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast');
         },
-      });
-
-      illustratorSearch.initialize();
-
-      app.settings.searchField.typeahead({
-        hint: false,
-      }, {
-        name: 'illustratorName',
-        displayKey: item => item.title.rendered,
-        source: illustratorSearch,
-        limit: 10,
-      }).on('typeahead:select', ($e, resultsData) => {
-        window.location.href = resultsData.link;
-      }).on('typeahead:asyncrequest', () => {
-        app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast');
-      }).on('typeahead:asyncreceive', () => {
-        app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast');
+        onSearchComplete: () => {
+          app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast');
+        },
+        transformResult: response => ({
+          suggestions: $.map($.parseJSON(response), item => ({
+            value: item.title.rendered,
+            data: item.link,
+          })),
+        }),
+        onSelect: (suggestion) => {
+          window.location.href = suggestion.data;
+        },
       });
     },
 
-    _ocadPanelSelect: e => {
+    _ocadPanelSelect: (e) => {
       const targetPanel = $(e).data('panel');
 
       if ($(e).hasClass('invert')) {
@@ -195,7 +191,8 @@ const Bloodhound = require('bloodhound');
         $(`.${targetPanel}`).velocity(
           { translateX: ['-4%', '-100%'] },
           { duration: 800, easing: [0.19, 1, 0.22, 1] }
-        ).addClass('visible').attr('aria-hidden', false).focus();
+        ).addClass('visible').attr('aria-hidden', false)
+        .focus();
         $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
@@ -228,35 +225,13 @@ const Bloodhound = require('bloodhound');
       });
     },
 
-    _ocadShuffle: elems => {
-      const allElems = (() => {
-        const ret = [];
-        let l = elems.length;
-        while (l--) { ret[ret.length] = elems[l]; }
-        return ret;
-      })();
-      const shuffled = (() => {
-        let l = allElems.length;
-        const ret = [];
-        while (l--) {
-          const random = Math.floor(Math.random() * allElems.length);
-          const randEl = allElems[random].cloneNode(true);
-          allElems.splice(random, 1);
-          ret[ret.length] = randEl;
-        }
-        return ret;
-      })();
-      let l = elems.length;
-
-      while (l--) {
-        elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
-        elems[l].parentNode.removeChild(elems[l]);
-      }
+    _ocadShuffle: (elems, gridTarget) => {
+      $(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget));
     },
 
     _ocadHomeLoader: () => {
       if (app.settings.documentBody.hasClass('home')) {
-        app._ocadShuffle(document.querySelectorAll('.gallery-item'));
+        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid');
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         app._ocadMasonry(app.settings.masonryContainerHome);
@@ -275,15 +250,15 @@ const Bloodhound = require('bloodhound');
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
       if ($('.panel').hasClass('visible')) {
-        $('.panel.visible').removeClass('visible').attr('aria-hidden', true)
-          .blur().velocity({ translateX: '-100%' }, 'fast');
+        $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
+          .velocity({ translateX: '-100%' }, 'fast');
         $('.year-item').velocity({ opacity: 0, translateX: '-40px', display: 'flex' }, 'fast')
           .removeClass('loaded');
         $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
       }
     },
 
-    _ocadPanelsCloseSelective: event => {
+    _ocadPanelsCloseSelective: (event) => {
       if (!$(event.target).closest('#full-image, .miniview').length
         && app.settings.imageModal.is(':visible')) {
         app.settings.imageModal.velocity('fadeOut', { duration: 180 });
@@ -309,7 +284,7 @@ const Bloodhound = require('bloodhound');
           app._ocadCascade('.gallery-item', 100);
         });
 
-        for (let i = 0, items = masonryItemAnchor.length; i < items; i++) {
+        for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
           $(masonryItemAnchor[i]).data('index', i);
           const imageElement = $(masonryItemAnchor[i]);
           const imageSet = {
@@ -326,7 +301,7 @@ const Bloodhound = require('bloodhound');
         // Miniviewer constructor
 
         const miniView = document.querySelector('.miniview');
-        const miniViewItem = item => {
+        const miniViewItem = (item) => {
           miniView.innerHTML += `
             <div class="mini-item">
               <canvas data-index="${item.index}" class="mini-item-inner"
@@ -341,7 +316,7 @@ const Bloodhound = require('bloodhound');
       * Updates miniview to corresponding element
       **/
 
-      const miniViewUpdate = item => {
+      const miniViewUpdate = (item) => {
         $('.mini-item-inner').removeClass('active');
         $('.mini-item-inner').eq(item).addClass('active');
       };
@@ -350,7 +325,7 @@ const Bloodhound = require('bloodhound');
       * Creates initial image element
       **/
 
-      const imageModalSetter = imageSource => {
+      const imageModalSetter = (imageSource) => {
         const image = new Image();
         image.alt = 'Full sized illustration';
         image.id = 'full-image';
@@ -365,7 +340,7 @@ const Bloodhound = require('bloodhound');
       * Masonry item click
       **/
 
-      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', event => {
+      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', (event) => {
         event.preventDefault();
         app._ocadLoader();
         const itemImage = $(event.currentTarget);
@@ -430,13 +405,13 @@ const Bloodhound = require('bloodhound');
       * Handles progressing through the gallery
       **/
 
-      const nextElement = direction => {
+      const nextElement = (direction) => {
         app._ocadLoader();
 
         if (direction === 'reverse') {
-          --app.settings.imageIndex;
+          app.settings.imageIndex -= 1;
         } else {
-          ++app.settings.imageIndex;
+          app.settings.imageIndex += 1;
         }
 
         if (app.settings.imageIndex === galleryImages.length) {
@@ -465,7 +440,7 @@ const Bloodhound = require('bloodhound');
       * Keyboard event for cycling through images
       **/
 
-      $(document).keydown(e => {
+      $(document).keydown((e) => {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
             nextElement();
@@ -479,7 +454,7 @@ const Bloodhound = require('bloodhound');
 
     _ocadUIbinding: () => {
       $('.close-panel').on('click', app._ocadPanelsClose);
-      $(document).on('click', app._ocadPanelsCloseSelective).keydown(e => {
+      $(document).on('click', app._ocadPanelsCloseSelective).keydown((e) => {
         if (e.keyCode === 27) {
           app._ocadPanelsClose();
         }
