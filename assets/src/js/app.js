@@ -1,8 +1,8 @@
 /* eslint
-no-underscore-dangle: ["off"],
-import/no-unresolved: [2, { amd: true }]
+no-underscore-dangle: ["off"]
 */
-/* global Bricklayer */
+
+import '../styles/main.scss';
 
 const $ = require('jquery');
 
@@ -13,7 +13,7 @@ require('velocity-animate');
 require('imagesloaded');
 require('./libs/jquery-text-mix');
 require('lazysizes');
-require('bricklayer');
+const Bricklayer = require('bricklayer');
 const fastClick = require('fastclick');
 
 (() => {
@@ -45,7 +45,7 @@ const fastClick = require('fastclick');
     },
 
     _fastClick: () => {
-      fastClick(document.body);
+      fastClick.attach(document.body);
     },
 
     _ocadGridFocus: () => {

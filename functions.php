@@ -87,7 +87,7 @@ if ( ! function_exists( 'ocadu_scripts' ) ) {
   function ocadu_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'jquery' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/js/app.js', '', '', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js', '', '', true );
       wp_enqueue_script( 'app' );
     }
   }
@@ -104,7 +104,7 @@ function ocadu_fonts() {
 }
 
 function ocadu_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/styles/main.css' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
