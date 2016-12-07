@@ -13,7 +13,7 @@
   <div class="title">
     <div class="title-unit title-unit-init active">
       <div class="unit">
-        <p class="title-primary">Part of the 101<sup>st</sup> GradEx<br><span class="asterisk"></span> May 4 to 8, 2016</p>
+        <p class="title-primary">Part of the 101<sup>st</sup> GradEx<br> May 4 to 8, 2016</p>
         <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
     </div>
@@ -24,7 +24,6 @@
       </div>
     </div>
     <p class="colophon">
-      <a href="/about" class="home-colophon hide-text" title="About OCAD U Illustration">About</a>
       <small>Illustration Department at OCAD U</small>
     </p>
   </div>

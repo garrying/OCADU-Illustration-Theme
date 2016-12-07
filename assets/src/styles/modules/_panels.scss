@@ -43,7 +43,6 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
-  background: url("../images/close.svg") no-repeat;
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -58,12 +57,5 @@
   width: 1.1em;
   height: 1.75em;
   color: $white;
-  background: url("../images/colophon.svg") no-repeat;
-  background-size: contain;
   opacity: 0;
-
-  &:hover {
-    background: url("../images/colophon.svg") no-repeat;
-    background-size: contain;
-  }
 }

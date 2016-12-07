@@ -41,22 +41,5 @@
 
   &.active {
 
-    &::after {
-      display: inline-block;
-      width: 0.8em;
-      height: 0.8em;
-      margin-bottom: -0.08em;
-      margin-left: 0.25em;
-      font-size: 1.2em;
-      line-height: 1em;
-      content: "";
-      background: url("../images/asterisk.svg") no-repeat;
-      background-size: contain;
-      transform-origin: 50% 50%;
-      animation-name: spin;
-      animation-duration: 20s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
   }
 }

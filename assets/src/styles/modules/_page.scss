@@ -132,28 +132,6 @@
   }
 }
 
-.home-colophon {
-  display: inline-block;
-  width: 1.1em;
-  height: 1.75em;
-  margin-right: 0.2em;
-  vertical-align: bottom;
-  background: url("../images/colophon.b.svg") no-repeat;
-  background-size: contain;
-  transition: transform 180ms $easeOutBack;
-
-  @media screen and (max-width: $medium-vp)  {
-    display: none;
-  }
-  
-  .grid-focus &,
-  &:hover {
-    background: url("../images/colophon.b.svg") no-repeat;
-    background-size: contain;
-    transform: rotate(15deg);
-  }
-}
-
 .colophon {
   position: absolute;
   bottom: 0;
