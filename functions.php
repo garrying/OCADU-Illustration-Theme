@@ -99,8 +99,6 @@ add_action( 'wp_enqueue_scripts', 'ocadu_scripts' );
  * Load some styles please.
  */
 function ocadu_fonts() {
-  // wp_register_style( 'ocadufonts', 'https://fonts.typotheque.com/WF-006672-009232.css' );
-  // wp_enqueue_style( 'ocadufonts' );
 }
 
 function ocadu_styles() {

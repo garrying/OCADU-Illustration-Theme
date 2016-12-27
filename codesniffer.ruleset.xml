@@ -28,13 +28,5 @@
         <property name="tabIndent" value="false"/>
       </properties>
     </rule>
-
-    <!-- Allow PHP closing tags on templates -->
-    <rule ref="PSR2.Files.ClosingTag.NotAllowed">
-      <exclude-pattern>404.php</exclude-pattern>
-      <exclude-pattern>index.php</exclude-pattern>
-      <exclude-pattern>page.php</exclude-pattern>
-      <exclude-pattern>single.php</exclude-pattern>
-    </rule>
   </rule>
 </ruleset>
