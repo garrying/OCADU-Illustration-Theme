@@ -13,20 +13,9 @@
   }
 
   .search-field {
-    color: $white;
     width: 100%;
     box-sizing: border-box;
-    padding: 1em 0;
-    background: transparent;
-    border: 1px solid rgba($white, 0.02);
-    border-width: 0 0 1px;
     @include font-smoothing(on);
-
-    &:focus,
-    &:hover {
-      border-color: rgba($white, 0.25);
-      outline: 0;
-    }
   }
 
   .search-submit {
@@ -38,25 +27,10 @@
   }
 }
 
-.autocomplete-suggestion {
-  padding: 0.5em 0;
-  color: rgba($white, 0.5);
-
-  &.autocomplete-selected,
-  &:hover {
-    color: rgba($white, 1);
-  }
-}
-
-.autocomplete-no-suggestion {
-  padding: 0.5em 0;
-}
-
 // Search Index
 
 .search-title {
   padding: 4em 0;
-  color: $site-font-color;
 
   @media screen and (max-width: $small-vp) {
     padding: 0;
@@ -73,8 +47,7 @@
   display: none;
   width: 1em;
   height: 1em;
-  background: $white;
-  border-radius: 50%;
+  background: $black;
   animation-name: shake;
   animation-duration: 1s;
   animation-fill-mode: both;

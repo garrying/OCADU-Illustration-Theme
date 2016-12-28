@@ -87,7 +87,7 @@
         <div class="miniview image-modal-miniview">
         </div>
       </div>
-      <button class="close-panel hide-text" title="Close full view" aria-label="Close full view">Close</button>
+      <button class="close-panel" title="Close full view" aria-label="Close full view">Close</button>
       <div class="image-modal-container"></div>
     </div>
   </div>

@@ -6,8 +6,7 @@
   z-index: $z-middle;
   display: flex;
   width: $panel-width;
-  color: $white;
-  background: $off-black;
+  background: $white;
   outline: 0;
   transform: translateX(-100%);
   align-content: center;
@@ -39,8 +38,6 @@
   right: 20px;
   z-index: $z-foreground;
   display: block;
-  width: 22px;
-  height: 22px;
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -52,8 +49,4 @@
   right: 25px;
   bottom: 20px;
   z-index: $z-background;
-  width: 1.1em;
-  height: 1.75em;
-  color: $white;
-  opacity: 0;
 }

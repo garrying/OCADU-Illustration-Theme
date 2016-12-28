@@ -71,8 +71,8 @@
               }
               ?>
             </ul>
-            <button class="close-panel hide-text" title="Close panel" aria-label="Close search panel">Close</button>
-            <a href="/about" class="panel-colophon hide-text" title="About OCAD U Illustration">About OCAD U Illustration</a>
+            <button class="close-panel" title="Close panel" aria-label="Close search panel">Close</button>
+            <a href="/about" class="panel-colophon" title="About OCAD U Illustration">Colophon</a>
           </div>
         </div> <!-- year-select-->
 
@@ -81,7 +81,7 @@
             <div class="search-wrapper">
               <?php get_search_form(); ?>
             </div>
-            <button class="close-panel hide-text" title="Close search panel" aria-label="Close search panel">Close</button>
+            <button class="close-panel" title="Close search panel" aria-label="Close search panel">Close</button>
           </div>
         </div><!-- search -->
        

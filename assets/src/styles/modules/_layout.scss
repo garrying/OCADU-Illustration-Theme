@@ -54,20 +54,9 @@
   flex-grow: 1;
   max-width: 100%;
 
-  @media screen and (max-width: $small-vp) {
-    margin-top: 2em;
-    border-bottom: 1px solid rgba($black, 0.1);
-  }
-
   a {
     display: block;
     padding: 10px;
-    color: $site-font-color;
-    background: none;
-
-    &:hover {
-      color: $black;
-    }
   }
 
   .nav-previous,
@@ -125,10 +114,6 @@
     align-items: center;
     justify-content: center;
   }
-
-  .close-panel {
-    display: block;
-  }
 }
 
 .miniview-container {
@@ -167,15 +152,16 @@
     max-width: 100%;
     height: auto;
     padding: 2px;
-    border: 1px solid rgba($black, 0.1);
+    border: 1px solid $black;
 
     &.active,
     &:hover {
-      border: 1px solid rgba($black, 0.5);
+      border: 1px solid $black;
+      background: $black;
     }
 
     &:hover {
-      background: rgba($black, 0.25);
+      background: $black;
     }
   }
 }

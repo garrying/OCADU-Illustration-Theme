@@ -6,16 +6,7 @@
   }
 }
 
-.year-select-wrapper {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 .year-item {
   display: block;
-  color: $white;
-  background: none;
   opacity: 0;
 }

@@ -4,5 +4,5 @@
     <input type="search" class="search-field" id="autocomplete" placeholder="<?php echo esc_attr_x( 'Search illustrators', 'placeholder' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ); ?>" />
     <span class="search-loader"></span>
   </label>
-  <button type="submit" class="search-submit hide-text"><?php echo esc_html( 'Search', 'submit button' ); ?></button>
+  <button type="submit" class="search-submit"><?php echo esc_html( 'Search', 'submit button' ); ?></button>
 </form>

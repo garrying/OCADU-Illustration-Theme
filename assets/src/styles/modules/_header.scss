@@ -27,29 +27,4 @@
 
 .header-item {
   padding: 0.25em 0;
-  color: rgba($black, 0.5);
-
-  &:hover {
-    color: $black;
-  }
-
-  @media screen and (max-width: $small-vp) {
-    padding: 0;
-  }
-}
-
-.inactive {
-  color: rgba($white, 0.3);
-
-  &:hover {
-    color: $white;
-  }
-}
-
-.invert {
-  color: $white;
-
-  &:hover {
-    color: $white;
-  }
 }
