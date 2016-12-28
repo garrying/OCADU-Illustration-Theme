@@ -7,7 +7,6 @@ import '../styles/main.scss';
 const $ = require('jquery');
 
 window.jQuery = window.$ = $;
-require('./libs/modernizr-custom');
 require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('imagesloaded');

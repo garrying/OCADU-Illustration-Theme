@@ -73,20 +73,3 @@
 .bricklayer-column {
   flex: 1;
 }
-
-// Touchevent Cases
-
-.touchevents {
-
-  .illustrators-grid {
-
-    &.blur,
-    &:hover {
-
-      .gallery-item {
-        filter: grayscale(0);
-        opacity: 1;
-      }
-    }
-  }
-}
