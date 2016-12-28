@@ -7,29 +7,13 @@
 
 .illustrators-grid {
   width: 71.8vw;
-  transition: transform 800ms $easeOutExpo;
-
-  &.blur,
-  &:hover {
-    .gallery-item {
-      filter: grayscale(1) contrast(135%);
-      opacity: 0.25;
-    }
-  }
 
   .gallery-item {
     margin: 0 4% 4% 0;
-    transition: opacity 300ms $easeOutBack, filter 400ms $easeOutBack;
-
-    &:hover {
-      filter: grayscale(0);
-      opacity: 1;
-    }
   }
 
   .illustrator-meta-label {
     margin-bottom: 0;
-    font-size: 0.857em;
   }
 
   .illustrator-name {

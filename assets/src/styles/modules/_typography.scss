@@ -12,7 +12,6 @@
 @mixin heading-features {
   @include font-features;
   font-family: $sans-serif;
-  font-size: $ms-1;
   font-weight: normal;
   color: $black;
 }

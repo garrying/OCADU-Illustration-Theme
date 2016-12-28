@@ -9,7 +9,6 @@
   color: $white;
   background: $off-black;
   outline: 0;
-  box-shadow: 0 2px 0 4px rgba($black, 0.05);
   transform: translateX(-100%);
   align-content: center;
   align-items: center;
@@ -42,7 +41,6 @@
   display: block;
   width: 22px;
   height: 22px;
-  cursor: pointer;
 
   @media screen and (max-width: $small-vp) {
     display: none;

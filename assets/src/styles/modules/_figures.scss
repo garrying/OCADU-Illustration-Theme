@@ -13,14 +13,12 @@ figure {
   z-index: $z-middle;
   max-width: 100%;
   max-height: 100%;
-  cursor: pointer;
   user-select: none;
   object-fit: contain;
   will-change: transform;
 }
 
 .gallery-icon-anchor {
-  cursor: zoom-in;
   background: none;
 
   img {

@@ -25,26 +25,14 @@
     }
   }
 
-  &:hover {
-
-    .gallery-item {
-      opacity: 0.9;
-    }
-  }
-
   .gallery-item {
     margin-bottom: 10%;
-
-    &:hover {
-      filter: grayscale(0);
-      opacity: 1;
-    }
   }
 }
 
 .home-grid {
   @media screen and (min-width: $small-vp) {
-    transform: translatex(35vw);
+    transform: translatex(20vw);
   }
 
   @media screen and (max-width: $small-vp) {
@@ -52,22 +40,6 @@
     padding: 20px;
     margin: 50px 0 0;
     transform: translatex(0);
-  }
-
-  .no-touchevents &:hover {
-    transform: translatex(28.2vw);
-
-    @media screen and (max-width: $small-vp) {
-      transform: translatex(0);
-    }
-  }
-
-  .touchevents & {
-    transform: translatex(28.2vw);
-
-    @media screen and (max-width: $small-vp) {
-      transform: translatex(0);
-    }
   }
 
   .illustrator-meta-container {
@@ -84,7 +56,6 @@
     left: 0;
     filter: grayscale(1);
     opacity: 0;
-    transition: opacity 300ms ease-in-out, filter 800ms ease-in-out;
   }
 
   .lazyloaded {
@@ -107,13 +78,11 @@
     z-index: $z-background;
     display: flex;
     height: 100%;
-    font-size: 2.5vw;
     background: none;
     align-items: center;
 
     @media screen and (max-width: $medium-vp)  {
       left: 20px;
-      font-size: 4vw;
     }
 
     @media screen and (max-width: $small-vp) {
@@ -123,12 +92,6 @@
 
   .section-indicator {
     color: $black;
-    cursor: help;
-    transition: color 300ms ease-in-out;
-
-    &:hover {
-      color: $white;
-    }
   }
 }
 
@@ -136,7 +99,6 @@
   position: absolute;
   bottom: 0;
   margin: 0 0 20px;
-  font-size: 0.8rem;
   color: $black;
 
   @media screen and (max-width: $small-vp) {
@@ -148,12 +110,10 @@
   max-width: 800px;
   padding: 0 8%;
   margin: 50px auto 100px;
-  font-size: 1.1em;
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     margin-top: 8em;
-    font-size: 1em;
   }
 
   @media screen and (max-width: $medium-vp) {
@@ -163,10 +123,6 @@
   @media screen and (min-width: $large-vp) and (max-width: $largest-vp) {
     max-width: 900px;
     padding: 0;
-  }
-
-  .entry-title {
-    font-size: $ms-2;
   }
 }
 
@@ -189,11 +145,9 @@
   padding: 4em 0;
   align-items: center;
   justify-content: center;
-  font-size: 1.75vw;
 
   @media screen and (max-width: $small-vp) {
     justify-content: flex-start;
     padding: 0 20px;
-    font-size: 3.5vw;
   }
 }

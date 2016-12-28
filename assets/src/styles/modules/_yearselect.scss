@@ -1,14 +1,8 @@
 .year-select {
-
   .panel-inner {
     height: 100%;
     padding-top: 140px;
     padding-bottom: 60px;
-
-    @media screen and (max-width: $small-vp) {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
   }
 }
 
@@ -19,27 +13,9 @@
   justify-content: space-around;
 }
 
-
 .year-item {
   display: block;
-  font-size: $ms-2;
   color: $white;
   background: none;
   opacity: 0;
-  transition: margin-left 300ms $easeOutBack;
-  transform: translateX(-20px);
-
-  @media screen and (max-width: $small-vp) {
-    font-size: $ms-1;
-  }
-
-  &:hover,
-  &:focus {
-    margin-left: 10px;
-    outline-color: $white;
-  }
-
-  &.active {
-
-  }
 }

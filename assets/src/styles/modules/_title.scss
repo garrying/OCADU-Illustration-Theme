@@ -5,9 +5,7 @@
   left: 0;
   z-index: $z-background;
   display: flex;
-  width: 28.2vw;
-  padding-left: 40px;
-  font-size: 1.285vw;
+  width: 20vw;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -15,7 +13,6 @@
   @media screen and (max-width: $medium-vp) {
     width: 30vw;
     padding-left: 20px;
-    font-size: 1.5vw;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -25,33 +22,20 @@
   .active {
     visibility: visible;
     opacity: 1;
-    transform: translateX(0);
   }
 
   .title-primary {
     margin: 0;
-    font-size: 2.5em;
     line-height: 1.5em;
     white-space: nowrap;
-    pointer-events: none;
   }
 
   .title-secondary {
     margin-bottom: 0;
-    font-size: 1.2em;
   }
 
   .empty {
     display: none;
-
-    & +
-    .title-author {
-      font-size: 2.5vw;
-    }
-  }
-
-  a {
-    pointer-events: auto;
   }
 }
 
@@ -60,34 +44,10 @@
   top: 0;
   display: flex;
   height: 100%;
-  color: $black;
-  pointer-events: none;
   visibility: hidden;
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
   opacity: 0;
-  transition: transform 800ms $easeOutExpo, opacity 300ms $easeOutExpo, visibility 800ms $easeOutExpo;
   will-change: transform;
-}
-
-.title-unit-init {
-  font-size: 0.825em;
-  transform: translateX(-40px);
-
-  @media screen and (min-width: $medium-vp) {
-    &.active {
-      pointer-events: none;
-
-      .unit {
-        pointer-events: auto;
-      }
-    }
-  }
-}
-
-.title-unit-illustrator {
-  color: $white;
-  transition: transform 1000ms $easeOutExpo;
-  transform: translateX(80px);
 }

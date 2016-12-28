@@ -13,14 +13,13 @@
   }
 
   .search-field {
+    color: $white;
     width: 100%;
     box-sizing: border-box;
     padding: 1em 0;
-    font-size: $ms-1;
     background: transparent;
     border: 1px solid rgba($white, 0.02);
     border-width: 0 0 1px;
-    transition: border 300ms ease-in-out;
     @include font-smoothing(on);
 
     &:focus,
@@ -42,8 +41,6 @@
 .autocomplete-suggestion {
   padding: 0.5em 0;
   color: rgba($white, 0.5);
-  cursor: pointer;
-  transition: color, 300ms, ease-in-out;
 
   &.autocomplete-selected,
   &:hover {

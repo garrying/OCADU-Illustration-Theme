@@ -26,12 +26,7 @@
 
 .illustrator-meta {
   position: relative;
-  font-size: 0.925em;
   flex: 1 1 30%;
-
-  @media screen and (max-width: $medium-vp) {
-    font-size: 0.857em;
-  }
 
   @media screen and (max-width: $small-vp) {
     flex-basis: 100%;
@@ -46,61 +41,10 @@
     height: 100%;
     flex-flow: row wrap;
     align-items: flex-end;
-    font-size: 0.929em;
-    transition: opacity 180ms ease-in-out;
-
-    p {
-      margin-top: 0;
-    }
-
-    h1,
-    h2 {
-      padding: 0.67em 0;
-      margin: 0;
-      font-size: 1em;
-      line-height: 1em;
-    }
-
-    .thesis-title {
-      line-height: 1.4em;
-    }
-
-    @media screen and (max-width: $medium-vp) {
-      left: 20px;
-      width: 31%;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      position: static;
-      width: 100%;
-      padding: 0 20px;
-      margin: 60px 0 0;
-      font-size: 1em;
-    }
   }
 
   .illustrator-meta-wrapper-inner {
     width: 100%;
-
-    @media screen and (max-width: $small-vp) {
-      margin-right: 0;
-    }
-  }
-
-  .illustrator-meta-description {
-    margin-bottom: 2em;
-
-    p {
-      margin-left: 0.5em;
-    }
-  }
-
-  .meta {
-    line-height: 1.85em;
-
-    div {
-      padding-left: 0.5em;
-    }
   }
 }
 
@@ -109,7 +53,6 @@
   display: flex;
   flex-grow: 1;
   max-width: 100%;
-  border-bottom: 4px solid $hover-accent;
 
   @media screen and (max-width: $small-vp) {
     margin-top: 2em;
@@ -121,7 +64,6 @@
     padding: 10px;
     color: $site-font-color;
     background: none;
-    transition: color 300ms $easeOutBack;
 
     &:hover {
       color: $black;
@@ -168,7 +110,6 @@
   bottom: 0;
   left: 30%;
   z-index: $z-foreground;
-  background: lighten(#0e0e0f, 2%);
 
   @media screen and (max-width: $medium-vp)  {
     left: 0;
@@ -206,7 +147,6 @@
   column-count: 2;
   column-gap: 2px;
   line-height: 0;
-  transition: width 300ms $easeOutBack;
 
   @media screen and (max-width: $medium-vp) {
     width: 3vw;
@@ -219,7 +159,6 @@
   .mini-item {
     width: 100%;
     padding-bottom: 2px;
-    cursor: pointer;
     break-inside: avoid;
   }
 
@@ -228,16 +167,15 @@
     max-width: 100%;
     height: auto;
     padding: 2px;
-    border: 1px solid rgba($white, 0.1);
-    transition: border 300ms ease-in-out, background 300ms ease-in-out;
+    border: 1px solid rgba($black, 0.1);
 
     &.active,
     &:hover {
-      border: 1px solid rgba($white, 0.5);
+      border: 1px solid rgba($black, 0.5);
     }
 
     &:hover {
-      background: rgba($white, 0.25);
+      background: rgba($black, 0.25);
     }
   }
 }

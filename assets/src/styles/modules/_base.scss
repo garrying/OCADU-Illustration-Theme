@@ -10,16 +10,7 @@ body {
   font: 87.5% / 1.5 $sans-serif;
   color: $site-font-color;
   background: $site-background;
-  transition: background 200ms ease-in-out;
   @include font-smoothing(on);
-
-  @media screen and (min-width: $large-vp)  {
-    font-size: 150%;
-  }
-
-  &.grid-focus {
-    background: $hover-accent;
-  }
 }
 
 ::selection {
@@ -36,13 +27,6 @@ mark {
 // Links
 
 a {
-  padding-bottom: 5px;
-  color: $black;
-  text-decoration: none;
-
-  &:hover {
-    background: none;
-  }
 
   img {
     display: block;
