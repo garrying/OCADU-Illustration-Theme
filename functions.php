@@ -11,6 +11,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      * Add image size
      */
     add_image_size( 'illustrator-social-twitter', 560 );
+    add_image_size( 'illustrator-small', 300 );
 
     /**
      * Let WordPress Manage The Document Title
@@ -34,11 +35,6 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
     register_nav_menus( array(
       'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
     ));
-
-    /**
-     * Add custom image size
-     */
-    add_image_size( 'illustrator-small', 300 );
 
   }
 endif;
