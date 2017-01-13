@@ -45,8 +45,6 @@
 }
 
 .panel-colophon {
-  position: fixed;
-  right: 25px;
-  bottom: 20px;
-  z-index: $z-background;
+  display: block;
+  margin-top: 20px;
 }

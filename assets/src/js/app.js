@@ -180,8 +180,7 @@ const fastClick = require('fastclick');
         $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast')
           .attr('aria-hidden', true);
         $('.year-item').velocity(
-          { opacity: 0, translateX: '-20px', display: 'flex' }, 'fast').removeClass('loaded');
-        $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
+          { opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
 
         $('.header-item').addClass('inactive').removeClass('invert');
         app.settings.logo.addClass('invert');
@@ -198,17 +197,8 @@ const fastClick = require('fastclick');
           $('.year-item').each((index, ele) => {
             const item = $(ele);
             item.delay(100 * index).velocity(
-              { opacity: 1, translateX: ['0px', '-40px'], transformdisplay: 'flex' },
-              { easing: app.settings.easeOutBack,
-              complete: () => {
-                item.addClass('loaded');
-                if (index === $('.year-item').length - 1) {
-                  $('.panel-colophon').velocity(
-                    { translateX: ['0px', '-40px'], opacity: 0.5 },
-                    { duration: 200, easing: app.settings.easeOutBack });
-                }
-              },
-            });
+              { opacity: 1, transformdisplay: 'flex' },
+            );
           });
         }
         if (targetPanel === 'search-container') {
@@ -251,9 +241,8 @@ const fastClick = require('fastclick');
       if ($('.panel').hasClass('visible')) {
         $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
           .velocity({ translateX: '-100%' }, 'fast');
-        $('.year-item').velocity({ opacity: 0, translateX: '-40px', display: 'flex' }, 'fast')
+        $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
           .removeClass('loaded');
-        $('.panel-colophon').velocity({ opacity: 0, translateX: ['-40px', '0px'] }, 'fast');
       }
     },
 
