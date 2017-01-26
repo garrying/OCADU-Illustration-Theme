@@ -1,8 +1,10 @@
 <?php
 /** Get content width **/
+
 $content_max_width       = absint( $this->get( 'content_max_width' ) );
 
 /** Get template colors **/
+
 $theme_color             = $this->get_customizer_setting( 'theme_color' );
 $text_color              = $this->get_customizer_setting( 'text_color' );
 $muted_text_color        = $this->get_customizer_setting( 'muted_text_color' );
