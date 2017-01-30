@@ -378,7 +378,7 @@ function ocadu_modify_attachment_link( $markup, $id, $size, $permalink ) {
   $image_url = wp_get_attachment_image_src( $id, 'large' )[0];
   $image_srcset = wp_get_attachment_image_srcset( $id );
   $image_sizes = wp_get_attachment_image_sizes( $id, 'large' );
-  $image_caption = get_post($id)->post_excerpt;
+  $image_caption = get_post( $id )->post_excerpt;
   if ( ! $permalink ) {
     $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="' . $image_srcset . '" data-src-large="' . $image_url . '" data-caption="' . $image_caption . '" data-sizes="' . $image_sizes . '" href', $markup );
   }
