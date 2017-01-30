@@ -6,15 +6,13 @@
 
 @import "components/box-sizing";
 @import "components/variables";
-@import "components/mixins";
 @import "components/helpers";
 @import "components/animation";
 
 // Modules styles (e.g. layouts, typography)
 
-@import "modules/loader";
-@import "modules/base";
 @import "modules/typography";
+@import "modules/base";
 @import "modules/figures";
 @import "modules/lists";
 @import "modules/forms";
@@ -26,3 +24,4 @@
 @import "modules/header";
 @import "modules/layout";
 @import "modules/title";
+@import "modules/loader";
