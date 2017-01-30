@@ -188,7 +188,7 @@ const fastClick = require('fastclick');
         $(e).addClass('invert').removeClass('inactive');
         $(`.${targetPanel}`).velocity(
           { translateX: ['-4%', '-100%'] },
-          { duration: 800, easing: [0.19, 1, 0.22, 1] }
+          { duration: 800, easing: [0.19, 1, 0.22, 1] },
         ).addClass('visible').attr('aria-hidden', false)
         .focus();
         $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
@@ -282,6 +282,7 @@ const fastClick = require('fastclick');
             sizes: imageElement.data('sizes'),
             width: imageElement.find('img').attr('width'),
             height: imageElement.find('img').attr('height'),
+            caption: imageElement.data('caption'),
           };
           galleryImages.push(imageSet);
         }
@@ -325,6 +326,26 @@ const fastClick = require('fastclick');
       };
 
       /**
+      * Displays relevant caption
+      **/
+
+      const imageCaptionSetter = (imageCaption) => {
+        const imageCaptionContainer = $('.image-modal-caption');
+        if (imageCaption) {
+          imageCaptionContainer.html(imageCaption);
+          imageCaptionContainer.velocity({ opacity: 1 });
+        } else {
+          $.Velocity.animate(
+            imageCaptionContainer,
+            { opacity: 0 },
+            'fast',
+          ).then(() => {
+            imageCaptionContainer.html('');
+          });
+        }
+      };
+
+      /**
       * Masonry item click
       **/
 
@@ -334,7 +355,7 @@ const fastClick = require('fastclick');
         const itemImage = $(event.currentTarget);
         app.settings.imageIndex = itemImage.data('index');
 
-        $('.image-modal-container').html(imageModalSetter(itemImage));
+        $('.image-modal-image').html(imageModalSetter(itemImage));
 
         $('#full-image').imagesLoaded().done(() => {
           app._ocadLoader(false);
@@ -345,6 +366,7 @@ const fastClick = require('fastclick');
               $('#full-image').velocity({ translateY: [0, 10] }, app.settings.easeOutBack);
             },
             complete: () => {
+              imageCaptionSetter(itemImage.data('caption'));
               $('#full-image').velocity({ opacity: 1 });
             },
           });
@@ -358,21 +380,21 @@ const fastClick = require('fastclick');
       **/
 
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
+        imageCaptionSetter(imageItem.caption);
         $.Velocity.animate(
           $('#full-image'),
           { opacity: 0, translateY: '-10px' },
-          app.settings.easeOutBack
+          app.settings.easeOutBack,
         ).then(() => {
           const image = document.getElementById('full-image');
           image.src = imageItem.url;
           image.srcset = imageItem.srcset;
           image.sizes = imageItem.sizes;
-
           image.onload = () => {
             app._ocadLoader(false);
             $('#full-image').velocity('stop').velocity(
               { opacity: 1, translateY: [0, '10px'] },
-              app.settings.easeOutBack
+              app.settings.easeOutBack,
             );
           };
         });

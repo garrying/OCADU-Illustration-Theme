@@ -88,7 +88,10 @@
         </div>
       </div>
       <button class="close-panel" title="Close full view" aria-label="Close full view">Close</button>
-      <div class="image-modal-container"></div>
+      <div class="image-modal-container">
+        <div class="image-modal-image"></div>
+        <div class="image-modal-caption"></div>
+      </div>
     </div>
   </div>
 

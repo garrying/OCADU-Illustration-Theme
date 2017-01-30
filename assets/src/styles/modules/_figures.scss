@@ -6,6 +6,11 @@ figure {
     max-width: 100%;
     height: auto;
   }
+
+  .wp-caption-text {
+    display: none;
+    opacity: 0;
+  }
 }
 
 .image-modal-container-full-image {
