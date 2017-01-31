@@ -121,10 +121,10 @@ const fastClick = require('fastclick');
     _ocadLoader: (e = true) => {
       if (e === false) {
         app.settings.documentBody.removeAttr('style');
-        app.settings.loader.velocity('fadeOut', 'fast');
+        app.settings.loader.velocity('stop').velocity('fadeOut', 'fast');
       } else {
         app.settings.documentBody.css('cursor', 'progress');
-        app.settings.loader.velocity('fadeIn', 'fast');
+        app.settings.loader.velocity('stop').velocity('fadeIn', 'fast');
       }
     },
 
@@ -386,13 +386,14 @@ const fastClick = require('fastclick');
           { opacity: 0, translateY: '-10px' },
           app.settings.easeOutBack,
         ).then(() => {
+          $('#full-image').velocity('stop');
           const image = document.getElementById('full-image');
           image.src = imageItem.url;
           image.srcset = imageItem.srcset;
           image.sizes = imageItem.sizes;
           image.onload = () => {
             app._ocadLoader(false);
-            $('#full-image').velocity('stop').velocity(
+            $('#full-image').velocity(
               { opacity: 1, translateY: [0, '10px'] },
               app.settings.easeOutBack,
             );
