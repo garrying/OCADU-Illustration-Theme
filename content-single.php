@@ -72,7 +72,12 @@
           };
           echo '</a></li>';
           }?>
-        <li class="nav-previous truncate"><?php previous_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span>' ) ); ?></li>
+        <li class="nav-previous truncate"><?php previous_post_link_plus( array(
+          'order_by' => 'post_title',
+          'format' => '%link',
+          'in_same_tax' => true,
+          'link' => '<span class="truncate name">%title</span>'
+        ) ); ?></li>
         <li class="nav-next truncate"><?php next_post_link_plus( array( 'order_by' => 'post_title', 'format' => '%link', 'in_same_tax' => true, 'link' => '<span class="truncate name">%title</span>' ) ); ?></li>
       </ul><!-- .llustrator-nav-single -->
 
