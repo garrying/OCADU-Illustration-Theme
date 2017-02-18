@@ -8,7 +8,8 @@
           $image_width = $image_data[1];
           $image_height = $image_data[2];
         ?>
-        <?php the_post_thumbnail( 'illustrator-small', array( 'src' => '',
+        <?php the_post_thumbnail( 'illustrator-small', array(
+          'src' => '',
           'srcset' => ' ',
           'data-src' => $image_data[0],
           'data-sizes' => 'auto',
