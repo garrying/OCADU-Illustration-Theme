@@ -10,7 +10,6 @@ window.jQuery = window.$ = $;
 require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('imagesloaded');
-require('./libs/jquery-text-mix');
 require('lazysizes');
 const Bricklayer = require('bricklayer');
 const fastClick = require('fastclick');
@@ -24,12 +23,11 @@ const fastClick = require('fastclick');
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
-      app._ocadTextScramblerMoments();
     },
 
     settings: {
       documentBody: $('body'),
-      contentContainer: '#content',
+      contentContainer: $('#main'),
       logo: $('.logo'),
       loader: $('.loader'),
       masonryContainer: '#pack-content',
@@ -64,57 +62,6 @@ const fastClick = require('fastclick');
         app.settings.documentBody.removeClass('grid-focus');
         $('.title-unit-init').addClass('active');
         $('.title-unit-illustrator').removeClass('active');
-      });
-    },
-
-    _ocadTextScramblerMoments: () => {
-      const thesis = $('.thesis-title');
-      const illustrator = $('.illustrator-meta-name');
-      const yearSelect = $('#year-select-link');
-      const searchSelect = $('#search-link');
-      const sectionIndicator = $('.section-indicator');
-      const textMixer = (ele, originText, newText, duration = 500) => {
-        const t = $(ele);
-        t.hover(() => {
-          t.textMix(newText, duration, 'linear');
-        }, () => {
-          t.textMix(originText, duration, 'linear');
-        });
-      };
-      const mixElements = [
-        { ele: thesis, newText: `${thesis.text()} by ${illustrator.text()}` },
-        { ele: illustrator,
-          newText: `${illustrator.text()}, class of ${$('.year-item.active').text()}` },
-        { ele: yearSelect, newText: 'Spanning 2009 to 2016' },
-        { ele: searchSelect, newText: 'Looking for someone?' },
-        { ele: app.settings.logo, newText: 'The Graduating Class of 2016' },
-        { ele: sectionIndicator,
-          newText: `The Graduating Class of ${sectionIndicator.text()}` },
-      ];
-
-      for (const item of mixElements) {
-        textMixer(item.ele, item.ele.text(), item.newText);
-      }
-
-      $('.illustrators-grid .gallery-item').hover((ele) => {
-        const targetItem = $(ele.target).parentsUntil('.gallery-item');
-        const illustrationTitle = targetItem.find('.illustrator-title').text();
-        const illustrationAuthor = targetItem.find('.illustrator-name').text();
-        app._ocadPanelsClose();
-        if (app.settings.documentBody.hasClass('home')) {
-          app.settings.documentBody.addClass('grid-focus');
-        }
-        $('.title-unit-illustrator').addClass('active');
-        $('.title-unit-init').removeClass('active');
-        if (illustrationTitle.length === 0) {
-          $('.title-illustration').addClass('empty');
-        } else {
-          $('.title-illustration').removeClass('empty');
-        }
-        $('.title-illustration').textMix(illustrationTitle, 1000, 'linear');
-        $('.title-author').textMix(illustrationAuthor, 1000, 'linear');
-      }, () => {
-        $('.title-illustration').textMix($('.title-illustration').text(), 1000, 'linear');
       });
     },
 
@@ -191,7 +138,7 @@ const fastClick = require('fastclick');
           { duration: 800, easing: [0.19, 1, 0.22, 1] },
         ).addClass('visible').attr('aria-hidden', false)
         .focus();
-        $('.illustrator-meta').velocity({ opacity: 0.2 }, 'fast');
+        app.settings.contentContainer.velocity({ opacity: 0.2 }, 'fast');
 
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
@@ -233,7 +180,7 @@ const fastClick = require('fastclick');
     },
 
     _ocadPanelsClose: () => {
-      $('.illustrator-meta').velocity({ opacity: 1 }, 'fast');
+      app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
       $('.header-item').removeClass('invert inactive');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');

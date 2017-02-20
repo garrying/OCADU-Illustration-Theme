@@ -10,8 +10,11 @@
 .heading-inner {
   position: fixed;
   top: 20px;
-  left: 40px;
   z-index: $z-foreground;
+  display: flex;
+  width: 100%;
+  padding: 0 40px;
+  justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
     right: 20px;
@@ -25,6 +28,15 @@
   }
 }
 
+.header-items-wrapper {
+  display: flex;
+}
+
 .header-item {
+  font-size: inherit;
+  padding: 0 1em;
+}
+
+.header-item-link {
   padding: 0.25em 0;
 }

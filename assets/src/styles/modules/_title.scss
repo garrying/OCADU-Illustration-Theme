@@ -39,10 +39,8 @@
   top: 0;
   display: flex;
   height: 100%;
-  visibility: hidden;
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
-  opacity: 0;
   will-change: transform;
 }

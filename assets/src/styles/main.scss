@@ -1,10 +1,7 @@
-// Vendor styles (e.g. normalize, bootstrap)
-
-@import "vendor/normalize";
+@import "vendor/reset";
 
 // Component styles (e.g. mixins, vars)
 
-@import "components/box-sizing";
 @import "components/variables";
 @import "components/helpers";
 @import "components/animation";
@@ -23,5 +20,6 @@
 @import "modules/yearselect";
 @import "modules/header";
 @import "modules/layout";
+@import "modules/miniview";
 @import "modules/title";
 @import "modules/loader";

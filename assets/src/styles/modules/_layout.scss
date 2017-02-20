@@ -1,6 +1,7 @@
 .single-illustrator {
   display: flex;
   flex-flow: row wrap;
+  flex-direction: row-reverse;
 
   @media screen and (max-width: $small-vp) {
     flex-flow: column;
@@ -19,7 +20,7 @@
   }
 
   .gallery-item {
-    margin: 0 2% 2% 0;
+    margin: 0 0 10% 10%;
     opacity: 0;
   }
 }
@@ -35,7 +36,7 @@
   .illustrator-meta-wrapper {
     position: fixed;
     top: 0;
-    left: 40px;
+    right: 40px;
     display: flex;
     width: calc(30% - 60px);
     height: 100%;
@@ -95,9 +96,9 @@
 .image-modal-wrapper {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 30%;
   bottom: 0;
-  left: 30%;
+  left: 0;
   z-index: $z-foreground;
 
   @media screen and (max-width: $medium-vp)  {
@@ -106,10 +107,10 @@
 
   .image-modal-image {
     position: absolute;
-    top: 4px;
-    right: 4px;
-    bottom: 4px;
-    left: 4px;
+    top: 1%;
+    right: 1%;
+    bottom: 1%;
+    left: 1%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,55 +123,5 @@
     z-index: $z-foreground;
     color: $white;
     background: $black;
-  }
-}
-
-.miniview-container {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  z-index: $z-foreground;
-
-  @media screen and (max-width: $small-vp) {
-    display: none;
-  }
-}
-
-.miniview {
-  width: 2vw;
-  column-count: 2;
-  column-gap: 2px;
-  line-height: 0;
-
-  @media screen and (max-width: $medium-vp) {
-    width: 3vw;
-  }
-
-  &:hover {
-    width: 3vw;
-  }
-
-  .mini-item {
-    width: 100%;
-    padding-bottom: 2px;
-    break-inside: avoid;
-  }
-
-  .mini-item-inner {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    padding: 2px;
-    border: 1px solid $black;
-
-    &.active,
-    &:hover {
-      border: 1px solid $black;
-      background: $black;
-    }
-
-    &:hover {
-      background: $black;
-    }
   }
 }

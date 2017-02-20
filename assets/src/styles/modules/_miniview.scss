@@ -1,0 +1,38 @@
+.miniview-container {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: $z-foreground;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
+}
+
+.miniview {
+  line-height: 0;
+  display: flex;
+  align-items: center;
+
+  .mini-item {
+    width: 10px;
+    margin: 4px;
+  }
+
+  .mini-item-inner {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid $off-black;
+
+    &.active,
+    &:hover {
+      border: 1px solid $off-black;
+      background: $off-black;
+    }
+
+    &:hover {
+      background: $off-black;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+html { box-sizing: border-box }
+*, *:before, *:after { box-sizing: inherit }
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl,
+dt, dd, blockquote, address, button, input { font: inherit; font-size: 100%; margin: 0; padding: 0 }
+ul { list-style: none; }

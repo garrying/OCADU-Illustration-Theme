@@ -36,11 +36,13 @@
           <div class="logo-wrapper">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo( 'name' ); ?></a>
           </div>
-          <div class="header-item-wrapper">
-            <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">Years</button>
-          </div>
-          <div class="header-item-wrapper">
-            <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item" title="Search archives">Search</button>
+          <div class="header-items-wrapper">
+            <div class="header-item-link">
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">Years</button>
+            </div>
+            <div class="header-item-link">
+              <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item" title="Search archives">Search</button>
+            </div>
           </div>
         </div>
 
