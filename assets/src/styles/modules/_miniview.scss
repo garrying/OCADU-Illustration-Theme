@@ -23,16 +23,15 @@
     display: block;
     max-width: 100%;
     height: auto;
-    border: 1px solid $off-black;
+    background: rgba($off-black, 0.1);
 
     &.active,
     &:hover {
-      border: 1px solid $off-black;
       background: $off-black;
     }
 
     &:hover {
-      background: $off-black;
+      background: rgba($off-black, 0.5);
     }
   }
 }

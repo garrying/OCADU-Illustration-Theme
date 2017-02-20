@@ -10,12 +10,26 @@ module.exports = {
     filename: 'app.js',
   },
   devtool: 'inline-source-map',
+  context: __dirname,
   module: {
     loaders: [
       {
         test: /\.scss$/,
         exclude: /(node_modules|bower_components)/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'),
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              } },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              } },
+          ],
+        }),
       }, {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -30,10 +44,15 @@ module.exports = {
       },
     ],
   },
-  postcss: [
-    autoprefixer({ browsers: ['last 2 versions'] }),
-  ],
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        context: __dirname,
+        postcss: [
+          autoprefixer({ browsers: ['last 2 versions'] }),
+        ],
+      },
+    }),
     new ExtractTextPlugin('main.css'),
   ],
 };
