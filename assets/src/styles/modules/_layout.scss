@@ -41,7 +41,7 @@
     width: calc(30% - 60px);
     height: 100%;
     flex-flow: row wrap;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .illustrator-meta-wrapper-inner {
@@ -50,46 +50,53 @@
 }
 
 .illustrator-nav-single {
-  align-self: flex-end;
-  display: flex;
-  flex-grow: 1;
-  max-width: 100%;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  font-size: 0.5rem;
 
   a {
     display: block;
-    padding: 10px;
+    font-size: 10px;
+    background: $white;
+    border: 2px solid $black;
+    height: 60px;
+    width: 60px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0.5em;
+    text-overflow: ellipsis;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: $black;
+
+    &:hover {
+      background: $black;
+      color: $white;
+      z-index: $z-foreground;
+    }
   }
 
   .nav-previous,
   .nav-next {
-    flex-grow: 1;
-
     &:empty {
       display: none;
     }
   }
 
-  .nav-next {
-    text-align: right;
-
+  .nav-previous {
     a {
-      padding-right: 20px;
-
-      @media screen and (max-width: $small-vp) {
-        padding-right: 0;
-      }
+      bottom: 15px;
+      right: 15px;
     }
   }
 
   .section-indicator-single {
-    padding-left: 0.5em;
-    font-weight: 700;
+    bottom: 30px;
+    right: 30px;
     white-space: nowrap;
-  }
-
-  .indicator {
-    margin-right: 4px;
-    font-weight: 400;
   }
 }
 

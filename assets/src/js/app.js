@@ -23,6 +23,7 @@ const fastClick = require('fastclick');
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
+      app._colorSample();
     },
 
     settings: {
@@ -43,6 +44,10 @@ const fastClick = require('fastclick');
 
     _fastClick: () => {
       fastClick.attach(document.body);
+    },
+
+    _colorSample: () => {
+
     },
 
     _ocadGridFocus: () => {
@@ -310,7 +315,7 @@ const fastClick = require('fastclick');
             duration: 180,
             begin: () => {
               $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-              $('#full-image').velocity({ translateY: [0, 10] }, app.settings.easeOutBack);
+              $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack);
             },
             complete: () => {
               imageCaptionSetter(itemImage.data('caption'));
@@ -330,7 +335,7 @@ const fastClick = require('fastclick');
         imageCaptionSetter(imageItem.caption);
         $.Velocity.animate(
           $('#full-image'),
-          { opacity: 0, translateY: '-10px' },
+          { opacity: 0, scale: 0.99 },
           app.settings.easeOutBack,
         ).then(() => {
           $('#full-image').velocity('stop');
@@ -341,7 +346,7 @@ const fastClick = require('fastclick');
           image.onload = () => {
             app._ocadLoader(false);
             $('#full-image').velocity(
-              { opacity: 1, translateY: [0, '10px'] },
+              { opacity: 1, scale: 1 },
               app.settings.easeOutBack,
             );
           };

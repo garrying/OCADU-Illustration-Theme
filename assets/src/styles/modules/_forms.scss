@@ -3,14 +3,12 @@ input {
   @include font-smoothing(on);
   font-family: $sans-serif;
   border-radius: 0;
-}
-
-input[type=search] {
   -webkit-appearance: none;
 }
 
 button {
   @include font-features;
+  cursor: pointer;
   background: transparent;
   border: 0;
 
