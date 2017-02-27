@@ -11,6 +11,7 @@ require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('imagesloaded');
 require('lazysizes');
+const ColorThief = require('./libs/color-thief');
 const Bricklayer = require('bricklayer');
 const fastClick = require('fastclick');
 
@@ -23,7 +24,7 @@ const fastClick = require('fastclick');
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
-      app._colorSample();
+      app._ocadImgHover();
     },
 
     settings: {
@@ -46,8 +47,19 @@ const fastClick = require('fastclick');
       fastClick.attach(document.body);
     },
 
-    _colorSample: () => {
+    _colorSample: (imageItem) => {
+      const colorThief = new ColorThief();
+      return colorThief.getColor(imageItem);
+    },
 
+    _ocadImgHover: () => {
+      if ($('.grid').length) {
+        $('.grid img').on('mouseenter', (e) => {
+          const domColor = app._colorSample(e.target);
+          const rgb = `rgb(${domColor[0]}, ${domColor[1]}, ${domColor[2]})`;
+          $('body').css('background', rgb);
+        });
+      }
     },
 
     _ocadGridFocus: () => {
@@ -244,11 +256,11 @@ const fastClick = require('fastclick');
         const miniView = document.querySelector('.miniview');
         const miniViewItem = (item) => {
           miniView.innerHTML += `
-            <div class="mini-item">
+            <a href="#" class="mini-item">
               <canvas data-index="${item.index}" class="mini-item-inner"
               width="${item.width}" height="${item.height}">
               </canvas>
-            </div>`;
+            </a>`;
         };
         galleryImages.map(miniViewItem);
       }
