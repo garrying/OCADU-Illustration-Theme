@@ -38,9 +38,16 @@ module.exports = {
           presets: ['es2015'],
         },
       }, {
-        test: /\.svg/,
+        test: /\.svg$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'svg-url-loader',
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
       },
     ],
   },

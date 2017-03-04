@@ -4,20 +4,10 @@
       <div class="illustrator-image">
         <?php
           $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-small' );
-          $image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id( $post->ID ) );
           $image_width = $image_data[1];
           $image_height = $image_data[2];
         ?>
-        <?php the_post_thumbnail( 'illustrator-small', array(
-          'src' => '',
-          'srcset' => ' ',
-          'data-src' => $image_data[0],
-          'data-sizes' => 'auto',
-          'data-srcset' => $image_srcset,
-          'class' => 'lazyload',
-          'alt' => 'Thumbnail of ' . get_the_title() . '',
-          'title' => '' . get_the_title() . '',
-        ) ); ?>
+        <?php the_post_thumbnail( 'illustrator-small' ); ?>
         <canvas class="illustrator-placeholder" height="<?php echo esc_attr( $image_height ); ?>" width="<?php echo esc_attr( $image_width ); ?>"></canvas>
       </div>
     </figure>

@@ -9,7 +9,6 @@ const $ = require('jquery');
 window.jQuery = window.$ = $;
 require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
-require('imagesloaded');
 require('lazysizes');
 const ColorThief = require('./libs/color-thief');
 const Bricklayer = require('bricklayer');
@@ -56,8 +55,7 @@ const fastClick = require('fastclick');
       if ($('.grid').length) {
         $('.grid img').on('mouseenter', (e) => {
           const domColor = app._colorSample(e.target);
-          const rgb = `rgb(${domColor[0]}, ${domColor[1]}, ${domColor[2]})`;
-          $('body').css('background', rgb);
+          $('body').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 0.2)`);
         });
       }
     },
@@ -94,21 +92,6 @@ const fastClick = require('fastclick');
 
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
-    _ocadCascade: (selector, delayNum) => {
-      let i = 0;
-      const items = document.querySelectorAll(selector);
-      const velocityComplete = (ele) => {
-        $(ele).addClass('loaded');
-      };
-
-      Array.from(items).forEach((item) => {
-        $(item).delay(delayNum * i).velocity({ opacity: 1 }, {
-          complete: velocityComplete,
-        });
-        i += 1;
-      });
-    },
-
     _ocadSearch: () => {
       app.settings.searchField.autocomplete({
         serviceUrl: '/wp-json/wp/v2/illustrator',
@@ -143,7 +126,7 @@ const fastClick = require('fastclick');
       } else {
         $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast')
           .attr('aria-hidden', true);
-        $('.year-item').velocity(
+        $('.year-item').velocity('stop').velocity(
           { opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
 
         $('.header-item').addClass('inactive').removeClass('invert');
@@ -174,6 +157,7 @@ const fastClick = require('fastclick');
     _ocadPanelSelectButtons: () => {
       app._ocadSearch();
       $('.header-item').on('click', (ele) => {
+        $('.panel.velocity-animating').velocity('stop').velocity({ translateX: '-100%' }, 'fast');
         app._ocadPanelSelect(ele.target);
       });
     },
@@ -227,14 +211,10 @@ const fastClick = require('fastclick');
     _ocadGalleryNav: () => {
       const galleryImages = [];
       let nextImage;
+      let itemImage;
       const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if (app.settings.documentBody.hasClass('single')) {
-        $(app.settings.masonryContainer).imagesLoaded().done(() => {
-          app._ocadMasonry(app.settings.masonryContainer);
-          app._ocadCascade('.gallery-item', 100);
-        });
-
         for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
           $(masonryItemAnchor[i]).data('index', i);
           const imageElement = $(masonryItemAnchor[i]);
@@ -281,10 +261,10 @@ const fastClick = require('fastclick');
         const image = new Image();
         image.alt = 'Full sized illustration';
         image.id = 'full-image';
-        image.className = 'image-modal-container-full-image';
-        image.src = imageSource.data('src-large');
-        image.srcset = imageSource.data('srcset');
-        image.sizes = imageSource.data('sizes');
+        image.className = 'image-modal-container-full-image lazyload';
+        image.dataset.srcset = imageSource.data('srcset');
+        image.sizes = 'auto';
+        image.dataset.src = imageSource.data('src-large');
         return image;
       };
 
@@ -315,28 +295,27 @@ const fastClick = require('fastclick');
       $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', (event) => {
         event.preventDefault();
         app._ocadLoader();
-        const itemImage = $(event.currentTarget);
+        itemImage = $(event.currentTarget);
         app.settings.imageIndex = itemImage.data('index');
-
         $('.image-modal-image').html(imageModalSetter(itemImage));
-
-        $('#full-image').imagesLoaded().done(() => {
-          app._ocadLoader(false);
-          app.settings.imageModal.velocity('fadeIn', {
-            duration: 180,
-            begin: () => {
-              $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-              $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack);
-            },
-            complete: () => {
-              imageCaptionSetter(itemImage.data('caption'));
-              $('#full-image').velocity({ opacity: 1 });
-            },
-          });
-        });
-
+        lazySizes.loader.unveil(document.querySelector('#full-image'));
         miniViewUpdate(app.settings.imageIndex);
       });
+
+      const modalReviel = () => {
+        app._ocadLoader(false);
+        app.settings.imageModal.velocity('fadeIn', {
+          duration: 180,
+          begin: () => {
+            $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
+            $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack);
+          },
+          complete: () => {
+            imageCaptionSetter(itemImage.data('caption'));
+            $('#full-image').velocity({ opacity: 1 });
+          },
+        });
+      };
 
       /**
       * Modal image changer
@@ -346,7 +325,7 @@ const fastClick = require('fastclick');
         imageCaptionSetter(imageItem.caption);
         $.Velocity.animate(
           $('#full-image'),
-          { opacity: 0, scale: 0.99 },
+          { opacity: 0, scale: 0.997 },
           app.settings.easeOutBack,
         ).then(() => {
           $('#full-image').velocity('stop');
@@ -408,6 +387,16 @@ const fastClick = require('fastclick');
 
       $('.image-modal-container').on('click', 'img', () => {
         nextElement();
+      });
+
+      /**
+      * Lazyload events
+      **/
+
+      document.addEventListener('lazybeforeunveil', (e) => {
+        if ($(e.target).is('#full-image')) {
+          modalReviel();
+        }
       });
 
       /**

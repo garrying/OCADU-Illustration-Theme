@@ -1,8 +1,11 @@
 .miniview-container {
-  position: absolute;
-  right: 20px;
+  position: fixed;
   bottom: 20px;
+  width: 100%;
   z-index: $z-foreground;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -13,6 +16,7 @@
   display: flex;
   line-height: 0;
   align-items: center;
+  pointer-events: auto;
 
   .mini-item {
     width: 10px;

@@ -20,8 +20,19 @@
   }
 
   .gallery-item {
-    margin: 0 0 10% 10%;
-    opacity: 0;
+    margin: 0 0 7%;
+
+    img {
+      transition: opacity 180ms ease-in-out;
+    }
+
+    .lazyload {
+      opacity: 0;
+    }
+
+    .lazyloaded {
+      opacity: 1;
+    }
   }
 }
 
@@ -103,9 +114,11 @@
 .image-modal-wrapper {
   position: fixed;
   top: 0;
-  right: 30%;
+  right: 0;
   bottom: 0;
   left: 0;
+  overflow: auto;
+  background: $site-background;
   z-index: $z-foreground;
 
   @media screen and (max-width: $medium-vp)  {
@@ -130,5 +143,9 @@
     z-index: $z-foreground;
     padding: 20px;
     background: $white;
+  }
+
+  .close-panel {
+    position: fixed;
   }
 }

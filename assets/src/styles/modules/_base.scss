@@ -9,6 +9,7 @@ body {
   height: 100%;
   font: 87.5% / 1.45 $sans-serif;
   color: $site-font-color;
+  transition: background 200ms ease-in-out;
   background: $site-background;
   @include font-smoothing(on);
 }

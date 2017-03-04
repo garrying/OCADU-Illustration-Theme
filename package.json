@@ -33,10 +33,8 @@
     "bricklayer": "^0.4.3",
     "eslint": "^3.17.0",
     "fastclick": "^1.0.6",
-    "imagesloaded": "^4.1.1",
     "jquery": "^3.1.1",
     "lazysizes": "^3.0.0",
-    "levenshtein": "^1.0.5",
     "velocity-animate": "^1.4.3"
   }
 }
