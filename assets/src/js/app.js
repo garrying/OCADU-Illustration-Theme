@@ -202,12 +202,11 @@ const fastClick = require('fastclick');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
-      if ($('.panel').hasClass('visible')) {
-        $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-          .velocity({ translateX: '-100%' }, 'fast');
-        $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
-          .removeClass('loaded');
-      }
+      $('.panel.velocity-animating').velocity('stop').velocity({ translateX: '-100%' }, 'fast');
+      $('.panel').removeClass('visible').attr('aria-hidden', true).blur()
+        .velocity({ translateX: '-100%' }, 'fast');
+      $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
+        .removeClass('loaded');
     },
 
     _ocadPanelsCloseSelective: (event) => {
