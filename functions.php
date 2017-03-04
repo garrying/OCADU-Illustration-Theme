@@ -353,9 +353,9 @@ function ocadu_gallery_filter( $attr ) {
   global $post;
   $attr['data-sizes'] = 'auto';
   $attr['data-src'] = $attr['src'];
-  if ( isset($attr['srcset']) ) {
+  if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
-    unset($attr['src']);
+    unset( $attr['src'] );
   }
   $attr['alt'] = 'Illustration by ' . get_the_title() . '';
   $attr['class'] = 'lazyload';
