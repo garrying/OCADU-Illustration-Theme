@@ -1,8 +1,15 @@
 // Kerning extend
 
-@mixin font-features {
-  font-feature-settings: "kern", "liga", "clig", "calt";
-  font-variant-ligatures: common-ligatures, contextual;
+@mixin font-features-body {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+// Heading extend
+
+@mixin heading-features {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
@@ -19,39 +26,37 @@
   }
 }
 
-// Heading extend
-
-@mixin heading-features {
-  @include font-features;
-  font-family: $sans-serif;
-  font-weight: normal;
-}
-
 // Base
 
 p {
-  @include font-features;
+  @include font-features-body;
   margin-bottom: 1em;
   font-weight: normal;
 }
 
 abbr {
-  font-feature-settings: "c2sc", "smcp";
-  font-variant: small-caps;
+  text-transform: uppercase;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   letter-spacing: 1px;
+}
+
+sup {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
 }
 
 // Headings
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @include heading-features;
-  font-style: normal;
-}
-
-h2 {
-  @include heading-features;
+  margin-bottom: 1em;
 }
 
 .heading {
   @include heading-features;
+  margin-bottom: 1em;
 }

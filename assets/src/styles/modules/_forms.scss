@@ -1,5 +1,5 @@
 input {
-  @include font-features;
+  @include font-features-body;
   @include font-smoothing(on);
   font-family: $sans-serif;
   border-radius: 0;
@@ -7,7 +7,7 @@ input {
 }
 
 button {
-  @include font-features;
+  @include font-features-body;
   cursor: pointer;
   background: transparent;
   border: 0;
