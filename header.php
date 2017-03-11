@@ -28,7 +28,7 @@
 <body <?php body_class(); ?> id="content-container">
   <a class="screen-reader-shortcut" href="#main">Skip to main content</a>
 
-  <div class="loader"><h1 class="loader-text hidden">Loading</h1></div>
+  <div class="loader"><h1 class="loader-text hidden">Loading</h1><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></div>
   <header role="banner">
     <div class="app-head-items">
 

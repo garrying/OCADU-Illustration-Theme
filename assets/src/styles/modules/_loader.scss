@@ -8,9 +8,25 @@
   width: 44px;
   height: 44px;
   pointer-events: none;
-  background: linear-gradient( 0deg,
-    $black 0%,
-    transparent 100%);
-  background-size: 200% 200%;
-  animation: cycle 1s linear infinite;
+  transform: rotate(45deg);
+}
+
+.loader-line {
+  fill: none;
+  stroke: $site-font-color;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 50%;
+  stroke-dashoffset: 100%;
+  animation: loop 1s infinite linear;
+}
+
+@keyframes loop {
+  50% {
+    stroke-dashoffset: 50%;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
 }

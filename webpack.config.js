@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, './assets/src/js/app.js'),
@@ -40,7 +41,10 @@ module.exports = {
       }, {
         test: /\.svg$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'svg-url-loader',
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
+        },
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -52,6 +56,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: './assets/src/images', to: './images' },
+    ]),
     new webpack.LoaderOptionsPlugin({
       options: {
         context: __dirname,
