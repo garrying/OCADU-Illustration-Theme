@@ -2,23 +2,33 @@
 
 .loader {
   position: fixed;
-  top: calc(50% - 22px);
-  left: calc(50% - 22px);
+  top: calc(50% - 44px);
+  left: calc(50% - 44px);
   z-index: $z-important;
-  width: 44px;
-  height: 44px;
+  width: 88px;
+  height: 88px;
   pointer-events: none;
-  transform: rotate(45deg);
+  transform: rotate(90deg);
 }
 
 .loader-line {
   fill: none;
-  stroke: $site-font-color;
-  stroke-width: 2;
+  stroke: $color-accent;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 50%;
   stroke-dashoffset: 100%;
   animation: loop 1s infinite linear;
+}
+
+.loader-line-static {
+  fill: none;
+  stroke: $color-accent;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 50%;
+  stroke-dashoffset: 100%;
+  animation: loop 3s infinite linear;
 }
 
 @keyframes loop {

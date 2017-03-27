@@ -98,22 +98,46 @@
 }
 
 .page-inner {
-  max-width: 800px;
-  padding: 0 8%;
-  margin: 50px auto 100px;
+  max-width: 82vw;
+  padding: 0 1%;
+  margin: 120px auto;
+
+  @include rsp-font(1.5vw, 14px);
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     margin-top: 8em;
+    max-width: none;
   }
 
-  @media screen and (max-width: $medium-vp) {
-    max-width: 700px;
+  .entry-title {
+    margin: 1em 0;
+    font-family: 'GT America Standard Light';
+    @include rsp-font(5vw, 48px);
   }
 
-  @media screen and (min-width: $large-vp) and (max-width: $largest-vp) {
-    max-width: 900px;
-    padding: 0;
+  .entry-title-secondary {
+    font-size: 1.618em;
+  }
+
+  .col-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .col {
+      width: calc(50% - 20px);
+    }
+  }
+
+  .wiggle {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1em;
+
+    svg {
+      width: 1.5em;
+      height: auto;
+    }
   }
 }
 
@@ -136,8 +160,30 @@
   align-items: center;
   justify-content: center;
 
+  @include rsp-font(1.5vw, 14px);
+
   @media screen and (max-width: $small-vp) {
-    justify-content: flex-start;
     padding: 0 20px;
   }
+
+  .entry-title {
+    margin: 0 0 .5em;
+    font-family: 'GT America Standard Light';
+    @include rsp-font(5vw, 48px);
+  }
+
+  .error-line-svg {
+    width: 25vw;
+    height: auto;
+    position: absolute;
+    overflow: visible;
+  }
+
+  .error-line {
+    fill: none;
+    stroke: $color-accent;
+    stroke-width: 1px;
+    stroke-linecap: round;
+  }
+
 }

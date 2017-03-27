@@ -1,4 +1,4 @@
-@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+@mixin rsp-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: $responsive / ($responsive - $responsive + 1);
   $dimension: if(unit($responsive) == 'vh', 'height', 'width');
   $min-breakpoint: $min / $responsive-unitless * 100;

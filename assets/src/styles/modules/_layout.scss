@@ -69,8 +69,7 @@
   a {
     display: block;
     font-size: 10px;
-    background: $white;
-    border: 2px solid $black;
+    background: $black;
     height: 60px;
     width: 60px;
     -webkit-line-clamp: 2;
@@ -78,10 +77,7 @@
     overflow: hidden;
     padding: 0.5em;
     text-overflow: ellipsis;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: $black;
+    color: $white;
 
     &:hover {
       background: $black;
@@ -94,13 +90,6 @@
   .nav-next {
     &:empty {
       display: none;
-    }
-  }
-
-  .nav-previous {
-    a {
-      bottom: 15px;
-      right: 15px;
     }
   }
 

@@ -12,14 +12,9 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    right: 20px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-  }
-
-  @media screen and (max-width: $medium-vp) {
-    left: 20px;
   }
 }
 

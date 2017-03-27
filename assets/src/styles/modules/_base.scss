@@ -15,13 +15,19 @@ body {
 }
 
 ::selection {
-  background: rgba($hover-accent, 0.25);
+  background: rgba($color-accent, 0.25);
 }
 
 // Links
 
 a {
   text-decoration: none;
+  color: $color-accent;
+  transition: color 180ms ease-in-out;
+
+  &:hover {
+    color: darken($color-accent, 20%);
+  }
 
   img {
     display: block;
