@@ -20,7 +20,7 @@
   }
 
   .gallery-item {
-    margin: 0 0 7%;
+    margin: 0 7% 7% 0;
 
     img {
       transition: opacity 180ms ease-in-out;
@@ -39,6 +39,7 @@
 .illustrator-meta {
   position: relative;
   flex: 1 1 30%;
+  color: #555;
 
   @media screen and (max-width: $small-vp) {
     flex-basis: 100%;
@@ -58,18 +59,46 @@
   .illustrator-meta-wrapper-inner {
     width: 100%;
   }
+
+  .thesis-title {
+    font-family: $sans-serif-light;
+    margin-bottom: .5em;
+    @include rsp-font(1.75vw, 18px);
+  }
+
+  .illustrator-meta-name {
+    @include rsp-font(1vw, 16px);
+
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  margin-top: 4em;
+
+  .illustrator-meta-header,
+  .illustrator-meta-items {
+    flex-basis: 50%;
+  }
+
+  .illustrator-meta-items {
+    line-height: 1.45em;
+  }
+
+  .illustrator-meta-header {
+    padding-right: 1em;
+  }
 }
 
 .illustrator-nav-single {
-  position: absolute;
-  bottom: 10px;
-  right: 0;
   font-size: 0.5rem;
+  display: flex;
 
   a {
     display: block;
     font-size: 10px;
-    background: $black;
+    background: $color-accent;
     height: 60px;
     width: 60px;
     -webkit-line-clamp: 2;
@@ -92,12 +121,20 @@
       display: none;
     }
   }
+}
 
-  .section-indicator-single {
-    bottom: 30px;
-    right: 30px;
-    white-space: nowrap;
-  }
+.illustrator-nav-single-wrapper {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+}
+
+.section-indicator-single {
+  white-space: nowrap;
+  @include rsp-font(1.75vw, 18px);
 }
 
 .image-modal-wrapper {
@@ -136,5 +173,10 @@
 
   .close-panel {
     position: fixed;
+  }
+
+  .close-btn {
+    stroke-width: 1;
+    stroke: $color-accent;
   }
 }

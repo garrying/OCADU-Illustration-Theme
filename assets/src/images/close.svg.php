@@ -1,0 +1,1 @@
+<svg class="close-btn" xmlns="http://www.w3.org/2000/svg" width="34.8" height="34.9" viewBox="0 0 34.8 34.9"><path d="M.4.4l34 34M.4 34.5L34.4.4"/></svg>

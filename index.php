@@ -13,6 +13,7 @@
   <div class="title">
     <div class="title-unit title-unit-init active">
       <div class="unit">
+        <h1 class="title-primary">OCAD U Illustration</h1>
         <p class="title-primary">Part of the 102<sup>nd</sup> GradEx<br> May 4 to 8, 2017</p>
         <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
@@ -23,9 +24,6 @@
         <p class="title-secondary title-author"></p>
       </div>
     </div>
-    <p class="colophon">
-      <small>Illustration Department at OCAD U</small>
-    </p>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 

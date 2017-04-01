@@ -27,15 +27,15 @@
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba($off-black, 0.1);
+    background: rgba($color-accent, 0.1);
 
     &.active,
     &:hover {
-      background: $off-black;
+      background: $color-accent;
     }
 
     &:hover {
-      background: rgba($off-black, 0.5);
+      background: rgba($color-accent, 0.5);
     }
   }
 }

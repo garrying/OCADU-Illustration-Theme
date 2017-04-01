@@ -1,14 +1,28 @@
 .logo {
-  background: none;
+  line-height: 1em;
+  display: block;
+  color: $white;
+  @include heading-features;
+  height: 60px;
+  width: 60px;
+  font-size: 10px;
+  padding: 0.5em;
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
 }
 
 .heading-inner {
   position: fixed;
   top: 20px;
+  left: 40px;
+  right: 40px;
   z-index: $z-foreground;
   display: flex;
-  width: 100%;
-  padding: 0 40px;
+  align-items: center;
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
@@ -24,4 +38,9 @@
 
 .header-item {
   padding: 0 1em;
+  line-height: 1em;
+  color: $color-accent;
+  font-family: $sans-serif-light;
+  @include heading-features;
+  @include rsp-font(1.75vw, 18px);
 }

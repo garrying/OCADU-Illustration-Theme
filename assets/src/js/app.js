@@ -53,9 +53,13 @@ const fastClick = require('fastclick');
 
     _ocadImgHover: () => {
       if ($('.grid').length) {
+        $('.grid img:first').on('load', (e) => {
+          const domColor = app._colorSample(e.target);
+          $('.logo').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
+        });
         $('.grid img').on('mouseenter', (e) => {
           const domColor = app._colorSample(e.target);
-          $('body').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 0.2)`);
+          $('.logo').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
         });
       }
     },
@@ -213,6 +217,8 @@ const fastClick = require('fastclick');
       let nextImage;
       let itemImage;
       const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
+
+      app._ocadMasonry('#pack-content');
 
       if (app.settings.documentBody.hasClass('single')) {
         for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
