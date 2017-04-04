@@ -218,9 +218,10 @@ const fastClick = require('fastclick');
       let itemImage;
       const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
-      app._ocadMasonry('#pack-content');
-
       if (app.settings.documentBody.hasClass('single')) {
+
+        app._ocadMasonry('#pack-content');
+
         for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
           $(masonryItemAnchor[i]).data('index', i);
           const imageElement = $(masonryItemAnchor[i]);

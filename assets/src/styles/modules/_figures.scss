@@ -25,6 +25,7 @@ figure {
 .gallery-icon-anchor {
   cursor: zoom-in;
   display: block;
+  position: relative;
 
   img {
     margin: 0 auto;
@@ -35,4 +36,10 @@ figure {
       width: 100%;
     }
   }
+}
+
+.gallery-icon-placeholder {
+  max-width: 100%;
+  display: block;
+  height: auto;
 }

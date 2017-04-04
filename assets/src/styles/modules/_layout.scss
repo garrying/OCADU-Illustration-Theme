@@ -21,9 +21,14 @@
 
   .gallery-item {
     margin: 0 7% 7% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
       transition: opacity 180ms ease-in-out;
+      position: absolute;
+      object-fit: contain;
     }
 
     .lazyload {
