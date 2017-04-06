@@ -19,7 +19,7 @@
   pointer-events: auto;
 
   .mini-item {
-    width: 10px;
+    width: 13px;
     margin: 4px;
   }
 
@@ -28,6 +28,7 @@
     max-width: 100%;
     height: auto;
     background: rgba($color-accent, 0.1);
+    transition: background 200ms ease-in-out;
 
     &.active,
     &:hover {

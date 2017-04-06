@@ -38,6 +38,54 @@ figure {
   }
 }
 
+.image-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background: $site-background;
+  z-index: $z-foreground;
+
+  @media screen and (max-width: $medium-vp)  {
+    left: 0;
+  }
+
+  .image-modal-image {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    bottom: 1%;
+    left: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-modal-caption {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    max-width: 30vw;
+    font-size: 0.95em;
+    z-index: $z-foreground;
+    padding: 10px;
+    background: $white;
+  }
+
+  .close-panel {
+    position: fixed;
+  }
+
+  .close-btn {
+    path {
+      stroke-width: 1;
+      stroke: $color-accent;
+    }
+  }
+}
+
 .gallery-icon-placeholder {
   max-width: 100%;
   display: block;

@@ -8,10 +8,16 @@
   font-size: 10px;
   padding: 0.5em;
   transition: background 200ms ease-in-out, color 200ms ease-in-out;
+  pointer-events: auto;
 
   &:hover {
     background-color: $black;
     color: $white;
+  }
+
+  &.invert {
+    background-color: $white !important;
+    color: $color-accent;
   }
 }
 
@@ -20,6 +26,7 @@
   top: 20px;
   left: 40px;
   right: 40px;
+  pointer-events: none;
   z-index: $z-foreground;
   display: flex;
   align-items: center;
@@ -34,13 +41,23 @@
 
 .header-items-wrapper {
   display: flex;
+  pointer-events: auto;
 }
 
 .header-item {
-  padding: 0 1em;
+  padding: 0 1.5em;
   line-height: 1em;
   color: $color-accent;
   font-family: $sans-serif-light;
   @include heading-features;
   @include rsp-font(1.75vw, 18px);
+  transition: color 200ms ease-in-out;
+
+  &.invert {
+    color: $white;
+  }
+
+  &.inactive {
+    color: darken($color-accent, 10%);
+  }
 }

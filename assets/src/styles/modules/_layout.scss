@@ -68,7 +68,7 @@
   .thesis-title {
     font-family: $sans-serif-light;
     margin-bottom: .5em;
-    @include rsp-font(1.75vw, 18px);
+    @include rsp-font(1.5vw, 18px);
   }
 
   .illustrator-meta-name {
@@ -103,7 +103,6 @@
   a {
     display: block;
     font-size: 10px;
-    background: $color-accent;
     height: 60px;
     width: 60px;
     -webkit-line-clamp: 2;
@@ -112,12 +111,29 @@
     padding: 0.5em;
     text-overflow: ellipsis;
     color: $white;
+    position: relative;
+    transition: background 200ms ease-in-out;
+    z-index: $z-foreground;
 
-    &:hover {
-      background: $black;
-      color: $white;
-      z-index: $z-foreground;
+    &:hover + .link-bg .loader-grph {
+      opacity: 1;
     }
+  }
+
+  a + .link-bg {
+    display: block;
+  }
+
+  .link-bg {
+    display: none;
+    background: $color-accent;
+  }
+
+  .loader-grph {
+    opacity: 0;
+    max-width: 100%;
+    margin-top: 50%;
+    transition: opacity 300ms ease-in-out;
   }
 
   .nav-previous,
@@ -141,48 +157,4 @@
   font-family: $sans-serif-light;
   white-space: nowrap;
   @include rsp-font(1.75vw, 18px);
-}
-
-.image-modal-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  background: $site-background;
-  z-index: $z-foreground;
-
-  @media screen and (max-width: $medium-vp)  {
-    left: 0;
-  }
-
-  .image-modal-image {
-    position: absolute;
-    top: 1%;
-    right: 1%;
-    bottom: 1%;
-    left: 1%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .image-modal-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: $z-foreground;
-    padding: 20px;
-    background: $white;
-  }
-
-  .close-panel {
-    position: fixed;
-  }
-
-  .close-btn {
-    stroke-width: 1;
-    stroke: $color-accent;
-  }
 }

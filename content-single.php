@@ -67,25 +67,23 @@
       <div class="illustrator-nav-single-wrapper">
         <?php if ( is_singular( 'illustrator' ) ) {
           $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index">';
           if ( isset( $term->name ) ) {
-            echo esc_html( $term->name );
+            echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index">' . esc_html( $term->name ) . '</a>';
           };
-          echo '</a>';
-          }?>
+        }?>
         <ul class="illustrator-nav-single">
           <li class="nav-previous"><?php previous_post_link_plus( array(
             'order_by' => 'post_title',
             'format' => '%link',
             'in_same_tax' => true,
             'link' => '<span class="name previous-link">%title</span>',
-          ) ); ?></li>
+          ) ); ?><div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?></div></li>
           <li class="nav-next"><?php next_post_link_plus( array(
             'order_by' => 'post_title',
             'format' => '%link',
             'in_same_tax' => true,
             'link' => '<span class="name next-link">%title</span>',
-          ) ); ?></li>
+          ) ); ?><div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?></div></li>
         </ul><!-- .llustrator-nav-single -->
       </div>
 

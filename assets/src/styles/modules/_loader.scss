@@ -31,6 +31,19 @@
   animation: loop 3s infinite linear;
 }
 
+.alt-animation {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 60px;
+
+  .loader-line {
+    stroke: $white;
+    stroke-width: 5;
+    animation: loop 5s infinite linear;
+  }
+}
+
 @keyframes loop {
   50% {
     stroke-dashoffset: 50%;

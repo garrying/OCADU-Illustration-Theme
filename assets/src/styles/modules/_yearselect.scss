@@ -1,12 +1,22 @@
 .year-select {
+  justify-content: center;
+
   .panel-inner {
     height: 100%;
-    padding-top: 140px;
-    padding-bottom: 60px;
+    width: 100%;
+    overflow: scroll;
   }
 }
 
 .year-item {
+  color: $white;
+  font-family: $sans-serif-light;
+  @include rsp-font(8vw, 18px);
+  text-align: center;
   display: block;
   opacity: 0;
+
+  &.active {
+    color: darken($color-accent, 20%);
+  }
 }

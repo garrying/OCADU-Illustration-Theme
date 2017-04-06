@@ -128,7 +128,7 @@ const fastClick = require('fastclick');
         $(e).removeClass('invert');
         app._ocadPanelsClose();
       } else {
-        $('.panel.visible').removeClass('visible').velocity({ translateX: '-100%' }, 'fast')
+        $('.panel.visible').removeClass('visible').velocity({ translateY: '100%' }, 'fast')
           .attr('aria-hidden', true);
         $('.year-item').velocity('stop').velocity(
           { opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
@@ -138,11 +138,11 @@ const fastClick = require('fastclick');
 
         $(e).addClass('invert').removeClass('inactive');
         $(`.${targetPanel}`).velocity(
-          { translateX: ['-4%', '-100%'] },
+          { translateY: ['0%', '100%'] },
           { duration: 800, easing: [0.19, 1, 0.22, 1] },
         ).addClass('visible').attr('aria-hidden', false)
         .focus();
-        app.settings.contentContainer.velocity({ opacity: 0.2 }, 'fast');
+        app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
 
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
@@ -161,7 +161,7 @@ const fastClick = require('fastclick');
     _ocadPanelSelectButtons: () => {
       app._ocadSearch();
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity({ translateX: '-100%' }, 'fast');
+        $('.panel.velocity-animating').velocity('stop').velocity({ translateY: '100%' }, 'fast');
         app._ocadPanelSelect(ele.target);
       });
     },
@@ -190,9 +190,9 @@ const fastClick = require('fastclick');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
-      $('.panel.velocity-animating').velocity('stop').velocity({ translateX: '-100%' }, 'fast');
+      $('.panel.velocity-animating').velocity('stop').velocity({ translateY: '100%' }, 'fast');
       $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-        .velocity({ translateX: '-100%' }, 'fast');
+        .velocity({ translateY: '100%' }, 'fast');
       $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
         .removeClass('loaded');
     },
