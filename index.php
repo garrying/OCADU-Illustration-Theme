@@ -14,7 +14,7 @@
     <div class="title-unit title-unit-init active">
       <div class="unit">
         <h1 class="title-primary">OCAD U Illustration</h1>
-        <p class="title-primary">Part of the 102<sup>nd</sup> GradEx<br> May 4 to 8, 2017</p>
+        <p class="title-primary">Part of the 102<sup>nd</sup> Graduate Exhibition<br> May 3 to 7, 2017</p>
         <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
       </div>
     </div>
