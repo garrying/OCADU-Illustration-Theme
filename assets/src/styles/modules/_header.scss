@@ -18,7 +18,11 @@
 
   &.invert {
     background-color: $white !important;
-    color: $color-accent;
+    color: $color-accent !important;
+  }
+
+  &.black {
+    color: rgba($off-black, 0.5);
   }
 }
 

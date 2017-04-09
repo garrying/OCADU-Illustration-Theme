@@ -67,13 +67,13 @@
 
   .thesis-title {
     font-family: $sans-serif-light;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     @include rsp-font(1.5vw, 18px);
   }
 
   .illustrator-meta-name {
+    font-family: $sans-serif-light;
     @include rsp-font(1vw, 16px);
-
   }
 }
 
@@ -97,8 +97,8 @@
 }
 
 .illustrator-nav-single {
-  font-size: 0.5rem;
   display: flex;
+  font-size: 0.5rem;
 
   a {
     display: block;
