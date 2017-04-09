@@ -22,8 +22,7 @@
     background: $white;
     border: 0;
     color: $color-accent;
-    padding: 10px;
-    width: 100%;
+    padding: 15px;
 
     &:focus {
       outline-style: none;
@@ -41,18 +40,18 @@
     font-family: $sans-serif-light;
     @include font-smoothing(on);
     margin-left: 4px;
-    padding: 10px;
+    padding: 15px;
   }
 }
 
 .autocomplete-suggestions {
-  padding-top: 10px;
+  padding-top: 15px;
   position: static !important;
-  @include rsp-font(2vw, 18px);
+  @include rsp-font(3vw, 18px);
 }
 
 .autocomplete-suggestion {
-  padding: 5px 10px;
+  padding: 5px 15px;
   color: rgba($white, 0.75);
   cursor: pointer;
 

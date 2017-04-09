@@ -55,11 +55,11 @@ const fastClick = require('fastclick');
       if ($('.grid').length) {
         $('.grid img:first').on('load', (e) => {
           const domColor = app._colorSample(e.target);
-          $('.logo').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
+          app.settings.logo.css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
         });
         $('.grid img').on('mouseenter', (e) => {
           const domColor = app._colorSample(e.target);
-          $('.logo').css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
+          app.settings.logo.css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
         });
       }
     },
@@ -100,7 +100,8 @@ const fastClick = require('fastclick');
       app.settings.searchField.autocomplete({
         serviceUrl: '/wp-json/wp/v2/illustrator',
         paramName: 'search',
-        lookupLimit: 10,
+        params: { per_page: 5, orderby: 'title', order: 'asc' },
+        lookupLimit: 5,
         appendTo: '.search-wrapper',
         showNoSuggestionNotice: true,
         onSearchStart: () => {
@@ -143,6 +144,7 @@ const fastClick = require('fastclick');
         ).addClass('visible').attr('aria-hidden', false)
         .focus();
         app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
+        $('html, body').addClass('lock-scroll');
 
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
@@ -186,6 +188,8 @@ const fastClick = require('fastclick');
 
     _ocadPanelsClose: () => {
       app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
+      $('html, body').removeClass('lock-scroll');
+
       $('.header-item').removeClass('invert inactive');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
@@ -203,6 +207,7 @@ const fastClick = require('fastclick');
         app.settings.imageModal.velocity('fadeOut', { duration: 180 });
         $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
+        $('html, body').removeClass('lock-scroll');
       }
 
       if (!$(event.target).closest('.panel, .header-item').length
@@ -219,9 +224,6 @@ const fastClick = require('fastclick');
       const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
 
       if (app.settings.documentBody.hasClass('single')) {
-
-        app._ocadMasonry('#pack-content');
-
         for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
           $(masonryItemAnchor[i]).data('index', i);
           const imageElement = $(masonryItemAnchor[i]);
@@ -248,6 +250,7 @@ const fastClick = require('fastclick');
               </canvas>
             </a>`;
         };
+        app._ocadMasonry('#pack-content');
         galleryImages.map(miniViewItem);
       }
 
@@ -320,6 +323,7 @@ const fastClick = require('fastclick');
           complete: () => {
             imageCaptionSetter(itemImage.data('caption'));
             $('#full-image').velocity({ opacity: 1 });
+            $('html, body').addClass('lock-scroll');
           },
         });
       };

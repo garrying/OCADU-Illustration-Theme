@@ -9,14 +9,15 @@
 }
 
 .year-item {
-  color: $white;
+  color: darken($color-accent, 20%);
   font-family: $sans-serif-light;
   @include rsp-font(8vw, 18px);
   text-align: center;
   display: block;
   opacity: 0;
 
-  &.active {
-    color: darken($color-accent, 20%);
+  &.active,
+  &:hover {
+    color: $white;
   }
 }

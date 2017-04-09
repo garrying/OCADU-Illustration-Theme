@@ -1,5 +1,9 @@
 // General background
 
+.lock-scroll {
+  overflow: hidden;
+}
+
 html {
   overflow-x: hidden;
   -webkit-tap-highlight-color: rgba($black, 0);
