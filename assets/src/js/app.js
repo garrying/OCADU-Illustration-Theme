@@ -230,12 +230,12 @@ const fastClick = require('fastclick');
       const galleryImages = [];
       let nextImage;
       let itemImage;
-      const masonryItemAnchor = document.querySelectorAll('.gallery-icon-anchor');
+      const masonryItemAnchor = [...document.querySelectorAll('.gallery-icon-anchor')];
 
       if (app.settings.documentBody.hasClass('single')) {
-        for (let i = 0, items = masonryItemAnchor.length; i < items; i += 1) {
-          $(masonryItemAnchor[i]).data('index', i);
-          const imageElement = $(masonryItemAnchor[i]);
+        const galleryItems = (ele, i) => {
+          const imageElement = $(ele);
+          imageElement.data('index', i);
           const imageSet = {
             index: i,
             url: imageElement.data('src-large'),
@@ -246,7 +246,9 @@ const fastClick = require('fastclick');
             caption: imageElement.data('caption'),
           };
           galleryImages.push(imageSet);
-        }
+        };
+
+        masonryItemAnchor.map(galleryItems);
 
         // Miniviewer constructor
 
