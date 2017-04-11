@@ -24,7 +24,7 @@
   position: absolute;
   top: 23px;
   right: 20px;
-  z-index: $z-foreground;
+  z-index: $z-important;
   display: block;
 
   @media screen and (max-width: $small-vp) {

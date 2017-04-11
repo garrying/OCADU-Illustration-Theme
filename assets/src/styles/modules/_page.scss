@@ -1,6 +1,11 @@
 .archive-grid {
-  width: 75vw;
-  margin: 0 auto;
+  width: 80vw;
+  margin: 80px auto;
+
+  .illustrator-name {
+    line-height: 1em;
+    color: $off-black;
+  }
 
   @media screen and (max-width: $medium-vp) {
     width: 85vw;
@@ -19,14 +24,16 @@
 
   .illustrator-meta-container {
     margin: 0.67em 0;
+    text-align: center;
+  }
 
-    .illustrator-title {
-      margin: 0;
-    }
+  .illustrator-title {
+    margin: 0.5em 0;
+    color: rgba($off-black, 0.5);
   }
 
   .gallery-item {
-    margin-bottom: 10%;
+    margin: 0 15% 15% 0;
   }
 }
 
@@ -73,8 +80,11 @@
     z-index: $z-background;
     display: flex;
     height: 100%;
+    bottom: 0;
     background: none;
     align-items: center;
+    font-family: $sans-serif-light;
+    @include rsp-font(2.1vw, 18px);
 
     @media screen and (max-width: $medium-vp)  {
       left: 20px;
@@ -111,7 +121,7 @@
 
   .entry-title {
     margin: 1em 0;
-    font-family: 'GT America Standard Light';
+    font-family: $sans-serif-light;
     @include rsp-font(5vw, 48px);
   }
 

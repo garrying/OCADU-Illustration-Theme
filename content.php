@@ -15,7 +15,7 @@
       <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
         <h1 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?></h1>
       <?php endif; ?>
-      <span class="illustrator-meta-label illustrator-name p-author"><?php the_title(); ?></span>
+      <h2 class="illustrator-meta-label illustrator-name p-author"><?php the_title(); ?></h2>
     </div>
   </a>
 </article>

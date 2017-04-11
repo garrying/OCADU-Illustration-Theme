@@ -1,12 +1,7 @@
 .title {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
   line-height: 1;
   z-index: $z-background;
   display: flex;
-  width: 20vw;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;

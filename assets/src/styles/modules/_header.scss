@@ -38,9 +38,9 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    left: 20px;
+    right: 0;
+    top: 10px;
   }
 }
 
