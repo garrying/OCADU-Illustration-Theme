@@ -27,7 +27,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "svg-url-loader": "^2.0.2",
-    "webpack": "^2.3.3"
+    "webpack": "^2.4.1"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
