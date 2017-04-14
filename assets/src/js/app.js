@@ -70,6 +70,8 @@ const fastClick = require('fastclick');
         $('.grid img').on('mouseenter', (e) => {
           colorSetter(e);
         });
+      } else {
+        app.settings.logo.addClass('initial');
       }
     },
 
