@@ -28,13 +28,18 @@
     background: $color-accent;
     color: $white;
   }
+
+  .home &.initial {
+    background: $white;
+    color: $color-accent;
+  }
 }
 
 .heading-inner {
   position: fixed;
   top: 20px;
-  left: 40px;
-  right: 40px;
+  left: 30px;
+  right: 30px;
   pointer-events: none;
   z-index: $z-foreground;
   display: flex;
@@ -54,12 +59,12 @@
 }
 
 .header-item {
-  padding: 0 1.5em;
+  padding: 0 1em;
   line-height: 1em;
   color: $color-accent;
   font-family: $sans-serif-light;
   @include heading-features;
-  @include rsp-font(1.75vw, 18px);
+  @include rsp-font(2.75vw, 18px);
   transition: color 200ms ease-in-out;
 
   &.invert {
@@ -67,6 +72,6 @@
   }
 
   &.inactive {
-    color: darken($color-accent, 10%);
+    color: darken($color-accent, 20%);
   }
 }

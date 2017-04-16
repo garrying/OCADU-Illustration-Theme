@@ -13,17 +13,10 @@
   <div class="title">
     <div class="title-unit title-unit-init active">
       <div class="unit">
-        <h1 class="title-primary">OCAD U Illustration</h1>
-        <p class="title-primary">Part of the 102<sup>nd</sup> Graduate Exhibition<br> May 3 to 7, 2017</p>
-        <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a></p>
+        <h1 class="title-primary">OCAD University<br> Illustration 2017</h1>
       </div>
     </div>
-    <div class="title-unit title-unit-illustrator">
-      <div class="unit">
-        <div class="title-primary title-illustration"></div>
-        <p class="title-secondary title-author"></p>
-      </div>
-    </div>
+    <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a>. Part of the 102<sup>nd</sup> Graduate Exhibition. May 3 to 7, 2017</p>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 

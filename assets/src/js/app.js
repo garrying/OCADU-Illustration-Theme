@@ -63,11 +63,11 @@ const fastClick = require('fastclick');
         app.settings.logo.removeClass('black').addClass(app._colorContrast(domColor[0], domColor[1], domColor[2]));
       };
 
-      if ($('.grid').length) {
-        $('.grid img:first').on('load', (e) => {
+      if ($('img').length && !$('body').hasClass('home')) {
+        $('img:first').on('load', (e) => {
           colorSetter(e);
         });
-        $('.grid img').on('mouseenter', (e) => {
+        $('img').on('mouseenter', (e) => {
           colorSetter(e);
         });
       } else {

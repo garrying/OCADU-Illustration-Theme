@@ -24,30 +24,26 @@
 
   .illustrator-meta-container {
     margin: 0.67em 0;
-    text-align: center;
   }
 
   .illustrator-title {
-    margin: 0.5em 0;
+    margin-top: 0.5em;
     color: rgba($off-black, 0.5);
   }
 
   .gallery-item {
-    margin: 0 15% 15% 0;
-  }
-}
-
-.home-grid {
-  margin: 0 auto;
-
-  @media screen and (max-width: $small-vp) {
-    width: 100vw;
-    padding: 20px;
-    margin: 50px 0 0;
+    margin: 0 15% 8% 0;
   }
 
-  .illustrator-meta-container {
-    display: none;
+  .illustrator-link {
+    display: block;
+    padding-bottom: 1em;
+  }
+
+  .illustrator-link:hover {
+    .illustrator-title {
+      color: $color-accent;
+    }
   }
 }
 
@@ -58,7 +54,7 @@
     position: absolute;
     object-fit: contain;
     opacity: 0;
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out, box-shadow 100ms ease-in-out;
   }
 
   .lazyloaded {

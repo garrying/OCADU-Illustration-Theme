@@ -1,0 +1,56 @@
+.home-grid {
+  padding-left: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+  background: $color-accent;
+
+  @media screen and (max-width: $small-vp) {
+    width: 100vw;
+    padding: 20px;
+    margin: 50px 0 0;
+  }
+
+  .illustrator-link {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    transition: background 200ms ease-in-out;
+    text-align: center;
+
+    &:hover {
+      background: $color-accent;
+    }
+
+    figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  .illustrator-meta-container {
+    display: none;
+    margin-top: 2em;
+  }
+
+  .illustrator-meta-label {
+    margin-bottom: 0;
+  }
+
+  .bricklayer-column-sizer {
+    width: 33.3333333333%;
+  }
+
+  .gallery-item {
+    margin: 0;
+    flex-basis: 33.3333333333%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+}
