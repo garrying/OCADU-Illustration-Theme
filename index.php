@@ -16,7 +16,10 @@
         <h1 class="title-primary">OCAD University<br> Illustration 2017</h1>
       </div>
     </div>
-    <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a>. Part of the 102<sup>nd</sup> Graduate Exhibition. May 3 to 7, 2017</p>
+    <p  class="title-secondary message-wrapper">
+       Part of the 102<sup>nd</sup> Graduate Exhibition. <br>May 3 to 7, 2017
+    </p>
+    <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a>.</p>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 

@@ -35,12 +35,14 @@
   }
 
   .title-secondary {
-    align-self: flex-end;
     @include heading-features;
     font-family: $sans-serif-light;
     font-size: 1em;
     line-height: 1.3em;
-    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .empty {
