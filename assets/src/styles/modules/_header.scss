@@ -53,18 +53,25 @@
   }
 }
 
+.home {
+  .header-items-wrapper {
+    padding: 0 30px;
+  }
+}
+
 .header-items-wrapper {
   display: flex;
   pointer-events: auto;
+  width: calc(30vw - 30px);
 }
 
 .header-item {
-  padding: 0 1em;
+  padding: 0 1em 0 0;
   line-height: 1em;
   color: $color-accent;
   font-family: $sans-serif-light;
   @include heading-features;
-  @include rsp-font(2.75vw, 18px);
+  @include rsp-font(2.5vw, 18px);
   transition: color 200ms ease-in-out;
 
   &.invert {

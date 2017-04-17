@@ -3,7 +3,6 @@
   margin: 80px auto;
 
   .illustrator-name {
-    line-height: 1em;
     color: $off-black;
   }
 
@@ -54,7 +53,7 @@
     position: absolute;
     object-fit: contain;
     opacity: 0;
-    transition: opacity 500ms ease-in-out, box-shadow 100ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
   }
 
   .lazyloaded {

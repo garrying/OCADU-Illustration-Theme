@@ -17,7 +17,7 @@
       </div>
     </div>
     <p  class="title-secondary message-wrapper">
-       Part of the 102<sup>nd</sup> Graduate Exhibition. <br>May 3 to 7, 2017
+      Part of the 102<sup>nd</sup> Graduate Exhibition. <br>May 3 to 7, 2017
     </p>
     <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a>.</p>
   </div>

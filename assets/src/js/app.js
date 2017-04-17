@@ -154,7 +154,7 @@ const fastClick = require('fastclick');
           { duration: 800, easing: [0.19, 1, 0.22, 1] },
         ).addClass('visible').attr('aria-hidden', false)
         .focus();
-        app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
+        // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
         $('html, body').addClass('lock-scroll');
 
         if (targetPanel === 'year-select') {
@@ -198,7 +198,7 @@ const fastClick = require('fastclick');
     },
 
     _ocadPanelsClose: () => {
-      app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
+      // app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
       $('html, body').removeClass('lock-scroll');
 
       $('.header-item').removeClass('invert inactive');
@@ -236,8 +236,8 @@ const fastClick = require('fastclick');
 
       if (app.settings.documentBody.hasClass('single')) {
         const galleryItems = (ele, i) => {
+          ele.dataset.index = i;
           const imageElement = $(ele);
-          imageElement.data('index', i);
           const imageSet = {
             index: i,
             url: imageElement.data('src-large'),

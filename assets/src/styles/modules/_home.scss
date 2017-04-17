@@ -5,6 +5,26 @@
   width: 70vw;
   background: $color-accent;
 
+  .illustrator-placeholder {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    background: $color-accent;
+    mix-blend-mode: lighten;
+    z-index: 10;
+  }
+
+  &:hover {
+    .lazyloaded {
+      opacity: 1;
+    }
+    img {
+      filter: grayscale(100%);
+    }
+    .illustrator-placeholder {
+      opacity: 1;
+    }
+  }
+
   @media screen and (max-width: $small-vp) {
     width: 100vw;
     padding: 20px;
@@ -21,15 +41,21 @@
     transition: background 200ms ease-in-out;
     text-align: center;
 
-    &:hover {
-      background: $color-accent;
-    }
-
     figure {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+    }
+
+    &:hover {
+      .lazyloaded {
+        opacity: 1;
+        filter: none;
+      }
+      .illustrator-placeholder {
+        opacity: 0;
+      }
     }
   }
 
