@@ -13,6 +13,15 @@
     z-index: 10;
   }
 
+  .wp-post-image {
+    transform: translateY(10px);
+    transition: opacity 500ms ease-in-out, transform 1s $easeOutBack;
+
+    &.lazyloaded {
+      transform: translateY(0);
+    }
+  }
+
   &:hover {
     .lazyloaded {
       opacity: 1;
