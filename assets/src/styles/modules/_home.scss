@@ -1,12 +1,11 @@
 .home-grid {
-  padding-left: 90px;
+
   display: flex;
   flex-wrap: wrap;
   width: 70vw;
-  background: $color-accent;
 
   .illustrator-placeholder {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 200ms ease-in-out;
     background: $color-accent;
     mix-blend-mode: lighten;
@@ -16,6 +15,7 @@
   .wp-post-image {
     transform: translateY(10px);
     transition: opacity 500ms ease-in-out, transform 1s $easeOutBack;
+    filter: grayscale(100%);
 
     &.lazyloaded {
       transform: translateY(0);
@@ -24,12 +24,6 @@
 
   &:hover {
     .lazyloaded {
-      opacity: 1;
-    }
-    img {
-      filter: grayscale(100%);
-    }
-    .illustrator-placeholder {
       opacity: 1;
     }
   }

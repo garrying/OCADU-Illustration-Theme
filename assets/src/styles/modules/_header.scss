@@ -30,8 +30,9 @@
   }
 
   .home &.initial {
-    background: $white;
-    color: $color-accent;
+    background: transparent;
+    color: $white;
+    box-shadow: inset 0 0 0 2px $white;
   }
 }
 

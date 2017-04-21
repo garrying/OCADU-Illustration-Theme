@@ -145,6 +145,16 @@
   }
 }
 
+#post-6 {
+  max-width: 60vw;
+
+  @media screen and (max-width: $small-vp) {
+    padding: 0 20px;
+    margin-top: 8em;
+    max-width: none;
+  }
+}
+
 .faculty-list {
   display: flex;
 

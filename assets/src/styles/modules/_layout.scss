@@ -157,5 +157,5 @@
 .section-indicator-single {
   font-family: $sans-serif-light;
   white-space: nowrap;
-  @include rsp-font(1.75vw, 18px);
+  @include rsp-font(2.5vw, 18px);
 }

@@ -11,7 +11,7 @@
 .year-item {
   color: darken($color-accent, 20%);
   font-family: $sans-serif-light;
-  @include rsp-font(8vw, 18px);
+  @include rsp-font(10vw, 18px);
   text-align: center;
   display: block;
   opacity: 0;
