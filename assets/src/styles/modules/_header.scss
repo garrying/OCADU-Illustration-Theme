@@ -54,7 +54,7 @@
 
   @media screen and (max-width: $small-vp) {
     left: 20px;
-    right: 0;
+    right: 20px;
     top: 10px;
   }
 }
@@ -64,6 +64,7 @@
   width: calc(30vw - 30px);
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
+    width: 50%;
   }
 }
 
