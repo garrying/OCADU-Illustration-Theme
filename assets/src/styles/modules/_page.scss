@@ -81,10 +81,6 @@
     font-family: $sans-serif-light;
     @include rsp-font(2.1vw, 18px);
 
-    @media screen and (max-width: $medium-vp)  {
-      left: 20px;
-    }
-
     @media screen and (max-width: $small-vp) {
       display: none;
     }
