@@ -1,28 +1,40 @@
+.home {
+  .heading-inner {
+    right: 20px;
+  }
+  .header-items-wrapper {
+    width: calc(35vw - 40px);
+  }
+}
+
 .home-grid {
 
   display: flex;
   flex-wrap: wrap;
-  width: 70vw;
+  width: 65vw;
 
   .illustrator-placeholder {
     opacity: 1;
-    transition: opacity 200ms ease-in-out;
+    transition: background 200ms ease-in-out;
     background: $color-accent;
-    mix-blend-mode: lighten;
     z-index: 10;
+    width: 100%;
   }
 
-  .wp-post-image {
-    transform: translateY(10px);
-    transition: opacity 500ms ease-in-out, transform 1s $easeOutBack;
-    filter: grayscale(100%);
-
-    &.lazyloaded {
-      transform: translateY(0);
-    }
+  .illustrator-image .wp-post-image {
+    object-fit: cover;
+    transition: opacity 500ms ease-in-out;
+    width: 100%;
+    height: 100%;
   }
 
   &:hover {
+    .illustrator-placeholder {
+      mix-blend-mode: lighten;
+    }
+    .illustrator-image .wp-post-image {
+      filter: grayscale(100%);
+    }
     .lazyloaded {
       opacity: 1;
     }
@@ -35,36 +47,49 @@
   }
 
   .illustrator-link {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    transition: background 200ms ease-in-out;
-    text-align: center;
-
-    figure {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
 
     &:hover {
       .lazyloaded {
-        opacity: 1;
         filter: none;
       }
       .illustrator-placeholder {
         opacity: 0;
+        background: transparent;
       }
     }
   }
 
   .illustrator-meta-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-important;
+    opacity: 0;
     display: none;
-    margin-top: 2em;
+    background: $color-accent;
+    color: $white;
+    max-width: 500px;
+    box-shadow: 4px 4px 0 0 rgba($black, 0.2);
+
+    .illustrator-meta-label {
+      line-height: 1em;
+      font-family: $sans-serif-light;
+      @include heading-features;
+      @include rsp-font(4vw, 18px);
+    }
+
+    &.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .illustrator-content {
+      margin: 1em 0;
+    }
+
+    .illustrator-content-container {
+      padding: 1em;
+    }
   }
 
   .illustrator-meta-label {
@@ -76,10 +101,8 @@
   }
 
   .gallery-item {
-    margin: 0;
+    margin: 1px;
+    position: relative;
     flex-basis: 33.3333333333%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
   }
 }

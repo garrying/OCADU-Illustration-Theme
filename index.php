@@ -14,12 +14,12 @@
     <div class="title-unit title-unit-init active">
       <div class="unit">
         <h1 class="title-primary">OCAD University<br> Illustration 2017</h1>
+        <h2 class="title-primary"> Part of the 102<sup>nd</sup><br> GradEx<span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>May 3–7<br><a href="/introduction" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>Introduction</a></h2>
       </div>
     </div>
     <p  class="title-secondary message-wrapper">
-      Part of the 102<sup>nd</sup> Graduate Exhibition. <br>May 3 to 7, 2017
+     Spanning 2009–2017, the archive is maintained by the Illustration Department at OCAD University. <br><a href="/about" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span> About the archive</a>.
     </p>
-    <p class="title-secondary message-wrapper"><a href="/introduction" class="message">Introduction from Paul Dallas</a>.</p>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 

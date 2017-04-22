@@ -54,21 +54,19 @@
   }
 }
 
-.home {
-  .header-items-wrapper {
-    padding: 0 30px;
-  }
-}
-
 .header-items-wrapper {
   display: flex;
-  pointer-events: auto;
   width: calc(30vw - 30px);
 }
 
+.header-item-link {
+  padding: 0 3em 0 0;
+}
+
 .header-item {
-  padding: 0 1em 0 0;
+  padding: 0;
   line-height: 1em;
+  pointer-events: auto;
   color: $color-accent;
   font-family: $sans-serif-light;
   @include heading-features;

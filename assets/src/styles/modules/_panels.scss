@@ -24,6 +24,7 @@
   right: 30px;
   z-index: $z-important;
   display: block;
+  cursor: pointer;
 
   @media screen and (max-width: $small-vp) {
     display: none;

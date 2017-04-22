@@ -20,6 +20,7 @@ const fastClick = require('fastclick');
       app._fastClick();
       app._ocadPanelSelectButtons();
       app._ocadHomeLoader();
+      app._ocadHomeHover();
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
@@ -189,6 +190,25 @@ const fastClick = require('fastclick');
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         app._ocadMasonry(app.settings.masonryContainerHome);
+      }
+    },
+
+    _ocadHomeHover: () => {
+      if (app.settings.documentBody.hasClass('home')) {
+        $('.illustrator-link').on('mouseenter', (ele) => {
+          const term = $(ele.currentTarget).data('metaimage');
+          $(ele.currentTarget).find('.illustrator-meta-container').addClass('active');
+
+          $(ele.currentTarget).mousemove(e => {
+            const y = e.clientY + 10;
+            const x = e.clientX + 10;
+            $(ele.currentTarget).find('.illustrator-meta-container').css({ top: `${y}px`, left: `${x}px` });
+          });
+        });
+
+        $('.illustrator-link').on('mouseleave', (ele) => {
+          $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active');
+        });
       }
     },
 

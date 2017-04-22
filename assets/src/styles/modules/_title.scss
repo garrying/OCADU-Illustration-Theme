@@ -8,8 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30vw;
-  padding: 20px 30px;
+  width: 35vw;
+  padding: 4.5vw 20px 30px;
 
   @media screen and (max-width: $medium-vp) {
     width: 30vw;
@@ -28,10 +28,9 @@
 
   .title-primary {
     font-family: $sans-serif-light;
-    @include rsp-font(3.4vw, 18px);
+    @include rsp-font(4vw, 18px);
     @include heading-features;
     margin: 0;
-    white-space: nowrap;
   }
 
   .title-secondary {
@@ -47,5 +46,30 @@
 
   .empty {
     display: none;
+  }
+}
+
+
+.title-grph {
+  display: inline;
+
+  .loader-grph {
+    width: .7em;
+    height: .6em;
+    transform: rotate(45deg);
+  }
+
+  .loader-line {
+    stroke-width: 3;
+    stroke-dasharray: none;
+    stroke-dashoffset: none;
+    animation: none;
+  }
+
+  &.invert {
+    .loader-line {
+      stroke-width: 3;
+      stroke: $white;
+    }
   }
 }
