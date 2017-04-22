@@ -11,11 +11,6 @@
   width: 35vw;
   padding: 4.5vw 20px 30px;
 
-  @media screen and (max-width: $medium-vp) {
-    width: 30vw;
-    padding-left: 20px;
-  }
-
   @media screen and (max-width: $small-vp) {
     display: none;
   }

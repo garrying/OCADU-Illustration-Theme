@@ -46,7 +46,7 @@
 
 .bricklayer-column-sizer {
   display: none;
-  width: 33.333%;
+  width: 25%;
 
   @media screen and (max-width: $small-vp) {
     width: 50%;
@@ -57,11 +57,11 @@
   }
 
   @media screen and (min-width: $medium-vp) {
-    width: 25%;
+    width: 33.333%;
   }
 
   @media screen and (min-width: $large-vp) {
-    width: 16.6666667%;
+    width: 25%;
   }
 }
 

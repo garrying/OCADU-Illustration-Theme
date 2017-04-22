@@ -33,6 +33,11 @@
     background: transparent;
     color: $white;
     box-shadow: inset 0 0 0 2px $white;
+
+    @media screen and (max-width: $small-vp) {
+      background: $color-accent;
+      box-shadow: none;
+    }
   }
 }
 
@@ -57,10 +62,19 @@
 .header-items-wrapper {
   display: flex;
   width: calc(30vw - 30px);
+  @media screen and (max-width: $small-vp) {
+    justify-content: flex-end;
+  }
 }
 
 .header-item-link {
   padding: 0 3em 0 0;
+
+  @media screen and (max-width: $small-vp) {
+    &:last-child {
+      padding-right: 0;
+    }
+  }
 }
 
 .header-item {

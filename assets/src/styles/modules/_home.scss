@@ -4,6 +4,10 @@
   }
   .header-items-wrapper {
     width: calc(35vw - 40px);
+
+    @media screen and (max-width: $small-vp) {
+      width: 50%;
+    }
   }
 }
 
@@ -42,7 +46,7 @@
 
   @media screen and (max-width: $small-vp) {
     width: 100vw;
-    padding: 20px;
+    padding: 30px 0 0;
     margin: 50px 0 0;
   }
 
@@ -96,13 +100,17 @@
     margin-bottom: 0;
   }
 
-  .bricklayer-column-sizer {
-    width: 33.3333333333%;
-  }
-
   .gallery-item {
-    margin: 1px;
+    margin: 0;
+    display: none;
+    padding: 1px;
     position: relative;
     flex-basis: 33.3333333333%;
+  }
+
+  .bricklayer-column {
+    .gallery-item {
+      display: block;
+    }
   }
 }
