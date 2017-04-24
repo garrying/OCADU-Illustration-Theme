@@ -273,6 +273,7 @@ function ocadu_social_meta() {
     echo '<meta name="twitter:title" content="' . get_the_title() . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
     echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter' ) ) . '">' . "\n";
+    echo '<meta name="twitter:image:alt" content="' . get_post_meta( $post->ID, 'illu_title', true ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
 
