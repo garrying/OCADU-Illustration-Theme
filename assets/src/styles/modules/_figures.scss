@@ -56,7 +56,7 @@ figure {
     position: absolute;
     top: 1%;
     right: 1%;
-    bottom: 1%;
+    bottom: 65px;
     left: 1%;
     display: flex;
     align-items: center;
@@ -67,11 +67,10 @@ figure {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    max-width: 30vw;
+    max-width: 400px;
     font-size: 0.95em;
     z-index: $z-foreground;
-    padding: 10px;
-    background: $white;
+    padding: 5px;
   }
 
   .close-panel {
