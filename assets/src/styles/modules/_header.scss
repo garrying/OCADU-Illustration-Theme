@@ -11,7 +11,7 @@
   pointer-events: auto;
 
   &:hover {
-    background-color: $black;
+    background-color: $color-accent;
     color: $white;
   }
 
@@ -34,6 +34,10 @@
     color: $white;
     box-shadow: inset 0 0 0 2px $white;
 
+    &:hover {
+      background-color: transparent;
+    }
+
     @media screen and (max-width: $small-vp) {
       background: $color-accent;
       box-shadow: none;
@@ -44,7 +48,7 @@
 .heading-inner {
   position: fixed;
   top: 20px;
-  left: 30px;
+  left: 20px;
   right: 30px;
   pointer-events: none;
   z-index: $z-foreground;
@@ -84,9 +88,14 @@
   pointer-events: auto;
   color: $color-accent;
   font-family: $sans-serif-light;
+  white-space: nowrap;
   @include heading-features;
   @include rsp-font(2.5vw, 18px);
   transition: color 200ms ease-in-out;
+  
+  &:hover {
+    color: darken($color-accent, 20%);
+  }
 
   &.invert {
     color: $white;

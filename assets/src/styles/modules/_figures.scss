@@ -54,9 +54,9 @@ figure {
 
   .image-modal-image {
     position: absolute;
-    top: 1%;
+    top: 2%;
     right: 1%;
-    bottom: 65px;
+    bottom: 75px;
     left: 1%;
     display: flex;
     align-items: center;
@@ -71,6 +71,10 @@ figure {
     font-size: 0.95em;
     z-index: $z-foreground;
     padding: 5px;
+
+    @media screen and (max-width: $small-vp)  {
+      left: 20px;
+    }
   }
 
   .close-panel {

@@ -118,6 +118,10 @@
   display: flex;
   font-size: 0.5rem;
 
+  @media screen and (max-width: $small-vp) {
+    justify-content: flex-end;
+  }
+
   a {
     display: block;
     font-size: 10px;
@@ -136,11 +140,20 @@
     &:hover + .link-bg .loader-grph {
       opacity: 1;
     }
+
+    @media screen and (max-width: $small-vp) {
+      color: $color-accent;
+      background: rgba($color-accent, 0.075);
+    }
   }
 
   a +
   .link-bg {
     display: block;
+
+    @media screen and (max-width: $small-vp) {
+      display: none;
+    }
   }
 
   .link-bg {
@@ -153,12 +166,24 @@
     max-width: 100%;
     margin-top: 50%;
     transition: opacity 300ms ease-in-out;
+
+    @media screen and (max-width: $small-vp) {
+      display: none;
+    }
   }
 
   .nav-previous,
   .nav-next {
     &:empty {
       display: none;
+    }
+  }
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+
+    li {
+      margin-right: 1px;
     }
   }
 }
