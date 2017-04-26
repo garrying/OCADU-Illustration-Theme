@@ -14,7 +14,7 @@
     <div class="illustrator-meta-container">
       <div class="illustrator-content-container">
         <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
-          <h1 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?><span class="title-grph invert"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span></h1>
+          <h1 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?><?php if ( is_home() ) : ?><span class="title-grph invert"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span><?php endif; ?></h1>
         <?php endif; ?>
         <h2 class="illustrator-meta-label illustrator-name p-author"><?php the_title(); ?></h2>
         <?php if ( is_home() ) : ?>

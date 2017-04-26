@@ -17,6 +17,11 @@
   display: block;
   opacity: 0;
 
+
+  @media screen and (max-width: $small-vp) {
+    padding-bottom: 0.25em;
+  }
+
   &.active,
   &:hover {
     color: $white;
