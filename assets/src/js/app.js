@@ -166,7 +166,7 @@ const fastClick = require('fastclick');
             );
           });
         }
-        if (targetPanel === 'search-container') {
+        if (targetPanel === 'search-container' && window.matchMedia('(min-width: 600px)').matches) {
           app.settings.searchField.focus();
         }
       }
