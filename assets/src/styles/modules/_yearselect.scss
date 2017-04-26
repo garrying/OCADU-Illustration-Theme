@@ -23,7 +23,8 @@
   }
 
   &.active,
-  &:hover {
+  &:focus,
+  &:hover, {
     color: $white;
   }
 }
