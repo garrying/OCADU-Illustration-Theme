@@ -242,11 +242,11 @@ function get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' == $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?4362984378';
+    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?7926117494';
   }
 
   if ( empty( $socialimg ) ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?4362984378';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?7926117494';
   }
 
   return $socialimg;
