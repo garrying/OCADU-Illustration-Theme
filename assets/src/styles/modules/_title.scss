@@ -15,6 +15,11 @@
     display: none;
   }
 
+  @media screen and (max-width: $ipad-vp) {
+    width: 40vw;
+  }
+
+
   .title-unit {
     height: 100%;
     align-items: center;
@@ -26,6 +31,10 @@
     @include rsp-font(4vw, 18px);
     @include heading-features;
     margin: 0;
+
+    @media screen and (max-width: $ipad-vp) {
+      @include rsp-font(4.4vw, 18px);
+    }
   }
 
   .title-secondary {

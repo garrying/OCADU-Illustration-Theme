@@ -41,7 +41,7 @@
       opacity: 1;
     }
 
-    @media screen and (max-width: $small-vp)  {
+    @media screen and (max-width: $ipad-vp)  {
       margin: 0 1px 1px 0;
     }
   }
@@ -51,6 +51,10 @@
   position: relative;
   flex: 1 1 30%;
   color: #555;
+
+  @media screen and (max-width: $ipad-vp) {
+    font-size: .85em;
+  }
 
   @media screen and (max-width: $small-vp) {
     padding: 20px;
@@ -67,6 +71,11 @@
     height: 100%;
     flex-flow: row wrap;
     align-items: center;
+
+    @media screen and (max-width: $ipad-vp) {
+      width: calc(33% - 20px);
+      right: 20px;
+    }
 
     @media screen and (max-width: $small-vp) {
       right: 0;
@@ -87,6 +96,7 @@
 
   .illustrator-meta-name {
     font-family: $sans-serif-light;
+    margin-bottom: 0.5em;
     @include rsp-font(1vw, 16px);
   }
 }
@@ -95,6 +105,11 @@
   display: flex;
   align-items: baseline;
   margin-top: 4em;
+
+
+  @media screen and (max-width: $ipad-vp) {
+    flex-direction: column;
+  }
 
   @media screen and (max-width: $small-vp) {
     margin: 2em 0;
@@ -195,6 +210,7 @@
   align-items: center;
   width: 100%;
   bottom: 0;
+  left: 0;
 
   @media screen and (max-width: $small-vp) {
     position: relative;

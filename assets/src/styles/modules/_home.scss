@@ -5,6 +5,10 @@
   .header-items-wrapper {
     width: calc(35vw - 40px);
 
+    @media screen and (max-width: $ipad-vp) {
+      width: calc(40vw - 40px);
+    }
+
     @media screen and (max-width: $small-vp) {
       width: 50%;
     }
@@ -42,6 +46,10 @@
     .lazyloaded {
       opacity: 1;
     }
+  }
+
+  @media screen and (max-width: $ipad-vp) {
+    width: 60vw;
   }
 
   @media screen and (max-width: $small-vp) {
