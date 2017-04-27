@@ -357,6 +357,7 @@ function ocadu_gallery_filter( $attr ) {
   if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
     unset( $attr['src'] );
+    unset( $attr['srcset'] );
   }
   $attr['alt'] = 'Illustration by ' . get_the_title() . '';
   $attr['class'] = 'lazyload';
