@@ -196,10 +196,9 @@ const fastClick = require('fastclick');
     _ocadHomeHover: () => {
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          const term = $(ele.currentTarget).data('metaimage');
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active');
 
-          $(ele.currentTarget).mousemove(e => {
+          $(ele.currentTarget).mousemove((e) => {
             const y = e.clientY + 10;
             const x = e.clientX + 10;
             $(ele.currentTarget).find('.illustrator-meta-container').css({ top: `${y}px`, left: `${x}px` });
