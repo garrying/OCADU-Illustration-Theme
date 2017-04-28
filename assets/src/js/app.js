@@ -69,7 +69,9 @@ const fastClick = require('fastclick');
           colorSetter(e);
         });
         $('img').on('mouseenter', (e) => {
-          colorSetter(e);
+          if ($(e.target).hasClass('lazyloaded')) {
+            colorSetter(e);
+          }
         });
       } else {
         app.settings.logo.addClass('initial');
