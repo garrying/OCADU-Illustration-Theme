@@ -21,6 +21,12 @@
       margin-right: 0;
     }
   }
+
+  .bricklayer-column {
+    @media screen and (max-width: $small-vp) {
+      flex-basis: 50%;
+    }
+  }
 }
 
 .gallery-grid {
@@ -41,6 +47,7 @@
 
   @media screen and (max-width: $small-vp) {
     margin: 0;
+
     .bricklayer-column:last-child {
       .gallery-item {
         margin-right: 0;

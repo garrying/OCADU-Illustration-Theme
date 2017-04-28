@@ -46,7 +46,11 @@
   }
 
   .gallery-item {
-    margin: 0 15% 8% 0;
+    margin: 0 15% 4% 0;
+
+    @media screen and (max-width: $small-vp) {
+      margin-right: 7%;
+    }
   }
 
   .illustrator-link {
@@ -57,6 +61,14 @@
   .illustrator-link:hover {
     .illustrator-title {
       color: $color-accent;
+    }
+  }
+
+  .bricklayer-column:last-child {
+    .gallery-item {
+      @media screen and (max-width: $small-vp) {
+        margin-left: 7%;
+      }
     }
   }
 }
