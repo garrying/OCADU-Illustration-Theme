@@ -10,19 +10,19 @@
 }
 
 .search-form {
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
   @include rsp-font(3vw, 18px);
 
   .search-field {
-    font-family: $sans-serif-light;
     box-sizing: border-box;
-    @include font-smoothing(on);
-    background: $white;
-    border: 0;
-    color: $color-accent;
     padding: 15px;
+    font-family: $sans-serif-light;
+    @include font-smoothing(on);
+    color: $white;
+    background: darken($color-accent, 20%);
+    border: 0;
 
     &:focus {
       outline-style: none;
@@ -35,30 +35,31 @@
   }
 
   .search-submit {
-    background: $white;
-    color: $color-accent;
-    font-family: $sans-serif-light;
-    @include font-smoothing(on);
-    margin-left: 4px;
     padding: 15px;
+    margin-left: 4px;
+    font-family: $sans-serif-light;
+    color: $color-accent;
+    background: $white;
+    @include font-smoothing(on);
   }
 }
 
 .autocomplete-suggestions {
-  padding-top: 15px;
   position: static !important;
+  padding-top: 15px;
   @include rsp-font(3vw, 18px);
 }
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: rgba($white, 0.75);
+  color: darken($color-accent, 20%);
   cursor: pointer;
+  transition: color 200ms ease-in-out;
 
   &:hover,
   strong {
-    color: $white;
     font-weight: normal;
+    color: $white;
   }
 }
 
@@ -82,9 +83,9 @@
   left: calc(50% - 1em/2);
   display: none;
   width: 1em;
-  border-radius: 50%;
   height: 1em;
   background: $white;
+  border-radius: 50%;
   animation-name: shake;
   animation-duration: 1s;
   animation-fill-mode: both;

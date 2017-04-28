@@ -8,30 +8,12 @@ input {
 
 button {
   @include font-features-body;
+  font-size: inherit;
   cursor: pointer;
   background: transparent;
   border: 0;
-  font-size: inherit;
 
   &:focus {
     outline: thin dotted;
   }
 }
-
-// Placeholder styling
-
-// ::-webkit-input-placeholder {
-//   color: rgba($white, 0.75);
-// }
-
-// :-moz-placeholder {
-//   color: rgba($white, 0.75);
-// }
-
-// ::-moz-placeholder {
-//   color: rgba($white, 0.75);
-// }
-
-// :-ms-input-placeholder {
-//   color: rgba($white, 0.75);
-// }
