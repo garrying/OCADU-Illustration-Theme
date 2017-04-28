@@ -1,23 +1,23 @@
 .logo {
-  line-height: 1em;
   display: block;
+  width: 60px;
+  height: 60px;
+  padding: 0.5em;
+  font-size: 10px;
+  line-height: 1em;
   color: $white;
   @include heading-features;
-  height: 60px;
-  width: 60px;
-  font-size: 10px;
-  padding: 0.5em;
-  transition: background 400ms ease-in-out, color 400ms ease-in-out;
   pointer-events: auto;
+  transition: background 400ms ease-in-out, color 400ms ease-in-out;
 
   &:hover {
-    background-color: $color-accent;
     color: $white;
+    background-color: $color-accent;
   }
 
   &.invert {
-    background-color: $white !important;
     color: $color-accent !important;
+    background-color: $white !important;
   }
 
   &.black {
@@ -25,13 +25,13 @@
   }
 
   &.initial {
-    background: $color-accent;
     color: $white;
+    background: $color-accent;
   }
 
   .home &.initial {
-    background: transparent;
     color: $white;
+    background: transparent;
     box-shadow: inset 0 0 0 2px $white;
 
     &:hover {
@@ -45,27 +45,35 @@
   }
 }
 
+body:not(.home) {
+  .logo:hover {
+    color: $white !important;
+    background-color: $color-accent !important;
+  }
+}
+
 .heading-inner {
   position: fixed;
   top: 20px;
-  left: 20px;
   right: 30px;
-  pointer-events: none;
+  left: 20px;
   z-index: $z-foreground;
   display: flex;
+  pointer-events: none;
   align-items: center;
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    left: 20px;
-    right: 20px;
     top: 10px;
+    right: 20px;
+    left: 20px;
   }
 }
 
 .header-items-wrapper {
   display: flex;
   width: calc(30vw - 30px);
+
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
     width: 50%;
@@ -84,16 +92,17 @@
 
 .header-item {
   padding: 0;
-  line-height: 1em;
-  pointer-events: auto;
-  color: $color-accent;
   font-family: $sans-serif-light;
+  line-height: 1em;
+  color: $color-accent;
   white-space: nowrap;
+  pointer-events: auto;
   @include heading-features;
   @include rsp-font(2.5vw, 18px);
   transition: color 200ms ease-in-out;
-  
-  &:hover {
+
+  &:hover,
+  &:focus {
     color: darken($color-accent, 20%);
   }
 
