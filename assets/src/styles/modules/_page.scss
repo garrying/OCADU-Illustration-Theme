@@ -23,7 +23,7 @@
   }
 
   @media screen and (max-width: $medium-vp) {
-    width: 75vw;
+    width: 77vw;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -46,10 +46,11 @@
   }
 
   .gallery-item {
-    margin: 0 15% 4% 0;
+    margin: 0 5% 4%;
 
     @media screen and (max-width: $small-vp) {
-      margin-right: 7%;
+      margin-right: 5%;
+      margin-left: 0;
     }
   }
 
@@ -67,7 +68,12 @@
   .bricklayer-column:last-child {
     .gallery-item {
       @media screen and (max-width: $small-vp) {
-        margin-left: 7%;
+        margin-right: 0;
+        margin-left: 5%;
+      }
+
+      @media screen and (max-width: $smallest-vp) {
+        margin: 0;
       }
     }
   }
