@@ -37,7 +37,7 @@
     object-fit: cover;
   }
 
-  @media screen and (max-width: $ipad-vp) {
+  @media screen and (min-width: $ipad-vp) {
     &:hover {
       .illustrator-placeholder {
         mix-blend-mode: lighten;
@@ -51,7 +51,9 @@
         opacity: 1;
       }
     }
+  }
 
+  @media screen and (max-width: $ipad-vp) {
     width: 60vw;
   }
 
