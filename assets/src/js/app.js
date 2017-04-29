@@ -307,7 +307,7 @@ const fastClick = require('fastclick');
         image.id = 'full-image';
         image.className = 'image-modal-container-full-image lazyload';
         image.dataset.srcset = imageSource.data('srcset');
-        image.sizes = 'auto';
+        image.sizes = imageSource.data('sizes');
         image.dataset.src = imageSource.data('src-large');
         return image;
       };

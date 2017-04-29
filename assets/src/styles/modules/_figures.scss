@@ -16,16 +16,16 @@ figure {
 .image-modal-container-full-image {
   position: relative;
   z-index: $z-middle;
-  user-select: none;
-  object-fit: contain;
   max-width: 100%;
   max-height: 100%;
+  user-select: none;
+  object-fit: contain;
 }
 
 .gallery-icon-anchor {
-  cursor: zoom-in;
-  display: block;
   position: relative;
+  display: block;
+  cursor: zoom-in;
 
   img {
     margin: 0 auto;
@@ -44,9 +44,9 @@ figure {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: $z-foreground;
   overflow: auto;
   background: $site-background;
-  z-index: $z-foreground;
 
   @media screen and (max-width: $medium-vp)  {
     left: 0;
@@ -83,14 +83,14 @@ figure {
 
   .close-btn {
     path {
-      stroke-width: 1;
       stroke: $color-accent;
+      stroke-width: 1;
     }
   }
 }
 
 .gallery-icon-placeholder {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
   height: auto;
 }
