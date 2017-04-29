@@ -156,6 +156,17 @@
       }
     }
   }
+
+  .wiggle {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1em;
+
+    svg {
+      width: 1.5em;
+      height: auto;
+    }
+  }
 }
 
 #post-6 {
