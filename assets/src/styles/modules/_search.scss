@@ -13,9 +13,11 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin: 0 20px;
   @include rsp-font(3vw, 18px);
 
   .search-field {
+    width: 100%;
     box-sizing: border-box;
     padding: 15px;
     font-family: $sans-serif-light;
@@ -47,6 +49,7 @@
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
+  padding-left: 15px;
   @include rsp-font(3vw, 18px);
 }
 
