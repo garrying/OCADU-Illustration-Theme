@@ -1,5 +1,4 @@
 .archive-grid {
-  width: 80vw;
   margin: 80px auto;
 
   .illustrator-name {
@@ -100,30 +99,16 @@
   }
 }
 
-.archive {
-
-  .section-indicator-index {
-    position: fixed;
-    left: 30px;
-    z-index: $z-background;
-    display: flex;
-    height: 100%;
-    bottom: 0;
-    background: none;
-    align-items: center;
-    font-family: $sans-serif-light;
-    @include rsp-font(2.1vw, 18px);
-
-    @media screen and (max-width: $small-vp) {
-      display: none;
-    }
-  }
-}
-
-.colophon {
-  position: absolute;
+.section-indicator-index {
+  position: fixed;
+  left: 20px;
+  z-index: $z-background;
+  display: flex;
+  height: 100%;
   bottom: 0;
-  margin: 0 0 20px;
+  align-items: center;
+  font-family: $sans-serif-light;
+  @include rsp-font(2.1vw, 18px);
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -171,17 +156,6 @@
       }
     }
   }
-
-  .wiggle {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 1em;
-
-    svg {
-      width: 1.5em;
-      height: auto;
-    }
-  }
 }
 
 #post-6 {
@@ -220,8 +194,8 @@
   }
 
   .entry-title {
-    margin: 0 0 .5em;
-    font-family: 'GT America Standard Light';
+    margin: 0 0 0.5em;
+    font-family: $sans-serif-light;
     @include rsp-font(5vw, 48px);
   }
 
@@ -239,5 +213,4 @@
     stroke-width: 1px;
     stroke-linecap: round;
   }
-
 }

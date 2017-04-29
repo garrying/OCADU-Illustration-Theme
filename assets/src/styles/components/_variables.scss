@@ -1,5 +1,5 @@
 // Typography
-$sans-serif-system: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
+$sans-serif-system: -apple-system,BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 $sans-serif: 'GT America Standard Regular', $sans-serif-system;
 $sans-serif-light: 'GT America Standard Light', $sans-serif-system;
 
@@ -8,15 +8,10 @@ $sans-serif-light: 'GT America Standard Light', $sans-serif-system;
 $white: #fff;
 $black: #000;
 $off-black: #0e0e0f;
-$color-accent: #0000FF;
+$color-accent: #00f;
 
 $site-background: $white;
 $site-font-color: #333;
-
-// Modular scaled font sizes
-
-$ms-1: 1.618034em;
-$ms-2: 2.6180340252em;
 
 // Easings
 

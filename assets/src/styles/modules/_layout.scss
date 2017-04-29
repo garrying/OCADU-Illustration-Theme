@@ -21,17 +21,16 @@
   }
 
   .gallery-item {
-    margin: 0 7% 7% 0;
-
     display: flex;
+    margin: 0 7% 7% 0;
     justify-content: center;
     align-items: center;
 
     img {
-      transition: opacity 180ms ease-in-out;
       position: absolute;
       object-fit: contain;
       opacity: 0;
+      transition: opacity 180ms ease-in-out;
     }
 
     .lazyloaded {
@@ -50,7 +49,7 @@
   color: #555;
 
   @media screen and (max-width: $ipad-vp) {
-    font-size: .85em;
+    font-size: 0.85em;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -70,13 +69,13 @@
     align-items: center;
 
     @media screen and (max-width: $ipad-vp) {
-      width: calc(33% - 20px);
       right: 20px;
+      width: calc(33% - 20px);
     }
 
     @media screen and (max-width: $small-vp) {
-      right: 0;
       position: relative;
+      right: 0;
       width: 100%;
     }
   }
@@ -86,14 +85,14 @@
   }
 
   .thesis-title {
-    font-family: $sans-serif-light;
     margin-bottom: 0.5em;
+    font-family: $sans-serif-light;
     @include rsp-font(1.5vw, 18px);
   }
 
   .illustrator-meta-name {
-    font-family: $sans-serif-light;
     margin-bottom: 0.5em;
+    font-family: $sans-serif-light;
     @include rsp-font(1vw, 16px);
   }
 }
@@ -102,7 +101,6 @@
   display: flex;
   align-items: baseline;
   margin-top: 4em;
-
 
   @media screen and (max-width: $ipad-vp) {
     flex-direction: column;
