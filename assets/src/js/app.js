@@ -192,6 +192,7 @@ const fastClick = require('fastclick');
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         app._ocadMasonry(app.settings.masonryContainerHome);
+        $(app.settings.masonryContainerHome).addClass('ready');
       }
     },
 

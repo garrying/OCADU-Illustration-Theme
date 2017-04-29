@@ -123,8 +123,29 @@
   }
 
   .bricklayer-column {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+
     .gallery-item {
       display: block;
+    }
+  }
+
+  &.ready {
+    .bricklayer-column {
+      opacity: 1;
+    }
+
+    .bricklayer-column:nth-child(2) {
+      transition-delay: 400ms;
+    }
+
+    .bricklayer-column:nth-child(3) {
+      transition-delay: 300ms;
+    }
+
+    .bricklayer-column:nth-child(4) {
+      transition-delay: 200ms;
     }
   }
 }
