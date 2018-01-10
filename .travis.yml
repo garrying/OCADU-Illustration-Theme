@@ -18,6 +18,11 @@ php:
   # Current $required_php_version for WordPress: 5.2.4
   - "5.2"
 
+# Ditch sudo and use containers.
+# @link http://docs.travis-ci.com/user/migrating-from-legacy/#Why-migrate-to-container-based-infrastructure%3F
+# @link http://docs.travis-ci.com/user/workers/container-based-infrastructure/#Routing-your-build-to-container-based-infrastructure
+sudo: false
+
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
 env:
@@ -56,7 +61,7 @@ before_script:
   - cd php-codesniffer
   # Set install path for WordPress Coding Standards.
   # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
-  - scripts/phpcs --config-set installed_paths ../wordpress-coding-standards
+  - bin/phpcs --config-set installed_paths ../wordpress-coding-standards
   # Hop into themes directory.
   - cd $theme_dir
   # After CodeSniffer install you should refresh your path.
