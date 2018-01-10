@@ -14,9 +14,19 @@
 
           <?php the_content(); ?>
 
-          <meta itemprop="description" content="<?php $text = strip_tags( get_the_content() ); echo esc_html( wptexturize( $text ) ) ?>">
+          <meta itemprop="description" content="
+            <?php
+              $text = strip_tags( get_the_content() );
+              echo esc_html( wptexturize( $text ) );
+            ?>
+          ">
           <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
-          <meta itemprop="image" content="<?php $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ); echo esc_html( $image ) ?>">
+          <meta itemprop="image" content="
+            <?php
+              $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+              echo esc_html( $image );
+            ?>
+          ">
 
         </div>
 
@@ -27,7 +37,7 @@
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <div itemprop="url">
-                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ) ?>">
+                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                   <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
@@ -39,7 +49,7 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <div itemprop="url">
-                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ) ?>">
+                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
                   <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
@@ -51,13 +61,13 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
               <div class="email" itemprop="email">
-                <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ) ?></a>
+                <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
               </div>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
               <div class="phone" itemprop="telephone">
-                <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ) ?>
+                <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ); ?>
               </div>
             <?php endif; ?>
           </div>
@@ -65,25 +75,37 @@
       </div>
 
       <div class="illustrator-nav-single-wrapper">
-        <?php if ( is_singular( 'illustrator' ) ) {
+        <?php
+        if ( is_singular( 'illustrator' ) ) {
           $term = get_the_terms( $post->ID, 'gradyear' )[0];
           if ( isset( $term->name ) ) {
-            echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index">' . esc_html( $term->name ) . '</a>';
+				echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index">' . esc_html( $term->name ) . '</a>';
           };
-        }?>
-        <ul class="illustrator-nav-single">
-          <li class="nav-previous"><?php previous_post_link_plus( array(
+        }
+        ?>
+                  <li class="nav-previous">
+                  <?php
+        previous_post_link_plus(
+             array(
             'order_by' => 'post_title',
             'format' => '%link',
             'in_same_tax' => true,
             'link' => '<span class="name previous-link">%title</span>',
-          ) ); ?><div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?></div></li>
-          <li class="nav-next"><?php next_post_link_plus( array(
+          )
+            );
+          ?>
+          <div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?>                  <li class="nav-next">
+          <?php
+        next_post_link_plus(
+             array(
             'order_by' => 'post_title',
             'format' => '%link',
             'in_same_tax' => true,
             'link' => '<span class="name next-link">%title</span>',
-          ) ); ?><div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?></div></li>
+          )
+            );
+          ?>
+          <div class="alt-animation link-bg"><?php get_template_part( 'assets/dist/images/loader-horizontal.svg' ); ?></div></li>
         </ul><!-- .llustrator-nav-single -->
       </div>
 

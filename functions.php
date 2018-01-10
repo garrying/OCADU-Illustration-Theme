@@ -204,7 +204,7 @@ function ocadu_search_filter( $query ) {
   return $query;
 }
 
-add_filter( 'pre_get_posts','ocadu_search_filter' );
+add_filter( 'pre_get_posts', 'ocadu_search_filter' );
 
 /**
  * Use proper ellipses for excerpts
