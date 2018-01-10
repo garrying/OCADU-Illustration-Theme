@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
-<?php if ( is_archive() ) {
+<?php
+if ( is_archive() ) {
     $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) )->name;
     echo '<div class="section-indicator-index"><span class="section-indicator">';
     if ( isset( $selected_year ) ) {
@@ -14,10 +15,13 @@
   
   <?php if ( have_posts() ) : ?>
 
-    <?php query_posts( $query_string . '&orderby=title&order=ASC' );?>
+    <?php query_posts( $query_string . '&orderby=title&order=ASC' ); ?>
 
     <?php /* Start the Loop */ ?>
-    <?php while ( have_posts() ) : the_post(); ?>
+    <?php
+      while ( have_posts() ) :
+      the_post();
+    ?>
 
       <?php
         get_template_part( 'content', get_post_format() );

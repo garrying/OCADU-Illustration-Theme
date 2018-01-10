@@ -50,7 +50,7 @@
           $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
           if ( is_singular( 'illustrator' ) ) {
             // Selected menu state for individual items.
-            $terms = get_the_terms( $post->ID , 'gradyear' );
+            $terms = get_the_terms( $post->ID, 'gradyear' );
             foreach ( $terms as $term ) {
               $selected_year = $term->name;
             }
@@ -65,7 +65,8 @@
         <div id="panel-year-select" class="year-select panel" aria-hidden="true" tabindex="-1">
           <div class="panel-inner">
             <ul class="year-select-wrapper">
-              <?php foreach ( $grad_year as $year ) {
+              <?php
+              foreach ( $grad_year as $year ) {
                 if ( isset( $selected_year ) && $selected_year == $year->name ) {
                   $selected_year_class = 'active';
                 } else {
