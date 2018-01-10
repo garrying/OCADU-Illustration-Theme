@@ -1,4 +1,4 @@
-<?php $categories = get_the_terms( $this->ID , 'gradyear' ); ?>
+<?php $categories = get_the_terms( $this->ID, 'gradyear' ); ?>
 
 <?php if ( $categories ) : ?>
   <div class="amp-wp-meta amp-wp-posted-on">

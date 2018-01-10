@@ -25,7 +25,7 @@
     <ul itemscope itemtype="http://schema.org/Person">
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) : ?>
         <li class="truncate" itemprop="url">
-          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) ?>">
+          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ); ?>">
             <?php
               $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) );
               $url = preg_replace( '#^https?://#', '', $url );
@@ -37,7 +37,7 @@
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ) : ?>
         <li class="truncate" itemprop="url">
-          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ) ?>">
+          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ); ?>">
             <?php
               $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) );
               $url = preg_replace( '#^https?://#', '', $url );
@@ -49,13 +49,13 @@
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) : ?>
         <li class="email truncate" itemprop="email">
-          <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?></a>
+          <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ); ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ); ?></a>
         </li>
       <?php endif; ?>
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) : ?>
         <li class="phone" itemprop="telephone">
-          <?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) ?>
+          <?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ); ?>
         </li>
       <?php endif; ?>
     </ul>
