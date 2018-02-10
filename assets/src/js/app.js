@@ -145,8 +145,7 @@ const fastClick = require('fastclick');
       } else {
         $('.panel.visible').removeClass('visible').velocity({ translateY: '100%' }, 'fast')
           .attr('aria-hidden', true);
-        $('.year-item').velocity('stop').velocity(
-          { opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
+        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
 
         $('.header-item').addClass('inactive').removeClass('invert');
         app.settings.logo.addClass('invert');
@@ -156,16 +155,14 @@ const fastClick = require('fastclick');
           { translateY: ['0%', '100%'] },
           { duration: 800, easing: [0.19, 1, 0.22, 1] },
         ).addClass('visible').attr('aria-hidden', false)
-        .focus();
+          .focus();
         // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
         $('html, body').addClass('lock-scroll');
 
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
             const item = $(ele);
-            item.delay(100 * index).velocity(
-              { opacity: 1, transformdisplay: 'flex' },
-            );
+            item.delay(100 * index).velocity({ opacity: 1, transformdisplay: 'flex' });
           });
         }
         if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
@@ -289,18 +286,18 @@ const fastClick = require('fastclick');
         galleryImages.map(miniViewItem);
       }
 
-      /**
-      * Updates miniview to corresponding element
-      **/
+      /*
+        Updates miniview to corresponding element
+      */
 
       const miniViewUpdate = (item) => {
         $('.mini-item-inner').removeClass('active');
         $('.mini-item-inner').eq(item).addClass('active');
       };
 
-      /**
-      * Creates initial image element
-      **/
+      /*
+        Creates initial image element
+      */
 
       const imageModalSetter = (imageSource) => {
         const image = new Image();
@@ -313,9 +310,9 @@ const fastClick = require('fastclick');
         return image;
       };
 
-      /**
-      * Displays relevant caption
-      **/
+      /*
+        Displays relevant caption
+      */
 
       const imageCaptionSetter = (imageCaption) => {
         const imageCaptionContainer = $('.image-modal-caption');
@@ -333,9 +330,9 @@ const fastClick = require('fastclick');
         }
       };
 
-      /**
-      * Masonry item click
-      **/
+      /*
+        Masonry item click
+      */
 
       $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', (event) => {
         event.preventDefault();
@@ -363,9 +360,9 @@ const fastClick = require('fastclick');
         });
       };
 
-      /**
-      * Modal image changer
-      **/
+      /*
+        Modal image changer
+      */
 
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
         $.Velocity.animate(
@@ -389,9 +386,9 @@ const fastClick = require('fastclick');
         });
       };
 
-      /**
-      * Click event for miniview navigation
-      **/
+      /*
+        Click event for miniview navigation
+      */
 
       $('.miniview').on('click', '.mini-item', (ele) => {
         app._ocadLoader();
@@ -400,9 +397,9 @@ const fastClick = require('fastclick');
         modalImageChanger();
       });
 
-      /**
-      * Handles progressing through the gallery
-      **/
+      /*
+        Handles progressing through the gallery
+      */
 
       const nextElement = (direction) => {
         app._ocadLoader();
@@ -427,17 +424,17 @@ const fastClick = require('fastclick');
         miniViewUpdate(app.settings.imageIndex);
       };
 
-      /**
-      * Click event for cycling through images
-      **/
+      /*
+        Click event for cycling through images
+      */
 
       $('.image-modal-container').on('click', 'img', () => {
         nextElement();
       });
 
-      /**
-      * Lazyload events
-      **/
+      /*
+        Lazyload events
+      */
 
       document.addEventListener('lazybeforeunveil', (e) => {
         if ($(e.target).is('#full-image')) {
@@ -445,9 +442,9 @@ const fastClick = require('fastclick');
         }
       });
 
-      /**
-      * Keyboard event for cycling through images
-      **/
+      /*
+        Keyboard event for cycling through images
+      */
 
       $(document).keydown((e) => {
         if (app.settings.imageModal.is(':visible')) {
@@ -479,17 +476,17 @@ const fastClick = require('fastclick');
     },
   };
 
-  /**
-  * Window load ready
-  **/
+  /*
+    Window load ready
+  */
 
   $(window).on('load', () => {
     app._ocadLoader(false);
   });
 
-  /**
-  * Initialize
-  **/
+  /*
+    Initialize
+  */
 
   app.init();
 })();
