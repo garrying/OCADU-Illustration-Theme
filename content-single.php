@@ -83,6 +83,7 @@
           };
         }
         ?>
+        <ul class="illustrator-nav-single">
                   <li class="nav-previous">
                   <?php
         previous_post_link_plus(
