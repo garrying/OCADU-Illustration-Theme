@@ -23,7 +23,7 @@
     <exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing" />
 
     <!-- Redfined -->
-    <rule ref="WordPress.WP.EnqueuedResources.NonEnqueuedScript">
+    <rule ref="WordPress.WP.EnqueuedResources">
       <type>warning</type>
     </rule>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
