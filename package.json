@@ -6,8 +6,8 @@
   "author": "Garry Ing <garry.ing@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "webpack --progress --colors --watch",
-    "build": "webpack -p --progress --colors --devtool hidden-source-map"
+    "watch": "webpack --mode development --progress --colors --watch",
+    "build": "webpack -p --mode production --progress --colors"
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",
