@@ -107,8 +107,7 @@
   height: 100%;
   bottom: 0;
   align-items: center;
-  font-family: $sans-serif-light;
-  @include rsp-font(2.1vw, 18px);
+  @include rsp-font(1vw, 18px);
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -207,7 +206,7 @@
   .entry-title {
     margin: 0 0 0.5em;
     font-family: $sans-serif-light;
-    @include rsp-font(5vw, 48px);
+    @include rsp-font(1vw, 48px);
   }
 
   .error-line-svg {

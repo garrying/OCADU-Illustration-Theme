@@ -10,7 +10,6 @@ window.jQuery = window.$ = $;
 require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('lazysizes');
-const ColorThief = require('./libs/color-thief');
 const Bricklayer = require('bricklayer');
 const fastClick = require('fastclick');
 
@@ -24,7 +23,6 @@ const fastClick = require('fastclick');
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
-      app._ocadImgHover();
     },
 
     settings: {
@@ -45,37 +43,6 @@ const fastClick = require('fastclick');
 
     _fastClick: () => {
       fastClick.attach(document.body);
-    },
-
-    _colorSample: (imageItem) => {
-      const colorThief = new ColorThief();
-      return colorThief.getColor(imageItem);
-    },
-
-    _colorContrast: (domColorR, domColorG, domColorB) => {
-      const yiq = ((domColorR * 299) + (domColorG * 587) + (domColorB * 114)) / 1000;
-      return (yiq >= 128) ? 'black' : '';
-    },
-
-    _ocadImgHover: () => {
-      const colorSetter = (e) => {
-        const domColor = app._colorSample(e.target);
-        app.settings.logo.css('background', `rgba(${domColor[0]}, ${domColor[1]}, ${domColor[2]}, 1)`);
-        app.settings.logo.removeClass('black').addClass(app._colorContrast(domColor[0], domColor[1], domColor[2]));
-      };
-
-      if ($('img').length && !$('body').hasClass('home')) {
-        $('img:first').on('load', (e) => {
-          colorSetter(e);
-        });
-        $('img').on('mouseenter', (e) => {
-          if ($(e.target).hasClass('lazyloaded')) {
-            colorSetter(e);
-          }
-        });
-      } else {
-        app.settings.logo.addClass('initial');
-      }
     },
 
     _ocadGridFocus: () => {

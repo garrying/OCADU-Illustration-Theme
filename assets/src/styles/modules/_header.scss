@@ -1,11 +1,7 @@
 .logo {
   display: block;
-  width: 60px;
-  height: 60px;
   padding: 0.5em;
-  font-size: 10px;
   line-height: 1em;
-  color: $white;
   @include heading-features;
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
@@ -16,35 +12,7 @@
   }
 
   &.invert {
-    color: $color-accent !important;
-    background-color: $white !important;
-  }
-
-  &.initial {
-    color: $white;
-    background: $color-accent;
-  }
-
-  .home &.initial {
-    color: $white;
-    background: transparent;
-    box-shadow: inset 0 0 0 2px $white;
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      background: $color-accent;
-      box-shadow: none;
-    }
-  }
-}
-
-body:not(.home) {
-  .logo:hover {
     color: $white !important;
-    background-color: $color-accent !important;
   }
 }
 
@@ -88,13 +56,12 @@ body:not(.home) {
 
 .header-item {
   padding: 0;
-  font-family: $sans-serif-light;
   line-height: 1em;
   color: $color-accent;
   white-space: nowrap;
   pointer-events: auto;
   @include heading-features;
-  @include rsp-font(2.5vw, 18px);
+  @include rsp-font(1vw, 18px);
   transition: color 200ms ease-in-out;
 
   &:hover,

@@ -28,11 +28,11 @@
   .title-primary {
     margin: 0;
     font-family: $sans-serif-light;
-    @include rsp-font(4vw, 18px);
+    @include rsp-font(2vw, 18px);
     @include heading-features;
 
     @media screen and (max-width: $ipad-vp) {
-      @include rsp-font(4.4vw, 18px);
+      @include rsp-font(2.4vw, 18px);
     }
   }
 

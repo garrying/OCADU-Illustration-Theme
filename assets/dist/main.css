@@ -107,27 +107,29 @@ html {
 
 body {
   height: 100%;
-  font: 87.5%/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 75%;
+  line-height: 1.5em;
   color: #333;
   background: #fff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
 
 ::-moz-selection {
-  background: rgba(0, 0, 255, 0.25); }
+  background: rgba(0, 0, 0, 0.25); }
 
 ::selection {
-  background: rgba(0, 0, 255, 0.25); }
+  background: rgba(0, 0, 0, 0.25); }
 
 mark {
-  background: rgba(0, 0, 255, 0.25); }
+  background: rgba(0, 0, 0, 0.25); }
 
 a {
   text-decoration: none;
-  color: #00f;
+  color: #000;
   transition: color 180ms ease-in-out; }
   a:hover {
-    color: #000099; }
+    color: black; }
   a img {
     display: block; }
 
@@ -219,7 +221,7 @@ figure {
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: #00f;
+    stroke: #000;
     stroke-width: 1; }
 
 .gallery-icon-placeholder {
@@ -331,7 +333,7 @@ button {
           transform: translateX(-100%);
   align-content: center;
   align-items: center;
-  background: #00f;
+  background: #000;
   -webkit-overflow-scrolling: touch; }
 
 .panel-inner {
@@ -377,18 +379,18 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-    background: #000099;
+    background: black;
     border: 0; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
   .search-form .search-field::-webkit-input-placeholder {
-    color: #00f; }
+    color: #000; }
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    color: #00f;
+    color: #000;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
@@ -404,7 +406,7 @@ button {
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: #000099;
+  color: black;
   cursor: pointer;
   transition: color 200ms ease-in-out; }
   .autocomplete-suggestion:hover,
@@ -482,7 +484,7 @@ button {
     display: block;
     padding-bottom: 1em; }
   .archive-grid .illustrator-link:hover .illustrator-title {
-    color: #00f; }
+    color: #000; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -514,9 +516,8 @@ button {
   height: 100%;
   bottom: 0;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 2.1vw; }
-  @media (max-width: 857.14286px) {
+  font-size: 1vw; }
+  @media (max-width: 1800px) {
     .section-indicator-index {
       font-size: 18px; } }
   @media screen and (max-width: 667px) {
@@ -598,8 +599,8 @@ button {
   .error-body .entry-title {
     margin: 0 0 0.5em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 5vw; }
-    @media (max-width: 960px) {
+    font-size: 1vw; }
+    @media (max-width: 4800px) {
       .error-body .entry-title {
         font-size: 48px; } }
   .error-body .error-line-svg {
@@ -610,7 +611,7 @@ button {
     pointer-events: none; }
   .error-body .error-line {
     fill: none;
-    stroke: #00f;
+    stroke: #000;
     stroke-width: 1px;
     stroke-linecap: round; }
 
@@ -623,13 +624,14 @@ button {
     overflow: scroll; }
 
 .year-item {
-  color: #000099;
+  color: #333333;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 13vw;
+  font-size: 5vw;
+  line-height: 1em;
   text-align: center;
   display: block;
   opacity: 0; }
-  @media (max-width: 184.61538px) {
+  @media (max-width: 480px) {
     .year-item {
       font-size: 24px; } }
   @media screen and (max-width: 667px) {
@@ -640,12 +642,8 @@ button {
 
 .logo {
   display: block;
-  width: 60px;
-  height: 60px;
   padding: 0.5em;
-  font-size: 10px;
   line-height: 1em;
-  color: #fff;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
           font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
   font-variant-numeric: lining-nums;
@@ -656,27 +654,9 @@ button {
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
   .logo:hover {
     color: #fff;
-    background-color: #00f; }
+    background-color: #000; }
   .logo.invert {
-    color: #00f !important;
-    background-color: #fff !important; }
-  .logo.initial {
-    color: #fff;
-    background: #00f; }
-  .home .logo.initial {
-    color: #fff;
-    background: transparent;
-    box-shadow: inset 0 0 0 2px #fff; }
-    .home .logo.initial:hover {
-      background-color: transparent; }
-    @media screen and (max-width: 667px) {
-      .home .logo.initial {
-        background: #00f;
-        box-shadow: none; } }
-
-body:not(.home) .logo:hover {
-  color: #fff !important;
-  background-color: #00f !important; }
+    color: #fff !important; }
 
 .heading-inner {
   position: fixed;
@@ -710,9 +690,8 @@ body:not(.home) .logo:hover {
 
 .header-item {
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   line-height: 1em;
-  color: #00f;
+  color: #000;
   white-space: nowrap;
   pointer-events: auto;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -721,17 +700,17 @@ body:not(.home) .logo:hover {
   -webkit-font-kerning: normal;
           font-kerning: normal;
   text-rendering: optimizeLegibility;
-  font-size: 2.5vw;
+  font-size: 1vw;
   transition: color 200ms ease-in-out; }
-  @media (max-width: 720px) {
+  @media (max-width: 1800px) {
     .header-item {
       font-size: 18px; } }
   .header-item:hover, .header-item:focus {
-    color: #000099; }
+    color: black; }
   .header-item.invert {
     color: #fff; }
   .header-item.inactive {
-    color: #000099; }
+    color: black; }
 
 .single-illustrator {
   display: flex;
@@ -833,48 +812,18 @@ body:not(.home) .logo:hover {
     padding-right: 1em; }
 
 .illustrator-nav-single {
-  display: flex;
-  font-size: 0.5rem; }
+  display: flex; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single {
       justify-content: flex-end; } }
   .illustrator-nav-single a {
     display: block;
-    font-size: 10px;
-    height: 60px;
-    width: 60px;
-    -webkit-line-clamp: 2;
     overflow: hidden;
     padding: 0.5em;
     text-overflow: ellipsis;
-    color: #fff;
     position: relative;
     transition: background 200ms ease-in-out;
     z-index: 300; }
-    .illustrator-nav-single a:hover + .link-bg .loader-grph {
-      opacity: 1; }
-    @media screen and (max-width: 667px) {
-      .illustrator-nav-single a {
-        color: #00f;
-        background: rgba(0, 0, 255, 0.075); } }
-  .illustrator-nav-single a +
-.link-bg {
-    display: block; }
-    @media screen and (max-width: 667px) {
-      .illustrator-nav-single a +
-.link-bg {
-        display: none; } }
-  .illustrator-nav-single .link-bg {
-    display: none;
-    background: #00f; }
-  .illustrator-nav-single .loader-grph {
-    opacity: 0;
-    max-width: 100%;
-    margin-top: 50%;
-    transition: opacity 300ms ease-in-out; }
-    @media screen and (max-width: 667px) {
-      .illustrator-nav-single .loader-grph {
-        display: none; } }
   .illustrator-nav-single .nav-previous:empty,
   .illustrator-nav-single .nav-next:empty {
     display: none; }
@@ -896,14 +845,6 @@ body:not(.home) .logo:hover {
     .illustrator-nav-single-wrapper {
       position: relative;
       z-index: 100; } }
-
-.section-indicator-single {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  white-space: nowrap;
-  font-size: 2.5vw; }
-  @media (max-width: 720px) {
-    .section-indicator-single {
-      font-size: 18px; } }
 
 .miniview-container {
   position: fixed;
@@ -929,12 +870,12 @@ body:not(.home) .logo:hover {
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba(0, 0, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     transition: background 200ms ease-in-out; }
     .miniview .mini-item-inner.active, .miniview .mini-item-inner:hover {
-      background: #00f; }
+      background: #000; }
     .miniview .mini-item-inner:hover {
-      background: rgba(0, 0, 255, 0.5); }
+      background: rgba(0, 0, 0, 0.5); }
 
 .title {
   line-height: 1;
@@ -961,20 +902,20 @@ body:not(.home) .logo:hover {
   .title .title-primary {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 4vw;
+    font-size: 2vw;
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
             font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     -webkit-font-kerning: normal;
             font-kerning: normal;
     text-rendering: optimizeLegibility; }
-    @media (max-width: 450px) {
+    @media (max-width: 900px) {
       .title .title-primary {
         font-size: 18px; } }
     @media screen and (max-width: 768px) {
       .title .title-primary {
-        font-size: 4.4vw; } }
-  @media screen and (max-width: 768px) and (max-width: 409.09091px) {
+        font-size: 2.4vw; } }
+  @media screen and (max-width: 768px) and (max-width: 750px) {
     .title .title-primary {
       font-size: 18px; } }
   .title .title-secondary {
@@ -1025,7 +966,7 @@ body:not(.home) .logo:hover {
   .home-grid .illustrator-placeholder {
     z-index: 10;
     width: 100%;
-    background: #00f;
+    background: #000;
     opacity: 1;
     transition: background 200ms ease-in-out; }
   .home-grid .illustrator-image .wp-post-image {
@@ -1064,8 +1005,7 @@ body:not(.home) .logo:hover {
     display: none;
     max-width: 500px;
     color: #fff;
-    background: #00f;
-    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.2);
+    background: #000;
     opacity: 0; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -1076,8 +1016,8 @@ body:not(.home) .logo:hover {
       -webkit-font-kerning: normal;
               font-kerning: normal;
       text-rendering: optimizeLegibility;
-      font-size: 4vw; }
-      @media (max-width: 450px) {
+      font-size: 2vw; }
+      @media (max-width: 900px) {
         .home-grid .illustrator-meta-container .illustrator-meta-label {
           font-size: 18px; } }
     .home-grid .illustrator-meta-container.active {
@@ -1122,7 +1062,7 @@ body:not(.home) .logo:hover {
 
 .loader-line {
   fill: none;
-  stroke: #00f;
+  stroke: #000;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 50%;
@@ -1132,7 +1072,7 @@ body:not(.home) .logo:hover {
 
 .loader-line-static {
   fill: none;
-  stroke: #00f;
+  stroke: #000;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 50%;

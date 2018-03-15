@@ -39,7 +39,7 @@
           </div>
           <div class="header-items-wrapper">
             <div class="header-item-link">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">09–17</button>
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">09–18</button>
             </div>
             <div class="header-item-link">
               <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item" title="Search archives">Search</button>

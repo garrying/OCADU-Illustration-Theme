@@ -126,7 +126,6 @@
 
 .illustrator-nav-single {
   display: flex;
-  font-size: 0.5rem;
 
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
@@ -134,52 +133,12 @@
 
   a {
     display: block;
-    font-size: 10px;
-    height: 60px;
-    width: 60px;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
     padding: 0.5em;
     text-overflow: ellipsis;
-    color: $white;
     position: relative;
     transition: background 200ms ease-in-out;
     z-index: $z-foreground;
-
-    &:hover + .link-bg .loader-grph {
-      opacity: 1;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      color: $color-accent;
-      background: rgba($color-accent, 0.075);
-    }
-  }
-
-  a +
-  .link-bg {
-    display: block;
-
-    @media screen and (max-width: $small-vp) {
-      display: none;
-    }
-  }
-
-  .link-bg {
-    display: none;
-    background: $color-accent;
-  }
-
-  .loader-grph {
-    opacity: 0;
-    max-width: 100%;
-    margin-top: 50%;
-    transition: opacity 300ms ease-in-out;
-
-    @media screen and (max-width: $small-vp) {
-      display: none;
-    }
   }
 
   .nav-previous,
@@ -211,10 +170,4 @@
     position: relative;
     z-index: $z-background;
   }
-}
-
-.section-indicator-single {
-  font-family: $sans-serif-light;
-  white-space: nowrap;
-  @include rsp-font(2.5vw, 18px);
 }

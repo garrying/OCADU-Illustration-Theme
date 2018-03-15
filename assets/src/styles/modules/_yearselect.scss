@@ -10,9 +10,10 @@
 }
 
 .year-item {
-  color: darken($color-accent, 20%);
+  color: lighten($color-accent, 20%);
   font-family: $sans-serif-light;
-  @include rsp-font(13vw, 24px);
+  @include rsp-font(5vw, 24px);
+  line-height: 1em;
   text-align: center;
   display: block;
   opacity: 0;
