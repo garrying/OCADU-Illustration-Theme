@@ -8,7 +8,6 @@ module.exports = {
     path: path.join(__dirname, './assets/dist/'),
     filename: 'app.js',
   },
-  devtool: 'inline-source-map',
   context: __dirname,
   module: {
     rules: [
