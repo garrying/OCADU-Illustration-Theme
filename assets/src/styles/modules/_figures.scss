@@ -48,7 +48,7 @@ figure {
   overflow: auto;
   background: $site-background;
 
-  @media screen and (max-width: $medium-vp)  {
+  @media screen and (max-width: $medium-vp) {
     left: 0;
   }
 
@@ -65,12 +65,12 @@ figure {
 
   .image-modal-caption {
     position: absolute;
-    bottom: 20px;
     right: 20px;
-    max-width: 350px;
-    font-size: 0.95em;
+    bottom: 20px;
     z-index: $z-foreground;
+    max-width: 350px;
     padding: 5px;
+    font-size: 0.95em;
 
     @media screen and (max-width: $ipad-vp) {
       left: 20px;
@@ -94,3 +94,23 @@ figure {
   max-width: 100%;
   height: auto;
 }
+
+.lazyloaded {
+  opacity: 1;
+
+  &.blur-up {
+    filter: blur(0);
+  }
+}
+
+.blur-up {
+  filter: blur(5px);
+  transition: filter 400ms ease-in-out;
+}
+
+.illustrator-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+

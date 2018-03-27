@@ -209,12 +209,12 @@ figure {
     justify-content: center; }
   .image-modal-wrapper .image-modal-caption {
     position: absolute;
-    bottom: 20px;
     right: 20px;
-    max-width: 350px;
-    font-size: 0.95em;
+    bottom: 20px;
     z-index: 300;
-    padding: 5px; }
+    max-width: 350px;
+    padding: 5px;
+    font-size: 0.95em; }
     @media screen and (max-width: 768px) {
       .image-modal-wrapper .image-modal-caption {
         left: 20px; } }
@@ -227,6 +227,24 @@ figure {
 .gallery-icon-placeholder {
   display: block;
   max-width: 100%;
+  height: auto; }
+
+.lazyloaded {
+  opacity: 1; }
+  .lazyloaded.blur-up {
+    -webkit-filter: blur(0);
+            filter: blur(0); }
+
+.blur-up {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  transition: -webkit-filter 400ms ease-in-out;
+  transition: filter 400ms ease-in-out;
+  transition: filter 400ms ease-in-out, -webkit-filter 400ms ease-in-out; }
+
+.illustrator-placeholder {
+  display: block;
+  width: 100%;
   height: auto; }
 
 ul {
@@ -286,22 +304,21 @@ button {
     .illustrators-grid .bricklayer-column {
       flex-basis: 50%; } }
 
-.gallery-grid {
-  margin-top: 80px;
-  margin-left: 80px; }
-  .gallery-grid .bricklayer-column-sizer {
-    width: 50%; }
-    @media screen and (min-width: 1920px) {
-      .gallery-grid .bricklayer-column-sizer {
-        width: 33.3333333333%; } }
-  @media screen and (max-width: 768px) {
-    .gallery-grid {
-      margin: 90px 0 0; } }
-  @media screen and (max-width: 667px) {
-    .gallery-grid {
-      margin: 0; }
-      .gallery-grid .bricklayer-column:last-child .gallery-item {
-        margin-right: 0; } }
+.gallery-grid .bricklayer-column-sizer {
+  width: 50%; }
+  @media screen and (min-width: 1920px) {
+    .gallery-grid .bricklayer-column-sizer {
+      width: 33.3333333333%; } }
+
+@media screen and (max-width: 768px) {
+  .gallery-grid {
+    margin: 90px 0 0; } }
+
+@media screen and (max-width: 667px) {
+  .gallery-grid {
+    margin: 0; }
+    .gallery-grid .bricklayer-column:last-child .gallery-item {
+      margin-right: 0; } }
 
 .bricklayer-column-sizer {
   display: none;
@@ -321,19 +338,19 @@ button {
 
 .panel {
   position: fixed;
-  overflow: scroll;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 200;
   display: flex;
   width: 100vw;
+  overflow: scroll;
+  background: #000;
   outline: 0;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   align-content: center;
   align-items: center;
-  background: #000;
   -webkit-overflow-scrolling: touch; }
 
 .panel-inner {
@@ -351,8 +368,8 @@ button {
       display: none; } }
 
 .close-btn path {
-  stroke-width: 1;
-  stroke: #fff; }
+  stroke: #fff;
+  stroke-width: 1; }
 
 .search-container {
   align-items: center;
@@ -495,26 +512,20 @@ button {
 
 .illustrator-image {
   position: relative; }
-  .illustrator-image img {
+  .illustrator-image .wp-post-image {
     position: absolute;
     -o-object-fit: contain;
        object-fit: contain;
-    opacity: 0;
-    transition: opacity 500ms ease-in-out; }
-  .illustrator-image .lazyloaded {
-    opacity: 1; }
-  .illustrator-image .illustrator-placeholder {
-    display: block;
     width: 100%;
-    height: auto; }
+    height: 100%; }
 
 .section-indicator-index {
   position: fixed;
+  bottom: 0;
   left: 20px;
   z-index: 100;
   display: flex;
   height: 100%;
-  bottom: 0;
   align-items: center;
   font-size: 1vw; }
   @media (max-width: 1800px) {
@@ -535,8 +546,8 @@ button {
   @media screen and (max-width: 667px) {
     .page-inner {
       padding: 0 20px;
-      margin-top: 8em;
-      max-width: none; } }
+      max-width: none;
+      margin-top: 8em; } }
   .page-inner .entry-title {
     margin: 1em 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -559,9 +570,9 @@ button {
       .page-inner .col-container .rs {
         margin-top: 2em; } }
   .page-inner .wiggle {
-    text-align: center;
     width: 100%;
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    text-align: center; }
     .page-inner .wiggle svg {
       width: 1.5em;
       height: auto; }
@@ -571,8 +582,8 @@ button {
   @media screen and (max-width: 667px) {
     #post-6 {
       padding: 0 20px;
-      margin-top: 8em;
-      max-width: none; } }
+      max-width: none;
+      margin-top: 8em; } }
 
 .faculty-list {
   display: flex; }
@@ -604,9 +615,9 @@ button {
       .error-body .entry-title {
         font-size: 48px; } }
   .error-body .error-line-svg {
+    position: absolute;
     width: 25vw;
     height: auto;
-    position: absolute;
     overflow: visible;
     pointer-events: none; }
   .error-body .error-line {
@@ -731,17 +742,14 @@ button {
       padding: 0; } }
   .illustrator-gallery-container .gallery-item {
     display: flex;
-    margin: 0 7% 7% 0;
     justify-content: center;
     align-items: center; }
     .illustrator-gallery-container .gallery-item img {
       position: absolute;
       -o-object-fit: contain;
          object-fit: contain;
-      opacity: 0;
-      transition: opacity 180ms ease-in-out; }
-    .illustrator-gallery-container .gallery-item .lazyloaded {
-      opacity: 1; }
+      width: 100%;
+      height: 100%; }
     @media screen and (max-width: 768px) {
       .illustrator-gallery-container .gallery-item {
         margin: 0 1px 1px 0; } }
@@ -849,9 +857,9 @@ button {
 .miniview-container {
   position: fixed;
   bottom: 20px;
-  width: 100%;
   z-index: 300;
   display: flex;
+  width: 100%;
   justify-content: center;
   pointer-events: none; }
   @media screen and (max-width: 768px) {
@@ -963,26 +971,6 @@ button {
   display: flex;
   flex-wrap: wrap;
   width: 65vw; }
-  .home-grid .illustrator-placeholder {
-    z-index: 10;
-    width: 100%;
-    background: #000;
-    opacity: 1;
-    transition: background 200ms ease-in-out; }
-  .home-grid .illustrator-image .wp-post-image {
-    width: 100%;
-    height: 100%;
-    transition: opacity 500ms ease-in-out;
-    -o-object-fit: cover;
-       object-fit: cover; }
-  @media screen and (min-width: 768px) {
-    .home-grid:hover .illustrator-placeholder {
-      mix-blend-mode: lighten; }
-    .home-grid:hover .illustrator-image .wp-post-image {
-      -webkit-filter: grayscale(100%);
-              filter: grayscale(100%); }
-    .home-grid:hover .lazyloaded {
-      opacity: 1; } }
   @media screen and (max-width: 768px) {
     .home-grid {
       width: 60vw; } }
@@ -991,12 +979,6 @@ button {
       width: 100vw;
       padding: 30px 0 0;
       margin: 50px 0 0; } }
-  .home-grid .illustrator-link:hover .lazyloaded {
-    -webkit-filter: none;
-            filter: none; }
-  .home-grid .illustrator-link:hover .illustrator-placeholder {
-    background: transparent;
-    opacity: 0; }
   .home-grid .illustrator-meta-container {
     position: fixed;
     top: 0;

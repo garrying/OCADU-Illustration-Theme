@@ -1,17 +1,17 @@
 .panel {
   position: fixed;
-  overflow: scroll;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: $z-middle;
   display: flex;
   width: $panel-width;
+  overflow: scroll;
+  background: $color-accent;
   outline: 0;
   transform: translateX(-100%);
   align-content: center;
   align-items: center;
-  background: $color-accent;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -34,7 +34,7 @@
 
 .close-btn {
   path {
-    stroke-width: 1;
     stroke: $white;
+    stroke-width: 1;
   }
 }

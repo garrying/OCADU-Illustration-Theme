@@ -12,6 +12,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      */
     add_image_size( 'illustrator-social-twitter', 560 );
     add_image_size( 'illustrator-small', 300 );
+    add_image_size( 'illustrator-extra-small', 150 );
 
     /**
      * Let WordPress Manage The Document Title
@@ -358,9 +359,10 @@ function ocadu_gallery_filter( $attr ) {
     $attr['data-srcset'] = $attr['srcset'];
     unset( $attr['src'] );
     unset( $attr['srcset'] );
+    $attr['src'] = get_the_post_thumbnail_url($post, 'illustrator-extra-small');
   }
   $attr['alt'] = 'Illustration by ' . get_the_title() . '';
-  $attr['class'] = 'lazyload';
+  $attr['class'] = 'lazyload blur-up';
   if ( is_home() || is_archive() ) {
     $attr['title'] = get_the_title();
   } else {
