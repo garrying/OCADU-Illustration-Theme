@@ -84,6 +84,8 @@ script:
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
   - $WP_DEVELOP_DIR/php-codesniffer/bin/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
+  # Attempt npm install
+  - npm install
   # Attempt npm run build
   - npm run build
 
