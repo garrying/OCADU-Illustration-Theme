@@ -26,6 +26,7 @@ env:
   # Trunk (current version in development is 4.4)
   # @link https://github.com/WordPress/WordPress
   - WP_VERSION=master WP_MULTISITE=0
+  - NODE_VERSION="8.11.1"
 
 # Use this to prepare your build for testing.
 # e.g. copy database configurations, environment variables, etc.
@@ -59,6 +60,10 @@ before_script:
   # Set install path for WordPress Coding Standards.
   # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
   - bin/phpcs --config-set installed_paths ../wordpress-coding-standards
+  # Install Node 8 and Node Version Manager
+  - wget https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh -O ~/.nvm/nvm.sh
+  - source ~/.nvm/nvm.sh
+  - nvm install $NODE_VERSION
   # Hop into themes directory.
   - cd $theme_dir
   # After CodeSniffer install you should refresh your path.
@@ -80,6 +85,8 @@ script:
   # --standard: Use WordPress as the standard.
   # --extensions: Only sniff PHP files.
   - $WP_DEVELOP_DIR/php-codesniffer/bin/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
+  # Attempt npm run build
+  - npm run build
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
