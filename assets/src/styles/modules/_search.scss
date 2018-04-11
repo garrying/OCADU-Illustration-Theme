@@ -12,8 +12,6 @@
 .search-form {
   position: relative;
   display: flex;
-  align-items: center;
-  margin: 0 20px;
   @include rsp-font(3vw, 18px);
 
   .search-field {
@@ -23,7 +21,7 @@
     font-family: $sans-serif-light;
     @include font-smoothing(on);
     color: $white;
-    background: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
     border: 0;
 
     &:focus {
@@ -49,16 +47,17 @@
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
-  padding-left: 15px;
+  line-height: 1em;
   @include rsp-font(3vw, 18px);
 }
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: darken($color-accent, 20%);
+  color: darken($color-accent, 10%);
   cursor: pointer;
   transition: color 200ms ease-in-out;
 
+  &.autocomplete-selected,
   &:hover,
   strong {
     font-weight: normal;
@@ -87,10 +86,10 @@
   display: none;
   width: 1em;
   height: 1em;
-  background: $white;
+  border: 2px solid darken($color-accent, 10%);
   border-radius: 50%;
   animation-name: shake;
-  animation-duration: 1s;
+  animation-duration: 800ms;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
 }

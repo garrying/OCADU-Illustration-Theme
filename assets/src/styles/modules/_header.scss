@@ -3,16 +3,17 @@
   padding: 0.5em;
   line-height: 1em;
   @include heading-features;
+  @include rsp-font(1vw, 18px);
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
 
-  &:hover {
-    color: $white;
-    background-color: $color-accent;
+  &:hover,
+  &:focus {
+    color: darken($color-accent, 20%);
   }
 
   &.invert {
-    color: $white !important;
+    color: darken($color-accent, 20%) !important;
   }
 }
 

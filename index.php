@@ -15,12 +15,12 @@
     <div class="title-unit title-unit-init active">
       <div class="unit">
         <h1 class="title-primary">OCAD University<br> Illustration 2018</h1>
-        <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx<span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>May 3–6<br><a href="/introduction" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>Introduction</a></h2>
+        <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx May 3–6<br><a href="/introduction" class="message">Introduction</a></h2>
       </div>
     </div>
     <p class="title-secondary">
      Spanning 2009–2018, the archive is maintained by the Illustration Department at OCAD University.</p>
-     <p class="title-secondary"><a href="/about" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span> About the archive</a>.</p>
+     <p class="title-secondary"><a href="/about" class="message">About the archive</a>.</p>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 

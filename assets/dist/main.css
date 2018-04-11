@@ -382,8 +382,6 @@ button {
 .search-form {
   position: relative;
   display: flex;
-  align-items: center;
-  margin: 0 20px;
   font-size: 3vw; }
   @media (max-width: 600px) {
     .search-form {
@@ -396,7 +394,7 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-    background: #ff3e03;
+    background: #ff6536;
     border: 0; }
     .search-form .search-field:focus {
       outline-style: none;
@@ -415,7 +413,7 @@ button {
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
-  padding-left: 15px;
+  line-height: 1em;
   font-size: 3vw; }
   @media (max-width: 600px) {
     .autocomplete-suggestions {
@@ -423,10 +421,10 @@ button {
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: #ff3e03;
+  color: #ff6536;
   cursor: pointer;
   transition: color 200ms ease-in-out; }
-  .autocomplete-suggestion:hover,
+  .autocomplete-suggestion.autocomplete-selected, .autocomplete-suggestion:hover,
   .autocomplete-suggestion strong {
     font-weight: normal;
     color: #fff; }
@@ -449,12 +447,12 @@ button {
   display: none;
   width: 1em;
   height: 1em;
-  background: #fff;
+  border: 2px solid #ff6536;
   border-radius: 50%;
   -webkit-animation-name: shake;
           animation-name: shake;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   -webkit-animation-iteration-count: infinite;
@@ -694,13 +692,16 @@ button {
   -webkit-font-kerning: normal;
           font-kerning: normal;
   text-rendering: optimizeLegibility;
+  font-size: 1vw;
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
-  .logo:hover {
-    color: #fff;
-    background-color: #ff8c69; }
+  @media (max-width: 1800px) {
+    .logo {
+      font-size: 18px; } }
+  .logo:hover, .logo:focus {
+    color: #ff3e03; }
   .logo.invert {
-    color: #fff !important; }
+    color: #ff3e03 !important; }
 
 .heading-inner {
   position: fixed;
@@ -860,7 +861,7 @@ button {
   .illustrator-nav-single a {
     display: block;
     overflow: hidden;
-    padding: 0.5em;
+    padding: 1em;
     text-overflow: ellipsis;
     position: relative;
     transition: background 200ms ease-in-out;
@@ -874,6 +875,9 @@ button {
       .illustrator-nav-single li {
         margin-right: 1px; } }
 
+.section-indicator-single {
+  padding: 1em; }
+
 .illustrator-nav-single-wrapper {
   display: flex;
   position: absolute;
@@ -881,7 +885,8 @@ button {
   align-items: center;
   width: 100%;
   bottom: 0;
-  left: 0; }
+  left: 0;
+  border-top: 1px solid #ffeee9; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single-wrapper {
       position: relative;
@@ -1065,35 +1070,19 @@ button {
     transition-delay: 200ms; }
 
 .loader {
+  font-size: 5vw;
   position: fixed;
   top: calc(50% - 44px);
-  left: calc(50% - 44px);
+  left: 0;
   z-index: 600;
-  width: 88px;
+  width: 100%;
   height: 88px;
   pointer-events: none;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg); }
-
-.loader-line {
-  fill: none;
-  stroke: #ff8c69;
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-dasharray: 50%;
-  stroke-dashoffset: 100%;
-  -webkit-animation: loop 1s infinite linear;
-          animation: loop 1s infinite linear; }
-
-.loader-line-static {
-  fill: none;
-  stroke: #ff8c69;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 50%;
-  stroke-dashoffset: 100%;
-  -webkit-animation: loop 3s infinite linear;
-          animation: loop 3s infinite linear; }
+  text-align: center;
+  color: #ffeee9; }
+  @media (max-width: 360px) {
+    .loader {
+      font-size: 18px; } }
 
 .alt-animation {
   position: absolute;
@@ -1105,15 +1094,3 @@ button {
     stroke-width: 2;
     -webkit-animation: loop 5s infinite linear;
             animation: loop 5s infinite linear; }
-
-@-webkit-keyframes loop {
-  50% {
-    stroke-dashoffset: 50%; }
-  100% {
-    stroke-dashoffset: 0; } }
-
-@keyframes loop {
-  50% {
-    stroke-dashoffset: 50%; }
-  100% {
-    stroke-dashoffset: 0; } }
