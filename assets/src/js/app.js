@@ -10,6 +10,7 @@ window.jQuery = window.$ = $;
 require('./libs/jquery.autocomplete.min');
 require('velocity-animate');
 require('lazysizes');
+const Flickity = require('flickity');
 const Bricklayer = require('bricklayer');
 const fastClick = require('fastclick');
 
@@ -23,6 +24,7 @@ const fastClick = require('fastclick');
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
+      app._ocadFlickity();
     },
 
     settings: {
@@ -77,6 +79,18 @@ const fastClick = require('fastclick');
 
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
+    _ocadFlickity: () => {
+      const initIndex = $('.year-item').index($('.active'));
+
+      const flky = new Flickity('.year-select-wrapper', {
+        initialIndex: initIndex,
+        wrapAround: true,
+        setGallerySize: false,
+        prevNextButtons: false,
+        pageDots: false,
+      });
+    },
+
     _ocadSearch: () => {
       app.settings.searchField.autocomplete({
         serviceUrl: '/wp-json/wp/v2/illustrator',
@@ -129,7 +143,7 @@ const fastClick = require('fastclick');
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
             const item = $(ele);
-            item.delay(100 * index).velocity({ opacity: 1, transformdisplay: 'flex' });
+            item.delay(10 * index).velocity({ opacity: 1, transformdisplay: 'flex' });
           });
         }
         if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {

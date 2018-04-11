@@ -8,7 +8,7 @@ $sans-serif-light: $sans-serif-system;
 $white: #fff;
 $black: #000;
 $off-black: #0e0e0f;
-$color-accent: #000;
+$color-accent: #ff8c69;
 
 $site-background: $white;
 $site-font-color: #333;
@@ -39,6 +39,7 @@ $smallest-vp: 320px;
 
 // Z-index
 
+$z-behind: -1;
 $z-background: 100;
 $z-middle: 200;
 $z-foreground: 300;

@@ -96,16 +96,16 @@ figure {
 }
 
 .lazyloaded {
-  opacity: 1;
-
   &.blur-up {
+    opacity: 1;
     filter: blur(0);
   }
 }
 
 .blur-up {
+  opacity: 0;
   filter: blur(5px);
-  transition: filter 400ms ease-in-out;
+  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out;
 }
 
 .illustrator-placeholder {

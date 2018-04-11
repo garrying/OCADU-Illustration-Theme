@@ -9,15 +9,49 @@
   }
 }
 
-.year-item {
-  color: lighten($color-accent, 20%);
-  font-family: $sans-serif-light;
-  @include rsp-font(5vw, 24px);
-  line-height: 1em;
-  text-align: center;
-  display: block;
-  opacity: 0;
+.year-select-wrapper {
+  height: 100%;
+  outline: 0;
 
+  .flickity-slider {
+    height: 100%;
+  }
+
+  .flickity-viewport {
+    height: 100%;
+    cursor: grab;
+  }
+}
+
+.flickity-enabled.is-draggable {
+  tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: grabbing;
+}
+
+
+.year-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
+
+.year-item {
+  color: lighten($color-accent, 10%);
+  font-family: $sans-serif-light;
+  @include rsp-font(10vw, 24px);
+  line-height: 1em;
+  opacity: 0;
 
   @media screen and (max-width: $small-vp) {
     padding-bottom: 0.25em;

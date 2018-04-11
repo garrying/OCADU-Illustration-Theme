@@ -116,20 +116,20 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 ::-moz-selection {
-  background: rgba(0, 0, 0, 0.25); }
+  background: rgba(255, 140, 105, 0.25); }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.25); }
+  background: rgba(255, 140, 105, 0.25); }
 
 mark {
-  background: rgba(0, 0, 0, 0.25); }
+  background: rgba(255, 140, 105, 0.25); }
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #ff8c69;
   transition: color 180ms ease-in-out; }
   a:hover {
-    color: black; }
+    color: #ff3e03; }
   a img {
     display: block; }
 
@@ -221,7 +221,7 @@ figure {
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: #000;
+    stroke: #ff8c69;
     stroke-width: 1; }
 
 .gallery-icon-placeholder {
@@ -229,18 +229,18 @@ figure {
   max-width: 100%;
   height: auto; }
 
-.lazyloaded {
-  opacity: 1; }
-  .lazyloaded.blur-up {
-    -webkit-filter: blur(0);
-            filter: blur(0); }
+.lazyloaded.blur-up {
+  opacity: 1;
+  -webkit-filter: blur(0);
+          filter: blur(0); }
 
 .blur-up {
+  opacity: 0;
   -webkit-filter: blur(5px);
           filter: blur(5px);
-  transition: -webkit-filter 400ms ease-in-out;
-  transition: filter 400ms ease-in-out;
-  transition: filter 400ms ease-in-out, -webkit-filter 400ms ease-in-out; }
+  transition: opacity 200ms ease-in-out, -webkit-filter 100ms ease-in-out;
+  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out;
+  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out, -webkit-filter 100ms ease-in-out; }
 
 .illustrator-placeholder {
   display: block;
@@ -295,7 +295,7 @@ button {
   flex-wrap: wrap; }
 
 .illustrators-grid {
-  width: 80vw; }
+  width: 90vw; }
   .illustrators-grid .gallery-item {
     margin: 0 4% 4% 0; }
   .illustrators-grid .illustrator-meta-label {
@@ -345,10 +345,10 @@ button {
   display: flex;
   width: 100vw;
   overflow: scroll;
-  background: #000;
+  background: #ff8c69;
   outline: 0;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
   align-content: center;
   align-items: center;
   -webkit-overflow-scrolling: touch; }
@@ -396,18 +396,18 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-    background: black;
+    background: #ff3e03;
     border: 0; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
   .search-form .search-field::-webkit-input-placeholder {
-    color: #000; }
+    color: #ff8c69; }
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    color: #000;
+    color: #ff8c69;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
@@ -423,7 +423,7 @@ button {
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: black;
+  color: #ff3e03;
   cursor: pointer;
   transition: color 200ms ease-in-out; }
   .autocomplete-suggestion:hover,
@@ -492,7 +492,7 @@ button {
     margin-top: 0.5em;
     color: rgba(14, 14, 15, 0.5); }
   .archive-grid .gallery-item {
-    margin: 0 5% 4%; }
+    margin: 0 12% 20%; }
     @media screen and (max-width: 667px) {
       .archive-grid .gallery-item {
         margin-right: 5%;
@@ -501,7 +501,7 @@ button {
     display: block;
     padding-bottom: 1em; }
   .archive-grid .illustrator-link:hover .illustrator-title {
-    color: #000; }
+    color: #ff8c69; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -521,14 +521,16 @@ button {
 
 .section-indicator-index {
   position: fixed;
-  bottom: 0;
-  left: 20px;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
   display: flex;
   height: 100%;
   align-items: center;
-  font-size: 1vw; }
-  @media (max-width: 1800px) {
+  justify-content: center;
+  font-size: 10vw; }
+  @media (max-width: 180px) {
     .section-indicator-index {
       font-size: 18px; } }
   @media screen and (max-width: 667px) {
@@ -622,7 +624,7 @@ button {
     pointer-events: none; }
   .error-body .error-line {
     fill: none;
-    stroke: #000;
+    stroke: #ff8c69;
     stroke-width: 1px;
     stroke-linecap: round; }
 
@@ -634,15 +636,46 @@ button {
     padding: 80px 0;
     overflow: scroll; }
 
+.year-select-wrapper {
+  height: 100%;
+  outline: 0; }
+  .year-select-wrapper .flickity-slider {
+    height: 100%; }
+  .year-select-wrapper .flickity-viewport {
+    height: 100%;
+    cursor: -webkit-grab;
+    cursor: grab; }
+
+.flickity-enabled.is-draggable {
+  tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab; }
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing; }
+
+.year-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%; }
+
 .year-item {
-  color: #333333;
+  color: #ffb39c;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 5vw;
+  font-size: 10vw;
   line-height: 1em;
-  text-align: center;
-  display: block;
   opacity: 0; }
-  @media (max-width: 480px) {
+  @media (max-width: 240px) {
     .year-item {
       font-size: 24px; } }
   @media screen and (max-width: 667px) {
@@ -665,7 +698,7 @@ button {
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
   .logo:hover {
     color: #fff;
-    background-color: #000; }
+    background-color: #ff8c69; }
   .logo.invert {
     color: #fff !important; }
 
@@ -702,7 +735,7 @@ button {
 .header-item {
   padding: 0;
   line-height: 1em;
-  color: #000;
+  color: #ff8c69;
   white-space: nowrap;
   pointer-events: auto;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -717,11 +750,11 @@ button {
     .header-item {
       font-size: 18px; } }
   .header-item:hover, .header-item:focus {
-    color: black; }
+    color: #ff3e03; }
   .header-item.invert {
     color: #fff; }
   .header-item.inactive {
-    color: black; }
+    color: #ff3e03; }
 
 .single-illustrator {
   display: flex;
@@ -878,12 +911,12 @@ button {
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 140, 105, 0.1);
     transition: background 200ms ease-in-out; }
     .miniview .mini-item-inner.active, .miniview .mini-item-inner:hover {
-      background: #000; }
+      background: #ff8c69; }
     .miniview .mini-item-inner:hover {
-      background: rgba(0, 0, 0, 0.5); }
+      background: rgba(255, 140, 105, 0.5); }
 
 .title {
   line-height: 1;
@@ -987,7 +1020,7 @@ button {
     display: none;
     max-width: 500px;
     color: #fff;
-    background: #000;
+    background: #ff8c69;
     opacity: 0; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -1044,7 +1077,7 @@ button {
 
 .loader-line {
   fill: none;
-  stroke: #000;
+  stroke: #ff8c69;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 50%;
@@ -1054,7 +1087,7 @@ button {
 
 .loader-line-static {
   fill: none;
-  stroke: #000;
+  stroke: #ff8c69;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 50%;
