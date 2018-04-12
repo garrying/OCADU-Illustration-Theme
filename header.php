@@ -93,7 +93,7 @@
                   $year_image = get_the_post_thumbnail_url();
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . $year_image . "' class='year-item-image lazyload' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $year_image ) . "' class='year-item-image lazyload' /></li>";
                 wp_reset_postdata();
               }
               ?>
