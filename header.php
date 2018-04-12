@@ -73,10 +73,32 @@
                 } else {
                   $selected_year_class = '';
                 }
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . '</a></li>';
+
+                $args = array(
+                  'posts_per_page' => 1,
+                  'orderby' => 'rand',
+                  'post_type' => 'illustrator',
+                  'tax_query' => array(
+                    array(
+                      'taxonomy' => 'gradyear',
+                      'field'    => 'name',
+                      'terms'    => $year->name,
+                    ),
+                  ),
+                );
+                $query = new WP_Query( $args );
+                if ( $query->have_posts() ) {
+                  $query->the_post();
+                  $year_image = get_the_post_thumbnail_url();
+                }
+
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . $year_image . "' class='year-item-image lazyload' /></li>";
+                wp_reset_postdata();
               }
               ?>
             </ul>
+            <div class="preview-image-container">
+            </div>
           </div>
           <button class="close-panel" title="Close panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->
