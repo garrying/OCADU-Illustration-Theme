@@ -81,11 +81,12 @@
                   'tax_query' => array(
                     array(
                       'taxonomy' => 'gradyear',
-                      'field'    => 'name',
-                      'terms'    => $year->name,
+                      'field' => 'name',
+                      'terms' => $year->name,
                     ),
                   ),
                 );
+
                 $query = new WP_Query( $args );
                 if ( $query->have_posts() ) {
                   $query->the_post();
