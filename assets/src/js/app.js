@@ -95,8 +95,8 @@ const fastClick = require('fastclick');
       app.settings.searchField.autocomplete({
         serviceUrl: '/wp-json/wp/v2/illustrator',
         paramName: 'search',
-        params: { per_page: 5, orderby: 'title', order: 'asc' },
-        lookupLimit: 5,
+        params: { per_page: 7, orderby: 'title', order: 'asc' },
+        lookupLimit: 7,
         appendTo: '.search-wrapper',
         showNoSuggestionNotice: true,
         onSearchStart: () => {

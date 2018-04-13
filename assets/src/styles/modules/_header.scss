@@ -1,9 +1,7 @@
 .logo {
   display: block;
-  padding: 0.5em;
   line-height: 1em;
   @include heading-features;
-  @include rsp-font(1vw, 18px);
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
 
@@ -18,10 +16,12 @@
 }
 
 .heading-inner {
+  font-family: $monospace;
   position: fixed;
-  top: 20px;
-  right: 30px;
-  left: 20px;
+  top: 0;
+  padding: 2em 0;
+  width: calc(30% - 30px);
+  left: 30px;
   z-index: $z-foreground;
   display: flex;
   pointer-events: none;
@@ -37,7 +37,6 @@
 
 .header-items-wrapper {
   display: flex;
-  width: calc(30vw - 30px);
 
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
@@ -46,7 +45,7 @@
 }
 
 .header-item-link {
-  padding: 0 3em 0 0;
+  background: $color-accent;
 
   @media screen and (max-width: $small-vp) {
     &:last-child {
@@ -56,18 +55,17 @@
 }
 
 .header-item {
-  padding: 0;
+  padding: 2em;
   line-height: 1em;
-  color: $color-accent;
+  color: $white;
   white-space: nowrap;
   pointer-events: auto;
   @include heading-features;
-  @include rsp-font(1vw, 18px);
   transition: color 200ms ease-in-out;
 
   &:hover,
   &:focus {
-    color: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
   }
 
   &.invert {
@@ -76,5 +74,9 @@
 
   &.inactive {
     color: darken($color-accent, 20%);
+  }
+
+  &.inactive:hover {
+    color: $white;
   }
 }

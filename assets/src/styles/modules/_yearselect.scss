@@ -47,10 +47,10 @@
 }
 
 .year-item {
+  font-family: $monospace;
   position: relative;
   z-index: 1;
   color: lighten($color-accent, 10%);
-  font-family: $sans-serif-light;
   @include rsp-font(12vw, 24px);
   line-height: 1em;
   opacity: 0;

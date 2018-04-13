@@ -1,5 +1,5 @@
 .archive-grid {
-  margin: 80px auto;
+  margin: 130px auto;
 
   .illustrator-name {
     color: $off-black;
@@ -90,6 +90,8 @@
 }
 
 .section-indicator-index {
+  font-family: $monospace;
+  color: $color-accent;
   position: fixed;
   top: 0;
   left: 0;

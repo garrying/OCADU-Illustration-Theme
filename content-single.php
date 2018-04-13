@@ -12,7 +12,9 @@
             ?>
           <?php endif; ?>
 
-          <?php the_content(); ?>
+          <div class="thesis-description">
+            <?php the_content(); ?>
+          </div>
 
           <meta itemprop="description" content="
             <?php
@@ -32,13 +34,13 @@
 
         <div class="meta" itemscope itemtype="http://schema.org/Person">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?></h1>
+            <h1 class="illustrator-meta-name" itemprop="name"><?php the_title(); ?> →</h1>
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <div itemprop="url">
                 <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                  <?php
+                  → <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
                     echo esc_html( $url );
@@ -50,7 +52,7 @@
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <div itemprop="url">
                 <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                  <?php
+                  → <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
                     echo esc_html( $url );
@@ -61,13 +63,13 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
               <div class="email" itemprop="email">
-                <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
+                <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">→ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
               </div>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
               <div class="phone" itemprop="telephone">
-                <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ); ?>
+                → <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ); ?>
               </div>
             <?php endif; ?>
           </div>
