@@ -21,6 +21,13 @@ ul {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: "Standard Book";
+  src: url(fonts/standard-book-webfont.eot);
+  src: url(fonts/standard-book-webfont.eot?#iefix) format("embedded-opentype"), url(fonts/standard-book-webfont.woff2) format("woff2"), url(fonts/standard-book-webfont.woff) format("woff"), url(fonts/standard-book-webfont.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
 .hidden {
   display: none;
   opacity: 0; }
@@ -126,20 +133,20 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 ::-moz-selection {
-  background: rgba(255, 140, 105, 0.25); }
+  background: rgba(255, 82, 82, 0.25); }
 
 ::selection {
-  background: rgba(255, 140, 105, 0.25); }
+  background: rgba(255, 82, 82, 0.25); }
 
 mark {
-  background: rgba(255, 140, 105, 0.25); }
+  background: rgba(255, 82, 82, 0.25); }
 
 a {
   text-decoration: none;
-  color: #ff8c69;
+  color: #ff5252;
   transition: color 180ms ease-in-out; }
   a:hover {
-    color: #ff3e03; }
+    color: #eb0000; }
   a img {
     display: block; }
 
@@ -232,7 +239,7 @@ figure {
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: #ff8c69;
+    stroke: #ff5252;
     stroke-width: 1; }
 
 .gallery-icon-placeholder {
@@ -350,13 +357,13 @@ button {
 .panel {
   position: fixed;
   top: 2em;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
+  bottom: 2em;
+  left: 2em;
+  right: 2em;
   z-index: 200;
   display: flex;
   overflow: scroll;
-  background: #ff8c69;
+  background: #ff5252;
   outline: 0;
   opacity: 0;
   visibility: none;
@@ -409,18 +416,18 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-    background: #ff6536;
+    background: #ff1f1f;
     border: 0; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
   .search-form .search-field::-webkit-input-placeholder {
-    color: #ff8c69; }
+    color: #ff5252; }
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
     font-family: "Inter UI", "Helvetica Neue", sans-serif;
-    color: #ff8c69;
+    color: #ff5252;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
@@ -436,7 +443,7 @@ button {
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: #ff6536;
+  color: #ff1f1f;
   cursor: pointer;
   transition: color 200ms ease-in-out; }
   .autocomplete-suggestion.autocomplete-selected, .autocomplete-suggestion:hover,
@@ -462,7 +469,7 @@ button {
   display: none;
   width: 1em;
   height: 1em;
-  border: 2px solid #ff6536;
+  border: 2px solid #ff1f1f;
   border-radius: 50%;
   -webkit-animation-name: shake;
           animation-name: shake;
@@ -514,7 +521,7 @@ button {
     display: block;
     padding-bottom: 1em; }
   .archive-grid .illustrator-link:hover .illustrator-title {
-    color: #ff8c69; }
+    color: #ff5252; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -534,7 +541,7 @@ button {
 
 .section-indicator-index {
   font-family: "Lab Mono Web", monaco, monospace;
-  color: #ff8c69;
+  color: #ff5252;
   position: fixed;
   top: 0;
   left: 0;
@@ -639,7 +646,7 @@ button {
     pointer-events: none; }
   .error-body .error-line {
     fill: none;
-    stroke: #ff8c69;
+    stroke: #ff5252;
     stroke-width: 1px;
     stroke-linecap: round; }
 
@@ -683,13 +690,13 @@ button {
   align-items: center;
   width: 33.3333333%;
   height: 100%;
-  background: #ff8c69; }
+  background: #ff5252; }
 
 .year-item {
-  font-family: "Lab Mono Web", monaco, monospace;
+  font-family: "Standard Book", "Helvetica Neue", sans-serif;
   position: relative;
   z-index: 1;
-  color: #ffb39c;
+  color: #ff8585;
   font-size: 12vw;
   line-height: 1em;
   opacity: 0; }
@@ -730,9 +737,9 @@ button {
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
   .logo:hover, .logo:focus {
-    color: #ff3e03; }
+    color: #eb0000; }
   .logo.invert {
-    color: #ff3e03 !important; }
+    color: #eb0000 !important; }
 
 .heading-inner {
   font-family: "Lab Mono Web", monaco, monospace;
@@ -760,7 +767,7 @@ button {
       width: 50%; } }
 
 .header-item-link {
-  background: #ff8c69; }
+  background: #ff5252; }
   @media screen and (max-width: 667px) {
     .header-item-link:last-child {
       padding-right: 0; } }
@@ -779,11 +786,11 @@ button {
   text-rendering: optimizeLegibility;
   transition: color 200ms ease-in-out; }
   .header-item:hover, .header-item:focus {
-    background: #ff6536; }
+    background: #ff1f1f; }
   .header-item.invert {
     color: #fff; }
   .header-item.inactive {
-    color: #ff3e03; }
+    color: #eb0000; }
   .header-item.inactive:hover {
     color: #fff; }
 
@@ -856,6 +863,7 @@ button {
   .illustrator-meta .thesis-title {
     margin-bottom: 0.5em;
     font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    letter-spacing: -2px;
     font-size: 4vw;
     line-height: 1em; }
     @media (max-width: 450px) {
@@ -883,10 +891,10 @@ button {
     .meta {
       margin: 2em 0; } }
   .meta .illustrator-meta-header {
-    flex-basis: 30%;
+    flex-basis: 38.2%;
     padding-right: 1em; }
   .meta .illustrator-meta-items {
-    flex-basis: 70%;
+    flex-basis: 61.8%;
     line-height: 1.45em; }
 
 .illustrator-nav-single-wrapper {
@@ -899,7 +907,7 @@ button {
   bottom: 0;
   left: 0;
   padding: 0 30px;
-  border-top: 1px solid #ffeee9; }
+  border-top: 1px solid #ffd2d2; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single-wrapper {
       position: relative;
@@ -953,12 +961,12 @@ button {
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba(255, 140, 105, 0.1);
+    background: rgba(255, 82, 82, 0.1);
     transition: background 200ms ease-in-out; }
     .miniview .mini-item-inner.active, .miniview .mini-item-inner:hover {
-      background: #ff8c69; }
+      background: #ff5252; }
     .miniview .mini-item-inner:hover {
-      background: rgba(255, 140, 105, 0.5); }
+      background: rgba(255, 82, 82, 0.5); }
 
 .title {
   line-height: 1;
@@ -1062,7 +1070,7 @@ button {
     display: none;
     max-width: 500px;
     color: #fff;
-    background: #ff8c69;
+    background: #ff5252;
     opacity: 0; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
       font-family: "Inter UI", "Helvetica Neue", sans-serif;
@@ -1116,7 +1124,7 @@ button {
   height: 88px;
   pointer-events: none;
   text-align: center;
-  color: #ffeee9; }
+  color: #ffd2d2; }
   @media (max-width: 360px) {
     .loader {
       font-size: 18px; } }

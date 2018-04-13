@@ -85,6 +85,7 @@
   .thesis-title {
     margin-bottom: 0.5em;
     font-family: $sans-serif-light;
+    letter-spacing: -2px;
     @include rsp-font(4vw, 18px);
     line-height: 1em;
   }
@@ -115,12 +116,12 @@
   }
 
   .illustrator-meta-header {
-    flex-basis: 30%;
+    flex-basis: 38.2%;
     padding-right: 1em;
   }
 
   .illustrator-meta-items {
-    flex-basis: 70%;
+    flex-basis: 61.8%;
     line-height: 1.45em;
   }
 }
