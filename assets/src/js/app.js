@@ -124,7 +124,7 @@ const fastClick = require('fastclick');
         $(e).removeClass('invert');
         app._ocadPanelsClose();
       } else {
-        $('.panel.visible').removeClass('visible').velocity({ translateY: '100%' }, 'fast')
+        $('.panel.visible').removeClass('visible').velocity('fadeOut', { display: 'flex' }, 'fast')
           .attr('aria-hidden', true);
         $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
 
@@ -133,8 +133,8 @@ const fastClick = require('fastclick');
 
         $(e).addClass('invert').removeClass('inactive');
         $(`.${targetPanel}`).velocity(
-          { translateY: ['0%', '100%'] },
-          { duration: 800, easing: [0.19, 1, 0.22, 1] },
+          'fadeIn',
+          { display: 'flex', duration: 200 },
         ).addClass('visible').attr('aria-hidden', false)
           .focus();
         // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
@@ -155,7 +155,7 @@ const fastClick = require('fastclick');
     _ocadPanelSelectButtons: () => {
       app._ocadSearch();
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity({ translateY: '100%' }, 'fast');
+        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast');
         app._ocadPanelSelect(ele.target);
       });
     },
@@ -205,9 +205,9 @@ const fastClick = require('fastclick');
       app.settings.imageModal.velocity('fadeOut', { duration: 180 });
       app.settings.logo.removeClass('invert');
       $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
-      $('.panel.velocity-animating').velocity('stop').velocity({ translateY: '100%' }, 'fast');
+      $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast');
       $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-        .velocity({ translateY: '100%' }, 'fast');
+        .velocity('fadeOut', 'fast');
       $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
         .removeClass('loaded');
     },

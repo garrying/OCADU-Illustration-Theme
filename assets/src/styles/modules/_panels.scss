@@ -1,18 +1,25 @@
 .panel {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  top: 2em;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
   z-index: $z-middle;
   display: flex;
-  width: $panel-width;
   overflow: scroll;
   background: $color-accent;
   outline: 0;
-  transform: translateY(-100%);
+  opacity: 0;
+  visibility: none;
+  pointer-events: none;
   align-content: center;
   align-items: center;
   -webkit-overflow-scrolling: touch;
+
+  &.visible {
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .panel-inner {

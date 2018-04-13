@@ -2,6 +2,10 @@
 
 .lock-scroll {
   overflow: hidden;
+
+  .grid {
+    filter: grayscale(100%);
+  }
 }
 
 html {
