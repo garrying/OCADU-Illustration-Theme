@@ -5,7 +5,6 @@
   bottom: 0;
   left: 0;
   display: flex;
-  padding: 4em 0;
   align-items: center;
   justify-content: center;
   color: $color-accent;
@@ -18,9 +17,13 @@
   }
 
   .entry-title {
-    margin: 0 0 1em;
+    margin-bottom: 0.75em;
     font-family: $sans-serif-light;
     @include rsp-font(10vw, 48px);
+  }
+
+  .entry-body {
+    margin: 0;
   }
 
   .error-line-svg {
@@ -35,7 +38,7 @@
 
 .error-line-container {
   position: absolute;
-  top: 0;
+  top: 2em;
   left: 0;
   width: 100%;
   height: 100%;
