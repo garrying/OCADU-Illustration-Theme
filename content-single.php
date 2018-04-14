@@ -40,7 +40,8 @@
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <div itemprop="url">
                 <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                  → <?php
+                  →
+                  <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
                     echo esc_html( $url );
@@ -52,7 +53,8 @@
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <div itemprop="url">
                 <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                  → <?php
+                  →
+                  <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                     $url = preg_replace( '#^https?://#', '', $url );
                     echo esc_html( $url );
