@@ -4,7 +4,6 @@
   .panel-inner {
     height: 100%;
     width: 100%;
-    padding: 80px 0;
     overflow: scroll;
   }
 }
@@ -44,18 +43,24 @@
   width: 33.3333333%;
   height: 100%;
   background: $color-accent;
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+  }
+
 }
 
 .year-item {
-  font-family: $sans-serif-support;
+  font-family: $sans-serif-light;
   position: relative;
   z-index: 1;
   color: lighten($color-accent, 10%);
-  @include rsp-font(12vw, 24px);
+  @include rsp-font(14vw, 24px);
   line-height: 1em;
   opacity: 0;
 
   @media screen and (max-width: $small-vp) {
+    @include rsp-font(20vw, 42px);
     padding-bottom: 0.25em;
   }
 

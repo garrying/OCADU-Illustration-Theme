@@ -1,14 +1,12 @@
 .title {
   line-height: 1;
   z-index: $z-background;
-  position: fixed;
   right: 0;
   bottom: 0;
   top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35vw;
   padding: 4.5vw 20px 30px;
 
   @media screen and (max-width: $small-vp) {
@@ -43,31 +41,6 @@
 
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-}
-
-
-.title-grph {
-  display: inline;
-
-  .loader-grph {
-    width: .7em;
-    height: .6em;
-    transform: rotate(45deg);
-  }
-
-  .loader-line {
-    stroke-width: 3;
-    stroke-dasharray: none;
-    stroke-dashoffset: none;
-    animation: none;
-  }
-
-  &.invert {
-    .loader-line {
-      stroke-width: 3;
-      stroke: $white;
     }
   }
 }

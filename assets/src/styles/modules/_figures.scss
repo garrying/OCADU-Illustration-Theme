@@ -106,7 +106,7 @@ figure {
 .blur-up {
   opacity: 0;
   filter: blur(5px);
-  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out;
+  transition: filter 300ms ease-in-out, opacity 100ms ease-in-out;
 }
 
 .illustrator-placeholder {

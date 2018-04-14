@@ -1,8 +1,10 @@
 // Loader
 
 .loader {
-  @include rsp-font(5vw, 18px);
+  font-family: $sans-serif-light;
+  @include rsp-font(5vw, 72px);
   position: fixed;
+  letter-spacing: -2px;
   top: calc(50% - 44px);
   left: 0;
   z-index: $z-important;
@@ -11,18 +13,4 @@
   pointer-events: none;
   text-align: center;
   color: lighten($color-accent, 25%);
-}
-
-.alt-animation {
-  position: absolute;
-  top: 0;
-  width: 60px;
-  height: 60px;
-
-  .loader-line {
-    stroke: $white;
-    stroke-width: 2;
-    animation: loop 5s infinite linear;
-  }
-
 }

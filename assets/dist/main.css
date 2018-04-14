@@ -1,4 +1,4 @@
-@import url(https://rsms.me/inter/inter-ui.css);html {
+html {
   box-sizing: border-box; }
 
 *, *:before, *:after {
@@ -26,6 +26,27 @@ ul {
   src: url(fonts/standard-book-webfont.eot);
   src: url(fonts/standard-book-webfont.eot?#iefix) format("embedded-opentype"), url(fonts/standard-book-webfont.woff2) format("woff2"), url(fonts/standard-book-webfont.woff) format("woff"), url(fonts/standard-book-webfont.ttf) format("truetype");
   font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "GT America Standard Light";
+  src: url(fonts/GT-America-Standard-Light.eot);
+  src: url(fonts/GT-America-Standard-Light.eot?#iefix) format("embedded-opentype"), url(fonts/GT-America-Standard-Light.woff2) format("woff2"), url(fonts/GT-America-Standard-Light.woff) format("woff"), url(fonts/GT-America-Standard-Light.ttf) format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "GT America Standard Regular";
+  src: url(fonts/GT-America-Standard-Light.eot);
+  src: url(fonts/GT-America-Standard-Regular.eot?#iefix) format("embedded-opentype"), url(fonts/GT-America-Standard-Regular.woff2) format("woff2"), url(fonts/GT-America-Standard-Regular.woff) format("woff"), url(fonts/GT-America-Standard-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "GT America Standard Regular";
+  src: url(fonts/GT-America-Standard-Light.eot);
+  src: url(fonts/GT-America-Standard-Regular-Italic.eot?#iefix) format("embedded-opentype"), url(fonts/GT-America-Standard-Regular-Italic.woff2) format("woff2"), url(fonts/GT-America-Standard-Regular-Italic.woff) format("woff"), url(fonts/GT-America-Standard-Regular-Italic.ttf) format("truetype");
+  font-style: italic;
   font-weight: normal; }
 
 .hidden {
@@ -124,7 +145,7 @@ html {
 
 body {
   height: 100%;
-  font-family: "Inter UI", "Helvetica Neue", sans-serif;
+  font-family: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 75%;
   line-height: 1.5em;
   color: #111;
@@ -155,7 +176,7 @@ a {
   -webkit-font-smoothing: antialiased;
   position: absolute;
   top: 0;
-  left: 40px;
+  left: 30px;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -256,9 +277,9 @@ figure {
   opacity: 0;
   -webkit-filter: blur(5px);
           filter: blur(5px);
-  transition: opacity 200ms ease-in-out, -webkit-filter 100ms ease-in-out;
-  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out;
-  transition: filter 100ms ease-in-out, opacity 200ms ease-in-out, -webkit-filter 100ms ease-in-out; }
+  transition: opacity 100ms ease-in-out, -webkit-filter 300ms ease-in-out;
+  transition: filter 300ms ease-in-out, opacity 100ms ease-in-out;
+  transition: filter 300ms ease-in-out, opacity 100ms ease-in-out, -webkit-filter 300ms ease-in-out; }
 
 .illustrator-placeholder {
   display: block;
@@ -289,7 +310,7 @@ input {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter UI", "Helvetica Neue", sans-serif;
+  font-family: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 0;
   -webkit-appearance: none; }
 
@@ -313,7 +334,7 @@ button {
   flex-wrap: wrap; }
 
 .illustrators-grid {
-  width: 90vw; }
+  margin: 0 30px; }
   .illustrators-grid .gallery-item {
     margin: 0 4% 4% 0; }
   .illustrators-grid .illustrator-meta-label {
@@ -324,6 +345,12 @@ button {
 
 .gallery-grid .bricklayer-column-sizer {
   width: 50%; }
+  @media screen and (max-width: 768px) {
+    .gallery-grid .bricklayer-column-sizer {
+      width: 100%; } }
+  @media screen and (max-width: 667px) {
+    .gallery-grid .bricklayer-column-sizer {
+      width: 50%; } }
   @media screen and (min-width: 1920px) {
     .gallery-grid .bricklayer-column-sizer {
       width: 33.3333333333%; } }
@@ -374,20 +401,28 @@ button {
   .panel.visible {
     visibility: visible;
     pointer-events: auto; }
+  @media screen and (max-width: 667px) {
+    .panel {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; } }
 
 .panel-inner {
   width: 100%; }
 
 .close-panel {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 2em;
+  right: 2em;
   z-index: 600;
   display: block;
   cursor: pointer; }
   @media screen and (max-width: 667px) {
     .close-panel {
-      display: none; } }
+      top: auto;
+      bottom: 1em;
+      left: calc(50% - 17px); } }
 
 .close-btn path {
   stroke: #fff;
@@ -405,14 +440,14 @@ button {
   position: relative;
   display: flex;
   font-size: 3vw; }
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     .search-form {
-      font-size: 18px; } }
+      font-size: 24px; } }
   .search-form .search-field {
     width: 100%;
     box-sizing: border-box;
     padding: 15px;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
@@ -426,7 +461,7 @@ button {
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #ff5252;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
@@ -437,9 +472,9 @@ button {
   padding-top: 15px;
   line-height: 1em;
   font-size: 3vw; }
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     .autocomplete-suggestions {
-      font-size: 18px; } }
+      font-size: 24px; } }
 
 .autocomplete-suggestion {
   padding: 5px 15px;
@@ -453,11 +488,11 @@ button {
 
 .search-title {
   padding: 4em 0;
-  font-family: "Inter UI", "Helvetica Neue", sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2vw; }
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     .search-title {
-      font-size: 18px; } }
+      font-size: 24px; } }
   @media screen and (max-width: 667px) {
     .search-title {
       margin: 0; } }
@@ -495,9 +530,6 @@ button {
     @media screen and (max-width: 320px) {
       .archive-grid .bricklayer-column-sizer {
         width: 100%; } }
-  @media screen and (max-width: 1024px) {
-    .archive-grid {
-      width: 77vw; } }
   @media screen and (max-width: 667px) {
     .archive-grid {
       width: 100vw;
@@ -507,6 +539,7 @@ button {
     .archive-grid {
       flex-direction: column; } }
   .archive-grid .illustrator-meta-container {
+    font-family: "Lab Mono Web", monaco, monospace;
     margin: 0.67em 0; }
   .archive-grid .illustrator-title {
     margin-top: 0.5em;
@@ -540,7 +573,7 @@ button {
     height: 100%; }
 
 .section-indicator-index {
-  font-family: "Lab Mono Web", monaco, monospace;
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ff5252;
   position: fixed;
   top: 0;
@@ -551,10 +584,10 @@ button {
   height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 10vw; }
-  @media (max-width: 180px) {
+  font-size: 14vw; }
+  @media (max-width: 171.42857px) {
     .section-indicator-index {
-      font-size: 18px; } }
+      font-size: 24px; } }
   @media screen and (max-width: 667px) {
     .section-indicator-index {
       display: none; } }
@@ -574,7 +607,7 @@ button {
       margin-top: 8em; } }
   .page-inner .entry-title {
     margin: 1em 0;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 5vw; }
     @media (max-width: 960px) {
       .page-inner .entry-title {
@@ -624,7 +657,9 @@ button {
   padding: 4em 0;
   align-items: center;
   justify-content: center;
-  font-size: 1.5vw; }
+  color: #ff5252;
+  font-size: 1.5vw;
+  line-height: 1.3em; }
   @media (max-width: 933.33333px) {
     .error-body {
       font-size: 14px; } }
@@ -632,30 +667,33 @@ button {
     .error-body {
       padding: 0 20px; } }
   .error-body .entry-title {
-    margin: 0 0 0.5em;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
-    font-size: 1vw; }
-    @media (max-width: 4800px) {
+    margin: 0 0 1em;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10vw; }
+    @media (max-width: 480px) {
       .error-body .entry-title {
         font-size: 48px; } }
   .error-body .error-line-svg {
-    position: absolute;
-    width: 25vw;
-    height: auto;
-    overflow: visible;
+    height: 100%;
     pointer-events: none; }
   .error-body .error-line {
-    fill: none;
-    stroke: #ff5252;
-    stroke-width: 1px;
-    stroke-linecap: round; }
+    fill: #ff5252; }
+
+.error-line-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .year-select {
   justify-content: center; }
   .year-select .panel-inner {
     height: 100%;
     width: 100%;
-    padding: 80px 0;
     overflow: scroll; }
 
 .year-select-wrapper {
@@ -691,21 +729,28 @@ button {
   width: 33.3333333%;
   height: 100%;
   background: #ff5252; }
+  @media screen and (max-width: 667px) {
+    .year-list-item {
+      width: 50%; } }
 
 .year-item {
-  font-family: "Standard Book", "Helvetica Neue", sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   z-index: 1;
   color: #ff8585;
-  font-size: 12vw;
+  font-size: 14vw;
   line-height: 1em;
   opacity: 0; }
-  @media (max-width: 200px) {
+  @media (max-width: 171.42857px) {
     .year-item {
       font-size: 24px; } }
   @media screen and (max-width: 667px) {
     .year-item {
+      font-size: 20vw;
       padding-bottom: 0.25em; } }
+  @media screen and (max-width: 667px) and (max-width: 210px) {
+    .year-item {
+      font-size: 42px; } }
   .year-item.active, .year-item:focus, .year-item:hover {
     color: #fff; }
 
@@ -728,6 +773,7 @@ button {
 .logo {
   display: block;
   line-height: 1em;
+  white-space: nowrap;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
           font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
   font-variant-numeric: lining-nums;
@@ -738,15 +784,17 @@ button {
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
   .logo:hover, .logo:focus {
     color: #eb0000; }
-  .logo.invert {
-    color: #eb0000 !important; }
+  .logo.invert, .logo.invert:hover {
+    opacity: 0; }
+
+.logo-wrapper {
+  padding-right: 2em; }
 
 .heading-inner {
   font-family: "Lab Mono Web", monaco, monospace;
   position: fixed;
   top: 0;
   padding: 2em 0;
-  width: calc(30% - 30px);
   left: 30px;
   z-index: 300;
   display: flex;
@@ -755,8 +803,8 @@ button {
   justify-content: space-between; }
   @media screen and (max-width: 667px) {
     .heading-inner {
-      top: 10px;
-      right: 20px;
+      padding: 0;
+      right: 0;
       left: 20px; } }
 
 .header-items-wrapper {
@@ -766,11 +814,9 @@ button {
       justify-content: flex-end;
       width: 50%; } }
 
-.header-item-link {
-  background: #ff5252; }
-  @media screen and (max-width: 667px) {
-    .header-item-link:last-child {
-      padding-right: 0; } }
+@media screen and (max-width: 667px) {
+  .header-item-link:last-child {
+    padding-right: 0; } }
 
 .header-item {
   padding: 2em;
@@ -784,15 +830,21 @@ button {
   -webkit-font-kerning: normal;
           font-kerning: normal;
   text-rendering: optimizeLegibility;
-  transition: color 200ms ease-in-out; }
+  transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  background: #ff5252; }
   .header-item:hover, .header-item:focus {
     background: #ff1f1f; }
   .header-item.invert {
     color: #fff; }
   .header-item.inactive {
-    color: #eb0000; }
+    color: #eb0000;
+    background: transparent; }
   .header-item.inactive:hover {
-    color: #fff; }
+    color: #fff;
+    background: #eb0000; }
+  @media screen and (max-width: 667px) {
+    .header-item {
+      padding: 1.5em; } }
 
 .single-illustrator {
   display: flex;
@@ -808,10 +860,13 @@ button {
   margin-top: 2em; }
   @media screen and (max-width: 1024px) {
     .illustrator-gallery-container {
-      flex-basis: 60%; } }
+      flex-basis: 50%; } }
   @media screen and (max-width: 667px) {
     .illustrator-gallery-container {
       padding: 0; } }
+  @media screen and (max-width: 768px) {
+    .illustrator-gallery-container .gallery-grid {
+      margin-top: 0; } }
   .illustrator-gallery-container .gallery-item {
     display: flex;
     margin: 0 5% 5% 0;
@@ -833,6 +888,7 @@ button {
   color: #333; }
   @media screen and (max-width: 768px) {
     .illustrator-meta {
+      flex: 1 1 50%;
       font-size: 0.85em; } }
   @media screen and (max-width: 667px) {
     .illustrator-meta {
@@ -848,10 +904,13 @@ button {
     height: 100%;
     flex-flow: row wrap;
     align-items: center; }
+    @media screen and (max-width: 1024px) {
+      .illustrator-meta .illustrator-meta-wrapper {
+        width: 40%; } }
     @media screen and (max-width: 768px) {
       .illustrator-meta .illustrator-meta-wrapper {
         right: 20px;
-        width: calc(33% - 20px); } }
+        width: 50%; } }
     @media screen and (max-width: 667px) {
       .illustrator-meta .illustrator-meta-wrapper {
         position: relative;
@@ -860,22 +919,25 @@ button {
   .illustrator-meta .illustrator-meta-wrapper-inner {
     padding: 0 30px;
     width: 100%; }
+    @media screen and (max-width: 667px) {
+      .illustrator-meta .illustrator-meta-wrapper-inner {
+        padding: 0; } }
   .illustrator-meta .thesis-title {
     margin-bottom: 0.5em;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: -2px;
     font-size: 4vw;
     line-height: 1em; }
-    @media (max-width: 450px) {
+    @media (max-width: 1050px) {
       .illustrator-meta .thesis-title {
-        font-size: 18px; } }
+        font-size: 42px; } }
   .illustrator-meta .thesis-description {
     color: #555;
     line-height: 1.2em;
     font-size: 1vw; }
-    @media (max-width: 1600px) {
+    @media (max-width: 1400px) {
       .illustrator-meta .thesis-description {
-        font-size: 16px; } }
+        font-size: 14px; } }
   .illustrator-meta .illustrator-meta-name {
     margin-bottom: 0.5em; }
 
@@ -884,9 +946,6 @@ button {
   display: flex;
   align-items: baseline;
   margin-top: 4em; }
-  @media screen and (max-width: 768px) {
-    .meta {
-      flex-direction: column; } }
   @media screen and (max-width: 667px) {
     .meta {
       margin: 2em 0; } }
@@ -896,6 +955,13 @@ button {
   .meta .illustrator-meta-items {
     flex-basis: 61.8%;
     line-height: 1.45em; }
+  @media screen and (max-width: 667px) {
+    .meta .meta-link {
+      display: block;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 0.5em;
+      border: 1px solid #ff5252; } }
 
 .illustrator-nav-single-wrapper {
   font-family: "Lab Mono Web", monaco, monospace;
@@ -910,6 +976,7 @@ button {
   border-top: 1px solid #ffd2d2; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single-wrapper {
+      padding: 0;
       position: relative;
       z-index: 100; } }
 
@@ -933,7 +1000,7 @@ button {
     padding-right: 0; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single {
-      width: 50%; }
+      width: 61.8%; }
       .illustrator-nav-single li {
         margin-right: 1px; } }
 
@@ -971,14 +1038,12 @@ button {
 .title {
   line-height: 1;
   z-index: 100;
-  position: fixed;
   right: 0;
   bottom: 0;
   top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35vw;
   padding: 4.5vw 20px 30px; }
   @media screen and (max-width: 667px) {
     .title {
@@ -992,7 +1057,7 @@ button {
     display: flex; }
   .title .title-primary {
     margin: 0;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 2vw;
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
             font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -1016,30 +1081,10 @@ button {
     -webkit-font-kerning: normal;
             font-kerning: normal;
     text-rendering: optimizeLegibility;
-    font-family: "Inter UI", "Helvetica Neue", sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.3em; }
     .title .title-secondary:last-child {
       margin-bottom: 0; }
-
-.title-grph {
-  display: inline; }
-  .title-grph .loader-grph {
-    width: .7em;
-    height: .6em;
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg); }
-  .title-grph .loader-line {
-    stroke-width: 3;
-    stroke-dasharray: none;
-    stroke-dashoffset: none;
-    -webkit-animation: none;
-            animation: none; }
-  .title-grph.invert .loader-line {
-    stroke-width: 3;
-    stroke: #fff; }
-
-.home .heading-inner {
-  right: 20px; }
 
 .home .header-items-wrapper {
   width: calc(35vw - 40px); }
@@ -1070,10 +1115,10 @@ button {
     display: none;
     max-width: 500px;
     color: #fff;
-    background: #ff5252;
     opacity: 0; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
-      font-family: "Inter UI", "Helvetica Neue", sans-serif;
+      color: #ff5252;
+      font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1em;
       -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
               font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -1115,8 +1160,10 @@ button {
     transition-delay: 200ms; }
 
 .loader {
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 5vw;
   position: fixed;
+  letter-spacing: -2px;
   top: calc(50% - 44px);
   left: 0;
   z-index: 600;
@@ -1125,17 +1172,6 @@ button {
   pointer-events: none;
   text-align: center;
   color: #ffd2d2; }
-  @media (max-width: 360px) {
+  @media (max-width: 1440px) {
     .loader {
-      font-size: 18px; } }
-
-.alt-animation {
-  position: absolute;
-  top: 0;
-  width: 60px;
-  height: 60px; }
-  .alt-animation .loader-line {
-    stroke: #fff;
-    stroke-width: 2;
-    -webkit-animation: loop 5s infinite linear;
-            animation: loop 5s infinite linear; }
+      font-size: 72px; } }

@@ -1,6 +1,7 @@
 .logo {
   display: block;
   line-height: 1em;
+  white-space: nowrap;
   @include heading-features;
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
@@ -10,9 +11,14 @@
     color: darken($color-accent, 20%);
   }
 
-  &.invert {
-    color: darken($color-accent, 20%) !important;
+  &.invert,
+  &.invert:hover {
+    opacity: 0;
   }
+}
+
+.logo-wrapper {
+  padding-right: 2em;
 }
 
 .heading-inner {
@@ -20,7 +26,6 @@
   position: fixed;
   top: 0;
   padding: 2em 0;
-  width: calc(30% - 30px);
   left: 30px;
   z-index: $z-foreground;
   display: flex;
@@ -29,8 +34,8 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    top: 10px;
-    right: 20px;
+    padding: 0;
+    right: 0;
     left: 20px;
   }
 }
@@ -45,8 +50,6 @@
 }
 
 .header-item-link {
-  background: $color-accent;
-
   @media screen and (max-width: $small-vp) {
     &:last-child {
       padding-right: 0;
@@ -61,7 +64,8 @@
   white-space: nowrap;
   pointer-events: auto;
   @include heading-features;
-  transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  background: $color-accent;
 
   &:hover,
   &:focus {
@@ -74,9 +78,15 @@
 
   &.inactive {
     color: darken($color-accent, 20%);
+    background: transparent;
   }
 
   &.inactive:hover {
     color: $white;
+    background: darken($color-accent, 20%);
+  }
+
+  @media screen and (max-width: $small-vp) {
+    padding: 1.5em;
   }
 }

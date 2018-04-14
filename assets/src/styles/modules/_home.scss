@@ -1,7 +1,4 @@
 .home {
-  .heading-inner {
-    right: 20px;
-  }
 
   .header-items-wrapper {
     width: calc(35vw - 40px);
@@ -40,10 +37,10 @@
     display: none;
     max-width: 500px;
     color: $white;
-    background: $color-accent;
     opacity: 0;
 
     .illustrator-meta-label {
+      color: $color-accent;
       font-family: $sans-serif-light;
       line-height: 1em;
       @include heading-features;

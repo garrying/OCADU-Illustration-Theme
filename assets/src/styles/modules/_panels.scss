@@ -20,6 +20,13 @@
     visibility: visible;
     pointer-events: auto;
   }
+
+  @media screen and (max-width: $small-vp) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 .panel-inner {
@@ -28,14 +35,16 @@
 
 .close-panel {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 2em;
+  right: 2em;
   z-index: $z-important;
   display: block;
   cursor: pointer;
 
   @media screen and (max-width: $small-vp) {
-    display: none;
+    top: auto;
+    bottom: 1em;
+    left: calc(50% - 17px);
   }
 }
 

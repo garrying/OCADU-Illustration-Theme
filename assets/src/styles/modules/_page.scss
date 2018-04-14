@@ -21,10 +21,6 @@
     }
   }
 
-  @media screen and (max-width: $medium-vp) {
-    width: 77vw;
-  }
-
   @media screen and (max-width: $small-vp) {
     width: 100vw;
     padding: 20px;
@@ -36,6 +32,7 @@
   }
 
   .illustrator-meta-container {
+    font-family: $monospace;
     margin: 0.67em 0;
   }
 
@@ -90,7 +87,7 @@
 }
 
 .section-indicator-index {
-  font-family: $monospace;
+  font-family: $sans-serif-light;
   color: $color-accent;
   position: fixed;
   top: 0;
@@ -101,7 +98,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-  @include rsp-font(10vw, 18px);
+  @include rsp-font(14vw, 24px);
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -178,44 +175,5 @@
 
   .span1 {
     width: 50%;
-  }
-}
-
-.error-body {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  padding: 4em 0;
-  align-items: center;
-  justify-content: center;
-
-  @include rsp-font(1.5vw, 14px);
-
-  @media screen and (max-width: $small-vp) {
-    padding: 0 20px;
-  }
-
-  .entry-title {
-    margin: 0 0 0.5em;
-    font-family: $sans-serif-light;
-    @include rsp-font(1vw, 48px);
-  }
-
-  .error-line-svg {
-    position: absolute;
-    width: 25vw;
-    height: auto;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  .error-line {
-    fill: none;
-    stroke: $color-accent;
-    stroke-width: 1px;
-    stroke-linecap: round;
   }
 }

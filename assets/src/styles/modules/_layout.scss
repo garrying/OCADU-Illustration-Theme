@@ -13,12 +13,18 @@
   flex: 1 1 70%;
   margin-top: 2em;
 
-  @media screen and (max-width: $medium-vp)  {
-    flex-basis: 60%;
+  @media screen and (max-width: $medium-vp) {
+    flex-basis: 50%;
   }
 
-  @media screen and (max-width: $small-vp)  {
+  @media screen and (max-width: $small-vp) {
     padding: 0;
+  }
+
+  .gallery-grid {
+    @media screen and (max-width: $ipad-vp) {
+      margin-top: 0;
+    }
   }
 
   .gallery-item {
@@ -34,7 +40,7 @@
       height: 100%;
     }
 
-    @media screen and (max-width: $ipad-vp)  {
+    @media screen and (max-width: $ipad-vp) {
       margin: 0 1px 1px 0;
     }
   }
@@ -46,6 +52,7 @@
   color: #333;
 
   @media screen and (max-width: $ipad-vp) {
+    flex: 1 1 50%;
     font-size: 0.85em;
   }
 
@@ -65,9 +72,13 @@
     flex-flow: row wrap;
     align-items: center;
 
+    @media screen and (max-width: $medium-vp) {
+      width: 40%;
+    }
+
     @media screen and (max-width: $ipad-vp) {
       right: 20px;
-      width: calc(33% - 20px);
+      width: 50%;
     }
 
     @media screen and (max-width: $small-vp) {
@@ -80,20 +91,24 @@
   .illustrator-meta-wrapper-inner {
     padding: 0 30px;
     width: 100%;
+
+    @media screen and (max-width: $small-vp) {
+      padding: 0;
+    }
   }
 
   .thesis-title {
     margin-bottom: 0.5em;
     font-family: $sans-serif-light;
     letter-spacing: -2px;
-    @include rsp-font(4vw, 18px);
+    @include rsp-font(4vw, 42px);
     line-height: 1em;
   }
 
   .thesis-description {
     color: #555;
     line-height: 1.2em;
-    @include rsp-font(1vw, 16px);
+    @include rsp-font(1vw, 14px);
   }
 
   .illustrator-meta-name {
@@ -107,10 +122,6 @@
   align-items: baseline;
   margin-top: 4em;
 
-  @media screen and (max-width: $ipad-vp) {
-    flex-direction: column;
-  }
-
   @media screen and (max-width: $small-vp) {
     margin: 2em 0;
   }
@@ -123,6 +134,17 @@
   .illustrator-meta-items {
     flex-basis: 61.8%;
     line-height: 1.45em;
+  }
+
+  .meta-link {
+    @media screen and (max-width: $small-vp) {
+      display: block;
+      padding: 1em;
+      margin: 1em 0;
+      border-radius: 0.5em;
+      border: 1px solid $color-accent;
+
+    }
   }
 }
 
@@ -139,6 +161,7 @@
   border-top: 1px solid lighten($color-accent, 25%);
 
   @media screen and (max-width: $small-vp) {
+    padding: 0;
     position: relative;
     z-index: $z-background;
   }
@@ -173,7 +196,7 @@
   }
 
   @media screen and (max-width: $small-vp) {
-    width: 50%;
+    width: 61.8%;
 
     li {
       margin-right: 1px;

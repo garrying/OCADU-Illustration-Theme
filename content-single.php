@@ -39,7 +39,7 @@
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <div itemprop="url">
-                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+                <a title="Visit Illustrator's Website" class="site-url meta-link" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                   →
                   <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
@@ -52,7 +52,7 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <div itemprop="url">
-                <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+                <a title="Visit Illustrator's Website" class="site-url meta-link" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
                   →
                   <?php
                     $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
@@ -65,7 +65,7 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
               <div class="email" itemprop="email">
-                <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">→ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
+                <a title="Email <?php the_title(); ?>" class="meta-link" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">→ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
               </div>
             <?php endif; ?>
 
