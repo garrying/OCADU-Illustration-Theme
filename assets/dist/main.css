@@ -18,15 +18,15 @@ ul {
   font-family: "Lab Mono Web";
   src: url(fonts/labmono-regular-web.eot);
   src: url(fonts/labmono-regular-web.eot?#iefix) format("embedded-opentype"), url(fonts/labmono-regular-web.woff2) format("woff2"), url(fonts/labmono-regular-web.woff) format("woff"), url(fonts/labmono-regular-web.ttf) format("truetype");
-  font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+  font-weight: normal; }
 
 @font-face {
   font-family: "Standard Book";
   src: url(fonts/standard-book-webfont.eot);
   src: url(fonts/standard-book-webfont.eot?#iefix) format("embedded-opentype"), url(fonts/standard-book-webfont.woff2) format("woff2"), url(fonts/standard-book-webfont.woff) format("woff"), url(fonts/standard-book-webfont.ttf) format("truetype");
-  font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+  font-weight: normal; }
 
 .hidden {
   display: none;

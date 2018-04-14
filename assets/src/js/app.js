@@ -12,12 +12,10 @@ require('velocity-animate');
 require('lazysizes');
 const Flickity = require('flickity');
 const Bricklayer = require('bricklayer');
-const fastClick = require('fastclick');
 
 (() => {
   const app = {
     init: () => {
-      app._fastClick();
       app._ocadPanelSelectButtons();
       app._ocadHomeLoader();
       app._ocadHomeHover();
@@ -41,10 +39,6 @@ const fastClick = require('fastclick');
       searchLoader: $('.search-loader'),
       imageIndex: 0,
       easeOutBack: [0.175, 0.885, 0.32, 1.275],
-    },
-
-    _fastClick: () => {
-      fastClick.attach(document.body);
     },
 
     _ocadGridFocus: () => {
