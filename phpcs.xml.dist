@@ -111,7 +111,7 @@
      Multiple valid prefixes can be provided as a comma-delimited list. -->
   <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
     <properties>
-      <property name="prefixes" type="array" value="ocadu"/>
+      <property name="prefixes" type="array" value="ocaduillustration"/>
     </properties>
   </rule>
 
