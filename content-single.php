@@ -81,9 +81,10 @@
       <div class="illustrator-nav-single-wrapper">
         <?php
         if ( is_singular( 'illustrator' ) ) {
-          $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          if ( isset( $term->name ) ) {
-				echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"> ● ' . esc_html( $term->name ) . '</a>';
+          $term       = get_the_terms( $post->ID, 'gradyear' );
+          $term_first = $term[0];
+          if ( isset( $term_first->name ) ) {
+				echo '<a class="section-indicator-single" href="/year/' . esc_html( $term_first->slug ) . '" title="Return to ' . esc_html( $term_first->name ) . ' index"> ● ' . esc_html( $term_first->name ) . '</a>';
           };
         }
         ?>
