@@ -145,8 +145,8 @@ function ocaduillustration_content_nav( $nav_id ) {
   if ( $wp_query->max_num_pages > 1 ) : ?>
     <nav id="<?php echo esc_attr( $nav_id ); ?>">
       <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocaduillustration' ); ?></h3>
-      <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
-      <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
+      <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>', 'ocaduillustration' ) ); ?></div>
+      <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page', 'ocaduillustration' ) ); ?></div>
     </nav><!-- #nav-above -->
   <?php endif;
 }
@@ -180,7 +180,7 @@ add_filter( 'nav_menu_css_class', 'ocaduillustration_nav_class_filter', 100, 1 )
  *
  * @param string $v normalizes navigation ids.
  */
-function cleanname( $v ) {
+function ocaduillustration_cleanname( $v ) {
   $v = preg_replace( '/[^a-zA-Z0-9s]/', '', $v );
   $v = str_replace( ' ', '-', $v );
   $v = strtolower( $v );
@@ -188,7 +188,7 @@ function cleanname( $v ) {
 }
 
 function ocaduillustration_nav_id_filter( $id, $item ) {
-  return 'nav-' . cleanname( $item->title );
+  return 'nav-' . ocaduillustration_cleanname( $item->title );
 }
 
 add_filter( 'nav_menu_item_id', 'ocaduillustration_nav_id_filter', 10, 2 );
