@@ -48,17 +48,17 @@
         </div>
 
         <?php
-          $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
+          $ocaduillustration_grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
           if ( is_singular( 'illustrator' ) ) {
             // Selected menu state for individual items.
-            $terms = get_the_terms( $post->ID, 'gradyear' );
-            foreach ( $terms as $term ) {
-              $selected_year = $term->name;
+            $ocaduillustration_terms = get_the_terms( $post->ID, 'gradyear' );
+            foreach ( $ocaduillustration_terms as $term ) {
+              $ocaduillustration_selected_year = $term->name;
             }
           } else {
             $taxonomy = get_queried_object();
             if ( isset( $taxonomy ) ) {
-              $selected_year = $taxonomy->name;
+              $ocaduillustration_selected_year = $taxonomy->name;
             }
           }
         ?>
@@ -67,33 +67,33 @@
           <div class="panel-inner">
             <ul class="year-select-wrapper">
               <?php
-              foreach ( $grad_year as $year ) {
-                if ( isset( $selected_year ) && $selected_year == $year->name ) {
-                  $selected_year_class = 'active';
+              foreach ( $ocaduillustration_grad_year as $year ) {
+                if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $year->name ) {
+                  $ocaduillustration_selected_year_class = 'active';
                 } else {
-                  $selected_year_class = '';
+                  $ocaduillustration_selected_year_class = '';
                 }
 
-                $args = array(
+                $ocaduillustration_args = array(
                   'posts_per_page' => 1,
-                  'orderby' => 'rand',
-                  'post_type' => 'illustrator',
-                  'tax_query' => array(
+                  'orderby'        => 'rand',
+                  'post_type'      => 'illustrator',
+                  'tax_query'      => array(
                     array(
                       'taxonomy' => 'gradyear',
-                      'field' => 'name',
-                      'terms' => $year->name,
+                      'field'    => 'name',
+                      'terms'    => $year->name,
                     ),
                   ),
                 );
 
-                $query = new WP_Query( $args );
-                if ( $query->have_posts() ) {
-                  $query->the_post();
-                  $year_image = get_the_post_thumbnail_url();
+                $ocaduillustration_query = new WP_Query( $ocaduillustration_args );
+                if ( $ocaduillustration_query->have_posts() ) {
+                  $ocaduillustration_query->the_post();
+                  $ocaduillustration_year_image = get_the_post_thumbnail_url();
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $year_image ) . "' class='year-item-image lazyload' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $ocaduillustration_year_image ) . "' class='year-item-image lazyload' /></li>";
                 wp_reset_postdata();
               }
               ?>

@@ -2,46 +2,45 @@
 
 <?php
 if ( is_archive() ) {
-    $selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) )->name;
+    $ocaduillustration_selected_year = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) )->name;
     echo '<div class="section-indicator-index"><span class="section-indicator">';
-    if ( isset( $selected_year ) ) {
-      echo esc_html( $selected_year );
+    if ( isset( $ocaduillustration_selected_year ) ) {
+      echo esc_html( $ocaduillustration_selected_year );
     };
     echo '</span></div>';
   }
 ?>
 
 <div id="illustrators" class="grid illustrators-grid archive-grid">
-  
-  <?php if ( have_posts() ) : ?>
+  <?php $ocaduillustration_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
+  <?php
+  $ocaduillustration_args       = array(
+    'post_status' => 'publish',
+    'post_type'   => 'illustrator',
+    'tax_query'   => array(
+      array(
+        'taxonomy'  => 'gradyear',
+        'field'     => 'slug',
+        'terms'     => $ocaduillustration_term->slug,
+      ),
+    ),
+    'orderby'     => 'title',
+    'order'       => 'ASC',
+  );
+  $ocaduillustration_query      = new WP_Query( $ocaduillustration_args );
+  ?>
 
-    <?php query_posts( $query_string . '&orderby=title&order=ASC' ); ?>
-
-    <?php /* Start the Loop */ ?>
+  <?php if ( $ocaduillustration_query->have_posts() ) : ?>
     <?php
-      while ( have_posts() ) :
-      the_post();
+    while ( $ocaduillustration_query->have_posts() ) :
+      $ocaduillustration_query->the_post();
     ?>
-
-      <?php
-        get_template_part( 'content', get_post_format() );
-      ?>
-
+    <?php
+      get_template_part( 'content', get_post_format() );
+    ?>
     <?php endwhile; ?>
-
-  <?php else : ?>
-
-    <article class="post no-results not-found">
-      <header class="entry-header">
-        <h1 class="entry-title"><?php esc_html_e( 'Nothing Found', 'ocaduillustration' ); ?></h1>
-      </header><!-- .entry-header -->
-
-      <div class="entry-content">
-        <p><?php esc_html_e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'ocaduillustration' ); ?></p>
-      </div><!-- .entry-content -->
-    </article><!-- #post-0 -->
-
   <?php endif; ?>
-</div>
 
+  <?php wp_reset_postdata(); ?>
+</div>
 <?php get_footer(); ?>

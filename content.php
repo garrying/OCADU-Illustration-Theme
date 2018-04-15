@@ -3,12 +3,12 @@
     <figure>
       <div class="illustrator-image">
         <?php
-          $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-small' );
-          $image_width = $image_data[1];
-          $image_height = $image_data[2];
+          $ocaduillustration_image_data   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-small' );
+          $ocaduillustration_image_width  = $ocaduillustration_image_data[1];
+          $ocaduillustration_image_height = $ocaduillustration_image_data[2];
         ?>
         <?php the_post_thumbnail( 'illustrator-small' ); ?>
-        <canvas class="illustrator-placeholder" height="<?php echo esc_attr( $image_height ); ?>" width="<?php echo esc_attr( $image_width ); ?>"></canvas>
+        <canvas class="illustrator-placeholder" height="<?php echo esc_attr( $ocaduillustration_image_height ); ?>" width="<?php echo esc_attr( $ocaduillustration_image_width ); ?>"></canvas>
       </div>
     </figure>
     <div class="illustrator-meta-container">

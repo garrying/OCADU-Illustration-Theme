@@ -7,8 +7,8 @@
 
           <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
             <?php
-              $title_illu = get_post_meta( $post->ID, 'illu_title', true );
-              echo '<h2 class="thesis-title" itemprop="name">' . esc_html( $title_illu ) . '</h2>';
+              $ocaduillustration_title_illu = get_post_meta( $post->ID, 'illu_title', true );
+              echo '<h2 class="thesis-title" itemprop="name">' . esc_html( $ocaduillustration_title_illu ) . '</h2>';
             ?>
           <?php endif; ?>
 
@@ -18,15 +18,15 @@
 
           <meta itemprop="description" content="
             <?php
-              $text = strip_tags( get_the_content() );
-              echo esc_html( wptexturize( $text ) );
+              $ocaduillustration_text = strip_tags( get_the_content() );
+              echo esc_html( wptexturize( $ocaduillustration_text ) );
             ?>
           ">
           <meta itemprop="author copyrightHolder" content="<?php the_title(); ?>">
           <meta itemprop="image" content="
             <?php
-              $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-              echo esc_html( $image );
+              $ocaduillustration_image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+              echo esc_html( $ocaduillustration_image );
             ?>
           ">
 
@@ -42,9 +42,9 @@
                 <a title="Visit Illustrator's Website" class="site-url meta-link" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                   →
                   <?php
-                    $url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
-                    $url = preg_replace( '#^https?://#', '', $url );
-                    echo esc_html( $url );
+                    $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
+                    $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
+                    echo esc_html( $ocaduillustration_url );
                   ?>
                 </a>
               </div>
@@ -55,9 +55,9 @@
                 <a title="Visit Illustrator's Website" class="site-url meta-link" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
                   →
                   <?php
-                    $url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
-                    $url = preg_replace( '#^https?://#', '', $url );
-                    echo esc_html( $url );
+                    $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
+                    $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
+                    echo esc_html( $ocaduillustration_url );
                   ?>
                 </a>
               </div>
@@ -81,9 +81,10 @@
       <div class="illustrator-nav-single-wrapper">
         <?php
         if ( is_singular( 'illustrator' ) ) {
-          $term = get_the_terms( $post->ID, 'gradyear' )[0];
-          if ( isset( $term->name ) ) {
-				echo '<a class="section-indicator-single" href="/year/' . esc_html( $term->slug ) . '" title="Return to ' . esc_html( $term->name ) . ' index"> ● ' . esc_html( $term->name ) . '</a>';
+          $term                         = get_the_terms( $post->ID, 'gradyear' );
+          $ocaduillustration_term_first = $term[0];
+          if ( isset( $ocaduillustration_term_first->name ) ) {
+				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ● ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
           };
         }
         ?>
@@ -92,10 +93,10 @@
                   <?php
         previous_post_link_plus(
              array(
-            'order_by' => 'post_title',
-            'format' => '%link',
+            'order_by'    => 'post_title',
+            'format'      => '%link',
             'in_same_tax' => true,
-            'link' => '<span class="name previous-link">○ %title</span>',
+            'link'        => '<span class="name previous-link">○ %title</span>',
           )
             );
           ?>
@@ -103,10 +104,10 @@
           <?php
         next_post_link_plus(
              array(
-            'order_by' => 'post_title',
-            'format' => '%link',
+            'order_by'    => 'post_title',
+            'format'      => '%link',
             'in_same_tax' => true,
-            'link' => '<span class="name next-link">%title ●</span>',
+            'link'        => '<span class="name next-link">%title ●</span>',
           )
             );
           ?>
