@@ -51,6 +51,7 @@
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
     <exclude name="Squiz.Commenting.FileComment.Missing"/>
     <exclude name="WordPress.VIP"/>
+    <exclude name="WordPress.Arrays.ArrayIndentation"/>
     <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
     <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
     <exclude name="Squiz.Commenting.ClassComment.Missing"/>
