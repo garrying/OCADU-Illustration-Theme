@@ -56,8 +56,8 @@ function ocaduillustration_head_cleanup() {
   remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // Links for Adjacent Posts.
   remove_action( 'wp_head', 'wp_generator' ); // WP version.
   remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); // Shortlinks.
-  add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove WP version from css.
-  add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts.
+  add_filter( 'style_loader_src', 'ocaduillustration_remove_wp_ver_css_js', 9999 ); // remove WP version from css.
+  add_filter( 'script_loader_src', 'ocaduillustration_remove_wp_ver_css_js', 9999 ); // remove Wp version from scripts.
 }
 
 add_action( 'init', 'ocaduillustration_head_cleanup' );
@@ -69,7 +69,7 @@ add_action( 'init', 'ocaduillustration_head_cleanup' );
  *
  * @return string
  */
-function remove_wp_ver_css_js( $src ) {
+function ocaduillustration_remove_wp_ver_css_js( $src ) {
   $ver_var = strpos( $src, 'ver=' );
   if ( $ver_var ) {
     $src = remove_query_arg( 'ver', $src );
@@ -117,7 +117,7 @@ add_action( 'wp_enqueue_scripts', 'ocaduillustration_fonts' );
  * @return array
  */
 function ocaduillustration_body_class( $wp_classes, $extra_classes ) {
-  $whitelist = array(
+  $whitelist  = array(
     'home',
     'archive',
     'page',
@@ -227,7 +227,7 @@ add_filter( 'excerpt_more', 'ocaduillustration_new_excerpt_more' );
  *
  * @return string
  */
-function get_socialimage( $image_type = 'fb' ) {
+function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   global $post, $posts;
 
   if ( is_single() && has_post_thumbnail( $post->ID ) ) {
@@ -260,20 +260,20 @@ function ocaduillustration_social_meta() {
   echo "\n" . '<!-- social meta -->' . "\n";
   echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
-  if ( is_singular() && is_attachment() !=== true ) {
+  if ( is_singular() && is_attachment() !== true ) {
     global $post;
     $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
     echo '<meta property="og:title" content="' . get_the_title() . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
     echo '<meta property="og:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
-    echo '<meta property="og:image" content="' . esc_url( get_socialimage() ) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( ocaduillustration_get_socialimage() ) . '">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="' . get_the_title() . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
-    echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter' ) ) . '">' . "\n";
+    echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter' ) ) . '">' . "\n";
     echo '<meta name="twitter:image:alt" content="' . esc_html( get_post_meta( $post->ID, 'illu_title', true ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
@@ -290,7 +290,7 @@ function ocaduillustration_social_meta() {
 
     echo '<meta property="og:title" content="' . esc_html( $social_title ) . '">' . "\n";
     echo '<meta property="og:url" content="' . esc_url( site_url() ) . '">' . "\n";
-    echo '<meta property="og:image" content="' . esc_url( get_socialimage() ) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( ocaduillustration_get_socialimage() ) . '">' . "\n";
     echo '<meta property="og:description" content="' . esc_html( $social_description ) . '">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
@@ -298,7 +298,7 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
     echo '<meta name="twitter:title" content="' . esc_html( $social_title ) . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $social_description ) . '">' . "\n";
-    echo '<meta name="twitter:image:src" content="' . esc_url( get_socialimage( 'twitter-index' ) ) . '">' . "\n";
+    echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter-index' ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $social_description ) . '">' . "\n";
 
@@ -328,11 +328,11 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
  * Prefetch Illustrator Pages
  */
 function ocaduillustration_prefetch() {
-  if ( is_single() && is_attachment() !=== true ) {
+  if ( is_single() && is_attachment() !== true ) {
     $the_url = next_post_link_plus( array(
-      'order_by' => 'post_title',
+      'order_by'.   => 'post_title',
       'in_same_tax' => true,
-      'return' => 'href',
+      'return'      => 'href',
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
@@ -354,14 +354,14 @@ add_action( 'wp_head', 'ocaduillustration_prefetch' );
 function ocaduillustration_gallery_filter( $attr ) {
   global $post;
   $attr['data-sizes'] = 'auto';
-  $attr['data-src'] = $attr['src'];
+  $attr['data-src']   = $attr['src'];
   if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
     unset( $attr['src'] );
     unset( $attr['srcset'] );
     $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
   }
-  $attr['alt'] = 'Illustration by ' . get_the_title() . '';
+  $attr['alt']   = 'Illustration by ' . get_the_title() . '';
   $attr['class'] = 'lazyload blur-up';
   if ( is_home() || is_archive() ) {
     $attr['title'] = get_the_title();
