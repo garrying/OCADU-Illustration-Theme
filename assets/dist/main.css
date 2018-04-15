@@ -1149,18 +1149,18 @@ button {
     transition-delay: 200ms; }
 
 .loader {
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 5vw;
   position: fixed;
-  letter-spacing: -2px;
   top: calc(50% - 44px);
   left: 0;
   z-index: 600;
   width: 100%;
   height: 88px;
-  pointer-events: none;
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #ffd2d2;
   text-align: center;
-  color: #ffd2d2; }
+  font-size: 5vw;
+  letter-spacing: -2px;
+  pointer-events: none; }
   @media (max-width: 1440px) {
     .loader {
       font-size: 72px; } }
