@@ -1,4 +1,4 @@
-<article class="single-illustrator" role="article" itemscope itemtype="http://schema.org/CreativeWork">
+<article class="single-illustrator" itemscope itemtype="http://schema.org/CreativeWork">
 
   <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">

@@ -99,10 +99,6 @@
   align-items: center;
   justify-content: center;
   @include rsp-font(14vw, 24px);
-
-  @media screen and (max-width: $small-vp) {
-    display: none;
-  }
 }
 
 .page-inner {

@@ -30,7 +30,7 @@
   <a class="screen-reader-shortcut" href="#main">Skip to main content</a>
 
   <div class="loader"><h1 class="loader-text">Loading ☺</h1></div>
-  <header role="banner">
+  <header>
     <div class="app-head-items">
 
         <div class="heading-inner">
@@ -93,7 +93,7 @@
                   $ocaduillustration_year_image = get_the_post_thumbnail_url();
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $ocaduillustration_year_image ) . "' class='year-item-image lazyload' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $ocaduillustration_year_image ) . "' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
                 wp_reset_postdata();
               }
               ?>
@@ -116,4 +116,4 @@
     </div><!-- .app-head-items -->
   </header><!-- header -->
 
-  <main id="main" role="main">
+  <main id="main">

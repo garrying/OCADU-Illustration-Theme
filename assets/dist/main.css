@@ -22,13 +22,6 @@ ul {
   font-weight: normal; }
 
 @font-face {
-  font-family: "Standard Book";
-  src: url(fonts/standard-book-webfont.eot);
-  src: url(fonts/standard-book-webfont.eot?#iefix) format("embedded-opentype"), url(fonts/standard-book-webfont.woff2) format("woff2"), url(fonts/standard-book-webfont.woff) format("woff"), url(fonts/standard-book-webfont.ttf) format("truetype");
-  font-style: normal;
-  font-weight: normal; }
-
-@font-face {
   font-family: "GT America Standard Light";
   src: url(fonts/GT-America-Standard-Light.eot);
   src: url(fonts/GT-America-Standard-Light.eot?#iefix) format("embedded-opentype"), url(fonts/GT-America-Standard-Light.woff2) format("woff2"), url(fonts/GT-America-Standard-Light.woff) format("woff"), url(fonts/GT-America-Standard-Light.ttf) format("truetype");
@@ -588,9 +581,6 @@ button {
   @media (max-width: 171.42857px) {
     .section-indicator-index {
       font-size: 24px; } }
-  @media screen and (max-width: 667px) {
-    .section-indicator-index {
-      display: none; } }
 
 .page-inner {
   max-width: 82vw;
