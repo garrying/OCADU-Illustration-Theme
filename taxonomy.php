@@ -13,7 +13,8 @@ if ( is_archive() ) {
 
 <div id="illustrators" class="grid illustrators-grid archive-grid">
   <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-  <?php $args = array(
+  <?php 
+  $ocaduillustration_args = array(
     'post_status' => 'publish',
     'post_type'   => 'illustrator',
     'tax_query'   => array(
@@ -26,16 +27,18 @@ if ( is_archive() ) {
     'orderby'     => 'title',
     'order'       => 'ASC',
   );
-  $query = new WP_Query( $args ); ?>
+  $ocaduillustration_query = new WP_Query( $ocaduillustration_args ); ?>
 
-  <?php if( $query->have_posts() ): ?>
-    <?php while( $query->have_posts() ) : $query->the_post(); ?>
-      <?php
-        get_template_part( 'content', get_post_format() );
-      ?>
+  <?php if( $ocaduillustration_query->have_posts() ) : ?>
+    <?php
+    while( $ocaduillustration_query->have_posts() ) :
+      $ocaduillustration_query->the_post(); ?>
+    <?php
+      get_template_part( 'content', get_post_format() );
+    ?>
     <?php endwhile; ?>
   <?php endif; ?>
 
-  <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
+  <?php wp_reset_postdata(); ?>
 </div>
 <?php get_footer(); ?>
