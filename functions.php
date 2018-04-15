@@ -34,7 +34,7 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
      * Add custom menu using wp_nav_menu()
      */
     register_nav_menus( array(
-      'primary' => __( 'Primary Navigation', 'ocadu' ),
+      'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
     ));
 
   }
@@ -43,7 +43,7 @@ endif;
 add_action( 'after_setup_theme', 'ocaduillustration_setup' );
 
 /**
- * Wordpress Default Header Cleanup
+ * WordPress Default Header Cleanup
  */
 function ocaduillustration_head_cleanup() {
   remove_action( 'wp_head', 'feed_links_extra', 3 ); // Category Feeds.
@@ -110,7 +110,7 @@ add_action( 'wp_enqueue_scripts', 'ocaduillustration_fonts' );
 /**
  * Clean up body_class output
  *
- * @param string $wp_classes input classes from wordpress.
+ * @param string $wp_classes input classes from WordPress.
  *
  * @param array $extra_classes extra classes to add to body class.
  *
@@ -144,7 +144,7 @@ function ocaduillustration_content_nav( $nav_id ) {
 
   if ( $wp_query->max_num_pages > 1 ) : ?>
     <nav id="<?php echo esc_attr( $nav_id ); ?>">
-      <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocadu' ); ?></h3>
+      <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocaduillustration' ); ?></h3>
       <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
       <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
     </nav><!-- #nav-above -->
@@ -386,13 +386,13 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_fil
  */
 function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
-  $image_url = wp_get_attachment_image_src( $id, 'large' )[0];
-  $image_srcset = wp_get_attachment_image_srcset( $id );
-  $image_sizes = wp_get_attachment_image_sizes( $id, 'large' );
+  $image_url     = wp_get_attachment_image_src( $id, 'large' )[0];
+  $image_srcset  = wp_get_attachment_image_srcset( $id );
+  $image_sizes   = wp_get_attachment_image_sizes( $id, 'large' );
   $image_caption = get_post( $id )->post_excerpt;
 
-  $image_data = wp_get_attachment_image_src( $id, 'large' );
-  $image_width = $image_data[1];
+  $image_data   = wp_get_attachment_image_src( $id, 'large' );
+  $image_width  = $image_data[1];
   $image_height = $image_data[2];
 
   if ( ! $permalink ) {
@@ -415,11 +415,11 @@ function ocaduillustration_simplify_post_class( $classes ) {
   global $post;
 
   foreach ( $classes as $id => $class ) {
-    if ( ( strpos( $class, 'tag-' ) !=== false )
-    || ( strpos( $class, 'format-' ) !=== false )
-    || ( strpos( $class, 'type-' ) !=== false )
-    || ( strpos( $class, 'status-' ) !=== false )
-    || ( strpos( $class, 'category-' ) !=== false )
+    if ( ( strpos( $class, 'tag-' ) !== false )
+    || ( strpos( $class, 'format-' ) !== false )
+    || ( strpos( $class, 'type-' ) !== false )
+    || ( strpos( $class, 'status-' ) !== false )
+    || ( strpos( $class, 'category-' ) !== false )
     || '' === $class ) {
       unset( $classes[ $id ] );
     }
