@@ -82,9 +82,9 @@
         <?php
         if ( is_singular( 'illustrator' ) ) {
           $term       = get_the_terms( $post->ID, 'gradyear' );
-          $term_first = $term[0];
-          if ( isset( $term_first->name ) ) {
-				echo '<a class="section-indicator-single" href="/year/' . esc_html( $term_first->slug ) . '" title="Return to ' . esc_html( $term_first->name ) . ' index"> ● ' . esc_html( $term_first->name ) . '</a>';
+          $ocaduillustration_term_first = $term[0];
+          if ( isset( $ocaduillustration_term_first->name ) ) {
+				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ● ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
           };
         }
         ?>
