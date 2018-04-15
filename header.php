@@ -76,9 +76,9 @@
 
                 $args = array(
                   'posts_per_page' => 1,
-                  'orderby' => 'rand',
-                  'post_type' => 'illustrator',
-                  'tax_query' => array(
+                  'orderby'        => 'rand',
+                  'post_type'      => 'illustrator',
+                  'tax_query'      => array(
                     array(
                       'taxonomy' => 'gradyear',
                       'field' => 'name',

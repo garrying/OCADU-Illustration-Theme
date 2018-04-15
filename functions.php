@@ -34,7 +34,7 @@ if ( ! function_exists( 'ocadu_setup' ) ) :
      * Add custom menu using wp_nav_menu()
      */
     register_nav_menus( array(
-      'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+      'primary' => __( 'Primary Navigation', 'ocadu' ),
     ));
 
   }
@@ -144,7 +144,7 @@ function ocadu_content_nav( $nav_id ) {
 
   if ( $wp_query->max_num_pages > 1 ) : ?>
     <nav id="<?php echo esc_attr( $nav_id ); ?>">
-      <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocaduillustration' ); ?></h3>
+      <h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'ocadu' ); ?></h3>
       <div class="nav-next"><?php next_posts_link( __( 'Next Page <span class="meta-nav">&rarr;</span>' ) ); ?></div>
       <div class="nav-previous"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Previous Page' ) ); ?></div>
     </nav><!-- #nav-above -->
