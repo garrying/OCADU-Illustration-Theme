@@ -480,10 +480,10 @@ button {
     color: #fff; }
 
 .search-title {
-  padding: 4em 0;
   font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 2vw; }
-  @media (max-width: 1200px) {
+  line-height: 1em;
+  font-size: 3vw; }
+  @media (max-width: 800px) {
     .search-title {
       font-size: 24px; } }
   @media screen and (max-width: 667px) {

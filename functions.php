@@ -360,7 +360,7 @@ function ocaduillustration_gallery_filter( $attr ) {
     unset( $attr['src'] );
     unset( $attr['srcset'] );
     unset( $attr['sizes'] );
-    if ( is_home() || is_archive() ) {
+    if ( is_home() || is_archive() || is_search() ) {
       $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
     }
   }

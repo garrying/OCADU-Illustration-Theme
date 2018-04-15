@@ -68,9 +68,9 @@
 // Search Index
 
 .search-title {
-  padding: 4em 0;
   font-family: $sans-serif-light;
-  @include rsp-font(2vw, 24px);
+  line-height: 1em;
+  @include rsp-font(3vw, 24px);
 
   @media screen and (max-width: $small-vp) {
     margin: 0;
