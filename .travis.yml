@@ -61,7 +61,7 @@ before_script:
   - . ~/.bashrc
   - nvm install 8.11.1
   # Hop theme directory.
-  - cd $(basename $(pwd))
+  - cd $TRAVIS_BUILD_DIR
   # After CodeSniffer install you should refresh your path.
   - phpenv rehash
 
