@@ -13,7 +13,7 @@ if ( is_archive() ) {
 
 <div id="illustrators" class="grid illustrators-grid archive-grid">
   <?php $ocaduillustration_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-  <?php 
+  <?php
   $ocaduillustration_args       = array(
     'post_status' => 'publish',
     'post_type'   => 'illustrator',
@@ -27,13 +27,13 @@ if ( is_archive() ) {
     'orderby'     => 'title',
     'order'       => 'ASC',
   );
-  $ocaduillustration_query = new WP_Query( $ocaduillustration_args );
+  $ocaduillustration_query      = new WP_Query( $ocaduillustration_args );
   ?>
 
   <?php if ( $ocaduillustration_query->have_posts() ) : ?>
     <?php
     while ( $ocaduillustration_query->have_posts() ) :
-      $ocaduillustration_query->the_post(); 
+      $ocaduillustration_query->the_post();
     ?>
     <?php
       get_template_part( 'content', get_post_format() );
