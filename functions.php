@@ -400,7 +400,7 @@ function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permali
 
   if ( ! $permalink ) {
     $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="' . $image_srcset . '" data-src-large="' . $image_url[0] . '" data-caption="' . $image_caption . '" data-sizes="' . $image_sizes . '" href', $markup );
-    $markup = str_replace( '</a>', '<canvas class="gallery-icon-placeholder" height="' . $image_height . '" width="' . $image_width . '"></canvas></a>', $markup );
+    $markup = str_replace( '</a>', '<canvas class="lazyload-image-placeholder" height="' . $image_height . '" width="' . $image_width . '"></canvas></a>', $markup );
   }
   return $markup;
 }
