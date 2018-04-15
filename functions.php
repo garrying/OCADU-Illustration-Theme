@@ -285,7 +285,7 @@ function ocaduillustration_social_meta() {
       $social_title = get_bloginfo( 'name' );
     } else {
       $selected_year = single_term_title( '', false );
-      $social_title = get_bloginfo( 'name' ) . ' ' . $selected_year;
+      $social_title  = get_bloginfo( 'name' ) . ' ' . $selected_year;
     }
 
     echo '<meta property="og:title" content="' . esc_html( $social_title ) . '">' . "\n";
@@ -330,7 +330,7 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
 function ocaduillustration_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
     $the_url = next_post_link_plus( array(
-      'order_by'.   => 'post_title',
+      'order_by'    => 'post_title',
       'in_same_tax' => true,
       'return'      => 'href',
       )
