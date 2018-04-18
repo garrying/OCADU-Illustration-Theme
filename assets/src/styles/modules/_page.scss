@@ -75,17 +75,6 @@
   }
 }
 
-.illustrator-image {
-  position: relative;
-
-  .wp-post-image {
-    position: absolute;
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .section-indicator-index {
   font-family: $sans-serif-light;
   color: $color-accent;
