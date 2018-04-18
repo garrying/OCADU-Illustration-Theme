@@ -19,6 +19,7 @@
     box-sizing: border-box;
     padding: 15px;
     font-family: $sans-serif-light;
+    line-height: 1.5em;
     @include font-smoothing(on);
     color: $white;
     background: darken($color-accent, 10%);

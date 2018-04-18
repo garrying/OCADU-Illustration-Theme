@@ -257,7 +257,9 @@ figure {
     stroke-width: 1; }
 
 .lazyload {
-  opacity: 0; }
+  opacity: 0;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
 
 .bricklayer-column .lazyload {
   opacity: 1; }
@@ -440,6 +442,7 @@ button {
     box-sizing: border-box;
     padding: 15px;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5em;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
@@ -878,7 +881,7 @@ button {
   @media screen and (max-width: 768px) {
     .illustrator-meta {
       flex: 1 1 50%;
-      font-size: 0.85em; } }
+      font-size: 0.95em; } }
   @media screen and (max-width: 667px) {
     .illustrator-meta {
       padding: 20px;
@@ -953,6 +956,7 @@ button {
       border: 1px solid #ff5252; } }
 
 .illustrator-nav-single-wrapper {
+  white-space: nowrap;
   font-family: "Lab Mono Web", monaco, monospace;
   display: flex;
   position: absolute;

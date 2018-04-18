@@ -92,6 +92,7 @@ figure {
 
 .lazyload {
   opacity: 0;
+  transform: translateZ(0);
 }
 
 .bricklayer-column .lazyload {

@@ -53,7 +53,7 @@
 
   @media screen and (max-width: $ipad-vp) {
     flex: 1 1 50%;
-    font-size: 0.85em;
+    font-size: 0.95em;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -149,6 +149,7 @@
 }
 
 .illustrator-nav-single-wrapper {
+  white-space: nowrap;
   font-family: $monospace;
   display: flex;
   position: absolute;
