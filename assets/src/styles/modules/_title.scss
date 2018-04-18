@@ -1,13 +1,21 @@
 .title {
+  position: fixed;
+  top: 2em;
+  bottom: 2em;
+  left: 50vw;
+  right: 2em;
+  color: $white;
   line-height: 1;
   z-index: $z-background;
-  right: 0;
-  bottom: 0;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4.5vw 20px 30px;
+  padding: 30px;
+  pointer-events: none;
+
+  a {
+    color: $white;
+  }
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -19,14 +27,16 @@
 
   .title-unit {
     height: 100%;
-    align-items: center;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1em;
   }
 
   .title-primary {
     margin: 0;
     font-family: $sans-serif-light;
-    @include rsp-font(2vw, 18px);
+    @include rsp-font(4.5vw, 18px);
     @include heading-features;
 
     @media screen and (max-width: $ipad-vp) {
@@ -38,9 +48,25 @@
     @include heading-features;
     font-family: $sans-serif-light;
     line-height: 1.3em;
+    max-width: 300px;
 
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+
+.title-bg {
+  position: fixed;
+  background: $color-accent;
+  top: 2em;
+  bottom: 2em;
+  left: 50vw;
+  right: 2em;
+  z-index: -1;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
   }
 }

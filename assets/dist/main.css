@@ -1031,15 +1031,21 @@ button {
       background: rgba(255, 82, 82, 0.5); }
 
 .title {
+  position: fixed;
+  top: 2em;
+  bottom: 2em;
+  left: 50vw;
+  right: 2em;
+  color: #fff;
   line-height: 1;
   z-index: 100;
-  right: 0;
-  bottom: 0;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4.5vw 20px 30px; }
+  padding: 30px;
+  pointer-events: none; }
+  .title a {
+    color: #fff; }
   @media screen and (max-width: 667px) {
     .title {
       display: none; } }
@@ -1048,19 +1054,21 @@ button {
       width: 40vw; } }
   .title .title-unit {
     height: 100%;
-    align-items: center;
-    display: flex; }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1em; }
   .title .title-primary {
     margin: 0;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 2vw;
+    font-size: 4.5vw;
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
             font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     -webkit-font-kerning: normal;
             font-kerning: normal;
     text-rendering: optimizeLegibility; }
-    @media (max-width: 900px) {
+    @media (max-width: 400px) {
       .title .title-primary {
         font-size: 18px; } }
     @media screen and (max-width: 768px) {
@@ -1077,9 +1085,22 @@ button {
             font-kerning: normal;
     text-rendering: optimizeLegibility;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.3em; }
+    line-height: 1.3em;
+    max-width: 300px; }
     .title .title-secondary:last-child {
       margin-bottom: 0; }
+
+.title-bg {
+  position: fixed;
+  background: #ff5252;
+  top: 2em;
+  bottom: 2em;
+  left: 50vw;
+  right: 2em;
+  z-index: -1; }
+  @media screen and (max-width: 667px) {
+    .title-bg {
+      display: none; } }
 
 .home .header-items-wrapper {
   width: calc(35vw - 40px); }
@@ -1093,13 +1114,9 @@ button {
 .home-grid {
   display: flex;
   flex-wrap: wrap;
-  width: 65vw; }
-  @media screen and (max-width: 768px) {
-    .home-grid {
-      width: 60vw; } }
+  margin: 100px auto; }
   @media screen and (max-width: 667px) {
     .home-grid {
-      width: 100vw;
       padding: 30px 0 0;
       margin: 50px 0 0; } }
   .home-grid .illustrator-meta-container {
@@ -1108,51 +1125,63 @@ button {
     left: 0;
     z-index: 600;
     display: none;
-    max-width: 500px;
+    max-width: 50vw;
     color: #fff;
     opacity: 0; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
-      color: #ff5252;
+      color: #000;
       font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1em;
+      padding: 0;
       -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
               font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
       font-variant-numeric: lining-nums;
       -webkit-font-kerning: normal;
               font-kerning: normal;
       text-rendering: optimizeLegibility;
-      font-size: 2vw; }
-      @media (max-width: 900px) {
+      font-size: 4.5vw; }
+      @media (max-width: 400px) {
         .home-grid .illustrator-meta-container .illustrator-meta-label {
           font-size: 18px; } }
+      .home-grid .illustrator-meta-container .illustrator-meta-label:first-child {
+        opacity: 0.75; }
     .home-grid .illustrator-meta-container.active {
       display: flex;
       opacity: 1; }
-    .home-grid .illustrator-meta-container .illustrator-content {
-      margin: 1em 0; }
-    .home-grid .illustrator-meta-container .illustrator-content-container {
-      padding: 1em; }
   .home-grid .illustrator-meta-label {
     margin-bottom: 0; }
   .home-grid .gallery-item {
     position: relative;
-    display: none;
-    padding: 1px;
+    display: block;
+    padding: 5%;
     margin: 0;
-    flex-basis: 33.3333333333%; }
-  .home-grid .bricklayer-column {
-    opacity: 0;
-    transition: opacity 500ms ease-in-out; }
-    .home-grid .bricklayer-column .gallery-item {
-      display: block; }
-  .home-grid.ready .bricklayer-column {
-    opacity: 1; }
-  .home-grid.ready .bricklayer-column:nth-child(2) {
-    transition-delay: 400ms; }
-  .home-grid.ready .bricklayer-column:nth-child(3) {
-    transition-delay: 300ms; }
-  .home-grid.ready .bricklayer-column:nth-child(4) {
-    transition-delay: 200ms; }
+    flex-basis: 25%; }
+    .home-grid .gallery-item:nth-child(n+3) {
+      padding: 4%; }
+    .home-grid .gallery-item:nth-child(2n+2) {
+      padding: 15%; }
+  .home-grid .bricklayer-column:nth-child(odd) {
+    padding: 1%; }
+    .home-grid .bricklayer-column:nth-child(odd) .gallery-item:nth-child(2n) {
+      padding: 5%; }
+  .home-grid .bricklayer-column-sizer {
+    width: 25%; }
+    @media screen and (max-width: 667px) {
+      .home-grid .bricklayer-column-sizer {
+        width: 50%; } }
+    @media screen and (max-width: 320px) {
+      .home-grid .bricklayer-column-sizer {
+        width: 100%; } }
+    @media screen and (min-width: 1920px) {
+      .home-grid .bricklayer-column-sizer {
+        width: 20%; } }
+  .home-grid .blur-up {
+    -webkit-filter: blur(10px);
+            filter: blur(10px); }
+  .home-grid .lazyloaded.blur-up {
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    mix-blend-mode: multiply; }
 
 .loader {
   position: fixed;

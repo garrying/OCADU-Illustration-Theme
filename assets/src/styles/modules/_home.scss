@@ -17,14 +17,9 @@
 
   display: flex;
   flex-wrap: wrap;
-  width: 65vw;
-
-  @media screen and (max-width: $ipad-vp) {
-    width: 60vw;
-  }
+  margin: 100px auto;
 
   @media screen and (max-width: $small-vp) {
-    width: 100vw;
     padding: 30px 0 0;
     margin: 50px 0 0;
   }
@@ -35,29 +30,26 @@
     left: 0;
     z-index: $z-important;
     display: none;
-    max-width: 500px;
+    max-width: 50vw;
     color: $white;
     opacity: 0;
 
     .illustrator-meta-label {
-      color: $color-accent;
+      color: $black;
       font-family: $sans-serif-light;
       line-height: 1em;
+      padding: 0;
       @include heading-features;
-      @include rsp-font(2vw, 18px);
+      @include rsp-font(4.5vw, 18px);
+
+      &:first-child {
+        opacity: 0.75;
+      }
     }
 
     &.active {
       display: flex;
       opacity: 1;
-    }
-
-    .illustrator-content {
-      margin: 1em 0;
-    }
-
-    .illustrator-content-container {
-      padding: 1em;
     }
   }
 
@@ -67,36 +59,53 @@
 
   .gallery-item {
     position: relative;
-    display: none;
-    padding: 1px;
+    display: block;
+    padding: 5%;
     margin: 0;
-    flex-basis: 33.3333333333%;
+    flex-basis: 25%;
+
+    &:nth-child(n+3) {
+      padding: 4%;
+    }
+
+    &:nth-child(2n+2) {
+      padding: 15%;
+    }
   }
 
   .bricklayer-column {
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
+    &:nth-child(odd) {
+      padding: 1%;
 
-    .gallery-item {
-      display: block;
+      .gallery-item:nth-child(2n) {
+        padding: 5%;
+      }
     }
   }
 
-  &.ready {
-    .bricklayer-column {
-      opacity: 1;
+  .bricklayer-column-sizer {
+    width: 25%;
+
+    @media screen and (max-width: $small-vp) {
+      width: 50%;
     }
 
-    .bricklayer-column:nth-child(2) {
-      transition-delay: 400ms;
+    @media screen and (max-width: $smallest-vp) {
+      width: 100%;
     }
 
-    .bricklayer-column:nth-child(3) {
-      transition-delay: 300ms;
-    }
-
-    .bricklayer-column:nth-child(4) {
-      transition-delay: 200ms;
+    @media screen and (min-width: $large-vp) {
+      width: 20%;
     }
   }
+
+  .blur-up {
+    filter: blur(10px);
+  }
+
+  .lazyloaded.blur-up {
+    filter: blur(0);
+    mix-blend-mode: multiply;
+  }
+
 }
