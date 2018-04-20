@@ -91,56 +91,41 @@
 }
 
 .page-inner {
-  max-width: 82vw;
-  padding: 0 1%;
-  margin: 120px auto;
+  max-width: 60vw;
+  margin: 130px 0 0 30px;
 
-  @include rsp-font(1.5vw, 14px);
+  line-height: 1.2em;
+  @include rsp-font(1vw, 14px);
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     max-width: none;
-    margin-top: 8em;
+    margin: 8em 0 0;
   }
 
   .entry-title {
+    line-height: 1em;
     margin: 1em 0;
     font-family: $sans-serif-light;
-    @include rsp-font(5vw, 48px);
+    @include rsp-font(5vw, 50px);
   }
 
   .entry-title-secondary {
-    font-size: 1.618em;
+    color: $site-font-color;
+    line-height: 1em;
+    margin: 1.5em 0;
+    @include rsp-font(1.5vw, 25px);
   }
 
   .col-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    .col {
-      width: calc(50% - 20px);
-
-      @media screen and (max-width: $small-vp) {
-        width: 100%;
-      }
-    }
-
-    .rs {
-      @media screen and (max-width: $small-vp) {
-        margin-top: 2em;
-      }
-    }
+    color: #555;
   }
 
-  .wiggle {
-    width: 100%;
-    margin-bottom: 1em;
-    text-align: center;
+  .faculty-list {
+    max-width: 70%;
 
-    svg {
-      width: 1.5em;
-      height: auto;
+    @media screen and (max-width: $small-vp) {
+      max-width: none;
     }
   }
 }

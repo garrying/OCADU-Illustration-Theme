@@ -15,6 +15,7 @@
 
   a {
     color: $white;
+    pointer-events: auto;
   }
 
   @media screen and (max-width: $small-vp) {

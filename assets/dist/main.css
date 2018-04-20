@@ -587,46 +587,41 @@ button {
       font-size: 24px; } }
 
 .page-inner {
-  max-width: 82vw;
-  padding: 0 1%;
-  margin: 120px auto;
-  font-size: 1.5vw; }
-  @media (max-width: 933.33333px) {
+  max-width: 60vw;
+  margin: 130px 0 0 30px;
+  line-height: 1.2em;
+  font-size: 1vw; }
+  @media (max-width: 1400px) {
     .page-inner {
       font-size: 14px; } }
   @media screen and (max-width: 667px) {
     .page-inner {
       padding: 0 20px;
       max-width: none;
-      margin-top: 8em; } }
+      margin: 8em 0 0; } }
   .page-inner .entry-title {
+    line-height: 1em;
     margin: 1em 0;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 5vw; }
-    @media (max-width: 960px) {
+    @media (max-width: 1000px) {
       .page-inner .entry-title {
-        font-size: 48px; } }
+        font-size: 50px; } }
   .page-inner .entry-title-secondary {
-    font-size: 1.618em; }
+    color: #111;
+    line-height: 1em;
+    margin: 1.5em 0;
+    font-size: 1.5vw; }
+    @media (max-width: 1666.66667px) {
+      .page-inner .entry-title-secondary {
+        font-size: 25px; } }
   .page-inner .col-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; }
-    .page-inner .col-container .col {
-      width: calc(50% - 20px); }
-      @media screen and (max-width: 667px) {
-        .page-inner .col-container .col {
-          width: 100%; } }
+    color: #555; }
+  .page-inner .faculty-list {
+    max-width: 70%; }
     @media screen and (max-width: 667px) {
-      .page-inner .col-container .rs {
-        margin-top: 2em; } }
-  .page-inner .wiggle {
-    width: 100%;
-    margin-bottom: 1em;
-    text-align: center; }
-    .page-inner .wiggle svg {
-      width: 1.5em;
-      height: auto; }
+      .page-inner .faculty-list {
+        max-width: none; } }
 
 #post-6 {
   max-width: 60vw; }
@@ -1045,7 +1040,8 @@ button {
   padding: 30px;
   pointer-events: none; }
   .title a {
-    color: #fff; }
+    color: #fff;
+    pointer-events: auto; }
   @media screen and (max-width: 667px) {
     .title {
       display: none; } }
