@@ -147,20 +147,20 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 ::-moz-selection {
-  background: rgba(255, 82, 82, 0.25); }
+  background: rgba(250, 128, 114, 0.25); }
 
 ::selection {
-  background: rgba(255, 82, 82, 0.25); }
+  background: rgba(250, 128, 114, 0.25); }
 
 mark {
-  background: rgba(255, 82, 82, 0.25); }
+  background: rgba(250, 128, 114, 0.25); }
 
 a {
   text-decoration: none;
-  color: #ff5252;
+  color: salmon;
   transition: color 180ms ease-in-out; }
   a:hover {
-    color: #eb0000; }
+    color: #f7270f; }
   a img {
     display: block; }
 
@@ -262,7 +262,7 @@ figure {
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: #ff5252;
+    stroke: salmon;
     stroke-width: 1; }
 
 .lazyload {
@@ -395,7 +395,7 @@ button {
   z-index: 200;
   display: flex;
   overflow: scroll;
-  background: #ff5252;
+  background: salmon;
   outline: 0;
   opacity: 0;
   visibility: none;
@@ -457,18 +457,18 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-    background: #ff1f1f;
+    background: #f85441;
     border: 0; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
   .search-form .search-field::-webkit-input-placeholder {
-    color: #ff5252; }
+    color: salmon; }
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #ff5252;
+    color: salmon;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
@@ -484,7 +484,7 @@ button {
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: #ff1f1f;
+  color: #f85441;
   cursor: pointer;
   transition: color 200ms ease-in-out; }
   .autocomplete-suggestion.autocomplete-selected, .autocomplete-suggestion:hover,
@@ -510,7 +510,7 @@ button {
   display: none;
   width: 1em;
   height: 1em;
-  border: 2px solid #ff1f1f;
+  border: 2px solid #f85441;
   border-radius: 50%;
   -webkit-animation-name: shake;
           animation-name: shake;
@@ -560,7 +560,7 @@ button {
     display: block;
     padding-bottom: 1em; }
   .archive-grid .illustrator-link:hover .illustrator-title {
-    color: #ff5252; }
+    color: salmon; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -571,7 +571,7 @@ button {
 
 .section-indicator-index {
   font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #ff5252;
+  color: salmon;
   position: fixed;
   top: 0;
   left: 0;
@@ -645,7 +645,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ff5252;
+  color: salmon;
   font-size: 1.5vw;
   line-height: 1.3em; }
   @media (max-width: 933.33333px) {
@@ -667,7 +667,7 @@ button {
     height: 100%;
     pointer-events: none; }
   .error-body .error-line {
-    fill: #ff5252; }
+    fill: salmon; }
 
 .error-line-container {
   position: absolute;
@@ -718,7 +718,7 @@ button {
   align-items: center;
   width: 33.3333333%;
   height: 100%;
-  background: #ff5252; }
+  background: salmon; }
   @media screen and (max-width: 667px) {
     .year-list-item {
       width: 50%; } }
@@ -727,7 +727,7 @@ button {
   font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   z-index: 1;
-  color: #ff8585;
+  color: #fcaca3;
   font-size: 14vw;
   line-height: 1em;
   opacity: 0; }
@@ -772,7 +772,7 @@ button {
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out; }
   .logo:hover, .logo:focus {
-    color: #eb0000; }
+    color: #f7270f; }
   .logo.invert, .logo.invert:hover {
     opacity: 0; }
 
@@ -820,17 +820,17 @@ button {
           font-kerning: normal;
   text-rendering: optimizeLegibility;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: #ff5252; }
+  background: salmon; }
   .header-item:hover, .header-item:focus {
-    background: #ff1f1f; }
+    background: #f85441; }
   .header-item.invert {
     color: #fff; }
   .header-item.inactive {
-    color: #eb0000;
+    color: #f7270f;
     background: transparent; }
   .header-item.inactive:hover {
     color: #fff;
-    background: #eb0000; }
+    background: #f7270f; }
   @media screen and (max-width: 667px) {
     .header-item {
       padding: 1.5em; } }
@@ -950,7 +950,7 @@ button {
       padding: 1em;
       margin: 1em 0;
       border-radius: 0.5em;
-      border: 1px solid #ff5252; } }
+      border: 1px solid salmon; } }
 
 .illustrator-nav-single-wrapper {
   white-space: nowrap;
@@ -963,7 +963,7 @@ button {
   bottom: 0;
   left: 0;
   padding: 0 30px;
-  border-top: 1px solid #ffd2d2; }
+  border-top: 1px solid #feefed; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single-wrapper {
       padding: 0;
@@ -1018,27 +1018,27 @@ button {
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba(255, 82, 82, 0.1);
+    background: rgba(250, 128, 114, 0.1);
     transition: background 200ms ease-in-out; }
     .miniview .mini-item-inner.active, .miniview .mini-item-inner:hover {
-      background: #ff5252; }
+      background: salmon; }
     .miniview .mini-item-inner:hover {
-      background: rgba(255, 82, 82, 0.5); }
+      background: rgba(250, 128, 114, 0.5); }
 
 .title {
   position: fixed;
   top: 2em;
+  right: 2em;
   bottom: 2em;
   left: 50vw;
-  right: 2em;
-  color: #fff;
-  line-height: 1;
-  z-index: 100;
   display: flex;
+  z-index: 100;
+  line-height: 1;
+  color: #fff;
+  padding: 2em;
+  pointer-events: none;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 30px;
-  pointer-events: none; }
+  justify-content: space-between; }
   .title a {
     color: #fff;
     pointer-events: auto; }
@@ -1049,13 +1049,12 @@ button {
     .title {
       width: 40vw; } }
   .title .title-unit {
-    height: 100%;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 1em; }
+    justify-content: space-between; }
   .title .title-primary {
-    margin: 0;
+    margin: 0 0 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 4.5vw;
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -1088,7 +1087,7 @@ button {
 
 .title-bg {
   position: fixed;
-  background: #ff5252;
+  background: salmon;
   top: 2em;
   bottom: 2em;
   left: 50vw;
@@ -1187,7 +1186,7 @@ button {
   width: 100%;
   height: 88px;
   font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #ffd2d2;
+  color: #feefed;
   text-align: center;
   font-size: 5vw;
   letter-spacing: -2px;
