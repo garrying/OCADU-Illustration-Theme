@@ -157,7 +157,7 @@ mark {
 
 a {
   text-decoration: none;
-  color: salmon;
+  color: #fa8072;
   transition: color 180ms ease-in-out; }
   a:hover {
     color: #f7270f; }
@@ -262,7 +262,7 @@ figure {
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: salmon;
+    stroke: #fa8072;
     stroke-width: 1; }
 
 .lazyload {
@@ -395,7 +395,7 @@ button {
   z-index: 200;
   display: flex;
   overflow: scroll;
-  background: salmon;
+  background: #fa8072;
   outline: 0;
   opacity: 0;
   visibility: none;
@@ -463,12 +463,12 @@ button {
       outline-style: none;
       outline-color: #fff; }
   .search-form .search-field::-webkit-input-placeholder {
-    color: salmon; }
+    color: #fa8072; }
   .search-form .search-submit {
     padding: 15px;
     margin-left: 4px;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: salmon;
+    color: #fa8072;
     background: #fff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
@@ -560,7 +560,7 @@ button {
     display: block;
     padding-bottom: 1em; }
   .archive-grid .illustrator-link:hover .illustrator-title {
-    color: salmon; }
+    color: #fa8072; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -571,7 +571,7 @@ button {
 
 .section-indicator-index {
   font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: salmon;
+  color: #fa8072;
   position: fixed;
   top: 0;
   left: 0;
@@ -645,7 +645,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: salmon;
+  color: #fa8072;
   font-size: 1.5vw;
   line-height: 1.3em; }
   @media (max-width: 933.33333px) {
@@ -667,7 +667,7 @@ button {
     height: 100%;
     pointer-events: none; }
   .error-body .error-line {
-    fill: salmon; }
+    fill: #fa8072; }
 
 .error-line-container {
   position: absolute;
@@ -718,7 +718,7 @@ button {
   align-items: center;
   width: 33.3333333%;
   height: 100%;
-  background: salmon; }
+  background: #fa8072; }
   @media screen and (max-width: 667px) {
     .year-list-item {
       width: 50%; } }
@@ -820,7 +820,7 @@ button {
           font-kerning: normal;
   text-rendering: optimizeLegibility;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: salmon; }
+  background: #fa8072; }
   .header-item:hover, .header-item:focus {
     background: #f85441; }
   .header-item.invert {
@@ -950,7 +950,7 @@ button {
       padding: 1em;
       margin: 1em 0;
       border-radius: 0.5em;
-      border: 1px solid salmon; } }
+      border: 1px solid #fa8072; } }
 
 .illustrator-nav-single-wrapper {
   white-space: nowrap;
@@ -1021,7 +1021,7 @@ button {
     background: rgba(250, 128, 114, 0.1);
     transition: background 200ms ease-in-out; }
     .miniview .mini-item-inner.active, .miniview .mini-item-inner:hover {
-      background: salmon; }
+      background: #fa8072; }
     .miniview .mini-item-inner:hover {
       background: rgba(250, 128, 114, 0.5); }
 
@@ -1087,7 +1087,7 @@ button {
 
 .title-bg {
   position: fixed;
-  background: salmon;
+  background: #fa8072;
   top: 2em;
   bottom: 2em;
   left: 50vw;
