@@ -347,9 +347,10 @@ const Bricklayer = require('bricklayer');
         ).then(() => {
           $('#full-image').velocity('stop');
           const image = document.getElementById('full-image');
-          image.src = imageItem.url;
-          image.srcset = imageItem.srcset;
-          image.sizes = imageItem.sizes;
+          image.dataset.src = imageItem.url;
+          image.dataset.srcset = imageItem.srcset;
+          image.dataset.sizes = imageItem.sizes;
+          lazySizes.loader.unveil(image);
           image.onload = () => {
             imageCaptionSetter(imageItem.caption);
             app._ocadLoader(false);
@@ -412,7 +413,7 @@ const Bricklayer = require('bricklayer');
       */
 
       document.addEventListener('lazybeforeunveil', (e) => {
-        if ($(e.target).is('#full-image')) {
+        if ($(e.target).is('#full-image') && !$(e.target).hasClass('lazyloaded')) {
           modalReviel();
         }
       });

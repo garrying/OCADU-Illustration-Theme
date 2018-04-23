@@ -1109,7 +1109,7 @@ button {
 .home-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: 100px auto; }
+  margin: 100px auto 0; }
   @media screen and (max-width: 667px) {
     .home-grid {
       padding: 30px 0 0;
