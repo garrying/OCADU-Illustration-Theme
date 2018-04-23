@@ -1138,8 +1138,6 @@ button {
       @media (max-width: 400px) {
         .home-grid .illustrator-meta-container .illustrator-meta-label {
           font-size: 18px; } }
-      .home-grid .illustrator-meta-container .illustrator-meta-label:first-child {
-        opacity: 0.75; }
     .home-grid .illustrator-meta-container.active {
       display: flex;
       opacity: 1; }
@@ -1159,6 +1157,8 @@ button {
     padding: 1%; }
     .home-grid .bricklayer-column:nth-child(odd) .gallery-item:nth-child(2n) {
       padding: 5%; }
+  .home-grid .bricklayer-column:nth-last-child(-n+2) .illustrator-meta-label {
+    color: #fff; }
   .home-grid .bricklayer-column-sizer {
     width: 25%; }
     @media screen and (max-width: 667px) {

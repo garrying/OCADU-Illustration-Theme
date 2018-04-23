@@ -41,10 +41,6 @@
       padding: 0;
       @include heading-features;
       @include rsp-font(4.5vw, 18px);
-
-      &:first-child {
-        opacity: 0.75;
-      }
     }
 
     &.active {
@@ -80,6 +76,10 @@
       .gallery-item:nth-child(2n) {
         padding: 5%;
       }
+    }
+
+    &:nth-last-child(-n+2) .illustrator-meta-label {
+      color: $white;
     }
   }
 
