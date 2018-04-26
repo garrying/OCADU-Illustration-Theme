@@ -171,12 +171,18 @@ const Bricklayer = require('bricklayer');
     _ocadHomeHover: () => {
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
+          let y = 0;
+          let x = 0;
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active');
 
           $(ele.currentTarget).mousemove((e) => {
-            const y = e.clientY + 10;
-            const x = e.clientX + 10;
-            $(ele.currentTarget).find('.illustrator-meta-container').css({ top: `${y}px`, left: `${x}px` });
+            y = e.clientY + 5;
+            x = e.clientX + 5;
+          });
+
+          window.requestAnimationFrame(function animation() {
+            $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` });
+            window.requestAnimationFrame(animation);
           });
         });
 
