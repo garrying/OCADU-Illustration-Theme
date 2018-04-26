@@ -49,8 +49,11 @@
 }
 
 .close-btn {
+  overflow: visible;
+
   path {
     stroke: $white;
-    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-width: 5;
   }
 }

@@ -31,11 +31,11 @@
     z-index: $z-important;
     display: none;
     max-width: 50vw;
-    color: $white;
     opacity: 0;
+    color: $color-accent;
+    mix-blend-mode: exclusion;
 
     .illustrator-meta-label {
-      color: $black;
       font-family: $sans-serif-light;
       line-height: 1em;
       padding: 0;
@@ -78,7 +78,8 @@
       }
     }
 
-    &:nth-last-child(-n+2) .illustrator-meta-label {
+    &:nth-last-child(-n+2) .illustrator-meta-container {
+      mix-blend-mode: unset;
       color: $white;
     }
   }

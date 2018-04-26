@@ -126,6 +126,9 @@ h6 {
   text-rendering: optimizeLegibility;
   margin-bottom: 1em; }
 
+.mono {
+  font-family: "Lab Mono Web", monaco, monospace; }
+
 .lock-scroll {
   overflow: hidden; }
   .lock-scroll .grid {
@@ -258,12 +261,12 @@ figure {
     line-height: 1.3em; }
     @media screen and (max-width: 768px) {
       .image-modal-wrapper .image-modal-caption {
+        bottom: 75px;
         left: 20px; } }
   .image-modal-wrapper .close-panel {
     position: fixed; }
   .image-modal-wrapper .close-btn path {
-    stroke: #fa8072;
-    stroke-width: 1; }
+    stroke: #fa8072; }
 
 .lazyload {
   opacity: 0; }
@@ -429,9 +432,12 @@ button {
       bottom: 1em;
       left: calc(50% - 17px); } }
 
-.close-btn path {
-  stroke: #fff;
-  stroke-width: 1; }
+.close-btn {
+  overflow: visible; }
+  .close-btn path {
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-width: 5; }
 
 .search-container {
   align-items: center;
@@ -506,11 +512,11 @@ button {
 .search-loader {
   position: absolute;
   top: 150%;
-  left: calc(50% - 1em/2);
+  left: calc(50% - 1em / 2);
   display: none;
   width: 1em;
   height: 1em;
-  border: 2px solid #f85441;
+  border: 5px solid #f85441;
   border-radius: 50%;
   -webkit-animation-name: shake;
           animation-name: shake;
@@ -1121,10 +1127,10 @@ button {
     z-index: 600;
     display: none;
     max-width: 50vw;
-    color: #fff;
-    opacity: 0; }
+    opacity: 0;
+    color: #fa8072;
+    mix-blend-mode: exclusion; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
-      color: #000;
       font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1em;
       padding: 0;
@@ -1157,7 +1163,8 @@ button {
     padding: 1%; }
     .home-grid .bricklayer-column:nth-child(odd) .gallery-item:nth-child(2n) {
       padding: 5%; }
-  .home-grid .bricklayer-column:nth-last-child(-n+2) .illustrator-meta-label {
+  .home-grid .bricklayer-column:nth-last-child(-n+2) .illustrator-meta-container {
+    mix-blend-mode: unset;
     color: #fff; }
   .home-grid .bricklayer-column-sizer {
     width: 25%; }

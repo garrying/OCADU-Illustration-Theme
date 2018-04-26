@@ -85,6 +85,7 @@ figure {
     line-height: 1.3em;
 
     @media screen and (max-width: $ipad-vp) {
+      bottom: 75px;
       left: 20px;
     }
   }
@@ -96,7 +97,6 @@ figure {
   .close-btn {
     path {
       stroke: $color-accent;
-      stroke-width: 1;
     }
   }
 }

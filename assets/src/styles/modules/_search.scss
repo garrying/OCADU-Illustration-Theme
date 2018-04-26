@@ -83,11 +83,11 @@
 .search-loader {
   position: absolute;
   top: 150%;
-  left: calc(50% - 1em/2);
+  left: calc(50% - 1em / 2);
   display: none;
   width: 1em;
   height: 1em;
-  border: 2px solid darken($color-accent, 10%);
+  border: 5px solid darken($color-accent, 10%);
   border-radius: 50%;
   animation-name: shake;
   animation-duration: 800ms;

@@ -64,3 +64,9 @@ h6 {
   @include heading-features;
   margin-bottom: 1em;
 }
+
+// Monospace utility
+
+.mono {
+  font-family: $monospace;
+}
