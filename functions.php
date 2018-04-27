@@ -83,6 +83,7 @@ function ocaduillustration_remove_wp_ver_css_js( $src ) {
 if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
+      wp_deregister_script( 'wp-embed' );
       wp_deregister_script( 'jquery' );
       wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js', '', '', true );
       wp_enqueue_script( 'app' );
