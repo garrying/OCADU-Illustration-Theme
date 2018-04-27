@@ -23,12 +23,11 @@
 
     <div class="about-unit">
       <div class="about-unit-container">
-        <div class="segment-first"><h1 class="title-primary">About OCAD U Illustration</h1></div>
-        <?php
-          $post = get_page_by_path('about');
-          $content = apply_filters('the_content', $post->post_content);
-          echo $content;
-        ?>
+        <?php $ocaduillustration_about = new WP_Query("page_id=8");
+          while( $ocaduillustration_about->have_posts() ) : $ocaduillustration_about->the_post();?>
+          <div class="segment-first"><h1 class="title-primary"><?php the_title(); ?></h1></div>
+          <?php the_content(); ?>
+        <?php endwhile; ?>
       </div>
       <button class="close-unit" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
     </div>
