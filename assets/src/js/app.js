@@ -171,8 +171,8 @@ const Bricklayer = require('bricklayer');
     _ocadHomeHover: () => {
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          let y = 0;
-          let x = 0;
+          let y = ele.clientY;
+          let x = ele.clientX;
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active');
 
           $(ele.currentTarget).mousemove((e) => {
