@@ -19,6 +19,7 @@ const Bricklayer = require('bricklayer');
       app._ocadPanelSelectButtons();
       app._ocadHomeLoader();
       app._ocadHomeHover();
+      app._ocadHomeAbout();
       app._ocadGalleryNav();
       app._ocadUIbinding();
       app._ocadGridFocus();
@@ -188,6 +189,22 @@ const Bricklayer = require('bricklayer');
 
         $('.illustrator-link').on('mouseleave', (ele) => {
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active');
+        });
+      }
+    },
+
+    _ocadHomeAbout: () => {
+      if (app.settings.documentBody.hasClass('home')) {
+        $('.message').on('click', (e) => {
+          e.preventDefault();
+          $('.title-unit').velocity('fadeOut', 'fast');
+          $('.about-unit').velocity('fadeIn', 'fast');
+        });
+
+        $('.close-unit').on('click', (e) => {
+          e.preventDefault();
+          $('.title-unit').velocity('fadeIn', { display: 'flex' }, 'fast');
+          $('.about-unit').velocity('fadeOut', 'fast');
         });
       }
     },

@@ -131,9 +131,6 @@ h6 {
 
 .lock-scroll {
   overflow: hidden; }
-  .lock-scroll .grid {
-    -webkit-filter: grayscale(100%);
-            filter: grayscale(100%); }
 
 html {
   overflow-x: hidden;
@@ -433,7 +430,8 @@ button {
       left: calc(50% - 17px); } }
 
 .close-btn {
-  overflow: visible; }
+  overflow: visible;
+  margin: 3px; }
   .close-btn path {
     stroke: #fff;
     stroke-linecap: round;
@@ -1045,20 +1043,19 @@ button {
   pointer-events: none;
   flex-direction: column;
   justify-content: space-between; }
-  .title a {
-    color: #fff;
-    pointer-events: auto; }
   @media screen and (max-width: 667px) {
     .title {
       display: none; } }
-  @media screen and (max-width: 768px) {
-    .title {
-      width: 40vw; } }
+  .title a {
+    color: #fff;
+    pointer-events: auto; }
   .title .title-unit {
     display: flex;
     height: 100%;
     flex-direction: column;
     justify-content: space-between; }
+    .title .title-unit a {
+      padding: 1em 1em 1em 0; }
   .title .title-primary {
     margin: 0 0 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1072,12 +1069,6 @@ button {
     @media (max-width: 400px) {
       .title .title-primary {
         font-size: 18px; } }
-    @media screen and (max-width: 768px) {
-      .title .title-primary {
-        font-size: 2.4vw; } }
-  @media screen and (max-width: 768px) and (max-width: 750px) {
-    .title .title-primary {
-      font-size: 18px; } }
   .title .title-secondary {
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
             font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -1102,6 +1093,47 @@ button {
   @media screen and (max-width: 667px) {
     .title-bg {
       display: none; } }
+
+.about-unit {
+  display: none;
+  pointer-events: auto;
+  background: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+  .about-unit .about-unit-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 2em 2em 4em;
+    overflow: scroll; }
+  .about-unit a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); }
+    .about-unit a:hover {
+      border-color: rgba(255, 255, 255, 0.75); }
+  .about-unit .entry-title-secondary {
+    line-height: 1em;
+    margin: 1.5em 0 1em;
+    font-size: 1.5vw; }
+    @media (max-width: 1666.66667px) {
+      .about-unit .entry-title-secondary {
+        font-size: 25px; } }
+  .about-unit .faculty-list {
+    line-height: 1.5em; }
+  .about-unit .col-container {
+    line-height: 1.2em;
+    font-size: 1vw; }
+    @media (max-width: 1600px) {
+      .about-unit .col-container {
+        font-size: 16px; } }
+  .about-unit .close-unit {
+    position: absolute;
+    top: 2em;
+    right: 2em; }
 
 .home .header-items-wrapper {
   width: calc(35vw - 40px); }

@@ -110,7 +110,6 @@
             <button class="close-panel" title="Close search panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
           </div>
         </div><!-- search -->
-       
     </div><!-- .app-head-items -->
   </header><!-- header -->
 

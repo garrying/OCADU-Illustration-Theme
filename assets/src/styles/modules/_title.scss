@@ -13,17 +13,13 @@
   flex-direction: column;
   justify-content: space-between;
 
-  a {
-    color: $white;
-    pointer-events: auto;
-  }
-
   @media screen and (max-width: $small-vp) {
     display: none;
   }
 
-  @media screen and (max-width: $ipad-vp) {
-    width: 40vw;
+  a {
+    color: $white;
+    pointer-events: auto;
   }
 
   .title-unit {
@@ -31,6 +27,10 @@
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
+
+    a {
+      padding: 1em 1em 1em 0;
+    }
   }
 
   .title-primary {
@@ -38,10 +38,6 @@
     font-family: $sans-serif-light;
     @include rsp-font(4.5vw, 18px);
     @include heading-features;
-
-    @media screen and (max-width: $ipad-vp) {
-      @include rsp-font(2.4vw, 18px);
-    }
   }
 
   .title-secondary {
@@ -67,5 +63,55 @@
 
   @media screen and (max-width: $small-vp) {
     display: none;
+  }
+}
+
+.about-unit {
+  display: none;
+  pointer-events: auto;
+  background: $black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .about-unit-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 2em 2em 4em;
+    overflow: scroll;
+  }
+
+  a {
+    border-bottom: 2px solid rgba($white, 0.2);
+
+    &:hover {
+      border-color: rgba($white, 0.75);
+    }
+  }
+
+  .entry-title-secondary {
+    line-height: 1em;
+    margin: 1.5em 0 1em;
+    @include rsp-font(1.5vw, 25px);
+  }
+
+  .faculty-list {
+    line-height: 1.5em;
+  }
+
+  .col-container {
+    line-height: 1.2em;
+    @include rsp-font(1vw, 16px);
+  }
+
+  .close-unit {
+    position: absolute;
+    top: 2em;
+    right: 2em;
   }
 }

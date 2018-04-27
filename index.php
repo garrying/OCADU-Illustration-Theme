@@ -17,8 +17,20 @@
       <div class="segment-second">
         <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx May 3–6<br></h2>
         <p class="title-secondary">Spanning 2009–2018, the archive is maintained by the Illustration Department at OCAD University.</p>
-        <p class="title-secondary"><a href="/about" class="message">About the archive</a>.</p>
+        <p class="title-secondary"><a href="/about" class="message">About the archive</a></p>
       </div>
+    </div>
+
+    <div class="about-unit">
+      <div class="about-unit-container">
+        <div class="segment-first"><h1 class="title-primary">About OCAD U Illustration</h1></div>
+        <?php
+          $post = get_page_by_path('about');
+          $content = apply_filters('the_content', $post->post_content);
+          echo $content;
+        ?>
+      </div>
+      <button class="close-unit" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
