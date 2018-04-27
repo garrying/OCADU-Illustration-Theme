@@ -23,8 +23,11 @@
 
     <div class="about-unit">
       <div class="about-unit-container">
-        <?php $ocaduillustration_about = new WP_Query("page_id=8");
-          while( $ocaduillustration_about->have_posts() ) : $ocaduillustration_about->the_post();?>
+        <?php
+          $ocaduillustration_about = new WP_Query( 'page_id=8' );
+          while ( $ocaduillustration_about->have_posts() ) :
+            $ocaduillustration_about->the_post()
+        ?>
           <div class="segment-first"><h1 class="title-primary"><?php the_title(); ?></h1></div>
           <?php the_content(); ?>
         <?php endwhile; ?>
