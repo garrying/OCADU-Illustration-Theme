@@ -52,7 +52,6 @@
 
   @media screen and (max-width: $ipad-vp) {
     flex: 1 1 50%;
-    font-size: 0.95em;
   }
 
   @media screen and (max-width: $small-vp) {
@@ -102,6 +101,10 @@
     line-height: 1em;
     letter-spacing: -2px;
     @include rsp-font(4vw, 24px);
+
+    @media screen and (max-width: $small-vp) {
+      @include rsp-font(4vw, 32px);
+    }
   }
 
   .thesis-description {
@@ -130,7 +133,7 @@
   }
 
   .illustrator-meta-items {
-    flex-basis: 61.8%;
+    max-width: 61.8%;
     line-height: 1.45em;
   }
 
@@ -174,11 +177,7 @@
 
   a {
     display: block;
-    overflow: hidden;
     padding: 2em 1em;
-    text-overflow: ellipsis;
-    position: relative;
-    transition: background 200ms ease-in-out;
     z-index: $z-foreground;
   }
 
