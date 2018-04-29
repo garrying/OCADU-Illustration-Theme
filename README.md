@@ -2,7 +2,7 @@
 
 ### A theme for OCAD U's Illustration Department by [Garry Ing](https://garrying.com/ "Link to garrying.com")
 
-Currently working on *Wordpress 4.7.4*
+Currently working on *Wordpress 4.9.5*
 
 ## Getting Started
 
