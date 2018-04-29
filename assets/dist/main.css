@@ -134,7 +134,7 @@ h6 {
 
 html {
   overflow-x: hidden;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
   height: 100%;
