@@ -393,7 +393,7 @@ function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permali
   $image_url     = wp_get_attachment_image_src( $id, 'full' );
   $image_srcset  = wp_get_attachment_image_srcset( $id );
   $image_sizes   = wp_get_attachment_image_sizes( $id, 'large' );
-  $image_caption = get_post( $id )->post_excerpt;
+  $image_caption = wpautop(get_post( $id )->post_excerpt);
 
   $image_data   = wp_get_attachment_image_src( $id, 'large' );
   $image_width  = $image_data[1];
