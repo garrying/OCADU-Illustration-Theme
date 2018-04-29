@@ -150,6 +150,7 @@
 
 .illustrator-nav-single-wrapper {
   white-space: nowrap;
+  line-height: 1em;
   font-family: $monospace;
   display: flex;
   position: absolute;
@@ -170,6 +171,7 @@
 
 .illustrator-nav-single {
   display: flex;
+  max-width: 61.8%;
 
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
@@ -179,10 +181,15 @@
     display: block;
     padding: 2em 1em;
     z-index: $z-foreground;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   .nav-previous,
   .nav-next {
+    width: 50%;
     &:empty {
       display: none;
     }

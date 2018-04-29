@@ -671,8 +671,8 @@ button {
     .archive-grid {
       flex-direction: column; } }
   .archive-grid .illustrator-meta-container {
-    font-family: "Lab Mono Web", monaco, monospace;
-    margin: 0.67em 0; }
+    margin: 0.67em 0;
+    font-family: "Lab Mono Web", monaco, monospace; }
   .archive-grid .illustrator-title {
     margin-top: 0.5em;
     color: rgba(14, 14, 15, 0.75); }
@@ -1061,6 +1061,7 @@ button {
 
 .illustrator-nav-single-wrapper {
   white-space: nowrap;
+  line-height: 1em;
   font-family: "Lab Mono Web", monaco, monospace;
   display: flex;
   position: absolute;
@@ -1078,7 +1079,8 @@ button {
       z-index: 100; } }
 
 .illustrator-nav-single {
-  display: flex; }
+  display: flex;
+  max-width: 61.8%; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single {
       justify-content: flex-end; } }
@@ -1086,9 +1088,14 @@ button {
     display: block;
     padding: 2em 1em;
     z-index: 300; }
-  .illustrator-nav-single .nav-previous:empty,
-  .illustrator-nav-single .nav-next:empty {
-    display: none; }
+    .illustrator-nav-single a:first-child {
+      padding-left: 0; }
+  .illustrator-nav-single .nav-previous,
+  .illustrator-nav-single .nav-next {
+    width: 50%; }
+    .illustrator-nav-single .nav-previous:empty,
+    .illustrator-nav-single .nav-next:empty {
+      display: none; }
   .illustrator-nav-single .nav-next a {
     padding-right: 0; }
   @media screen and (max-width: 667px) {
