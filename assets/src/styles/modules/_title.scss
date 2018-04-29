@@ -36,7 +36,7 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: $sans-serif-light;
-    @include rsp-font(4.5vw, 18px);
+    @include rsp-font(4vw, 18px);
     @include heading-features;
   }
 

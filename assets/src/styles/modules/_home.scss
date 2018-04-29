@@ -40,12 +40,16 @@
       line-height: 1em;
       padding: 0;
       @include heading-features;
-      @include rsp-font(4.5vw, 18px);
+      @include rsp-font(4vw, 18px);
     }
 
     &.active {
       display: flex;
       opacity: 1;
+
+      @media screen and (max-width: $small-vp) {
+        display: none;
+      }
     }
   }
 

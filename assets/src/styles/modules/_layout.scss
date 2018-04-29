@@ -4,7 +4,6 @@
   flex-direction: row;
 
   @media screen and (max-width: $small-vp) {
-    flex-direction: unset;
     flex-flow: column;
   }
 }
@@ -89,8 +88,8 @@
   }
 
   .illustrator-meta-wrapper-inner {
-    padding: 0 30px;
     width: 100%;
+    padding: 0 30px;
 
     @media screen and (max-width: $small-vp) {
       padding: 0;
@@ -100,13 +99,12 @@
   .thesis-title {
     margin-bottom: 0.5em;
     font-family: $sans-serif-light;
-    letter-spacing: -2px;
-    @include rsp-font(4vw, 42px);
     line-height: 1em;
+    letter-spacing: -2px;
+    @include rsp-font(4vw, 24px);
   }
 
   .thesis-description {
-    color: #555;
     line-height: 1.2em;
     @include rsp-font(1vw, 14px);
   }
@@ -117,10 +115,10 @@
 }
 
 .meta {
-  font-family: $monospace;
   display: flex;
-  align-items: baseline;
   margin-top: 4em;
+  font-family: $monospace;
+  align-items: baseline;
 
   @media screen and (max-width: $small-vp) {
     margin: 2em 0;
@@ -141,9 +139,8 @@
       display: block;
       padding: 1em;
       margin: 1em 0;
-      border-radius: 0.5em;
       border: 1px solid $color-accent;
-
+      border-radius: 0.5em;
     }
   }
 }

@@ -20,7 +20,6 @@
     padding: 15px;
     font-family: $sans-serif-light;
     line-height: 1.5em;
-    @include font-smoothing(on);
     color: $white;
     background: darken($color-accent, 10%);
     border: 0;
@@ -48,6 +47,7 @@
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
+  font-family: $sans-serif-light;
   line-height: 1em;
   @include rsp-font(3vw, 24px);
 }

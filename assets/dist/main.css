@@ -401,8 +401,7 @@ button {
   visibility: none;
   pointer-events: none;
   align-content: center;
-  align-items: center;
-  -webkit-overflow-scrolling: touch; }
+  align-items: center; }
   .panel.visible {
     visibility: visible;
     pointer-events: auto; }
@@ -427,7 +426,8 @@ button {
     .close-panel {
       top: auto;
       bottom: 1em;
-      left: calc(50% - 17px); } }
+      left: calc(50% - 21px);
+      right: unset; } }
 
 .close-btn {
   overflow: visible;
@@ -458,8 +458,6 @@ button {
     padding: 15px;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5em;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     color: #fff;
     background: #f85441;
     border: 0; }
@@ -480,6 +478,7 @@ button {
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
+  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1em;
   font-size: 3vw; }
   @media (max-width: 800px) {
@@ -845,7 +844,6 @@ button {
   flex-direction: row; }
   @media screen and (max-width: 667px) {
     .single-illustrator {
-      flex-direction: unset;
       flex-flow: column; } }
 
 .illustrator-gallery-container {
@@ -910,22 +908,21 @@ button {
         right: 0;
         width: 100%; } }
   .illustrator-meta .illustrator-meta-wrapper-inner {
-    padding: 0 30px;
-    width: 100%; }
+    width: 100%;
+    padding: 0 30px; }
     @media screen and (max-width: 667px) {
       .illustrator-meta .illustrator-meta-wrapper-inner {
         padding: 0; } }
   .illustrator-meta .thesis-title {
     margin-bottom: 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1em;
     letter-spacing: -2px;
-    font-size: 4vw;
-    line-height: 1em; }
-    @media (max-width: 1050px) {
+    font-size: 4vw; }
+    @media (max-width: 600px) {
       .illustrator-meta .thesis-title {
-        font-size: 42px; } }
+        font-size: 24px; } }
   .illustrator-meta .thesis-description {
-    color: #555;
     line-height: 1.2em;
     font-size: 1vw; }
     @media (max-width: 1400px) {
@@ -935,10 +932,10 @@ button {
     margin-bottom: 0.5em; }
 
 .meta {
-  font-family: "Lab Mono Web", monaco, monospace;
   display: flex;
-  align-items: baseline;
-  margin-top: 4em; }
+  margin-top: 4em;
+  font-family: "Lab Mono Web", monaco, monospace;
+  align-items: baseline; }
   @media screen and (max-width: 667px) {
     .meta {
       margin: 2em 0; } }
@@ -953,8 +950,8 @@ button {
       display: block;
       padding: 1em;
       margin: 1em 0;
-      border-radius: 0.5em;
-      border: 1px solid #fa8072; } }
+      border: 1px solid #fa8072;
+      border-radius: 0.5em; } }
 
 .illustrator-nav-single-wrapper {
   white-space: nowrap;
@@ -1059,14 +1056,14 @@ button {
   .title .title-primary {
     margin: 0 0 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 4.5vw;
+    font-size: 4vw;
     -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
             font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     -webkit-font-kerning: normal;
             font-kerning: normal;
     text-rendering: optimizeLegibility; }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
       .title .title-primary {
         font-size: 18px; } }
   .title .title-secondary {
@@ -1172,13 +1169,16 @@ button {
       -webkit-font-kerning: normal;
               font-kerning: normal;
       text-rendering: optimizeLegibility;
-      font-size: 4.5vw; }
-      @media (max-width: 400px) {
+      font-size: 4vw; }
+      @media (max-width: 450px) {
         .home-grid .illustrator-meta-container .illustrator-meta-label {
           font-size: 18px; } }
     .home-grid .illustrator-meta-container.active {
       display: flex;
       opacity: 1; }
+      @media screen and (max-width: 667px) {
+        .home-grid .illustrator-meta-container.active {
+          display: none; } }
   .home-grid .illustrator-meta-label {
     margin-bottom: 0; }
   .home-grid .gallery-item {

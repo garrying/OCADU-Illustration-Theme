@@ -14,7 +14,6 @@
   pointer-events: none;
   align-content: center;
   align-items: center;
-  -webkit-overflow-scrolling: touch;
 
   &.visible {
     visibility: visible;
@@ -44,7 +43,8 @@
   @media screen and (max-width: $small-vp) {
     top: auto;
     bottom: 1em;
-    left: calc(50% - 17px);
+    left: calc(50% - 21px);
+    right: unset;
   }
 }
 
