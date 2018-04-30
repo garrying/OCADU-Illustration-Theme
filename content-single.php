@@ -89,6 +89,7 @@
         }
         ?>
         <ul class="illustrator-nav-single">
+          // phpcs:disable
           <li class="nav-previous"><?php
         previous_post_link_plus(
              array(
@@ -109,6 +110,7 @@
           )
             );
           ?></li>
+          // phpcs:enable
         </ul><!-- .llustrator-nav-single -->
       </div>
 
