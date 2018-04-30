@@ -6,7 +6,7 @@ Currently working on *Wordpress 4.9.5*
 
 ## Getting Started
 
-- `npm install` or `yarn install`
+- `npm install`
 - `npm run watch`
 
 ## Requirements

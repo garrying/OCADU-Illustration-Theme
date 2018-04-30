@@ -41,12 +41,6 @@ figure {
   img {
     margin: 0 auto;
   }
-
-  @-moz-document url-prefix() {
-    img {
-      width: 100%;
-    }
-  }
 }
 
 .image-modal-wrapper {

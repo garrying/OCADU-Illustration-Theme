@@ -345,10 +345,6 @@ figure {
   .gallery-icon-anchor img {
     margin: 0 auto; }
 
-@-moz-document url-prefix() {
-  .gallery-icon-anchor img {
-    width: 100%; } }
-
 .image-modal-wrapper {
   position: fixed;
   top: 0;
@@ -1019,9 +1015,9 @@ button {
     line-height: 1em;
     letter-spacing: -2px;
     font-size: 4vw; }
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
       .illustrator-meta .thesis-title {
-        font-size: 24px; } }
+        font-size: 32px; } }
     @media screen and (max-width: 667px) {
       .illustrator-meta .thesis-title {
         font-size: 4vw; } }
@@ -1055,7 +1051,7 @@ button {
     .meta .meta-link {
       display: block;
       padding: 1em;
-      margin: 1em 0;
+      margin: 0 0 1em;
       border: 1px solid #fa8072;
       border-radius: 0.5em; } }
 
@@ -1074,8 +1070,8 @@ button {
   border-top: 1px solid #feefed; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single-wrapper {
-      padding: 0;
       position: relative;
+      padding: 0;
       z-index: 100; } }
 
 .illustrator-nav-single {
@@ -1090,11 +1086,15 @@ button {
     z-index: 300; }
     .illustrator-nav-single a:first-child {
       padding-left: 0; }
+    @media screen and (max-width: 667px) {
+      .illustrator-nav-single a {
+        padding: 1.5em 1em; } }
   .illustrator-nav-single .nav-previous,
   .illustrator-nav-single .nav-next {
-    width: 50%; }
+    min-width: 50%; }
     .illustrator-nav-single .nav-previous:empty,
     .illustrator-nav-single .nav-next:empty {
+      background: red;
       display: none; }
   .illustrator-nav-single .nav-next a {
     padding-right: 0; }

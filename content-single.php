@@ -89,8 +89,7 @@
         }
         ?>
         <ul class="illustrator-nav-single">
-                  <li class="nav-previous">
-                  <?php
+          <li class="nav-previous"><?php
         previous_post_link_plus(
              array(
             'order_by'    => 'post_title',
@@ -99,9 +98,8 @@
             'link'        => '<span class="name previous-link truncate">◐ %title</span>',
           )
             );
-          ?>
-          <li class="nav-next">
-          <?php
+          ?></li>
+          <li class="nav-next"><?php
         next_post_link_plus(
              array(
             'order_by'    => 'post_title',
@@ -110,8 +108,7 @@
             'link'        => '<span class="name next-link truncate">◑ %title</span>',
           )
             );
-          ?>
-          </li>
+          ?></li>
         </ul><!-- .llustrator-nav-single -->
       </div>
 

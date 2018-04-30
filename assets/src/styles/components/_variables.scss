@@ -1,6 +1,5 @@
 // Typography
 
-$sans-serif-system: "Inter UI", "Helvetica Neue", sans-serif;
 $sans-serif: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $sans-serif-light: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $monospace: "Lab Mono Web", monaco, monospace;
@@ -14,11 +13,6 @@ $color-accent: #fa8072;
 
 $site-background: $white;
 $site-font-color: #111;
-
-// Easings
-
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // Breakpoints
 
