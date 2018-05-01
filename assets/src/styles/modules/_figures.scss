@@ -81,9 +81,14 @@ figure {
 
     @media screen and (max-width: $ipad-vp) {
       padding: 1em;
-      bottom: 75px;
+      bottom: 0px;
       left: 20px;
     }
+
+    @media screen and (max-width: $small-vp) {
+      bottom: 75px;
+    }
+
   }
 
   .close-panel {
