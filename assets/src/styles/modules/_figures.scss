@@ -80,9 +80,9 @@ figure {
     background: $site-background;
 
     @media screen and (max-width: $ipad-vp) {
-      padding: 1em;
-      bottom: 0px;
+      bottom: 0;
       left: 20px;
+      padding: 1em;
     }
 
     @media screen and (max-width: $small-vp) {
