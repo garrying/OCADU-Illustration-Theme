@@ -190,6 +190,10 @@ const Bricklayer = require('bricklayer');
         $('.illustrator-link').on('mouseleave', (ele) => {
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active');
         });
+
+        setTimeout(() => {
+          $('.title-bg').addClass('visible');
+        }, 500);
       }
     },
 

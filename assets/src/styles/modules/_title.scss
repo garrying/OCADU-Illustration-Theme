@@ -42,9 +42,9 @@
 
   .title-secondary {
     @include heading-features;
+    max-width: 300px;
     font-family: $sans-serif-light;
     line-height: 1.3em;
-    max-width: 300px;
 
     &:last-child {
       margin-bottom: 0;
@@ -59,7 +59,13 @@
   bottom: 2em;
   left: 50vw;
   right: 2em;
+  opacity: 0;
   z-index: -1;
+  transition: opacity 1000ms ease-in-out;
+
+  &.visible {
+    opacity: 1;
+  }
 
   @media screen and (max-width: $small-vp) {
     display: none;
