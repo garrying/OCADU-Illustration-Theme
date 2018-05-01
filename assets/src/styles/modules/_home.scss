@@ -86,6 +86,11 @@
       mix-blend-mode: unset;
       color: $white;
     }
+
+    &:last-child .illustrator-meta-container {
+      margin-top: 5px;
+      margin-left: -20%;
+    }
   }
 
   .bricklayer-column-sizer {
