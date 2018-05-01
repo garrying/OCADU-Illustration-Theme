@@ -1,43 +1,48 @@
 .title {
-  line-height: 1;
-  z-index: $z-background;
   position: fixed;
-  right: 0;
-  bottom: 0;
-  top: 0;
+  top: 2em;
+  right: 2em;
+  bottom: 2em;
+  left: 50vw;
   display: flex;
+  z-index: $z-background;
+  line-height: 1;
+  color: $white;
+  padding: 2em;
+  pointer-events: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 35vw;
-  padding: 4.5vw 20px 30px;
 
   @media screen and (max-width: $small-vp) {
     display: none;
   }
 
-  @media screen and (max-width: $ipad-vp) {
-    width: 40vw;
+  a {
+    color: $white;
+    pointer-events: auto;
   }
 
   .title-unit {
-    height: 100%;
-    align-items: center;
     display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    a {
+      padding: 1em 1em 1em 0;
+    }
   }
 
   .title-primary {
-    margin: 0;
+    margin: 0 0 0.5em;
     font-family: $sans-serif-light;
     @include rsp-font(4vw, 18px);
     @include heading-features;
-
-    @media screen and (max-width: $ipad-vp) {
-      @include rsp-font(4.4vw, 18px);
-    }
   }
 
   .title-secondary {
     @include heading-features;
+    max-width: 300px;
     font-family: $sans-serif-light;
     line-height: 1.3em;
 
@@ -47,27 +52,72 @@
   }
 }
 
+.title-bg {
+  position: fixed;
+  background: $color-accent;
+  top: 2em;
+  bottom: 2em;
+  left: 50vw;
+  right: 2em;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1000ms ease-in-out;
 
-.title-grph {
-  display: inline;
-
-  .loader-grph {
-    width: .7em;
-    height: .6em;
-    transform: rotate(45deg);
+  &.visible {
+    opacity: 1;
   }
 
-  .loader-line {
-    stroke-width: 3;
-    stroke-dasharray: none;
-    stroke-dashoffset: none;
-    animation: none;
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
+}
+
+.about-unit {
+  display: none;
+  pointer-events: auto;
+  background: $black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .about-unit-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 2em 2em 4em;
+    overflow: scroll;
   }
 
-  &.invert {
-    .loader-line {
-      stroke-width: 3;
-      stroke: $white;
+  a {
+    border-bottom: 2px solid rgba($white, 0.2);
+
+    &:hover {
+      border-color: rgba($white, 0.75);
     }
+  }
+
+  .entry-title-secondary {
+    line-height: 1em;
+    margin: 1.5em 0 1em;
+    @include rsp-font(1.5vw, 25px);
+  }
+
+  .faculty-list {
+    line-height: 1.5em;
+  }
+
+  .col-container {
+    line-height: 1.2em;
+    @include rsp-font(1vw, 16px);
+  }
+
+  .close-unit {
+    position: absolute;
+    top: 2em;
+    right: 2em;
   }
 }

@@ -1,0 +1,48 @@
+.error-body {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-accent;
+
+  @include rsp-font(1.5vw, 14px);
+  line-height: 1.3em;
+
+  @media screen and (max-width: $small-vp) {
+    padding: 0 20px;
+  }
+
+  .entry-title {
+    margin-bottom: 0.75em;
+    font-family: $sans-serif-light;
+    @include rsp-font(10vw, 48px);
+  }
+
+  .entry-body {
+    margin: 0;
+  }
+
+  .error-line-svg {
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .error-line {
+    fill: $color-accent;
+  }
+}
+
+.error-line-container {
+  position: absolute;
+  top: 2em;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,32 +1,49 @@
 <?php get_header(); ?>
-  
-  <?php if ( is_home() || is_front_page() ) {
-    $grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
-    $args = array(
-        'taxonomy' => 'gradyear',
+
+  <?php
+    if ( is_home() || is_front_page() ) {
+      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
+      $ocaduillustration_args       = array(
+        'taxonomy'  => 'gradyear',
         'post_type' => 'illustrator',
-        'term' => $grad_year[0]->name,
-        );
-    $home_index = new WP_Query( $args );
-  }
+        'term'      => $ocaduillustration_grad_year[0]->name,
+      );
+      $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
+    }
   ?>
   <div class="title">
     <div class="title-unit title-unit-init active">
-      <div class="unit">
-        <h1 class="title-primary">OCAD University<br> Illustration 2017</h1>
-        <h2 class="title-primary"> Part of the 102<sup>nd</sup><br> GradEx<span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>May 3–7<br><a href="/introduction" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span>Introduction</a></h2>
+      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2018</h1></div>
+      <div class="segment-second">
+        <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx May 3–6<br></h2>
+        <p class="title-secondary">Spanning 2009–2018, the archive is maintained by the Illustration Department at OCAD University.</p>
+        <p class="title-secondary"><a href="/about" class="message">About the archive</a></p>
       </div>
     </div>
-    <p class="title-secondary">
-     Spanning 2009–2017, the archive is maintained by the Illustration Department at OCAD University.</p>
-     <p class="title-secondary"><a href="/about" class="message"><span class="title-grph"><?php get_template_part( 'assets/dist/images/loader.svg' ); ?></span> About the archive</a>.</p>
+
+    <div class="about-unit">
+      <div class="about-unit-container">
+        <?php
+          $ocaduillustration_about = new WP_Query( 'page_id=8' );
+          while ( $ocaduillustration_about->have_posts() ) :
+            $ocaduillustration_about->the_post()
+        ?>
+          <div class="segment-first"><h1 class="title-primary"><?php the_title(); ?></h1></div>
+          <?php the_content(); ?>
+        <?php endwhile; ?>
+      </div>
+      <button class="close-unit" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+    </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
 
-    <?php if ( $home_index->have_posts() ) : ?>
+    <?php if ( $ocaduillustration_home_index->have_posts() ) : ?>
 
       <?php /* Start the Loop */ ?>
-      <?php while ( $home_index->have_posts() ) : $home_index->the_post() ?>
+      <?php
+        while ( $ocaduillustration_home_index->have_posts() ) :
+          $ocaduillustration_home_index->the_post()
+      ?>
 
         <?php get_template_part( 'content', get_post_format() ); ?>
 
@@ -46,5 +63,6 @@
 
     <?php endif; ?>
   </div>
+  <div class="title-bg"></div>
 
 <?php get_footer(); ?>

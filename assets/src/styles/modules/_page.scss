@@ -1,5 +1,5 @@
 .archive-grid {
-  margin: 80px auto;
+  margin: 130px auto;
 
   .illustrator-name {
     color: $off-black;
@@ -21,10 +21,6 @@
     }
   }
 
-  @media screen and (max-width: $medium-vp) {
-    width: 77vw;
-  }
-
   @media screen and (max-width: $small-vp) {
     width: 100vw;
     padding: 20px;
@@ -37,15 +33,16 @@
 
   .illustrator-meta-container {
     margin: 0.67em 0;
+    font-family: $monospace;
   }
 
   .illustrator-title {
     margin-top: 0.5em;
-    color: rgba($off-black, 0.5);
+    color: rgba($off-black, 0.75);
   }
 
   .gallery-item {
-    margin: 0 5% 4%;
+    margin: 0 12% 20%;
 
     @media screen and (max-width: $small-vp) {
       margin-right: 5%;
@@ -78,93 +75,57 @@
   }
 }
 
-.illustrator-image {
-  position: relative;
-
-  img {
-    position: absolute;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
-  }
-
-  .lazyloaded {
-    opacity: 1;
-  }
-
-  .illustrator-placeholder {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-}
-
 .section-indicator-index {
+  font-family: $sans-serif-light;
+  color: $color-accent;
   position: fixed;
-  left: 20px;
-  z-index: $z-background;
+  top: 0;
+  left: 0;
+  z-index: $z-behind;
+  width: 100%;
   display: flex;
   height: 100%;
-  bottom: 0;
   align-items: center;
-  font-family: $sans-serif-light;
-  @include rsp-font(2.1vw, 18px);
-
-  @media screen and (max-width: $small-vp) {
-    display: none;
-  }
+  justify-content: center;
+  @include rsp-font(14vw, 24px);
 }
 
 .page-inner {
-  max-width: 82vw;
-  padding: 0 1%;
-  margin: 120px auto;
+  max-width: 60vw;
+  margin: 130px 0 0 30px;
 
-  @include rsp-font(1.5vw, 14px);
+  line-height: 1.2em;
+  @include rsp-font(1vw, 14px);
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
-    margin-top: 8em;
     max-width: none;
+    margin: 8em 0 0;
   }
 
   .entry-title {
+    line-height: 1em;
     margin: 1em 0;
     font-family: $sans-serif-light;
-    @include rsp-font(5vw, 48px);
+    @include rsp-font(5vw, 50px);
   }
 
   .entry-title-secondary {
-    font-size: 1.618em;
+    color: $site-font-color;
+    line-height: 1em;
+    margin: 1.5em 0;
+    @include rsp-font(1.5vw, 25px);
   }
 
   .col-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    .col {
-      width: calc(50% - 20px);
-
-      @media screen and (max-width: $small-vp) {
-        width: 100%;
-      }
-    }
-
-    .rs {
-      @media screen and (max-width: $small-vp) {
-        margin-top: 2em;
-      }
-    }
+    color: #555;
   }
 
-  .wiggle {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 1em;
+  .faculty-list {
+    max-width: 70%;
 
-    svg {
-      width: 1.5em;
-      height: auto;
+    @media screen and (max-width: $small-vp) {
+      max-width: none;
     }
   }
 }
@@ -174,8 +135,8 @@
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
-    margin-top: 8em;
     max-width: none;
+    margin-top: 8em;
   }
 }
 
@@ -184,44 +145,5 @@
 
   .span1 {
     width: 50%;
-  }
-}
-
-.error-body {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  padding: 4em 0;
-  align-items: center;
-  justify-content: center;
-
-  @include rsp-font(1.5vw, 14px);
-
-  @media screen and (max-width: $small-vp) {
-    padding: 0 20px;
-  }
-
-  .entry-title {
-    margin: 0 0 0.5em;
-    font-family: $sans-serif-light;
-    @include rsp-font(5vw, 48px);
-  }
-
-  .error-line-svg {
-    width: 25vw;
-    height: auto;
-    position: absolute;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  .error-line {
-    fill: none;
-    stroke: $color-accent;
-    stroke-width: 1px;
-    stroke-linecap: round;
   }
 }

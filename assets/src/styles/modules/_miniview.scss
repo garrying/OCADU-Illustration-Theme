@@ -1,9 +1,9 @@
 .miniview-container {
   position: fixed;
   bottom: 20px;
-  width: 100%;
   z-index: $z-foreground;
   display: flex;
+  width: 100%;
   justify-content: center;
   pointer-events: none;
 

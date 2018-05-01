@@ -1,26 +1,18 @@
 // Typography
-$sans-serif-system: -apple-system,BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-$sans-serif: 'GT America Standard Regular', $sans-serif-system;
-$sans-serif-light: 'GT America Standard Light', $sans-serif-system;
+
+$sans-serif: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sans-serif-light: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$monospace: "Lab Mono Web", monaco, monospace;
 
 // Colours
 
 $white: #fff;
 $black: #000;
 $off-black: #0e0e0f;
-$color-accent: #00f;
+$color-accent: #fa8072;
 
 $site-background: $white;
-$site-font-color: #333;
-
-// Easings
-
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
-
-// Panel widths
-
-$panel-width: 100vw;
+$site-font-color: #111;
 
 // Breakpoints
 
@@ -39,6 +31,7 @@ $smallest-vp: 320px;
 
 // Z-index
 
+$z-behind: -1;
 $z-background: 100;
 $z-middle: 200;
 $z-foreground: 300;

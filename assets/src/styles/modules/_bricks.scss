@@ -6,7 +6,7 @@
 }
 
 .illustrators-grid {
-  width: 80vw;
+  margin: 0 30px;
 
   .gallery-item {
     margin: 0 4% 4% 0;
@@ -24,11 +24,16 @@
 }
 
 .gallery-grid {
-  margin-top: 80px;
-  margin-left: 80px;
-
   .bricklayer-column-sizer {
     width: 50%;
+
+    @media screen and (max-width: $ipad-vp) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 50%;
+    }
 
     @media screen and (min-width: $large-vp) {
       width: 33.3333333333%;

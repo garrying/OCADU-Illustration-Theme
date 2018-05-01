@@ -1,9 +1,9 @@
-<?php $categories = get_the_terms( $this->ID , 'gradyear' ); ?>
+<?php $ocaduillustration_categories = get_the_terms( $this->ID, 'gradyear' ); ?>
 
-<?php if ( $categories ) : ?>
+<?php if ( $ocaduillustration_categories ) : ?>
   <div class="amp-wp-meta amp-wp-posted-on">
     <?php
-      foreach ( $categories as $year ) {
+      foreach ( $ocaduillustration_categories as $year ) {
         echo esc_html( $year->name );
       }
     ?>

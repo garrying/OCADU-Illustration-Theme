@@ -13,27 +13,3 @@
     transform: translate3d(5px, 0, 0);
   }
 }
-
-// Spin
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Background Cycle
-
-@keyframes cycle {
-  0% {
-    background-position: 50% 0%;
-  }
-
-  100% {
-    background-position: 50% 200%;
-  }
-}

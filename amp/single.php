@@ -15,8 +15,8 @@
 
 <article class="amp-wp-article">
   <header class="amp-wp-article-header">
-    <?php $title_illu = get_post_meta( $this->get( 'post_id' ), 'illu_title', true ); ?>
-    <h1 class="amp-wp-title"><?php echo wp_kses_data( $title_illu ); ?></h1>
+    <?php $ocaduillustration_title_illu = get_post_meta( $this->get( 'post_id' ), 'illu_title', true ); ?>
+    <h1 class="amp-wp-title"><?php echo wp_kses_data( $ocaduillustration_title_illu ); ?></h1>
     <?php $this->load_parts( apply_filters( 'amp_post_template_meta_parts', array( 'meta-author', 'meta-taxonomy' ) ) ); ?>
   </header>
 
@@ -25,11 +25,11 @@
     <ul itemscope itemtype="http://schema.org/Person">
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) : ?>
         <li class="truncate" itemprop="url">
-          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) ?>">
+          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ); ?>">
             <?php
-              $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) );
-              $url = preg_replace( '#^https?://#', '', $url );
-              echo esc_html( $url );
+              $ocaduillustration_url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) );
+              $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
+              echo esc_html( $ocaduillustration_url );
             ?>
           </a>
         </li>
@@ -37,11 +37,11 @@
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ) : ?>
         <li class="truncate" itemprop="url">
-          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ) ?>">
+          <a title="Visit Illustrator's Website" class="site-url" href="<?php echo esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) ); ?>">
             <?php
-              $url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) );
-              $url = preg_replace( '#^https?://#', '', $url );
-              echo esc_html( $url );
+              $ocaduillustration_url = esc_url( get_post_meta( $this->get( 'post_id' ), 'illu_sites_2', true ) );
+              $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
+              echo esc_html( $ocaduillustration_url );
             ?>
           </a>
         </li>
@@ -49,13 +49,13 @@
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) : ?>
         <li class="email truncate" itemprop="email">
-          <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ) ?></a>
+          <a title="Email <?php the_title(); ?>" href="mailto:<?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ); ?>"><?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_email', true ) ); ?></a>
         </li>
       <?php endif; ?>
 
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) : ?>
         <li class="phone" itemprop="telephone">
-          <?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ) ?>
+          <?php echo esc_html( get_post_meta( $this->get( 'post_id' ), 'illu_phone', true ) ); ?>
         </li>
       <?php endif; ?>
     </ul>

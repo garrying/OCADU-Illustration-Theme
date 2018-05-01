@@ -1,58 +1,32 @@
 .logo {
   display: block;
-  width: 60px;
-  height: 60px;
-  padding: 0.5em;
-  font-size: 10px;
   line-height: 1em;
-  color: $white;
+  white-space: nowrap;
   @include heading-features;
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
 
-  &:hover {
-    color: $white;
-    background-color: $color-accent;
+  &:hover,
+  &:focus {
+    color: darken($color-accent, 20%);
   }
 
-  &.invert {
-    color: $color-accent !important;
-    background-color: $white !important;
-  }
-
-  &.initial {
-    color: $white;
-    background: $color-accent;
-  }
-
-  .home &.initial {
-    color: $white;
-    background: transparent;
-    box-shadow: inset 0 0 0 2px $white;
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      background: $color-accent;
-      box-shadow: none;
-    }
+  &.invert,
+  &.invert:hover {
+    opacity: 0;
   }
 }
 
-body:not(.home) {
-  .logo:hover {
-    color: $white !important;
-    background-color: $color-accent !important;
-  }
+.logo-wrapper {
+  padding-right: 2em;
 }
 
 .heading-inner {
+  font-family: $monospace;
   position: fixed;
-  top: 20px;
-  right: 30px;
-  left: 20px;
+  top: 0;
+  padding: 2em 0;
+  left: 30px;
   z-index: $z-foreground;
   display: flex;
   pointer-events: none;
@@ -60,15 +34,14 @@ body:not(.home) {
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    top: 10px;
-    right: 20px;
+    padding: 0;
+    right: 0;
     left: 20px;
   }
 }
 
 .header-items-wrapper {
   display: flex;
-  width: calc(30vw - 30px);
 
   @media screen and (max-width: $small-vp) {
     justify-content: flex-end;
@@ -77,8 +50,6 @@ body:not(.home) {
 }
 
 .header-item-link {
-  padding: 0 3em 0 0;
-
   @media screen and (max-width: $small-vp) {
     &:last-child {
       padding-right: 0;
@@ -87,19 +58,18 @@ body:not(.home) {
 }
 
 .header-item {
-  padding: 0;
-  font-family: $sans-serif-light;
+  padding: 2em;
   line-height: 1em;
-  color: $color-accent;
+  color: $white;
   white-space: nowrap;
   pointer-events: auto;
   @include heading-features;
-  @include rsp-font(2.5vw, 18px);
-  transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  background: $color-accent;
 
   &:hover,
   &:focus {
-    color: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
   }
 
   &.invert {
@@ -108,5 +78,15 @@ body:not(.home) {
 
   &.inactive {
     color: darken($color-accent, 20%);
+    background: transparent;
+  }
+
+  &.inactive:hover {
+    color: $white;
+    background: darken($color-accent, 20%);
+  }
+
+  @media screen and (max-width: $small-vp) {
+    padding: 1.5em;
   }
 }

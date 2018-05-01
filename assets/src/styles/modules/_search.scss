@@ -12,18 +12,16 @@
 .search-form {
   position: relative;
   display: flex;
-  align-items: center;
-  margin: 0 20px;
-  @include rsp-font(3vw, 18px);
+  @include rsp-font(3vw, 24px);
 
   .search-field {
     width: 100%;
     box-sizing: border-box;
     padding: 15px;
     font-family: $sans-serif-light;
-    @include font-smoothing(on);
+    line-height: 1.5em;
     color: $white;
-    background: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
     border: 0;
 
     &:focus {
@@ -49,16 +47,18 @@
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
-  padding-left: 15px;
-  @include rsp-font(3vw, 18px);
+  font-family: $sans-serif-light;
+  line-height: 1em;
+  @include rsp-font(3vw, 24px);
 }
 
 .autocomplete-suggestion {
   padding: 5px 15px;
-  color: darken($color-accent, 20%);
+  color: darken($color-accent, 10%);
   cursor: pointer;
   transition: color 200ms ease-in-out;
 
+  &.autocomplete-selected,
   &:hover,
   strong {
     font-weight: normal;
@@ -69,9 +69,9 @@
 // Search Index
 
 .search-title {
-  padding: 4em 0;
   font-family: $sans-serif-light;
-  @include rsp-font(2vw, 18px);
+  line-height: 1em;
+  @include rsp-font(3vw, 24px);
 
   @media screen and (max-width: $small-vp) {
     margin: 0;
@@ -83,14 +83,14 @@
 .search-loader {
   position: absolute;
   top: 150%;
-  left: calc(50% - 1em/2);
+  left: calc(50% - 1em / 2);
   display: none;
   width: 1em;
   height: 1em;
-  background: $white;
+  border: 5px solid darken($color-accent, 10%);
   border-radius: 50%;
   animation-name: shake;
-  animation-duration: 1s;
+  animation-duration: 800ms;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
 }

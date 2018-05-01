@@ -1,0 +1,6 @@
+{
+  "extends": "stylelint-config-primer",
+  "plugins": [
+    "stylelint-scss"
+  ],
+}
