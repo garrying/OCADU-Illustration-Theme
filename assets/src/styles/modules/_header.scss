@@ -15,6 +15,10 @@
   &.invert:hover {
     opacity: 0;
   }
+
+  @media screen and (max-width: $smallest-vp) {
+    white-space: normal;
+  }
 }
 
 .logo-wrapper {
