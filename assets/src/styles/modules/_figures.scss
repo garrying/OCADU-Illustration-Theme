@@ -113,6 +113,7 @@ figure {
   filter: blur(5px);
   transition: filter 300ms ease-in-out, opacity 100ms ease-in-out;
   transform: translateZ(0);
+  -webkit-transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 

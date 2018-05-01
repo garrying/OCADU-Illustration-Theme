@@ -105,12 +105,6 @@
   }
 
   .blur-up {
-    filter: blur(10px);
-  }
-
-  .lazyloaded.blur-up {
-    filter: blur(0);
     mix-blend-mode: multiply;
   }
-
 }
