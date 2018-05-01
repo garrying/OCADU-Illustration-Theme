@@ -74,11 +74,13 @@ figure {
     bottom: 20px;
     z-index: $z-foreground;
     max-width: 350px;
-    padding: 5px;
+    padding: 1em 0 0 1em;
     font-size: 0.95em;
     line-height: 1.3em;
+    background: $site-background;
 
     @media screen and (max-width: $ipad-vp) {
+      padding: 1em;
       bottom: 75px;
       left: 20px;
     }
