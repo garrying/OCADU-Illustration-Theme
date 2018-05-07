@@ -27,10 +27,6 @@
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
-
-    a {
-      padding: 1em 1em 1em 0;
-    }
   }
 
   .title-primary {
@@ -48,6 +44,19 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  .message {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 1em;
+    border: 2px solid $white;
+    transition: background 180ms ease-in-out;
+
+    &:hover {
+      color: $color-accent;
+      background: $white;
     }
   }
 }

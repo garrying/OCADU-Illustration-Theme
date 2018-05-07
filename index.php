@@ -17,7 +17,7 @@
       <div class="segment-second">
         <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx May 3–6<br></h2>
         <p class="title-secondary">Spanning 2009–2018, the archive is maintained by the Illustration Department at OCAD University.</p>
-        <p class="title-secondary"><a href="/about" class="message">About the archive</a></p>
+        <p class="title-secondary"><a href="/about" class="message">About the Archive</a></p>
       </div>
     </div>
 
