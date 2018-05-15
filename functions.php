@@ -350,6 +350,8 @@ add_action( 'wp_head', 'ocaduillustration_prefetch' );
  *
  * @param string $attr takes gallery image attributes.
  *
+ * @param string $attachment takes attachment object.
+ *
  * @return string
  */
 function ocaduillustration_gallery_filter( $attr, $attachment ) {
@@ -364,7 +366,8 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
     if ( is_home() || is_archive() || is_search() ) {
       $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
     } else {
-      $attr['src'] = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' )[0];
+      $attachment_small = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' );
+      $attr['src'] = $attachment_small[0];
     }
   }
   $attr['alt']   = 'Illustration by ' . get_the_title() . '';
