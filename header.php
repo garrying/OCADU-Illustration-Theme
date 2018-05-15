@@ -89,9 +89,10 @@
                 if ( $ocaduillustration_query->have_posts() ) {
                   $ocaduillustration_query->the_post();
                   $ocaduillustration_year_image = get_the_post_thumbnail_url();
+                  $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-src='" . esc_html( $ocaduillustration_year_image ) . "' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
                 wp_reset_postdata();
               }
               ?>
