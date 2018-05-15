@@ -352,7 +352,7 @@ add_action( 'wp_head', 'ocaduillustration_prefetch' );
  *
  * @return string
  */
-function ocaduillustration_gallery_filter( $attr ) {
+function ocaduillustration_gallery_filter( $attr, $attachment ) {
   global $post;
   $attr['data-sizes'] = 'auto';
   $attr['data-src']   = $attr['src'];
@@ -363,6 +363,8 @@ function ocaduillustration_gallery_filter( $attr ) {
     unset( $attr['sizes'] );
     if ( is_home() || is_archive() || is_search() ) {
       $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
+    } else {
+      $attr['src'] = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' )[0];
     }
   }
   $attr['alt']   = 'Illustration by ' . get_the_title() . '';
@@ -375,7 +377,7 @@ function ocaduillustration_gallery_filter( $attr ) {
   return $attr;
 }
 
-add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_filter' );
+add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_filter', 10, 2 );
 
 /**
  * Adding data attributes to clean stuff up
