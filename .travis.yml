@@ -78,7 +78,7 @@ before_script:
   - echo $theme_slug
   - echo $theme_dir
   # Install WPThemeReview stnadards, which will install PHP_CodeSniffer, WordPress Coding Standards, WPThemeReview and PHPCompatibility standards.
-  - if [[ "$LINT" == "1" ]]; then composer install --no-suggest; fi
+  - if [[ "$LINT" == "1" ]]; then composer global require wptrt/wpthemereview dealerdirect/phpcodesniffer-composer-installer; fi
   # After CodeSniffer install you should refresh your path.
   - phpenv rehash;
 
@@ -96,7 +96,7 @@ script:
   # -v flag: Print verbose output.
   # -n flag: Do not print warnings (shortcut for --warning-severity=0)
   # --extensions: Only sniff PHP files.
-  - if [[ "$LINT" == "1" ]]; then composer lint . -- -p -s -v -n --extensions=php; fi
+  - if [[ "$LINT" == "1" ]]; then phpcs --runtime-set ignore_warnings_on_exit 1; fi
   # Attempt npm install
   - npm install
   # Attempt npm run build
