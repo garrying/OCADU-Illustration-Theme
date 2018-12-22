@@ -50,6 +50,7 @@
     <exclude name="Squiz.Commenting.FileComment.Missing"/>
 
     <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+    <exclude name="Squiz.Commenting.FunctionComment.Missing" />
     <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
     <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
     <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
