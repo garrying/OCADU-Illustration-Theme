@@ -81,8 +81,8 @@
       <div class="illustrator-nav-single-wrapper">
         <?php
         if ( is_singular( 'illustrator' ) ) {
-          $term                         = get_the_terms( $post->ID, 'gradyear' );
-          $ocaduillustration_term_first = $term[0];
+          $class_year                         = get_the_terms( $post->ID, 'gradyear' );
+          $ocaduillustration_term_first = $class_year[0];
           if ( isset( $ocaduillustration_term_first->name ) ) {
 				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ⧖ ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
           };

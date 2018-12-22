@@ -14,17 +14,14 @@
 -->
 
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#fa8072">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="apple-touch-icon" href="/icon.png">
+  <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="profile" href="https://gmpg.org/xfn/11" />
   <?php wp_head(); ?>
 
 </head>
 
-<body <?php body_class(); ?> id="content-container">
+<body <?php body_class(); ?>>
   <a class="screen-reader-shortcut" href="#main">Skip to main content</a>
 
   <div class="loader"><h1 class="loader-text">Loading ☺</h1></div>
@@ -50,13 +47,13 @@
           if ( is_singular( 'illustrator' ) ) {
             // Selected menu state for individual items.
             $ocaduillustration_terms = get_the_terms( $post->ID, 'gradyear' );
-            foreach ( $ocaduillustration_terms as $term ) {
-              $ocaduillustration_selected_year = $term->name;
+            foreach ( $ocaduillustration_terms as $class_year ) {
+              $ocaduillustration_selected_year = $class_year->name;
             }
           } else {
-            $taxonomy = get_queried_object();
-            if ( isset( $taxonomy ) ) {
-              $ocaduillustration_selected_year = $taxonomy->name;
+            $class_taxonomy = get_queried_object();
+            if ( isset( $class_taxonomy ) ) {
+              $ocaduillustration_selected_year = $class_taxonomy->name;
             }
           }
         ?>

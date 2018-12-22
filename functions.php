@@ -270,14 +270,14 @@ function ocaduillustration_social_meta() {
     global $post;
     $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
-    echo '<meta property="og:title" content="' . get_the_title() . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
     echo '<meta property="og:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
     echo '<meta property="og:image" content="' . esc_url( ocaduillustration_get_socialimage() ) . '">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="' . get_the_title() . '">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
     echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter' ) ) . '">' . "\n";
     echo '<meta name="twitter:image:alt" content="' . esc_html( get_post_meta( $post->ID, 'illu_title', true ) ) . '">' . "\n";
