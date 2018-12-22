@@ -62,8 +62,8 @@
           <div class="panel-inner">
             <ul class="year-select-wrapper">
               <?php
-              foreach ( $ocaduillustration_grad_year as $year ) {
-                if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $year->name ) {
+              foreach ( $ocaduillustration_grad_year as $class_year ) {
+                if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $class_year->name ) {
                   $ocaduillustration_selected_year_class = 'active';
                 } else {
                   $ocaduillustration_selected_year_class = '';
@@ -77,7 +77,7 @@
                     array(
                       'taxonomy' => 'gradyear',
                       'field'    => 'name',
-                      'terms'    => $year->name,
+                      'terms'    => $class_year->name,
                     ),
                   ),
                 );
@@ -89,7 +89,7 @@
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year->name ) . "'>" . esc_html( $year->name ) . "</a><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'>" . esc_html( $class_year->name ) . "</a><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
                 wp_reset_postdata();
               }
               ?>

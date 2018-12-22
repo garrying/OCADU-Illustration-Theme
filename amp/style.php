@@ -1,5 +1,5 @@
 <?php
-/** Get content width **/
+// phpcs:ignore
 
 $amp_content_max_width = absint( $this->get( 'content_max_width' ) );
 
