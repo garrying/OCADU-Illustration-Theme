@@ -43,18 +43,6 @@ env:
     - WP_MULTISITE=0
     - LINT=1
 
-# Declare versions of PHP to use. Use one decimal max.
-matrix:
-  fast_finish: true
-  include:
-    - php: "5.3"
-      env: LINT=0
-      dist: precise
-    # Current minimum $required_php_version for WordPress: 5.2.4
-    - php: "5.2"
-      env: LINT=0
-      dist: precise
-
 # Ditch sudo and use containers.
 # @link https://docs.travis-ci.com/user/migrating-from-legacy/#Why-migrate-to-container-based-infrastructure%3F
 # @link https://docs.travis-ci.com/user/workers/container-based-infrastructure/#Routing-your-build-to-container-based-infrastructure
