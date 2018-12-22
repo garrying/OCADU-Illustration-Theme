@@ -391,7 +391,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_fil
 /**
  * Adding data attributes to clean stuff up
  *
- * @param mixed $markup regular markup from gallery.
+ * @param mixed   $markup regular markup from gallery.
  *
  * @param integer $id the post id.
  *
