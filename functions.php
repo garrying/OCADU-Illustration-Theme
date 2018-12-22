@@ -118,7 +118,7 @@ add_action( 'wp_enqueue_scripts', 'ocaduillustration_fonts' );
  *
  * @param string $wp_classes input classes from WordPress.
  *
- * @param array $extra_classes extra classes to add to body class.
+ * @param array  $extra_classes extra classes to add to body class.
  *
  * @return array
  */
@@ -335,10 +335,11 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
  */
 function ocaduillustration_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
-    $the_url = next_post_link_plus( array(
-      'order_by'    => 'post_title',
-      'in_same_tax' => true,
-      'return'      => 'href',
+    $the_url = next_post_link_plus(
+      array(
+        'order_by'    => 'post_title',
+        'in_same_tax' => true,
+        'return'      => 'href',
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
@@ -372,7 +373,7 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
       $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
     } else {
       $attachment_small = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' );
-      $attr['src'] = $attachment_small[0];
+      $attr['src']      = $attachment_small[0];
     }
   }
   $attr['alt']   = 'Illustration by ' . get_the_title() . '';
@@ -394,9 +395,9 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_fil
  *
  * @param integer $id the post id.
  *
- * @param mixed $size size of gallery item.
+ * @param mixed   $size size of gallery item.
  *
- * @param string $permalink the link to the asset.
+ * @param string  $permalink the link to the asset.
  */
 function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
