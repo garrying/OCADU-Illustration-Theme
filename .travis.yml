@@ -96,7 +96,7 @@ script:
   # -v flag: Print verbose output.
   # -n flag: Do not print warnings (shortcut for --warning-severity=0)
   # --extensions: Only sniff PHP files.
-  - if [[ "$LINT" == "1" ]]; then phpcs --runtime-set ignore_warnings_on_exit 1; fi
+  - if [[ "$LINT" == "1" ]]; then /home/travis/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set ignore_warnings_on_exit 1; fi
   # Attempt npm install
   - npm install
   # Attempt npm run build
