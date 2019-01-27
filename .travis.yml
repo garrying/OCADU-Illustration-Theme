@@ -11,7 +11,7 @@ language: php
 
 # Newer versions like trusty don't have PHP 5.2 or 5.3
 # https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
-dist: trusty
+dist: xenial
 
 # Cache content for faster build process.
 # https://docs.travis-ci.com/user/caching/
@@ -30,8 +30,6 @@ php:
   - 7.1
   - 7.0
   - 5.6
-  - 5.5
-  - 5.4
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
