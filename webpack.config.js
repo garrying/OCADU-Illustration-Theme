@@ -22,7 +22,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['env'],
+          presets: ['@babel/preset-env'],
         },
       }, {
         test: /\.svg$/,
