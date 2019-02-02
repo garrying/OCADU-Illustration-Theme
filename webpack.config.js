@@ -9,13 +9,14 @@ module.exports = {
     filename: 'app.js',
   },
   context: __dirname,
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.scss$/,
         exclude: /(node_modules|bower_components)/,
         loader: ExtractTextPlugin.extract({
-          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+          use: ['css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap'],
         }),
       }, {
         test: /\.js$/,
