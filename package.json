@@ -10,13 +10,13 @@
     "build": "webpack -p --mode production --progress --colors"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "autoprefixer": "^9.4.7",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.5",
-    "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^2.1.0",
-    "eslint": "^5.13.0",
+    "copy-webpack-plugin": "^5.0.1",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.15.2",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -25,16 +25,16 @@
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
     "sass-loader": "^7.1.0",
-    "stylelint-config-primer": "^3.0.1",
+    "stylelint-config-primer": "^5.0.0",
     "svg-url-loader": "^2.3.2",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   },
   "dependencies": {
     "bricklayer": "^0.4.3",
     "flickity": "^2.2.0",
     "jquery": "^3.3.1",
-    "lazysizes": "^4.1.5",
+    "lazysizes": "^4.1.6",
     "velocity-animate": "^1.5.2"
   }
 }
