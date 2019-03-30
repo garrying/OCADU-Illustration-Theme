@@ -11,7 +11,7 @@ require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
 require('lazysizes')
 const Flickity = require('flickity')
-const Bricklayer = require('bricklayer');
+const Bricklayer = require('bricklayer')
 
 (() => {
   const app = {
