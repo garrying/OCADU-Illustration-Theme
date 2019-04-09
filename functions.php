@@ -204,7 +204,7 @@ add_filter( 'nav_menu_item_id', 'ocaduillustration_nav_id_filter', 10, 2 );
  * @param string $query limits default search to just Illustrators.
  */
 function ocaduillustration_search_filter( $query ) {
-  if ( $query->is_search && $query->is_main_query() && !is_admin() ) {
+  if ( $query->is_search && $query->is_main_query() && ! is_admin() ) {
     $query->set( 'post_type', array( 'illustrator' ) );
   }
   return $query;
