@@ -1131,7 +1131,8 @@ button {
   bottom: 2em;
   left: 50vw;
   right: 2em;
-  z-index: -1; }
+  z-index: -1;
+  border-radius: 20px; }
   @media screen and (max-width: 667px) {
     .title-bg {
       display: none; } }
@@ -1141,6 +1142,7 @@ button {
   pointer-events: auto;
   background: #000;
   position: absolute;
+  border-radius: 20px;
   top: 0;
   right: 0;
   bottom: 0;

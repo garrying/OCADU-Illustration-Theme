@@ -68,6 +68,7 @@
   left: 50vw;
   right: 2em;
   z-index: -1;
+  border-radius: 20px;
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -79,6 +80,7 @@
   pointer-events: auto;
   background: $black;
   position: absolute;
+  border-radius: 20px;
   top: 0;
   right: 0;
   bottom: 0;
