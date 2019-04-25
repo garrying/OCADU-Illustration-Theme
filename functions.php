@@ -285,7 +285,7 @@ function ocaduillustration_social_meta() {
 
   }
   if ( is_home() || is_archive() ) {
-    $social_description = 'Presented by the Illustration Department at OCAD U featuring work from the graduating class of 2018.';
+    $social_description = 'Presented by the Illustration Department at OCAD U featuring work from the graduating class of 2019.';
     if ( is_home() ) {
       $social_title = get_bloginfo( 'name' );
     } else {

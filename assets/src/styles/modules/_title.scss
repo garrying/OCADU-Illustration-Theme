@@ -48,15 +48,14 @@
   }
 
   .message {
+    color: $color-accent;
     display: inline-block;
     margin-top: 1em;
     padding: 1em;
-    border: 2px solid $white;
+    background: $white;
     transition: background 180ms ease-in-out;
 
     &:hover {
-      color: $color-accent;
-      background: $white;
     }
   }
 }
@@ -68,13 +67,7 @@
   bottom: 2em;
   left: 50vw;
   right: 2em;
-  opacity: 0;
   z-index: -1;
-  transition: opacity 1000ms ease-in-out;
-
-  &.visible {
-    opacity: 1;
-  }
 
   @media screen and (max-width: $small-vp) {
     display: none;

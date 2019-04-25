@@ -77,12 +77,30 @@ const Bricklayer = require('bricklayer');
     _ocadFlickity: () => {
       const initIndex = $('.year-item').index($('.active'))
 
-      const flky = new Flickity('.year-select-wrapper', {
+      const flkty = new Flickity('.year-select-wrapper', {
         initialIndex: initIndex,
         wrapAround: true,
         setGallerySize: false,
         prevNextButtons: false,
-        pageDots: false
+        pageDots: false,
+        on: {
+          ready: () => {
+            $('.year-list-item.is-selected img').velocity('stop').velocity('fadeIn', 'fast')
+          }
+        }
+      })
+
+      flkty.on('change', (index) => {
+        const element = flkty.slides[index].cells[0].element
+        $('.year-item-image').velocity('stop').velocity('fadeOut', 'fast')
+        if ($(element).find('img').hasClass('lazyload')) {
+          lazySizes.loader.unveil($(element).find('img')[0])
+          $(element).find('img').on('lazybeforeunveil', () => {
+            $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
+          })
+        } else {
+          $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
+        }
       })
     },
 
@@ -190,10 +208,6 @@ const Bricklayer = require('bricklayer');
         $('.illustrator-link').on('mouseleave', (ele) => {
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
         })
-
-        setTimeout(() => {
-          $('.title-bg').addClass('visible')
-        }, 500)
       }
     },
 

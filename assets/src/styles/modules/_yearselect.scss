@@ -17,13 +17,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33.3333333%;
+  width: 50%;
   height: 100%;
-  background: $color-accent;
-
-  @media screen and (max-width: $small-vp) {
-    width: 50%;
-  }
 }
 
 .year-item {
@@ -31,7 +26,7 @@
   z-index: 1;
   font-family: $sans-serif-light;
   line-height: 1em;
-  color: lighten($color-accent, 10%);
+  color: $color-accent;
   @include rsp-font(14vw, 42px);
   opacity: 0;
 
@@ -50,14 +45,16 @@
 .year-item-image {
   position: absolute;
   display: none;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   pointer-events: none;
-  filter: grayscale(100%) contrast(100%);
-  mix-blend-mode: exclusion;
   object-fit: contain;
 }
 
 .is-selected .year-item-image {
-  display: block;
+  display: inline;
+}
+
+.is-selected .year-item {
+  color: lighten($color-accent, 10%);
 }

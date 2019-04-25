@@ -17,7 +17,9 @@
   .search-field {
     width: 100%;
     box-sizing: border-box;
-    padding: 15px;
+    padding: 20px 40px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     font-family: $sans-serif-light;
     line-height: 1.5em;
     color: $white;
@@ -35,8 +37,9 @@
   }
 
   .search-submit {
-    padding: 15px;
-    margin-left: 4px;
+    padding: 20px 40px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     font-family: $sans-serif-light;
     color: $color-accent;
     background: $white;
@@ -47,13 +50,14 @@
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
+  padding-left: 40px;
   font-family: $sans-serif-light;
   line-height: 1em;
   @include rsp-font(3vw, 24px);
 }
 
 .autocomplete-suggestion {
-  padding: 5px 15px;
+  padding: 5px 0;
   color: darken($color-accent, 10%);
   cursor: pointer;
   transition: color 200ms ease-in-out;
