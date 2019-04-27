@@ -26,7 +26,7 @@
   z-index: 1;
   font-family: $sans-serif-light;
   line-height: 1em;
-  color: $color-accent;
+  color: darken($color-accent, 10%);
   @include rsp-font(14vw, 42px);
   opacity: 0;
 
@@ -56,5 +56,5 @@
 }
 
 .is-selected .year-item {
-  color: lighten($color-accent, 10%);
+  color: $color-accent;
 }

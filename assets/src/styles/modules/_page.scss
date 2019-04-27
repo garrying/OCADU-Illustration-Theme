@@ -90,6 +90,11 @@
   @include rsp-font(14vw, 24px);
 }
 
+.section-indicator-single {
+  width: 100%;
+  padding: 1em 30px;
+}
+
 .page-inner {
   max-width: 60vw;
   margin: 130px 0 0 30px;

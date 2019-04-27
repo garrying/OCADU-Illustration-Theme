@@ -39,8 +39,8 @@
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <div itemprop="url">
-                <a title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                  →
+                <a title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+                  ↗
                   <?php
                     $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                     $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -52,8 +52,8 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <div itemprop="url">
-                <a title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                  →
+                <a title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+                  ↗
                   <?php
                     $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                     $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -65,13 +65,13 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
               <div class="email" itemprop="email">
-                <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">→ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
+                <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">↗ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
               </div>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_phone', true ) ) : ?>
-              <div class="phone" itemprop="telephone">
-                → <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ); ?>
+              <div class="phone pill" itemprop="telephone">
+                ↗ <?php echo esc_html( get_post_meta( $post->ID, 'illu_phone', true ) ); ?>
               </div>
             <?php endif; ?>
           </div>
@@ -108,7 +108,7 @@
             'order_by'    => 'post_title',
             'format'      => '%link',
             'in_same_tax' => true,
-            'link'        => '<span class="name next-link truncate">◑ %title</span>',
+            'link'        => '<span class="name next-link truncate">%title ◑</span>',
           )
             );
           ?></li>

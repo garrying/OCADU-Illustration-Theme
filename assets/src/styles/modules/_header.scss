@@ -13,7 +13,7 @@
 
   &.invert,
   &.invert:hover {
-    opacity: 0;
+    color: darken($color-accent, 20%);
   }
 
   @media screen and (max-width: $smallest-vp) {
@@ -38,6 +38,7 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
+    top: 20px;
     padding: 0;
     right: 0;
     left: 20px;
@@ -82,13 +83,13 @@
   }
 
   &.inactive {
-    color: darken($color-accent, 20%);
+    color: darken($color-accent, 10%);
     background: transparent;
   }
 
   &.inactive:hover {
     color: $white;
-    background: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
   }
 
   @media screen and (max-width: $small-vp) {

@@ -7,7 +7,7 @@
   z-index: $z-middle;
   display: flex;
   overflow: scroll;
-  background: lighten($color-accent, 10%);
+  background: $color-accent;
   outline: 0;
   opacity: 0;
   visibility: none;
