@@ -972,29 +972,30 @@ button {
 .meta {
   display: flex;
   margin-top: 4em;
-  font-family: "Lab Mono Web", monaco, monospace;
-  align-items: baseline; }
+  font-family: "Lab Mono Web", monaco, monospace; }
   @media screen and (max-width: 667px) {
     .meta {
       margin: 2em 0; } }
   .meta .illustrator-meta-header {
     flex-basis: 38.2%;
+    padding: 0.5em 0;
     padding-right: 1em; }
   .meta .illustrator-meta-items {
     max-width: 61.8%;
     line-height: 1.45em; }
   .meta .meta-link {
+    display: inline-block;
+    max-width: 100%;
     border: 1px solid #fa8072;
-    padding: 0.5em 1em;
-    margin-bottom: 0.5em;
-    line-height: 1em; }
+    padding: 0.5em 1em; }
     @media screen and (max-width: 667px) {
       .meta .meta-link {
         display: block;
         padding: 1em;
         margin: 0 0 1em; } }
   .meta .phone {
-    line-height: 1em;
+    display: inline-block;
+    max-width: 100%;
     border: 1px solid #eee;
     padding: 0.5em 1em; }
 

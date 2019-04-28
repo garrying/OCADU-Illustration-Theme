@@ -121,7 +121,6 @@
   display: flex;
   margin-top: 4em;
   font-family: $monospace;
-  align-items: baseline;
 
   @media screen and (max-width: $small-vp) {
     margin: 2em 0;
@@ -129,6 +128,7 @@
 
   .illustrator-meta-header {
     flex-basis: 38.2%;
+    padding: 0.5em 0;
     padding-right: 1em;
   }
 
@@ -138,10 +138,11 @@
   }
 
   .meta-link {
+    display: inline-block;
+    max-width: 100%;
     border: 1px solid $color-accent;
     padding: 0.5em 1em;
-    margin-bottom: 0.5em;
-    line-height: 1em;
+
     @media screen and (max-width: $small-vp) {
       display: block;
       padding: 1em;
@@ -150,7 +151,8 @@
   }
 
   .phone {
-    line-height: 1em;
+    display: inline-block;
+    max-width: 100%;
     border: 1px solid #eee;
     padding: 0.5em 1em;
   }
