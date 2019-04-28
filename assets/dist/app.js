@@ -142,6 +142,8 @@ var Bricklayer = __webpack_require__(/*! bricklayer */ "./node_modules/bricklaye
       app._ocadGridFocus();
 
       app._ocadFlickity();
+
+      app._ocadSingleScroll();
     },
     settings: {
       documentBody: $('body'),
@@ -155,8 +157,37 @@ var Bricklayer = __webpack_require__(/*! bricklayer */ "./node_modules/bricklaye
       searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
+      singleWrapper: $('.illustrator-nav-single-wrapper'),
+      headerInner: $('.heading-inner'),
       imageIndex: 0,
       easeOutBack: [0.175, 0.885, 0.32, 1.275]
+    },
+    _ocadSingleScroll: function _ocadSingleScroll() {
+      var knownPosition = 0;
+      var ticking = false;
+
+      function doSomething(scrollPos, knownPosition) {
+        if (scrollPos > knownPosition && scrollPos > 20) {
+          app.settings.singleWrapper.addClass('fade-out');
+          app.settings.headerInner.addClass('fade-out');
+        } else {
+          app.settings.singleWrapper.removeClass('fade-out');
+          app.settings.headerInner.removeClass('fade-out');
+        }
+      }
+
+      window.addEventListener('scroll', function (e) {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            doSomething(st, knownPosition);
+            ticking = false;
+            knownPosition = st <= 0 ? 0 : st;
+          });
+          ticking = true;
+        }
+      });
     },
     _ocadGridFocus: function _ocadGridFocus() {
       $('.section-indicator').hover(function () {

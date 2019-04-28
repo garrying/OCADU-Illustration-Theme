@@ -93,6 +93,10 @@
 .section-indicator-single {
   width: 100%;
   padding: 1em 30px;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
 }
 
 .page-inner {

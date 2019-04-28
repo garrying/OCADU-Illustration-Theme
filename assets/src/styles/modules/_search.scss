@@ -13,6 +13,7 @@
   position: relative;
   display: flex;
   @include rsp-font(3vw, 24px);
+  padding: 0 20px;
 
   .search-field {
     width: 100%;
@@ -25,10 +26,15 @@
     color: $white;
     background: darken($color-accent, 10%);
     border: 0;
+    -webkit-appearance: none;
 
     &:focus {
       outline-style: none;
       outline-color: $white;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      padding: 10px 20px;
     }
   }
 
@@ -43,7 +49,12 @@
     font-family: $sans-serif-light;
     color: $color-accent;
     background: $white;
+    -webkit-appearance: none;
     @include font-smoothing(on);
+
+    @media screen and (max-width: $small-vp) {
+      padding: 10px 20px;
+    }
   }
 }
 

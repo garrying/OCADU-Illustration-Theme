@@ -24,6 +24,7 @@ const Bricklayer = require('bricklayer');
       app._ocadUIbinding()
       app._ocadGridFocus()
       app._ocadFlickity()
+      app._ocadSingleScroll()
     },
 
     settings: {
@@ -38,8 +39,37 @@ const Bricklayer = require('bricklayer');
       searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
+      singleWrapper: $('.illustrator-nav-single-wrapper'),
+      headerInner: $('.heading-inner'),
       imageIndex: 0,
       easeOutBack: [0.175, 0.885, 0.32, 1.275]
+    },
+
+    _ocadSingleScroll: () => {
+      let knownPosition = 0
+      let ticking = false
+
+      function doSomething (scrollPos, knownPosition) {
+        if (scrollPos > knownPosition && scrollPos > 20) {
+          app.settings.singleWrapper.addClass('fade-out')
+          app.settings.headerInner.addClass('fade-out')
+        } else {
+          app.settings.singleWrapper.removeClass('fade-out')
+          app.settings.headerInner.removeClass('fade-out')
+        }
+      }
+
+      window.addEventListener('scroll', function (e) {
+        let st = window.pageYOffset || document.documentElement.scrollTop
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            doSomething(st, knownPosition)
+            ticking = false
+            knownPosition = st <= 0 ? 0 : st
+          })
+          ticking = true
+        }
+      })
     },
 
     _ocadGridFocus: () => {

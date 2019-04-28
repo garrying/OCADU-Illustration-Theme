@@ -493,7 +493,8 @@ button {
 .search-form {
   position: relative;
   display: flex;
-  font-size: 3vw; }
+  font-size: 3vw;
+  padding: 0 20px; }
   @media (max-width: 800px) {
     .search-form {
       font-size: 24px; } }
@@ -507,10 +508,14 @@ button {
     line-height: 1.5em;
     color: #fff;
     background: #f85441;
-    border: 0; }
+    border: 0;
+    -webkit-appearance: none; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
+    @media screen and (max-width: 667px) {
+      .search-form .search-field {
+        padding: 10px 20px; } }
   .search-form .search-field::-webkit-input-placeholder {
     color: #fa8072; }
   .search-form .search-submit {
@@ -520,8 +525,12 @@ button {
     font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fa8072;
     background: #fff;
+    -webkit-appearance: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased; }
+    @media screen and (max-width: 667px) {
+      .search-form .search-submit {
+        padding: 10px 20px; } }
 
 .autocomplete-suggestions {
   position: static !important;
@@ -641,6 +650,9 @@ button {
 .section-indicator-single {
   width: 100%;
   padding: 1em 30px; }
+  @media screen and (max-width: 667px) {
+    .section-indicator-single {
+      display: none; } }
 
 .page-inner {
   max-width: 60vw;
@@ -827,7 +839,10 @@ button {
       top: 20px;
       padding: 0;
       right: 0;
-      left: 20px; } }
+      left: 20px;
+      transition: opacity 200ms ease-in-out; }
+      .heading-inner.fade-out {
+        opacity: 0; } }
 
 .header-items-wrapper {
   display: flex; }
@@ -868,7 +883,7 @@ button {
     background: #f85441; }
   @media screen and (max-width: 667px) {
     .header-item {
-      padding: 1.5em; } }
+      padding: 1em; } }
 
 .single-illustrator {
   display: flex;
@@ -876,7 +891,8 @@ button {
   flex-direction: row; }
   @media screen and (max-width: 667px) {
     .single-illustrator {
-      flex-flow: column; } }
+      flex-flow: column;
+      padding-bottom: 60px; } }
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
@@ -886,6 +902,7 @@ button {
       flex-basis: 50%; } }
   @media screen and (max-width: 667px) {
     .illustrator-gallery-container {
+      margin-top: 0;
       padding: 0; } }
   @media screen and (max-width: 768px) {
     .illustrator-gallery-container .gallery-grid {
@@ -990,7 +1007,6 @@ button {
     @media screen and (max-width: 667px) {
       .meta .meta-link {
         display: block;
-        padding: 1em;
         margin: 0 0 1em; } }
   .meta .phone {
     display: inline-block;
@@ -1013,7 +1029,11 @@ button {
     .illustrator-nav-single-wrapper {
       position: relative;
       padding: 0;
-      z-index: 100; } }
+      z-index: 100;
+      border-top: 0;
+      transition: opacity 200ms ease-in-out; }
+      .illustrator-nav-single-wrapper.fade-out {
+        opacity: 0; } }
 
 .illustrator-nav-single {
   display: flex;
@@ -1022,7 +1042,13 @@ button {
   border-top: 1px solid #feefed; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single {
-      justify-content: flex-end; } }
+      padding: 0 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      justify-content: flex-end;
+      background: #fff; } }
   .illustrator-nav-single a {
     display: block;
     padding: 1em 1em 2em;
