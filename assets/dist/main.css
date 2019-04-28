@@ -439,10 +439,10 @@ button {
   right: 0;
   z-index: 200;
   display: flex;
-  overflow: scroll;
   background: #fa8072;
   outline: 0;
   opacity: 0;
+  overflow: auto;
   visibility: none;
   pointer-events: none;
   align-content: center;
@@ -739,8 +739,7 @@ button {
   justify-content: center; }
   .year-select .panel-inner {
     width: 100%;
-    height: 100%;
-    overflow: scroll; }
+    height: 100%; }
 
 .year-select-wrapper {
   height: 100%;
@@ -1162,7 +1161,7 @@ button {
     bottom: 0;
     left: 0;
     padding: 2em 2em 4em;
-    overflow: scroll; }
+    overflow: auto; }
   .about-unit a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.2); }
     .about-unit a:hover {

@@ -6,10 +6,10 @@
   right: 0;
   z-index: $z-middle;
   display: flex;
-  overflow: scroll;
   background: $color-accent;
   outline: 0;
   opacity: 0;
+  overflow: auto;
   visibility: none;
   pointer-events: none;
   align-content: center;
