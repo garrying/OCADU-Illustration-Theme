@@ -44,7 +44,7 @@
                   <?php
                     $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                     $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
-                    echo esc_html( rtrim($ocaduillustration_url, '/') );
+                    echo esc_html( rtrim( $ocaduillustration_url, '/' ) );
                   ?>
                 </a>
               </div>
@@ -57,7 +57,7 @@
                   <?php
                     $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                     $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
-                    echo esc_html( rtrim($ocaduillustration_url, '/') );
+                    echo esc_html( rtrim ($ocaduillustration_url, '/' ) );
                   ?>
                 </a>
               </div>
