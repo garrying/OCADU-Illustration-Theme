@@ -248,11 +248,11 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' === $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?7926118495';
+    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?7926118494';
   }
 
   if ( empty( $socialimg ) ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?7926118495';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?7926118494';
   }
 
   return $socialimg;
