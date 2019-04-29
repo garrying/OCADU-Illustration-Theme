@@ -1,15 +1,15 @@
 .panel {
   position: fixed;
-  top: 2em;
-  bottom: 2em;
-  left: 2em;
-  right: 2em;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: $z-middle;
   display: flex;
-  overflow: scroll;
   background: $color-accent;
   outline: 0;
   opacity: 0;
+  overflow: auto;
   visibility: none;
   pointer-events: none;
   align-content: center;

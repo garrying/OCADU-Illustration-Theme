@@ -22,20 +22,25 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
     /**
      * HTML5 Markup
      */
-    add_theme_support( 'html5', array(
-      'search-form',
-      'comment-form',
-      'comment-list',
-      'gallery',
-      'caption',
-    ));
+    add_theme_support(
+      'html5',
+      array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+      )
+    );
 
     /**
      * Add custom menu using wp_nav_menu()
      */
-    register_nav_menus( array(
-      'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
-    ));
+    register_nav_menus(
+      array(
+        'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+      )
+    );
 
   }
 endif;
@@ -84,8 +89,7 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'wp-embed' );
-      wp_deregister_script( 'jquery' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?7926118495', '', '', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?7926118494', '', '', true );
       wp_enqueue_script( 'app' );
     }
   }
@@ -100,7 +104,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?7926118495' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?7926118494' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -113,7 +117,7 @@ add_action( 'wp_enqueue_scripts', 'ocaduillustration_fonts' );
  *
  * @param string $wp_classes input classes from WordPress.
  *
- * @param array $extra_classes extra classes to add to body class.
+ * @param array  $extra_classes extra classes to add to body class.
  *
  * @return array
  */
@@ -200,7 +204,7 @@ add_filter( 'nav_menu_item_id', 'ocaduillustration_nav_id_filter', 10, 2 );
  * @param string $query limits default search to just Illustrators.
  */
 function ocaduillustration_search_filter( $query ) {
-  if ( $query->is_search ) {
+  if ( $query->is_search && $query->is_main_query() && ! is_admin() ) {
     $query->set( 'post_type', array( 'illustrator' ) );
   }
   return $query;
@@ -244,11 +248,11 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' === $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?7926118495';
+    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?7926118494';
   }
 
   if ( empty( $socialimg ) ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?7926118495';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?7926118494';
   }
 
   return $socialimg;
@@ -265,14 +269,14 @@ function ocaduillustration_social_meta() {
     global $post;
     $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
-    echo '<meta property="og:title" content="' . get_the_title() . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
     echo '<meta property="og:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
     echo '<meta property="og:image" content="' . esc_url( ocaduillustration_get_socialimage() ) . '">' . "\n";
 
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="' . get_the_title() . '">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
     echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter' ) ) . '">' . "\n";
     echo '<meta name="twitter:image:alt" content="' . esc_html( get_post_meta( $post->ID, 'illu_title', true ) ) . '">' . "\n";
@@ -281,7 +285,7 @@ function ocaduillustration_social_meta() {
 
   }
   if ( is_home() || is_archive() ) {
-    $social_description = 'Presented by the Illustration Department at OCAD U featuring work from the graduating class of 2018.';
+    $social_description = 'Presented by the Illustration Department at OCAD U featuring work from the graduating class of 2019.';
     if ( is_home() ) {
       $social_title = get_bloginfo( 'name' );
     } else {
@@ -330,10 +334,11 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
  */
 function ocaduillustration_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
-    $the_url = next_post_link_plus( array(
-      'order_by'    => 'post_title',
-      'in_same_tax' => true,
-      'return'      => 'href',
+    $the_url = next_post_link_plus(
+      array(
+        'order_by'    => 'post_title',
+        'in_same_tax' => true,
+        'return'      => 'href',
       )
     );
     echo '<!-- prefetch and render -->' . "\n";
@@ -367,7 +372,7 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
       $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
     } else {
       $attachment_small = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' );
-      $attr['src'] = $attachment_small[0];
+      $attr['src']      = $attachment_small[0];
     }
   }
   $attr['alt']   = 'Illustration by ' . get_the_title() . '';
@@ -385,13 +390,13 @@ add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_fil
 /**
  * Adding data attributes to clean stuff up
  *
- * @param mixed $markup regular markup from gallery.
+ * @param mixed   $markup regular markup from gallery.
  *
  * @param integer $id the post id.
  *
- * @param mixed $size size of gallery item.
+ * @param mixed   $size size of gallery item.
  *
- * @param string $permalink the link to the asset.
+ * @param string  $permalink the link to the asset.
  */
 function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permalink ) {
   global $post;
@@ -443,5 +448,14 @@ add_filter( 'post_class', 'ocaduillustration_simplify_post_class' );
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+/**
+ * Disable gutenberg style in Front
+ */
+function wps_deregister_styles() {
+  wp_dequeue_style( 'wp-block-library' );
+}
+
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
 
 ?>

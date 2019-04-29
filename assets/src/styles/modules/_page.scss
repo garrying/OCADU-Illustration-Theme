@@ -90,6 +90,15 @@
   @include rsp-font(14vw, 24px);
 }
 
+.section-indicator-single {
+  width: 100%;
+  padding: 1em 30px;
+
+  @media screen and (max-width: $small-vp) {
+    display: none;
+  }
+}
+
 .page-inner {
   max-width: 60vw;
   margin: 130px 0 0 30px;

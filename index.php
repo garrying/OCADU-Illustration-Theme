@@ -13,11 +13,11 @@
   ?>
   <div class="title">
     <div class="title-unit title-unit-init active">
-      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2018</h1></div>
+      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2019</h1></div>
       <div class="segment-second">
-        <h2 class="title-primary"> Part of the 103<sup>rd</sup><br> GradEx May 3–6<br></h2>
-        <p class="title-secondary">Spanning 2009–2018, the archive is maintained by the Illustration Department at OCAD University.</p>
-        <p class="title-secondary"><a href="/about" class="message">About the Archive</a></p>
+        <h2 class="title-primary"> Part of the 104<sup>th</sup><br> GradEx May 1–5<br></h2>
+        <p class="title-secondary">Spanning 2009–2019, the archive is maintained by the Illustration Department at OCAD University.</p>
+        <p class="title-secondary"><a href="/about" class="message pill">About the Archive</a></p>
       </div>
     </div>
 

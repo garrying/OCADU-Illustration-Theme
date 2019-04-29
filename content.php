@@ -11,13 +11,13 @@
         <canvas class="lazyload-image-placeholder" height="<?php echo esc_attr( $ocaduillustration_image_height ); ?>" width="<?php echo esc_attr( $ocaduillustration_image_width ); ?>"></canvas>
       </div>
     </figure>
-    <div class="illustrator-meta-container">
+    <div class="illustrator-meta-container pill">
       <div class="illustrator-content-container">
         <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
-          <h1 class="illustrator-meta-label illustrator-title p-name"><span class="mono">→</span> <?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?>
-          </h1>
+          <h2 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?>
+          </h2>
         <?php endif; ?>
-        <h2 class="illustrator-meta-label illustrator-name p-author"><span class="mono">→</span> <?php the_title(); ?></h2>
+        <h3 class="illustrator-name mono p-author">→ <?php the_title(); ?></h3>
       </div>
     </div>
   </a>

@@ -13,20 +13,28 @@
   position: relative;
   display: flex;
   @include rsp-font(3vw, 24px);
+  padding: 0 20px;
 
   .search-field {
     width: 100%;
     box-sizing: border-box;
-    padding: 15px;
+    padding: 20px 40px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     font-family: $sans-serif-light;
     line-height: 1.5em;
     color: $white;
     background: darken($color-accent, 10%);
     border: 0;
+    -webkit-appearance: none;
 
     &:focus {
       outline-style: none;
       outline-color: $white;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      padding: 10px 20px;
     }
   }
 
@@ -35,25 +43,32 @@
   }
 
   .search-submit {
-    padding: 15px;
-    margin-left: 4px;
+    padding: 20px 40px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     font-family: $sans-serif-light;
     color: $color-accent;
     background: $white;
+    -webkit-appearance: none;
     @include font-smoothing(on);
+
+    @media screen and (max-width: $small-vp) {
+      padding: 10px 20px;
+    }
   }
 }
 
 .autocomplete-suggestions {
   position: static !important;
   padding-top: 15px;
+  padding-left: 40px;
   font-family: $sans-serif-light;
   line-height: 1em;
   @include rsp-font(3vw, 24px);
 }
 
 .autocomplete-suggestion {
-  padding: 5px 15px;
+  padding: 5px 0;
   color: darken($color-accent, 10%);
   cursor: pointer;
   transition: color 200ms ease-in-out;

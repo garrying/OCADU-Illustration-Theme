@@ -14,7 +14,6 @@
 }
 
 .home-grid {
-
   display: flex;
   flex-wrap: wrap;
   margin: 100px auto 0;
@@ -32,15 +31,21 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    color: $color-accent;
-    mix-blend-mode: exclusion;
+    background: $color-accent;
+    color: $white;
+    padding: 1em 2em;
 
     .illustrator-meta-label {
       font-family: $sans-serif-light;
-      line-height: 1em;
+      line-height: 1.3em;
       padding: 0;
       @include heading-features;
-      @include rsp-font(4vw, 18px);
+      @include rsp-font(2vw, 18px);
+    }
+
+    .illustrator-name {
+      font-size: 14px;
+      margin-bottom: 0;
     }
 
     &.active {
@@ -65,11 +70,11 @@
     flex-basis: 25%;
 
     &:nth-child(n+3) {
-      padding: 4%;
+      padding: 6%;
     }
 
     &:nth-child(2n+2) {
-      padding: 15%;
+      padding: 20%;
     }
   }
 
@@ -78,17 +83,16 @@
       padding: 1%;
 
       .gallery-item:nth-child(2n) {
-        padding: 5%;
+        padding: 6%;
       }
     }
 
     &:nth-last-child(-n+2) .illustrator-meta-container {
-      mix-blend-mode: unset;
-      color: $white;
+      background: $white;
+      color: $color-accent;
     }
 
     &:last-child .illustrator-meta-container {
-      margin-top: 5px;
       margin-left: -20%;
     }
   }

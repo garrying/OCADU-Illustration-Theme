@@ -13,7 +13,7 @@
 
   &.invert,
   &.invert:hover {
-    opacity: 0;
+    color: darken($color-accent, 20%);
   }
 
   @media screen and (max-width: $smallest-vp) {
@@ -38,9 +38,15 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
+    top: 20px;
     padding: 0;
     right: 0;
     left: 20px;
+    transition: opacity 200ms ease-in-out;
+
+    &.fade-out {
+      opacity: 0;
+    }
   }
 }
 
@@ -54,6 +60,7 @@
 }
 
 .header-item-link {
+  margin-right: 1em;
   @media screen and (max-width: $small-vp) {
     &:last-child {
       padding-right: 0;
@@ -62,7 +69,7 @@
 }
 
 .header-item {
-  padding: 2em;
+  padding: 1.5em;
   line-height: 1em;
   color: $white;
   white-space: nowrap;
@@ -81,16 +88,16 @@
   }
 
   &.inactive {
-    color: darken($color-accent, 20%);
+    color: darken($color-accent, 10%);
     background: transparent;
   }
 
   &.inactive:hover {
     color: $white;
-    background: darken($color-accent, 20%);
+    background: darken($color-accent, 10%);
   }
 
   @media screen and (max-width: $small-vp) {
-    padding: 1.5em;
+    padding: 1em;
   }
 }

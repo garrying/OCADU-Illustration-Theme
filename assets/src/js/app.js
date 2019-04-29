@@ -2,28 +2,29 @@
 no-underscore-dangle: ["off"]
 */
 
-import '../styles/main.scss';
+import '../styles/main.scss'
 
-const $ = require('jquery');
+const $ = require('jquery')
 
-window.jQuery = window.$ = $;
-require('./libs/jquery.autocomplete.min');
-require('velocity-animate');
-require('lazysizes');
-const Flickity = require('flickity');
+window.jQuery = window.$ = $
+require('./libs/jquery.autocomplete.min')
+require('velocity-animate')
+require('lazysizes')
+const Flickity = require('flickity')
 const Bricklayer = require('bricklayer');
 
 (() => {
   const app = {
     init: () => {
-      app._ocadPanelSelectButtons();
-      app._ocadHomeLoader();
-      app._ocadHomeHover();
-      app._ocadHomeAbout();
-      app._ocadGalleryNav();
-      app._ocadUIbinding();
-      app._ocadGridFocus();
-      app._ocadFlickity();
+      app._ocadPanelSelectButtons()
+      app._ocadHomeLoader()
+      app._ocadHomeHover()
+      app._ocadHomeAbout()
+      app._ocadGalleryNav()
+      app._ocadUIbinding()
+      app._ocadGridFocus()
+      app._ocadFlickity()
+      app._ocadSingleScroll()
     },
 
     settings: {
@@ -38,52 +39,99 @@ const Bricklayer = require('bricklayer');
       searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
+      singleWrapper: $('.illustrator-nav-single-wrapper'),
+      headerInner: $('.heading-inner'),
       imageIndex: 0,
-      easeOutBack: [0.175, 0.885, 0.32, 1.275],
+      easeOutBack: [0.175, 0.885, 0.32, 1.275]
+    },
+
+    _ocadSingleScroll: () => {
+      let knownPosition = 0
+      let ticking = false
+
+      function doSomething (scrollPos, knownPosition) {
+        if (scrollPos > knownPosition && scrollPos > 20) {
+          app.settings.singleWrapper.addClass('fade-out')
+          app.settings.headerInner.addClass('fade-out')
+        } else {
+          app.settings.singleWrapper.removeClass('fade-out')
+          app.settings.headerInner.removeClass('fade-out')
+        }
+      }
+
+      window.addEventListener('scroll', function (e) {
+        let st = window.pageYOffset || document.documentElement.scrollTop
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            doSomething(st, knownPosition)
+            ticking = false
+            knownPosition = st <= 0 ? 0 : st
+          })
+          ticking = true
+        }
+      })
     },
 
     _ocadGridFocus: () => {
       $('.section-indicator').hover(() => {
-        app.settings.documentBody.addClass('grid-focus');
-        $(app.settings.masonryContainerHome).addClass('blur');
+        app.settings.documentBody.addClass('grid-focus')
+        $(app.settings.masonryContainerHome).addClass('blur')
       }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $(app.settings.masonryContainerHome).removeClass('blur');
-      });
+        app.settings.documentBody.removeClass('grid-focus')
+        $(app.settings.masonryContainerHome).removeClass('blur')
+      })
 
       $('.home-grid').hover(() => {
-        $('.title-unit-illustrator').addClass('active');
-        $('.title-unit-init').removeClass('active');
-        app.settings.documentBody.addClass('grid-focus');
+        $('.title-unit-illustrator').addClass('active')
+        $('.title-unit-init').removeClass('active')
+        app.settings.documentBody.addClass('grid-focus')
       }, () => {
-        app.settings.documentBody.removeClass('grid-focus');
-        $('.title-unit-init').addClass('active');
-        $('.title-unit-illustrator').removeClass('active');
-      });
+        app.settings.documentBody.removeClass('grid-focus')
+        $('.title-unit-init').addClass('active')
+        $('.title-unit-illustrator').removeClass('active')
+      })
     },
 
     _ocadLoader: (e = true) => {
       if (e === false) {
-        app.settings.documentBody.removeAttr('style');
-        app.settings.loader.velocity('stop').velocity('fadeOut', 'fast');
+        app.settings.documentBody.removeAttr('style')
+        app.settings.loader.velocity('stop').velocity('fadeOut', 'fast')
       } else {
-        app.settings.documentBody.css('cursor', 'progress');
-        app.settings.loader.velocity('stop').velocity('fadeIn', 'fast');
+        app.settings.documentBody.css('cursor', 'progress')
+        app.settings.loader.velocity('stop').velocity('fadeIn', 'fast')
       }
     },
 
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
     _ocadFlickity: () => {
-      const initIndex = $('.year-item').index($('.active'));
+      const initIndex = $('.year-item').index($('.active'))
 
-      const flky = new Flickity('.year-select-wrapper', {
+      const flkty = new Flickity('.year-select-wrapper', {
         initialIndex: initIndex,
         wrapAround: true,
         setGallerySize: false,
         prevNextButtons: false,
         pageDots: false,
-      });
+        on: {
+          ready: () => {
+            $('.year-list-item.is-selected img').velocity('stop').velocity('fadeIn', 'fast')
+          }
+        }
+      })
+
+      flkty.on('change', (index) => {
+        const element = flkty.slides[index].cells[0].element
+        $('.year-item-image').velocity('stop').velocity('fadeOut', 'fast')
+        if ($(element).find('img').hasClass('lazyload')) {
+          lazySizes.loader.unveil($(element).find('img')[0])
+          $(element).find('img').on('lazybeforeunveil', () => {
+            $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
+          })
+        } else {
+          $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
+        }
+      })
     },
 
     _ocadSearch: () => {
@@ -95,170 +143,166 @@ const Bricklayer = require('bricklayer');
         appendTo: '.search-wrapper',
         showNoSuggestionNotice: true,
         onSearchStart: () => {
-          app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast');
+          app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast')
         },
         onSearchComplete: () => {
-          app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast');
+          app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast')
         },
         transformResult: response => ({
           suggestions: $.map($.parseJSON(response), item => ({
             value: item.title.rendered,
-            data: item.link,
-          })),
+            data: item.link
+          }))
         }),
         onSelect: (suggestion) => {
-          window.location.href = suggestion.data;
-        },
-      });
+          window.location.href = suggestion.data
+        }
+      })
     },
 
     _ocadPanelSelect: (e) => {
-      const targetPanel = $(e).data('panel');
+      const targetPanel = $(e).data('panel')
 
       if ($(e).hasClass('invert')) {
-        $(e).removeClass('invert');
-        app._ocadPanelsClose();
+        $(e).removeClass('invert')
+        app._ocadPanelsClose()
       } else {
         $('.panel.visible').removeClass('visible').velocity('fadeOut', { display: 'flex' }, 'fast')
-          .attr('aria-hidden', true);
-        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded');
+          .attr('aria-hidden', true)
+        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded')
 
-        $('.header-item').addClass('inactive').removeClass('invert');
-        app.settings.logo.addClass('invert');
+        $('.header-item').addClass('inactive').removeClass('invert')
+        app.settings.logo.addClass('invert')
 
-        $(e).addClass('invert').removeClass('inactive');
+        $(e).addClass('invert').removeClass('inactive')
         $(`.${targetPanel}`).velocity(
           'fadeIn',
-          { display: 'flex', duration: 200 },
+          { display: 'flex', duration: 200 }
         ).addClass('visible').attr('aria-hidden', false)
-          .focus();
+          .focus()
         // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
-        $('html, body').addClass('lock-scroll');
+        $('html, body').addClass('lock-scroll')
 
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
-            const item = $(ele);
-            item.delay(10 * index).velocity({ opacity: 1, transformdisplay: 'flex' });
-          });
+            const item = $(ele)
+            item.delay(10 * index).velocity({ opacity: 1, transformdisplay: 'flex' })
+          })
         }
         if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
-          app.settings.searchField.focus();
+          app.settings.searchField.focus()
         }
       }
     },
 
     _ocadPanelSelectButtons: () => {
-      app._ocadSearch();
+      app._ocadSearch()
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast');
-        app._ocadPanelSelect(ele.target);
-      });
+        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
+        app._ocadPanelSelect(ele.target)
+      })
     },
 
     _ocadShuffle: (elems, gridTarget) => {
-      $(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget));
+      $(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget))
     },
 
     _ocadHomeLoader: () => {
       if (app.settings.documentBody.hasClass('home')) {
-        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid');
+        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid')
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
-        app._ocadMasonry(app.settings.masonryContainerHome);
-        $(app.settings.masonryContainerHome).addClass('ready');
+        app._ocadMasonry(app.settings.masonryContainerHome)
+        $(app.settings.masonryContainerHome).addClass('ready')
       }
     },
 
     _ocadHomeHover: () => {
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          let y = ele.clientY;
-          let x = ele.clientX;
-          $(ele.currentTarget).find('.illustrator-meta-container').addClass('active');
+          let y = ele.clientY
+          let x = ele.clientX
+          $(ele.currentTarget).find('.illustrator-meta-container').addClass('active')
 
           $(ele.currentTarget).mousemove((e) => {
-            y = e.clientY + 5;
-            x = e.clientX + 5;
-          });
+            y = e.clientY + 5
+            x = e.clientX + 5
+          })
 
-          window.requestAnimationFrame(function animation() {
-            $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` });
-            window.requestAnimationFrame(animation);
-          });
-        });
+          window.requestAnimationFrame(function animation () {
+            $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` })
+            window.requestAnimationFrame(animation)
+          })
+        })
 
         $('.illustrator-link').on('mouseleave', (ele) => {
-          $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active');
-        });
-
-        setTimeout(() => {
-          $('.title-bg').addClass('visible');
-        }, 500);
+          $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
+        })
       }
     },
 
     _ocadHomeAbout: () => {
       if (app.settings.documentBody.hasClass('home')) {
         $('.message').on('click', (e) => {
-          e.preventDefault();
-          $('.title-unit').velocity('fadeOut', 'fast');
-          $('.about-unit').velocity('fadeIn', 'fast');
-        });
+          e.preventDefault()
+          $('.title-unit').velocity('fadeOut', 'fast')
+          $('.about-unit').velocity('fadeIn', 'fast')
+        })
 
         $('.close-unit').on('click', (e) => {
-          e.preventDefault();
-          $('.title-unit').velocity('fadeIn', { display: 'flex' }, 'fast');
-          $('.about-unit').velocity('fadeOut', 'fast');
-        });
+          e.preventDefault()
+          $('.title-unit').velocity('fadeIn', { display: 'flex' }, 'fast')
+          $('.about-unit').velocity('fadeOut', 'fast')
+        })
       }
     },
 
     _ocadPanelsCloseFullImage: () => {
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 });
-      $('#full-image').velocity({ translateY: '15px' }, 'fast');
+      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
+      $('#full-image').velocity({ translateY: '15px' }, 'fast')
     },
 
     _ocadPanelsClose: () => {
       // app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
-      $('html, body').removeClass('lock-scroll');
+      $('html, body').removeClass('lock-scroll')
 
-      $('.header-item').removeClass('invert inactive');
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 });
-      app.settings.logo.removeClass('invert');
-      $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
-      $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast');
+      $('.header-item').removeClass('invert inactive')
+      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
+      app.settings.logo.removeClass('invert')
+      $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
+      $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
       $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-        .velocity('fadeOut', 'fast');
+        .velocity('fadeOut', 'fast')
       $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
-        .removeClass('loaded');
+        .removeClass('loaded')
     },
 
     _ocadPanelsCloseSelective: (event) => {
-      if (!$(event.target).closest('#full-image, .miniview').length
-        && app.settings.imageModal.is(':visible')) {
-        app.settings.imageModal.velocity('fadeOut', { duration: 180 });
-        $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast');
-        $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive');
-        $('html, body').removeClass('lock-scroll');
+      if (!$(event.target).closest('#full-image, .miniview').length &&
+        app.settings.imageModal.is(':visible')) {
+        app.settings.imageModal.velocity('fadeOut', { duration: 180 })
+        $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
+        $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive')
+        $('html, body').removeClass('lock-scroll')
       }
 
-      if (!$(event.target).closest('.panel, .header-item').length
-        && $('.panel').hasClass('visible')) {
-        $('.panel').attr('aria-hidden', true);
-        app._ocadPanelsClose();
+      if (!$(event.target).closest('.panel, .header-item').length &&
+        $('.panel').hasClass('visible')) {
+        $('.panel').attr('aria-hidden', true)
+        app._ocadPanelsClose()
       }
     },
 
     _ocadGalleryNav: () => {
-      const galleryImages = [];
-      let nextImage;
-      let itemImage;
-      const masonryItemAnchor = [...document.querySelectorAll('.gallery-icon-anchor')];
+      const galleryImages = []
+      let nextImage
+      let itemImage
+      const masonryItemAnchor = [...document.querySelectorAll('.gallery-icon-anchor')]
 
       if (app.settings.documentBody.hasClass('single')) {
         const galleryItems = (ele, i) => {
-          ele.dataset.index = i;
-          const imageElement = $(ele);
+          ele.dataset.index = i
+          const imageElement = $(ele)
           const imageSet = {
             index: i,
             url: imageElement.data('src-large'),
@@ -266,26 +310,26 @@ const Bricklayer = require('bricklayer');
             sizes: imageElement.data('sizes'),
             width: imageElement.find('img').attr('width'),
             height: imageElement.find('img').attr('height'),
-            caption: imageElement.data('caption'),
-          };
-          galleryImages.push(imageSet);
-        };
+            caption: imageElement.data('caption')
+          }
+          galleryImages.push(imageSet)
+        }
 
-        masonryItemAnchor.map(galleryItems);
+        masonryItemAnchor.map(galleryItems)
 
         // Miniviewer constructor
 
-        const miniView = document.querySelector('.miniview');
+        const miniView = document.querySelector('.miniview')
         const miniViewItem = (item) => {
           miniView.innerHTML += `
             <a href="#" class="mini-item">
               <canvas data-index="${item.index}" class="mini-item-inner"
               width="${item.width}" height="${item.height}">
               </canvas>
-            </a>`;
-        };
-        app._ocadMasonry('#pack-content');
-        galleryImages.map(miniViewItem);
+            </a>`
+        }
+        app._ocadMasonry('#pack-content')
+        galleryImages.map(miniViewItem)
       }
 
       /*
@@ -293,74 +337,74 @@ const Bricklayer = require('bricklayer');
       */
 
       const miniViewUpdate = (item) => {
-        $('.mini-item-inner').removeClass('active');
-        $('.mini-item-inner').eq(item).addClass('active');
-      };
+        $('.mini-item-inner').removeClass('active')
+        $('.mini-item-inner').eq(item).addClass('active')
+      }
 
       /*
         Creates initial image element
       */
 
       const imageModalSetter = (imageSource) => {
-        const image = new Image();
-        image.alt = 'Full sized illustration';
-        image.id = 'full-image';
-        image.className = 'image-modal-container-full-image lazyload';
-        image.dataset.srcset = imageSource.data('srcset');
-        image.sizes = imageSource.data('sizes');
-        image.dataset.src = imageSource.data('src-large');
-        return image;
-      };
+        const image = new Image()
+        image.alt = 'Full sized illustration'
+        image.id = 'full-image'
+        image.className = 'image-modal-container-full-image lazyload'
+        image.dataset.srcset = imageSource.data('srcset')
+        image.sizes = imageSource.data('sizes')
+        image.dataset.src = imageSource.data('src-large')
+        return image
+      }
 
       /*
         Displays relevant caption
       */
 
       const imageCaptionSetter = (imageCaption) => {
-        const imageCaptionContainer = $('.image-modal-caption');
+        const imageCaptionContainer = $('.image-modal-caption')
         if (imageCaption) {
-          imageCaptionContainer.html(imageCaption);
-          imageCaptionContainer.velocity({ opacity: 1 });
+          imageCaptionContainer.html(imageCaption)
+          imageCaptionContainer.velocity({ opacity: 1 })
         } else {
           $.Velocity.animate(
             imageCaptionContainer,
             { opacity: 0 },
-            'fast',
+            'fast'
           ).then(() => {
-            imageCaptionContainer.html('');
-          });
+            imageCaptionContainer.html('')
+          })
         }
-      };
+      }
 
       /*
         Masonry item click
       */
 
       $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', (event) => {
-        event.preventDefault();
-        app._ocadLoader();
-        itemImage = $(event.currentTarget);
-        app.settings.imageIndex = itemImage.data('index');
-        $('.image-modal-image').html(imageModalSetter(itemImage));
-        lazySizes.loader.unveil(document.querySelector('#full-image'));
-        miniViewUpdate(app.settings.imageIndex);
-      });
+        event.preventDefault()
+        app._ocadLoader()
+        itemImage = $(event.currentTarget)
+        app.settings.imageIndex = itemImage.data('index')
+        $('.image-modal-image').html(imageModalSetter(itemImage))
+        lazySizes.loader.unveil(document.querySelector('#full-image'))
+        miniViewUpdate(app.settings.imageIndex)
+      })
 
       const modalReviel = () => {
-        app._ocadLoader(false);
+        app._ocadLoader(false)
         app.settings.imageModal.velocity('fadeIn', {
           duration: 180,
           begin: () => {
-            $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast');
-            $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack);
+            $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast')
+            $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack)
           },
           complete: () => {
-            imageCaptionSetter(itemImage.data('caption'));
-            $('#full-image').velocity({ opacity: 1 });
-            $('html, body').addClass('lock-scroll');
-          },
-        });
-      };
+            imageCaptionSetter(itemImage.data('caption'))
+            $('#full-image').velocity({ opacity: 1 })
+            $('html, body').addClass('lock-scroll')
+          }
+        })
+      }
 
       /*
         Modal image changer
@@ -369,71 +413,71 @@ const Bricklayer = require('bricklayer');
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
         $.Velocity.animate(
           $('#full-image'),
-          { blur: 70 },
-          app.settings.easeOutBack,
+          { opacity: 0 },
+          app.settings.easeOutBack
         ).then(() => {
-          $('#full-image').velocity('stop');
-          const image = document.getElementById('full-image');
-          image.dataset.src = imageItem.url;
-          image.dataset.srcset = imageItem.srcset;
-          image.dataset.sizes = imageItem.sizes;
-          lazySizes.loader.unveil(image);
+          $('#full-image').velocity('stop')
+          const image = document.getElementById('full-image')
+          image.dataset.src = imageItem.url
+          image.dataset.srcset = imageItem.srcset
+          image.dataset.sizes = imageItem.sizes
+          lazySizes.loader.unveil(image)
           image.onload = () => {
-            imageCaptionSetter(imageItem.caption);
-            app._ocadLoader(false);
+            imageCaptionSetter(imageItem.caption)
+            app._ocadLoader(false)
             $('#full-image').velocity(
-              { blur: 0 },
-              app.settings.easeOutBack,
-            );
-          };
-        });
-      };
+              { opacity: 1 },
+              app.settings.easeOutBack
+            )
+          }
+        })
+      }
 
       /*
         Click event for miniview navigation
       */
 
       $('.miniview').on('click', '.mini-item', (ele) => {
-        app._ocadLoader();
-        app.settings.imageIndex = $(ele.target).data('index');
-        miniViewUpdate(app.settings.imageIndex);
-        modalImageChanger();
-      });
+        app._ocadLoader()
+        app.settings.imageIndex = $(ele.target).data('index')
+        miniViewUpdate(app.settings.imageIndex)
+        modalImageChanger()
+      })
 
       /*
         Handles progressing through the gallery
       */
 
       const nextElement = (direction) => {
-        app._ocadLoader();
+        app._ocadLoader()
 
         if (direction === 'reverse') {
-          app.settings.imageIndex -= 1;
+          app.settings.imageIndex -= 1
         } else {
-          app.settings.imageIndex += 1;
+          app.settings.imageIndex += 1
         }
 
         if (app.settings.imageIndex === galleryImages.length) {
-          app.settings.imageIndex = 0;
+          app.settings.imageIndex = 0
         }
 
         if (app.settings.imageIndex === -1) {
-          app.settings.imageIndex = galleryImages.length - 1;
+          app.settings.imageIndex = galleryImages.length - 1
         }
 
-        nextImage = galleryImages[app.settings.imageIndex];
+        nextImage = galleryImages[app.settings.imageIndex]
 
-        modalImageChanger(nextImage);
-        miniViewUpdate(app.settings.imageIndex);
-      };
+        modalImageChanger(nextImage)
+        miniViewUpdate(app.settings.imageIndex)
+      }
 
       /*
         Click event for cycling through images
       */
 
       $('.image-modal-container').on('click', 'img', () => {
-        nextElement();
-      });
+        nextElement()
+      })
 
       /*
         Lazyload events
@@ -441,9 +485,9 @@ const Bricklayer = require('bricklayer');
 
       document.addEventListener('lazybeforeunveil', (e) => {
         if ($(e.target).is('#full-image') && !$(e.target).hasClass('lazyloaded')) {
-          modalReviel();
+          modalReviel()
         }
-      });
+      })
 
       /*
         Keyboard event for cycling through images
@@ -452,44 +496,44 @@ const Bricklayer = require('bricklayer');
       $(document).keydown((e) => {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
-            nextElement();
+            nextElement()
           }
           if (e.keyCode === 37) {
-            nextElement('reverse');
+            nextElement('reverse')
           }
         }
-      });
+      })
     },
 
     _ocadUIbinding: () => {
-      $('.close-panel').on('click', app._ocadPanelsClose);
+      $('.close-panel').on('click', app._ocadPanelsClose)
       $(document).on('click', app._ocadPanelsCloseSelective).keydown((e) => {
         if (e.keyCode === 27) {
-          app._ocadPanelsClose();
+          app._ocadPanelsClose()
         }
 
         if (!app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 37 && app.settings.prevItem.length) {
-            window.location = app.settings.prevItem.attr('href');
+            window.location = app.settings.prevItem.attr('href')
           } else if (e.keyCode === 39 && app.settings.nextItem.length) {
-            window.location = app.settings.nextItem.attr('href');
+            window.location = app.settings.nextItem.attr('href')
           }
         }
-      });
-    },
-  };
+      })
+    }
+  }
 
   /*
     Window load ready
   */
 
   $(window).on('load', () => {
-    app._ocadLoader(false);
-  });
+    app._ocadLoader(false)
+  })
 
   /*
     Initialize
   */
 
-  app.init();
-})();
+  app.init()
+})()
