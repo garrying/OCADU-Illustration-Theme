@@ -413,7 +413,7 @@ const Bricklayer = require('bricklayer');
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
         $.Velocity.animate(
           $('#full-image'),
-          { blur: 70 },
+          { opacity: 0 },
           app.settings.easeOutBack
         ).then(() => {
           $('#full-image').velocity('stop')
@@ -426,7 +426,7 @@ const Bricklayer = require('bricklayer');
             imageCaptionSetter(imageItem.caption)
             app._ocadLoader(false)
             $('#full-image').velocity(
-              { blur: 0 },
+              { opacity: 1 },
               app.settings.easeOutBack
             )
           }

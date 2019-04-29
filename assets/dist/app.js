@@ -556,7 +556,7 @@ var Bricklayer = __webpack_require__(/*! bricklayer */ "./node_modules/bricklaye
       var modalImageChanger = function modalImageChanger() {
         var imageItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : galleryImages[app.settings.imageIndex];
         $.Velocity.animate($('#full-image'), {
-          blur: 70
+          opacity: 0
         }, app.settings.easeOutBack).then(function () {
           $('#full-image').velocity('stop');
           var image = document.getElementById('full-image');
@@ -571,7 +571,7 @@ var Bricklayer = __webpack_require__(/*! bricklayer */ "./node_modules/bricklaye
             app._ocadLoader(false);
 
             $('#full-image').velocity({
-              blur: 0
+              opacity: 1
             }, app.settings.easeOutBack);
           };
         });
