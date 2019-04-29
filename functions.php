@@ -449,4 +449,13 @@ add_filter( 'post_class', 'ocaduillustration_simplify_post_class' );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
+/**
+ * Disable gutenberg style in Front
+ */
+function wps_deregister_styles() {
+  wp_dequeue_style( 'wp-block-library' );
+}
+
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+
 ?>
