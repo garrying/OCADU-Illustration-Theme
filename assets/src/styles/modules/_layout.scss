@@ -142,8 +142,13 @@
   .meta-link {
     display: inline-block;
     max-width: 100%;
-    border: 1px solid $color-accent;
+    background: rgba($color-accent, 0.2);
     padding: 0.5em 1em;
+    transition: background 180ms ease-in-out;
+
+    &:hover {
+      background: rgba($color-accent, 0.35);
+    }
 
     @media screen and (max-width: $small-vp) {
       display: block;
