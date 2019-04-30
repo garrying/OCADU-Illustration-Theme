@@ -97,6 +97,11 @@
     }
   }
 
+  &.bubble-default .bricklayer-column .illustrator-meta-container {
+    background: $color-accent;
+    color: $white;
+  }
+
   .bricklayer-column-sizer {
     width: 25%;
 

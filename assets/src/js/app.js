@@ -254,6 +254,13 @@ const Bricklayer = require('bricklayer');
           $('.title-unit').velocity('fadeIn', { display: 'flex' }, 'fast')
           $('.about-unit').velocity('fadeOut', 'fast')
         })
+
+        $('.close-title').on('click', (e) => {
+          e.preventDefault()
+          $('.title').velocity('fadeOut', 'fast')
+          $('.title-bg').velocity('fadeOut', 'fast')
+          $('.home-grid').addClass('bubble-default')
+        })
       }
     },
 

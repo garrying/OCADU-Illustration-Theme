@@ -13,6 +13,7 @@
   ?>
   <div class="title">
     <div class="title-unit title-unit-init active">
+      <button class="close-unit close-title" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
       <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2019</h1></div>
       <div class="segment-second">
         <h2 class="title-primary"> Part of the 104<sup>th</sup><br> GradEx May 1–5<br></h2>

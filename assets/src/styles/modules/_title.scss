@@ -118,10 +118,11 @@
     line-height: 1.2em;
     @include rsp-font(1vw, 16px);
   }
+}
 
-  .close-unit {
-    position: absolute;
-    top: 2em;
-    right: 2em;
-  }
+.close-unit {
+  pointer-events: auto;
+  position: absolute;
+  top: 2em;
+  right: 2em;
 }
