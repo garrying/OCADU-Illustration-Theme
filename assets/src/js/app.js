@@ -517,14 +517,16 @@ const Hammer = require('hammerjs');
       */
 
       const lightbox = document.querySelector('.image-modal-wrapper')
-      const hammer = new Hammer(lightbox)
-      hammer.on('swipeleft', () => {
-        nextElement()
-      })
+      if (lightbox) {
+        const hammer = new Hammer(lightbox)
+        hammer.on('swipeleft', () => {
+          nextElement()
+        })
 
-      hammer.on('swiperight', () => {
-        nextElement('reverse')
-      })
+        hammer.on('swiperight', () => {
+          nextElement('reverse')
+        })
+      }
     },
 
     _ocadUIbinding: () => {
