@@ -11,7 +11,8 @@ require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
 require('lazysizes')
 const Flickity = require('flickity')
-const Bricklayer = require('bricklayer');
+const Bricklayer = require('bricklayer')
+const Hammer = require('hammerjs');
 
 (() => {
   const app = {
@@ -509,6 +510,20 @@ const Bricklayer = require('bricklayer');
             nextElement('reverse')
           }
         }
+      })
+
+      /*
+        Swipe events
+      */
+
+      const lightbox = document.querySelector('.image-modal-wrapper')
+      const hammer = new Hammer(lightbox)
+      hammer.on('swipeleft', () => {
+        nextElement()
+      })
+
+      hammer.on('swiperight', () => {
+        nextElement('reverse')
       })
     },
 
