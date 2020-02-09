@@ -8,13 +8,18 @@
   <!-- Set a description for this ruleset. -->
   <description>A custom set of code standard rules to check for WordPress themes.</description>
 
-  <!-- Check all files in this directory and the directories below it. -->
-  <file>.</file>
 
-  <!-- Exclude patterns -->
-  <exclude-pattern>/vendor/*</exclude-pattern>
-  <exclude-pattern>/node_modules/*</exclude-pattern>
+  <!--
+  #############################################################################
+  COMMAND LINE ARGUMENTS
+  https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
+  #############################################################################
+  -->
 
+  <!-- Pass some flags to PHPCS:
+     p flag: Show progress of the run.
+     s flag: Show sniff codes in all reports.
+  -->
   <arg value="ps"/>
 
   <!-- Strip the filepaths down to the relevant bit. -->
@@ -28,7 +33,14 @@
 
   <arg name="ignore" value="svg.php"/>
 
-  <rule ref="WordPress-Extra"/>
+  <rule ref="WordPress-Extra">
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+      <properties>
+        <property name="indent" value="2"/>
+        <property name="tabIndent" value="false"/>
+      </properties>
+    </rule>
+  </rule>
   <rule ref="WordPress-Docs"/>
   <rule ref="WPThemeReview"/>
 
