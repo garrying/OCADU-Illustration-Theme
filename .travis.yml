@@ -1,22 +1,8 @@
-
-# Travis CI configuration file.
-# @link https://travis-ci.org/
-
-# For use with the Twenty Nineteen WordPress theme
-# @link https://github.com/WordPress/twentynineteen/
-
-# Declare project language and PHP versions to test against.
-# @link https://about.travis-ci.org/docs/user/languages/php/
 language: php
 
-# Newer versions like trusty don't have PHP 5.2 or 5.3
-# https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
 dist: xenial
 
-# Cache content for faster build process.
-# https://docs.travis-ci.com/user/caching/
 cache:
-  apt: true
   directories:
     # Cache directory for older Composer versions.
     - $HOME/.composer/cache/files
@@ -25,71 +11,50 @@ cache:
 
 # PHP versions to build on
 php:
-  - 7.3
-  - 7.2
-  - 7.1
-  - 7.0
   - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - "7.4snapshot"
 
-# Declare which versions of WordPress to test against.
-# Also declare whether or not to test in Multisite.
-env:
-  global:
-    # Current version in development is 5.0.
-    # @link https://github.com/WordPress/WordPress
-    - WP_VERSION=5.0
-    - WP_MULTISITE=0
-    - LINT=1
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.3
+      env: PHPCS=1
 
-# Ditch sudo and use containers.
-# @link https://docs.travis-ci.com/user/migrating-from-legacy/#Why-migrate-to-container-based-infrastructure%3F
-# @link https://docs.travis-ci.com/user/workers/container-based-infrastructure/#Routing-your-build-to-container-based-infrastructure
-sudo: false
+allow_failures:
+  # Allow failures for unstable builds.
+  - php: "7.4snapshot"
 
 before_install:
   # Speed up build time by disabling Xdebug.
   # https://johnblackbourn.com/reducing-travis-ci-build-times-for-wordpress-projects/
   # https://twitter.com/kelunik/status/954242454676475904
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
-
-# Use this to prepare your build for testing.
-# e.g. copy database configurations, environment variables, etc.
-# Failures in this section will result in build status 'errored'.
-before_script:
-  - echo $WP_VERSION
-  - echo $WP_MULTISITE
-  # Set up WordPress installation.
-  - theme_slug=$(basename $(pwd))
-  - theme_dir=$(pwd)
-  - echo $theme_slug
-  - echo $theme_dir
-  # Install WPThemeReview stnadards, which will install PHP_CodeSniffer, WordPress Coding Standards, WPThemeReview and PHPCompatibility standards.
-  - if [[ "$LINT" == "1" ]]; then composer global require wptrt/wpthemereview dealerdirect/phpcodesniffer-composer-installer; fi
-  # After CodeSniffer install you should refresh your path.
-  - phpenv rehash;
-
-# Run test script commands.
-# Default is specific to project language.
-# All commands must exit with code 0 on success. Anything else is considered failure.
-script:
-  # Search theme for PHP syntax errors.
-  # The usage of bash + || exit 1 is to ensure xargs does not exit on first error.
-  - find . \( -name '*.php' \) -not -path "./vendor/*" | xargs -n1 bash -c 'php -lf $0 || exit 1'
-  # WordPress Coding Standards
-  # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
-  # -p flag: Show progress of the run.
-  # -s flag: Show sniff codes in all reports.
-  # -v flag: Print verbose output.
-  # -n flag: Do not print warnings (shortcut for --warning-severity=0)
-  # --extensions: Only sniff PHP files.
-  - if [[ "$LINT" == "1" ]]; then $HOME/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set ignore_warnings_on_exit 1; fi
-  # Attempt npm install
+  - composer install
   - npm install
-  # Attempt npm run build
-  - npm run build
 
-# Receive notifications for build results.
-# @link http://docs.travis-ci.com/user/notifications/#Email-notifications
+script:
+  # Validate the composer.json file.
+  # @link https://getcomposer.org/doc/03-cli.md#validate
+  - composer validate --no-check-all --strict
+
+  # Lint the PHP files against parse errors.
+  - composer lint
+
+  # Check the code against the standards as documented in the phpcs.xml.dist file.
+  - if [[ "$PHPCS" == 1 ]]; then composer checkcs; fi
+
+  # Run the theme through lint:js checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:js; fi
+
+  # Run the theme through lint:css checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:css; fi
+
+  # Run the theme through lint:pkg-json checker as defined in @wordpress/scripts package.
+  - if [[ "$PHPCS" == 1 ]]; then npm run lint:pkg-json; fi
+
 notifications:
   email: false
   slack: garrying:9oGQYj7HJ5EzXjJsSwCK2FgH
