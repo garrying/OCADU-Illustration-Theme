@@ -10,6 +10,9 @@
 
   <file>.</file>
 
+  <exclude-pattern>/vendor/*</exclude-pattern>
+  <exclude-pattern>/node_modules/*</exclude-pattern>
+
   <arg value="sp"/>
   <arg name="basepath" value="."/>
   <arg name="parallel" value="8"/>
