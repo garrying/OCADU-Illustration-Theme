@@ -23,23 +23,23 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
      * HTML5 Markup
      */
     add_theme_support(
-      'html5',
-      array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-      )
+        'html5',
+        array(
+          'search-form',
+          'comment-form',
+          'comment-list',
+          'gallery',
+          'caption',
+        )
     );
 
     /**
      * Add custom menu using wp_nav_menu()
      */
     register_nav_menus(
-      array(
-        'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
-      )
+        array(
+          'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+        )
     );
 
   }
@@ -335,11 +335,11 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
 function ocaduillustration_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
     $the_url = next_post_link_plus(
-      array(
-        'order_by'    => 'post_title',
-        'in_same_tax' => true,
-        'return'      => 'href',
-      )
+        array(
+          'order_by'    => 'post_title',
+          'in_same_tax' => true,
+          'return'      => 'href',
+        )
     );
     echo '<!-- prefetch and render -->' . "\n";
     echo '<link rel="prefetch" href="' . esc_url( $the_url ) . '">' . "\n";
