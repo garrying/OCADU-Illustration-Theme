@@ -21,7 +21,7 @@
   </header>
 
   <div class="amp-wp-article-content">
-    <?php echo $this->get( 'post_amp_content' ); /* WPCS: xss ok. */ ?>
+    <?php echo $this->get( 'post_amp_content' ); // phpcs:ignore ?>
     <ul itemscope itemtype="http://schema.org/Person">
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) : ?>
         <li class="truncate" itemprop="url">
