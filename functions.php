@@ -23,23 +23,23 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
      * HTML5 Markup
      */
     add_theme_support(
-      'html5',
-      array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-      )
+        'html5',
+        array(
+          'search-form',
+          'comment-form',
+          'comment-list',
+          'gallery',
+          'caption',
+        )
     );
 
     /**
      * Add custom menu using wp_nav_menu()
      */
     register_nav_menus(
-      array(
-        'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
-      )
+        array(
+          'primary' => __( 'Primary Navigation', 'ocaduillustration' ),
+        )
     );
 
   }
@@ -89,7 +89,7 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'wp-embed' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1556727551', '', '', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1556727551', '', '2019', true );
       wp_enqueue_script( 'app' );
     }
   }
@@ -104,7 +104,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1556727551' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1556727551', '', '2019' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -267,7 +267,7 @@ function ocaduillustration_social_meta() {
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
+    $the_excerpt = wptexturize( wp_strip_all_tags( $post->post_content ) );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
     echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
@@ -335,11 +335,11 @@ add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
 function ocaduillustration_prefetch() {
   if ( is_single() && is_attachment() !== true ) {
     $the_url = next_post_link_plus(
-      array(
-        'order_by'    => 'post_title',
-        'in_same_tax' => true,
-        'return'      => 'href',
-      )
+        array(
+          'order_by'    => 'post_title',
+          'in_same_tax' => true,
+          'return'      => 'href',
+        )
     );
     echo '<!-- prefetch and render -->' . "\n";
     echo '<link rel="prefetch" href="' . esc_url( $the_url ) . '">' . "\n";

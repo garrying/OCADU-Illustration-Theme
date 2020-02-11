@@ -1,76 +1,34 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Theme Coding Standards">
-  <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-  <!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
-  <!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki -->
-  <!-- See https://github.com/wimg/PHPCompatibility -->
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WordPress Theme Coding Standards" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
 
   <!-- Set a description for this ruleset. -->
   <description>A custom set of code standard rules to check for WordPress themes.</description>
 
-
-  <!--
-  #############################################################################
-  COMMAND LINE ARGUMENTS
-  https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
-  #############################################################################
-  -->
-
-  <!-- Pass some flags to PHPCS:
-     p flag: Show progress of the run.
-     s flag: Show sniff codes in all reports.
-  -->
-  <arg value="ps"/>
-
-  <!-- Strip the filepaths down to the relevant bit. -->
-  <arg name="basepath" value="./"/>
-
-  <!-- Check up to 8 files simultanously. -->
-  <arg name="parallel" value="8"/>
-
-  <!-- Only check the PHP, CSS and SCSS files. JS files are checked separately with JSCS and JSHint. -->
-  <arg name="extensions" value="php"/>
-
-  <arg name="ignore" value="svg.php"/>
-
-  <!-- Check all files in this directory and the directories below it. -->
   <file>.</file>
 
-  <!-- Exclude patterns -->
   <exclude-pattern>/vendor/*</exclude-pattern>
   <exclude-pattern>/node_modules/*</exclude-pattern>
 
-  <!-- Include the WordPress ruleset, with space for exclusions if necessary. -->
-  <rule ref="WordPress-Core">
+  <arg value="sp"/>
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="8"/>
+  <arg name="cache"/>
+  <arg name="extensions" value="php"/>
+  <arg name="ignore" value="svg.php"/>
+  <arg name="tab-width" value="2"/>
+
+  <rule ref="WordPress-Extra">
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
 
-    <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Squiz.Commenting.FileComment.Missing"/>
-
-    <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
     <exclude name="Squiz.Commenting.FunctionComment.Missing" />
-    <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-    <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
 
     <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
     <exclude name="WordPress.Arrays.ArrayIndentation"/>
-
-    <!-- Redfined -->
-    <rule ref="Generic.WhiteSpace.ScopeIndent">
-      <properties>
-        <property name="indent" value="2"/>
-        <property name="tabIndent" value="false"/>
-      </properties>
-    </rule>
   </rule>
-  <rule ref="WordPress-Docs" />
-  <rule ref="WPThemeReview" />
-
-  <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
-    <severity>0</severity>
-  </rule>
+  <rule ref="WordPress-Docs"/>
+  <rule ref="WPThemeReview"/>
 
 </ruleset>

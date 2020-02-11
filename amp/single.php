@@ -1,5 +1,5 @@
 <!doctype html>
-<html amp <?php echo AMP_HTML_Utils::build_attributes_string( $this->get( 'html_tag_attributes' ) ); /* WPCS: xss ok. */ ?>>
+<html amp <?php echo AMP_HTML_Utils::build_attributes_string( $this->get( 'html_tag_attributes' ) ); // phpcs:ignore ?>>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
@@ -21,7 +21,7 @@
   </header>
 
   <div class="amp-wp-article-content">
-    <?php echo $this->get( 'post_amp_content' ); /* WPCS: xss ok. */ ?>
+    <?php echo $this->get( 'post_amp_content' ); // phpcs:ignore ?>
     <ul itemscope itemtype="http://schema.org/Person">
       <?php if ( get_post_meta( $this->get( 'post_id' ), 'illu_sites', true ) ) : ?>
         <li class="truncate" itemprop="url">
