@@ -104,7 +104,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1556727551' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1556727551', '', false );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -267,7 +267,7 @@ function ocaduillustration_social_meta() {
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = wptexturize( strip_tags( $post->post_content ) );
+    $the_excerpt = wptexturize( wp_strip_all_tags( $post->post_content ) );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
     echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";

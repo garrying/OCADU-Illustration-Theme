@@ -18,7 +18,7 @@
 
           <meta itemprop="description" content="
             <?php
-              $ocaduillustration_text = strip_tags( get_the_content() );
+              $ocaduillustration_text = wp_strip_all_tags( get_the_content() );
               echo esc_html( wptexturize( $ocaduillustration_text ) );
             ?>
           ">
