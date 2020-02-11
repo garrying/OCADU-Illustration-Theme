@@ -1,6 +1,6 @@
-language: php
+dist: bionic
 
-dist: xenial
+language: php
 
 cache:
   directories:
@@ -16,15 +16,13 @@ php:
   - 7.2
   - "7.4snapshot"
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - php: 7.3
       env: PHPCS=1
-
-allow_failures:
-  # Allow failures for unstable builds.
-  - php: "7.4snapshot"
+  allow_failures:
+    - php: "7.4snapshot"
 
 before_install:
   # Speed up build time by disabling Xdebug.
@@ -47,4 +45,3 @@ script:
 
 notifications:
   email: false
-  slack: garrying:9oGQYj7HJ5EzXjJsSwCK2FgH
