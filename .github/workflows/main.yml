@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Uptime
 
 on:
@@ -12,7 +10,6 @@ jobs:
     name: Ping the site
     steps:
     - name: Check the site
-      id: hello
       uses: srt32/uptime@master
       with:
         url-to-hit: "https://www.ocaduillustration.com/"
