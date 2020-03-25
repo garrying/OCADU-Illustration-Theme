@@ -10,29 +10,29 @@
     "build": "webpack -p --mode production --progress --colors"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "autoprefixer": "^9.5.1",
-    "babel-loader": "^8.0.5",
-    "copy-webpack-plugin": "^5.0.2",
-    "css-loader": "^2.1.1",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "node-sass": "^4.11.0",
-    "postcss": "^7.0.14",
+    "node-sass": "^4.13.1",
+    "postcss": "^7.0.27",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
-    "sass-loader": "^7.1.0",
-    "standard": "^12.0.1",
-    "svg-url-loader": "^2.3.2",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1"
+    "sass-loader": "^8.0.2",
+    "standard": "^14.3.3",
+    "svg-url-loader": "^5.0.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "bricklayer": "^0.4.3",
-    "flickity": "^2.2.0",
+    "flickity": "^2.2.1",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.0",
-    "lazysizes": "^4.1.8",
+    "jquery": "^3.4.1",
+    "lazysizes": "^5.2.0",
     "velocity-animate": "^1.5.2"
   }
 }
