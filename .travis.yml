@@ -8,6 +8,7 @@ cache:
     - $HOME/.composer/cache/files
     # Cache directory for more recent Composer versions.
     - $HOME/.cache/composer/files
+    - node_modules
 
 # PHP versions to build on
 php:
