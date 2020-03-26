@@ -43,5 +43,8 @@ script:
   # Check the code against the standards as documented in the phpcs.xml.dist file.
   - if [[ "$PHPCS" == 1 ]]; then composer checkcs; fi
 
+  # Try a npm build
+  - npm run build
+
 notifications:
   email: false
