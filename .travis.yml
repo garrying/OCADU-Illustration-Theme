@@ -15,16 +15,18 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - "7.4snapshot"
 
 jobs:
   fast_finish: true
   include:
-    - stage: lint
-      script: npm run lint
     - php: 7.3
       env: PHPCS=1
+    - language: node_js
+      node_js: 12
   allow_failures:
-    - stage: lint
+    - php: "7.4snapshot"
+    - node_js: 12
 
 before_install:
   # Speed up build time by disabling Xdebug.
