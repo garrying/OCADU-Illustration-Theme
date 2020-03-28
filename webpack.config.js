@@ -1,51 +1,69 @@
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = {
-  entry: path.join(__dirname, './assets/src/js/app.js'),
-  output: {
-    path: path.join(__dirname, './assets/dist/'),
-    filename: 'app.js'
-  },
-  context: __dirname,
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: ExtractTextPlugin.extract({
-          use: ['css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
-        })
-      }, {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['@babel/preset-env']
+module.exports = (env) => {
+  let envOptions = require('./webpack.env')(env);
+
+  return {
+    mode: envOptions.mode,
+    entry: path.join(__dirname, './assets/src/js/app.js'),
+    output: {
+      path: path.join(__dirname, './assets/dist/'),
+      filename: 'app.js'
+    },
+    context: __dirname,
+    devtool: envOptions.devtool,
+    module: {
+      rules: [
+        {
+          test: /\.(sa|sc|c)ss$/,
+          exclude: /node_modules/,
+          use: envOptions.styleLoaders
+        }, {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['@babel/preset-env']
+          }
+        }, {
+          test: /\.svg$/,
+          exclude: /node_modules/,
+          loader: 'file-loader',
+          options: {
+            name: 'images/[name].[ext]'
+          }
+        },
+        {
+          test: /\.(eot|svg|ttf|woff|woff2)$/,
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name].[ext]'
+          }
         }
-      }, {
-        test: /\.svg$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'file-loader',
-        options: {
-          name: 'images/[name].[ext]'
-        }
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[ext]'
+      ]
+    },
+    plugins: [
+      new CopyWebpackPlugin([
+        { from: './assets/src/images', to: './images' }
+      ]),
+      new MiniCssExtractPlugin({
+        filename: 'main.css'
+      })
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2
+          }
         }
       }
-    ]
-  },
-  plugins: [
-    new CopyWebpackPlugin([
-      { from: './assets/src/images', to: './images' }
-    ]),
-    new ExtractTextPlugin('main.css')
-  ]
+    },
+    stats: 'normal'
+  }
+
 }

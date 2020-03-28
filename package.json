@@ -6,21 +6,17 @@
   "author": "Garry Ing <garry.ing@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "webpack --mode development --progress --colors --watch",
-    "build": "webpack -p --mode production --progress --colors"
+    "watch": "webpack --env.NODE_ENV=development --progress --colors --watch",
+    "build": "webpack -p --env.NODE_ENV=production --progress --colors"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
-    "postcss": "^7.0.27",
-    "postcss-loader": "^3.0.0",
-    "postcss-scss": "^2.0.0",
     "sass-loader": "^8.0.2",
     "standard": "^14.3.3",
     "svg-url-loader": "^5.0.0",
