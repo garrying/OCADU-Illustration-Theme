@@ -24,6 +24,9 @@ jobs:
       env: PHPCS=1
     - language: node_js
       node_js: 12
+      script:
+        - npm run lint:scss --silent
+        - npm run lint:js --silent
   allow_failures:
     - php: "7.4snapshot"
     - node_js: 12

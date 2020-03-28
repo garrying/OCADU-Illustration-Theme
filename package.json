@@ -8,7 +8,8 @@
   "scripts": {
     "watch": "webpack --env.NODE_ENV=development --progress --colors --watch",
     "build": "webpack -p --env.NODE_ENV=production --progress --colors",
-    "lint": "stylelint '**/*.scss' & standard 'assets/src/js/**/*.js' --verbose | snazzy"
+    "lint:scss": "stylelint '**/*.scss'",
+    "lint:js": "standard 'assets/src/js/**/*.js' --verbose | snazzy"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
