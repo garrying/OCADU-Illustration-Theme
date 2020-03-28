@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "watch": "webpack --env.NODE_ENV=development --progress --colors --watch",
-    "build": "webpack -p --env.NODE_ENV=production --progress --colors"
+    "build": "webpack -p --env.NODE_ENV=production --progress --colors",
+    "lint": "stylelint '**/*.scss' & standard 'assets/src/js/**/*.js' --verbose | snazzy"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -18,7 +19,11 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
+    "snazzy": "^8.0.0",
     "standard": "^14.3.3",
+    "stylelint": "^13.2.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.16.0",
     "svg-url-loader": "^5.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
