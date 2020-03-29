@@ -12,7 +12,7 @@ require('velocity-animate')
 require('lazysizes')
 const Flickity = require('flickity')
 const Bricklayer = require('bricklayer')
-const Hammer = require('hammerjs');
+const SwipeListener = require('swipe-listener');
 
 (() => {
   const app = {
@@ -518,13 +518,17 @@ const Hammer = require('hammerjs');
 
       const lightbox = document.querySelector('.image-modal-wrapper')
       if (lightbox) {
-        const hammer = new Hammer(lightbox)
-        hammer.on('swipeleft', () => {
-          nextElement()
-        })
+        SwipeListener(lightbox)
 
-        hammer.on('swiperight', () => {
-          nextElement('reverse')
+        lightbox.addEventListener('swipe', function (e) {
+          var directions = e.detail.directions
+
+          if (directions.left) {
+            nextElement()
+          }
+          if (directions.right) {
+            nextElement('reverse')
+          }
         })
       }
     },
