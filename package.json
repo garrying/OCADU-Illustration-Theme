@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "bricklayer": "^0.4.3",
-    "flickity": "^2.2.1",
     "jquery": "^3.4.1",
     "lazysizes": "^5.2.0",
     "swipe-listener": "^1.1.0",

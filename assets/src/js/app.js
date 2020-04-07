@@ -10,7 +10,6 @@ window.jQuery = window.$ = $
 require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
 require('lazysizes')
-const Flickity = require('flickity')
 const Bricklayer = require('bricklayer')
 const SwipeListener = require('swipe-listener');
 
@@ -24,7 +23,6 @@ const SwipeListener = require('swipe-listener');
       app._ocadGalleryNav()
       app._ocadUIbinding()
       app._ocadGridFocus()
-      app._ocadFlickity()
       app._ocadSingleScroll()
     },
 
@@ -104,36 +102,6 @@ const SwipeListener = require('swipe-listener');
     },
 
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
-
-    _ocadFlickity: () => {
-      const initIndex = $('.year-item').index($('.active'))
-
-      const flkty = new Flickity('.year-select-wrapper', {
-        initialIndex: initIndex,
-        wrapAround: true,
-        setGallerySize: false,
-        prevNextButtons: false,
-        pageDots: false,
-        on: {
-          ready: () => {
-            $('.year-list-item.is-selected img').velocity('stop').velocity('fadeIn', 'fast')
-          }
-        }
-      })
-
-      flkty.on('change', (index) => {
-        const element = flkty.slides[index].cells[0].element
-        $('.year-item-image').velocity('stop').velocity('fadeOut', 'fast')
-        if ($(element).find('img').hasClass('lazyload')) {
-          lazySizes.loader.unveil($(element).find('img')[0])
-          $(element).find('img').on('lazybeforeunveil', () => {
-            $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
-          })
-        } else {
-          $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
-        }
-      })
-    },
 
     _ocadSearch: () => {
       app.settings.searchField.autocomplete({
