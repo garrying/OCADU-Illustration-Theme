@@ -16,6 +16,7 @@ body {
   line-height: 1.5em;
   color: $site-font-color;
   background: $site-background;
+
   @include font-smoothing(on);
 }
 
@@ -47,6 +48,7 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
+
   position: absolute;
   top: 0;
   left: 30px;

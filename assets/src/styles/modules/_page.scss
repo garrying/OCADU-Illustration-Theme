@@ -87,6 +87,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+
   @include rsp-font(14vw, 24px);
 }
 
@@ -99,11 +100,19 @@
   }
 }
 
+.faculty-list {
+  display: flex;
+
+  .span1 {
+    width: 50%;
+  }
+}
+
 .page-inner {
   max-width: 60vw;
   margin: 130px 0 0 30px;
-
   line-height: 1.2em;
+
   @include rsp-font(1vw, 14px);
 
   @media screen and (max-width: $small-vp) {
@@ -116,6 +125,7 @@
     line-height: 1em;
     margin: 1em 0;
     font-family: $sans-serif-light;
+
     @include rsp-font(5vw, 50px);
   }
 
@@ -123,6 +133,7 @@
     color: $site-font-color;
     line-height: 1em;
     margin: 1.5em 0;
+
     @include rsp-font(1.5vw, 25px);
   }
 
@@ -146,13 +157,5 @@
     padding: 0 20px;
     max-width: none;
     margin-top: 8em;
-  }
-}
-
-.faculty-list {
-  display: flex;
-
-  .span1 {
-    width: 50%;
   }
 }

@@ -26,11 +26,14 @@
   font-family: $sans-serif-light;
   line-height: 1em;
   color: darken($color-accent, 10%);
+
   @include rsp-font(14vw, 42px);
+
   opacity: 0;
 
   @media screen and (max-width: $small-vp) {
     @include rsp-font(20vw, 42px);
+
     padding-bottom: 0.25em;
   }
 

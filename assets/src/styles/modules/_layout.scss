@@ -102,6 +102,7 @@
     font-family: $sans-serif-light;
     line-height: 1.2em;
     letter-spacing: -2px;
+
     @include rsp-font(2.5vw, 32px);
 
     @media screen and (max-width: $small-vp) {
@@ -111,6 +112,7 @@
 
   .thesis-description {
     line-height: 1.3em;
+
     @include rsp-font(1vw, 14px);
   }
 

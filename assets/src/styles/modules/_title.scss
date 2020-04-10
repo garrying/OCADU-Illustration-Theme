@@ -32,12 +32,14 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: $sans-serif-light;
+
     @include rsp-font(4vw, 18px);
     @include heading-features;
   }
 
   .title-secondary {
     @include heading-features;
+
     max-width: 300px;
     font-family: $sans-serif-light;
     line-height: 1.3em;
@@ -54,9 +56,6 @@
     padding: 1em;
     background: $white;
     transition: background 180ms ease-in-out;
-
-    &:hover {
-    }
   }
 }
 
@@ -107,6 +106,7 @@
   .entry-title-secondary {
     line-height: 1em;
     margin: 1.5em 0 1em;
+
     @include rsp-font(1.5vw, 25px);
   }
 
@@ -116,6 +116,7 @@
 
   .col-container {
     line-height: 1.2em;
+
     @include rsp-font(1vw, 16px);
   }
 }

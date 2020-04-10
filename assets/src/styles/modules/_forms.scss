@@ -1,6 +1,7 @@
 input {
   @include font-features-body;
   @include font-smoothing(on);
+
   font-family: $sans-serif;
   border-radius: 0;
   -webkit-appearance: none;
@@ -8,6 +9,7 @@ input {
 
 button {
   @include font-features-body;
+
   font-size: inherit;
   cursor: pointer;
   background: transparent;

@@ -10,6 +10,7 @@
   color: $color-accent;
 
   @include rsp-font(1.5vw, 14px);
+
   line-height: 1.3em;
 
   @media screen and (max-width: $small-vp) {
@@ -19,6 +20,7 @@
   .entry-title {
     margin-bottom: 0.75em;
     font-family: $sans-serif-light;
+
     @include rsp-font(10vw, 48px);
   }
 

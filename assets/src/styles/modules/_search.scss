@@ -12,7 +12,9 @@
 .search-form {
   position: relative;
   display: flex;
+
   @include rsp-font(3vw, 24px);
+
   padding: 0 20px;
 
   .search-field {
@@ -28,6 +30,10 @@
     border: 0;
     -webkit-appearance: none;
 
+    &::-webkit-input-placeholder {
+      color: $color-accent;
+    }
+
     &:focus {
       outline-style: none;
       outline-color: $white;
@@ -38,10 +44,6 @@
     }
   }
 
-  .search-field::-webkit-input-placeholder {
-    color: $color-accent;
-  }
-
   .search-submit {
     padding: 20px 40px;
     border-bottom-left-radius: 0;
@@ -50,6 +52,7 @@
     color: $color-accent;
     background: $white;
     -webkit-appearance: none;
+
     @include font-smoothing(on);
 
     @media screen and (max-width: $small-vp) {
@@ -64,6 +67,7 @@
   padding-left: 40px;
   font-family: $sans-serif-light;
   line-height: 1em;
+
   @include rsp-font(3vw, 24px);
 }
 
@@ -86,6 +90,7 @@
 .search-title {
   font-family: $sans-serif-light;
   line-height: 1em;
+
   @include rsp-font(3vw, 24px);
 
   @media screen and (max-width: $small-vp) {

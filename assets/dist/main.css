@@ -68,9 +68,16 @@ ul {
   from,
   to {
     transform: translate3d(0, 0, 0); }
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translate3d(-5px, 0, 0); }
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translate3d(5px, 0, 0); } }
 
 p {
@@ -80,9 +87,10 @@ p {
   margin-bottom: 1em;
   font-weight: normal; }
 
-abbr, sup {
+abbr,
+sup {
   text-transform: uppercase;
-  font-size: .5em;
+  font-size: 0.5em;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   letter-spacing: 1px; }
 
@@ -122,7 +130,7 @@ html {
 
 body {
   height: 100%;
-  font-family: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 75%;
   line-height: 1.5em;
   color: #111;
@@ -284,7 +292,7 @@ input {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "GT America Standard Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
   border-radius: 0;
   -webkit-appearance: none; }
 
@@ -305,6 +313,9 @@ button {
   justify-content: center;
   flex-wrap: wrap; }
 
+.bricklayer-column {
+  flex: 1; }
+
 .illustrators-grid {
   margin: 0 30px; }
   .illustrators-grid .gallery-item {
@@ -314,6 +325,19 @@ button {
   @media screen and (max-width: 667px) {
     .illustrators-grid .bricklayer-column {
       flex-basis: 50%; } }
+
+.bricklayer-column-sizer {
+  display: none;
+  width: 33.333%; }
+  @media screen and (max-width: 667px) {
+    .bricklayer-column-sizer {
+      width: 50%; } }
+  @media screen and (max-width: 320px) {
+    .bricklayer-column-sizer {
+      width: 100%; } }
+  @media screen and (min-width: 1920px) {
+    .bricklayer-column-sizer {
+      width: 25%; } }
 
 .gallery-grid .bricklayer-column-sizer {
   width: 50%; }
@@ -336,22 +360,6 @@ button {
     margin: 0; }
     .gallery-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0; } }
-
-.bricklayer-column-sizer {
-  display: none;
-  width: 33.333%; }
-  @media screen and (max-width: 667px) {
-    .bricklayer-column-sizer {
-      width: 50%; } }
-  @media screen and (max-width: 320px) {
-    .bricklayer-column-sizer {
-      width: 100%; } }
-  @media screen and (min-width: 1920px) {
-    .bricklayer-column-sizer {
-      width: 25%; } }
-
-.bricklayer-column {
-  flex: 1; }
 
 .panel {
   position: fixed;
@@ -426,25 +434,25 @@ button {
     padding: 20px 40px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     line-height: 1.5em;
     color: #fff;
     background: #f85441;
     border: 0;
     -webkit-appearance: none; }
+    .search-form .search-field::-webkit-input-placeholder {
+      color: #fa8072; }
     .search-form .search-field:focus {
       outline-style: none;
       outline-color: #fff; }
     @media screen and (max-width: 667px) {
       .search-form .search-field {
         padding: 10px 20px; } }
-  .search-form .search-field::-webkit-input-placeholder {
-    color: #fa8072; }
   .search-form .search-submit {
     padding: 20px 40px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     color: #fa8072;
     background: #fff;
     -webkit-appearance: none;
@@ -458,7 +466,7 @@ button {
   position: static !important;
   padding-top: 15px;
   padding-left: 40px;
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1em;
   font-size: 3vw; }
   @media (max-width: 800px) {
@@ -476,7 +484,7 @@ button {
     color: #fff; }
 
 .search-title {
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1em;
   font-size: 3vw; }
   @media (max-width: 800px) {
@@ -549,7 +557,7 @@ button {
       margin: 0; } }
 
 .section-indicator-index {
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   color: #fa8072;
   position: fixed;
   top: 0;
@@ -572,6 +580,11 @@ button {
     .section-indicator-single {
       display: none; } }
 
+.faculty-list {
+  display: flex; }
+  .faculty-list .span1 {
+    width: 50%; }
+
 .page-inner {
   max-width: 60vw;
   margin: 130px 0 0 30px;
@@ -588,7 +601,7 @@ button {
   .page-inner .entry-title {
     line-height: 1em;
     margin: 1em 0;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 5vw; }
     @media (max-width: 1000px) {
       .page-inner .entry-title {
@@ -617,11 +630,6 @@ button {
       max-width: none;
       margin-top: 8em; } }
 
-.faculty-list {
-  display: flex; }
-  .faculty-list .span1 {
-    width: 50%; }
-
 .error-body {
   position: fixed;
   top: 0;
@@ -642,7 +650,7 @@ button {
       padding: 0 20px; } }
   .error-body .entry-title {
     margin-bottom: 0.75em;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 10vw; }
     @media (max-width: 480px) {
       .error-body .entry-title {
@@ -685,7 +693,7 @@ button {
 .year-item {
   position: relative;
   z-index: 1;
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1em;
   color: #f85441;
   font-size: 14vw;
@@ -875,7 +883,7 @@ button {
         padding: 0; } }
   .illustrator-meta .thesis-title {
     margin-bottom: 0.5em;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     line-height: 1.2em;
     letter-spacing: -2px;
     font-size: 2.5vw; }
@@ -1041,7 +1049,7 @@ button {
     justify-content: space-between; }
   .title .title-primary {
     margin: 0 0 0.5em;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 4vw;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
@@ -1056,7 +1064,7 @@ button {
     font-kerning: normal;
     text-rendering: optimizeLegibility;
     max-width: 300px;
-    font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     line-height: 1.3em; }
     .title .title-secondary:last-child {
       margin-bottom: 0; }
@@ -1142,6 +1150,8 @@ button {
     .home-grid {
       padding: 30px 0 0;
       margin: 50px 0 0; } }
+  .home-grid .illustrator-meta-label {
+    margin-bottom: 0; }
   .home-grid .illustrator-meta-container {
     position: fixed;
     top: 0;
@@ -1154,7 +1164,7 @@ button {
     color: #fff;
     padding: 1em 2em; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
-      font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
       line-height: 1.3em;
       padding: 0;
       font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
@@ -1174,8 +1184,6 @@ button {
       @media screen and (max-width: 667px) {
         .home-grid .illustrator-meta-container.active {
           display: none; } }
-  .home-grid .illustrator-meta-label {
-    margin-bottom: 0; }
   .home-grid .gallery-item {
     position: relative;
     display: block;
@@ -1219,7 +1227,7 @@ button {
   z-index: 600;
   width: 100%;
   height: 88px;
-  font-family: "GT America Standard Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   color: #feefed;
   text-align: center;
   font-size: 5vw;

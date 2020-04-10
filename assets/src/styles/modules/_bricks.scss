@@ -5,6 +5,10 @@
   flex-wrap: wrap;
 }
 
+.bricklayer-column {
+  flex: 1;
+}
+
 .illustrators-grid {
   margin: 0 30px;
 
@@ -20,6 +24,23 @@
     @media screen and (max-width: $small-vp) {
       flex-basis: 50%;
     }
+  }
+}
+
+.bricklayer-column-sizer {
+  display: none;
+  width: 33.333%;
+
+  @media screen and (max-width: $small-vp) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: $smallest-vp) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: $large-vp) {
+    width: 25%;
   }
 }
 
@@ -53,25 +74,4 @@
       }
     }
   }
-}
-
-.bricklayer-column-sizer {
-  display: none;
-  width: 33.333%;
-
-  @media screen and (max-width: $small-vp) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: $smallest-vp) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: $large-vp) {
-    width: 25%;
-  }
-}
-
-.bricklayer-column {
-  flex: 1;
 }
