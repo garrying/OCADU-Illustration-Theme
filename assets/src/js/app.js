@@ -9,7 +9,7 @@ const $ = require('jquery')
 window.jQuery = window.$ = $
 require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
-require('lazysizes')
+const lazySizes = require('lazysizes')
 const Bricklayer = require('bricklayer')
 const SwipeListener = require('swipe-listener');
 
@@ -59,7 +59,7 @@ const SwipeListener = require('swipe-listener');
       }
 
       window.addEventListener('scroll', function (e) {
-        let st = window.pageYOffset || document.documentElement.scrollTop
+        const st = window.pageYOffset || document.documentElement.scrollTop
         if (!ticking) {
           window.requestAnimationFrame(() => {
             doSomething(st, knownPosition)
@@ -68,7 +68,7 @@ const SwipeListener = require('swipe-listener');
           })
           ticking = true
         }
-      })
+      }, { passive: true })
     },
 
     _ocadGridFocus: () => {
@@ -322,7 +322,7 @@ const SwipeListener = require('swipe-listener');
       */
 
       const imageModalSetter = (imageSource) => {
-        const image = new Image()
+        const image = new window.Image()
         image.alt = 'Full sized illustration'
         image.id = 'full-image'
         image.className = 'image-modal-container-full-image lazyload'
