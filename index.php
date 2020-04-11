@@ -16,7 +16,7 @@
       <button class="close-unit close-title" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
       <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2020</h1></div>
       <div class="segment-second">
-        <h2 class="title-primary"> Part of the 104<sup>th</sup><br> GradEx May 1–5<br></h2>
+        <h2 class="title-primary"> Part of the 105<sup>th</sup><br> GradEx April 29 to May 3<br></h2>
         <p class="title-secondary">Spanning 2009–2020, the archive is maintained by the Illustration Department at OCAD University.</p>
         <p class="title-secondary"><a href="/about" class="message pill">About the Archive</a></p>
       </div>
