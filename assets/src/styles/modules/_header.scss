@@ -90,6 +90,7 @@
 
   &.invert {
     color: $white;
+    background: darken($color-accent, 10%);
   }
 
   &.inactive {

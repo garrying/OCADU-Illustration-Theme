@@ -84,13 +84,11 @@
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'>" . esc_html( $class_year->name ) . "</a><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a></li>";
                 wp_reset_postdata();
               }
               ?>
             </ul>
-            <div class="preview-image-container">
-            </div>
           </div>
           <button class="close-panel" title="Close panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->

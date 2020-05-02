@@ -9,15 +9,29 @@
 
 .year-select-wrapper {
   height: 100%;
-  outline: 0;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 100px;
+  padding-left: 40px;
 }
 
 .year-list-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+}
+
+.year-item-image {
+  pointer-events: none;
+  object-fit: cover;
+  position: absolute;
   height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 .year-item {
@@ -25,38 +39,39 @@
   z-index: 1;
   font-family: $sans-serif-light;
   line-height: 1em;
-  color: darken($color-accent, 10%);
+  color: $white;
+  width: 320px;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 40px 40px 0;
+  box-shadow: 5px 5px 20px darken($color-accent, 1%);
 
-  @include rsp-font(14vw, 42px);
+  @include rsp-font(3vw, 24px);
 
   opacity: 0;
 
   @media screen and (max-width: $small-vp) {
-    @include rsp-font(20vw, 42px);
-
     padding-bottom: 0.25em;
   }
 
-  &.active,
-  &:focus,
-  &:hover, {
-    color: $white;
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: darken($color-accent, 15%);
+    z-index: 1;
+    mix-blend-mode: lighten;
   }
 }
 
-.year-item-image {
+.year-text {
   position: absolute;
-  display: none;
-  width: 90%;
-  height: 90%;
-  pointer-events: none;
-  object-fit: contain;
-}
-
-.is-selected .year-item-image {
-  display: inline;
-}
-
-.is-selected .year-item {
-  color: $color-accent;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: $white;
+  padding: 20px;
 }

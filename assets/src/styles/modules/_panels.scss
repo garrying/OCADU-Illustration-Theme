@@ -6,7 +6,7 @@
   right: 0;
   z-index: $z-middle;
   display: flex;
-  background: $color-accent;
+  background: lighten($color-accent, 10%);
   outline: 0;
   opacity: 0;
   overflow: auto;
@@ -26,10 +26,6 @@
     bottom: 0;
     left: 0;
   }
-}
-
-.panel-inner {
-  width: 100%;
 }
 
 .close-panel {
