@@ -44,7 +44,7 @@
       padding: 0;
 
       @include heading-features;
-      @include rsp-font(2vw, 18px);
+      @include rsp-font(1.5vw, 18px);
     }
 
     .illustrator-name {

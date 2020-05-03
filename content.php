@@ -8,7 +8,6 @@
           $ocaduillustration_image_height = $ocaduillustration_image_data[2];
         ?>
         <?php the_post_thumbnail( 'illustrator-small' ); ?>
-        <canvas class="lazyload-image-placeholder" height="<?php echo esc_attr( $ocaduillustration_image_height ); ?>" width="<?php echo esc_attr( $ocaduillustration_image_width ); ?>"></canvas>
       </div>
     </figure>
     <div class="illustrator-meta-container pill">

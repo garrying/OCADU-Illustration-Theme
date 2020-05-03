@@ -77,7 +77,7 @@
 
 .section-indicator-index {
   font-family: $sans-serif-light;
-  color: $color-accent;
+  color: lighten($color-accent, 20%);
   position: fixed;
   top: 0;
   left: 0;
@@ -88,7 +88,7 @@
   align-items: center;
   justify-content: center;
 
-  @include rsp-font(14vw, 24px);
+  @include rsp-font(10vw, 24px);
 }
 
 .section-indicator-single {

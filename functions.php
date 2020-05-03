@@ -362,10 +362,8 @@ add_action( 'wp_head', 'ocaduillustration_prefetch' );
 function ocaduillustration_gallery_filter( $attr, $attachment ) {
   global $post;
   $attr['data-sizes'] = 'auto';
-  $attr['data-src']   = $attr['src'];
   if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
-    unset( $attr['src'] );
     unset( $attr['srcset'] );
     unset( $attr['sizes'] );
     if ( is_home() || is_archive() || is_search() ) {
@@ -377,6 +375,7 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   }
   $attr['alt']   = 'Illustration by ' . get_the_title() . '';
   $attr['class'] = 'lazyload blur-up';
+  $attr['loading'] = 'lazy';
   if ( is_home() || is_archive() ) {
     $attr['title'] = get_the_title();
   } else {

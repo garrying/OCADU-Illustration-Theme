@@ -177,19 +177,11 @@ figure {
   margin: 0; }
   figure img {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto; }
   figure .wp-caption-text {
     display: none;
     opacity: 0; }
-
-.illustrator-image {
-  position: relative; }
-  .illustrator-image .wp-post-image {
-    position: absolute;
-    object-fit: contain;
-    width: 100%;
-    height: 100%; }
 
 .image-modal-container-full-image {
   position: relative;
@@ -555,7 +547,7 @@ button {
 
 .section-indicator-index {
   font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-  color: #fa8072;
+  color: #fdd9d5;
   position: fixed;
   top: 0;
   left: 0;
@@ -565,8 +557,8 @@ button {
   height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 14vw; }
-  @media (max-width: 171.42857px) {
+  font-size: 10vw; }
+  @media (max-width: 240px) {
     .section-indicator-index {
       font-size: 24px; } }
 
@@ -1066,24 +1058,26 @@ button {
   .title .title-primary {
     margin: 0 0 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-    font-size: 4vw;
+    font-size: 5vw;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     font-kerning: normal;
     text-rendering: optimizeLegibility; }
-    @media (max-width: 450px) {
+    @media (max-width: 360px) {
       .title .title-primary {
         font-size: 18px; } }
   .title .title-secondary {
+    font-size: 2.8vw;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     font-kerning: normal;
     text-rendering: optimizeLegibility;
-    max-width: 300px;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-    line-height: 1.3em; }
-    .title .title-secondary:last-child {
-      margin-bottom: 0; }
+    line-height: 1.2em;
+    margin-bottom: 0.5em; }
+    @media (max-width: 642.85714px) {
+      .title .title-secondary {
+        font-size: 18px; } }
   .title .message {
     color: #fa8072;
     display: inline-block;
@@ -1187,8 +1181,8 @@ button {
       font-variant-numeric: lining-nums;
       font-kerning: normal;
       text-rendering: optimizeLegibility;
-      font-size: 2vw; }
-      @media (max-width: 900px) {
+      font-size: 1.5vw; }
+      @media (max-width: 1200px) {
         .home-grid .illustrator-meta-container .illustrator-meta-label {
           font-size: 18px; } }
     .home-grid .illustrator-meta-container .illustrator-name {

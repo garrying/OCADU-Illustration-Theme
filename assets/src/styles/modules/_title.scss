@@ -33,20 +33,17 @@
     margin: 0 0 0.5em;
     font-family: $sans-serif-light;
 
-    @include rsp-font(4vw, 18px);
+    @include rsp-font(5vw, 18px);
     @include heading-features;
   }
 
   .title-secondary {
+    @include rsp-font(2.8vw, 18px);
     @include heading-features;
 
-    max-width: 300px;
     font-family: $sans-serif-light;
-    line-height: 1.3em;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    line-height: 1.2em;
+    margin-bottom: 0.5em;
   }
 
   .message {
