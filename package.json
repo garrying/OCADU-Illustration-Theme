@@ -30,6 +30,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "blobs": "^2.0.1",
     "bricklayer": "^0.4.3",
     "jquery": "^3.5.0",
     "lazysizes": "^5.2.0",

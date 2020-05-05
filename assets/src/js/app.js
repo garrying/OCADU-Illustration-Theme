@@ -9,6 +9,7 @@ const $ = require('jquery')
 window.jQuery = window.$ = $
 require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
+const blobs2 = require('./libs/blobs')
 const lazySizes = require('lazysizes')
 const Bricklayer = require('bricklayer')
 const SwipeListener = require('swipe-listener');
@@ -24,6 +25,7 @@ const SwipeListener = require('swipe-listener');
       app._ocadUIbinding()
       app._ocadGridFocus()
       app._ocadSingleScroll()
+      app._blob()
     },
 
     settings: {
@@ -516,6 +518,23 @@ const SwipeListener = require('swipe-listener');
           }
         }
       })
+    },
+
+    _blob: () => {
+      console.log(blobs2)
+      const svgString = blobs2.svg(
+        {
+          seed: Math.random(),
+          extraPoints: 8,
+          randomness: 4,
+          size: 400
+        },
+        {
+          fill: 'white',
+          strokeWidth: 1
+        }
+      )
+      $('.error-blob-container').html(svgString)
     }
   }
 
