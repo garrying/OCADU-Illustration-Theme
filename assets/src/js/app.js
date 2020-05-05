@@ -521,20 +521,19 @@ const SwipeListener = require('swipe-listener');
     },
 
     _blob: () => {
-      console.log(blobs2)
-      const svgString = blobs2.svg(
-        {
-          seed: Math.random(),
-          extraPoints: 8,
-          randomness: 4,
-          size: 400
-        },
-        {
-          fill: 'white',
-          strokeWidth: 1
-        }
-      )
-      $('.error-blob-container').html(svgString)
+      const svgString = blobs2.svg({
+        seed: Math.random(),
+        extraPoints: 8,
+        randomness: 4,
+        size: 400
+      }, {
+        fill: 'rgb(250,128,114)',
+        strokeWidth: 1
+      })
+      if (document.querySelector('#error-blob-container')) {
+        document.querySelector('#error-blob-container').innerHTML = svgString
+      }
+      $('link[rel="icon"]').attr('href', `data:image/svg+xml,${svgString}`)
     }
   }
 

@@ -12,6 +12,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="profile" href="https://gmpg.org/xfn/11" />
+  <link rel="icon" href="">
   <?php wp_head(); ?>
 
 </head>
@@ -84,7 +85,7 @@
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' loading='lazy' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a></li>";
                 wp_reset_postdata();
               }
               ?>

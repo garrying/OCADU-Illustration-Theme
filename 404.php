@@ -5,7 +5,7 @@
       <h1 class="entry-title"><?php esc_html_e( 'Page not found.', 'ocaduillustration' ); ?></h1>
       <p class="entry-body">The page you requested could not be found<br />It might have been moved or renamed.</p>
     </header>
-    <div class="error-blob-container"></div>
+    <div id="error-blob-container"></div>
   </div>
 
 <?php get_footer(); ?>

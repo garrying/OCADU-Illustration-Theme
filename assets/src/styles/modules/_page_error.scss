@@ -28,17 +28,13 @@
     margin: 0;
   }
 
-  .error-blob-container svg path {
-    stroke: $color-accent;
-  }
-
   .entry-header {
     position: relative;
     z-index: 1;
   }
 }
 
-.error-blob-container {
+#error-blob-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -47,4 +43,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  svg path {
+    stroke: $color-accent;
+    fill: transparent;
+  }
 }
