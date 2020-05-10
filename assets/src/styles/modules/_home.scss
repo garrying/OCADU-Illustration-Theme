@@ -102,7 +102,9 @@
   }
 
   &.bubble-default .bricklayer-column .illustrator-meta-container {
-    background: $color-accent;
+    background: rgba($color-accent, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: $white;
   }
 
