@@ -148,7 +148,7 @@ a {
   text-decoration: none;
   color: #fa8072;
   transition: color 180ms ease-in-out; }
-  a:hover {
+  a:hover, a:focus {
     color: #f7270f; }
   a img {
     display: block; }
@@ -166,6 +166,7 @@ a {
   color: #fff;
   background: #0e0e0f; }
   .screen-reader-shortcut:focus {
+    color: #fff;
     z-index: 600;
     width: auto;
     height: auto;
@@ -228,7 +229,9 @@ figure {
     padding: 1em 0 0 1em;
     font-size: 0.95em;
     line-height: 1.3em;
-    background: #fff; }
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px); }
     @media screen and (max-width: 768px) {
       .image-modal-wrapper .image-modal-caption {
         bottom: 0;
@@ -412,21 +415,19 @@ button {
 .search-form {
   position: relative;
   display: flex;
-  font-size: 3vw;
+  font-size: 2.5vw;
   padding: 0 20px; }
-  @media (max-width: 800px) {
+  @media (max-width: 720px) {
     .search-form {
-      font-size: 24px; } }
+      font-size: 18px; } }
   .search-form .search-field {
     width: 100%;
     box-sizing: border-box;
     padding: 20px 40px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     line-height: 1.5em;
     color: #fff;
-    background: #f85441;
+    background: #f96a59;
     border: 0;
     -webkit-appearance: none; }
     .search-form .search-field::-webkit-input-placeholder {
@@ -439,8 +440,7 @@ button {
         padding: 10px 20px; } }
   .search-form .search-submit {
     padding: 20px 40px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    margin-left: 20px;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     color: #fa8072;
     background: #fff;
@@ -457,10 +457,10 @@ button {
   padding-left: 40px;
   font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1em;
-  font-size: 3vw; }
-  @media (max-width: 800px) {
+  font-size: 2.5vw; }
+  @media (max-width: 720px) {
     .autocomplete-suggestions {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 .autocomplete-suggestion {
   padding: 5px 0;
@@ -475,10 +475,10 @@ button {
 .search-title {
   font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1em;
-  font-size: 3vw; }
-  @media (max-width: 800px) {
+  font-size: 2.5vw; }
+  @media (max-width: 720px) {
     .search-title {
-      font-size: 24px; } }
+      font-size: 18px; } }
   @media screen and (max-width: 667px) {
     .search-title {
       margin: 0; } }
@@ -490,7 +490,7 @@ button {
   display: none;
   width: 1em;
   height: 1em;
-  border: 5px solid #f85441;
+  border: 1px solid #f85441;
   border-radius: 50%;
   animation-name: shake;
   animation-duration: 800ms;
@@ -524,8 +524,7 @@ button {
     margin: 0.67em 0;
     font-family: "Lab Mono Web", monaco, monospace; }
   .archive-grid .illustrator-title {
-    margin-top: 0.5em;
-    color: rgba(14, 14, 15, 0.75); }
+    margin-top: 0.5em; }
   .archive-grid .gallery-item {
     margin: 0 12% 20%; }
     @media screen and (max-width: 667px) {
@@ -535,8 +534,6 @@ button {
   .archive-grid .illustrator-link {
     display: block;
     padding-bottom: 1em; }
-  .archive-grid .illustrator-link:hover .illustrator-title {
-    color: #fa8072; }
   @media screen and (max-width: 667px) {
     .archive-grid .bricklayer-column:last-child .gallery-item {
       margin-right: 0;
@@ -629,9 +626,9 @@ button {
   align-items: center;
   justify-content: center;
   color: #fa8072;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   line-height: 1.3em; }
-  @media (max-width: 933.33333px) {
+  @media (max-width: 1166.66667px) {
     .error-body {
       font-size: 14px; } }
   @media screen and (max-width: 667px) {
@@ -640,27 +637,28 @@ button {
   .error-body .entry-title {
     margin-bottom: 0.75em;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-    font-size: 10vw; }
-    @media (max-width: 480px) {
+    font-size: 5vw; }
+    @media (max-width: 960px) {
       .error-body .entry-title {
         font-size: 48px; } }
   .error-body .entry-body {
     margin: 0; }
-  .error-body .error-line-svg {
-    height: 100%;
-    pointer-events: none; }
-  .error-body .error-line {
-    fill: #fa8072; }
+  .error-body .entry-header {
+    position: relative;
+    z-index: 1; }
 
-.error-line-container {
+#error-blob-container {
   position: absolute;
-  top: 2em;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center; }
+  #error-blob-container svg path {
+    stroke: #fa8072;
+    fill: transparent; }
 
 .year-select {
   justify-content: center; }
@@ -721,6 +719,8 @@ button {
     background: #f73d28;
     z-index: 1;
     mix-blend-mode: lighten; }
+  .year-item.active {
+    border: 1px solid #f96a59; }
 
 .year-text {
   position: absolute;
@@ -795,8 +795,11 @@ button {
   font-variant-numeric: lining-nums;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
+  border: 1px solid #fa8072;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: #fa8072; }
+  background: rgba(250, 128, 114, 0.9);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); }
   .header-item:hover, .header-item:focus {
     background: #f85441; }
   .header-item.invert {
@@ -850,8 +853,7 @@ button {
 
 .illustrator-meta {
   position: relative;
-  flex: 1 1 30%;
-  color: #333; }
+  flex: 1 1 30%; }
   @media screen and (max-width: 768px) {
     .illustrator-meta {
       flex: 1 1 50%; } }
@@ -892,22 +894,19 @@ button {
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     line-height: 1.2em;
     letter-spacing: -2px;
-    font-size: 2.5vw; }
-    @media (max-width: 1280px) {
+    font-size: 2vw; }
+    @media (max-width: 1200px) {
       .illustrator-meta .thesis-title {
-        font-size: 32px; } }
+        font-size: 24px; } }
     @media screen and (max-width: 667px) {
       .illustrator-meta .thesis-title {
-        font-size: 4vw; } }
-  @media screen and (max-width: 667px) and (max-width: 800px) {
+        font-size: 3.5vw; } }
+  @media screen and (max-width: 667px) and (max-width: 685.71429px) {
     .illustrator-meta .thesis-title {
-      font-size: 32px; } }
+      font-size: 24px; } }
   .illustrator-meta .thesis-description {
     line-height: 1.3em;
-    font-size: 1vw; }
-    @media (max-width: 1400px) {
-      .illustrator-meta .thesis-description {
-        font-size: 14px; } }
+    font-size: 14px; }
   .illustrator-meta .illustrator-meta-name {
     margin-bottom: 0.5em; }
 
@@ -923,15 +922,15 @@ button {
     padding: 0.5em 0;
     padding-right: 1em; }
   .meta .illustrator-meta-items {
-    max-width: 61.8%;
-    line-height: 1.45em; }
+    max-width: 61.8%; }
   .meta .meta-link {
     display: inline-block;
     max-width: 100%;
     background: rgba(250, 128, 114, 0.2);
     padding: 0.5em 1em;
+    margin-bottom: 0.25em;
     transition: background 180ms ease-in-out; }
-    .meta .meta-link:hover {
+    .meta .meta-link:hover, .meta .meta-link:focus {
       background: rgba(250, 128, 114, 0.35); }
     @media screen and (max-width: 667px) {
       .meta .meta-link {
@@ -969,8 +968,7 @@ button {
 .illustrator-nav-single {
   display: flex;
   width: 100%;
-  padding: 0 30px;
-  border-top: 1px solid #feefed; }
+  padding: 0 30px; }
   @media screen and (max-width: 667px) {
     .illustrator-nav-single {
       padding: 0 20px;
@@ -979,7 +977,9 @@ button {
       bottom: 0;
       width: 100%;
       justify-content: flex-end;
-      background: #fff; } }
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px); } }
   .illustrator-nav-single a {
     display: block;
     padding: 1em 1em 2em;
@@ -1102,7 +1102,8 @@ button {
 .about-unit {
   display: none;
   pointer-events: auto;
-  background: #000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: absolute;
   border-radius: 20px;
   top: 0;
@@ -1170,7 +1171,9 @@ button {
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: #fa8072;
+    background: rgba(250, 128, 114, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: #fff;
     padding: 1em 2em; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
@@ -1209,12 +1212,16 @@ button {
     .home-grid .bricklayer-column:nth-child(odd) .gallery-item:nth-child(2n) {
       padding: 6%; }
   .home-grid .bricklayer-column:nth-last-child(-n+2) .illustrator-meta-container {
-    background: #fff;
-    color: #fa8072; }
+    color: #fa8072;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px); }
   .home-grid .bricklayer-column:last-child .illustrator-meta-container {
     margin-left: -20%; }
   .home-grid.bubble-default .bricklayer-column .illustrator-meta-container {
-    background: #fa8072;
+    background: rgba(250, 128, 114, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: #fff; }
   .home-grid .bricklayer-column-sizer {
     width: 25%; }
@@ -1240,12 +1247,12 @@ button {
   font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
   color: #feefed;
   text-align: center;
-  font-size: 5vw;
+  font-size: 3vw;
   letter-spacing: -2px;
   pointer-events: none; }
-  @media (max-width: 1440px) {
+  @media (max-width: 933.33333px) {
     .loader {
-      font-size: 72px; } }
+      font-size: 28px; } }
 
 .loader-text {
   margin: 0;

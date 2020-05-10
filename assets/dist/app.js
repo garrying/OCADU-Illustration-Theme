@@ -101,7 +101,7 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
@@ -109,18 +109,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-/* eslint
-no-underscore-dangle: ["off"]
-*/
 
-
-var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-window.jQuery = window.$ = $;
+window.jQuery = window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 __webpack_require__(/*! ./libs/jquery.autocomplete.min */ "./assets/src/js/libs/jquery.autocomplete.min.js");
 
 __webpack_require__(/*! velocity-animate */ "./node_modules/velocity-animate/velocity.js");
+
+var blobs2 = __webpack_require__(/*! ./libs/blobs */ "./assets/src/js/libs/blobs.js");
 
 var lazySizes = __webpack_require__(/*! lazysizes */ "./node_modules/lazysizes/lazysizes.js");
 
@@ -146,6 +142,8 @@ var SwipeListener = __webpack_require__(/*! swipe-listener */ "./node_modules/sw
       app._ocadGridFocus();
 
       app._ocadSingleScroll();
+
+      app._blob();
     },
     settings: {
       documentBody: $('body'),
@@ -663,6 +661,23 @@ var SwipeListener = __webpack_require__(/*! swipe-listener */ "./node_modules/sw
           }
         }
       });
+    },
+    _blob: function _blob() {
+      var svgString = blobs2.svg({
+        seed: Math.random(),
+        extraPoints: 8,
+        randomness: 4,
+        size: 400
+      }, {
+        fill: 'rgb(250,128,114)',
+        strokeWidth: 1
+      });
+
+      if (document.querySelector('#error-blob-container')) {
+        document.querySelector('#error-blob-container').innerHTML = svgString;
+      }
+
+      $('link[rel="icon"]').attr('href', "data:image/svg+xml,".concat(svgString));
     }
   };
   /*
@@ -678,6 +693,211 @@ var SwipeListener = __webpack_require__(/*! swipe-listener */ "./node_modules/sw
 
   app.init();
 })();
+
+/***/ }),
+
+/***/ "./assets/src/js/libs/blobs.js":
+/*!*************************************!*\
+  !*** ./assets/src/js/libs/blobs.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+!function (n, t) {
+  "object" == ( false ? undefined : _typeof(exports)) && "undefined" != typeof module ? t(exports) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+}(this, function (n) {
+  "use strict";
+
+  function a(n) {
+    var t,
+        e,
+        r,
+        o,
+        a = function (n) {
+      for (var t = 2166136261, e = 0; e < n.length; e++) {
+        t = Math.imul(t ^ n.charCodeAt(e), 16777619);
+      }
+
+      return function () {
+        return t += t << 13, t ^= t >>> 7, t += t << 3, t ^= t >>> 17, (t += t << 5) >>> 0;
+      };
+    }(n);
+
+    return t = a(), e = a(), r = a(), o = a(), function () {
+      var n = (t >>>= 0) + (e >>>= 0) | 0;
+      return t = e ^ e >>> 9, e = (r >>>= 0) + (r << 3) | 0, r = (r = r << 21 | r >>> 11) + (n = n + (o = 1 + (o >>>= 0) | 0) | 0) | 0, (n >>> 0) / 4294967296;
+    };
+  }
+
+  function o(n) {
+    return {
+      x: n.x,
+      y: n.y,
+      handleIn: _t({}, n.handleIn),
+      handleOut: _t({}, n.handleOut)
+    };
+  }
+
+  function r(e, r) {
+    for (var n = function n(_n) {
+      function t(n) {
+        return o(e[l(n, e.length)]);
+      }
+
+      r({
+        curr: o(e[_n]),
+        index: _n,
+        sibling: t,
+        prev: function prev() {
+          return t(_n - 1);
+        },
+        next: function next() {
+          return t(_n + 1);
+        }
+      });
+    }, t = 0; t < e.length; t++) {
+      n(t);
+    }
+  }
+
+  function u(n, t) {
+    var e = [];
+    return r(n, function (n) {
+      e.push(t(n));
+    }), e;
+  }
+
+  function i(n, t) {
+    return {
+      x: n.x + t.length * Math.cos(t.angle),
+      y: n.y + t.length * Math.sin(t.angle)
+    };
+  }
+
+  function s(n, f) {
+    return u(n, function (n) {
+      var t,
+          e,
+          r,
+          o,
+          a,
+          u = n.curr,
+          i = n.next,
+          h = n.prev,
+          s = (t = h(), e = i(), r = e.x - t.x, o = -e.y + t.y, (a = Math.atan2(o, r)) < 0 ? Math.abs(a) : 2 * Math.PI - a);
+      return {
+        x: u.x,
+        y: u.y,
+        handleIn: {
+          angle: s + Math.PI,
+          length: f * c(u, h())
+        },
+        handleOut: {
+          angle: s,
+          length: f * c(u, i())
+        }
+      };
+    });
+  }
+
+  function h(n, t, e) {
+    var r = _typeof(t);
+
+    if (!e.includes(r)) throw '(blobs2) "' + n + '" should have type "' + e.join("|") + '" but was "' + r + '".';
+  }
+
+  function f(n) {
+    var t = a(String(n.seed));
+    h("blobOptions", n, ["object"]), h("seed", n.seed, ["string", "number"]), h("extraPoints", n.extraPoints, ["number"]), h("randomness", n.randomness, ["number"]), h("size", n.size, ["number"]);
+
+    var e = 1 / (1 + Math.abs(n.randomness) / 10),
+        r = function (n, t) {
+      for (var e = 2 * Math.PI / n, r = [], o = 0; o < n; o++) {
+        var a = t(),
+            u = Math.sin(o * e),
+            i = Math.cos(o * e);
+        r.push({
+          x: .5 + u * a,
+          y: .5 + i * a,
+          handleIn: {
+            angle: 0,
+            length: 0
+          },
+          handleOut: {
+            angle: 0,
+            length: 0
+          }
+        });
+      }
+
+      var h = 4 / 3 * Math.tan(e / 4) / Math.sin(e / 2) / 2;
+      return s(r, h);
+    }(3 + Math.abs(n.extraPoints), function () {
+      return (e + t() * (1 - e)) / 2;
+    }),
+        o = Math.abs(n.size);
+
+    return u(r, function (n) {
+      var t = n.curr;
+      return t.x *= o, t.y *= o, t.handleIn.length *= o, t.handleOut.length *= o, t;
+    });
+  }
+
+  var _t = function t() {
+    return (_t = Object.assign || function (n) {
+      for (var t, e = 1, r = arguments.length; e < r; e++) {
+        for (var o in t = arguments[e]) {
+          Object.prototype.hasOwnProperty.call(t, o) && (n[o] = t[o]);
+        }
+      }
+
+      return n;
+    }).apply(this, arguments);
+  },
+      l = function l(n, t) {
+    return (n % t + t) % t;
+  },
+      c = function c(n, t) {
+    return Math.sqrt(Math.pow(n.x - t.x, 2) + Math.pow(n.y - t.y, 2));
+  },
+      d = function d(n) {
+    return t = f(n), a = "M" + t[0].x + "," + t[0].y, r(t, function (n) {
+      var t = n.curr,
+          e = (0, n.next)(),
+          r = i(t, t.handleOut),
+          o = i(e, e.handleIn);
+      a += "C" + r.x + "," + r.y + "," + o.x + "," + o.y + "," + e.x + "," + e.y;
+    }), a;
+    var t, a;
+  };
+
+  n.canvasPath = function (n, e) {
+    return void 0 === e && (e = {}), t = u(f(n), function (n) {
+      var t = n.curr;
+      return t.x += e.offsetX || 0, t.y += e.offsetY || 0, t;
+    }), (a = new Path2D()).moveTo(t[0].x, t[0].y), r(t, function (n) {
+      var t = n.curr,
+          e = (0, n.next)(),
+          r = i(t, t.handleOut),
+          o = i(e, e.handleIn);
+      a.bezierCurveTo(r.x, r.y, o.x, o.y, e.x, e.y);
+    }), a;
+    var t, a;
+  }, n.svg = function (n, t) {
+    void 0 === t && (t = {});
+    var e = d(n),
+        r = Math.floor(n.size),
+        o = void 0 === t.fill ? "#ec576b" : t.fill;
+    return ('\n<svg width="' + r + '" height="' + r + '" viewBox="0 0 ' + r + " " + r + '" xmlns="http://www.w3.org/2000/svg">\n    <path stroke="' + (void 0 === t.stroke ? "none" : t.stroke) + '" stroke-width="' + (void 0 === t.strokeWidth ? 0 : t.strokeWidth) + '" fill="' + o + '" d="' + e + '"/>\n</svg>').trim();
+  }, n.svgPath = d, Object.defineProperty(n, "__esModule", {
+    value: !0
+  });
+});
 
 /***/ }),
 
@@ -1392,7 +1612,7 @@ var Bricklayer;
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.0
+ * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -1402,7 +1622,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-04-10T15:07Z
+ * Date: 2020-05-04T22:49Z
  */
 ( function( global, factory ) {
 
@@ -1540,7 +1760,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.0",
+	version = "3.5.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -5637,7 +5857,7 @@ Data.prototype = {
 
 		// If not, create one
 		if ( !value ) {
-			value = Object.create( null );
+			value = {};
 
 			// We can accept data for non-element nodes in modern browsers,
 			// but we should not, see #8335.

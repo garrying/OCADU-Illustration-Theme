@@ -65,6 +65,10 @@
     z-index: 1;
     mix-blend-mode: lighten;
   }
+
+  &.active {
+    border: 1px solid darken($color-accent, 5%);
+  }
 }
 
 .year-text {

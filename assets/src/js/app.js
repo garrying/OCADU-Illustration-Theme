@@ -1,12 +1,6 @@
-/* eslint
-no-underscore-dangle: ["off"]
-*/
-
 import '../styles/main.scss'
 
-const $ = require('jquery')
-
-window.jQuery = window.$ = $
+window.jQuery = window.$ = require('jquery')
 require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
 const blobs2 = require('./libs/blobs')
