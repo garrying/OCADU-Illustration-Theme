@@ -84,6 +84,7 @@
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
   background: rgba($color-accent, 0.9);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 
   &:hover,
   &:focus {

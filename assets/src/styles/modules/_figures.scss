@@ -68,6 +68,7 @@ figure {
     line-height: 1.3em;
     background: rgba($site-background, 0.7);
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 
     @media screen and (max-width: $ipad-vp) {
       bottom: 0;

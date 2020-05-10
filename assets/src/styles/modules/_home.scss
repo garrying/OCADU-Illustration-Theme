@@ -36,6 +36,7 @@
     opacity: 0;
     background: rgba($color-accent, 0.7);
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: $white;
     padding: 1em 2em;
 
@@ -92,6 +93,7 @@
       color: $color-accent;
       background: rgba($white, 0.8);
       backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     &:last-child .illustrator-meta-container {

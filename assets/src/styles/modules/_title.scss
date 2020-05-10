@@ -74,7 +74,8 @@
 .about-unit {
   display: none;
   pointer-events: auto;
-  background: $black;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: absolute;
   border-radius: 20px;
   top: 0;
