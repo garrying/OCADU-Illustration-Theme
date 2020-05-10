@@ -11,7 +11,13 @@
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "standard 'assets/src/js/**/*.js' --verbose | snazzy"
   },
+  "eslintConfig": {
+    "rules": {
+      "no-underscore-dangle": "off"
+    }
+  },
   "standard": {
+    "globals": [ "$" ],
     "ignore": [
       "blobs.js"
     ]
