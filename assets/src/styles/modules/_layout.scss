@@ -50,7 +50,6 @@
 .illustrator-meta {
   position: relative;
   flex: 1 1 30%;
-  color: #333;
 
   @media screen and (max-width: $ipad-vp) {
     flex: 1 1 50%;
@@ -112,8 +111,7 @@
 
   .thesis-description {
     line-height: 1.3em;
-
-    @include rsp-font(1vw, 14px);
+    font-size: 14px;
   }
 
   .illustrator-meta-name {
