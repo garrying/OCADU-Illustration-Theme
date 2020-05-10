@@ -42,7 +42,7 @@
 
         <?php
           $ocaduillustration_grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
-          if ( is_singular( 'illustrator' ) && has_term('', 'gradyear')) {
+          if ( is_singular( 'illustrator' ) && has_term( '', 'gradyear' ) ) {
             // Selected menu state for individual items.
             $ocaduillustration_terms = get_the_terms( $post->ID, 'gradyear' );
             foreach ( $ocaduillustration_terms as $class_year ) {
