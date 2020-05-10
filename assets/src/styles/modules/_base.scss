@@ -35,7 +35,8 @@ a {
   color: $color-accent;
   transition: color 180ms ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: darken($color-accent, 20%);
   }
 
@@ -60,6 +61,7 @@ a {
   background: $off-black;
 
   &:focus {
+    color: $white;
     z-index: $z-important;
     width: auto;
     height: auto;

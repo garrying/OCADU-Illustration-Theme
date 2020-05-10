@@ -103,10 +103,10 @@
     line-height: 1.2em;
     letter-spacing: -2px;
 
-    @include rsp-font(2.5vw, 32px);
+    @include rsp-font(2vw, 24px);
 
     @media screen and (max-width: $small-vp) {
-      @include rsp-font(4vw, 32px);
+      @include rsp-font(3.5vw, 24px);
     }
   }
 
@@ -148,7 +148,8 @@
     margin-bottom: 0.25em;
     transition: background 180ms ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: rgba($color-accent, 0.35);
     }
 

@@ -38,7 +38,6 @@
 
   .illustrator-title {
     margin-top: 0.5em;
-    color: rgba($off-black, 0.75);
   }
 
   .gallery-item {
@@ -53,12 +52,6 @@
   .illustrator-link {
     display: block;
     padding-bottom: 1em;
-  }
-
-  .illustrator-link:hover {
-    .illustrator-title {
-      color: $color-accent;
-    }
   }
 
   .bricklayer-column:last-child {
