@@ -34,7 +34,8 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: $color-accent;
+    background: rgba($color-accent, 0.7);
+    backdrop-filter: blur(2px);
     color: $white;
     padding: 1em 2em;
 
@@ -88,8 +89,9 @@
     }
 
     &:nth-last-child(-n+2) .illustrator-meta-container {
-      background: $white;
       color: $color-accent;
+      background: rgba($white, 0.8);
+      backdrop-filter: blur(2px);
     }
 
     &:last-child .illustrator-meta-container {

@@ -11,7 +11,7 @@
   color: lighten($color-accent, 25%);
   text-align: center;
 
-  @include rsp-font(5vw, 72px);
+  @include rsp-font(3vw, 28px);
 
   letter-spacing: -2px;
   pointer-events: none;

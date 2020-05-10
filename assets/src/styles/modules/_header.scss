@@ -80,8 +80,10 @@
 
   @include heading-features;
 
+  border: 1px solid $color-accent;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: $color-accent;
+  background: rgba($color-accent, 0.9);
+  backdrop-filter: blur(2px);
 
   &:hover,
   &:focus {
