@@ -17,7 +17,9 @@
     }
   },
   "standard": {
-    "globals": [ "$" ],
+    "globals": [
+      "$"
+    ],
     "ignore": [
       "blobs.js"
     ]
@@ -32,7 +34,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "snazzy": "^8.0.0",
-    "standard": "^14.3.3",
+    "standard": "^14.3.4",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.17.2",
