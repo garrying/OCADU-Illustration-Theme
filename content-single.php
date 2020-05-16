@@ -24,7 +24,7 @@
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
-              <a target="_blank" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                 ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
@@ -35,7 +35,7 @@
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
-              <a target="_blank" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
                 ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
