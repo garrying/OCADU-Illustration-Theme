@@ -64,7 +64,7 @@
           $class_year                   = get_the_terms( $post->ID, 'gradyear' );
           $ocaduillustration_term_first = $class_year[0];
           if ( isset( $ocaduillustration_term_first->name ) ) {
-				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ⧖ ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
+				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ★ ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
           };
         }
         ?>
@@ -78,7 +78,7 @@
             'order_by'    => 'post_title',
             'format'      => '%link',
             'in_same_tax' => true,
-            'link'        => '<span class="name previous-link truncate">◐ %title</span>',
+            'link'        => '<span class="name previous-link truncate">⤺ %title</span>',
           )
             );
           ?></li>
@@ -88,7 +88,7 @@
             'order_by'    => 'post_title',
             'format'      => '%link',
             'in_same_tax' => true,
-            'link'        => '<span class="name next-link truncate">%title ◑</span>',
+            'link'        => '<span class="name next-link truncate">%title ⤻</span>',
           )
             );
           ?></li>

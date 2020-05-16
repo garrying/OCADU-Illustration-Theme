@@ -195,7 +195,10 @@
 .illustrator-nav-single {
   display: flex;
   width: 100%;
-  padding: 0 30px;
+  padding: 0 20px;
+  background: rgba($color-accent, 0.2);
+  border-radius: 9999px;
+  margin: 0 30px 20px;
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
@@ -203,16 +206,18 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    margin: 0;
+    border-radius: 0;
     justify-content: flex-end;
-    background: rgba($white, 0.8);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
   }
 
   a {
     display: block;
-    padding: 1em 1em 2em;
     z-index: $z-foreground;
+    border-radius: 9999px;
+    padding: 1em 1em;
 
     &:first-child {
       padding-left: 0;
@@ -225,7 +230,7 @@
 
   .nav-previous,
   .nav-next {
-    min-width: 50%;
+    flex-basis: 50%;
   }
 
   .nav-next a {
