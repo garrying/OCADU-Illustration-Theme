@@ -17,6 +17,10 @@
     display: none;
   }
 
+  @media screen and (min-width: $large-vp) {
+    left: 60vw;
+  }
+
   a {
     color: $white;
     pointer-events: auto;
@@ -68,6 +72,10 @@
 
   @media screen and (max-width: $small-vp) {
     display: none;
+  }
+
+  @media screen and (min-width: $large-vp) {
+    left: 60vw;
   }
 }
 

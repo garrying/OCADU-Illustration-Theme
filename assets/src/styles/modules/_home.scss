@@ -95,6 +95,10 @@
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
     }
+
+    &:nth-last-child(-n+2) .blur-up {
+      mix-blend-mode: multiply;
+    }
   }
 
   &.bubble-default .bricklayer-column .illustrator-meta-container {
@@ -118,9 +122,5 @@
     @media screen and (min-width: $large-vp) {
       width: 20%;
     }
-  }
-
-  .blur-up {
-    mix-blend-mode: multiply;
   }
 }
