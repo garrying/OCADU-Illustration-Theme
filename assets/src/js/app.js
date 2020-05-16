@@ -1,16 +1,10 @@
-/* eslint
-no-underscore-dangle: ["off"]
-*/
-
 import '../styles/main.scss'
 
-const $ = require('jquery')
-
-window.jQuery = window.$ = $
+window.jQuery = window.$ = require('jquery')
 require('./libs/jquery.autocomplete.min')
 require('velocity-animate')
-require('lazysizes')
-const Flickity = require('flickity')
+const blobs2 = require('./libs/blobs')
+const lazySizes = require('lazysizes')
 const Bricklayer = require('bricklayer')
 const SwipeListener = require('swipe-listener');
 
@@ -24,8 +18,8 @@ const SwipeListener = require('swipe-listener');
       app._ocadGalleryNav()
       app._ocadUIbinding()
       app._ocadGridFocus()
-      app._ocadFlickity()
       app._ocadSingleScroll()
+      app._blob()
     },
 
     settings: {
@@ -61,7 +55,7 @@ const SwipeListener = require('swipe-listener');
       }
 
       window.addEventListener('scroll', function (e) {
-        let st = window.pageYOffset || document.documentElement.scrollTop
+        const st = window.pageYOffset || document.documentElement.scrollTop
         if (!ticking) {
           window.requestAnimationFrame(() => {
             doSomething(st, knownPosition)
@@ -70,7 +64,7 @@ const SwipeListener = require('swipe-listener');
           })
           ticking = true
         }
-      })
+      }, { passive: true })
     },
 
     _ocadGridFocus: () => {
@@ -104,36 +98,6 @@ const SwipeListener = require('swipe-listener');
     },
 
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
-
-    _ocadFlickity: () => {
-      const initIndex = $('.year-item').index($('.active'))
-
-      const flkty = new Flickity('.year-select-wrapper', {
-        initialIndex: initIndex,
-        wrapAround: true,
-        setGallerySize: false,
-        prevNextButtons: false,
-        pageDots: false,
-        on: {
-          ready: () => {
-            $('.year-list-item.is-selected img').velocity('stop').velocity('fadeIn', 'fast')
-          }
-        }
-      })
-
-      flkty.on('change', (index) => {
-        const element = flkty.slides[index].cells[0].element
-        $('.year-item-image').velocity('stop').velocity('fadeOut', 'fast')
-        if ($(element).find('img').hasClass('lazyload')) {
-          lazySizes.loader.unveil($(element).find('img')[0])
-          $(element).find('img').on('lazybeforeunveil', () => {
-            $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
-          })
-        } else {
-          $(element).find('img').velocity('stop').velocity('fadeIn', 'fast')
-        }
-      })
-    },
 
     _ocadSearch: () => {
       app.settings.searchField.autocomplete({
@@ -354,7 +318,7 @@ const SwipeListener = require('swipe-listener');
       */
 
       const imageModalSetter = (imageSource) => {
-        const image = new Image()
+        const image = new window.Image()
         image.alt = 'Full sized illustration'
         image.id = 'full-image'
         image.className = 'image-modal-container-full-image lazyload'
@@ -548,6 +512,22 @@ const SwipeListener = require('swipe-listener');
           }
         }
       })
+    },
+
+    _blob: () => {
+      const svgString = blobs2.svg({
+        seed: Math.random(),
+        extraPoints: 8,
+        randomness: 4,
+        size: 400
+      }, {
+        fill: 'rgb(250,128,114)',
+        strokeWidth: 1
+      })
+      if (document.querySelector('#error-blob-container')) {
+        document.querySelector('#error-blob-container').innerHTML = svgString
+      }
+      $('link[rel="icon"]').attr('href', `data:image/svg+xml,${svgString}`)
     }
   }
 

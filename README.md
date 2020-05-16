@@ -1,19 +1,19 @@
-# OCAD U Illustration Wordpress Theme
+# OCAD U Illustration WordPress theme
 [![Build Status](https://travis-ci.org/garrying/OCADU-Illustration-Theme.svg)](https://travis-ci.org/garrying/OCADU-Illustration-Theme) ![Uptime](https://github.com/garrying/OCADU-Illustration-Theme/workflows/Uptime/badge.svg)
 
 ### A theme for OCAD U's Illustration Department by [Garry Ing](https://garrying.com/ "Link to garrying.com")
 
-Currently working on *Wordpress 4.9.5*
+Currently working on *WordPress 5.4.1*
 
-## Getting Started
+## Getting started
 
 - `npm install`
 - `npm run watch`
 
 ## Requirements
 
-* [Next/Previous Post Link Plus for WordPress](http://www.ambrosite.com/plugins)
-* [OCAD U Wordpress Plugin](http://github.com/garrying/OCADU-Illustration-Plugin)
+* [Next/Previous Post Link Plus for WordPress](https://www.ambrosite.com/plugins)
+* [OCAD U WordPress Plugin](https://github.com/garrying/OCADU-Illustration-Plugin)
 
 ## Site URLs
 

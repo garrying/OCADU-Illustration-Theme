@@ -9,7 +9,8 @@
   justify-content: center;
   color: $color-accent;
 
-  @include rsp-font(1.5vw, 14px);
+  @include rsp-font(1.2vw, 14px);
+
   line-height: 1.3em;
 
   @media screen and (max-width: $small-vp) {
@@ -19,30 +20,32 @@
   .entry-title {
     margin-bottom: 0.75em;
     font-family: $sans-serif-light;
-    @include rsp-font(10vw, 48px);
+
+    @include rsp-font(5vw, 48px);
   }
 
   .entry-body {
     margin: 0;
   }
 
-  .error-line-svg {
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .error-line {
-    fill: $color-accent;
+  .entry-header {
+    position: relative;
+    z-index: 1;
   }
 }
 
-.error-line-container {
+#error-blob-container {
   position: absolute;
-  top: 2em;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  svg path {
+    stroke: $color-accent;
+    fill: transparent;
+  }
 }

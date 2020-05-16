@@ -1,5 +1,4 @@
 .home {
-
   .header-items-wrapper {
     width: calc(35vw - 40px);
 
@@ -23,6 +22,10 @@
     margin: 50px 0 0;
   }
 
+  .illustrator-meta-label {
+    margin-bottom: 0;
+  }
+
   .illustrator-meta-container {
     position: fixed;
     top: 0;
@@ -31,7 +34,9 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: $color-accent;
+    background: rgba($color-accent, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: $white;
     padding: 1em 2em;
 
@@ -39,8 +44,9 @@
       font-family: $sans-serif-light;
       line-height: 1.3em;
       padding: 0;
+
       @include heading-features;
-      @include rsp-font(2vw, 18px);
+      @include rsp-font(1.5vw, 18px);
     }
 
     .illustrator-name {
@@ -56,10 +62,6 @@
         display: none;
       }
     }
-  }
-
-  .illustrator-meta-label {
-    margin-bottom: 0;
   }
 
   .gallery-item {
@@ -88,8 +90,10 @@
     }
 
     &:nth-last-child(-n+2) .illustrator-meta-container {
-      background: $white;
       color: $color-accent;
+      background: rgba($white, 0.8);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     &:last-child .illustrator-meta-container {
@@ -98,7 +102,9 @@
   }
 
   &.bubble-default .bricklayer-column .illustrator-meta-container {
-    background: $color-accent;
+    background: rgba($color-accent, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     color: $white;
   }
 

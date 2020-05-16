@@ -16,6 +16,7 @@ body {
   line-height: 1.5em;
   color: $site-font-color;
   background: $site-background;
+
   @include font-smoothing(on);
 }
 
@@ -34,7 +35,8 @@ a {
   color: $color-accent;
   transition: color 180ms ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: darken($color-accent, 20%);
   }
 
@@ -47,6 +49,7 @@ a {
 
 .screen-reader-shortcut {
   @include font-smoothing(on);
+
   position: absolute;
   top: 0;
   left: 30px;
@@ -58,6 +61,7 @@ a {
   background: $off-black;
 
   &:focus {
+    color: $white;
     z-index: $z-important;
     width: auto;
     height: auto;

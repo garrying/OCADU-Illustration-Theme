@@ -2,10 +2,13 @@
 <html <?php language_attributes(); ?>>
 
 <!--
- __  __     __          __   __      __  
-/  \/   /\ |  \  /  \    _) /  \ /| (__\ 
-\__/\__/--\|__/  \__/   /__ \__/  |  __/ 
-                                         
+ _______  _______  _______  ______     __   __    _______  _______  _______  _______ 
+|       ||       ||   _   ||      |   |  | |  |  |       ||  _    ||       ||  _    |
+|   _   ||       ||  |_|  ||  _    |  |  | |  |  |____   || | |   ||____   || | |   |
+|  | |  ||       ||       || | |   |  |  |_|  |   ____|  || | |   | ____|  || | |   |
+|  |_|  ||      _||       || |_|   |  |       |  | ______|| |_|   || ______|| |_|   |
+|       ||     |_ |   _   ||       |  |       |  | |_____ |       || |_____ |       |
+|_______||_______||__| |__||______|   |_______|  |_______||_______||_______||_______|
 -->
 
 <head>
@@ -29,7 +32,7 @@
           </div>
           <div class="header-items-wrapper">
             <div class="header-item-link">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item pill" title="Navigate years">2009–2019</button>
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item pill" title="Navigate years">2009–2020</button>
             </div>
             <div class="header-item-link">
               <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item pill" title="Search archives">Search</button>
@@ -39,7 +42,7 @@
 
         <?php
           $ocaduillustration_grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC' );
-          if ( is_singular( 'illustrator' ) ) {
+          if ( is_singular( 'illustrator' ) && has_term( '', 'gradyear' ) ) {
             // Selected menu state for individual items.
             $ocaduillustration_terms = get_the_terms( $post->ID, 'gradyear' );
             foreach ( $ocaduillustration_terms as $class_year ) {
@@ -84,13 +87,11 @@
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'>" . esc_html( $class_year->name ) . "</a><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></li>";
+                echo "<li class='year-list-item'><a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a></li>";
                 wp_reset_postdata();
               }
               ?>
             </ul>
-            <div class="preview-image-container">
-            </div>
           </div>
           <button class="close-panel" title="Close panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->

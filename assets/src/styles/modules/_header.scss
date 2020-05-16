@@ -2,7 +2,9 @@
   display: block;
   line-height: 1em;
   white-space: nowrap;
+
   @include heading-features;
+
   pointer-events: auto;
   transition: background 400ms ease-in-out, color 400ms ease-in-out;
 
@@ -61,6 +63,7 @@
 
 .header-item-link {
   margin-right: 1em;
+
   @media screen and (max-width: $small-vp) {
     &:last-child {
       padding-right: 0;
@@ -74,9 +77,14 @@
   color: $white;
   white-space: nowrap;
   pointer-events: auto;
+
   @include heading-features;
+
+  border: 1px solid $color-accent;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: $color-accent;
+  background: rgba($color-accent, 0.9);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 
   &:hover,
   &:focus {
@@ -85,6 +93,7 @@
 
   &.invert {
     color: $white;
+    background: darken($color-accent, 10%);
   }
 
   &.inactive {

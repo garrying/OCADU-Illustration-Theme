@@ -5,6 +5,10 @@
   flex-wrap: wrap;
 }
 
+.bricklayer-column {
+  flex: 1;
+}
+
 .illustrators-grid {
   margin: 0 30px;
 
@@ -19,38 +23,6 @@
   .bricklayer-column {
     @media screen and (max-width: $small-vp) {
       flex-basis: 50%;
-    }
-  }
-}
-
-.gallery-grid {
-  .bricklayer-column-sizer {
-    width: 50%;
-
-    @media screen and (max-width: $ipad-vp) {
-      width: 100%;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      width: 50%;
-    }
-
-    @media screen and (min-width: $large-vp) {
-      width: 33.3333333333%;
-    }
-  }
-
-  @media screen and (max-width: $ipad-vp) {
-    margin: 90px 0 0;
-  }
-
-  @media screen and (max-width: $small-vp) {
-    margin: 0;
-
-    .bricklayer-column:last-child {
-      .gallery-item {
-        margin-right: 0;
-      }
     }
   }
 }
@@ -72,6 +44,34 @@
   }
 }
 
-.bricklayer-column {
-  flex: 1;
+.gallery-grid {
+  .bricklayer-column-sizer {
+    width: 50%;
+
+    @media screen and (max-width: $ipad-vp) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $small-vp) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $large-vp) {
+      width: 33.3333333333%;
+    }
+  }
+
+  @media screen and (max-width: $ipad-vp) {
+    margin: 90px 0 0;
+  }
+
+  @media screen and (max-width: $small-vp) {
+    margin: 0;
+
+    .bricklayer-column:last-child {
+      .gallery-item {
+        margin-right: 0;
+      }
+    }
+  }
 }

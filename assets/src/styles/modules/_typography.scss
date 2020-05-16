@@ -21,7 +21,9 @@
   @if $value == on {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-  } @else {
+  }
+
+  @else {
     -moz-osx-font-smoothing: auto;
     -webkit-font-smoothing: subpixel-antialiased;
   }
@@ -31,13 +33,15 @@
 
 p {
   @include font-features-body;
+
   margin-bottom: 1em;
   font-weight: normal;
 }
 
-abbr, sup {
+abbr,
+sup {
   text-transform: uppercase;
-  font-size: .5em;
+  font-size: 0.5em;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   letter-spacing: 1px;
 }
@@ -57,11 +61,13 @@ h4,
 h5,
 h6 {
   @include heading-features;
+
   margin-bottom: 1em;
 }
 
 .heading {
   @include heading-features;
+
   margin-bottom: 1em;
 }
 
