@@ -94,11 +94,7 @@
   }
 
   a {
-    border-bottom: 2px solid rgba($white, 0.2);
-
-    &:hover {
-      border-color: rgba($white, 0.75);
-    }
+    text-decoration: underline;
   }
 
   .entry-title-secondary {
