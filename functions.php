@@ -364,13 +364,15 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   $attr['data-sizes'] = 'auto';
   if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
+    unset( $attr['src'] );
     unset( $attr['srcset'] );
     unset( $attr['sizes'] );
     if ( is_home() || is_archive() || is_search() ) {
-      $attr['src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
+      $attr['src'] = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '. wp_get_attachment_image_src( $attachment->ID, 'large' )[1] .' '. wp_get_attachment_image_src( $attachment->ID, 'large' )[2] .'"%3E%3C/svg%3E';
+      $attr['data-src'] = get_the_post_thumbnail_url( $post, 'illustrator-extra-small' );
     } else {
       $attachment_small = wp_get_attachment_image_src( $attachment->ID, 'illustrator-extra-small' );
-      $attr['src']      = $attachment_small[0];
+      $attr['data-src']      = $attachment_small[0];
     }
   }
   $attr['alt']     = 'Illustration by ' . get_the_title() . '';
