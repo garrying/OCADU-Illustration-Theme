@@ -189,12 +189,11 @@ const SwipeListener = require('swipe-listener');
           let x = ele.clientX
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active')
 
-          $(ele.currentTarget).mousemove((e) => {
-            y = e.clientY + 5
-            x = e.clientX + 5
-          })
-
           window.requestAnimationFrame(function animation () {
+            $(ele.currentTarget).mousemove((e) => {
+              y = e.clientY + 5
+              x = e.clientX + 5
+            })
             $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` })
             window.requestAnimationFrame(animation)
           })
