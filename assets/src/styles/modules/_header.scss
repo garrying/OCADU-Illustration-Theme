@@ -110,3 +110,12 @@
     padding: 1em;
   }
 }
+
+#search-link::after {
+  content: 'Search';
+  display: block;
+
+  @media screen and (max-width: $small-vp) {
+    content: '🔍';
+  }
+}
