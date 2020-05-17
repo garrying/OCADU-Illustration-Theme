@@ -1,7 +1,7 @@
 # OCAD U Illustration WordPress theme
 [![Build Status](https://travis-ci.com/garrying/OCADU-Illustration-Theme.svg?branch=master)](https://travis-ci.com/garrying/OCADU-Illustration-Theme) ![Uptime](https://github.com/garrying/OCADU-Illustration-Theme/workflows/Uptime/badge.svg)
 
-### A theme for OCAD U's Illustration Department by [Garry Ing](https://garrying.com/ "Link to garrying.com")
+### A theme for OCAD U's Illustration Program by [Garry Ing](https://garrying.com/ "Link to garrying.com")
 
 Currently working on *WordPress 5.4.1*
 

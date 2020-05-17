@@ -1,7 +1,7 @@
 {
   "name": "garrying/ocaduillustration",
   "type": "package",
-  "description": "A Wordpress thing for OCAD U Illustration Department.",
+  "description": "A Wordpress thing for OCAD U Illustration Program.",
   "homepage": "https://github.com/garrying/OCADU-Illustration-Theme",
   "license": "MIT",
   "require": {
