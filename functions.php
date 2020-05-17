@@ -263,7 +263,6 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
  */
 function ocaduillustration_social_meta() {
   echo "\n" . '<!-- social meta -->' . "\n";
-  echo '<meta property="fb:app_id" content="148674908582475">' . "\n";
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
