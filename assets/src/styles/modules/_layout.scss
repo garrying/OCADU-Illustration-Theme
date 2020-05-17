@@ -176,6 +176,7 @@
   bottom: 0;
   left: 0;
   border-top: 1px solid lighten($color-accent, 25%);
+  padding: 0 30px 20px;
 
   @media screen and (max-width: $small-vp) {
     position: relative;
@@ -198,7 +199,6 @@
   padding: 0 20px;
   background: rgba($color-accent, 0.2);
   border-radius: 9999px;
-  margin: 0 30px 20px;
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
