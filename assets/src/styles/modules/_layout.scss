@@ -199,6 +199,7 @@
   background: rgba($color-accent, 0.2);
   border-radius: 9999px;
   margin: 0 30px 20px;
+  justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
     padding: 0 20px;
@@ -208,7 +209,6 @@
     width: 100%;
     margin: 0;
     border-radius: 0;
-    justify-content: flex-end;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
   }
@@ -230,7 +230,7 @@
 
   .nav-previous,
   .nav-next {
-    flex-basis: 50%;
+    max-width: 50%;
   }
 
   .nav-next a {
