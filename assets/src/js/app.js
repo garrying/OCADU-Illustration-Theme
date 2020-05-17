@@ -177,8 +177,10 @@ const SwipeListener = require('swipe-listener');
         app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid')
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
-        app._ocadMasonry(app.settings.masonryContainerHome)
-        $(app.settings.masonryContainerHome).addClass('ready')
+        window.onload = () => {
+          app._ocadMasonry(app.settings.masonryContainerHome)
+          $(app.settings.masonryContainerHome).addClass('ready')
+        }
       }
     },
 
