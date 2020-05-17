@@ -1,5 +1,5 @@
 # OCAD U Illustration WordPress theme
-[![Build Status](https://travis-ci.org/garrying/OCADU-Illustration-Theme.svg)](https://travis-ci.org/garrying/OCADU-Illustration-Theme) ![Uptime](https://github.com/garrying/OCADU-Illustration-Theme/workflows/Uptime/badge.svg)
+[![Build Status](https://travis-ci.com/garrying/OCADU-Illustration-Theme.svg?branch=master)](https://travis-ci.com/garrying/OCADU-Illustration-Theme) ![Uptime](https://github.com/garrying/OCADU-Illustration-Theme/workflows/Uptime/badge.svg)
 
 ### A theme for OCAD U's Illustration Department by [Garry Ing](https://garrying.com/ "Link to garrying.com")
 
