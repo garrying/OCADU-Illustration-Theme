@@ -385,7 +385,9 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   return $attr;
 }
 
-add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_filter', 10, 2 );
+if ( ! is_admin() ) {
+  add_filter( 'wp_get_attachment_image_attributes', 'ocaduillustration_gallery_filter', 10, 2 );
+}
 
 /**
  * Adding data attributes to clean stuff up
