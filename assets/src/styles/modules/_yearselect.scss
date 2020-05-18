@@ -15,6 +15,10 @@
   justify-content: center;
   padding-top: 100px;
   padding-left: 40px;
+
+  @media screen and (max-width: $small-vp) {
+    padding-left: 0;
+  }
 }
 
 .year-list-item {
@@ -53,6 +57,7 @@
 
   @media screen and (max-width: $small-vp) {
     padding-bottom: 0.25em;
+    margin: 0 0 40px;
   }
 
   &::before {

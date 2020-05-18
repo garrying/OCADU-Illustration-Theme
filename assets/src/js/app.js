@@ -45,12 +45,16 @@ const SwipeListener = require('swipe-listener');
       let ticking = false
 
       function doSomething (scrollPos, knownPosition) {
-        if (scrollPos > knownPosition && scrollPos > 20) {
-          app.settings.singleWrapper.addClass('fade-out')
+        if (scrollPos > knownPosition) {
           app.settings.headerInner.addClass('fade-out')
         } else {
-          app.settings.singleWrapper.removeClass('fade-out')
           app.settings.headerInner.removeClass('fade-out')
+        }
+
+        if (scrollPos > 20) {
+          app.settings.singleWrapper.addClass('fade-out')
+        } else {
+          app.settings.singleWrapper.removeClass('fade-out')
         }
       }
 
