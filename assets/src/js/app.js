@@ -184,6 +184,7 @@ const SwipeListener = require('swipe-listener');
         window.onload = () => {
           app._ocadMasonry(app.settings.masonryContainerHome)
           $(app.settings.masonryContainerHome).addClass('ready')
+          lazySizes.autoSizer.checkElems()
         }
       }
     },
