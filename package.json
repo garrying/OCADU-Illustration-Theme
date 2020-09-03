@@ -45,7 +45,7 @@
   "dependencies": {
     "bricklayer": "^0.4.3",
     "jquery": "^3.5.1",
-    "lazysizes": "^5.2.0",
+    "lazysizes": "^5.2.1",
     "swipe-listener": "^1.1.0",
     "velocity-animate": "^1.5.2"
   }
