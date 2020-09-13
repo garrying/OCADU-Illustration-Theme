@@ -396,6 +396,7 @@ const SwipeListener = require('swipe-listener');
         ).then(() => {
           $('#full-image').velocity('stop')
           const image = document.getElementById('full-image')
+          image.removeAttribute('srcset')
           image.dataset.src = imageItem.url
           image.dataset.srcset = imageItem.srcset
           image.dataset.sizes = imageItem.sizes
