@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy theme
+        uses: Burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzrO --delete --no-p
+          path: .
+          remote_path: /var/www/html/wp-content/themes/ocaduillustration/
+          remote_host: ocaduillustration.com
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
