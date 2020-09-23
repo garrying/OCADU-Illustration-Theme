@@ -13,8 +13,7 @@ jobs:
       - name: Deploy theme
         uses: Burnett01/rsync-deployments@4.1
         with:
-          switches: -avzrO --delete --no-p
-          path: .
+          switches: -avzr --delete
           remote_path: /var/www/html/wp-content/themes/ocaduillustration/
           remote_host: ocaduillustration.com
           remote_user: ${{ secrets.DEPLOY_USER }}
