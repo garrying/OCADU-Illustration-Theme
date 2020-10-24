@@ -8,7 +8,7 @@
     "php": ">=7.0"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
     "jakub-onderka/php-parallel-lint": "^1.0",
     "wptrt/wpthemereview": "^0.2.1"
   },
