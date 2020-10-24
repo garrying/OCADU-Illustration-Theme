@@ -6,8 +6,8 @@
   "author": "Garry Ing <garry.ing@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "webpack --env.NODE_ENV=development --progress --colors --watch",
-    "build": "webpack -p --env.NODE_ENV=production --progress --colors",
+    "watch": "webpack --mode=development --progress --color --watch",
+    "build": "webpack --mode=production --progress --color",
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "standard 'assets/src/js/**/*.js' --verbose | snazzy"
   },
@@ -25,28 +25,29 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "babel-loader": "^8.1.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.5.3",
-    "mini-css-extract-plugin": "^0.9.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "css-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^1.2.0",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^10.0.4",
     "snazzy": "^8.0.0",
-    "standard": "^14.3.4",
-    "stylelint": "^13.3.3",
+    "standard": "^15.0.0",
+    "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-scss": "^3.17.2",
-    "svg-url-loader": "^5.0.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "stylelint-scss": "^3.18.0",
+    "svg-url-loader": "^6.0.0",
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0"
   },
   "dependencies": {
     "bricklayer": "^0.4.3",
     "jquery": "^3.5.1",
     "lazysizes": "^5.2.2",
-    "swipe-listener": "^1.1.0",
+    "swipe-listener": "^1.3.0",
     "velocity-animate": "^1.5.2"
   }
 }
