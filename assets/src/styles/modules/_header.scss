@@ -6,7 +6,7 @@
   @include heading-features;
 
   pointer-events: auto;
-  transition: background 400ms ease-in-out, color 400ms ease-in-out;
+  transition: color 200ms ease-in-out;
 
   &:hover,
   &:focus {
