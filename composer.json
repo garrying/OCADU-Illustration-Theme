@@ -9,7 +9,7 @@
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-    "jakub-onderka/php-parallel-lint": "^1.0",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
     "wptrt/wpthemereview": "^0.2.1"
   },
   "scripts": {
