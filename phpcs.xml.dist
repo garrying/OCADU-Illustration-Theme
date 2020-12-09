@@ -6,10 +6,10 @@
 
   <file>.</file>
 
-  <exclude-pattern>/vendor/*</exclude-pattern>
-  <exclude-pattern>/node_modules/*</exclude-pattern>
+  <exclude-pattern>vendor</exclude-pattern>
+  <exclude-pattern>node_modules</exclude-pattern>
 
-  <arg value="sp"/>
+  <arg value="spv"/>
   <arg name="basepath" value="."/>
   <arg name="parallel" value="8"/>
   <arg name="cache"/>
