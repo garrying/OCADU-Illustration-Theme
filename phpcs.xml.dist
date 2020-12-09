@@ -28,7 +28,20 @@
     <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
     <exclude name="WordPress.Arrays.ArrayIndentation"/>
   </rule>
-  <rule ref="WordPress-Docs"/>
   <rule ref="WPThemeReview"/>
 
+  <rule ref="WordPress.Files.FileName">
+    <properties>
+      <property name="is_theme" value="true" />
+    </properties>
+  </rule>
+
+  <rule ref="WordPress.WP.DeprecatedFunctions">
+    <properties>
+      <property name="minimum_supported_version" value="5.3" />
+    </properties>
+  </rule>
+
+  <config name="testVersion" value="5.6-"/>
+  <rule ref="PHPCompatibility"/>
 </ruleset>
