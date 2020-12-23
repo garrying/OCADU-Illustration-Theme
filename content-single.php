@@ -70,9 +70,6 @@
         ?>
         <ul class="illustrator-nav-single">
           <?php
-            // phpcs:disable
-          ?>
-          <?php
             $ocaduillustration_args  = array(
               'post_status' => 'publish',
               'post_type'   => 'illustrator',
@@ -110,9 +107,6 @@
               }
             ?>
           </li>
-          <?php
-            // phpcs:enable
-          ?>
         </ul><!-- .llustrator-nav-single -->
       </div>
 
