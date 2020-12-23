@@ -83,27 +83,30 @@
               'orderby'     => 'title',
               'order'       => 'ASC',
             );
-            $ocaduillustration_query = new WP_Query( $ocaduillustration_args );
+
+            $ocaduillustration_query     = new WP_Query( $ocaduillustration_args );
             $ocaduillustration_postsList = $ocaduillustration_query->get_posts();
-            $ocaduillustration_posts = array();
+            $ocaduillustration_posts     = array();
+
             foreach ($ocaduillustration_postsList as $ocaduillustration_post) {
               $ocaduillustration_posts[] += $ocaduillustration_post->ID;
             }
+
             $current = array_search( get_the_ID(), $ocaduillustration_posts );
-            $prevID = $ocaduillustration_posts[$current - 1] ?? null;
-            $nextID = $ocaduillustration_posts[$current + 1] ?? null;
+            $prev_id = $ocaduillustration_posts[$current - 1] ?? null;
+            $next_id = $ocaduillustration_posts[$current + 1] ?? null;
           ?>
           <li class="nav-previous">
             <?php
-              if (!empty($prevID)) {
-                echo '<a href="' . get_permalink($prevID) . '" rel="prev" title="' . get_the_title($prevID) . '"><span class="name previous-link truncate">⤺ ' . get_the_title($prevID) . '</span></a>';
+              if ( ! empty($prev_id) ) {
+                echo '<a href="' . get_permalink( $prev_id ) . '" rel="prev" title="' . get_the_title( $prev_id ) . '"><span class="name previous-link truncate">⤺ ' . get_the_title( $prev_id ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
-              if (!empty($nextID)) {
-                echo '<a href="' . get_permalink($nextID). '" rel="next" title="' . get_the_title($nextID) . '"><span class="name next-link truncate">' . get_the_title($nextID) . ' ⤻</span></a>';
+              if ( ! empty($next_id) ) {
+                echo '<a href="' . get_permalink( $next_id ). '" rel="next" title="' . get_the_title( $next_id ) . '"><span class="name next-link truncate">' . get_the_title( $next_id ) . ' ⤻</span></a>';
               }
             ?>
           </li>
