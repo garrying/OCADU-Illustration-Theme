@@ -70,7 +70,7 @@
         ?>
         <ul class="illustrator-nav-single">
           <?php
-            $ocaduillustration_args  = array(
+            $ocaduillustration_args = array(
               'post_status' => 'publish',
               'post_type'   => 'illustrator',
               'tax_query'   => array(
@@ -84,29 +84,29 @@
               'order'       => 'ASC',
             );
 
-            $ocaduillustration_query     = new WP_Query( $ocaduillustration_args );
-            $ocaduillustration_postsList = $ocaduillustration_query->get_posts();
-            $ocaduillustration_posts     = array();
+            $ocaduillustration_query      = new WP_Query( $ocaduillustration_args );
+            $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
+            $ocaduillustration_posts      = array();
 
-            foreach ($ocaduillustration_postsList as $ocaduillustration_post) {
+            foreach ($ocaduillustration_posts_list as $ocaduillustration_post) {
               $ocaduillustration_posts[] += $ocaduillustration_post->ID;
             }
 
             $current = array_search( get_the_ID(), $ocaduillustration_posts );
-            $prev_id = $ocaduillustration_posts[$current - 1] ?? null;
-            $next_id = $ocaduillustration_posts[$current + 1] ?? null;
+            $prev_id = $ocaduillustration_posts[ $current - 1 ] ?? null;
+            $next_id = $ocaduillustration_posts[ $current + 1 ] ?? null;
           ?>
           <li class="nav-previous">
             <?php
-              if ( ! empty($prev_id) ) {
-                echo '<a href="' . get_permalink( $prev_id ) . '" rel="prev" title="' . get_the_title( $prev_id ) . '"><span class="name previous-link truncate">⤺ ' . get_the_title( $prev_id ) . '</span></a>';
+              if ( ! empty( $prev_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
-              if ( ! empty($next_id) ) {
-                echo '<a href="' . get_permalink( $next_id ). '" rel="next" title="' . get_the_title( $next_id ) . '"><span class="name next-link truncate">' . get_the_title( $next_id ) . ' ⤻</span></a>';
+              if ( ! empty( $next_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $next_id ) ) . '" rel="next" title="' . get_the_title( $next_id ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $next_id ) ) . ' ⤻</span></a>';
               }
             ?>
           </li>
