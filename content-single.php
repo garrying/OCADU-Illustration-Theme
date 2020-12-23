@@ -88,11 +88,11 @@
             $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
             $ocaduillustration_posts      = array();
 
-            foreach ($ocaduillustration_posts_list as $ocaduillustration_post) {
+            foreach ( $ocaduillustration_posts_list as $ocaduillustration_post ) {
               $ocaduillustration_posts[] += $ocaduillustration_post->ID;
             }
 
-            $current = array_search( get_the_ID(), $ocaduillustration_posts );
+            $current = array_search( get_the_ID(), $ocaduillustration_posts, true );
             $prev_id = $ocaduillustration_posts[ $current - 1 ] ?? null;
             $next_id = $ocaduillustration_posts[ $current + 1 ] ?? null;
           ?>
@@ -106,7 +106,7 @@
           <li class="nav-next">
             <?php
               if ( ! empty( $next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $next_id ) ) . '" rel="next" title="' . get_the_title( $next_id ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $next_id ) ) . ' ⤻</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $next_id ) ) . ' ⤻</span></a>';
               }
             ?>
           </li>
