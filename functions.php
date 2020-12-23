@@ -328,26 +328,7 @@ function ocaduillustration_remove_tax_name( $title, $sep, $seplocation ) {
 
 add_filter( 'wp_title', 'ocaduillustration_remove_tax_name', 10, 3 );
 
-/**
- * Prefetch Illustrator Pages
- */
-function ocaduillustration_prefetch() {
-  if ( is_single() && is_attachment() !== true ) {
-    $the_url = next_post_link_plus(
-        array(
-          'order_by'    => 'post_title',
-          'in_same_tax' => true,
-          'return'      => 'href',
-        )
-    );
-    echo '<!-- prefetch and render -->' . "\n";
-    echo '<link rel="prefetch" href="' . esc_url( $the_url ) . '">' . "\n";
-    echo '<link rel="prerender" href="' . esc_url( $the_url ) . '">' . "\n";
-  }
-}
-
 add_action( 'wp_head', 'ocaduillustration_social_meta' );
-add_action( 'wp_head', 'ocaduillustration_prefetch' );
 
 /**
  * Hijack image titles for copyright alt

@@ -3,7 +3,7 @@
 
 ### A theme for OCAD U's Illustration Program by [Garry Ing](https://garrying.com/ "Link to garrying.com")
 
-Currently working on *WordPress 5.4.1*
+Currently working on *WordPress 5.6*
 
 ## Getting started
 
@@ -12,7 +12,6 @@ Currently working on *WordPress 5.4.1*
 
 ## Requirements
 
-* [Next/Previous Post Link Plus for WordPress](https://www.ambrosite.com/plugins)
 * [OCAD U WordPress Plugin](https://github.com/garrying/OCADU-Illustration-Plugin)
 
 ## Site URLs

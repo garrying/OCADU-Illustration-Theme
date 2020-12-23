@@ -72,26 +72,44 @@
           <?php
             // phpcs:disable
           ?>
-          <li class="nav-previous"><?php
-        previous_post_link_plus(
-             array(
-            'order_by'    => 'post_title',
-            'format'      => '%link',
-            'in_same_tax' => true,
-            'link'        => '<span class="name previous-link truncate">⤺ %title</span>',
-          )
+          <?php
+            $ocaduillustration_args  = array(
+              'post_status' => 'publish',
+              'post_type'   => 'illustrator',
+              'tax_query'   => array(
+                array(
+                  'taxonomy' => 'gradyear',
+                  'field'    => 'slug',
+                  'terms'    => $class_year[0],
+                ),
+              ),
+              'orderby'     => 'title',
+              'order'       => 'ASC',
             );
-          ?></li>
-          <li class="nav-next"><?php
-        next_post_link_plus(
-             array(
-            'order_by'    => 'post_title',
-            'format'      => '%link',
-            'in_same_tax' => true,
-            'link'        => '<span class="name next-link truncate">%title ⤻</span>',
-          )
-            );
-          ?></li>
+            $ocaduillustration_query = new WP_Query( $ocaduillustration_args );
+            $ocaduillustration_postsList = $ocaduillustration_query->get_posts();
+            $ocaduillustration_posts = array();
+            foreach ($ocaduillustration_postsList as $ocaduillustration_post) {
+              $ocaduillustration_posts[] += $ocaduillustration_post->ID;
+            }
+            $current = array_search( get_the_ID(), $ocaduillustration_posts );
+            $prevID = $ocaduillustration_posts[$current - 1] ?? null;
+            $nextID = $ocaduillustration_posts[$current + 1] ?? null;
+          ?>
+          <li class="nav-previous">
+            <?php
+              if (!empty($prevID)) {
+                echo '<a href="' . get_permalink($prevID) . '" rel="prev" title="' . get_the_title($prevID) . '"><span class="name previous-link truncate">⤺ ' . get_the_title($prevID) . '</span></a>';
+              }
+            ?>
+          </li>
+          <li class="nav-next">
+            <?php
+              if (!empty($nextID)) {
+                echo '<a href="' . get_permalink($nextID). '" rel="next" title="' . get_the_title($nextID) . '"><span class="name next-link truncate">' . get_the_title($nextID) . ' ⤻</span></a>';
+              }
+            ?>
+          </li>
           <?php
             // phpcs:enable
           ?>
