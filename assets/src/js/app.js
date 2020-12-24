@@ -1,8 +1,8 @@
 import '../styles/main.scss'
 
 window.jQuery = window.$ = require('jquery')
-const AutoComplete = require('@tarekraafat/autocomplete.js')
 require('velocity-animate')
+const AutoComplete = require('@tarekraafat/autocomplete.js')
 const blobs2 = require('./libs/blobs')
 const lazySizes = require('lazysizes')
 const Bricklayer = require('bricklayer')
