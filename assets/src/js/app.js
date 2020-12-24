@@ -516,12 +516,10 @@ const SwipeListener = require('swipe-listener');
         SwipeListener(lightbox)
 
         lightbox.addEventListener('swipe', function (e) {
-          var directions = e.detail.directions
-
-          if (directions.left) {
+          if (e.detail.directions.left) {
             nextElement()
           }
-          if (directions.right) {
+          if (e.detail.directions.right) {
             nextElement('reverse')
           }
         })
