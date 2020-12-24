@@ -70,31 +70,46 @@
         ?>
         <ul class="illustrator-nav-single">
           <?php
-            // phpcs:disable
-          ?>
-          <li class="nav-previous"><?php
-        previous_post_link_plus(
-             array(
-            'order_by'    => 'post_title',
-            'format'      => '%link',
-            'in_same_tax' => true,
-            'link'        => '<span class="name previous-link truncate">⤺ %title</span>',
-          )
+            $ocaduillustration_args = array(
+              'post_status' => 'publish',
+              'post_type'   => 'illustrator',
+              'tax_query'   => array(
+                array(
+                  'taxonomy' => 'gradyear',
+                  'field'    => 'slug',
+                  'terms'    => $class_year[0],
+                ),
+              ),
+              'orderby'     => 'title',
+              'order'       => 'ASC',
             );
-          ?></li>
-          <li class="nav-next"><?php
-        next_post_link_plus(
-             array(
-            'order_by'    => 'post_title',
-            'format'      => '%link',
-            'in_same_tax' => true,
-            'link'        => '<span class="name next-link truncate">%title ⤻</span>',
-          )
-            );
-          ?></li>
-          <?php
-            // phpcs:enable
+
+            $ocaduillustration_query      = new WP_Query( $ocaduillustration_args );
+            $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
+            $ocaduillustration_posts      = array();
+
+            foreach ( $ocaduillustration_posts_list as $ocaduillustration_post ) {
+              $ocaduillustration_posts[] += $ocaduillustration_post->ID;
+            }
+
+            $current = array_search( get_the_ID(), $ocaduillustration_posts, true );
+            $prev_id = $ocaduillustration_posts[ $current - 1 ] ?? null;
+            $next_id = $ocaduillustration_posts[ $current + 1 ] ?? null;
           ?>
+          <li class="nav-previous">
+            <?php
+              if ( ! empty( $prev_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $prev_id ) ) . '</span></a>';
+              }
+            ?>
+          </li>
+          <li class="nav-next">
+            <?php
+              if ( ! empty( $next_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $next_id ) ) . ' ⤻</span></a>';
+              }
+            ?>
+          </li>
         </ul><!-- .llustrator-nav-single -->
       </div>
 
