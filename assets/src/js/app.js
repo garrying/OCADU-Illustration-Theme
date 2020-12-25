@@ -1,6 +1,6 @@
 import '../styles/main.scss'
 
-window.jQuery = window.$ = require('jquery')
+window.jQuery = window.$ = require('jquery/dist/jquery.slim.min')
 require('velocity-animate')
 const AutoComplete = require('@tarekraafat/autocomplete.js')
 const blobs2 = require('./libs/blobs')
