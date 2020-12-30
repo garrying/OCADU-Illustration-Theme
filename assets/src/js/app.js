@@ -1,8 +1,8 @@
 import '../styles/main.scss'
 
-window.jQuery = window.$ = require('jquery')
-require('./libs/jquery.autocomplete.min')
+window.jQuery = window.$ = require('jquery/dist/jquery.slim.min')
 require('velocity-animate')
+const AutoComplete = require('@tarekraafat/autocomplete.js')
 const blobs2 = require('./libs/blobs')
 const lazySizes = require('lazysizes')
 const Bricklayer = require('bricklayer')
@@ -19,6 +19,7 @@ const SwipeListener = require('swipe-listener');
       app._ocadUIbinding()
       app._ocadGridFocus()
       app._ocadSingleScroll()
+      app._ocadSearch()
       app._blob()
     },
 
@@ -104,27 +105,49 @@ const SwipeListener = require('swipe-listener');
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
     _ocadSearch: () => {
-      app.settings.searchField.autocomplete({
-        serviceUrl: '/wp-json/wp/v2/illustrator',
-        paramName: 'search',
-        params: { per_page: 7, orderby: 'title', order: 'asc' },
-        lookupLimit: 7,
-        appendTo: '.search-wrapper',
-        showNoSuggestionNotice: true,
-        onSearchStart: () => {
-          app.settings.searchLoader.velocity('stop').velocity('fadeIn', 'fast')
+      const autoCompleteJS = new AutoComplete({
+        data: {
+          src: async () => {
+            const query = document.querySelector('#autocomplete').value
+            const source = await window.fetch(`/wp-json/wp/v2/illustrator?&search=${query}`)
+            const data = await source.json()
+            return data.map((item) => ({
+              title: item.title.rendered,
+              link: item.link
+            }))
+          },
+          key: ['title'],
+          cache: false
         },
-        onSearchComplete: () => {
-          app.settings.searchLoader.velocity('stop').velocity('fadeOut', 'fast')
+        sort: (a, b) => {
+          if (a.match < b.match) return -1
+          if (a.match > b.match) return 1
+          return 0
         },
-        transformResult: response => ({
-          suggestions: $.map($.parseJSON(response), item => ({
-            value: item.title.rendered,
-            data: item.link
-          }))
-        }),
-        onSelect: (suggestion) => {
-          window.location.href = suggestion.data
+        selector: '#autocomplete',
+        observer: true,
+        threshold: 2,
+        debounce: 300,
+        searchEngine: 'strict',
+        resultsList: {
+          destination: '#autocomplete',
+          position: 'afterend',
+          element: 'ul'
+        },
+        maxResults: 5,
+        highlight: true,
+        resultItem: {
+          element: 'li'
+        },
+        noResults: (dataFeedback, generateList) => {
+          generateList(autoCompleteJS, dataFeedback, dataFeedback.results)
+          const result = document.createElement('li')
+          result.setAttribute('tabindex', '1')
+          result.innerHTML = `<span>Found No Results for ${dataFeedback.query}</span>`
+          document.querySelector(`#${autoCompleteJS.resultsList.idName}`).appendChild(result)
+        },
+        onSelection: feedback => {
+          window.location.href = feedback.selection.value.link
         }
       })
     },
@@ -165,7 +188,6 @@ const SwipeListener = require('swipe-listener');
     },
 
     _ocadPanelSelectButtons: () => {
-      app._ocadSearch()
       $('.header-item').on('click', (ele) => {
         $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
         app._ocadPanelSelect(ele.target)
@@ -494,12 +516,10 @@ const SwipeListener = require('swipe-listener');
         SwipeListener(lightbox)
 
         lightbox.addEventListener('swipe', function (e) {
-          var directions = e.detail.directions
-
-          if (directions.left) {
+          if (e.detail.directions.left) {
             nextElement()
           }
-          if (directions.right) {
+          if (e.detail.directions.right) {
             nextElement('reverse')
           }
         })

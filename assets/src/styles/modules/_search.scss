@@ -58,26 +58,24 @@
   }
 }
 
-.autocomplete-suggestions {
-  position: static !important;
+.autoComplete_list {
+  position: absolute;
   padding-top: 15px;
-  padding-left: 40px;
   font-family: $sans-serif-light;
   line-height: 1em;
+  color: darken($color-accent, 10%);
 
   @include rsp-font(2.5vw, 18px);
 }
 
-.autocomplete-suggestion {
-  padding: 5px 0;
-  color: darken($color-accent, 10%);
+.autoComplete_result {
+  padding: 8px 0;
   cursor: pointer;
   transition: color 200ms ease-in-out;
 
-  &.autocomplete-selected,
   &:hover,
-  strong {
-    font-weight: normal;
+  &.autoComplete_selected,
+  .autoComplete_highlighted {
     color: $white;
   }
 }
@@ -93,21 +91,4 @@
   @media screen and (max-width: $small-vp) {
     margin: 0;
   }
-}
-
-// Search Loader
-
-.search-loader {
-  position: absolute;
-  top: 150%;
-  left: calc(50% - 1em / 2);
-  display: none;
-  width: 1em;
-  height: 1em;
-  border: 1px solid darken($color-accent, 10%);
-  border-radius: 50%;
-  animation-name: shake;
-  animation-duration: 400ms;
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
 }
