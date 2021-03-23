@@ -60,6 +60,11 @@
           <div class="panel-inner">
             <ul class="year-select-wrapper">
               <?php
+
+              function year_item_navigation( $term_obj, $term_active, $term_image, $term_srcset ) {
+                return "<a class='year-item " . esc_html( $term_active ) . "' href='" . esc_url( get_term_link( $term_obj->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $term_obj->name ) . "'><span class='year-text'>" . esc_html( $term_obj->name ) . "</span><img data-srcset='" . esc_html( $term_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $term_image) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
+              }
+
               foreach ( $ocaduillustration_grad_year as $class_year ) {
                 
                 if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $class_year->name ) {
@@ -113,14 +118,15 @@
                     $year_stream_query_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                   }
 
-                  $year_streams .= "<li class='year-list-item'><a class='year-item' href='" . esc_url( get_term_link( $year_stream->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $year_stream->name ) . "'><span class='year-text'>" . esc_html( $year_stream->name ) . "</span><img data-srcset='" . esc_html( $year_stream_query_year_image_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $year_stream_query_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a></li>";
+                  $year_streams .= "<li class='year-list-item'>" . year_item_navigation( $year_stream, $ocaduillustration_selected_year_class, $year_stream_query_year_image, $year_stream_query_year_image_srcset ) . '</li>';
                   wp_reset_postdata();
                 }
 
-                echo "<li class='year-list-item'>
-                  <a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
+                echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset );
                   if ( $year_streams ) {
-                    echo '<ul>' . esc_html( $year_streams ) . '</ul>';
+                    echo '<ul>';
+                    echo $year_streams;
+                    echo '</ul>';
                   }
                 echo '</li>';
                 wp_reset_postdata();
