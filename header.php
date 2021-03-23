@@ -91,8 +91,8 @@
                 $termchildren = get_term_children( $class_year->term_id, $class_year->taxonomy );
                 $year_streams = '';
 
-                foreach ( $termchildren as $class_year_stream) {
-                  $year_stream = get_term($class_year_stream);
+                foreach ( $termchildren as $class_year_stream ) {
+                  $year_stream      = get_term( $class_year_stream );
                   $year_stream_args = array(
                     'posts_per_page' => 1,
                     'orderby'        => 'rand',
@@ -120,9 +120,9 @@
                 echo "<li class='year-list-item'>
                   <a class='year-item " . esc_html( $ocaduillustration_selected_year_class ) . "' href='" . esc_url( get_term_link( $class_year->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $class_year->name ) . "'><span class='year-text'>" . esc_html( $class_year->name ) . "</span><img data-srcset='" . esc_html( $ocaduillustration_year_image_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $ocaduillustration_year_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
                   if ( $year_streams ) {
-                    echo "<ul>" . $year_streams . "</ul>";
+                    echo '<ul>' . esc_html( $year_streams ) . '</ul>';
                   }
-                echo "</li>";
+                echo '</li>';
                 wp_reset_postdata();
               }
               ?>
