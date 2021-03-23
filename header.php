@@ -62,7 +62,7 @@
               <?php
 
               function year_item_navigation( $term_obj, $term_active, $term_image, $term_srcset ) {
-                return "<a class='year-item " . esc_html( $term_active ) . "' href='" . esc_url( get_term_link( $term_obj->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $term_obj->name ) . "'><span class='year-text'>" . esc_html( $term_obj->name ) . "</span><img data-srcset='" . esc_html( $term_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $term_image) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
+                return "<a class='year-item " . esc_html( $term_active ) . "' href='" . esc_url( get_term_link( $term_obj->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $term_obj->name ) . "'><span class='year-text'>" . esc_html( $term_obj->name ) . "</span><img data-srcset='" . esc_html( $term_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $term_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
               }
 
               foreach ( $ocaduillustration_grad_year as $class_year ) {
