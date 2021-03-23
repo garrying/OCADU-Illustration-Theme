@@ -14,9 +14,9 @@
   <div class="title">
     <div class="title-unit title-unit-init active">
       <button class="close-unit close-title" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
-      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2020</h1></div>
+      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2021</h1></div>
       <div class="segment-second">
-        <p class="title-secondary">Spanning 2009–2020, the archive is maintained by the Illustration Program at OCAD University.</p>
+        <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>
         <a href="/about" class="message pill">About the archive</a>
       </div>
     </div>
