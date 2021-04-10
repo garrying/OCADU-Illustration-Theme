@@ -55,7 +55,7 @@
       <div class="illustrator-nav-single-wrapper">
         <?php
         if ( is_singular( 'illustrator' ) ) {
-          $class_year = get_the_terms( $post->ID, 'gradyear' );
+          $class_year                  = get_the_terms( $post->ID, 'gradyear' );
           $ocaduillustration_base_year = $class_year[0];
           foreach ( $class_year as $illustrator_term ) {
             $illustrator_year_section = $illustrator_term->slug;
