@@ -3,11 +3,11 @@
 <?php
 if ( is_archive() ) {
     $ocaduillustration_selected_section = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-    if ($ocaduillustration_selected_section->parent > 0) {
+    if ( $ocaduillustration_selected_section->parent > 0 ) {
       $ocaduillustration_selected_section_parent = get_term( $ocaduillustration_selected_section->parent, get_query_var( 'taxonomy' ) );
     }
     echo '<div class="section-indicator-index"><span class="section-indicator">';
-    if ( isset($ocaduillustration_selected_section_parent) ) {
+    if ( isset( $ocaduillustration_selected_section_parent ) ) {
       echo esc_html( $ocaduillustration_selected_section_parent->name ) . ' ' . esc_html( $ocaduillustration_selected_section->name );
     } else {
       echo esc_html( $ocaduillustration_selected_section->name );
