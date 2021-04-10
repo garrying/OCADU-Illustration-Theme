@@ -56,10 +56,15 @@
         <?php
         if ( is_singular( 'illustrator' ) ) {
           $class_year                   = get_the_terms( $post->ID, 'gradyear' );
-          $ocaduillustration_term_first = $class_year[0];
-          if ( isset( $ocaduillustration_term_first->name ) ) {
-				echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_term_first->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_term_first->name ) . ' index"> ★ ' . esc_html( $ocaduillustration_term_first->name ) . '</a>';
-          };
+          $ocaduillustration_base_year = $class_year[0];
+          foreach ( $class_year as $illustrator_term ) {
+            $illustrator_year_section = $illustrator_term->slug;
+            if ($illustrator_term->parent == 0) {
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $illustrator_term->name ) . ' index"> ☀ ' . esc_html( $illustrator_term->name ) . '</a>';
+            } else {
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $illustrator_year_section ) . '" title="Return to ' . esc_html( $illustrator_term->name ) . ' index"> ☼ ' . esc_html( $illustrator_term->name ) . '</a>';
+            }
+          }
         }
         ?>
         <ul class="illustrator-nav-single">

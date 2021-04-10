@@ -2,7 +2,7 @@
 
   <?php
     if ( is_home() || is_front_page() ) {
-      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
+      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1&parent=0' );
       $ocaduillustration_args       = array(
         'taxonomy'  => 'gradyear',
         'post_type' => 'illustrator',
