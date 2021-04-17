@@ -122,10 +122,10 @@
                   wp_reset_postdata();
                 }
 
-                echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset );
+                echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
                   if ( $year_streams ) {
                     echo '<ul>';
-                    echo $year_streams;
+                    echo $year_streams; // phpcs:ignore
                     echo '</ul>';
                   }
                 echo '</li>';
