@@ -26,10 +26,13 @@
     color: $white;
     background: darken($color-accent, 5%);
     border: 0;
-    -webkit-appearance: none;
 
     &::-webkit-input-placeholder {
       color: $color-accent;
+    }
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
     }
 
     &:focus {
@@ -48,7 +51,6 @@
     font-family: $sans-serif-light;
     color: $color-accent;
     background: $white;
-    -webkit-appearance: none;
 
     @include font-smoothing(on);
 
@@ -71,12 +73,16 @@
 .autoComplete_result {
   padding: 8px 0;
   cursor: pointer;
-  transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out, margin 200ms ease-in-out;
 
   &:hover,
   &.autoComplete_selected,
   .autoComplete_highlighted {
     color: $white;
+  }
+
+  &.autoComplete_selected {
+    margin-left: 1em;
   }
 }
 

@@ -8,7 +8,9 @@ if ( is_archive() ) {
     }
     echo '<div class="section-indicator-index"><span class="section-indicator">';
     if ( isset( $ocaduillustration_selected_section_parent ) ) {
-      echo esc_html( $ocaduillustration_selected_section_parent->name ) . ' ' . esc_html( $ocaduillustration_selected_section->name );
+      echo esc_html( $ocaduillustration_selected_section->name );
+      echo '<br>';
+      echo esc_html( $ocaduillustration_selected_section_parent->name );
     } else {
       echo esc_html( $ocaduillustration_selected_section->name );
     }

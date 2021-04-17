@@ -135,9 +135,12 @@ const SwipeListener = require('swipe-listener');
           element: 'ul'
         },
         maxResults: 5,
-        highlight: true,
         resultItem: {
-          element: 'li'
+          element: 'li',
+          highlight: {
+            render: true,
+            className: 'autoComplete_highlighted'
+          }
         },
         noResults: (dataFeedback, generateList) => {
           generateList(autoCompleteJS, dataFeedback, dataFeedback.results)

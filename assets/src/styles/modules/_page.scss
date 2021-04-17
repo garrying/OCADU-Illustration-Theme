@@ -80,6 +80,8 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  line-height: 1em;
+  text-align: center;
 
   @include rsp-font(10vw, 24px);
 }
