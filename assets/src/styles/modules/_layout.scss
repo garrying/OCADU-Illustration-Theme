@@ -11,7 +11,7 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 2em;
+  margin-top: 6em;
 
   @media screen and (max-width: $medium-vp) {
     flex-basis: 50%;
@@ -30,7 +30,7 @@
 
   .gallery-item {
     display: flex;
-    margin: 0 5% 5% 0;
+    margin: 0 0 5% 5%;
     justify-content: center;
     align-items: center;
 
@@ -64,7 +64,7 @@
   .illustrator-meta-wrapper {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     display: flex;
     width: 30%;
     height: 100%;
@@ -115,34 +115,41 @@
   }
 
   .illustrator-meta-name {
+    font-family: $sans-serif-light;
+    font-size: 1.5em;
     margin-bottom: 0.5em;
   }
 }
 
+#name-blob {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .meta {
-  display: flex;
   margin-top: 4em;
-  font-family: $monospace;
+  font-size: 14px;
 
   @media screen and (max-width: $small-vp) {
     margin: 2em 0 0;
   }
 
   .illustrator-meta-header {
-    flex-basis: 38.2%;
     padding: 0.5em 0;
     padding-right: 1em;
-  }
-
-  .illustrator-meta-items {
-    max-width: 61.8%;
   }
 
   .meta-link {
     display: inline-block;
     max-width: 100%;
     background: rgba($color-accent, 0.2);
-    padding: 0.5em 1em;
+    padding: 0.75em 1em;
     margin-bottom: 0.25em;
     transition: background 180ms ease-in-out;
 
@@ -166,8 +173,8 @@
 }
 
 .illustrator-nav-single-wrapper {
+  font-size: 14px;
   line-height: 1em;
-  font-family: $monospace;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
@@ -197,7 +204,7 @@
   display: flex;
   width: 100%;
   padding: 0 20px;
-  background: rgba($color-accent, 0.2);
+  border: 1px solid rgba($color-accent, 0.2);
   border-radius: 9999px;
   justify-content: space-between;
 
@@ -217,7 +224,7 @@
     display: block;
     z-index: $z-foreground;
     border-radius: 9999px;
-    padding: 1em 1em;
+    padding: 0.75em 1em;
 
     &:first-child {
       padding-left: 0;
@@ -226,6 +233,10 @@
     @media screen and (max-width: $small-vp) {
       padding: 1.5em 1em;
     }
+  }
+
+  .truncate {
+    line-height: 1.2em;
   }
 
   .nav-previous,

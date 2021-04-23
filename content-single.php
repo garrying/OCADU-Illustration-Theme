@@ -1,5 +1,20 @@
 <article class="single-illustrator">
 
+  <div class="illustrator-gallery-container">
+    <?php echo do_shortcode( '[gallery size="medium" link="file" columns="0"]' ); ?>
+    <div id="image-modal" class="image-modal-wrapper hidden">
+          <div class="miniview-container">
+        <div class="miniview image-modal-miniview">
+        </div>
+      </div>
+      <button class="close-panel" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+      <div class="image-modal-container">
+        <div class="image-modal-image"></div>
+        <div class="image-modal-caption"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
       <div class="illustrator-meta-wrapper-inner">
@@ -20,7 +35,7 @@
 
         <div class="meta h-card">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name">→ <span class="p-name"><?php the_title(); ?></span></h1>
+            <h1 class="illustrator-meta-name"><div id="name-blob"></div> <span class="p-name"><?php the_title(); ?></span></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
@@ -115,20 +130,5 @@
     </div>
 
   </div><!-- .illustrator-meta -->
-
-  <div class="illustrator-gallery-container">
-    <?php echo do_shortcode( '[gallery size="medium" link="file" columns="0"]' ); ?>
-    <div id="image-modal" class="image-modal-wrapper hidden">
-          <div class="miniview-container">
-        <div class="miniview image-modal-miniview">
-        </div>
-      </div>
-      <button class="close-panel" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
-      <div class="image-modal-container">
-        <div class="image-modal-image"></div>
-        <div class="image-modal-caption"></div>
-      </div>
-    </div>
-  </div>
 
 </article><!-- .single-illustrator -->

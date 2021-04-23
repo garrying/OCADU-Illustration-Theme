@@ -559,6 +559,9 @@ const SwipeListener = require('swipe-listener');
       if (document.querySelector('#error-blob-container')) {
         document.querySelector('#error-blob-container').innerHTML = svgString
       }
+      if (document.querySelector('#name-blob')) {
+        document.querySelector('#name-blob').innerHTML = svgString
+      }
       $('link[rel="icon"]').attr('href', `data:image/svg+xml,${svgString}`)
     }
   }

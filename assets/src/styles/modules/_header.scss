@@ -28,16 +28,17 @@
 }
 
 .heading-inner {
-  font-family: $monospace;
   position: fixed;
   top: 0;
-  padding: 2em 0;
-  left: 30px;
+  padding: 1em 30px;
+  left: 0;
+  right: 0;
   z-index: $z-foreground;
   display: flex;
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid rgba($color-accent, 0.2);
 
   @media screen and (max-width: $small-vp) {
     top: 20px;
@@ -72,23 +73,22 @@
 }
 
 .header-item {
-  padding: 1.5em;
+  padding: 1em 1.5em;
   line-height: 1em;
-  color: $white;
+  color: $color-accent;
   white-space: nowrap;
   pointer-events: auto;
 
   @include heading-features;
 
-  border: 1px solid $color-accent;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgba($color-accent, 0.9);
+  background: rgba($color-accent, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 
   &:hover,
   &:focus {
-    background: darken($color-accent, 10%);
+    background: rgba($color-accent, 0.35);
   }
 
   &.invert {

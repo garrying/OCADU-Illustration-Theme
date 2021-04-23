@@ -1,7 +1,5 @@
 .home {
   .header-items-wrapper {
-    width: calc(35vw - 40px);
-
     @media screen and (max-width: $ipad-vp) {
       width: calc(40vw - 40px);
     }
