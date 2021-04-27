@@ -1,4 +1,15 @@
 .home {
+  .heading-inner {
+    .logo {
+      color: $white;
+    }
+
+    .header-item {
+      color: $color-accent;
+      background: $white;
+    }
+  }
+
   .header-items-wrapper {
     @media screen and (max-width: $ipad-vp) {
       width: calc(40vw - 40px);
@@ -13,7 +24,7 @@
 .home-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: 100px auto 0;
+  margin: -75px auto 0;
   opacity: 0;
 
   &.ready {
@@ -37,9 +48,8 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: rgba($color-accent, 0.7);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: $color-accent;
+    box-shadow: 2px 2px 5px 0 rgba($color-accent, 0.5);
     color: $white;
     padding: 1em 2em;
 
@@ -47,9 +57,9 @@
       font-family: $sans-serif-light;
       line-height: 1.3em;
       padding: 0;
+      font-size: 16px;
 
       @include heading-features;
-      @include rsp-font(1.5vw, 18px);
     }
 
     .illustrator-name {
@@ -84,23 +94,15 @@
   }
 
   .bricklayer-column {
+    margin-top: -80px;
+
     &:nth-child(odd) {
       padding: 1%;
+      margin-top: -20px;
 
       .gallery-item:nth-child(2n) {
         padding: 6%;
       }
-    }
-
-    &:nth-last-child(-n+2) .illustrator-meta-container {
-      color: $color-accent;
-      background: rgba($white, 0.8);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-    }
-
-    &:nth-last-child(-n+2) .blur-up {
-      mix-blend-mode: multiply;
     }
   }
 
