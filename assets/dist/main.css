@@ -141,7 +141,7 @@ body {
   font-family: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 75%;
   line-height: 1.5em;
-  color: #111;
+  color: #000;
   background: #fff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
@@ -497,6 +497,7 @@ button {
     font-size: 24px;
     line-height: 1.2em;
     color: #0e0e0f;
+    margin-top: 0.5em;
     margin-bottom: 0.25em; }
   .archive-grid .illustrator-name {
     font-size: 16px;
@@ -522,8 +523,6 @@ button {
       flex-direction: column; } }
   .archive-grid .illustrator-meta-container {
     margin: 0.67em 0; }
-  .archive-grid .illustrator-title {
-    margin-top: 0.5em; }
   .archive-grid .gallery-item {
     margin: 0 12% 20%; }
     @media screen and (max-width: 667px) {
@@ -587,7 +586,7 @@ button {
   justify-content: center;
   max-width: 520px;
   margin: 130px auto;
-  line-height: 1.2em;
+  line-height: 1.45em;
   font-size: 1vw; }
   @media (max-width: 1400px) {
     .page-inner {
@@ -603,13 +602,8 @@ button {
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 50px; }
   .page-inner .entry-title-secondary {
-    color: #111;
     line-height: 1em;
-    margin: 1.5em 0;
-    font-size: 1.5vw; }
-    @media (max-width: 1666.66667px) {
-      .page-inner .entry-title-secondary {
-        font-size: 25px; } }
+    margin: 1.5em 0; }
   .page-inner .col-container {
     color: #555; }
   @media screen and (max-width: 667px) {

@@ -40,28 +40,28 @@
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
                   echo esc_html( rtrim( $ocaduillustration_url, '/' ) );
                 ?>
+                ↗
               </a>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
                   echo esc_html( rtrim( $ocaduillustration_url, '/' ) );
                 ?>
+                ↗
               </a>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">✎ <span class="u-email"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></span></a>
+              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><span class="u-email"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></span> ✎</a>
             <?php endif; ?>
           </div>
         </div>

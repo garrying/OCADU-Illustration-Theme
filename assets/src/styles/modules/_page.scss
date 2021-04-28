@@ -5,6 +5,7 @@
     font-size: 24px;
     line-height: 1.2em;
     color: $off-black;
+    margin-top: 0.5em;
     margin-bottom: 0.25em;
   }
 
@@ -41,10 +42,6 @@
 
   .illustrator-meta-container {
     margin: 0.67em 0;
-  }
-
-  .illustrator-title {
-    margin-top: 0.5em;
   }
 
   .gallery-item {
@@ -127,7 +124,7 @@
   justify-content: center;
   max-width: 520px;
   margin: 130px auto;
-  line-height: 1.2em;
+  line-height: 1.45em;
 
   @include rsp-font(1vw, 14px);
 
@@ -145,11 +142,8 @@
   }
 
   .entry-title-secondary {
-    color: $site-font-color;
     line-height: 1em;
     margin: 1.5em 0;
-
-    @include rsp-font(1.5vw, 25px);
   }
 
   .col-container {
