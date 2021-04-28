@@ -69,6 +69,9 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none; }
 
+.accent {
+  color: #fa8072; }
+
 @keyframes shake {
   from,
   to {
@@ -490,7 +493,13 @@ button {
 
 .archive-grid {
   margin: 130px auto; }
+  .archive-grid .illustrator-title {
+    font-size: 24px;
+    line-height: 1.2em;
+    color: #0e0e0f;
+    margin-bottom: 0.25em; }
   .archive-grid .illustrator-name {
+    font-size: 16px;
     color: #0e0e0f; }
   .archive-grid .bricklayer-column-sizer {
     width: 25%; }
@@ -534,7 +543,7 @@ button {
 
 .section-indicator-index {
   font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-  color: #e6e6e6;
+  color: #feefed;
   position: fixed;
   top: 0;
   left: 0;
@@ -572,8 +581,12 @@ button {
     width: 50%; }
 
 .page-inner {
-  max-width: 60vw;
-  margin: 130px 0 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 520px;
+  margin: 130px auto;
   line-height: 1.2em;
   font-size: 1vw; }
   @media (max-width: 1400px) {
@@ -588,10 +601,7 @@ button {
     line-height: 1em;
     margin: 1em 0;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-    font-size: 5vw; }
-    @media (max-width: 1000px) {
-      .page-inner .entry-title {
-        font-size: 50px; } }
+    font-size: 50px; }
   .page-inner .entry-title-secondary {
     color: #111;
     line-height: 1em;
@@ -602,11 +612,9 @@ button {
         font-size: 25px; } }
   .page-inner .col-container {
     color: #555; }
-  .page-inner .faculty-list {
-    max-width: 70%; }
-    @media screen and (max-width: 667px) {
-      .page-inner .faculty-list {
-        max-width: none; } }
+  @media screen and (max-width: 667px) {
+    .page-inner .faculty-list {
+      max-width: none; } }
 
 #post-6 {
   max-width: 60vw; }
@@ -766,16 +774,16 @@ button {
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(250, 128, 114, 0.2); }
+  border-bottom: 1px solid rgba(250, 128, 114, 0.2);
+  transition: opacity 200ms ease-in-out; }
   @media screen and (max-width: 667px) {
     .heading-inner {
       top: 20px;
       padding: 0;
       right: 0;
-      left: 20px;
-      transition: opacity 200ms ease-in-out; }
-      .heading-inner.fade-out {
-        opacity: 0; } }
+      left: 20px; } }
+  .heading-inner.fade-out {
+    opacity: 0; }
 
 .header-items-wrapper {
   display: flex; }
@@ -1202,20 +1210,23 @@ button {
     max-width: 50vw;
     opacity: 0;
     background: #fa8072;
-    box-shadow: 2px 2px 5px 0 rgba(250, 128, 114, 0.5);
+    box-shadow: 4px 4px 0 0 rgba(248, 84, 65, 0.5);
     color: #fff;
     padding: 1em 2em; }
+    .home-grid .illustrator-meta-container .accent {
+      color: inherit; }
     .home-grid .illustrator-meta-container .illustrator-meta-label {
       font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
       line-height: 1.3em;
       padding: 0;
-      font-size: 16px;
+      font-size: 18px;
+      margin-bottom: 0.25em;
       font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
       font-variant-numeric: lining-nums;
       font-kerning: normal;
       text-rendering: optimizeLegibility; }
     .home-grid .illustrator-meta-container .illustrator-name {
-      font-size: 14px;
+      font-size: 16px;
       margin-bottom: 0; }
     .home-grid .illustrator-meta-container.active {
       display: flex;
@@ -1240,11 +1251,6 @@ button {
       margin-top: -20px; }
       .home-grid .bricklayer-column:nth-child(odd) .gallery-item:nth-child(2n) {
         padding: 6%; }
-  .home-grid.bubble-default .bricklayer-column .illustrator-meta-container {
-    background: rgba(250, 128, 114, 0.7);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    color: #fff; }
   .home-grid .bricklayer-column-sizer {
     width: 25%; }
     @media screen and (max-width: 667px) {

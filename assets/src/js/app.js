@@ -238,26 +238,7 @@ const SwipeListener = require('swipe-listener');
     },
 
     _ocadHomeAbout: () => {
-      if (app.settings.documentBody.hasClass('home')) {
-        $('.message').on('click', (e) => {
-          e.preventDefault()
-          $('.title-unit').velocity('fadeOut', 'fast')
-          $('.about-unit').velocity('fadeIn', 'fast')
-        })
 
-        $('.close-unit').on('click', (e) => {
-          e.preventDefault()
-          $('.title-unit').velocity('fadeIn', { display: 'flex' }, 'fast')
-          $('.about-unit').velocity('fadeOut', 'fast')
-        })
-
-        $('.close-title').on('click', (e) => {
-          e.preventDefault()
-          $('.title').velocity('fadeOut', 'fast')
-          $('.title-bg').velocity('fadeOut', 'fast')
-          $('.home-grid').addClass('bubble-default')
-        })
-      }
     },
 
     _ocadPanelsCloseFullImage: () => {

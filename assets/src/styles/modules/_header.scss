@@ -39,17 +39,17 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba($color-accent, 0.2);
+  transition: opacity 200ms ease-in-out;
 
   @media screen and (max-width: $small-vp) {
     top: 20px;
     padding: 0;
     right: 0;
     left: 20px;
-    transition: opacity 200ms ease-in-out;
+  }
 
-    &.fade-out {
-      opacity: 0;
-    }
+  &.fade-out {
+    opacity: 0;
   }
 }
 

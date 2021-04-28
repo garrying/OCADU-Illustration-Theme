@@ -49,21 +49,26 @@
     max-width: 50vw;
     opacity: 0;
     background: $color-accent;
-    box-shadow: 2px 2px 5px 0 rgba($color-accent, 0.5);
+    box-shadow: 4px 4px 0 0 rgba(darken($color-accent, 10%), 0.5);
     color: $white;
     padding: 1em 2em;
+
+    .accent {
+      color: inherit;
+    }
 
     .illustrator-meta-label {
       font-family: $sans-serif-light;
       line-height: 1.3em;
       padding: 0;
-      font-size: 16px;
+      font-size: 18px;
+      margin-bottom: 0.25em;
 
       @include heading-features;
     }
 
     .illustrator-name {
-      font-size: 14px;
+      font-size: 16px;
       margin-bottom: 0;
     }
 
@@ -104,13 +109,6 @@
         padding: 6%;
       }
     }
-  }
-
-  &.bubble-default .bricklayer-column .illustrator-meta-container {
-    background: rgba($color-accent, 0.7);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    color: $white;
   }
 
   .bricklayer-column-sizer {
