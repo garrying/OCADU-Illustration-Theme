@@ -769,7 +769,9 @@ button {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(250, 128, 114, 0.2);
-  transition: opacity 200ms ease-in-out; }
+  transition: opacity 200ms ease-in-out;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); }
   @media screen and (max-width: 667px) {
     .heading-inner {
       top: 20px;
@@ -803,9 +805,7 @@ button {
   font-kerning: normal;
   text-rendering: optimizeLegibility;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgba(250, 128, 114, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px); }
+  background: rgba(250, 128, 114, 0.2); }
   .header-item:hover, .header-item:focus {
     background: rgba(250, 128, 114, 0.35); }
   .header-item.invert {
@@ -1080,21 +1080,26 @@ button {
   .title .title-unit {
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    position: relative;
+    z-index: 1; }
   .title .title-primary {
     margin: 0 0 0.5em;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
-    font-size: 48px;
+    font-size: 7vw;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     font-kerning: normal;
     text-rendering: optimizeLegibility; }
+    @media (max-width: 285.71429px) {
+      .title .title-primary {
+        font-size: 20px; } }
   .title .title-secondary {
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
     font-variant-numeric: lining-nums;
     font-kerning: normal;
     text-rendering: optimizeLegibility;
-    max-width: 50%;
+    max-width: 420px;
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 16px;
     line-height: 1.2em;
@@ -1106,6 +1111,11 @@ button {
     padding: 1.5em;
     background: #fff;
     transition: background 180ms ease-in-out; }
+  .title svg {
+    position: absolute;
+    z-index: 0; }
+    .title svg path {
+      stroke: #b5ffc5; }
 
 .title-bg {
   background: #fa8072;

@@ -40,6 +40,8 @@
   justify-content: space-between;
   border-bottom: 1px solid rgba($color-accent, 0.2);
   transition: opacity 200ms ease-in-out;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   @media screen and (max-width: $small-vp) {
     top: 20px;
@@ -83,8 +85,6 @@
 
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
   background: rgba($color-accent, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
 
   &:hover,
   &:focus {
