@@ -1057,14 +1057,13 @@ button {
       background: rgba(250, 128, 114, 0.5); }
 
 .title {
-  padding-top: 60px;
+  padding: 60px 2em;
   min-height: 61.8vh;
   background: #fa8072;
   left: 50vw;
   display: flex;
   line-height: 1;
   color: #fff;
-  padding: 2em;
   justify-content: center;
   align-items: center;
   text-align: center; }

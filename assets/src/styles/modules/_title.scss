@@ -1,12 +1,11 @@
 .title {
-  padding-top: 60px;
+  padding: 60px 2em;
   min-height: 61.8vh;
   background: $color-accent;
   left: 50vw;
   display: flex;
   line-height: 1;
   color: $white;
-  padding: 2em;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -35,8 +34,8 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: $sans-serif-light;
-    @include rsp-font(7vw, 20px);
 
+    @include rsp-font(7vw, 20px);
     @include heading-features;
   }
 
