@@ -45,47 +45,50 @@ const Two = require('two.js').default;
 
     _ocadTitleMoment: () => {
       const titleEle = document.querySelector('.title')
-      const two = new Two({
-        autostart: true,
-        width: titleEle.clientWidth,
-        height: titleEle.clientHeight
-      }).appendTo(titleEle)
 
-      window.addEventListener('resize', () => {
-        two.renderer.setSize(titleEle.clientWidth, titleEle.clientHeight)
-      })
+      if (titleEle) {
+        const two = new Two({
+          autostart: true,
+          width: titleEle.clientWidth,
+          height: titleEle.clientHeight
+        }).appendTo(titleEle)
 
-      const mouse = new Two.Vector(titleEle.clientWidth, titleEle.clientHeight)
-      let line = ''
-
-      const move = (e) => {
-        const x = e.clientX
-        const y = e.clientY
-        const v1 = makePoint(mouse)
-        const v2 = makePoint(x, y)
-        const line = two.makeCurve([v1, v2], true)
-        line.cap = 'round'
-        line.noFill()
-        line.join = 'round'
-        line.linewidth = 30
-        line.vertices.forEach(function (v) {
-          v.addSelf(line.translation)
+        window.addEventListener('resize', () => {
+          two.renderer.setSize(titleEle.clientWidth, titleEle.clientHeight)
         })
-        line.translation.clear()
-        mouse.set(x, y)
-      }
 
-      $(window).bind('mousemove', move)
+        const mouse = new Two.Vector(titleEle.clientWidth, titleEle.clientHeight)
+        let line = ''
 
-      function makePoint (x, y) {
-        if (arguments.length <= 1) {
-          y = x.y
-          x = x.x
+        const move = (e) => {
+          const x = e.clientX
+          const y = e.clientY
+          const v1 = makePoint(mouse)
+          const v2 = makePoint(x, y)
+          const line = two.makeCurve([v1, v2], true)
+          line.cap = 'round'
+          line.noFill()
+          line.join = 'round'
+          line.linewidth = 30
+          line.vertices.forEach(function (v) {
+            v.addSelf(line.translation)
+          })
+          line.translation.clear()
+          mouse.set(x, y)
         }
 
-        const v = new Two.Vector(x, y)
-        v.position = new Two.Vector().copy(v)
-        return v
+        $(window).bind('mousemove', move)
+
+        function makePoint (x, y) {
+          if (arguments.length <= 1) {
+            y = x.y
+            x = x.x
+          }
+
+          const v = new Two.Vector(x, y)
+          v.position = new Two.Vector().copy(v)
+          return v
+        }
       }
     },
 

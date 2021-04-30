@@ -38,6 +38,13 @@
             <h1 class="illustrator-meta-name"><div id="name-blob"></div> <span class="p-name"><?php the_title(); ?></span></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
+            <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
+              <?php 
+                $related_post = get_post( get_post_meta( $post->ID, 'illu_related', true ) );
+                $related_post_terms = get_the_terms( $related_post->ID, 'gradyear' );
+              ?>
+              <a title="<?php echo esc_html( $related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo get_permalink( $related_post->ID ); ?>"><?php echo $related_post_terms[1]->name; ?>: <?php echo esc_html( get_post_meta( $related_post->ID, 'illu_title', true ) ); ?> ✿</a>
+            <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                 <?php
