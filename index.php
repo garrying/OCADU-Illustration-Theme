@@ -11,7 +11,7 @@
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title">
+  <div class="title base">
     <div class="title-unit title-unit-init active">
       <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2021</h1></div>
         <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>

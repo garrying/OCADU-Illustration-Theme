@@ -1113,8 +1113,14 @@ button {
   .title svg {
     position: absolute;
     z-index: 0; }
-    .title svg path {
-      stroke: #f85441; }
+  .title.base path {
+    stroke: #f85441; }
+  .title.set1 path {
+    stroke: #A0DCAE; }
+  .title.set2 path {
+    stroke: #F2CDDD; }
+  .title.set3 path {
+    stroke: #6655FA; }
 
 .title-bg {
   background: #fa8072;

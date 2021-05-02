@@ -89,6 +89,15 @@ const Two = require('two.js').default;
           v.position = new Two.Vector().copy(v)
           return v
         }
+
+        const strokeColors = ['base', 'set1', 'set2', 'set3']
+        const randomItem = arr => arr[(Math.random() * arr.length) | 0]
+        titleEle.classList.add(randomItem(strokeColors))
+
+        titleEle.addEventListener('click', () => {
+          titleEle.classList.remove(...strokeColors)
+          titleEle.classList.add(randomItem(strokeColors))
+        })
       }
     },
 

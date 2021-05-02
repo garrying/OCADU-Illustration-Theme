@@ -61,10 +61,22 @@
   svg {
     position: absolute;
     z-index: 0;
+  }
 
-    path {
-      stroke: darken($color-accent, 10%);
-    }
+  &.base path {
+    stroke: darken($color-accent, 10%);
+  }
+
+  &.set1 path {
+    stroke: #A0DCAE;
+  }
+
+  &.set2 path {
+    stroke: #F2CDDD;
+  }
+
+  &.set3 path {
+    stroke: #6655FA;
   }
 }
 

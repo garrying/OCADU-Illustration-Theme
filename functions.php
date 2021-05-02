@@ -344,7 +344,6 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   $attr['data-sizes'] = 'auto';
   if ( isset( $attr['srcset'] ) ) {
     $attr['data-srcset'] = $attr['srcset'];
-    unset( $attr['src'] );
     unset( $attr['srcset'] );
     unset( $attr['sizes'] );
     if ( is_home() || is_archive() || is_search() ) {
