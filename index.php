@@ -28,8 +28,8 @@
         <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>
         <a href="/about" class="pill about">About the archive</a>
       <div class="selector-unit">
-        <a href="/year/<?php echo $ocaduillustration_grad_year[0]->name ?>/thesis" class="message pill">Thesis</a>
-        <a href="/year/<?php echo $ocaduillustration_grad_year[0]->name ?>/major-works" class="message pill">Major Works</a>
+        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/thesis" class="message pill">Thesis</a>
+        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/major-works" class="message pill">Major Works</a>
       </div>
     </div>
   </div>
