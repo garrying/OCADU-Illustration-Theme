@@ -2,23 +2,22 @@
 
   <?php
     if ( is_home() || is_front_page() ) {
-      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1&parent=0' );
-      $ocaduillustration_args       = array(
+      $ocaduillustration_grad_year = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1&parent=0' );
+      $ocaduillustration_args      = array(
         'post_type' => 'illustrator',
         'tax_query' => array(
           array(
             'taxonomy' => 'gradyear',
             'field'    => 'slug',
-            'terms'    => array( $ocaduillustration_grad_year[0]->name )
+            'terms'    => $ocaduillustration_grad_year[0]->name,
           ),
           array(
             'taxonomy' => 'gradyear',
             'field'    => 'slug',
-            'terms'    => array('major-works'),
-            'operator' => 'NOT IN'
-          )
+            'terms'    => 'major-works',
+            'operator' => 'NOT IN',
+          ),
         ),
-        
       );
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
