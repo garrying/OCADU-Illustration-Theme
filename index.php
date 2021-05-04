@@ -26,7 +26,11 @@
     <div class="title-unit title-unit-init active">
       <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2021</h1></div>
         <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>
-      <a href="/about" class="message pill">About the archive</a>
+        <a href="/about" class="pill about">About the archive</a>
+      <div class="selector-unit">
+        <a href="/year/<?php echo $ocaduillustration_grad_year[0]->name ?>/thesis" class="message pill">Thesis</a>
+        <a href="/year/<?php echo $ocaduillustration_grad_year[0]->name ?>/major-works" class="message pill">Major Works</a>
+      </div>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
@@ -57,6 +61,5 @@
 
     <?php endif; ?>
   </div>
-  <div class="title-bg"></div>
 
 <?php get_footer(); ?>
