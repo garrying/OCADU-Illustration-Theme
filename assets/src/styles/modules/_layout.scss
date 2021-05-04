@@ -121,6 +121,17 @@
   }
 }
 
+.meta-label {
+  color: $color-accent;
+  margin-bottom: 0.5em;
+}
+
+.related-separator {
+  border-top: 0;
+  border-style: dotted;
+  border-color: pink;
+}
+
 #name-blob {
   width: 1em;
   height: 1em;

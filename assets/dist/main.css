@@ -249,7 +249,9 @@ figure {
       .image-modal-wrapper .image-modal-caption {
         bottom: 75px; } }
   .image-modal-wrapper .close-panel {
-    position: fixed; }
+    position: fixed;
+    top: 2em;
+    right: 2em; }
   .image-modal-wrapper .close-btn path {
     stroke: #fa8072; }
 
@@ -392,8 +394,8 @@ button {
 
 .close-panel {
   position: absolute;
-  top: 2em;
-  right: 2em;
+  top: calc(60px + 1em);
+  right: 30px;
   z-index: 600;
   display: block;
   cursor: pointer; }
@@ -924,6 +926,15 @@ button {
     font-family: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 1.5em;
     margin-bottom: 0.5em; }
+
+.meta-label {
+  color: #fa8072;
+  margin-bottom: 0.5em; }
+
+.related-separator {
+  border-top: 0;
+  border-style: dotted;
+  border-color: pink; }
 
 #name-blob {
   width: 1em;
