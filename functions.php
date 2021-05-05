@@ -248,7 +248,7 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' === $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb-twitter.jpg?1620176090';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1620176090';
   }
 
   if ( empty( $socialimg ) ) {
