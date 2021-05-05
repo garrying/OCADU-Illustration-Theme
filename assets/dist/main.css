@@ -690,25 +690,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center; }
-  .year-list-item.extended {
-    margin-right: 40px;
-    margin-bottom: 40px; }
-    @media screen and (max-width: 667px) {
-      .year-list-item.extended {
-        margin-right: 0; } }
-    .year-list-item.extended .year-item {
-      width: 300px;
-      margin: 0; }
-      @media screen and (max-width: 667px) {
-        .year-list-item.extended .year-item {
-          width: 160px; } }
-    .year-list-item.extended .sub .year-item {
-      width: 380px;
-      height: 240px;
-      margin: 0; }
-      @media screen and (max-width: 667px) {
-        .year-list-item.extended .sub .year-item {
-          width: 160px; } }
 
 .year-item-image {
   pointer-events: none;
@@ -752,6 +733,26 @@ button {
     mix-blend-mode: lighten; }
   .year-item:hover {
     box-shadow: 0 0 0 4px inset #fff; }
+
+.extended {
+  margin-right: 40px;
+  margin-bottom: 40px; }
+  @media screen and (max-width: 667px) {
+    .extended {
+      margin-right: 0; } }
+  .extended .year-item {
+    width: 300px;
+    margin: 0; }
+    @media screen and (max-width: 667px) {
+      .extended .year-item {
+        width: 160px; } }
+  .extended .sub .year-item {
+    width: 380px;
+    height: 240px;
+    margin: 0; }
+    @media screen and (max-width: 667px) {
+      .extended .sub .year-item {
+        width: 160px; } }
 
 .year-text {
   position: absolute;
@@ -1166,7 +1167,7 @@ button {
   .selector-unit .message {
     background: #fff;
     color: #fa8072;
-    border-width: 0px;
+    border-width: 0;
     width: 50%;
     font-size: 18px;
     margin: 1em; }

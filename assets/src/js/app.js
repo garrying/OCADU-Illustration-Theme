@@ -58,7 +58,6 @@ const Two = require('two.js').default;
         })
 
         const mouse = new Two.Vector(titleEle.clientWidth, titleEle.clientHeight)
-        let line = ''
 
         const move = (e) => {
           const x = e.clientX
