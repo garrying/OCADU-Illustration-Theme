@@ -5,6 +5,7 @@
 
   @media screen and (max-width: $small-vp) {
     flex-flow: column;
+    flex-direction: column-reverse;
     padding-bottom: 60px;
   }
 }
@@ -168,11 +169,6 @@
     &:focus {
       background: rgba($color-accent, 0.35);
     }
-
-    @media screen and (max-width: $small-vp) {
-      display: block;
-      margin: 0 0 1em;
-    }
   }
 
   .phone {
@@ -242,7 +238,7 @@
     }
 
     @media screen and (max-width: $small-vp) {
-      padding: 1.5em 1em;
+      padding: 1em;
     }
   }
 

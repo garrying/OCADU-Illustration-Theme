@@ -44,10 +44,10 @@
   -webkit-backdrop-filter: blur(4px);
 
   @media screen and (max-width: $small-vp) {
-    top: 20px;
-    padding: 0;
+    top: 0;
+    padding: 5px 20px;
     right: 0;
-    left: 20px;
+    left: 0;
   }
 
   &.fade-out {

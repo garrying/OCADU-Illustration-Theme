@@ -2,11 +2,19 @@
   .heading-inner {
     .logo {
       color: $white;
+
+      @media screen and (max-width: $small-vp) {
+        color: $color-accent;
+      }
     }
 
     .header-item {
       color: $color-accent;
       background: $white;
+
+      @media screen and (max-width: $small-vp) {
+        background: rgba($color-accent, 0.2);
+      }
     }
   }
 
@@ -101,6 +109,10 @@
 
   .bricklayer-column {
     margin-top: -80px;
+
+    @media screen and (max-width: $small-vp) {
+      margin-top: 0;
+    }
 
     &:nth-child(odd) {
       padding: 1%;

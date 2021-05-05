@@ -25,6 +25,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.extended {
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: $small-vp) {
+      margin-right: 0;
+    }
+
+    .year-item {
+      width: 300px;
+      margin: 0;
+
+      @media screen and (max-width: $small-vp) {
+        width: 160px;
+      }
+    }
+
+    .sub .year-item {
+      width: 380px;
+      height: 240px;
+      margin: 0;
+
+      @media screen and (max-width: $small-vp) {
+        width: 160px;
+      }
+    }
+  }
 }
 
 .year-item-image {
@@ -71,8 +99,8 @@
     mix-blend-mode: lighten;
   }
 
-  &.active {
-    border: 1px solid darken($color-accent, 5%);
+  &:hover {
+    box-shadow: 0 0 0 4px inset $white;
   }
 }
 
@@ -84,3 +112,4 @@
   color: $white;
   padding: 20px;
 }
+

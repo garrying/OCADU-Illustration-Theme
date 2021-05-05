@@ -123,9 +123,13 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
                   wp_reset_postdata();
                 }
 
-                echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                if ( $year_streams ) {
+                  echo "<li class='year-list-item extended'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                } else {
+                  echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                }
                   if ( $year_streams ) {
-                    echo '<ul>';
+                    echo '<ul class="sub">';
                     echo $year_streams; // phpcs:ignore
                     echo '</ul>';
                   }

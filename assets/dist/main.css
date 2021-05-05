@@ -252,6 +252,9 @@ figure {
     position: fixed;
     top: 2em;
     right: 2em; }
+    @media screen and (max-width: 1024px) {
+      .image-modal-wrapper .close-panel {
+        top: auto; } }
   .image-modal-wrapper .close-btn path {
     stroke: #fa8072; }
 
@@ -497,6 +500,7 @@ button {
   margin: 130px auto; }
   .archive-grid .illustrator-title {
     font-size: 24px;
+    font-weight: normal;
     line-height: 1.2em;
     color: #0e0e0f;
     margin-top: 0.5em;
@@ -686,6 +690,25 @@ button {
   display: flex;
   justify-content: center;
   align-items: center; }
+  .year-list-item.extended {
+    margin-right: 40px;
+    margin-bottom: 40px; }
+    @media screen and (max-width: 667px) {
+      .year-list-item.extended {
+        margin-right: 0; } }
+    .year-list-item.extended .year-item {
+      width: 300px;
+      margin: 0; }
+      @media screen and (max-width: 667px) {
+        .year-list-item.extended .year-item {
+          width: 160px; } }
+    .year-list-item.extended .sub .year-item {
+      width: 380px;
+      height: 240px;
+      margin: 0; }
+      @media screen and (max-width: 667px) {
+        .year-list-item.extended .sub .year-item {
+          width: 160px; } }
 
 .year-item-image {
   pointer-events: none;
@@ -727,8 +750,8 @@ button {
     background: #f73d28;
     z-index: 1;
     mix-blend-mode: lighten; }
-  .year-item.active {
-    border: 1px solid #f96a59; }
+  .year-item:hover {
+    box-shadow: 0 0 0 4px inset #fff; }
 
 .year-text {
   position: absolute;
@@ -776,10 +799,10 @@ button {
   -webkit-backdrop-filter: blur(4px); }
   @media screen and (max-width: 667px) {
     .heading-inner {
-      top: 20px;
-      padding: 0;
+      top: 0;
+      padding: 5px 20px;
       right: 0;
-      left: 20px; } }
+      left: 0; } }
   .heading-inner.fade-out {
     opacity: 0; }
 
@@ -837,6 +860,7 @@ button {
   @media screen and (max-width: 667px) {
     .single-illustrator {
       flex-flow: column;
+      flex-direction: column-reverse;
       padding-bottom: 60px; } }
 
 .illustrator-gallery-container {
@@ -962,10 +986,6 @@ button {
     transition: background 180ms ease-in-out; }
     .meta .meta-link:hover, .meta .meta-link:focus {
       background: rgba(250, 128, 114, 0.35); }
-    @media screen and (max-width: 667px) {
-      .meta .meta-link {
-        display: block;
-        margin: 0 0 1em; } }
   .meta .phone {
     display: inline-block;
     max-width: 100%;
@@ -1023,7 +1043,7 @@ button {
       padding-left: 0; }
     @media screen and (max-width: 667px) {
       .illustrator-nav-single a {
-        padding: 1.5em 1em; } }
+        padding: 1em; } }
   .illustrator-nav-single .truncate {
     line-height: 1.2em; }
   .illustrator-nav-single .nav-previous,
@@ -1157,10 +1177,16 @@ button {
 
 .home .heading-inner .logo {
   color: #fff; }
+  @media screen and (max-width: 667px) {
+    .home .heading-inner .logo {
+      color: #fa8072; } }
 
 .home .heading-inner .header-item {
   color: #fa8072;
   background: #fff; }
+  @media screen and (max-width: 667px) {
+    .home .heading-inner .header-item {
+      background: rgba(250, 128, 114, 0.2); } }
 
 @media screen and (max-width: 768px) {
   .home .header-items-wrapper {
@@ -1229,6 +1255,9 @@ button {
       padding: 15%; }
   .home-grid .bricklayer-column {
     margin-top: -80px; }
+    @media screen and (max-width: 667px) {
+      .home-grid .bricklayer-column {
+        margin-top: 0; } }
     .home-grid .bricklayer-column:nth-child(odd) {
       padding: 1%;
       margin-top: -20px; }
