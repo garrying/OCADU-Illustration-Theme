@@ -45,12 +45,14 @@
               ?>
               <p class="meta-label"><?php echo esc_html( $related_post_terms[1]->name ); ?> ⤵</p>
               <a title="<?php echo esc_html( $related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo esc_html( get_permalink( $related_post->ID ) ); ?>">✿ 
-                <?php if ( get_post_meta( $related_post->ID, 'illu_title', true ) ) {
-                  echo esc_html( get_post_meta( $related_post->ID, 'illu_title', true ) );
-                } else {
-                  echo 'View ' . esc_html( strtolower ( $related_post_terms[1]->name ) );
-                }
-                ?></a>
+                <?php
+                  if ( get_post_meta( $related_post->ID, 'illu_title', true ) ) {
+                    echo esc_html( get_post_meta( $related_post->ID, 'illu_title', true ) );
+                  } else {
+                    echo 'View ' . esc_html( strtolower( $related_post_terms[1]->name ) );
+                  }
+                ?>
+                </a>
               <hr class="related-separator" />
             <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
