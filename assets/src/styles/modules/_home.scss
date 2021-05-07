@@ -15,6 +15,13 @@
       @media screen and (max-width: $small-vp) {
         background: rgba($color-accent, 0.2);
       }
+
+      &:hover,
+      &:active {
+        color: $white;
+        background: $color-accent;
+        box-shadow: 0 0 0 5px rgba(darken($color-accent, 10%), 0.5);
+      }
     }
   }
 
@@ -116,7 +123,7 @@
 
     &:nth-child(odd) {
       padding: 1%;
-      margin-top: -20px;
+      margin-top: -40px;
 
       .gallery-item:nth-child(2n) {
         padding: 6%;

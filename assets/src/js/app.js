@@ -240,7 +240,7 @@ const Two = require('two.js').default;
         if (targetPanel === 'year-select') {
           $('.year-item').each((index, ele) => {
             const item = $(ele)
-            item.delay(10 * index).velocity({ opacity: 1, transformdisplay: 'flex' })
+            item.delay(80 * index).velocity({ opacity: 1, transformdisplay: 'flex' })
           })
         }
         if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
