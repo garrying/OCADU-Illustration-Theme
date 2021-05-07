@@ -6,8 +6,11 @@
     font-weight: normal;
     line-height: 1.2em;
     color: $off-black;
-    margin-top: 0.5em;
     margin-bottom: 0.25em;
+  }
+
+  .illustrator-type {
+    margin-top: 0.5em;
   }
 
   .illustrator-name {
@@ -42,7 +45,7 @@
   }
 
   .illustrator-meta-container {
-    margin: 0.67em 0;
+    margin: 1em 0 0.67em;
   }
 
   .gallery-item {

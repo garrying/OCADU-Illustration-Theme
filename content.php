@@ -12,6 +12,18 @@
     </figure>
     <div class="illustrator-meta-container pill">
       <div class="illustrator-content-container">
+        <?php if (!is_home()) : ?>
+          <?php 
+            $term               = get_queried_object();
+            $is_parent          = $term->parent == 0 ? true : false;
+            $related_post_terms = get_the_terms( $post->ID, 'gradyear' );
+          ?>
+          <?php if ( $is_parent && get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
+            <?php if ( $related_post_terms[1]->name === "Major Works" ) : ?>
+              <div class="illustrator-type"><?php echo esc_html( $related_post_terms[1]->name ); ?></div>
+            <?php endif; ?>
+          <?php endif; ?>
+        <?php endif; ?>
         <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
           <h2 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?>
           </h2>
