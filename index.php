@@ -2,37 +2,35 @@
 
   <?php
     if ( is_home() || is_front_page() ) {
-      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1' );
+      $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1&parent=0' );
       $ocaduillustration_args       = array(
-        'taxonomy'  => 'gradyear',
         'post_type' => 'illustrator',
-        'term'      => $ocaduillustration_grad_year[0]->name,
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'gradyear',
+            'field'    => 'slug',
+            'terms'    => $ocaduillustration_grad_year[0]->name,
+          ),
+          array(
+            'taxonomy' => 'gradyear',
+            'field'    => 'slug',
+            'terms'    => 'major-works',
+            'operator' => 'NOT IN',
+          ),
+        ),
       );
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title">
+  <div class="title base">
     <div class="title-unit title-unit-init active">
-      <button class="close-unit close-title" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
-      <div class="segment-first"><h1 class="title-primary">OCAD University<br> Illustration 2020</h1></div>
-      <div class="segment-second">
-        <p class="title-secondary">Spanning 2009–2020, the archive is maintained by the Illustration Program at OCAD University.</p>
-        <a href="/about" class="message pill">About the archive</a>
+      <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2021</h1></div>
+        <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>
+        <a href="/about" class="pill about">About the archive</a>
+      <div class="selector-unit">
+        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/thesis" class="message pill">Thesis</a>
+        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/major-works" class="message pill">Major Works</a>
       </div>
-    </div>
-
-    <div class="about-unit">
-      <div class="about-unit-container">
-        <?php
-          $ocaduillustration_about = new WP_Query( 'page_id=8' );
-          while ( $ocaduillustration_about->have_posts() ) :
-            $ocaduillustration_about->the_post()
-        ?>
-          <div class="segment-first"><h1 class="title-primary"><?php the_title(); ?></h1></div>
-          <?php the_content(); ?>
-        <?php endwhile; ?>
-      </div>
-      <button class="close-unit" title="Close About" aria-label="Close About"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
@@ -63,6 +61,5 @@
 
     <?php endif; ?>
   </div>
-  <div class="title-bg"></div>
 
 <?php get_footer(); ?>

@@ -83,6 +83,12 @@ figure {
 
   .close-panel {
     position: fixed;
+    top: 2em;
+    right: 2em;
+
+    @media screen and (max-width: $medium-vp) {
+      top: auto;
+    }
   }
 
   .close-btn {

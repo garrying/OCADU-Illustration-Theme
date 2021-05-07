@@ -22,12 +22,12 @@ jobs:
     - php: 7.4
       env: PHPCS=1
     - language: node_js
-      node_js: 12
+      node_js: 14
       script:
         - npm run lint:scss --silent
         - npm run lint:js --silent
   allow_failures:
-    - node_js: 12
+    - node_js: 14
 
 before_install:
   # Speed up build time by disabling Xdebug.

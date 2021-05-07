@@ -1,7 +1,17 @@
 .archive-grid {
   margin: 130px auto;
 
+  .illustrator-title {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2em;
+    color: $off-black;
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+  }
+
   .illustrator-name {
+    font-size: 16px;
     color: $off-black;
   }
 
@@ -33,11 +43,6 @@
 
   .illustrator-meta-container {
     margin: 0.67em 0;
-    font-family: $monospace;
-  }
-
-  .illustrator-title {
-    margin-top: 0.5em;
   }
 
   .gallery-item {
@@ -70,7 +75,7 @@
 
 .section-indicator-index {
   font-family: $sans-serif-light;
-  color: lighten($color-accent, 20%);
+  color: lighten($color-accent, 25%);
   position: fixed;
   top: 0;
   left: 0;
@@ -80,13 +85,25 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  line-height: 1em;
+  text-align: center;
 
   @include rsp-font(10vw, 24px);
 }
 
 .section-indicator-single {
-  width: 100%;
-  padding: 1em 0;
+  font-size: 1.25em;
+  width: calc(50% - 5px);
+  padding: 1em 1em;
+  border-radius: 9999px;
+  background: rgba($color-accent, 0.2);
+  margin-bottom: 10px;
+  margin-right: 5px;
+
+  &:nth-child(2) {
+    margin-left: 5px;
+    margin-right: 0;
+  }
 
   @media screen and (max-width: $small-vp) {
     display: none;
@@ -102,9 +119,13 @@
 }
 
 .page-inner {
-  max-width: 60vw;
-  margin: 130px 0 0 30px;
-  line-height: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 520px;
+  margin: 130px auto;
+  line-height: 1.45em;
 
   @include rsp-font(1vw, 14px);
 
@@ -118,16 +139,12 @@
     line-height: 1em;
     margin: 1em 0;
     font-family: $sans-serif-light;
-
-    @include rsp-font(5vw, 50px);
+    font-size: 50px;
   }
 
   .entry-title-secondary {
-    color: $site-font-color;
     line-height: 1em;
     margin: 1.5em 0;
-
-    @include rsp-font(1.5vw, 25px);
   }
 
   .col-container {
@@ -135,8 +152,6 @@
   }
 
   .faculty-list {
-    max-width: 70%;
-
     @media screen and (max-width: $small-vp) {
       max-width: none;
     }
