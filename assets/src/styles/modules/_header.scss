@@ -23,10 +23,6 @@
   }
 }
 
-.logo-wrapper {
-  padding-right: 2em;
-}
-
 .heading-inner {
   position: fixed;
   top: 0;
@@ -66,12 +62,6 @@
 
 .header-item-link {
   margin-left: 1em;
-
-  @media screen and (max-width: $small-vp) {
-    &:last-child {
-      padding-right: 0;
-    }
-  }
 }
 
 .header-item {

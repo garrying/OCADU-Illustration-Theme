@@ -14,11 +14,11 @@
       <div class="illustrator-content-container">
         <?php if ( ! is_home() ) : ?>
           <?php 
-            $is_parent          = 0 !== get_queried_object()->parent ? false : true;
             $related_post_terms = get_the_terms( $post->ID, 'gradyear' );
+            $selected_section   = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
           ?>
-          <?php if ( $is_parent && get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
-            <?php if ( 'Thesis' !== $related_post_terms[1]->name ) : ?>
+          <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
+            <?php if ( 'Thesis' !== $related_post_terms[1]->name && 'major-works' !== $selected_section->slug ) : ?>
               <div class="illustrator-type"><?php echo esc_html( $related_post_terms[1]->name ); ?></div>
             <?php endif; ?>
           <?php endif; ?>

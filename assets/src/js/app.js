@@ -16,10 +16,8 @@ const Two = require('two.js').default;
       app._ocadPanelSelectButtons()
       app._ocadHomeLoader()
       app._ocadHomeHover()
-      app._ocadHomeAbout()
       app._ocadGalleryNav()
       app._ocadUIbinding()
-      app._ocadGridFocus()
       app._ocadSingleScroll()
       app._ocadSearch()
       app._blob()
@@ -129,26 +127,6 @@ const Two = require('two.js').default;
           ticking = true
         }
       }, { passive: true })
-    },
-
-    _ocadGridFocus: () => {
-      $('.section-indicator').hover(() => {
-        app.settings.documentBody.addClass('grid-focus')
-        $(app.settings.masonryContainerHome).addClass('blur')
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus')
-        $(app.settings.masonryContainerHome).removeClass('blur')
-      })
-
-      $('.home-grid').hover(() => {
-        $('.title-unit-illustrator').addClass('active')
-        $('.title-unit-init').removeClass('active')
-        app.settings.documentBody.addClass('grid-focus')
-      }, () => {
-        app.settings.documentBody.removeClass('grid-focus')
-        $('.title-unit-init').addClass('active')
-        $('.title-unit-illustrator').removeClass('active')
-      })
     },
 
     _ocadLoader: (e = true) => {
@@ -294,10 +272,6 @@ const Two = require('two.js').default;
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
         })
       }
-    },
-
-    _ocadHomeAbout: () => {
-
     },
 
     _ocadPanelsCloseFullImage: () => {

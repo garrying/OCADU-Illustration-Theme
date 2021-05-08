@@ -35,7 +35,7 @@
 
         <div class="meta h-card">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name"><div id="name-blob"></div> <span class="p-name"><?php the_title(); ?></span></h1> 
+            <h1 class="illustrator-meta-name"><span id="name-blob"></span> <?php the_title(); ?></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
