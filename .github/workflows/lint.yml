@@ -31,6 +31,7 @@ jobs:
 
     - name: Run test suite
       run: composer lint
+    - name: Check against phpcs.xml.dist
       run: composer checkcs
 
   lint-assets:
