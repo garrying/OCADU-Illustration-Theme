@@ -1,0 +1,49 @@
+name: PHP/Assets Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-php:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: composer lint
+    - name: Check against phpcs.xml.dist
+      run: composer checkcs
+
+  lint-assets:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.16.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.16.1
+    - run: npm install
+    - run: npm run lint:scss --silent
+    - run: npm run lint:js --silent
+    - run: npm run build
