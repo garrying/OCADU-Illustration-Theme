@@ -17,9 +17,7 @@
   <arg name="ignore" value="svg.php"/>
   <arg name="tab-width" value="2"/>
 
-  <rule ref="WordPress">
-    <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
-  </rule>
+  <rule ref="WordPress"/>
 
   <rule ref="WordPress-Extra">
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
