@@ -17,6 +17,8 @@
   <arg name="ignore" value="svg.php"/>
   <arg name="tab-width" value="2"/>
 
+  <rule ref="WordPress"/>
+
   <rule ref="WordPress-Extra">
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
     <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
@@ -28,6 +30,7 @@
     <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
     <exclude name="WordPress.Arrays.ArrayIndentation"/>
   </rule>
+
   <rule ref="WPThemeReview"/>
 
   <rule ref="WordPress.Files.FileName">
@@ -36,12 +39,14 @@
     </properties>
   </rule>
 
-  <rule ref="WordPress.WP.DeprecatedFunctions">
+  <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
     <properties>
-      <property name="minimum_supported_version" value="5.3" />
+      <property name="prefixes" type="array" value="ocaduillustration" />
     </properties>
   </rule>
 
+  <config name="minimum_supported_wp_version" value="4.5"/>
+
   <config name="testVersion" value="5.6-"/>
-  <rule ref="PHPCompatibility"/>
+  <rule ref="PHPCompatibilityWP"/>
 </ruleset>

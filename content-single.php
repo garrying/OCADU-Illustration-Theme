@@ -40,16 +40,16 @@
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
               <?php 
-                $related_post       = get_post( get_post_meta( $post->ID, 'illu_related', true ) );
-                $related_post_terms = get_the_terms( $related_post->ID, 'gradyear' );
+                $ocaduillustration_related_post       = get_post( get_post_meta( $post->ID, 'illu_related', true ) );
+                $ocaduillustration_related_post_terms = get_the_terms( $ocaduillustration_related_post->ID, 'gradyear' );
               ?>
-              <p class="meta-label"><?php echo esc_html( $related_post_terms[1]->name ); ?> ⤵</p>
-              <a title="<?php echo esc_html( $related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo esc_html( get_permalink( $related_post->ID ) ); ?>">✿ 
+              <p class="meta-label"><?php echo esc_html( $ocaduillustration_related_post_terms[1]->name ); ?> ⤵</p>
+              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">✿ 
                 <?php
-                  if ( get_post_meta( $related_post->ID, 'illu_title', true ) ) {
-                    echo esc_html( get_post_meta( $related_post->ID, 'illu_title', true ) );
+                  if ( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) ) {
+                    echo esc_html( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) );
                   } else {
-                    echo 'View ' . esc_html( strtolower( $related_post_terms[1]->name ) );
+                    echo 'View ' . esc_html( strtolower( $ocaduillustration_related_post_terms[1]->name ) );
                   }
                 ?>
                 </a>
@@ -87,14 +87,14 @@
       <div class="illustrator-nav-single-wrapper">
         <?php
         if ( is_singular( 'illustrator' ) ) {
-          $class_year                  = get_the_terms( $post->ID, 'gradyear' );
-          $ocaduillustration_base_year = $class_year[0];
-          foreach ( $class_year as $illustrator_term ) {
-            $illustrator_year_section = $illustrator_term->slug;
-            if ( $illustrator_term->parent <= 0 ) {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $illustrator_term->name ) . ' index"> ☀ ' . esc_html( $illustrator_term->name ) . '</a>';
+          $ocaduillustration_class_year = get_the_terms( $post->ID, 'gradyear' );
+          $ocaduillustration_base_year  = $ocaduillustration_class_year[0];
+          foreach ( $ocaduillustration_class_year as $ocaduillustration_illustrator_term ) {
+            $ocaduillustration_illustrator_year_section = $ocaduillustration_illustrator_term->slug;
+            if ( $ocaduillustration_illustrator_term->parent <= 0 ) {
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☀ ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             } else {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $illustrator_year_section ) . '" title="Return to ' . esc_html( $illustrator_term->name ) . ' index"> ☼ ' . esc_html( $illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☼ ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             }
           }
         }
@@ -104,11 +104,11 @@
             $ocaduillustration_args = array(
               'post_status' => 'publish',
               'post_type'   => 'illustrator',
-              'tax_query'   => array(
+              'tax_query'   => array( // phpcs:ignore
                 array(
                   'taxonomy' => 'gradyear',
                   'field'    => 'slug',
-                  'terms'    => $class_year[0],
+                  'terms'    => $ocaduillustration_base_year,
                 ),
               ),
               'orderby'     => 'title',
@@ -123,21 +123,21 @@
               $ocaduillustration_posts[] += $ocaduillustration_post->ID;
             }
 
-            $current = array_search( get_the_ID(), $ocaduillustration_posts, true );
-            $prev_id = $ocaduillustration_posts[ $current - 1 ] ?? null;
-            $next_id = $ocaduillustration_posts[ $current + 1 ] ?? null;
+            $ocaduillustration_current = array_search( get_the_ID(), $ocaduillustration_posts, true );
+            $ocaduillustration_prev_id = $ocaduillustration_posts[ $ocaduillustration_current - 1 ] ?? null;
+            $ocaduillustration_next_id = $ocaduillustration_posts[ $ocaduillustration_current + 1 ] ?? null;
           ?>
           <li class="nav-previous">
             <?php
-              if ( ! empty( $prev_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $prev_id ) ) . '</span></a>';
+              if ( ! empty( $ocaduillustration_prev_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
-              if ( ! empty( $next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $next_id ) ) . ' ⤻</span></a>';
+              if ( ! empty( $ocaduillustration_next_id ) ) {
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
               }
             ?>
           </li>

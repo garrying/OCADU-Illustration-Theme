@@ -71,6 +71,7 @@
     mix-blend-mode: lighten;
   }
 
+  &.active,
   &:hover {
     box-shadow: 0 0 0 4px inset $white;
   }
