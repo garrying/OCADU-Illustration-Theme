@@ -24,7 +24,7 @@ if ( is_archive() ) {
   $ocaduillustration_args  = array(
     'post_status' => 'publish',
     'post_type'   => 'illustrator',
-    'tax_query'   => array(
+    'tax_query'   => array( // phpcs:ignore
       array(
         'taxonomy' => 'gradyear',
         'field'    => 'slug',

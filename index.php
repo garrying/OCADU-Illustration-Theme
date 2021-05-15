@@ -5,7 +5,7 @@
       $ocaduillustration_grad_year  = get_terms( 'gradyear', 'hide_empty=1&order=DESC&number=1&parent=0' );
       $ocaduillustration_args       = array(
         'post_type' => 'illustrator',
-        'tax_query' => array(
+        'tax_query' => array( // phpcs:ignore
           array(
             'taxonomy' => 'gradyear',
             'field'    => 'slug',

@@ -46,13 +46,13 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
           if ( is_singular( 'illustrator' ) && has_term( '', 'gradyear' ) ) {
             // Selected menu state for individual items.
             $ocaduillustration_terms = get_the_terms( $post->ID, 'gradyear' );
-            foreach ( $ocaduillustration_terms as $class_year ) {
-              $ocaduillustration_selected_year = $class_year->name;
+            foreach ( $ocaduillustration_terms as $ocaduillustration_class_year ) {
+              $ocaduillustration_selected_year = $ocaduillustration_class_year->name;
             }
           } else {
-            $class_taxonomy = get_queried_object();
-            if ( isset( $class_taxonomy ) ) {
-              $ocaduillustration_selected_year = $class_taxonomy->name;
+            $ocaduillustration_class_taxonomy = get_queried_object();
+            if ( isset( $ocaduillustration_class_taxonomy ) ) {
+              $ocaduillustration_selected_year = $ocaduillustration_class_taxonomy->name;
             }
           }
         ?>
@@ -62,13 +62,13 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
             <ul class="year-select-wrapper">
               <?php
 
-              function year_item_navigation( $term_obj, $term_active, $term_image, $term_srcset ) {
+              function ocaduillustration_year_item_navigation( $term_obj, $term_active, $term_image, $term_srcset ) {
                 return "<a class='year-item " . esc_html( $term_active ) . "' href='" . esc_url( get_term_link( $term_obj->slug, 'gradyear' ) ) . "' title='View Work From " . esc_html( $term_obj->name ) . "'><span class='year-text'>" . esc_html( $term_obj->name ) . "</span><img data-srcset='" . esc_html( $term_srcset ) . "' loading='lazy' width='320' height='480' data-src='" . esc_html( $term_image ) . "' data-sizes='auto' class='year-item-image lazyload' alt='Graduating year feature image' /></a>";
               }
 
-              foreach ( $ocaduillustration_grad_year as $class_year ) {
+              foreach ( $ocaduillustration_grad_year as $ocaduillustration_class_year ) {
                 
-                if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $class_year->name ) {
+                if ( isset( $ocaduillustration_selected_year ) && $ocaduillustration_selected_year === $ocaduillustration_class_year->name ) {
                   $ocaduillustration_selected_year_class = 'active';
                 } else {
                   $ocaduillustration_selected_year_class = '';
@@ -78,11 +78,11 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
                   'posts_per_page' => 1,
                   'orderby'        => 'rand',
                   'post_type'      => 'illustrator',
-                  'tax_query'      => array(
+                  'tax_query'      => array( // phpcs:ignore
                     array(
                       'taxonomy' => 'gradyear',
                       'field'    => 'name',
-                      'terms'    => $class_year->name,
+                      'terms'    => $ocaduillustration_class_year->name,
                     ),
                   ),
                 );
@@ -94,43 +94,43 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
-                $termchildren = get_term_children( $class_year->term_id, $class_year->taxonomy );
-                $year_streams = '';
+                $ocaduillustration_term_children = get_term_children( $ocaduillustration_class_year->term_id, $ocaduillustration_class_year->taxonomy );
+                $ocaduillustration_year_streams  = '';
 
-                foreach ( $termchildren as $class_year_stream ) {
-                  $year_stream      = get_term( $class_year_stream );
-                  $year_stream_args = array(
+                foreach ( $ocaduillustration_term_children as $ocaduillustration_class_year_stream ) {
+                  $ocaduillustration_year_stream      = get_term( $ocaduillustration_class_year_stream );
+                  $ocaduillustration_year_stream_args = array(
                     'posts_per_page' => 1,
                     'orderby'        => 'rand',
                     'post_type'      => 'illustrator',
-                    'tax_query'      => array(
+                    'tax_query'      => array( // phpcs:ignore
                       array(
                         'taxonomy' => 'gradyear',
                         'field'    => 'name',
-                        'terms'    => $year_stream->name,
+                        'terms'    => $ocaduillustration_year_stream->name,
                       ),
                     ),
                   );
 
-                  $year_stream_query = new WP_Query( $year_stream_args );
-                  if ( $year_stream_query->have_posts() ) {
-                    $year_stream_query->the_post();
-                    $year_stream_query_year_image        = get_the_post_thumbnail_url();
-                    $year_stream_query_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
+                  $ocaduillustration_year_stream_query = new WP_Query( $ocaduillustration_year_stream_args );
+                  if ( $ocaduillustration_year_stream_query->have_posts() ) {
+                    $ocaduillustration_year_stream_query->the_post();
+                    $ocaduillustration_year_stream_query_year_image        = get_the_post_thumbnail_url();
+                    $ocaduillustration_year_stream_query_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                   }
 
-                  $year_streams .= "<li class='year-list-item'>" . year_item_navigation( $year_stream, $ocaduillustration_selected_year_class, $year_stream_query_year_image, $year_stream_query_year_image_srcset ) . '</li>';
+                  $ocaduillustration_year_streams .= "<li class='year-list-item'>" . ocaduillustration_year_item_navigation( $ocaduillustration_year_stream, $ocaduillustration_selected_year_class, $ocaduillustration_year_stream_query_year_image, $ocaduillustration_year_stream_query_year_image_srcset ) . '</li>';
                   wp_reset_postdata();
                 }
 
-                if ( $year_streams ) {
-                  echo "<li class='year-list-item extended'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                if ( $ocaduillustration_year_streams ) {
+                  echo "<li class='year-list-item extended'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
                 } else {
-                  echo "<li class='year-list-item'>" . year_item_navigation( $class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                  echo "<li class='year-list-item'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
                 }
-                  if ( $year_streams ) {
+                  if ( $ocaduillustration_year_streams ) {
                     echo '<ul class="sub">';
-                    echo $year_streams; // phpcs:ignore
+                    echo $ocaduillustration_year_streams; // phpcs:ignore
                     echo '</ul>';
                   }
                 echo '</li>';
