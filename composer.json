@@ -13,8 +13,8 @@
     "wptrt/wpthemereview": "^0.2.1"
   },
   "scripts": {
-    "checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.2-",
-    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.2-",
+    "checkcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.4-",
+    "fixcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.4-",
     "lint": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor ."
   }
 }
