@@ -142,7 +142,7 @@ const Two = require('two.js').default;
     _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
 
     _ocadSearch: () => {
-      const autoCompleteJS = new AutoComplete({
+      const autoCompleteJS = new AutoComplete({ // eslint-disable-line
         data: {
           src: async (query) => {
             try {
@@ -164,7 +164,16 @@ const Two = require('two.js').default;
         debounce: 300,
         resultsList: {
           class: 'autoComplete_list',
-          maxResults: 5
+          maxResults: 5,
+          element: (list, data) => {
+            if (!data.results.length) {
+              const message = document.createElement('div')
+              message.setAttribute('class', 'no_result')
+              message.innerHTML = `<span>Found no results for ${data.query}</span>`
+              list.prepend(message)
+            }
+          },
+          noResults: true
         },
         resultItem: {
           class: 'autoComplete_result',
