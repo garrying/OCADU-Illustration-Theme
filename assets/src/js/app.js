@@ -167,11 +167,9 @@ const Two = require('two.js').default;
         debounce: 300,
         searchEngine: 'strict',
         resultsList: {
-          destination: '#autocomplete',
-          position: 'afterend',
-          element: 'ul'
+          className: 'autoComplete_list',
+          maxResults: 5
         },
-        maxResults: 5,
         resultItem: {
           element: 'li',
           highlight: {
