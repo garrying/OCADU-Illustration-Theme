@@ -7,7 +7,8 @@ module.exports = {
   entry: path.join(__dirname, './assets/src/js/app.js'),
   output: {
     path: path.join(__dirname, './assets/dist/'),
-    filename: 'app.js'
+    filename: 'app.js',
+    assetModuleFilename: './fonts/[name][ext]'
   },
   mode: 'development',
   context: __dirname,
@@ -36,13 +37,9 @@ module.exports = {
         options: {
           name: './images/[name].[ext]'
         }
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: './fonts/[name].[ext]'
-        }
+      }, {
+        test: /\.(svg|eot|ttf|woff|woff2)$/i,
+        type: 'asset'
       }
     ]
   },

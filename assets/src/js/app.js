@@ -144,49 +144,37 @@ const Two = require('two.js').default;
     _ocadSearch: () => {
       const autoCompleteJS = new AutoComplete({
         data: {
-          src: async () => {
-            const query = document.querySelector('#autocomplete').value
-            const source = await window.fetch(`/wp-json/wp/v2/illustrator?&search=${query}`)
-            const data = await source.json()
-            return data.map((item) => ({
-              title: item.title.rendered,
-              link: item.link
-            }))
+          src: async (query) => {
+            try {
+              const source = await window.fetch(`/wp-json/wp/v2/illustrator?&search=${query}`)
+              const data = await source.json()
+              return data.map((item) => ({
+                title: item.title.rendered,
+                link: item.link
+              }))
+            } catch (error) {
+              return error
+            }
           },
-          key: ['title'],
+          keys: ['title'],
           cache: false
         },
-        sort: (a, b) => {
-          if (a.match < b.match) return -1
-          if (a.match > b.match) return 1
-          return 0
-        },
         selector: '#autocomplete',
-        observer: true,
         threshold: 2,
         debounce: 300,
-        searchEngine: 'strict',
         resultsList: {
-          className: 'autoComplete_list',
+          class: 'autoComplete_list',
           maxResults: 5
         },
         resultItem: {
-          element: 'li',
-          highlight: {
-            render: true,
-            className: 'autoComplete_highlighted'
-          }
-        },
-        noResults: (dataFeedback, generateList) => {
-          generateList(autoCompleteJS, dataFeedback, dataFeedback.results)
-          const result = document.createElement('li')
-          result.setAttribute('tabindex', '1')
-          result.innerHTML = `<span>Found No Results for ${dataFeedback.query}</span>`
-          document.querySelector(`#${autoCompleteJS.resultsList.idName}`).appendChild(result)
-        },
-        onSelection: feedback => {
-          window.location.href = feedback.selection.value.link
+          class: 'autoComplete_result',
+          highlight: 'autoComplete_highlighted',
+          selected: 'autoComplete_selected'
         }
+      })
+
+      document.querySelector('#autocomplete').addEventListener('selection', (event) => {
+        window.location.href = event.detail.selection.value.link
       })
     },
 
