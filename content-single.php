@@ -18,24 +18,24 @@
   <div class="illustrator-meta" role="complementary">
     <div class="illustrator-meta-wrapper">
       <div class="illustrator-meta-wrapper-inner">
-        <div class="illustrator-meta-description">
+        <div class="illustrator-meta-description" itemscope itemtype="https://schema.org/CreativeWork">
 
           <?php if ( get_post_meta( $post->ID, 'illu_title', true ) ) : ?>
             <?php
               $ocaduillustration_title_illu = get_post_meta( $post->ID, 'illu_title', true );
-              echo '<h2 class="thesis-title">' . esc_html( $ocaduillustration_title_illu ) . '</h2>';
+              echo '<h2 class="thesis-title" itemprop="name">' . esc_html( $ocaduillustration_title_illu ) . '</h2>';
             ?>
           <?php endif; ?>
 
-          <div class="thesis-description">
+          <div class="thesis-description" itemprop="abstract">
             <?php the_content(); ?>
           </div>
 
         </div>
 
-        <div class="meta h-card">
+        <div class="meta" itemscope itemtype="https://schema.org/Person">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name"><span id="name-blob"></span> <?php the_title(); ?></h1> 
+            <h1 class="illustrator-meta-name" itemprop="name"><span id="name-blob"></span> <?php the_title(); ?></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
@@ -44,7 +44,7 @@
                 $ocaduillustration_related_post_terms = get_the_terms( $ocaduillustration_related_post->ID, 'gradyear' );
               ?>
               <p class="meta-label"><?php echo esc_html( $ocaduillustration_related_post_terms[1]->name ); ?> ⤵</p>
-              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">✿ 
+              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate pill" itemprop="sameAs" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">✿ 
                 <?php
                   if ( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) ) {
                     echo esc_html( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) );
@@ -56,7 +56,7 @@
               <hr class="related-separator" />
             <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
-              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+              <a target="_blank" itemprop="sameAs" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -67,7 +67,7 @@
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
-              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="site-url meta-link truncate pill u-url" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+              <a target="_blank" itemprop="sameAs" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -78,7 +78,7 @@
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><span class="u-email"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></span> ✎</a>
+              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><span itemprop="email"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></span> ✎</a>
             <?php endif; ?>
           </div>
         </div>
