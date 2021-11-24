@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../components/variables";
+@use "../components/vwfontsize";
+
 .year-select {
   justify-content: center;
 
@@ -16,7 +20,7 @@
   padding-top: 100px;
   padding-left: 40px;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding-left: 0;
   }
 }
@@ -34,46 +38,45 @@
   height: 100%;
   width: 100%;
   opacity: 0.5;
-  -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
 
 .year-item {
   position: relative;
   z-index: 1;
-  font-family: $sans-serif-light;
+  font-family: variables.$sans-serif-light;
   line-height: 1em;
-  color: $white;
+  color: variables.$white;
   width: 320px;
   height: 480px;
   border-radius: 20px;
   overflow: hidden;
   margin: 0 40px 40px 0;
-  box-shadow: 5px 5px 20px darken($color-accent, 1%);
+  box-shadow: 5px 5px 20px color.adjust(variables.$color-accent, $lightness: -1%);
 
-  @include rsp-font(3vw, 24px);
+  @include vwfontsize.rsp-font(3vw, 24px);
 
   opacity: 0;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding-bottom: 0.25em;
     margin: 0 0 40px;
   }
 
   &::before {
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: darken($color-accent, 15%);
+    background: color.adjust(variables.$color-accent, $lightness: -15%);
     z-index: 1;
     mix-blend-mode: lighten;
   }
 
   &.active,
   &:hover {
-    box-shadow: 0 0 0 4px inset $white;
+    box-shadow: 0 0 0 4px inset variables.$white;
   }
 }
 
@@ -81,7 +84,7 @@
   margin-right: 40px;
   margin-bottom: 40px;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin-right: 0;
   }
 
@@ -89,7 +92,7 @@
     width: 300px;
     margin: 0;
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       width: 160px;
     }
   }
@@ -99,7 +102,7 @@
     height: 240px;
     margin: 0;
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       width: 160px;
     }
   }
@@ -110,6 +113,6 @@
   z-index: 1;
   top: 0;
   left: 0;
-  color: $white;
+  color: variables.$white;
   padding: 20px;
 }

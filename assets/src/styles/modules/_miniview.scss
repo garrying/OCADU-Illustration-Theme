@@ -1,13 +1,16 @@
+@use "sass:color";
+@use "../components/variables";
+
 .miniview-container {
   position: fixed;
   bottom: 20px;
-  z-index: $z-foreground;
+  z-index: variables.$z-foreground;
   display: flex;
   width: 100%;
   justify-content: center;
   pointer-events: none;
 
-  @media screen and (max-width: $ipad-vp) {
+  @media screen and (max-width: variables.$ipad-vp) {
     display: none;
   }
 }
@@ -27,16 +30,16 @@
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba($color-accent, 0.1);
+    background: color.adjust(variables.$color-accent, $alpha: -0.9%);
     transition: background 200ms ease-in-out;
 
     &.active,
     &:hover {
-      background: $color-accent;
+      background: variables.$color-accent;
     }
 
     &:hover {
-      background: rgba($color-accent, 0.5);
+      background: color.adjust(variables.$color-accent, $alpha: -0.5%);
     }
   }
 }

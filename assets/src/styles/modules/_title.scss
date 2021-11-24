@@ -1,21 +1,26 @@
+@use "sass:color";
+@use "../components/variables";
+@use "../components/vwfontsize";
+@use "typography";
+
 .title {
   padding: 60px 2em;
   min-height: 61.8vh;
-  background: $color-accent;
+  background: variables.$color-accent;
   position: relative;
   display: flex;
   line-height: 1;
-  color: $white;
+  color: variables.$white;
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     display: none;
   }
 
   a {
-    color: $white;
+    color: variables.$white;
     pointer-events: auto;
   }
 
@@ -29,26 +34,26 @@
 
   .title-primary {
     margin: 0 0 0.5em;
-    font-family: $sans-serif-light;
+    font-family: variables.$sans-serif-light;
 
-    @include rsp-font(7vw, 20px);
-    @include heading-features;
+    @include vwfontsize.rsp-font(7vw, 20px);
+    @include typography.heading-features;
   }
 
   .title-secondary {
-    @include heading-features;
+    @include typography.heading-features;
 
     max-width: 420px;
-    font-family: $sans-serif-light;
+    font-family: variables.$sans-serif-light;
     font-size: 16px;
     line-height: 1.2em;
     margin-bottom: 0.5em;
   }
 
   .message {
-    color: $color-accent;
-    background: $white;
-    border: 1px solid $white;
+    color: variables.$color-accent;
+    background: variables.$white;
+    border: 1px solid variables.$white;
     margin-top: 1em;
     padding: 1.25em 1em;
     transition: background 180ms ease-in-out;
@@ -60,7 +65,7 @@
   }
 
   &.base path {
-    stroke: darken($color-accent, 10%);
+    stroke: color.adjust(variables.$color-accent, $lightness: -10%);
   }
 
   &.set1 path {
@@ -78,11 +83,11 @@
 
 .about {
   font-size: 14px;
-  border: 1px solid $white;
+  border: 1px solid variables.$white;
   padding: 0.75em 1em;
 
   &:hover {
-    background: darken($color-accent, 5%);
+    background: color.adjust(variables.$color-accent, $lightness: -5%);
   }
 }
 
@@ -93,8 +98,8 @@
   margin-top: 2em;
 
   .message {
-    background: $white;
-    color: $color-accent;
+    background: variables.$white;
+    color: variables.$color-accent;
     border-width: 0;
     width: 50%;
     font-size: 18px;
@@ -102,9 +107,9 @@
 
     &:hover,
     &:active {
-      box-shadow: 0 0 0 5px rgba(darken($color-accent, 10%), 0.5);
-      color: $white;
-      background: $color-accent;
+      box-shadow: 0 0 0 5px color.adjust(variables.$color-accent, $lightness: -10%, $alpha: -0.5%);
+      color: variables.$white;
+      background: variables.$color-accent;
     }
   }
 }

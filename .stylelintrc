@@ -1,13 +1,6 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-standard-scss",
   "ignoreFiles": [
     "assets/src/styles/vendor/**/*.scss"
-  ],
-  "plugins": [
-    "stylelint-scss"
-  ],
-  "rules": {
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true
-  }
+  ]
 }

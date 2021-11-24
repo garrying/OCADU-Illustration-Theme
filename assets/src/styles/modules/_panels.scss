@@ -1,12 +1,15 @@
+@use "sass:color";
+@use "../components/variables";
+
 .panel {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: $z-middle;
+  z-index: variables.$z-middle;
   display: flex;
-  background: lighten($color-accent, 10%);
+  background: color.adjust(variables.$color-accent, $lightness: 10%);
   outline: 0;
   opacity: 0;
   overflow: auto;
@@ -20,7 +23,7 @@
     pointer-events: auto;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     top: 0;
     right: 0;
     bottom: 0;
@@ -32,11 +35,11 @@
   position: absolute;
   top: calc(60px + 1em);
   right: 30px;
-  z-index: $z-important;
+  z-index: variables.$z-important;
   display: block;
   cursor: pointer;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     top: auto;
     bottom: 1em;
     left: calc(50% - 21px);
@@ -49,7 +52,7 @@
   margin: 3px;
 
   path {
-    stroke: $white;
+    stroke: variables.$white;
     stroke-linecap: round;
     stroke-width: 5;
   }

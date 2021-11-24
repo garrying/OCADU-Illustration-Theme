@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../components/variables";
+@use "../components/vwfontsize";
+
 .archive-grid {
   margin: 130px auto;
 
@@ -5,7 +9,7 @@
     font-size: 24px;
     font-weight: normal;
     line-height: 1.2em;
-    color: $off-black;
+    color: variables.$off-black;
     margin-bottom: 0.25em;
   }
 
@@ -15,32 +19,32 @@
 
   .illustrator-name {
     font-size: 16px;
-    color: $off-black;
+    color: variables.$off-black;
   }
 
   .bricklayer-column-sizer {
     width: 25%;
 
-    @media screen and (max-width: $medium-vp) {
-      width: 33.3333333333%;
+    @media screen and (max-width: variables.$medium-vp) {
+      width: 33.3333%;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       width: 50%;
     }
 
-    @media screen and (max-width: $smallest-vp) {
+    @media screen and (max-width: variables.$smallest-vp) {
       width: 100%;
     }
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     width: 100vw;
     padding: 20px;
     margin: 60px 0 0;
   }
 
-  @media screen and (max-width: $smallest-vp) {
+  @media screen and (max-width: variables.$smallest-vp) {
     flex-direction: column;
   }
 
@@ -51,7 +55,7 @@
   .gallery-item {
     margin: 0 12% 20%;
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       margin-right: 5%;
       margin-left: 0;
     }
@@ -64,12 +68,12 @@
 
   .bricklayer-column:last-child {
     .gallery-item {
-      @media screen and (max-width: $small-vp) {
+      @media screen and (max-width: variables.$small-vp) {
         margin-right: 0;
         margin-left: 5%;
       }
 
-      @media screen and (max-width: $smallest-vp) {
+      @media screen and (max-width: variables.$smallest-vp) {
         margin: 0;
       }
     }
@@ -77,12 +81,12 @@
 }
 
 .section-indicator-index {
-  font-family: $sans-serif-light;
-  color: lighten($color-accent, 25%);
+  font-family: variables.$sans-serif-light;
+  color: color.adjust(variables.$color-accent, $lightness: 25%);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $z-behind;
+  z-index: variables.$z-behind;
   width: 100%;
   display: flex;
   height: 100%;
@@ -91,15 +95,15 @@
   line-height: 1em;
   text-align: center;
 
-  @include rsp-font(10vw, 24px);
+  @include vwfontsize.rsp-font(10vw, 24px);
 }
 
 .section-indicator-single {
   font-size: 1em;
   width: calc(50% - 5px);
-  padding: 1em 1em;
+  padding: 1em;
   border-radius: 9999px;
-  background: rgba($color-accent, 0.2);
+  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
   margin-bottom: 10px;
   margin-right: 5px;
 
@@ -109,13 +113,13 @@
     margin-right: 0;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     display: none;
   }
 
   &:hover,
   &:focus {
-    background: rgba($color-accent, 0.35);
+    background: color.adjust(variables.$color-accent, $alpha: -0.65%);
   }
 }
 
@@ -136,9 +140,9 @@
   margin: 130px auto;
   line-height: 1.45em;
 
-  @include rsp-font(1vw, 14px);
+  @include vwfontsize.rsp-font(1vw, 14px);
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
     margin: 8em 0 0;
@@ -147,7 +151,7 @@
   .entry-title {
     line-height: 1em;
     margin: 1em 0;
-    font-family: $sans-serif-light;
+    font-family: variables.$sans-serif-light;
     font-size: 50px;
   }
 
@@ -161,7 +165,7 @@
   }
 
   .faculty-list {
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       max-width: none;
     }
   }
@@ -170,7 +174,7 @@
 #post-6 {
   max-width: 60vw;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
     margin-top: 8em;

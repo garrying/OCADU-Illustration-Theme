@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 .grid {
   display: flex;
   align-items: flex-start;
@@ -21,7 +23,7 @@
   }
 
   .bricklayer-column {
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       flex-basis: 50%;
     }
   }
@@ -31,15 +33,15 @@
   display: none;
   width: 33.333%;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     width: 50%;
   }
 
-  @media screen and (max-width: $smallest-vp) {
+  @media screen and (max-width: variables.$smallest-vp) {
     width: 100%;
   }
 
-  @media screen and (min-width: $large-vp) {
+  @media screen and (min-width: variables.$large-vp) {
     width: 25%;
   }
 }
@@ -48,24 +50,24 @@
   .bricklayer-column-sizer {
     width: 50%;
 
-    @media screen and (max-width: $ipad-vp) {
+    @media screen and (max-width: variables.$ipad-vp) {
       width: 100%;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       width: 100%;
     }
 
-    @media screen and (min-width: $large-vp) {
-      width: 33.3333333333%;
+    @media screen and (min-width: variables.$large-vp) {
+      width: 33.3333%;
     }
   }
 
-  @media screen and (max-width: $ipad-vp) {
+  @media screen and (max-width: variables.$ipad-vp) {
     margin: 90px 0 0;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin: 0;
 
     .bricklayer-column:last-child {

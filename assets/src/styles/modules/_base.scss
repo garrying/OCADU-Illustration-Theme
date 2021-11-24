@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../components/variables";
+@use "typography";
+
 // General background
 
 .lock-scroll {
@@ -6,38 +10,38 @@
 
 html {
   overflow-x: hidden;
-  -webkit-tap-highlight-color: rgba($black, 0);
+  -webkit-tap-highlight-color: color.adjust(variables.$black, $alpha: -0%);
 }
 
 body {
   height: 100%;
-  font-family: $sans-serif;
+  font-family: variables.$sans-serif;
   font-size: 75%;
   line-height: 1.5em;
-  color: $site-font-color;
-  background: $site-background;
+  color: variables.$site-font-color;
+  background: variables.$site-background;
 
-  @include font-smoothing(on);
+  @include typography.font-smoothing(on);
 }
 
 ::selection {
-  background: rgba($color-accent, 0.2);
+  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
 }
 
 mark {
-  background: rgba($color-accent, 0.2);
+  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
 }
 
 // Links
 
 a {
   text-decoration: none;
-  color: $color-accent;
+  color: variables.$color-accent;
   transition: color 180ms ease-in-out;
 
   &:hover,
   &:focus {
-    color: darken($color-accent, 20%);
+    color: color.adjust(variables.$color-accent, $lightness: -20%);
   }
 
   img {
@@ -48,7 +52,7 @@ a {
 // Tab shortcut reveal
 
 .screen-reader-shortcut {
-  @include font-smoothing(on);
+  @include typography.font-smoothing(on);
 
   position: absolute;
   top: 0;
@@ -57,12 +61,12 @@ a {
   height: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
-  color: $white;
-  background: $off-black;
+  color: variables.$white;
+  background: variables.$off-black;
 
   &:focus {
-    color: $white;
-    z-index: $z-important;
+    color: variables.$white;
+    z-index: variables.$z-important;
     width: auto;
     height: auto;
     padding: 0 10px;

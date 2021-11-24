@@ -1,17 +1,21 @@
+@use "sass:color";
+@use "../components/variables";
+@use "../components/vwfontsize";
+
 // Loader
 
 .loader {
   position: fixed;
   top: calc(50% - 44px);
   left: 0;
-  z-index: $z-important;
+  z-index: variables.$z-important;
   width: 100%;
   height: 88px;
-  font-family: $sans-serif-light;
-  color: lighten($color-accent, 25%);
+  font-family: variables.$sans-serif-light;
+  color: color.adjust(variables.$color-accent, $lightness: 25%);
   text-align: center;
 
-  @include rsp-font(3vw, 28px);
+  @include vwfontsize.rsp-font(3vw, 28px);
 
   letter-spacing: -2px;
   pointer-events: none;

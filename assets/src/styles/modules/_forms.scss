@@ -1,14 +1,17 @@
-input {
-  @include font-features-body;
-  @include font-smoothing(on);
+@use "../components/variables";
+@use "typography";
 
-  font-family: $sans-serif;
+input {
+  @include typography.font-features-body;
+  @include typography.font-smoothing(on);
+
+  font-family: variables.$sans-serif;
   border-radius: 0;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 button {
-  @include font-features-body;
+  @include typography.font-features-body;
 
   font-size: inherit;
   cursor: pointer;

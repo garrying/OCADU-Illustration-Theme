@@ -1,24 +1,28 @@
+@use "sass:color";
+@use "../components/variables";
+@use "typography";
+
 .logo {
   display: block;
   line-height: 1em;
   white-space: nowrap;
 
-  @include heading-features;
+  @include typography.heading-features;
 
   pointer-events: auto;
   transition: color 200ms ease-in-out;
 
   &:hover,
   &:focus {
-    color: darken($color-accent, 20%);
+    color: color.adjust(variables.$color-accent, $lightness: -20%);
   }
 
   &.invert,
   &.invert:hover {
-    color: darken($color-accent, 20%);
+    color: color.adjust(variables.$color-accent, $lightness: -20%);
   }
 
-  @media screen and (max-width: $smallest-vp) {
+  @media screen and (max-width: variables.$smallest-vp) {
     white-space: normal;
   }
 }
@@ -29,17 +33,16 @@
   padding: 1em 30px;
   left: 0;
   right: 0;
-  z-index: $z-foreground;
+  z-index: variables.$z-foreground;
   display: flex;
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba($color-accent, 0.2);
+  border-bottom: 1px solid color.adjust(variables.$color-accent, $alpha: -0.8%);
   transition: opacity 200ms ease-in-out;
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     top: 0;
     padding: 5px 20px;
     right: 0;
@@ -54,7 +57,7 @@
 .header-items-wrapper {
   display: flex;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     justify-content: flex-end;
     width: 50%;
   }
@@ -67,45 +70,45 @@
 .header-item {
   padding: 1em 1.5em;
   line-height: 1em;
-  color: $color-accent;
+  color: variables.$color-accent;
   white-space: nowrap;
   pointer-events: auto;
 
-  @include heading-features;
+  @include typography.heading-features;
 
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgba($color-accent, 0.2);
+  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
 
   &:hover,
   &:focus {
-    background: rgba($color-accent, 0.35);
+    background: color.adjust(variables.$color-accent, $alpha: -0.65%);
   }
 
   &.invert {
-    color: $white;
-    background: darken($color-accent, 10%);
+    color: variables.$white;
+    background: color.adjust(variables.$color-accent, $lightness: -10%);
   }
 
   &.inactive {
-    color: darken($color-accent, 10%);
+    color: color.adjust(variables.$color-accent, $lightness: -10%);
     background: transparent;
   }
 
   &.inactive:hover {
-    color: $white;
-    background: darken($color-accent, 10%);
+    color: variables.$white;
+    background: color.adjust(variables.$color-accent, $lightness: -10%);
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 1em;
   }
 }
 
 #search-link::after {
-  content: 'Search';
+  content: "Search";
   display: block;
 
-  @media screen and (max-width: $small-vp) {
-    content: '🔍';
+  @media screen and (max-width: variables.$small-vp) {
+    content: "🔍";
   }
 }

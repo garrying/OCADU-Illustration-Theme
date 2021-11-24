@@ -1,3 +1,5 @@
+@use "variables";
+
 // Helper classes
 
 .hidden {
@@ -17,10 +19,9 @@
 }
 
 .input-reset {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
 }
 
 .accent {
-  color: $color-accent;
+  color: variables.$color-accent;
 }

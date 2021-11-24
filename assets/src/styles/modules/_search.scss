@@ -1,7 +1,12 @@
+@use "sass:color";
+@use "../components/variables";
+@use "../components/vwfontsize";
+@use "typography";
+
 .search-container {
   align-items: center;
   justify-content: center;
-  color: $white;
+  color: variables.$white;
 
   .panel-inner {
     display: flex;
@@ -13,7 +18,7 @@
   position: relative;
   display: flex;
 
-  @include rsp-font(2.5vw, 18px);
+  @include vwfontsize.rsp-font(2.5vw, 18px);
 
   padding: 0 20px;
 
@@ -21,26 +26,26 @@
     width: 100%;
     box-sizing: border-box;
     padding: 20px 40px;
-    font-family: $sans-serif-light;
+    font-family: variables.$sans-serif-light;
     line-height: 1.5em;
-    color: $white;
-    background: darken($color-accent, 5%);
+    color: variables.$white;
+    background: color.adjust(variables.$color-accent, $lightness: -5%);
     border: 0;
 
-    &::-webkit-input-placeholder {
-      color: $color-accent;
+    &::placeholder {
+      color: variables.$color-accent;
     }
 
     &::-webkit-search-cancel-button {
-      -webkit-appearance: none;
+      appearance: none;
     }
 
     &:focus {
       outline-style: none;
-      outline-color: $white;
+      outline-color: variables.$white;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       padding: 10px 20px;
     }
   }
@@ -48,40 +53,39 @@
   .search-submit {
     padding: 20px 40px;
     margin-left: 20px;
-    font-family: $sans-serif-light;
-    color: $color-accent;
-    background: $white;
+    font-family: variables.$sans-serif-light;
+    color: variables.$color-accent;
+    background: variables.$white;
 
-    @include font-smoothing(on);
+    @include typography.font-smoothing(on);
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       padding: 10px 20px;
     }
   }
 }
 
-.autoComplete_list {
+.autoComplete_list { /* stylelint-disable-line */
   position: absolute;
   padding-top: 15px;
-  font-family: $sans-serif-light;
+  font-family: variables.$sans-serif-light;
   line-height: 1em;
-  color: darken($color-accent, 10%);
+  color: color.adjust(variables.$color-accent, $lightness: -10%);
 
-  @include rsp-font(2.5vw, 18px);
+  @include vwfontsize.rsp-font(2.5vw, 18px);
 }
 
-.autoComplete_result {
+.autoComplete_result { /* stylelint-disable-line */
   padding: 8px 0;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
 
   &:hover,
-  &.autoComplete_selected,
-  .autoComplete_highlighted {
-    color: $white;
+  &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
+    color: variables.$white;
   }
 
-  &.autoComplete_selected {
+  &.autoComplete_selected { /* stylelint-disable-line */
     margin-left: 1em;
   }
 }
@@ -89,12 +93,12 @@
 // Search Index
 
 .search-title {
-  font-family: $sans-serif-light;
+  font-family: variables.$sans-serif-light;
   line-height: 1em;
 
-  @include rsp-font(2.5vw, 18px);
+  @include vwfontsize.rsp-font(2.5vw, 18px);
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin: 0;
   }
 }
