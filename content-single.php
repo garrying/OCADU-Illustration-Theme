@@ -1,29 +1,29 @@
 <?php
   $ocaduillustration_json_ld_post_id = get_the_id();
 
-  $ocaduillustration_json_ld_title = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_title', true);
-  $ocaduillustration_json_ld_email = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_email', true);
-  $ocaduillustration_json_ld_sites = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites', true);
-  $ocaduillustration_json_ld_sites_2 = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites_2', true);
-  $ocaduillustration_json_ld_name = get_the_title();
+  $ocaduillustration_json_ld_title    = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_title', true );
+  $ocaduillustration_json_ld_email    = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_email', true );
+  $ocaduillustration_json_ld_sites    = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites', true );
+  $ocaduillustration_json_ld_sites_2  = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites_2', true );
+  $ocaduillustration_json_ld_name     = get_the_title();
   $ocaduillustration_json_ld_abstract = get_the_content();
 
   $ocaduillustration_json_ld = array(
-    "@context" => "https://schema.org",
-    "@type" => "CreativeWork",
-    "author" => array(
-      "@type" => "Person",
-      "name" => $ocaduillustration_json_ld_name
-    )
+    '@context' => 'https://schema.org',
+    '@type'    => 'CreativeWork',
+    'author'   => array(
+      '@type' => 'Person',
+      'name'  => $ocaduillustration_json_ld_name,
+    ),
   );
 
   if ( has_post_thumbnail() ) {
-    $featured_img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full', true );
-    $ocaduillustration_json_ld['image'] = array(
-      "@type" => "ImageObject",
-      "url" => $featured_img[0],
-      "width" => $featured_img[1],
-      "height" => $featured_img[2]
+    $ocaduillustration_json_ld_featured_img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full', true );
+    $ocaduillustration_json_ld['image']     = array(
+      '@type'  => 'ImageObject',
+      'url'    => $ocaduillustration_json_ld_featured_img[0],
+      'width'  => $ocaduillustration_json_ld_featured_img[1],
+      'height' => $ocaduillustration_json_ld_featured_img[2],
     );
   }
 
@@ -36,7 +36,7 @@
   if ( $ocaduillustration_json_ld_sites ) {
     $ocaduillustration_json_ld['author']['sameAs'] = $ocaduillustration_json_ld_sites;
     if ( $ocaduillustration_json_ld_sites_2 ) {
-      $ocaduillustration_json_ld['author']['sameAs'] = array($ocaduillustration_json_ld_sites, $ocaduillustration_json_ld_sites_2);
+      $ocaduillustration_json_ld['author']['sameAs'] = array( $ocaduillustration_json_ld_sites, $ocaduillustration_json_ld_sites_2 );
     }
   }
   if ( $ocaduillustration_json_ld_abstract ) {
@@ -45,7 +45,7 @@
 ?>
 
 <script type="application/ld+json">
-  <?php echo json_encode( $ocaduillustration_json_ld, JSON_UNESCAPED_SLASHES ); ?>
+  <?php echo wp_json_encode( $ocaduillustration_json_ld, JSON_UNESCAPED_SLASHES ); ?>
 </script>
 
 <article class="single-illustrator">
