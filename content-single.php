@@ -1,19 +1,19 @@
 <?php
-  $post_id = get_the_id();
+  $ocaduillustration_json_ld_post_id = get_the_id();
 
-  $illu_title = get_post_meta( $post_id, 'illu_title', true);
-  $illu_email = get_post_meta( $post_id, 'illu_email', true);
-  $illu_sites = get_post_meta( $post_id, 'illu_sites', true);
-  $illu_sites_2 = get_post_meta( $post_id, 'illu_sites_2', true);
-  $illu_name = get_the_title();
-  $illu_abstract = get_the_content();
+  $ocaduillustration_json_ld_title = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_title', true);
+  $ocaduillustration_json_ld_email = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_email', true);
+  $ocaduillustration_json_ld_sites = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites', true);
+  $ocaduillustration_json_ld_sites_2 = get_post_meta( $ocaduillustration_json_ld_post_id, 'illu_sites_2', true);
+  $ocaduillustration_json_ld_name = get_the_title();
+  $ocaduillustration_json_ld_abstract = get_the_content();
 
   $ocaduillustration_json_ld = array(
     "@context" => "https://schema.org",
     "@type" => "CreativeWork",
     "author" => array(
       "@type" => "Person",
-      "name" => $illu_name
+      "name" => $ocaduillustration_json_ld_name
     )
   );
 
@@ -27,20 +27,20 @@
     );
   }
 
-  if ( $illu_title ) {
-    $ocaduillustration_json_ld['name'] = $illu_title;
+  if ( $ocaduillustration_json_ld_title ) {
+    $ocaduillustration_json_ld['name'] = $ocaduillustration_json_ld_title;
   }
-  if ( $illu_email ) {
-    $ocaduillustration_json_ld['author']['email'] = $illu_email;
+  if ( $ocaduillustration_json_ld_email ) {
+    $ocaduillustration_json_ld['author']['email'] = $ocaduillustration_json_ld_email;
   }
-  if ( $illu_sites ) {
-    $ocaduillustration_json_ld['author']['sameAs'] = $illu_sites;
-    if ( $illu_sites_2 ) {
-      $ocaduillustration_json_ld['author']['sameAs'] = array($illu_sites, $illu_sites_2);
+  if ( $ocaduillustration_json_ld_sites ) {
+    $ocaduillustration_json_ld['author']['sameAs'] = $ocaduillustration_json_ld_sites;
+    if ( $ocaduillustration_json_ld_sites_2 ) {
+      $ocaduillustration_json_ld['author']['sameAs'] = array($ocaduillustration_json_ld_sites, $ocaduillustration_json_ld_sites_2);
     }
   }
-  if ( $illu_abstract ) {
-    $ocaduillustration_json_ld['abstract'] = $illu_abstract;
+  if ( $ocaduillustration_json_ld_abstract ) {
+    $ocaduillustration_json_ld['abstract'] = $ocaduillustration_json_ld_abstract;
   }
 ?>
 
