@@ -1,0 +1,10 @@
+includes:
+  - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+  level: max
+  excludePaths:
+    - node_modules
+    - vendor
+  paths:
+    - .

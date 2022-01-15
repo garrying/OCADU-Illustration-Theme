@@ -11,7 +11,7 @@
 
   <arg value="spv"/>
   <arg name="basepath" value="."/>
-  <arg name="parallel" value="8"/>
+  <arg name="parallel" value="20"/>
   <arg name="cache"/>
   <arg name="extensions" value="php"/>
   <arg name="ignore" value="svg.php"/>
