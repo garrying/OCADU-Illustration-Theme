@@ -5,9 +5,8 @@ require('velocity-animate')
 const AutoComplete = require('@tarekraafat/autocomplete.js')
 const blobs2 = require('./libs/blobs')
 const lazySizes = require('lazysizes')
-const Bricklayer = require('bricklayer')
-const SwipeListener = require('swipe-listener')
-const Two = require('two.js').default;
+const Colcade = require('colcade')
+const SwipeListener = require('swipe-listener');
 
 (() => {
   const app = {
@@ -39,63 +38,6 @@ const Two = require('two.js').default;
       headerInner: $('.heading-inner'),
       imageIndex: 0,
       easeOutBack: [0.175, 0.885, 0.32, 1.275]
-    },
-
-    _ocadTitleMoment: () => {
-      const titleEle = document.querySelector('.title')
-
-      if (titleEle) {
-        const two = new Two({
-          autostart: true,
-          width: titleEle.clientWidth,
-          height: titleEle.clientHeight
-        }).appendTo(titleEle)
-
-        window.addEventListener('resize', () => {
-          two.renderer.setSize(titleEle.clientWidth, titleEle.clientHeight)
-        })
-
-        const mouse = new Two.Vector(titleEle.clientWidth, titleEle.clientHeight)
-
-        const move = (e) => {
-          const x = e.clientX
-          const y = e.clientY
-          const v1 = makePoint(mouse)
-          const v2 = makePoint(x, y)
-          const line = two.makeCurve([v1, v2], true)
-          line.cap = 'round'
-          line.noFill()
-          line.join = 'round'
-          line.linewidth = 30
-          line.vertices.forEach(function (v) {
-            v.addSelf(line.translation)
-          })
-          line.translation.clear()
-          mouse.set(x, y)
-        }
-
-        $(window).bind('mousemove', move)
-
-        function makePoint (x, y) {
-          if (arguments.length <= 1) {
-            y = x.y
-            x = x.x
-          }
-
-          const v = new Two.Vector(x, y)
-          v.position = new Two.Vector().copy(v)
-          return v
-        }
-
-        const strokeColors = ['base', 'set1', 'set2', 'set3']
-        const randomItem = arr => arr[(Math.random() * arr.length) | 0]
-        titleEle.classList.add(randomItem(strokeColors))
-
-        titleEle.addEventListener('click', () => {
-          titleEle.classList.remove(...strokeColors)
-          titleEle.classList.add(randomItem(strokeColors))
-        })
-      }
     },
 
     _ocadSingleScroll: () => {
@@ -139,7 +81,10 @@ const Two = require('two.js').default;
       }
     },
 
-    _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
+    _ocadMasonry: selector => new Colcade(document.querySelector(selector), {
+      columns: '.grid-col',
+      items: '.grid-item'
+    }),
 
     _ocadSearch: () => {
       const autoCompleteJS = new AutoComplete({ // eslint-disable-line
