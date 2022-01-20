@@ -11,7 +11,6 @@ const SwipeListener = require('swipe-listener');
 (() => {
   const app = {
     init: () => {
-      app._ocadTitleMoment()
       app._ocadPanelSelectButtons()
       app._ocadHomeLoader()
       app._ocadHomeHover()
@@ -83,7 +82,7 @@ const SwipeListener = require('swipe-listener');
 
     _ocadMasonry: selector => new Colcade(document.querySelector(selector), {
       columns: '.grid-col',
-      items: '.grid-item'
+      items: '.gallery-item'
     }),
 
     _ocadSearch: () => {

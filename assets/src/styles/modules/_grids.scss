@@ -1,0 +1,146 @@
+@use "../components/variables";
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-col {
+  flex-grow: 1;
+}
+
+.grid-col-2,
+.grid-col-3 {
+  display: none;
+}
+
+.illustrators-grid {
+  margin: 0 30px;
+
+  .gallery-item {
+    margin: 0 4% 4% 0;
+  }
+
+  .grid-col {
+    @media screen and (max-width: variables.$small-vp) {
+      width: 50%;
+    }
+  }
+}
+
+.archive-grid {
+  margin: 130px auto;
+
+  .illustrator-title {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2em;
+    color: variables.$off-black;
+    margin-bottom: 0.25em;
+  }
+
+  .illustrator-type {
+    margin-top: 0.5em;
+  }
+
+  .illustrator-name {
+    font-size: 16px;
+    color: variables.$off-black;
+  }
+
+  .grid-col {
+    width: 50%;
+
+    @media screen and (max-width: variables.$smallest-vp) {
+      width: 100%;
+
+      &.grid-col-4 {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: variables.$small-vp) {
+      width: 33.3333%;
+
+      &.grid-col-2 {
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: variables.$medium-vp) {
+      width: 25%;
+
+      &.grid-col-2,
+      &.grid-col-3 {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: variables.$small-vp) {
+    width: 100vw;
+    padding: 20px;
+    margin: 60px 0 0;
+  }
+
+  @media screen and (max-width: variables.$smallest-vp) {
+    flex-direction: column;
+  }
+
+  .illustrator-meta-container {
+    margin: 1em 0 0.67em;
+  }
+
+  .gallery-item {
+    margin: 0 12% 20%;
+
+    @media screen and (max-width: variables.$small-vp) {
+      margin-right: 5%;
+      margin-left: 0;
+    }
+  }
+
+  .illustrator-link {
+    display: block;
+    padding-bottom: 1em;
+  }
+
+  .grid-col-4 {
+    .gallery-item {
+      @media screen and (max-width: variables.$small-vp) {
+        margin-right: 0;
+        margin-left: 5%;
+      }
+
+      @media screen and (max-width: variables.$smallest-vp) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.gallery-grid {
+  .grid-col {
+    width: 50%;
+
+    @media screen and (max-width: variables.$ipad-vp) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: variables.$small-vp) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: variables.$large-vp) {
+      width: 33.3333%;
+
+      &.grid-col-3 {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: variables.$ipad-vp) {
+    margin: 90px 0 0;
+  }
+}

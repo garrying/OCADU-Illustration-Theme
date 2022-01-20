@@ -104,11 +104,9 @@ figure {
   opacity: 0;
 }
 
-.bricklayer-column .lazyload {
-  opacity: 1;
-}
-
 .lazyloaded {
+  opacity: 1;
+
   &.blur-up {
     filter: blur(0);
   }
@@ -116,7 +114,7 @@ figure {
 
 .blur-up {
   filter: blur(5px);
-  transition: filter 200ms ease-in-out, opacity 100ms ease-in-out;
+  transition: filter 200ms ease-in-out;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }

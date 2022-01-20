@@ -56,10 +56,6 @@
     margin: 50px 0 0;
   }
 
-  .illustrator-meta-label {
-    margin-bottom: 0;
-  }
-
   .illustrator-meta-container {
     position: fixed;
     top: 0;
@@ -118,7 +114,7 @@
     }
   }
 
-  .bricklayer-column {
+  .grid-col {
     margin-top: -80px;
 
     @media screen and (max-width: variables.$small-vp) {
@@ -133,21 +129,18 @@
         padding: 6%;
       }
     }
-  }
-
-  .bricklayer-column-sizer {
-    width: 25%;
-
-    @media screen and (max-width: variables.$small-vp) {
-      width: 50%;
-    }
 
     @media screen and (max-width: variables.$smallest-vp) {
       width: 100%;
     }
 
-    @media screen and (min-width: variables.$large-vp) {
-      width: 20%;
+    @media screen and (min-width: variables.$small-vp) {
+      width: 25%;
+
+      &.grid-col-2,
+      &.grid-col-3 {
+        display: block;
+      }
     }
   }
 }

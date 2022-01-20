@@ -19,6 +19,10 @@ if ( is_archive() ) {
 ?>
 
 <div id="illustrators" class="grid illustrators-grid archive-grid">
+  <div class="grid-col grid-col-1"></div>
+  <div class="grid-col grid-col-2"></div>
+  <div class="grid-col grid-col-3"></div>
+  <div class="grid-col grid-col-4"></div>
   <?php $ocaduillustration_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
   <?php
   $ocaduillustration_args  = array(
