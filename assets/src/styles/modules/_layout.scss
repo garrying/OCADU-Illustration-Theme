@@ -41,6 +41,8 @@
 
     .gallery-icon {
       flex-grow: 1;
+      justify-content: center;
+      display: flex;
     }
 
     @media screen and (max-width: variables.$ipad-vp) {
