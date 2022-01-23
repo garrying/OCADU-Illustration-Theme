@@ -6,11 +6,11 @@
 .title {
   padding: 60px 2em;
   min-height: 61.8vh;
-  background: variables.$color-accent;
+  background: var(--color-accent);
   position: relative;
   display: flex;
   line-height: 1;
-  color: variables.$white;
+  color: var(--color-white);
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -20,7 +20,7 @@
   }
 
   a {
-    color: variables.$white;
+    color: var(--color-white);
     pointer-events: auto;
   }
 
@@ -34,7 +34,7 @@
 
   .title-primary {
     margin: 0 0 0.5em;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
 
     @include vwfontsize.rsp-font(7vw, 20px);
     @include typography.heading-features;
@@ -44,16 +44,16 @@
     @include typography.heading-features;
 
     max-width: 420px;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
     font-size: 16px;
     line-height: 1.2em;
     margin-bottom: 0.5em;
   }
 
   .message {
-    color: variables.$color-accent;
-    background: variables.$white;
-    border: 1px solid variables.$white;
+    color: var(--color-accent);
+    background: var(--color-white);
+    border: 1px solid var(--color-white);
     margin-top: 1em;
     padding: 1.25em 1em;
     transition: background 180ms ease-in-out;
@@ -65,7 +65,7 @@
   }
 
   &.base path {
-    stroke: color.adjust(variables.$color-accent, $lightness: -10%);
+    stroke: var(--color-accent);
   }
 
   &.set1 path {
@@ -83,11 +83,11 @@
 
 .about {
   font-size: 14px;
-  border: 1px solid variables.$white;
+  border: 1px solid var(--color-white);
   padding: 0.75em 1em;
 
   &:hover {
-    background: color.adjust(variables.$color-accent, $lightness: -5%);
+    background: var(--color-accent);
   }
 }
 
@@ -98,8 +98,8 @@
   margin-top: 2em;
 
   .message {
-    background: variables.$white;
-    color: variables.$color-accent;
+    background: var(--color-white);
+    color: var(--color-accent);
     border-width: 0;
     width: 50%;
     font-size: 18px;
@@ -107,9 +107,9 @@
 
     &:hover,
     &:active {
-      box-shadow: 0 0 0 5px color.adjust(variables.$color-accent, $lightness: -10%, $alpha: -0.5%);
-      color: variables.$white;
-      background: variables.$color-accent;
+      box-shadow: 0 0 0 5px rgba(var(--color-accent-rgb), 0.5);
+      color: var(--color-white);
+      background: var(--color-accent);
     }
   }
 }

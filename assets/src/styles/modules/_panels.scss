@@ -7,9 +7,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: variables.$z-middle;
+  z-index: var(--z-middle);
   display: flex;
-  background: color.adjust(variables.$color-accent, $lightness: 10%);
+  background: var(--color-accent);
   outline: 0;
   opacity: 0;
   overflow: auto;
@@ -35,7 +35,7 @@
   position: absolute;
   top: calc(60px + 1em);
   right: 30px;
-  z-index: variables.$z-important;
+  z-index: var(--z-important);
   display: block;
   cursor: pointer;
 
@@ -52,7 +52,7 @@
   margin: 3px;
 
   path {
-    stroke: variables.$white;
+    stroke: var(--color-white);
     stroke-linecap: round;
     stroke-width: 5;
   }

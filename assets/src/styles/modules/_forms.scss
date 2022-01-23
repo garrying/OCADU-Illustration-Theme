@@ -5,7 +5,7 @@ input {
   @include typography.font-features-body;
   @include typography.font-smoothing(on);
 
-  font-family: variables.$sans-serif;
+  font-family: var(--font-sans-serif);
   border-radius: 0;
   appearance: none;
 }

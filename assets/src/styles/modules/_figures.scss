@@ -5,9 +5,8 @@ figure {
   margin: 0;
 
   img {
-    display: block;
     width: 100%;
-    height: auto;
+    height: unset;
   }
 
   .wp-caption-text {
@@ -18,7 +17,7 @@ figure {
 
 .image-modal-container-full-image {
   position: relative;
-  z-index: variables.$z-middle;
+  z-index: var(--z-middle);
   max-width: 100%;
   max-height: 100%;
   user-select: none;
@@ -26,13 +25,8 @@ figure {
 }
 
 .gallery-icon-anchor {
-  position: relative;
   display: block;
   cursor: zoom-in;
-
-  img {
-    margin: 0 auto;
-  }
 }
 
 .image-modal-wrapper {
@@ -41,9 +35,9 @@ figure {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: variables.$z-foreground;
+  z-index: var(--z-foreground);
   overflow: auto;
-  background: variables.$site-background;
+  background: var(--color-site-background);
 
   @media screen and (max-width: variables.$medium-vp) {
     left: 0;
@@ -64,12 +58,12 @@ figure {
     position: absolute;
     right: 20px;
     bottom: 20px;
-    z-index: variables.$z-foreground;
+    z-index: var(--z-foreground);
     max-width: 350px;
     padding: 1em 0 0 1em;
     font-size: 0.95em;
     line-height: 1.3em;
-    background: color.adjust(variables.$site-background, $alpha: -0.3%);
+    background: rgba(var(--color-site-background), 0.3);
     backdrop-filter: blur(2px);
 
     @media screen and (max-width: variables.$ipad-vp) {
@@ -95,7 +89,7 @@ figure {
 
   .close-btn {
     path {
-      stroke: variables.$color-accent;
+      stroke: var(--color-accent);
     }
   }
 }

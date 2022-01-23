@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: variables.$color-accent;
+  color: var(--color-accent);
 
   @include vwfontsize.rsp-font(1.2vw, 14px);
 
@@ -22,7 +22,7 @@
 
   .entry-title {
     margin-bottom: 0.75em;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
 
     @include vwfontsize.rsp-font(5vw, 48px);
   }
@@ -48,7 +48,7 @@
   align-items: center;
 
   svg path {
-    stroke: variables.$color-accent;
+    stroke: var(--color-accent);
     fill: transparent;
   }
 }

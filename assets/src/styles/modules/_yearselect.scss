@@ -44,15 +44,15 @@
 .year-item {
   position: relative;
   z-index: 1;
-  font-family: variables.$sans-serif-light;
+  font-family: var(--font-sans-serif-light);
   line-height: 1em;
-  color: variables.$white;
+  color: var(--color-white);
   width: 320px;
   height: 480px;
   border-radius: 20px;
   overflow: hidden;
   margin: 0 40px 40px 0;
-  box-shadow: 5px 5px 20px color.adjust(variables.$color-accent, $lightness: -1%);
+  box-shadow: 5px 5px 20px var(--color-accent);
 
   @include vwfontsize.rsp-font(3vw, 24px);
 
@@ -69,14 +69,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: color.adjust(variables.$color-accent, $lightness: -15%);
+    background: var(--color-accent);
     z-index: 1;
     mix-blend-mode: lighten;
   }
 
   &.active,
   &:hover {
-    box-shadow: 0 0 0 4px inset variables.$white;
+    box-shadow: 0 0 0 4px inset var(--color-white);
   }
 }
 
@@ -113,6 +113,6 @@
   z-index: 1;
   top: 0;
   left: 0;
-  color: variables.$white;
+  color: var(--color-white);
   padding: 20px;
 }

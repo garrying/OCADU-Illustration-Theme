@@ -14,12 +14,12 @@
 
   &:hover,
   &:focus {
-    color: color.adjust(variables.$color-accent, $lightness: -20%);
+    color: var(--color-accent);
   }
 
   &.invert,
   &.invert:hover {
-    color: color.adjust(variables.$color-accent, $lightness: -20%);
+    color: var(--color-accent);
   }
 
   @media screen and (max-width: variables.$smallest-vp) {
@@ -33,12 +33,12 @@
   padding: 1em 30px;
   left: 0;
   right: 0;
-  z-index: variables.$z-foreground;
+  z-index: var(--z-foreground);
   display: flex;
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid color.adjust(variables.$color-accent, $alpha: -0.8%);
+  border-bottom: 1px solid var(--color-accent);
   transition: opacity 200ms ease-in-out;
   backdrop-filter: blur(4px);
 
@@ -70,33 +70,33 @@
 .header-item {
   padding: 1em 1.5em;
   line-height: 1em;
-  color: variables.$color-accent;
+  color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
 
   @include typography.heading-features;
 
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
+  background: rgba(var(--color-accent-rgb), 0.8);
 
   &:hover,
   &:focus {
-    background: color.adjust(variables.$color-accent, $alpha: -0.65%);
+    background: rgba(var(--color-accent-rgb), 0.65);
   }
 
   &.invert {
-    color: variables.$white;
-    background: color.adjust(variables.$color-accent, $lightness: -10%);
+    color: var(--color-white);
+    background: var(--color-accent);
   }
 
   &.inactive {
-    color: color.adjust(variables.$color-accent, $lightness: -10%);
+    color: var(--color-accent);
     background: transparent;
   }
 
   &.inactive:hover {
-    color: variables.$white;
-    background: color.adjust(variables.$color-accent, $lightness: -10%);
+    color: var(--color-white);
+    background: var(--color-accent);
   }
 
   @media screen and (max-width: variables.$small-vp) {

@@ -6,7 +6,7 @@
 .search-container {
   align-items: center;
   justify-content: center;
-  color: variables.$white;
+  color: var(--color-white);
 
   .panel-inner {
     display: flex;
@@ -26,14 +26,14 @@
     width: 100%;
     box-sizing: border-box;
     padding: 20px 40px;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
     line-height: 1.5em;
-    color: variables.$white;
-    background: color.adjust(variables.$color-accent, $lightness: -5%);
+    color: var(--color-white);
+    background: var(--color-accent);
     border: 0;
 
     &::placeholder {
-      color: variables.$color-accent;
+      color: var(--color-accent);
     }
 
     &::-webkit-search-cancel-button {
@@ -42,7 +42,7 @@
 
     &:focus {
       outline-style: none;
-      outline-color: variables.$white;
+      outline-color: var(--color-white);
     }
 
     @media screen and (max-width: variables.$small-vp) {
@@ -53,9 +53,9 @@
   .search-submit {
     padding: 20px 40px;
     margin-left: 20px;
-    font-family: variables.$sans-serif-light;
-    color: variables.$color-accent;
-    background: variables.$white;
+    font-family: var(--font-sans-serif-light);
+    color: var(--color-accent);
+    background: var(--color-white);
 
     @include typography.font-smoothing(on);
 
@@ -68,9 +68,9 @@
 .autoComplete_list { /* stylelint-disable-line */
   position: absolute;
   padding-top: 15px;
-  font-family: variables.$sans-serif-light;
+  font-family: var(--font-sans-serif-light);
   line-height: 1em;
-  color: color.adjust(variables.$color-accent, $lightness: -10%);
+  color: var(--color-accent);
 
   @include vwfontsize.rsp-font(2.5vw, 18px);
 }
@@ -82,7 +82,7 @@
 
   &:hover,
   &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
-    color: variables.$white;
+    color: var(--color-white);
   }
 
   &.autoComplete_selected { /* stylelint-disable-line */
@@ -93,7 +93,7 @@
 // Search Index
 
 .search-title {
-  font-family: variables.$sans-serif-light;
+  font-family: var(--font-sans-serif-light);
   line-height: 1em;
 
   @include vwfontsize.rsp-font(2.5vw, 18px);

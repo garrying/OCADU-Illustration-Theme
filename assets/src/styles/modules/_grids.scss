@@ -35,7 +35,7 @@
     font-size: 24px;
     font-weight: normal;
     line-height: 1.2em;
-    color: variables.$off-black;
+    color: var(--color-off-black);
     margin-bottom: 0.25em;
   }
 
@@ -45,7 +45,7 @@
 
   .illustrator-name {
     font-size: 16px;
-    color: variables.$off-black;
+    color: var(--color-off-black);
   }
 
   .grid-col {

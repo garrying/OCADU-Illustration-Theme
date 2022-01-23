@@ -39,11 +39,8 @@
     justify-content: center;
     align-items: center;
 
-    img {
-      position: absolute;
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
+    .gallery-icon {
+      flex-grow: 1;
     }
 
     @media screen and (max-width: variables.$ipad-vp) {
@@ -103,15 +100,10 @@
 
   .thesis-title {
     margin-bottom: 0.5em;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
     line-height: 1.2em;
     letter-spacing: -1px;
-
-    @include vwfontsize.rsp-font(2vw, 24px);
-
-    @media screen and (max-width: variables.$small-vp) {
-      @include vwfontsize.rsp-font(3.5vw, 24px);
-    }
+    font-size: 2.5em;
   }
 
   .thesis-description {
@@ -120,14 +112,14 @@
   }
 
   .illustrator-meta-name {
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
     font-size: 1.5em;
     margin-bottom: 0.5em;
   }
 }
 
 .meta-label {
-  color: variables.$color-accent;
+  color: var(--color-accent);
   margin-bottom: 0.5em;
 }
 
@@ -135,17 +127,6 @@
   border-top: 0;
   border-style: dotted;
   border-color: pink;
-}
-
-#name-blob {
-  width: 1em;
-  height: 1em;
-  display: inline-flex;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .meta {
@@ -164,14 +145,14 @@
   .meta-link {
     display: inline-block;
     max-width: 100%;
-    background: color.adjust(variables.$color-accent, $alpha: -0.8%);
+    background: rgba(var(--color-accent-rgb), 0.8);
     padding: 0.75em 1em;
     margin-bottom: 0.25em;
     transition: background 180ms ease-in-out;
 
     &:hover,
     &:focus {
-      background: color.adjust(variables.$color-accent, $alpha: -0.65%);
+      background: rgba(var(--color-accent-rgb), 0.65);
     }
   }
 }
@@ -186,13 +167,13 @@
   width: 100%;
   bottom: 0;
   left: 0;
-  border-top: 1px solid color.adjust(variables.$color-accent, $lightness: 25%);
+  border-top: 1px solid var(--color-accent);
   padding: 10px 30px 20px;
 
   @media screen and (max-width: variables.$small-vp) {
     position: relative;
     padding: 0;
-    z-index: variables.$z-background;
+    z-index: var(--z-background);
     border-top: 0;
     transition: opacity 200ms ease-in-out;
     pointer-events: auto;
@@ -208,7 +189,7 @@
   display: flex;
   width: 100%;
   padding: 0 20px;
-  border: 1px solid color.adjust(variables.$color-accent, $alpha: -0.8%);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.8);
   border-radius: 9999px;
   justify-content: space-between;
 
@@ -225,7 +206,7 @@
 
   a {
     display: block;
-    z-index: variables.$z-foreground;
+    z-index: var(--z-foreground);
     border-radius: 9999px;
     padding: 0.75em 1em;
 
