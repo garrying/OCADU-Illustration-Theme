@@ -17,7 +17,14 @@ _/    _/  _/        _/    _/  _/    _/      _/    _/        _/      _/  _/    _/
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="profile" href="https://gmpg.org/xfn/11" />
   <?php wp_head(); ?>
-
+  <?php 
+    if ( is_singular( 'illustrator' ) ) {
+      $ocaduillustration_year_image =  wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-icon', '' );
+      echo "<link rel='shortcut icon' href='". $ocaduillustration_year_image[0] ."'>";
+    } else {
+      echo "<link rel='icon' href=''>";
+    }
+  ?>
 </head>
 
 <body <?php body_class(); ?>>

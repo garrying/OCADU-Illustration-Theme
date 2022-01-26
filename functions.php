@@ -13,6 +13,7 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
     add_image_size( 'illustrator-social-twitter', 560 );
     add_image_size( 'illustrator-small', 300 );
     add_image_size( 'illustrator-extra-small', 150 );
+    add_image_size( 'illustrator-icon', 100, 100, true );
 
     /**
      * Let WordPress Manage The Document Title
