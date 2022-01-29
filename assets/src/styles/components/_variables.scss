@@ -1,3 +1,9 @@
+@function hex2rgb($hex) {
+  @return red($hex) green($hex) blue($hex);
+}
+
+$color-accent: #fa8072;
+
 :root {
   --font-sans-serif: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
   --font-sans-serif-light: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
@@ -6,8 +12,8 @@
   --color-off-black: #0e0e0f;
   --color-site-background: #fff;
   --color-site-font: #000;
-  --color-accent: #fa8072;
-  --color-accent-rgb: 251, 225, 222;
+  --color-accent: #{$color-accent};
+  --color-accent-rgb: #{hex2rgb($color-accent)};
   --z-behind: -1;
   --z-background: 100;
   --z-middle: 200;

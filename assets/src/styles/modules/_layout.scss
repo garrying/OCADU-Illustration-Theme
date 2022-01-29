@@ -147,14 +147,14 @@
   .meta-link {
     display: inline-block;
     max-width: 100%;
-    background: rgba(var(--color-accent-rgb), 0.8);
+    background: rgb(var(--color-accent-rgb) / 20%);
     padding: 0.75em 1em;
     margin-bottom: 0.25em;
     transition: background 180ms ease-in-out;
 
     &:hover,
     &:focus {
-      background: rgba(var(--color-accent-rgb), 0.65);
+      background: rgb(var(--color-accent-rgb) / 35%);
     }
   }
 }
@@ -169,7 +169,7 @@
   width: 100%;
   bottom: 0;
   left: 0;
-  border-top: 1px solid var(--color-accent);
+  border-top: 1px solid rgb(var(--color-accent-rgb) / 20%);
   padding: 10px 30px 20px;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -191,7 +191,7 @@
   display: flex;
   width: 100%;
   padding: 0 20px;
-  border: 1px solid rgba(var(--color-accent-rgb), 0.8);
+  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
   border-radius: 9999px;
   justify-content: space-between;
 

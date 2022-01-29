@@ -63,7 +63,7 @@ figure {
     padding: 1em 0 0 1em;
     font-size: 0.95em;
     line-height: 1.3em;
-    background: rgba(var(--color-site-background), 0.3);
+    background: var(--color-site-background);
     backdrop-filter: blur(2px);
 
     @media screen and (max-width: variables.$ipad-vp) {

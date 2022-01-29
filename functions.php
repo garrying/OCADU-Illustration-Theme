@@ -31,6 +31,8 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
           'comment-list',
           'gallery',
           'caption',
+          'style',
+          'script'
         )
     );
 
@@ -270,7 +272,8 @@ function ocaduillustration_social_meta() {
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = wptexturize( wp_strip_all_tags( $post->post_content ) );
+    $the_excerpt                  = wptexturize( wp_strip_all_tags( $post->post_content ) );
+    $ocaduillustration_year_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-icon', '' );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
     echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
@@ -285,7 +288,9 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:image:alt" content="' . esc_html( get_post_meta( $post->ID, 'illu_title', true ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
-
+    if ( $ocaduillustration_year_image ) {
+      echo '<link rel="shortcut icon" href="' . esc_html( $ocaduillustration_year_image[0] ) . '">' . "\n"; // phpcs:ignore
+    }
   }
   if ( is_home() || is_archive() ) {
     $social_description = 'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2022.';
@@ -309,6 +314,7 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter-index' ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $social_description ) . '">' . "\n";
+    echo '<link rel="shortcut icon" href="">'; // phpcs:ignore
 
   }
   echo '<!-- end social meta -->' . "\n";
@@ -438,9 +444,10 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
  * Disable gutenberg style in Front
  */
 function ocaduillustration_wps_deregister_styles() {
+  wp_dequeue_style( 'global-styles' );
   wp_dequeue_style( 'wp-block-library' );
 }
 
-add_action( 'wp_print_styles', 'ocaduillustration_wps_deregister_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'ocaduillustration_wps_deregister_styles', 100 );
 
 ?>

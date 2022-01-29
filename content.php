@@ -27,7 +27,7 @@
           <h2 class="illustrator-meta-label illustrator-title p-name"><?php echo esc_html( get_post_meta( $post->ID, 'illu_title', true ) ); ?>
           </h2>
         <?php endif; ?>
-        <h3 class="illustrator-name p-author"><span class="accent">✿</span> <?php the_title(); ?></h3>
+        <h3 class="illustrator-name p-author"><?php the_title(); ?></h3>
       </div>
     </div>
   </a>

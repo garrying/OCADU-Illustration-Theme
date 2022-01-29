@@ -38,7 +38,7 @@
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-accent);
+  border-bottom: 1px solid rgb(var(--color-accent-rgb) / 20%);
   transition: opacity 200ms ease-in-out;
   backdrop-filter: blur(4px);
 
@@ -77,11 +77,11 @@
   @include typography.heading-features;
 
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgba(var(--color-accent-rgb), 0.8);
+  background: rgb(var(--color-accent-rgb) / 20%);
 
   &:hover,
   &:focus {
-    background: rgba(var(--color-accent-rgb), 0.65);
+    background: rgb(var(--color-accent-rgb) / 35%);
   }
 
   &.invert {

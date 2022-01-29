@@ -30,7 +30,7 @@
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgba(var(--color-accent-rgb), 0.9);
+    background: rgb(var(--color-accent-rgb) / 10%);
     transition: background 200ms ease-in-out;
 
     &.active,
@@ -39,7 +39,7 @@
     }
 
     &:hover {
-      background: rgba(var(--color-accent-rgb), 0.5);
+      background: rgb(var(--color-accent-rgb) / 50%);
     }
   }
 }
