@@ -32,7 +32,7 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
           'gallery',
           'caption',
           'style',
-          'script'
+          'script',
         )
     );
 
