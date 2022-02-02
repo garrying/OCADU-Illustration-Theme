@@ -87,6 +87,7 @@ const SwipeListener = require('swipe-listener');
 
     _ocadSearch: () => {
       const autoCompleteJS = new AutoComplete({ // eslint-disable-line
+        submit: true,
         data: {
           src: async (query) => {
             try {
