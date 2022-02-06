@@ -29,17 +29,13 @@
 }
 
 .archive-grid {
-  margin: 130px auto;
+  margin: 0 auto;
 
   .illustrator-title {
     font-weight: normal;
     line-height: 1.2em;
     color: var(--color-off-black);
-    margin-bottom: 0.25em;
-  }
-
-  .illustrator-type {
-    margin-top: 0.5em;
+    margin-bottom: 0;
   }
 
   .illustrator-name {
@@ -90,7 +86,7 @@
   }
 
   .gallery-item {
-    margin: 0 12% 20%;
+    margin: 0 6% 12%;
 
     @media screen and (max-width: variables.$small-vp) {
       margin-right: 5%;

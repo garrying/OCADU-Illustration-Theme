@@ -321,15 +321,10 @@ const SwipeListener = require('swipe-listener');
         const imageCaptionContainer = $('.image-modal-caption')
         if (imageCaption) {
           imageCaptionContainer.html(imageCaption)
-          imageCaptionContainer.velocity({ opacity: 1 })
+          imageCaptionContainer.removeClass('hidden')
         } else {
-          $.Velocity.animate(
-            imageCaptionContainer,
-            { opacity: 0 },
-            'fast'
-          ).then(() => {
-            imageCaptionContainer.html('')
-          })
+          imageCaptionContainer.addClass('hidden')
+          imageCaptionContainer.html('')
         }
       }
 
