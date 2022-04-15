@@ -10,7 +10,7 @@ jobs:
     name: Ping the site
     steps:
     - name: Check the site
-      uses: srt32/uptime@master
+      uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://www.ocaduillustration.com/"
         expected-statuses: "200,301"
