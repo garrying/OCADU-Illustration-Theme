@@ -307,9 +307,11 @@ const SwipeListener = require('swipe-listener');
         image.alt = 'Full sized illustration'
         image.id = 'full-image'
         image.className = 'image-modal-container-full-image lazyload'
-        image.dataset.srcset = imageSource.data('srcset')
-        image.sizes = imageSource.data('sizes')
         image.dataset.src = imageSource.data('src-large')
+        if (image.dataset.src.split('.').pop() !== 'gif') {
+          image.sizes = imageSource.data('sizes')
+          image.dataset.srcset = imageSource.data('srcset')
+        }
         return image
       }
 
@@ -374,8 +376,13 @@ const SwipeListener = require('swipe-listener');
             image.removeAttribute('srcset')
           }
           image.dataset.src = imageItem.url
-          image.dataset.srcset = imageItem.srcset
-          image.dataset.sizes = imageItem.sizes
+          if (image.dataset.src.split('.').pop() !== 'gif') {
+            image.dataset.srcset = imageItem.srcset
+            image.dataset.sizes = imageItem.sizes
+          } else {
+            delete image.dataset.srcset
+            image.removeAttribute('srcset')
+          }
           lazySizes.loader.unveil(image)
           image.onload = () => {
             imageCaptionSetter(imageItem.caption)
