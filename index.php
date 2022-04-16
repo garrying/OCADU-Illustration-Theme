@@ -27,10 +27,6 @@
       <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2022</h1></div>
         <p class="title-secondary">Spanning 2009–2022, the archive is maintained by the Illustration Program at OCAD University.</p>
         <a href="/about" class="pill about">About the archive</a>
-      <div class="selector-unit">
-        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/thesis" class="message pill">Thesis</a>
-        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/major-works" class="message pill">Major Works</a>
-      </div>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">

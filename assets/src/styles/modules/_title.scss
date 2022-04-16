@@ -90,26 +90,3 @@
     background: var(--color-accent);
   }
 }
-
-.selector-unit {
-  display: flex;
-  flex-grow: 1;
-  min-width: 50%;
-  margin-top: 2em;
-
-  .message {
-    background: var(--color-white);
-    color: var(--color-accent);
-    border-width: 0;
-    width: 50%;
-    font-size: 18px;
-    margin: 1em;
-
-    &:hover,
-    &:active {
-      box-shadow: 0 0 0 5px rgb(var(--color-accent-rgb) / 50%);
-      color: var(--color-white);
-      background: var(--color-accent);
-    }
-  }
-}
