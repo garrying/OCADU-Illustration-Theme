@@ -16,6 +16,7 @@ figure {
 }
 
 .image-modal-container-full-image {
+  cursor: e-resize;
   position: relative;
   z-index: var(--z-middle);
   max-width: 100%;
