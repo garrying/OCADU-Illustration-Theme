@@ -15,12 +15,8 @@
 
 .section-indicator-single {
   font-size: 1em;
-  width: calc(50% - 5px);
   padding: 1em;
-  border-radius: 9999px;
   background: rgb(var(--color-accent-rgb) / 20%);
-  margin-bottom: 10px;
-  margin-right: 5px;
 
   &:nth-child(2) {
     white-space: nowrap;

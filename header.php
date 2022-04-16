@@ -28,10 +28,10 @@
           </div>
           <div class="header-items-wrapper">
             <div class="header-item-link">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item pill" title="Navigate years">2009 ⧖ 2022</button>
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009 ⧖ 2022</button>
             </div>
             <div class="header-item-link">
-              <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item pill" title="Search archives"></button>
+              <button id="search-link" aria-controls="panel-search" data-panel="search-container" class="header-item" title="Search archives"></button>
             </div>
           </div>
         </div>
@@ -119,16 +119,16 @@
                 }
 
                 if ( $ocaduillustration_year_streams ) {
-                  echo "<li class='year-list-item extended'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                  echo "<li class='year-list-item extended'><div class='year-list-item-inner'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
                 } else {
-                  echo "<li class='year-list-item'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
+                  echo "<li class='year-list-item'><div class='year-list-item-inner'>" . ocaduillustration_year_item_navigation( $ocaduillustration_class_year, $ocaduillustration_selected_year_class, $ocaduillustration_year_image, $ocaduillustration_year_image_srcset ); // phpcs:ignore
                 }
                   if ( $ocaduillustration_year_streams ) {
                     echo '<ul class="sub">';
                     echo $ocaduillustration_year_streams; // phpcs:ignore
                     echo '</ul>';
                   }
-                echo '</li>';
+                echo '</div></li>';
                 wp_reset_postdata();
               }
               ?>

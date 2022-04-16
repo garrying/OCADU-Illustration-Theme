@@ -64,10 +64,10 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: var(--color-accent);
-    box-shadow: 4px 4px 0 0 rgb(var(--color-accent-rgb) / 50%);
+    background: rgb(var(--color-accent-rgb) / 70%);
     color: var(--color-white);
     padding: 1em 2em;
+    backdrop-filter: blur(4px);
 
     .accent {
       color: inherit;

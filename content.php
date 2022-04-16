@@ -1,6 +1,6 @@
 <article <?php post_class( 'gallery-item' ); ?>>
   <a href="<?php the_permalink(); ?>" class="illustrator-link" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-    <div class="illustrator-meta-container pill">
+    <div class="illustrator-meta-container">
       <div class="illustrator-content-container">
         <?php if ( ! is_home() ) : ?>
           <?php 

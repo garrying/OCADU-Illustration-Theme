@@ -5,6 +5,7 @@
 // Loader
 
 .loader {
+  font-size: 32px;
   position: fixed;
   top: calc(50% - 44px);
   left: 0;
@@ -14,10 +15,6 @@
   font-family: var(--font-sans-serif-light);
   color: var(--color-accent);
   text-align: center;
-
-  @include vwfontsize.rsp-font(3vw, 28px);
-
-  letter-spacing: -2px;
   pointer-events: none;
 }
 

@@ -5,7 +5,7 @@
 
 .title {
   padding: 60px 2em;
-  min-height: 61.8vh;
+  min-height: 80vh;
   background: var(--color-accent);
   position: relative;
   display: flex;
@@ -13,7 +13,6 @@
   color: var(--color-white);
   justify-content: center;
   align-items: center;
-  text-align: center;
 
   @media screen and (max-width: variables.$small-vp) {
     display: none;
@@ -27,7 +26,6 @@
   .title-unit {
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
     z-index: 1;
   }
@@ -35,19 +33,18 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: var(--font-sans-serif-light);
+    font-size: clamp(1em, 5vw, 10rem);
 
-    @include vwfontsize.rsp-font(7vw, 20px);
     @include typography.heading-features;
   }
 
   .title-secondary {
     @include typography.heading-features;
 
-    max-width: 420px;
+    max-width: 60%;
     font-family: var(--font-sans-serif-light);
-    font-size: 16px;
-    line-height: 1.2em;
-    margin-bottom: 0.5em;
+    font-size: clamp(1em, 1.5vw, 2rem);
+    line-height: 1.4em;
   }
 
   .message {
@@ -78,15 +75,5 @@
 
   &.set3 path {
     stroke: #6655fa;
-  }
-}
-
-.about {
-  font-size: 14px;
-  border: 1px solid var(--color-white);
-  padding: 0.75em 1em;
-
-  &:hover {
-    background: var(--color-accent);
   }
 }

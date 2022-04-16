@@ -26,7 +26,7 @@
     <div class="title-unit title-unit-init active">
       <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2022</h1></div>
         <p class="title-secondary">Spanning 2009–2022, the archive is maintained by the Illustration Program at OCAD University.</p>
-        <a href="/about" class="pill about">About the archive</a>
+        <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">

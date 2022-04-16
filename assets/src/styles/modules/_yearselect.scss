@@ -31,6 +31,11 @@
   align-items: center;
 }
 
+.year-list-item-inner {
+  display: flex;
+  position: relative;
+}
+
 .year-item-image {
   pointer-events: none;
   object-fit: cover;
@@ -45,17 +50,13 @@
   position: relative;
   z-index: 1;
   font-family: var(--font-sans-serif-light);
+  font-size: clamp(1rem, 5vw, 20rem);
   line-height: 1em;
   color: var(--color-white);
   width: 320px;
   height: 480px;
-  border-radius: 20px;
   overflow: hidden;
   margin: 0 40px 40px 0;
-  box-shadow: 5px 5px 20px var(--color-accent);
-
-  @include vwfontsize.rsp-font(3vw, 24px);
-
   opacity: 0;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -97,10 +98,17 @@
     }
   }
 
+  .sub {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
   .sub .year-item {
-    width: 380px;
-    height: 240px;
+    width: 300px;
+    height: 140px;
     margin: 0;
+    font-size: clamp(1rem, 2vw, 10rem);
 
     @media screen and (max-width: variables.$small-vp) {
       width: 160px;
