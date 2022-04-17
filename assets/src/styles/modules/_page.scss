@@ -1,16 +1,15 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 
 .section-indicator-index {
+  font-size: clamp(1em, 5vw, 10rem);
   font-family: var(--font-sans-serif-light);
+  color: var(--color-accent);
   width: 100%;
   display: flex;
   line-height: 1em;
-  margin: 100px auto;
+  margin: 161px auto 100px;
   justify-content: center;
-
-  @include vwfontsize.rsp-font(5vw, 24px);
 }
 
 .section-indicator-single {
@@ -50,8 +49,6 @@
   max-width: 520px;
   margin: 130px auto;
   line-height: 1.45em;
-
-  @include vwfontsize.rsp-font(1vw, 14px);
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;

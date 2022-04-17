@@ -1,6 +1,5 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 
 .year-select {
   justify-content: center;
@@ -34,6 +33,7 @@
 .year-list-item-inner {
   display: flex;
   position: relative;
+  margin: 0 20px 20px 0;
 }
 
 .year-item-image {
@@ -56,12 +56,11 @@
   width: 320px;
   height: 480px;
   overflow: hidden;
-  margin: 0 40px 40px 0;
   opacity: 0;
 
   @media screen and (max-width: variables.$small-vp) {
     padding-bottom: 0.25em;
-    margin: 0 0 40px;
+    margin: 0 0 20px;
   }
 
   &::before {
@@ -82,22 +81,6 @@
 }
 
 .extended {
-  margin-right: 40px;
-  margin-bottom: 40px;
-
-  @media screen and (max-width: variables.$small-vp) {
-    margin-right: 0;
-  }
-
-  .year-item {
-    width: 300px;
-    margin: 0;
-
-    @media screen and (max-width: variables.$small-vp) {
-      width: 160px;
-    }
-  }
-
   .sub {
     position: absolute;
     bottom: 0;
@@ -105,14 +88,8 @@
   }
 
   .sub .year-item {
-    width: 300px;
     height: 140px;
-    margin: 0;
     font-size: clamp(1rem, 2vw, 10rem);
-
-    @media screen and (max-width: variables.$small-vp) {
-      width: 160px;
-    }
   }
 }
 

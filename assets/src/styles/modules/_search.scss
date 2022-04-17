@@ -1,6 +1,5 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 @use "typography";
 
 .search-container {
@@ -17,9 +16,7 @@
 .search-form {
   position: relative;
   display: flex;
-
-  @include vwfontsize.rsp-font(2.5vw, 18px);
-
+  font-size: clamp(1em, 3vw, 5rem);
   padding: 0 20px;
 
   .search-field {
@@ -30,7 +27,7 @@
     line-height: 1.5em;
     color: var(--color-white);
     background: var(--color-accent);
-    border: 0;
+    border: 1px solid var(--color-white);
 
     &::placeholder {
       color: var(--color-accent);
@@ -52,7 +49,6 @@
 
   .search-submit {
     padding: 20px 40px;
-    margin-left: 20px;
     font-family: var(--font-sans-serif-light);
     color: var(--color-accent);
     background: var(--color-white);
@@ -70,15 +66,13 @@
   padding-top: 15px;
   font-family: var(--font-sans-serif-light);
   line-height: 1em;
-  color: var(--color-accent);
-
-  @include vwfontsize.rsp-font(2.5vw, 18px);
 }
 
 .autoComplete_result { /* stylelint-disable-line */
   padding: 8px 0;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
+  color: rgb(255 255 255 / 25%);
 
   &:hover,
   &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
@@ -92,11 +86,16 @@
 
 // Search Index
 
+.search {
+  .archive-grid {
+    margin-top: 100px;
+  }
+}
+
 .search-title {
   font-family: var(--font-sans-serif-light);
   line-height: 1em;
-
-  @include vwfontsize.rsp-font(2.5vw, 18px);
+  font-size: 2em;
 
   @media screen and (max-width: variables.$small-vp) {
     margin: 0;

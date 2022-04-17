@@ -1,6 +1,5 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 
 .single-illustrator {
   display: flex;
@@ -104,7 +103,6 @@
     margin-bottom: 0.5em;
     font-family: var(--font-sans-serif-light);
     line-height: 1.2em;
-    letter-spacing: -1px;
     font-size: 2.5em;
   }
 
@@ -190,7 +188,7 @@
   display: flex;
   width: 100%;
   padding: 0 1em;
-  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
+  border-top: 1px solid rgb(var(--color-accent-rgb) / 20%);
   justify-content: space-between;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -207,7 +205,6 @@
   a {
     display: block;
     z-index: var(--z-foreground);
-    border-radius: 9999px;
     padding: 1em;
 
     &:first-child {

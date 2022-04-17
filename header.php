@@ -134,7 +134,7 @@
               ?>
             </ul>
           </div>
-          <button class="close-panel" title="Close panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+          <button class="close-panel pill" title="Close panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->
 
         <div id="panel-search" class="search-container panel" aria-hidden="true" tabindex="-1">
@@ -142,7 +142,7 @@
             <div class="search-wrapper">
               <?php get_search_form(); ?>
             </div>
-            <button class="close-panel" title="Close search panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+            <button class="close-panel pill" title="Close search panel" aria-label="Close search panel"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
           </div>
         </div><!-- search -->
     </div><!-- .app-head-items -->
