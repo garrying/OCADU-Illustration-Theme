@@ -106,8 +106,4 @@
 #search-link::after {
   content: "Search";
   display: block;
-
-  @media screen and (max-width: variables.$small-vp) {
-    content: "🔍";
-  }
 }

@@ -81,7 +81,6 @@ figure {
   .close-panel {
     position: fixed;
     top: 2em;
-    right: 2em;
     border: 1px solid var(--color-accent);
 
     @media screen and (max-width: variables.$medium-vp) {
