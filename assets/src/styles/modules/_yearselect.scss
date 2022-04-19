@@ -71,12 +71,12 @@
     height: 100%;
     background: var(--color-accent);
     z-index: 1;
-    mix-blend-mode: lighten;
+    mix-blend-mode: multiply;
   }
 
   &.active,
   &:hover {
-    box-shadow: 0 0 0 4px inset var(--color-white);
+    box-shadow: 0 0 0 1px var(--color-white);
   }
 }
 

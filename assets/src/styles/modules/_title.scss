@@ -3,14 +3,13 @@
 @use "typography";
 
 .title {
-  padding: 60px 2em;
+  padding: 30px 2em;
   min-height: 80vh;
-  background: var(--color-accent);
+  background: rgb(var(--color-accent-rgb) / 20%);
   position: relative;
   display: flex;
   line-height: 1;
-  color: var(--color-white);
-  justify-content: center;
+  color: var(--color-accent);
   align-items: center;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -18,7 +17,7 @@
   }
 
   a {
-    color: var(--color-white);
+    color: var(--color-accent);
     pointer-events: auto;
   }
 
@@ -53,26 +52,5 @@
     margin-top: 1em;
     padding: 1.25em 1em;
     transition: background 180ms ease-in-out;
-  }
-
-  svg {
-    position: absolute;
-    z-index: 0;
-  }
-
-  &.base path {
-    stroke: var(--color-accent);
-  }
-
-  &.set1 path {
-    stroke: #a0dcae;
-  }
-
-  &.set2 path {
-    stroke: #f2cddd;
-  }
-
-  &.set3 path {
-    stroke: #6655fa;
   }
 }

@@ -3,37 +3,7 @@
 @use "typography";
 
 .home {
-  .heading-inner {
-    .logo {
-      color: var(--color-white);
-
-      @media screen and (max-width: variables.$small-vp) {
-        color: var(--color-accent);
-      }
-    }
-
-    .header-item {
-      color: var(--color-accent);
-      background: var(--color-white);
-
-      @media screen and (max-width: variables.$small-vp) {
-        background: rgb(var(--color-accent-rgb) / 0.8%);
-      }
-
-      &:hover,
-      &:active {
-        color: var(--color-white);
-        background: var(--color-accent);
-        box-shadow: 0 0 0 5px rgb(var(--color-accent-rgb) / 50%);
-      }
-    }
-  }
-
   .header-items-wrapper {
-    @media screen and (max-width: variables.$ipad-vp) {
-      width: calc(40vw - 40px);
-    }
-
     @media screen and (max-width: variables.$small-vp) {
       width: 50%;
     }
@@ -64,27 +34,23 @@
     display: none;
     max-width: 50vw;
     opacity: 0;
-    background: rgb(var(--color-accent-rgb) / 70%);
-    color: var(--color-white);
-    padding: 1em 2em;
-    backdrop-filter: blur(4px);
+    background: var(--color-white);
+    color: var(--color-accent);
+    padding: 1em;
+    box-shadow: 2px 2px 0 0 rgb(var(--color-accent-rgb) / 20%);
 
     .accent {
       color: inherit;
     }
 
     .illustrator-meta-label {
-      font-family: var(--font-sans-serif-light);
-      line-height: 1.3em;
       padding: 0;
-      font-size: 18px;
-      margin-bottom: 0.25em;
+      margin-bottom: 0;
 
       @include typography.heading-features;
     }
 
     .illustrator-name {
-      font-size: 16px;
       margin-bottom: 0;
     }
 
@@ -119,15 +85,6 @@
 
     @media screen and (max-width: variables.$small-vp) {
       margin-top: 0;
-    }
-
-    &:nth-child(odd) {
-      padding: 1%;
-      margin-top: -40px;
-
-      .gallery-item:nth-child(2n) {
-        padding: 6%;
-      }
     }
 
     @media screen and (max-width: variables.$smallest-vp) {

@@ -17,8 +17,4 @@ button {
   cursor: pointer;
   background: transparent;
   border: 0;
-
-  &:focus {
-    outline: thin dotted;
-  }
 }

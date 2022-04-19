@@ -86,6 +86,7 @@
   &.invert {
     color: var(--color-white);
     background: var(--color-accent);
+    box-shadow: 0 0 0 1px inset var(--color-white);
   }
 
   &.inactive {

@@ -44,11 +44,10 @@
 .page-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 520px;
+  max-width: 620px;
   margin: 130px auto;
   line-height: 1.45em;
+  font-size: 16px;
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
@@ -58,7 +57,7 @@
 
   .entry-title {
     line-height: 1em;
-    margin: 1em 0;
+    margin: 0.5em 0;
     font-family: var(--font-sans-serif-light);
     font-size: 50px;
   }
