@@ -192,12 +192,10 @@
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
+    border-top: 0;
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
   }
 
   a {

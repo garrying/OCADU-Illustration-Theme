@@ -2,12 +2,12 @@
 @use "../components/variables";
 
 .section-indicator-index {
-  font-size: clamp(1em, 5vw, 10rem);
+  font-size: clamp(4em, 5vw, 10rem);
   font-family: var(--font-sans-serif-light);
   color: var(--color-accent);
   width: 100%;
   display: flex;
-  line-height: 1em;
+  line-height: 0.5em;
   margin: 161px auto 100px;
   justify-content: center;
 }

@@ -34,6 +34,10 @@
   display: flex;
   position: relative;
   margin: 0 20px 20px 0;
+
+  @media screen and (max-width: variables.$small-vp) {
+    margin-right: 0;
+  }
 }
 
 .year-item-image {
@@ -90,6 +94,10 @@
   .sub .year-item {
     height: 140px;
     font-size: clamp(2rem, 2vw, 10rem);
+
+    @media screen and (max-width: variables.$small-vp) {
+      margin-bottom: 0;
+    }
   }
 }
 
