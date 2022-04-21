@@ -1,5 +1,10 @@
 <article <?php post_class( 'gallery-item' ); ?>>
   <a href="<?php the_permalink(); ?>" class="illustrator-link" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+    <figure>
+      <div class="illustrator-image">
+        <?php the_post_thumbnail( 'illustrator-large' ); ?>
+      </div>
+    </figure>
     <div class="illustrator-meta-container">
       <div class="illustrator-content-container">
         <?php if ( ! is_home() ) : ?>
@@ -20,10 +25,5 @@
         <h3 class="illustrator-name"><?php the_title(); ?></h3>
       </div>
     </div>
-    <figure>
-      <div class="illustrator-image">
-        <?php the_post_thumbnail( 'illustrator-large' ); ?>
-      </div>
-    </figure>
   </a>
 </article>

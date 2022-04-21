@@ -38,7 +38,6 @@
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(var(--color-accent-rgb) / 20%);
   transition: opacity 200ms ease-in-out;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -63,7 +62,7 @@
 }
 
 .header-item-link {
-  margin-left: 1em;
+  margin-left: 5px;
 }
 
 .header-item {
