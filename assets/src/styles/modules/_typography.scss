@@ -3,7 +3,6 @@
 @mixin font-features-body {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
   font-kerning: normal;
-  text-rendering: optimizelegibility;
 }
 
 // Heading extend
@@ -12,7 +11,6 @@
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
   font-variant-numeric: lining-nums;
   font-kerning: normal;
-  text-rendering: optimizelegibility;
 }
 
 // Font smoothing
