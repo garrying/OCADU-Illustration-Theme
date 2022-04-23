@@ -188,7 +188,6 @@
 .illustrator-nav-single {
   display: flex;
   width: 100%;
-  padding: 0 1em;
   border-top: 1px solid rgb(var(--color-accent-rgb) / 20%);
   justify-content: space-between;
 
@@ -205,12 +204,9 @@
     z-index: var(--z-foreground);
     padding: 1em;
 
-    &:first-child {
-      padding-left: 0;
-    }
-
-    @media screen and (max-width: variables.$small-vp) {
-      padding: 1em;
+    &:hover,
+    &:focus {
+      background: rgb(var(--color-accent-rgb) / 35%);
     }
   }
 
@@ -224,7 +220,6 @@
   }
 
   .nav-next a {
-    padding-right: 0;
     text-align: right;
   }
 

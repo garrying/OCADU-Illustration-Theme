@@ -368,7 +368,7 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   $attr['class']   = 'lazyload blur-up';
   $attr['loading'] = 'lazy';
   if ( is_home() || is_archive() ) {
-    $attr['title'] = get_the_title();
+    unset( $attr['title'] );
   } else {
     $attr['title'] = 'Enlarge';
   }

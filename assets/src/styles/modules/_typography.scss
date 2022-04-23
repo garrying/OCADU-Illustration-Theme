@@ -9,7 +9,6 @@
 
 @mixin heading-features {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "lnum" 1, "dlig" 1;
-  font-variant-numeric: lining-nums;
   font-kerning: normal;
 }
 

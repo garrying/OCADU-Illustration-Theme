@@ -1,5 +1,5 @@
 <article <?php post_class( 'gallery-item' ); ?>>
-  <a href="<?php the_permalink(); ?>" class="illustrator-link" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+  <a href="<?php the_permalink(); ?>" class="illustrator-link">
     <figure>
       <div class="illustrator-image">
         <?php the_post_thumbnail( 'illustrator-large' ); ?>

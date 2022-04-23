@@ -94,7 +94,7 @@
                 $ocaduillustration_related_post_terms = get_the_terms( $ocaduillustration_related_post->ID, 'gradyear' );
               ?>
               <p class="meta-label"><?php echo esc_html( $ocaduillustration_related_post_terms[1]->name ); ?> ⤵</p>
-              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">✿ 
+              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">
                 <?php
                   if ( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) ) {
                     echo esc_html( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) );
@@ -180,14 +180,14 @@
           <li class="nav-previous">
             <?php
               if ( ! empty( $ocaduillustration_prev_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
               if ( ! empty( $ocaduillustration_next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
               }
             ?>
           </li>
