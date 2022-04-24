@@ -7,7 +7,7 @@ import SwipeListener from 'swipe-listener'
 import $ from 'jquery/dist/jquery.slim.min'
 
 window.jQuery = $
-require('velocity-animate');
+require('velocity-animate/velocity.min');
 
 (() => {
   const app = {
