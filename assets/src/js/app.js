@@ -1,12 +1,13 @@
 import '../styles/main.scss'
+import autoComplete from '@tarekraafat/autocomplete.js'
+import * as blobs2 from './libs/blobs'
+import * as lazySizes from 'lazysizes'
+import Colcade from 'colcade'
+import SwipeListener from 'swipe-listener'
+import $ from 'jquery/dist/jquery.slim.min'
 
-window.jQuery = window.$ = require('jquery/dist/jquery.slim.min')
-require('velocity-animate')
-const AutoComplete = require('@tarekraafat/autocomplete.js')
-const blobs2 = require('./libs/blobs')
-const lazySizes = require('lazysizes')
-const Colcade = require('colcade')
-const SwipeListener = require('swipe-listener');
+window.jQuery = $
+require('velocity-animate');
 
 (() => {
   const app = {
@@ -86,7 +87,7 @@ const SwipeListener = require('swipe-listener');
     }),
 
     _ocadSearch: () => {
-      const autoCompleteJS = new AutoComplete({ // eslint-disable-line
+      const autoCompleteJS = new autoComplete({ // eslint-disable-line
         submit: true,
         data: {
           src: async (query) => {
@@ -141,7 +142,7 @@ const SwipeListener = require('swipe-listener');
       } else {
         $('.panel.visible').removeClass('visible').velocity('fadeOut', { display: 'flex' }, 'fast')
           .attr('aria-hidden', true)
-        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded')
+        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast')
 
         $('.header-item').addClass('inactive').removeClass('invert')
         app.settings.logo.addClass('invert')
@@ -231,7 +232,6 @@ const SwipeListener = require('swipe-listener');
       $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
         .velocity('fadeOut', 'fast')
       $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
-        .removeClass('loaded')
     },
 
     _ocadPanelsCloseSelective: (event) => {
