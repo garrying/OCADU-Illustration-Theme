@@ -4,13 +4,11 @@
 // Loader
 
 .loader {
-  font-size: 32px;
+  font-size: 2em;
   position: fixed;
-  top: calc(50% - 44px);
-  left: 0;
+  top: calc(50% - 16px);
   z-index: var(--z-important);
   width: 100%;
-  height: 88px;
   font-family: var(--font-sans-serif-light);
   color: var(--color-accent);
   text-align: center;
