@@ -5,9 +5,29 @@ import * as lazySizes from 'lazysizes'
 import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
 import $ from 'jquery/dist/jquery.slim.min'
+import Velocity from 'velocity-animate/velocity.min'
 
-window.jQuery = $
-require('velocity-animate/velocity.min');
+Velocity.patch($ && $.fn)
+
+Velocity('registerSequence', 'fadeOut', {
+  duration: 1000,
+  '0%': {
+    opacity: '1'
+  },
+  '100%': {
+    opacity: '0'
+  }
+})
+
+Velocity('registerSequence', 'fadeIn', {
+  duration: 1000,
+  '0%': {
+    opacity: '0'
+  },
+  '100%': {
+    opacity: '1'
+  }
+});
 
 (() => {
   const app = {
@@ -74,10 +94,10 @@ require('velocity-animate/velocity.min');
     _ocadLoader: (e = true) => {
       if (e === false) {
         app.settings.documentBody.removeAttr('style')
-        app.settings.loader.velocity('stop').velocity('fadeOut', 'fast')
+        app.settings.loader.velocity('stop').velocity('fadeOut', { duration: 'fast' })
       } else {
         app.settings.documentBody.css('cursor', 'progress')
-        app.settings.loader.velocity('stop').velocity('fadeIn', 'fast')
+        app.settings.loader.velocity('stop').velocity('fadeIn', { duration: 'fast' })
       }
     },
 
@@ -140,26 +160,34 @@ require('velocity-animate/velocity.min');
         $(e).removeClass('invert')
         app._ocadPanelsClose()
       } else {
-        $('.panel.visible').removeClass('visible').velocity('fadeOut', { display: 'flex' }, 'fast')
-          .attr('aria-hidden', true)
-        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast')
+        $('.panel.visible').removeClass('visible').velocity('fadeOut', {
+          complete: (e) => {
+            $(e).addClass('hidden').attr('aria-hidden', true)
+          },
+          duration: 'fast'
+        })
+        $('.year-item').velocity('stop')
 
         $('.header-item').addClass('inactive').removeClass('invert')
         app.settings.logo.addClass('invert')
 
         $(e).addClass('invert').removeClass('inactive')
         $(`.${targetPanel}`).velocity(
-          'fadeIn',
-          { display: 'flex', duration: 200 }
-        ).addClass('visible').attr('aria-hidden', false)
-          .focus()
-        // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
+          'fadeIn', {
+            begin: (e) => {
+              $(e).addClass('visible').attr('aria-hidden', false).focus().velocity({ display: 'flex' })
+            },
+            duration: 200
+          })
         $('html, body').addClass('lock-scroll')
 
         if (targetPanel === 'year-select') {
-          $('.year-item').each((index, ele) => {
-            const item = $(ele)
-            item.delay(80 * index).velocity({ opacity: 1, transformdisplay: 'flex' })
+          $('.year-item').velocity({
+            opacity: 1,
+            transformdisplay: 'flex'
+          }, {
+            stagger: 100,
+            duration: 1000
           })
         }
         if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
@@ -170,7 +198,7 @@ require('velocity-animate/velocity.min');
 
     _ocadPanelSelectButtons: () => {
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
+        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', { duration: 'fast' })
         app._ocadPanelSelect(ele.target)
       })
     },
@@ -215,30 +243,27 @@ require('velocity-animate/velocity.min');
       }
     },
 
-    _ocadPanelsCloseFullImage: () => {
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
-      $('#full-image').velocity({ translateY: '15px' }, 'fast')
-    },
-
     _ocadPanelsClose: () => {
-      // app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
       $('html, body').removeClass('lock-scroll')
 
       $('.header-item').removeClass('invert inactive')
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
+      app.settings.imageModal.velocity('fadeOut', { complete: (e) => { $(e).addClass('hidden') }, duration: 180 })
       app.settings.logo.removeClass('invert')
-      $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
-      $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
-      $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-        .velocity('fadeOut', 'fast')
-      $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
+      $('.panel.velocity-animating').velocity('stop')
+      $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur().velocity('stop')
+        .velocity('fadeOut', { duration: 'fast' })
+      $('.year-item').velocity({ opacity: 0, display: 'flex' }, { duration: 'fast' })
     },
 
     _ocadPanelsCloseSelective: (event) => {
       if (!$(event.target).closest('#full-image, .miniview').length &&
         app.settings.imageModal.is(':visible')) {
-        app.settings.imageModal.velocity('fadeOut', { duration: 180 })
-        $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
+        app.settings.imageModal.velocity('fadeOut', {
+          complete: (e) => {
+            $(e).addClass('hidden')
+          },
+          duration: 180
+        })
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive')
         $('html, body').removeClass('lock-scroll')
       }
@@ -348,9 +373,8 @@ require('velocity-animate/velocity.min');
         app._ocadLoader(false)
         app.settings.imageModal.velocity('fadeIn', {
           duration: 180,
-          begin: () => {
-            $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast')
-            $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack)
+          begin: (e) => {
+            $(e).removeClass('hidden')
           },
           complete: () => {
             imageCaptionSetter(itemImage.data('caption'))
@@ -365,7 +389,7 @@ require('velocity-animate/velocity.min');
       */
 
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
-        $.Velocity.animate(
+        Velocity(
           $('#full-image'),
           { opacity: 0 },
           app.settings.easeOutBack
