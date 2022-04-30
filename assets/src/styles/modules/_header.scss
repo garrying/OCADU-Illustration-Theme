@@ -89,13 +89,7 @@
   }
 
   &.inactive {
-    color: var(--color-accent);
-    background: transparent;
-  }
-
-  &.inactive:hover {
     color: var(--color-white);
-    background: var(--color-accent);
   }
 
   @media screen and (max-width: variables.$small-vp) {

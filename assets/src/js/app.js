@@ -51,7 +51,6 @@ Velocity('registerSequence', 'fadeIn', {
       masonryContainerHome: '#illustrators',
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
-      searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
       singleWrapper: $('.illustrator-nav-single-wrapper'),
@@ -189,9 +188,6 @@ Velocity('registerSequence', 'fadeIn', {
             stagger: 100,
             duration: 1000
           })
-        }
-        if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
-          app.settings.searchField.focus()
         }
       }
     },
@@ -533,7 +529,7 @@ Velocity('registerSequence', 'fadeIn', {
         randomness: 4,
         size: 400
       }, {
-        fill: 'rgb(250,128,114)',
+        fill: 'rgb(255,87,34)',
         strokeWidth: 1
       })
       if (document.querySelector('#error-blob-container')) {

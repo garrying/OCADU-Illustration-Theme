@@ -69,10 +69,15 @@
 }
 
 .autoComplete_result { /* stylelint-disable-line */
-  padding: 8px 0;
+  display: inline-flex;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
-  color: rgb(255 255 255 / 25%);
+  color: rgb(255 255 255 / 50%);
+  border: 1px solid var(--color-white);
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  border-radius: 9999px;
 
   &:hover,
   &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
