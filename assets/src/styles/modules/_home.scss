@@ -8,6 +8,16 @@
       width: 50%;
     }
   }
+
+  .logo-wrapper {
+    opacity: 0;
+    pointer-events: none;
+
+    @media screen and (max-width: variables.$small-vp) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 }
 
 .home-grid {
