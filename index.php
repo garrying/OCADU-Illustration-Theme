@@ -22,12 +22,13 @@
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title base">
-    <div class="title-unit title-unit-init active">
+  <div class="title">
+    <div class="title-unit">
       <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2022</h1></div>
         <p class="title-secondary">Spanning 2009–2022, the archive is maintained by the Illustration Program at OCAD University.</p>
         <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
     </div>
+    <div id="root"></div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
     <div class="grid-col grid-col-1"></div>

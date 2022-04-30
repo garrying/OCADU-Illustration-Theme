@@ -95,6 +95,10 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
       wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1627668946', '', '2022', true );
       wp_enqueue_script( 'app' );
     }
+    if ( is_home() ) {
+      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1627668946', '', '2022', true );
+      wp_enqueue_script( 'home' );
+    }
   }
 }
 
