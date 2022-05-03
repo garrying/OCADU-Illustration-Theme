@@ -13,7 +13,7 @@
   align-items: center;
 
   @media screen and (max-width: variables.$small-vp) {
-    display: none;
+    min-width: 50vh;
   }
 
   a {
@@ -34,6 +34,10 @@
     font-family: var(--font-sans-serif-light);
     font-size: clamp(1em, 7vw, 10rem);
 
+    @media screen and (max-width: variables.$small-vp) {
+      font-size: clamp(1em, 12vw, 20rem);
+    }
+
     @include typography.heading-features;
   }
 
@@ -44,5 +48,10 @@
     font-family: var(--font-sans-serif-light);
     font-size: clamp(1em, 1.5vw, 2rem);
     line-height: 1.4em;
+
+    @media screen and (max-width: variables.$small-vp) {
+      font-size: clamp(1.25em, 1.5vw, 2rem);
+      max-width: unset;
+    }
   }
 }
