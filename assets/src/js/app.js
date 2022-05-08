@@ -246,8 +246,13 @@ Velocity('registerSequence', 'fadeIn', {
       app.settings.imageModal.velocity('fadeOut', { complete: (e) => { $(e).addClass('hidden') }, duration: 180 })
       app.settings.logo.removeClass('invert')
       $('.panel.velocity-animating').velocity('stop')
-      $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur().velocity('stop')
-        .velocity('fadeOut', { duration: 'fast' })
+      $('.panel.visible').attr('aria-hidden', true).blur().velocity('stop')
+        .velocity('fadeOut', {
+          duration: 'fast',
+          complete: (e) => {
+            $(e).removeClass('visible')
+          }
+        })
       $('.year-item').velocity({ opacity: 0, display: 'flex' }, { duration: 'fast' })
     },
 

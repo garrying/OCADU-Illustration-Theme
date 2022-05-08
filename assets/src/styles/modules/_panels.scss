@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   z-index: var(--z-middle);
-  display: flex;
+  display: none;
   background: var(--color-accent);
   outline: 0;
   opacity: 0;
@@ -19,6 +19,7 @@
   align-items: center;
 
   &.visible {
+    display: flex;
     visibility: visible;
     pointer-events: auto;
   }
