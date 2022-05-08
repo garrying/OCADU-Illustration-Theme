@@ -3,6 +3,7 @@ import React, { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import * as meshline from 'meshline'
 import { extend, Canvas, useFrame, useThree } from '@react-three/fiber'
+import { LayerMaterial, Depth } from 'lamina'
 
 extend(meshline)
 
@@ -49,9 +50,21 @@ function Rig ({ mouse }) {
 function App () {
   return (
     <Canvas linear legacy camera={{ position: [0, 0, 10], fov: 20 }}>
-      <Lines count={25} colors={['#ff5722', '#ffffff', '#22fff8']} />
+      <Bg />
+      <Lines count={20} colors={['#ffffff', '#22fff8', '#fa8072']} />
       <Rig />
     </Canvas>
+  )
+}
+
+function Bg () {
+  return (
+    <mesh scale={100}>
+      <boxGeometry args={[1, 1, 1]} />
+      <LayerMaterial toneMapped={false} side={THREE.BackSide}>
+        <Depth colorB='#ffebe5' colorA='#ffffff' near={130} far={200} origin={[100, 100, -100]} />
+      </LayerMaterial>
+    </mesh>
   )
 }
 

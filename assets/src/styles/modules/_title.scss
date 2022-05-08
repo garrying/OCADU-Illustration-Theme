@@ -4,7 +4,7 @@
 
 .title {
   padding: 30px;
-  min-height: 85vh;
+  min-height: 95vh;
   background: rgb(var(--color-accent-rgb) / 10%);
   position: relative;
   display: flex;
@@ -32,11 +32,8 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: var(--font-sans-serif-light);
-    font-size: clamp(1em, 7vw, 10rem);
-
-    @media screen and (max-width: variables.$small-vp) {
-      font-size: clamp(1em, 12vw, 20rem);
-    }
+    font-size: clamp(1em, 8.5vw, 12em);
+    line-height: 0.95em;
 
     @include typography.heading-features;
   }
@@ -44,7 +41,7 @@
   .title-secondary {
     @include typography.heading-features;
 
-    max-width: 50%;
+    max-width: 60%;
     font-family: var(--font-sans-serif-light);
     font-size: clamp(1em, 1.5vw, 2rem);
     line-height: 1.4em;
