@@ -8,12 +8,11 @@
   background: rgb(var(--color-accent-rgb) / 10%);
   position: relative;
   display: flex;
-  line-height: 1;
   color: var(--color-accent);
   align-items: center;
 
   @media screen and (max-width: variables.$small-vp) {
-    min-width: 50vh;
+    min-height: 75vh;
   }
 
   a {
@@ -34,6 +33,10 @@
     font-family: var(--font-sans-serif-light);
     font-size: clamp(1em, 8.5vw, 12em);
     line-height: 0.95em;
+
+    @media screen and (max-width: variables.$small-vp) {
+      font-size: 5.5em;
+    }
 
     @include typography.heading-features;
   }

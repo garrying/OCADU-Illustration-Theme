@@ -19,11 +19,7 @@
 
   &.invert,
   &.invert:hover {
-    color: var(--color-accent);
-  }
-
-  @media screen and (max-width: variables.$smallest-vp) {
-    white-space: normal;
+    color: var(--color-white);
   }
 }
 

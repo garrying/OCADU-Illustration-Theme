@@ -92,11 +92,11 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'wp-embed' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1627668946', '', '2022', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1652140633', '', '2022', true );
       wp_enqueue_script( 'app' );
     }
     if ( is_home() ) {
-      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1627668946', '', '2022', true );
+      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1652140633', '', '2022', true );
       wp_enqueue_script( 'home' );
     }
   }
@@ -111,7 +111,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1627668946', '', '2022' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1652140633', '', '2022' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -258,11 +258,11 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' === $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1627668946';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1652140633';
   }
 
   if ( empty( $socialimg ) ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1627668946';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1652140633';
   }
 
   return $socialimg;
