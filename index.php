@@ -22,18 +22,19 @@
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title base">
-    <div class="title-unit title-unit-init active">
-      <div class="segment-first"><h1 class="title-primary">OCAD U Illustration 2021</h1></div>
-        <p class="title-secondary">Spanning 2009–2021, the archive is maintained by the Illustration Program at OCAD University.</p>
-        <a href="/about" class="pill about">About the archive</a>
-      <div class="selector-unit">
-        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/thesis" class="message pill">Thesis</a>
-        <a href="/year/<?php echo esc_html( $ocaduillustration_grad_year[0]->name ); ?>/major-works" class="message pill">Major Works</a>
-      </div>
+  <div class="title">
+    <div class="title-unit">
+      <div class="segment-first"><h1 class="title-primary">OCAD U <br /> Illustration 2022</h1></div>
+        <p class="title-secondary">Spanning 2009–2022, the archive is maintained by the Illustration Program at OCAD University.</p>
+        <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
     </div>
+    <div id="root"></div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
+    <div class="grid-col grid-col-1"></div>
+    <div class="grid-col grid-col-2"></div>
+    <div class="grid-col grid-col-3"></div>
+    <div class="grid-col grid-col-4"></div>
 
     <?php if ( $ocaduillustration_home_index->have_posts() ) : ?>
 

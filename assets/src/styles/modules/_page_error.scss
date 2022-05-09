@@ -1,5 +1,4 @@
 @use "../components/variables";
-@use "../components/vwfontsize";
 
 .error-body {
   position: fixed;
@@ -10,10 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: variables.$color-accent;
-
-  @include vwfontsize.rsp-font(1.2vw, 14px);
-
+  color: var(--color-accent);
+  font-size: clamp(1em, 1.5vw, 2rem);
   line-height: 1.3em;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -21,10 +18,9 @@
   }
 
   .entry-title {
+    font-size: clamp(1em, 5vw, 10rem);
     margin-bottom: 0.75em;
-    font-family: variables.$sans-serif-light;
-
-    @include vwfontsize.rsp-font(5vw, 48px);
+    font-family: var(--font-sans-serif-light);
   }
 
   .entry-body {
@@ -32,6 +28,7 @@
   }
 
   .entry-header {
+    mix-blend-mode: difference;
     position: relative;
     z-index: 1;
   }
@@ -48,7 +45,6 @@
   align-items: center;
 
   svg path {
-    stroke: variables.$color-accent;
-    fill: transparent;
+    fill: var(--color-accent);
   }
 }

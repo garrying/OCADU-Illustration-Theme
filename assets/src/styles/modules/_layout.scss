@@ -1,6 +1,5 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 
 .single-illustrator {
   display: flex;
@@ -39,11 +38,10 @@
     justify-content: center;
     align-items: center;
 
-    img {
-      position: absolute;
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
+    .gallery-icon {
+      flex-grow: 1;
+      justify-content: center;
+      display: flex;
     }
 
     @media screen and (max-width: variables.$ipad-vp) {
@@ -102,16 +100,11 @@
   }
 
   .thesis-title {
-    margin-bottom: 0.5em;
-    font-family: variables.$sans-serif-light;
+    color: var(--color-accent);
+    margin-bottom: 0.25em;
+    font-family: var(--font-sans-serif-light);
     line-height: 1.2em;
-    letter-spacing: -1px;
-
-    @include vwfontsize.rsp-font(2vw, 24px);
-
-    @media screen and (max-width: variables.$small-vp) {
-      @include vwfontsize.rsp-font(3.5vw, 24px);
-    }
+    font-size: 2.5em;
   }
 
   .thesis-description {
@@ -120,32 +113,22 @@
   }
 
   .illustrator-meta-name {
-    font-family: variables.$sans-serif-light;
+    color: var(--color-accent);
+    font-family: var(--font-sans-serif-light);
     font-size: 1.5em;
     margin-bottom: 0.5em;
   }
 }
 
 .meta-label {
-  color: variables.$color-accent;
+  color: var(--color-accent);
   margin-bottom: 0.5em;
 }
 
 .related-separator {
   border-top: 0;
   border-style: dotted;
-  border-color: pink;
-}
-
-#name-blob {
-  width: 1em;
-  height: 1em;
-  display: inline-flex;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
+  border-color: var(--color-accent);
 }
 
 .meta {
@@ -164,14 +147,13 @@
   .meta-link {
     display: inline-block;
     max-width: 100%;
-    background: color.adjust(variables.$color-accent, $alpha: -0.8%);
+    background: rgb(var(--color-accent-rgb) / 20%);
     padding: 0.75em 1em;
-    margin-bottom: 0.25em;
     transition: background 180ms ease-in-out;
 
     &:hover,
     &:focus {
-      background: color.adjust(variables.$color-accent, $alpha: -0.65%);
+      background: rgb(var(--color-accent-rgb) / 35%);
     }
   }
 }
@@ -186,13 +168,12 @@
   width: 100%;
   bottom: 0;
   left: 0;
-  border-top: 1px solid color.adjust(variables.$color-accent, $lightness: 25%);
-  padding: 10px 30px 20px;
+  padding: 0 30px;
 
   @media screen and (max-width: variables.$small-vp) {
     position: relative;
     padding: 0;
-    z-index: variables.$z-background;
+    z-index: var(--z-background);
     border-top: 0;
     transition: opacity 200ms ease-in-out;
     pointer-events: auto;
@@ -207,34 +188,26 @@
 .illustrator-nav-single {
   display: flex;
   width: 100%;
-  padding: 0 20px;
-  border: 1px solid color.adjust(variables.$color-accent, $alpha: -0.8%);
-  border-radius: 9999px;
+  border-top: 1px solid rgb(var(--color-accent-rgb) / 20%);
   justify-content: space-between;
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
+    border-top: 0;
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    backdrop-filter: blur(2px);
+    background: var(--color-site-background);
   }
 
   a {
     display: block;
-    z-index: variables.$z-foreground;
-    border-radius: 9999px;
-    padding: 0.75em 1em;
+    z-index: var(--z-foreground);
+    padding: 1em;
 
-    &:first-child {
-      padding-left: 0;
-    }
-
-    @media screen and (max-width: variables.$small-vp) {
-      padding: 1em;
+    &:hover,
+    &:focus {
+      background: rgb(var(--color-accent-rgb) / 35%);
     }
   }
 
@@ -248,7 +221,6 @@
   }
 
   .nav-next a {
-    padding-right: 0;
     text-align: right;
   }
 

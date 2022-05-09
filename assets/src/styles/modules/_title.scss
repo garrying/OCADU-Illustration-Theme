@@ -1,115 +1,54 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
 @use "typography";
 
 .title {
-  padding: 60px 2em;
-  min-height: 61.8vh;
-  background: variables.$color-accent;
+  padding: 30px;
+  min-height: 95vh;
+  background: rgb(var(--color-accent-rgb) / 10%);
   position: relative;
   display: flex;
   line-height: 1;
-  color: variables.$white;
-  justify-content: center;
+  color: var(--color-accent);
   align-items: center;
-  text-align: center;
 
   @media screen and (max-width: variables.$small-vp) {
-    display: none;
+    min-width: 50vh;
   }
 
   a {
-    color: variables.$white;
+    color: var(--color-accent);
     pointer-events: auto;
   }
 
   .title-unit {
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
     z-index: 1;
+    pointer-events: none;
   }
 
   .title-primary {
     margin: 0 0 0.5em;
-    font-family: variables.$sans-serif-light;
+    font-family: var(--font-sans-serif-light);
+    font-size: clamp(1em, 8.5vw, 12em);
+    line-height: 0.95em;
 
-    @include vwfontsize.rsp-font(7vw, 20px);
     @include typography.heading-features;
   }
 
   .title-secondary {
     @include typography.heading-features;
 
-    max-width: 420px;
-    font-family: variables.$sans-serif-light;
-    font-size: 16px;
-    line-height: 1.2em;
-    margin-bottom: 0.5em;
-  }
+    max-width: 60%;
+    font-family: var(--font-sans-serif-light);
+    font-size: clamp(1em, 1.5vw, 2rem);
+    line-height: 1.4em;
 
-  .message {
-    color: variables.$color-accent;
-    background: variables.$white;
-    border: 1px solid variables.$white;
-    margin-top: 1em;
-    padding: 1.25em 1em;
-    transition: background 180ms ease-in-out;
-  }
-
-  svg {
-    position: absolute;
-    z-index: 0;
-  }
-
-  &.base path {
-    stroke: color.adjust(variables.$color-accent, $lightness: -10%);
-  }
-
-  &.set1 path {
-    stroke: #a0dcae;
-  }
-
-  &.set2 path {
-    stroke: #f2cddd;
-  }
-
-  &.set3 path {
-    stroke: #6655fa;
-  }
-}
-
-.about {
-  font-size: 14px;
-  border: 1px solid variables.$white;
-  padding: 0.75em 1em;
-
-  &:hover {
-    background: color.adjust(variables.$color-accent, $lightness: -5%);
-  }
-}
-
-.selector-unit {
-  display: flex;
-  flex-grow: 1;
-  min-width: 50%;
-  margin-top: 2em;
-
-  .message {
-    background: variables.$white;
-    color: variables.$color-accent;
-    border-width: 0;
-    width: 50%;
-    font-size: 18px;
-    margin: 1em;
-
-    &:hover,
-    &:active {
-      box-shadow: 0 0 0 5px color.adjust(variables.$color-accent, $lightness: -10%, $alpha: -0.5%);
-      color: variables.$white;
-      background: variables.$color-accent;
+    @media screen and (max-width: variables.$small-vp) {
+      font-size: clamp(1.25em, 1.5vw, 2rem);
+      max-width: unset;
     }
   }
 }

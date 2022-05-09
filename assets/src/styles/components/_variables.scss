@@ -1,21 +1,23 @@
-// Typography
+@function hex2rgb($hex) {
+  @return red($hex) green($hex) blue($hex);
+}
 
-$sans-serif: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
-$sans-serif-light: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
+$color-accent: #ff5722;
 
-// Colours
-
-$white: #fff;
-$black: #000;
-$off-black: #0e0e0f;
-$color-accent: #fa8072;
-$site-background: $white;
-$site-font-color: #000;
-
-// Breakpoints
-
-// Reference: Apple Thunderbolt Display
-$largest-vp: 2560px;
+:root {
+  --font-sans-serif: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
+  --font-sans-serif-light: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-site-background: #fff;
+  --color-site-font: #000;
+  --color-accent: #{$color-accent};
+  --color-accent-rgb: #{hex2rgb($color-accent)};
+  --z-background: 100;
+  --z-middle: 200;
+  --z-foreground: 300;
+  --z-important: 600;
+}
 
 // Reference: 1080p
 $large-vp: 1920px;
@@ -31,11 +33,3 @@ $small-vp: 667px;
 
 // Reference: iPhone 5
 $smallest-vp: 320px;
-
-// Z-index
-
-$z-behind: -1;
-$z-background: 100;
-$z-middle: 200;
-$z-foreground: 300;
-$z-important: 600;

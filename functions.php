@@ -13,6 +13,7 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
     add_image_size( 'illustrator-social-twitter', 560 );
     add_image_size( 'illustrator-small', 300 );
     add_image_size( 'illustrator-extra-small', 150 );
+    add_image_size( 'illustrator-icon', 100, 100, true );
 
     /**
      * Let WordPress Manage The Document Title
@@ -30,6 +31,8 @@ if ( ! function_exists( 'ocaduillustration_setup' ) ) :
           'comment-list',
           'gallery',
           'caption',
+          'style',
+          'script',
         )
     );
 
@@ -89,8 +92,12 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'wp-embed' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1627668946', '', '2021', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1627668946', '', '2022', true );
       wp_enqueue_script( 'app' );
+    }
+    if ( is_home() ) {
+      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1627668946', '', '2022', true );
+      wp_enqueue_script( 'home' );
     }
   }
 }
@@ -104,7 +111,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1627668946', '', '2021' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1627668946', '', '2022' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -161,7 +168,10 @@ endif;
  * Remove inline css from gallery shortcode
  */
 function ocaduillustration_gallery_style_override() {
-  return "<div id='pack-content' class='grid gallery-grid'>";
+  return "<div id='pack-content' class='grid gallery-grid'><div class='grid-col grid-col-1'></div>
+  <div class='grid-col grid-col-2'></div>
+  <div class='grid-col grid-col-3'></div>
+  <div class='grid-col grid-col-4'></div>";
 }
 
 add_filter( 'gallery_style', 'ocaduillustration_gallery_style_override', 99 );
@@ -266,7 +276,8 @@ function ocaduillustration_social_meta() {
   echo '<meta property="og:site_name" content="' . esc_html( get_bloginfo( 'name' ) ) . '">' . "\n";
   if ( is_singular() && is_attachment() !== true ) {
     global $post;
-    $the_excerpt = wptexturize( wp_strip_all_tags( $post->post_content ) );
+    $the_excerpt                  = wptexturize( wp_strip_all_tags( $post->post_content ) );
+    $ocaduillustration_year_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illustrator-icon', '' );
     echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
     echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
     echo '<meta property="og:type" content="article">' . "\n";
@@ -281,10 +292,12 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:image:alt" content="' . esc_html( get_post_meta( $post->ID, 'illu_title', true ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $the_excerpt ) . '">' . "\n";
-
+    if ( $ocaduillustration_year_image ) {
+      echo '<link rel="shortcut icon" href="' . esc_html( $ocaduillustration_year_image[0] ) . '">' . "\n"; // phpcs:ignore
+    }
   }
   if ( is_home() || is_archive() ) {
-    $social_description = 'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2021.';
+    $social_description = 'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2022.';
     if ( is_home() ) {
       $social_title = get_bloginfo( 'name' );
     } else {
@@ -305,6 +318,7 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter-index' ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $social_description ) . '">' . "\n";
+    echo '<link rel="shortcut icon" href="">'; // phpcs:ignore
 
   }
   echo '<!-- end social meta -->' . "\n";
@@ -358,7 +372,7 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   $attr['class']   = 'lazyload blur-up';
   $attr['loading'] = 'lazy';
   if ( is_home() || is_archive() ) {
-    $attr['title'] = get_the_title();
+    unset( $attr['title'] );
   } else {
     $attr['title'] = 'Enlarge';
   }
@@ -393,7 +407,6 @@ function ocaduillustration_modify_attachment_link( $markup, $id, $size, $permali
 
   if ( ! $permalink ) {
     $markup = str_replace( '<a href', '<a class="gallery-icon-anchor" data-srcset="' . $image_srcset . '" data-src-large="' . $image_url[0] . '" data-caption="' . $image_caption . '" data-sizes="' . $image_sizes . '" href', $markup );
-    $markup = str_replace( '</a>', '<canvas class="lazyload-image-placeholder" height="' . $image_height . '" width="' . $image_width . '"></canvas></a>', $markup );
   }
   return $markup;
 }
@@ -435,9 +448,10 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
  * Disable gutenberg style in Front
  */
 function ocaduillustration_wps_deregister_styles() {
+  wp_dequeue_style( 'global-styles' );
   wp_dequeue_style( 'wp-block-library' );
 }
 
-add_action( 'wp_print_styles', 'ocaduillustration_wps_deregister_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'ocaduillustration_wps_deregister_styles', 100 );
 
 ?>
