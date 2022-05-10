@@ -12,7 +12,8 @@
   align-items: center;
 
   @media screen and (max-width: variables.$small-vp) {
-    min-height: 75vh;
+    min-height: 80vh;
+    padding: 20px;
   }
 
   a {
@@ -35,7 +36,7 @@
     line-height: 0.95em;
 
     @media screen and (max-width: variables.$small-vp) {
-      font-size: 5.5em;
+      font-size: 5em;
     }
 
     @include typography.heading-features;
