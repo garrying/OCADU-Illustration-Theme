@@ -200,12 +200,16 @@ Velocity('registerSequence', 'fadeIn', {
     },
 
     _ocadShuffle: (elems, gridTarget) => {
-      $(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget))
+      return new Promise((resolve, reject) => {
+        resolve($(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget)))
+      })
     },
 
     _ocadHomeLoader: () => {
       if (app.settings.documentBody.hasClass('home')) {
-        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid')
+        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid').then(() => {
+          app._ocadMasonry(app.settings.masonryContainerHome)
+        })
       }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         window.onload = () => {
