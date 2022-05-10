@@ -21,6 +21,10 @@
   &.invert:hover {
     color: var(--color-white);
   }
+
+  .fade-out & {
+    pointer-events: none;
+  }
 }
 
 .heading-inner {
@@ -86,6 +90,10 @@
 
   &.inactive {
     color: var(--color-white);
+  }
+
+  .fade-out & {
+    pointer-events: none;
   }
 
   @media screen and (max-width: variables.$small-vp) {
