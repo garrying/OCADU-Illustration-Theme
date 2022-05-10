@@ -199,21 +199,23 @@ Velocity('registerSequence', 'fadeIn', {
       })
     },
 
-    _ocadShuffle: (elems, gridTarget) => {
-      return new Promise((resolve, reject) => {
-        resolve($(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget)))
+    _ocadShuffle: (elems) => {
+      const elements = $(elems).sort(() => Math.random() - 0.5)
+      const colc = new Colcade(document.querySelector(app.settings.masonryContainerHome), {
+        columns: '.grid-col',
+        items: '.gallery-item'
       })
+      colc.append(elements)
     },
 
     _ocadHomeLoader: () => {
-      if (app.settings.documentBody.hasClass('home')) {
-        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid').then(() => {
-          app._ocadMasonry(app.settings.masonryContainerHome)
-        })
-      }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         window.onload = () => {
-          app._ocadMasonry(app.settings.masonryContainerHome)
+          if (app.settings.documentBody.hasClass('home')) {
+            app._ocadShuffle(document.querySelectorAll('.gallery-item'))
+          } else {
+            app._ocadMasonry(app.settings.masonryContainerHome)
+          }
           $(app.settings.masonryContainerHome).addClass('ready')
           lazySizes.autoSizer.checkElems()
         }
