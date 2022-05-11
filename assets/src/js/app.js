@@ -1,18 +1,37 @@
 import '../styles/main.scss'
+import autoComplete from '@tarekraafat/autocomplete.js'
+import * as blobs2 from './libs/blobs'
+import * as lazySizes from 'lazysizes'
+import Colcade from 'colcade'
+import SwipeListener from 'swipe-listener'
+import $ from 'jquery/dist/jquery.slim.min'
+import Velocity from 'velocity-animate/velocity.min'
 
-window.jQuery = window.$ = require('jquery/dist/jquery.slim.min')
-require('velocity-animate')
-const AutoComplete = require('@tarekraafat/autocomplete.js')
-const blobs2 = require('./libs/blobs')
-const lazySizes = require('lazysizes')
-const Bricklayer = require('bricklayer')
-const SwipeListener = require('swipe-listener')
-const Two = require('two.js').default;
+Velocity.patch($ && $.fn)
+
+Velocity('registerSequence', 'fadeOut', {
+  duration: 1000,
+  '0%': {
+    opacity: '1'
+  },
+  '100%': {
+    opacity: '0'
+  }
+})
+
+Velocity('registerSequence', 'fadeIn', {
+  duration: 1000,
+  '0%': {
+    opacity: '0'
+  },
+  '100%': {
+    opacity: '1'
+  }
+});
 
 (() => {
   const app = {
     init: () => {
-      app._ocadTitleMoment()
       app._ocadPanelSelectButtons()
       app._ocadHomeLoader()
       app._ocadHomeHover()
@@ -32,70 +51,12 @@ const Two = require('two.js').default;
       masonryContainerHome: '#illustrators',
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
-      searchField: $('#autocomplete'),
       imageModal: $('#image-modal'),
       searchLoader: $('.search-loader'),
       singleWrapper: $('.illustrator-nav-single-wrapper'),
       headerInner: $('.heading-inner'),
       imageIndex: 0,
       easeOutBack: [0.175, 0.885, 0.32, 1.275]
-    },
-
-    _ocadTitleMoment: () => {
-      const titleEle = document.querySelector('.title')
-
-      if (titleEle) {
-        const two = new Two({
-          autostart: true,
-          width: titleEle.clientWidth,
-          height: titleEle.clientHeight
-        }).appendTo(titleEle)
-
-        window.addEventListener('resize', () => {
-          two.renderer.setSize(titleEle.clientWidth, titleEle.clientHeight)
-        })
-
-        const mouse = new Two.Vector(titleEle.clientWidth, titleEle.clientHeight)
-
-        const move = (e) => {
-          const x = e.clientX
-          const y = e.clientY
-          const v1 = makePoint(mouse)
-          const v2 = makePoint(x, y)
-          const line = two.makeCurve([v1, v2], true)
-          line.cap = 'round'
-          line.noFill()
-          line.join = 'round'
-          line.linewidth = 30
-          line.vertices.forEach(function (v) {
-            v.addSelf(line.translation)
-          })
-          line.translation.clear()
-          mouse.set(x, y)
-        }
-
-        $(window).bind('mousemove', move)
-
-        function makePoint (x, y) {
-          if (arguments.length <= 1) {
-            y = x.y
-            x = x.x
-          }
-
-          const v = new Two.Vector(x, y)
-          v.position = new Two.Vector().copy(v)
-          return v
-        }
-
-        const strokeColors = ['base', 'set1', 'set2', 'set3']
-        const randomItem = arr => arr[(Math.random() * arr.length) | 0]
-        titleEle.classList.add(randomItem(strokeColors))
-
-        titleEle.addEventListener('click', () => {
-          titleEle.classList.remove(...strokeColors)
-          titleEle.classList.add(randomItem(strokeColors))
-        })
-      }
     },
 
     _ocadSingleScroll: () => {
@@ -132,17 +93,21 @@ const Two = require('two.js').default;
     _ocadLoader: (e = true) => {
       if (e === false) {
         app.settings.documentBody.removeAttr('style')
-        app.settings.loader.velocity('stop').velocity('fadeOut', 'fast')
+        app.settings.loader.velocity('stop').velocity('fadeOut', { duration: 'fast' })
       } else {
         app.settings.documentBody.css('cursor', 'progress')
-        app.settings.loader.velocity('stop').velocity('fadeIn', 'fast')
+        app.settings.loader.velocity('stop').velocity('fadeIn', { duration: 'fast' })
       }
     },
 
-    _ocadMasonry: selector => new Bricklayer(document.querySelector(selector)),
+    _ocadMasonry: selector => new Colcade(document.querySelector(selector), {
+      columns: '.grid-col',
+      items: '.gallery-item'
+    }),
 
     _ocadSearch: () => {
-      const autoCompleteJS = new AutoComplete({ // eslint-disable-line
+      const autoCompleteJS = new autoComplete({ // eslint-disable-line
+        submit: true,
         data: {
           src: async (query) => {
             try {
@@ -194,52 +159,63 @@ const Two = require('two.js').default;
         $(e).removeClass('invert')
         app._ocadPanelsClose()
       } else {
-        $('.panel.visible').removeClass('visible').velocity('fadeOut', { display: 'flex' }, 'fast')
-          .attr('aria-hidden', true)
-        $('.year-item').velocity('stop').velocity({ opacity: 0, display: 'flex' }, 'fast').removeClass('loaded')
+        $('.panel.visible').removeClass('visible').velocity('fadeOut', {
+          complete: (e) => {
+            $(e).addClass('hidden').attr('aria-hidden', true)
+          },
+          duration: 'fast'
+        })
+        $('.year-item').velocity('stop')
 
         $('.header-item').addClass('inactive').removeClass('invert')
         app.settings.logo.addClass('invert')
 
         $(e).addClass('invert').removeClass('inactive')
         $(`.${targetPanel}`).velocity(
-          'fadeIn',
-          { display: 'flex', duration: 200 }
-        ).addClass('visible').attr('aria-hidden', false)
-          .focus()
-        // app.settings.contentContainer.velocity({ opacity: 0.3 }, 'fast');
+          'fadeIn', {
+            begin: (e) => {
+              $(e).addClass('visible').attr('aria-hidden', false).focus().velocity({ display: 'flex' })
+            },
+            duration: 200
+          })
         $('html, body').addClass('lock-scroll')
 
         if (targetPanel === 'year-select') {
-          $('.year-item').each((index, ele) => {
-            const item = $(ele)
-            item.delay(80 * index).velocity({ opacity: 1, transformdisplay: 'flex' })
+          $('.year-item').velocity({
+            opacity: 1,
+            transformdisplay: 'flex'
+          }, {
+            stagger: 100,
+            duration: 1000
           })
-        }
-        if (targetPanel === 'search-container' && window.matchMedia('(min-width: 769px)').matches) {
-          app.settings.searchField.focus()
         }
       }
     },
 
     _ocadPanelSelectButtons: () => {
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
+        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', { duration: 'fast' })
         app._ocadPanelSelect(ele.target)
       })
     },
 
-    _ocadShuffle: (elems, gridTarget) => {
-      $(elems).sort(() => Math.random() - 0.5).prependTo($(gridTarget))
+    _ocadShuffle: (elems) => {
+      const elements = $(elems).sort(() => Math.random() - 0.5)
+      const colc = new Colcade(document.querySelector(app.settings.masonryContainerHome), {
+        columns: '.grid-col',
+        items: '.gallery-item'
+      })
+      colc.append(elements)
     },
 
     _ocadHomeLoader: () => {
-      if (app.settings.documentBody.hasClass('home')) {
-        app._ocadShuffle(document.querySelectorAll('.gallery-item'), '.home-grid')
-      }
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         window.onload = () => {
-          app._ocadMasonry(app.settings.masonryContainerHome)
+          if (app.settings.documentBody.hasClass('home')) {
+            app._ocadShuffle(document.querySelectorAll('.gallery-item'))
+          } else {
+            app._ocadMasonry(app.settings.masonryContainerHome)
+          }
           $(app.settings.masonryContainerHome).addClass('ready')
           lazySizes.autoSizer.checkElems()
         }
@@ -269,31 +245,32 @@ const Two = require('two.js').default;
       }
     },
 
-    _ocadPanelsCloseFullImage: () => {
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
-      $('#full-image').velocity({ translateY: '15px' }, 'fast')
-    },
-
     _ocadPanelsClose: () => {
-      // app.settings.contentContainer.velocity({ opacity: 1 }, 'fast');
       $('html, body').removeClass('lock-scroll')
 
       $('.header-item').removeClass('invert inactive')
-      app.settings.imageModal.velocity('fadeOut', { duration: 180 })
+      app.settings.imageModal.velocity('fadeOut', { complete: (e) => { $(e).addClass('hidden') }, duration: 180 })
       app.settings.logo.removeClass('invert')
-      $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
-      $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', 'fast')
-      $('.panel.visible').removeClass('visible').attr('aria-hidden', true).blur()
-        .velocity('fadeOut', 'fast')
-      $('.year-item').velocity({ opacity: 0, display: 'flex' }, 'fast')
-        .removeClass('loaded')
+      $('.panel.velocity-animating').velocity('stop')
+      $('.panel.visible').attr('aria-hidden', true).blur().velocity('stop')
+        .velocity('fadeOut', {
+          duration: 'fast',
+          complete: (e) => {
+            $(e).removeClass('visible')
+          }
+        })
+      $('.year-item').velocity({ opacity: 0, display: 'flex' }, { duration: 'fast' })
     },
 
     _ocadPanelsCloseSelective: (event) => {
       if (!$(event.target).closest('#full-image, .miniview').length &&
         app.settings.imageModal.is(':visible')) {
-        app.settings.imageModal.velocity('fadeOut', { duration: 180 })
-        $(app.settings.masonryContainer).velocity({ opacity: 1 }, 'fast')
+        app.settings.imageModal.velocity('fadeOut', {
+          complete: (e) => {
+            $(e).addClass('hidden')
+          },
+          duration: 180
+        })
         $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive')
         $('html, body').removeClass('lock-scroll')
       }
@@ -362,9 +339,11 @@ const Two = require('two.js').default;
         image.alt = 'Full sized illustration'
         image.id = 'full-image'
         image.className = 'image-modal-container-full-image lazyload'
-        image.dataset.srcset = imageSource.data('srcset')
-        image.sizes = imageSource.data('sizes')
         image.dataset.src = imageSource.data('src-large')
+        if (image.dataset.src.split('.').pop() !== 'gif') {
+          image.sizes = imageSource.data('sizes')
+          image.dataset.srcset = imageSource.data('srcset')
+        }
         return image
       }
 
@@ -376,15 +355,10 @@ const Two = require('two.js').default;
         const imageCaptionContainer = $('.image-modal-caption')
         if (imageCaption) {
           imageCaptionContainer.html(imageCaption)
-          imageCaptionContainer.velocity({ opacity: 1 })
+          imageCaptionContainer.removeClass('hidden')
         } else {
-          $.Velocity.animate(
-            imageCaptionContainer,
-            { opacity: 0 },
-            'fast'
-          ).then(() => {
-            imageCaptionContainer.html('')
-          })
+          imageCaptionContainer.addClass('hidden')
+          imageCaptionContainer.html('')
         }
       }
 
@@ -406,9 +380,8 @@ const Two = require('two.js').default;
         app._ocadLoader(false)
         app.settings.imageModal.velocity('fadeIn', {
           duration: 180,
-          begin: () => {
-            $(app.settings.masonryContainer).velocity({ opacity: 0 }, 'fast')
-            $('#full-image').velocity({ translateY: [0, 5] }, app.settings.easeOutBack)
+          begin: (e) => {
+            $(e).removeClass('hidden')
           },
           complete: () => {
             imageCaptionSetter(itemImage.data('caption'))
@@ -423,7 +396,7 @@ const Two = require('two.js').default;
       */
 
       const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
-        $.Velocity.animate(
+        Velocity(
           $('#full-image'),
           { opacity: 0 },
           app.settings.easeOutBack
@@ -434,8 +407,13 @@ const Two = require('two.js').default;
             image.removeAttribute('srcset')
           }
           image.dataset.src = imageItem.url
-          image.dataset.srcset = imageItem.srcset
-          image.dataset.sizes = imageItem.sizes
+          if (image.dataset.src.split('.').pop() !== 'gif') {
+            image.dataset.srcset = imageItem.srcset
+            image.dataset.sizes = imageItem.sizes
+          } else {
+            delete image.dataset.srcset
+            image.removeAttribute('srcset')
+          }
           lazySizes.loader.unveil(image)
           image.onload = () => {
             imageCaptionSetter(imageItem.caption)
@@ -508,7 +486,7 @@ const Two = require('two.js').default;
         Keyboard event for cycling through images
       */
 
-      $(document).keydown((e) => {
+      document.addEventListener('keydown', (e) => {
         if (app.settings.imageModal.is(':visible')) {
           if (e.keyCode === 39) {
             nextElement()
@@ -562,16 +540,15 @@ const Two = require('two.js').default;
         randomness: 4,
         size: 400
       }, {
-        fill: 'rgb(250,128,114)',
+        fill: 'rgb(255,87,34)',
         strokeWidth: 1
       })
       if (document.querySelector('#error-blob-container')) {
         document.querySelector('#error-blob-container').innerHTML = svgString
       }
-      if (document.querySelector('#name-blob')) {
-        document.querySelector('#name-blob').innerHTML = svgString
+      if (!app.settings.documentBody.hasClass('single')) {
+        $('link[rel="shortcut icon"]').attr('href', `data:image/svg+xml,${svgString}`)
       }
-      $('link[rel="icon"]').attr('href', `data:image/svg+xml,${svgString}`)
     }
   }
 

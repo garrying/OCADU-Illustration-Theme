@@ -4,7 +4,7 @@
 .miniview-container {
   position: fixed;
   bottom: 20px;
-  z-index: variables.$z-foreground;
+  z-index: var(--z-foreground);
   display: flex;
   width: 100%;
   justify-content: center;
@@ -30,16 +30,16 @@
     display: block;
     max-width: 100%;
     height: auto;
-    background: color.adjust(variables.$color-accent, $alpha: -0.9%);
+    background: rgb(var(--color-accent-rgb) / 10%);
     transition: background 200ms ease-in-out;
 
     &.active,
     &:hover {
-      background: variables.$color-accent;
+      background: var(--color-accent);
     }
 
     &:hover {
-      background: color.adjust(variables.$color-accent, $alpha: -0.5%);
+      background: rgb(var(--color-accent-rgb) / 50%);
     }
   }
 }

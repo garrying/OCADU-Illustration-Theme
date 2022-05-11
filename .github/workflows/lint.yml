@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -34,11 +34,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16.13.0
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16.14.0
       uses: actions/setup-node@v2
       with:
-        node-version: 16.13.0
+        node-version: 16.14.0
     - run: npm ci
     - run: npm run lint:scss --silent
     - run: npm run lint:js --silent

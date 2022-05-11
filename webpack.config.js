@@ -4,10 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: path.join(__dirname, './assets/src/js/app.js'),
+  entry: {
+    app: './assets/src/js/app.js',
+    home: './assets/src/js/home.js'
+  },
   output: {
     path: path.join(__dirname, './assets/dist/'),
-    filename: 'app.js',
+    filename: '[name].js',
     assetModuleFilename: './fonts/[name][ext]'
   },
   mode: 'development',
@@ -28,7 +31,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env']
+          presets: ['@babel/preset-env', '@babel/preset-react']
         }
       }, {
         test: /\.svg$/,
@@ -51,7 +54,7 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: 'main.css'
     })
   ],
   stats: 'normal'

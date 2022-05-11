@@ -57,7 +57,7 @@
         <div class="miniview image-modal-miniview">
         </div>
       </div>
-      <button class="close-panel" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+      <button class="close-panel pill" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">
         <div class="image-modal-image"></div>
         <div class="image-modal-caption"></div>
@@ -85,7 +85,7 @@
 
         <div class="meta">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name"><span id="name-blob"></span> <?php the_title(); ?></h1> 
+            <h1 class="illustrator-meta-name"><?php the_title(); ?></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if ( get_post_meta( $post->ID, 'illu_related', true ) ) : ?>
@@ -94,7 +94,7 @@
                 $ocaduillustration_related_post_terms = get_the_terms( $ocaduillustration_related_post->ID, 'gradyear' );
               ?>
               <p class="meta-label"><?php echo esc_html( $ocaduillustration_related_post_terms[1]->name ); ?> ⤵</p>
-              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate pill" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">✿ 
+              <a title="<?php echo esc_html( $ocaduillustration_related_post->post_title ); ?>" class="meta-link truncate" href="<?php echo esc_html( get_permalink( $ocaduillustration_related_post->ID ) ); ?>">
                 <?php
                   if ( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) ) {
                     echo esc_html( get_post_meta( $ocaduillustration_related_post->ID, 'illu_title', true ) );
@@ -106,29 +106,29 @@
               <hr class="related-separator" />
             <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
-              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
+                ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
                   echo esc_html( rtrim( $ocaduillustration_url, '/' ) );
                 ?>
-                ↗
               </a>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
-              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="meta-link truncate pill" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+              <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
+                ↗
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
                   echo esc_html( rtrim( $ocaduillustration_url, '/' ) );
                 ?>
-                ↗
               </a>
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate pill" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>"><?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?> ✎</a>
+              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">✎ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
             <?php endif; ?>
           </div>
         </div>
@@ -180,14 +180,14 @@
           <li class="nav-previous">
             <?php
               if ( ! empty( $ocaduillustration_prev_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev" title="' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
               if ( ! empty( $ocaduillustration_next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next" title="' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . '"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
               }
             ?>
           </li>

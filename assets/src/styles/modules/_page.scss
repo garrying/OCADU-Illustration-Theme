@@ -1,111 +1,22 @@
 @use "sass:color";
 @use "../components/variables";
-@use "../components/vwfontsize";
-
-.archive-grid {
-  margin: 130px auto;
-
-  .illustrator-title {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.2em;
-    color: variables.$off-black;
-    margin-bottom: 0.25em;
-  }
-
-  .illustrator-type {
-    margin-top: 0.5em;
-  }
-
-  .illustrator-name {
-    font-size: 16px;
-    color: variables.$off-black;
-  }
-
-  .bricklayer-column-sizer {
-    width: 25%;
-
-    @media screen and (max-width: variables.$medium-vp) {
-      width: 33.3333%;
-    }
-
-    @media screen and (max-width: variables.$small-vp) {
-      width: 50%;
-    }
-
-    @media screen and (max-width: variables.$smallest-vp) {
-      width: 100%;
-    }
-  }
-
-  @media screen and (max-width: variables.$small-vp) {
-    width: 100vw;
-    padding: 20px;
-    margin: 60px 0 0;
-  }
-
-  @media screen and (max-width: variables.$smallest-vp) {
-    flex-direction: column;
-  }
-
-  .illustrator-meta-container {
-    margin: 1em 0 0.67em;
-  }
-
-  .gallery-item {
-    margin: 0 12% 20%;
-
-    @media screen and (max-width: variables.$small-vp) {
-      margin-right: 5%;
-      margin-left: 0;
-    }
-  }
-
-  .illustrator-link {
-    display: block;
-    padding-bottom: 1em;
-  }
-
-  .bricklayer-column:last-child {
-    .gallery-item {
-      @media screen and (max-width: variables.$small-vp) {
-        margin-right: 0;
-        margin-left: 5%;
-      }
-
-      @media screen and (max-width: variables.$smallest-vp) {
-        margin: 0;
-      }
-    }
-  }
-}
 
 .section-indicator-index {
-  font-family: variables.$sans-serif-light;
-  color: color.adjust(variables.$color-accent, $lightness: 25%);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: variables.$z-behind;
+  font-size: clamp(4em, 5vw, 10rem);
+  font-family: var(--font-sans-serif-light);
+  color: var(--color-accent);
   width: 100%;
   display: flex;
-  height: 100%;
-  align-items: center;
+  line-height: 0.5em;
+  margin: 161px auto 100px;
   justify-content: center;
-  line-height: 1em;
-  text-align: center;
-
-  @include vwfontsize.rsp-font(10vw, 24px);
 }
 
 .section-indicator-single {
   font-size: 1em;
-  width: calc(50% - 5px);
   padding: 1em;
-  border-radius: 9999px;
-  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
-  margin-bottom: 10px;
-  margin-right: 5px;
+  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
+  border-bottom: 0;
 
   &:nth-child(2) {
     white-space: nowrap;
@@ -119,7 +30,7 @@
 
   &:hover,
   &:focus {
-    background: color.adjust(variables.$color-accent, $alpha: -0.65%);
+    background: rgba(var(--color-accent-rgb) / 35%);
   }
 }
 
@@ -134,34 +45,31 @@
 .page-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 520px;
+  max-width: 620px;
   margin: 130px auto;
   line-height: 1.45em;
-
-  @include vwfontsize.rsp-font(1vw, 14px);
+  font-size: 16px;
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
-    margin: 8em 0 0;
+    margin: 8em 0;
+    line-height: 1.3em;
+    font-size: 14px;
   }
 
   .entry-title {
     line-height: 1em;
-    margin: 1em 0;
-    font-family: variables.$sans-serif-light;
+    margin: 0.5em 0;
+    font-family: var(--font-sans-serif-light);
     font-size: 50px;
   }
 
   .entry-title-secondary {
+    font-size: 1.5em;
+    font-family: var(--font-sans-serif-light);
     line-height: 1em;
-    margin: 1.5em 0;
-  }
-
-  .col-container {
-    color: #555;
+    margin: 1.5em 0 0.5em;
   }
 
   .faculty-list {

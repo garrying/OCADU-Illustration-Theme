@@ -14,16 +14,16 @@
 
   &:hover,
   &:focus {
-    color: color.adjust(variables.$color-accent, $lightness: -20%);
+    color: var(--color-accent);
   }
 
   &.invert,
   &.invert:hover {
-    color: color.adjust(variables.$color-accent, $lightness: -20%);
+    color: var(--color-white);
   }
 
-  @media screen and (max-width: variables.$smallest-vp) {
-    white-space: normal;
+  .fade-out & {
+    pointer-events: none;
   }
 }
 
@@ -33,14 +33,12 @@
   padding: 1em 30px;
   left: 0;
   right: 0;
-  z-index: variables.$z-foreground;
+  z-index: var(--z-foreground);
   display: flex;
   pointer-events: none;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid color.adjust(variables.$color-accent, $alpha: -0.8%);
   transition: opacity 200ms ease-in-out;
-  backdrop-filter: blur(4px);
 
   @media screen and (max-width: variables.$small-vp) {
     top: 0;
@@ -64,39 +62,38 @@
 }
 
 .header-item-link {
-  margin-left: 1em;
+  margin-left: 5px;
 }
 
 .header-item {
   padding: 1em 1.5em;
   line-height: 1em;
-  color: variables.$color-accent;
+  color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
 
   @include typography.heading-features;
 
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: color.adjust(variables.$color-accent, $alpha: -0.8%);
+  background: rgb(var(--color-accent-rgb) / 20%);
 
   &:hover,
   &:focus {
-    background: color.adjust(variables.$color-accent, $alpha: -0.65%);
+    background: rgb(var(--color-accent-rgb) / 35%);
   }
 
   &.invert {
-    color: variables.$white;
-    background: color.adjust(variables.$color-accent, $lightness: -10%);
+    color: var(--color-white);
+    background: var(--color-accent);
+    box-shadow: 0 0 0 1px inset var(--color-white);
   }
 
   &.inactive {
-    color: color.adjust(variables.$color-accent, $lightness: -10%);
-    background: transparent;
+    color: var(--color-white);
   }
 
-  &.inactive:hover {
-    color: variables.$white;
-    background: color.adjust(variables.$color-accent, $lightness: -10%);
+  .fade-out & {
+    pointer-events: none;
   }
 
   @media screen and (max-width: variables.$small-vp) {
@@ -107,8 +104,4 @@
 #search-link::after {
   content: "Search";
   display: block;
-
-  @media screen and (max-width: variables.$small-vp) {
-    content: "🔍";
-  }
 }

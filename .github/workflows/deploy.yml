@@ -7,8 +7,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://www.ocaduillustration.com
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy theme
         uses: Burnett01/rsync-deployments@5.2
         with:
