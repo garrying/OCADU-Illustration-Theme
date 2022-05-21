@@ -142,9 +142,9 @@
           foreach ( $ocaduillustration_class_year as $ocaduillustration_illustrator_term ) {
             $ocaduillustration_illustrator_year_section = $ocaduillustration_illustrator_term->slug;
             if ( $ocaduillustration_illustrator_term->parent <= 0 ) {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☀ ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☀&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             } else {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☼ ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☼&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             }
           }
         }
