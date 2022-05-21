@@ -203,10 +203,11 @@
     display: block;
     z-index: var(--z-foreground);
     padding: 1em;
+    transition: background 180ms ease-in-out;
 
     &:hover,
     &:focus {
-      background: rgb(var(--color-accent-rgb) / 35%);
+      background: rgb(var(--color-accent-rgb) / 15%);
     }
   }
 

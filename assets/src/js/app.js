@@ -44,7 +44,6 @@ Velocity('registerSequence', 'fadeIn', {
 
     settings: {
       documentBody: $('body'),
-      contentContainer: $('#main'),
       logo: $('.logo'),
       loader: $('.loader'),
       masonryContainer: '#pack-content',
@@ -52,7 +51,6 @@ Velocity('registerSequence', 'fadeIn', {
       nextItem: $('.nav-next a'),
       prevItem: $('.nav-previous a'),
       imageModal: $('#image-modal'),
-      searchLoader: $('.search-loader'),
       singleWrapper: $('.illustrator-nav-single-wrapper'),
       headerInner: $('.heading-inner'),
       imageIndex: 0,

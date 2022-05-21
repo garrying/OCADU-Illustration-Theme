@@ -15,8 +15,7 @@
 .section-indicator-single {
   font-size: 1em;
   padding: 1em;
-  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
-  border-bottom: 0;
+  transition: background 180ms ease-in-out;
 
   &:nth-child(2) {
     white-space: nowrap;
@@ -30,7 +29,7 @@
 
   &:hover,
   &:focus {
-    background: rgba(var(--color-accent-rgb) / 35%);
+    background: rgba(var(--color-accent-rgb) / 15%);
   }
 }
 

@@ -19,7 +19,6 @@
 <body <?php body_class(); ?>>
   <a class="screen-reader-shortcut" href="#main">Skip to main content</a>
 
-  <div class="loader"><h1 class="loader-text">Loading ☺</h1></div>
   <header>
     <div class="app-head-items">
 
