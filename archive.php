@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<h2 class="section-indicator-index">Illustrators</h2>
+
 <div id="illustrators" class="grid illustrators-grid archive-grid">
   <div class="grid-col grid-col-1"></div>
   <div class="grid-col grid-col-2"></div>

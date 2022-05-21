@@ -6,7 +6,7 @@ if ( is_archive() ) {
     if ( $ocaduillustration_selected_section->parent > 0 ) {
       $ocaduillustration_selected_section_parent = get_term( $ocaduillustration_selected_section->parent, get_query_var( 'taxonomy' ) );
     }
-    echo '<div class="section-indicator-index"><span class="section-indicator">';
+    echo '<h2 class="section-indicator-index">';
     if ( isset( $ocaduillustration_selected_section_parent ) ) {
       echo esc_html( $ocaduillustration_selected_section_parent->name );
       echo ', ';
@@ -14,7 +14,7 @@ if ( is_archive() ) {
     } else {
       echo esc_html( $ocaduillustration_selected_section->name );
     }
-    echo '</span></div>';
+    echo '</h2>';
   }
 ?>
 
