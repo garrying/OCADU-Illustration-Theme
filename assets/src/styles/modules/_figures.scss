@@ -32,10 +32,7 @@ figure {
 
 .image-modal-wrapper {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: var(--z-foreground);
   overflow: auto;
   background: var(--color-site-background);
@@ -46,10 +43,7 @@ figure {
 
   .image-modal-image {
     position: absolute;
-    top: 2%;
-    right: 1%;
-    bottom: 75px;
-    left: 1%;
+    inset: 2% 1% 75px;
     display: flex;
     align-items: center;
     justify-content: center;
