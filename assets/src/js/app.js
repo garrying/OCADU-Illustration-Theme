@@ -1,6 +1,5 @@
 import '../styles/main.scss'
 import autoComplete from '@tarekraafat/autocomplete.js'
-import * as blobs2 from './libs/blobs'
 import * as lazySizes from 'lazysizes'
 import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
@@ -39,7 +38,6 @@ Velocity('registerSequence', 'fadeIn', {
       app._ocadUIbinding()
       app._ocadSingleScroll()
       app._ocadSearch()
-      app._blob()
     },
 
     settings: {
@@ -529,24 +527,6 @@ Velocity('registerSequence', 'fadeIn', {
           }
         }
       })
-    },
-
-    _blob: () => {
-      const svgString = blobs2.svg({
-        seed: Math.random(),
-        extraPoints: 8,
-        randomness: 4,
-        size: 400
-      }, {
-        fill: 'rgb(255,87,34)',
-        strokeWidth: 1
-      })
-      if (document.querySelector('#error-blob-container')) {
-        document.querySelector('#error-blob-container').innerHTML = svgString
-      }
-      if (!app.settings.documentBody.hasClass('single')) {
-        $('link[rel="shortcut icon"]').attr('href', `data:image/svg+xml,${svgString}`)
-      }
     }
   }
 

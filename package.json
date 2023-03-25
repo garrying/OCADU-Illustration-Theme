@@ -9,12 +9,7 @@
     "dev": "webpack --mode=development --progress --color --watch",
     "build": "webpack --mode=production --progress --color",
     "lint:scss": "stylelint '**/*.scss'",
-    "lint:js": "standard 'assets/src/js/**/*.js' --verbose | snazzy"
-  },
-  "standard": {
-    "ignore": [
-      "blobs.js"
-    ]
+    "lint:js": "eslint 'assets/src/js/**/*.js'"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -24,11 +19,15 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
     "mini-css-extract-plugin": "^2.7.5",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.1",
-    "snazzy": "^9.0.0",
-    "standard": "^17.0.0",
     "stylelint": "^15.3.0",
     "stylelint-config-standard-scss": "^7.0.1",
     "svg-url-loader": "^8.0.0",
