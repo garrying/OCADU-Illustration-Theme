@@ -1,19 +1,19 @@
 import { createRoot } from 'react-dom/client'
 import React, { useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import * as meshline from 'meshline'
+import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 import { extend, Canvas, useFrame, useThree } from '@react-three/fiber'
 import { LayerMaterial, Depth } from 'lamina'
 
-extend(meshline)
+extend({ MeshLineGeometry, MeshLineMaterial })
 
 function Fatline ({ curve, width, color, speed }) {
   const material = useRef()
   useFrame(() => (material.current.uniforms.dashOffset.value -= speed))
   return (
     <mesh>
-      <meshLine attach='geometry' points={curve} />
-      <meshLineMaterial attach='material' ref={material} transparent depthTest={false} lineWidth={width} color={color} dashArray={0.1} dashRatio={0.8} />
+      <meshLineGeometry points={curve} />
+      <meshLineMaterial ref={material} transparent toneMapped={false} depthTest={false} lineWidth={width} color={color} dashArray={0.1} dashRatio={0.8} />
     </mesh>
   )
 }
