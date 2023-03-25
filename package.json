@@ -6,7 +6,7 @@
   "author": "Garry Ing <garry.ing@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "webpack --mode=development --progress --color --watch",
+    "dev": "webpack --mode=development --progress --color --watch",
     "build": "webpack --mode=production --progress --color",
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "standard 'assets/src/js/**/*.js' --verbose | snazzy"
