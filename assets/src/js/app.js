@@ -518,14 +518,6 @@ Velocity('registerSequence', 'fadeIn', {
         if (e.keyCode === 27) {
           app._ocadPanelsClose()
         }
-
-        if (!app.settings.imageModal.is(':visible')) {
-          if (e.keyCode === 37 && app.settings.prevItem.length) {
-            window.location = app.settings.prevItem.attr('href')
-          } else if (e.keyCode === 39 && app.settings.nextItem.length) {
-            window.location = app.settings.nextItem.attr('href')
-          }
-        }
       })
     }
   }
