@@ -101,39 +101,27 @@
 
   .thesis-title {
     color: var(--color-accent);
-    margin-bottom: 0.25em;
     font-family: var(--font-sans-serif-light);
-    line-height: 1.2em;
-    font-size: 2.5em;
-  }
-
-  .thesis-description {
-    line-height: 1.3em;
-    font-size: 14px;
   }
 
   .illustrator-meta-name {
     color: var(--color-accent);
     font-family: var(--font-sans-serif-light);
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
   }
 }
 
 .meta-label {
-  color: var(--color-accent);
   margin-bottom: 0.5em;
 }
 
 .related-separator {
   border-top: 0;
-  border-style: dotted;
-  border-color: var(--color-accent);
+  border-style: solid;
+  border-color: rgb(var(--color-accent-rgb)/20%);
 }
 
 .meta {
   margin-top: 2em;
-  font-size: 14px;
 
   @media screen and (max-width: variables.$small-vp) {
     margin: 2em 0 0;
@@ -145,21 +133,11 @@
   }
 
   .meta-link {
-    display: inline-block;
     max-width: 100%;
-    background: rgb(var(--color-accent-rgb) / 20%);
-    padding: 0.75em 1em;
-    transition: background 180ms ease-in-out;
-
-    &:hover,
-    &:focus {
-      background: rgb(var(--color-accent-rgb) / 35%);
-    }
   }
 }
 
 .illustrator-nav-single-wrapper {
-  font-size: 14px;
   line-height: 1em;
   display: flex;
   flex-wrap: wrap;

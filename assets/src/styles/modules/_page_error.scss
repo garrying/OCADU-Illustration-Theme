@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
   color: var(--color-accent);
-  font-size: clamp(1em, 1.5vw, 2rem);
   line-height: 1.3em;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -15,7 +14,6 @@
   }
 
   .entry-title {
-    font-size: clamp(1em, 5vw, 10rem);
     margin-bottom: 0.75em;
     font-family: var(--font-sans-serif-light);
   }

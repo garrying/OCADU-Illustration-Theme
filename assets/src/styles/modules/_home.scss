@@ -41,7 +41,6 @@
     background: var(--color-white);
     color: var(--color-accent);
     padding: 1em;
-    box-shadow: 2px 2px 0 0 var(--color-accent);
 
     .accent {
       color: inherit;
@@ -50,8 +49,6 @@
     .illustrator-meta-label {
       padding: 0;
       margin-bottom: 0;
-
-      @include typography.heading-features;
     }
 
     .illustrator-name {

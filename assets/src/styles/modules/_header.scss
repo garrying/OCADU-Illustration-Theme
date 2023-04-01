@@ -6,9 +6,6 @@
   display: block;
   line-height: 1em;
   white-space: nowrap;
-
-  @include typography.heading-features;
-
   pointer-events: auto;
   transition: color 200ms ease-in-out;
 
@@ -72,20 +69,10 @@
   white-space: nowrap;
   pointer-events: auto;
 
-  @include typography.heading-features;
-
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgb(var(--color-accent-rgb) / 20%);
-
-  &:hover,
-  &:focus {
-    background: rgb(var(--color-accent-rgb) / 35%);
-  }
 
   &.invert {
     color: var(--color-white);
-    background: var(--color-accent);
-    box-shadow: 0 0 0 1px inset var(--color-white);
   }
 
   &.inactive {

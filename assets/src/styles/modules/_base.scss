@@ -15,8 +15,8 @@ html {
 body {
   height: 100%;
   font-family: var(--font-sans-serif);
-  font-size: 75%;
-  line-height: 1.5em;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--color-site-font);
   background: var(--color-site-background);
 
@@ -51,8 +51,6 @@ a {
 // Tab shortcut reveal
 
 .screen-reader-shortcut {
-  @include typography.font-smoothing(on);
-
   position: absolute;
   top: 0;
   left: 30px;

@@ -59,7 +59,7 @@
   position: relative;
   z-index: 1;
   font-family: var(--font-sans-serif-light);
-  font-size: clamp(3rem, 5vw, 20rem);
+  font-size: 2em;
   line-height: 1em;
   color: var(--color-white);
   width: 320px;
@@ -98,7 +98,7 @@
 
   .sub .year-item {
     height: 140px;
-    font-size: clamp(2rem, 2vw, 10rem);
+    font-size: 2em;
 
     @media screen and (max-width: variables.$small-vp) {
       margin-bottom: 0;

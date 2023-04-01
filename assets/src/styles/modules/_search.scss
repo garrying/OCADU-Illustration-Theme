@@ -16,7 +16,7 @@
 .search-form {
   position: relative;
   display: flex;
-  font-size: clamp(2em, 5vw, 3em);
+  font-size: 2em;
   padding: 0 20px;
 
   .search-field {
@@ -52,8 +52,6 @@
     font-family: var(--font-sans-serif-light);
     color: var(--color-accent);
     background: var(--color-white);
-
-    @include typography.font-smoothing(on);
 
     @media screen and (max-width: variables.$small-vp) {
       padding: 10px 20px;

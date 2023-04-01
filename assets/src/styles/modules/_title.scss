@@ -31,26 +31,14 @@
   .title-primary {
     margin: 0 0 0.5em;
     font-family: var(--font-sans-serif-light);
-    font-size: 2em;
     line-height: 1em;
-
-    @media screen and (max-width: variables.$small-vp) {
-      font-size: 5em;
-    }
-
-    @include typography.heading-features;
   }
 
   .title-secondary {
-    @include typography.heading-features;
-
     max-width: 60%;
     font-family: var(--font-sans-serif-light);
-    font-size: 1em;
-    line-height: 1.4em;
 
     @media screen and (max-width: variables.$small-vp) {
-      font-size: 1em;
       max-width: unset;
     }
   }
