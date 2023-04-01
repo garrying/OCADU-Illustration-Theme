@@ -28,7 +28,6 @@
         <p class="title-secondary">Spanning 2009–2023, the archive is maintained by the Illustration Program at OCAD University.</p>
         <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
     </div>
-    <div id="root"></div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
     <div class="grid-col grid-col-1"></div>

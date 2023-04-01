@@ -4,7 +4,7 @@
 
 .title {
   padding: 30px;
-  min-height: 95vh;
+  min-height: 65vh;
   background: rgb(var(--color-accent-rgb) / 10%);
   position: relative;
   display: flex;
@@ -26,14 +26,13 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    pointer-events: none;
   }
 
   .title-primary {
     margin: 0 0 0.5em;
     font-family: var(--font-sans-serif-light);
-    font-size: clamp(1em, 8.5vw, 12em);
-    line-height: 0.95em;
+    font-size: 2em;
+    line-height: 1em;
 
     @media screen and (max-width: variables.$small-vp) {
       font-size: 5em;
@@ -47,11 +46,11 @@
 
     max-width: 60%;
     font-family: var(--font-sans-serif-light);
-    font-size: clamp(1em, 1.5vw, 2rem);
+    font-size: 1em;
     line-height: 1.4em;
 
     @media screen and (max-width: variables.$small-vp) {
-      font-size: clamp(1.25em, 1.5vw, 2rem);
+      font-size: 1em;
       max-width: unset;
     }
   }
