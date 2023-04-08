@@ -38,12 +38,15 @@
 
   .illustrator-title {
     font-weight: normal;
-    line-height: 1.2em;
+    font-size: 1em;
     color: var(--color-accent);
     margin-bottom: 0;
   }
 
   .illustrator-name {
+    margin-top: 0.5em;
+    font-weight: normal;
+    font-size: 1em;
     color: var(--color-accent);
   }
 
@@ -91,7 +94,7 @@
   }
 
   .gallery-item {
-    margin: 0 6% 12%;
+    margin: 0 2% 10%;
 
     @media screen and (max-width: variables.$small-vp) {
       margin-right: 5%;

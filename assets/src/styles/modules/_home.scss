@@ -40,19 +40,25 @@
     opacity: 0;
     background: var(--color-white);
     color: var(--color-accent);
-    padding: 1em;
+    padding: 0.5em;
 
     .accent {
       color: inherit;
     }
 
     .illustrator-meta-label {
+      font-size: 1em;
+      font-weight: normal;
       padding: 0;
-      margin-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0.5em;
     }
 
     .illustrator-name {
+      margin-top: 0;
       margin-bottom: 0;
+      font-size: 1em;
+      font-weight: normal;
     }
 
     &.active {
@@ -68,17 +74,9 @@
   .gallery-item {
     position: relative;
     display: block;
-    padding: 5%;
+    padding: 2%;
     margin: 0;
     flex-basis: 25%;
-
-    &:nth-child(n+3) {
-      padding: 6%;
-    }
-
-    &:nth-child(2n+2) {
-      padding: 15%;
-    }
   }
 
   .grid-col {

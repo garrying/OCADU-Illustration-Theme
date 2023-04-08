@@ -47,7 +47,7 @@
   height: 100%;
   width: 100%;
   opacity: 0.5;
-  filter: grayscale(1);
+  filter: grayscale(0.5);
   transition: opacity 200ms ease-in-out;
 
   .year-item:hover & {
@@ -78,14 +78,11 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--color-accent);
-    mix-blend-mode: multiply;
   }
 
   &.active,
   &:hover {
     z-index: 1;
-    box-shadow: 0 0 0 1px var(--color-white);
   }
 }
 

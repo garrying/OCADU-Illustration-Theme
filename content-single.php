@@ -142,9 +142,9 @@
           foreach ( $ocaduillustration_class_year as $ocaduillustration_illustrator_term ) {
             $ocaduillustration_illustrator_year_section = $ocaduillustration_illustrator_term->slug;
             if ( $ocaduillustration_illustrator_term->parent <= 0 ) {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☀&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index">' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             } else {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☼&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index">' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             }
           }
         }
@@ -180,14 +180,14 @@
           <li class="nav-previous">
             <?php
               if ( ! empty( $ocaduillustration_prev_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
               if ( ! empty( $ocaduillustration_next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . '</span></a>';
               }
             ?>
           </li>

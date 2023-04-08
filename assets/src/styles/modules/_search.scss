@@ -16,17 +16,14 @@
 .search-form {
   position: relative;
   display: flex;
-  font-size: 2em;
+  font-size: 1em;
   padding: 0 20px;
 
   .search-field {
     width: 100%;
     box-sizing: border-box;
     padding: 20px 40px;
-    font-family: var(--font-sans-serif-light);
     line-height: 1.5em;
-    color: var(--color-white);
-    background: var(--color-accent);
     border: 1px solid var(--color-white);
 
     &::placeholder {
@@ -49,7 +46,6 @@
 
   .search-submit {
     padding: 20px 40px;
-    font-family: var(--font-sans-serif-light);
     color: var(--color-accent);
     background: var(--color-white);
 
@@ -62,7 +58,6 @@
 .autoComplete_list { /* stylelint-disable-line */
   position: absolute;
   padding-top: 15px;
-  font-family: var(--font-sans-serif-light);
   line-height: 1em;
 }
 
@@ -70,8 +65,8 @@
   display: inline-flex;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
-  color: rgb(255 255 255 / 50%);
-  border: 1px solid var(--color-white);
+  color: rgb(0 0 0 / 50%);
+  border: 1px solid var(--color-accent);
   padding: 0.5em;
   margin-bottom: 0.5em;
   margin-right: 0.5em;
@@ -79,7 +74,7 @@
 
   &:hover,
   &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   &.autoComplete_selected { /* stylelint-disable-line */
@@ -96,7 +91,6 @@
 }
 
 .search-title {
-  font-family: var(--font-sans-serif-light);
   line-height: 1em;
   font-size: 2em;
 

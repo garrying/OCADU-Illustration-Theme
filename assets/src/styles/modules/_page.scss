@@ -2,33 +2,14 @@
 @use "../components/variables";
 
 .section-indicator-index {
-  font-family: var(--font-sans-serif-light);
+  font-size: 18em;
   color: var(--color-accent);
   width: 100%;
   display: flex;
-  line-height: 0.5em;
-  margin: 161px auto 100px;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 161px auto;
   justify-content: center;
-}
-
-.section-indicator-single {
-  padding: 1em;
-  transition: background 180ms ease-in-out;
-
-  &:nth-child(2) {
-    white-space: nowrap;
-    margin-left: 5px;
-    margin-right: 0;
-  }
-
-  @media screen and (max-width: variables.$small-vp) {
-    display: none;
-  }
-
-  &:hover,
-  &:focus {
-    background: rgba(var(--color-accent-rgb) / 15%);
-  }
 }
 
 .faculty-list {

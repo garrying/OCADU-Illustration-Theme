@@ -58,7 +58,7 @@ module.exports = {
       filename: 'main.css'
     }),
     new BrowserSyncPlugin({
-      proxy: "http://ocaduillustration.test/",
+      proxy: "http://localhost:8080/",
       files: [ './assets/dist/**/*.css', './assets/dist/**/*.js' ],
       injectCss: true,
     }, { reload: false, }),

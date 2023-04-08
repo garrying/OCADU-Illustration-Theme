@@ -16,7 +16,7 @@
 
   &.invert,
   &.invert:hover {
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   .fade-out & {
@@ -72,11 +72,11 @@
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
 
   &.invert {
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   &.inactive {
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   .fade-out & {
