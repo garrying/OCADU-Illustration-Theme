@@ -85,7 +85,7 @@
                 $ocaduillustration_query = new WP_Query( $ocaduillustration_args );
                 if ( $ocaduillustration_query->have_posts() ) {
                   $ocaduillustration_query->the_post();
-                  $ocaduillustration_year_image        = get_the_post_thumbnail_url($post, 'illustrator-small');
+                  $ocaduillustration_year_image        = get_the_post_thumbnail_url( $post, 'illustrator-small' );
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id() );
                 }
 
