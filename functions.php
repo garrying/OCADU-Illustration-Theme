@@ -454,4 +454,13 @@ function ocaduillustration_wps_deregister_styles() {
 
 add_action( 'wp_enqueue_scripts', 'ocaduillustration_wps_deregister_styles', 100 );
 
+// Removes the decoding attribute from images added inside post content.
+add_filter( 'wp_img_tag_add_decoding_attr', '__return_false' );
+
+// Remove the decoding attribute from featured images and the Post Image block.
+add_filter( 'wp_get_attachment_image_attributes', function( $attributes ) {
+    unset( $attributes['decoding'] );
+    return $attributes;
+} );
+
 ?>

@@ -68,7 +68,6 @@
   color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
-
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
 
   &.invert {
