@@ -831,28 +831,6 @@ button {
   z-index: 1;
 }
 
-.extended .sub {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-.extended .sub .year-item {
-  height: 100px;
-  font-size: 1em;
-}
-.extended .sub .year-item .year-item-image {
-  opacity: 1;
-  filter: grayscale(1) contrast(0.35);
-}
-.extended .sub .year-item:hover .year-item-image {
-  filter: grayscale(0) contrast(1);
-}
-@media screen and (max-width: 667px) {
-  .extended .sub .year-item {
-    margin-bottom: 0;
-  }
-}
-
 .year-text {
   position: absolute;
   z-index: 1;

@@ -87,32 +87,6 @@
   }
 }
 
-.extended {
-  .sub {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .sub .year-item {
-    height: 100px;
-    font-size: 1em;
-
-    .year-item-image {
-      opacity: 1;
-      filter: grayscale(1) contrast(0.35);
-    }
-
-    &:hover .year-item-image {
-      filter: grayscale(0) contrast(1);
-    }
-
-    @media screen and (max-width: variables.$small-vp) {
-      margin-bottom: 0;
-    }
-  }
-}
-
 .year-text {
   position: absolute;
   z-index: 1;
