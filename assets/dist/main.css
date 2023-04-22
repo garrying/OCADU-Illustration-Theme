@@ -617,14 +617,15 @@ button {
   align-items: flex-start;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .no_result {
   margin-left: 1em;
   opacity: 0.5;
   font-size: 12px;
 }
 
-.autoComplete_wrapper > ul[hidden],
-.autoComplete_wrapper > ul:empty {
+/* stylelint-disable-next-line selector-class-pattern */
+.autoComplete_wrapper > ul[hidden], .autoComplete_wrapper > ul:empty {
   display: block;
   opacity: 0;
   transform: scale(0);
