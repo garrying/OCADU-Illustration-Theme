@@ -59,7 +59,7 @@ module.exports = {
     }),
     new BrowserSyncPlugin({
       proxy: "https://ocaduillustration.test/",
-      files: [ './assets/dist/**/*.css', './assets/dist/**/*.js' ],
+      files: [ './assets/dist/**/*.css', './assets/dist/**/*.js', './**/*.php' ],
       injectCss: true,
     }, { reload: false, }),
   ],

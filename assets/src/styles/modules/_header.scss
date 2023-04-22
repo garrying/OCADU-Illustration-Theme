@@ -32,7 +32,6 @@
   right: 0;
   z-index: var(--z-foreground);
   display: flex;
-  pointer-events: none;
   align-items: center;
   justify-content: space-between;
   transition: opacity 200ms ease-in-out;
@@ -46,20 +45,18 @@
 
   &.fade-out {
     opacity: 0;
+    pointer-events: none;
   }
 }
 
 .header-items-wrapper {
   display: flex;
+  gap: 1em;
 
   @media screen and (max-width: variables.$small-vp) {
     justify-content: flex-end;
     width: 50%;
   }
-}
-
-.header-item-link {
-  margin-left: 5px;
 }
 
 .header-item {

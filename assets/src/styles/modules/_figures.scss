@@ -43,7 +43,7 @@ figure {
 
   .image-modal-image {
     position: absolute;
-    inset: 2% 1% 75px;
+    inset: 2% 1% 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,12 +54,13 @@ figure {
     right: 20px;
     bottom: 20px;
     z-index: var(--z-foreground);
-    max-width: 350px;
-    padding: 1em 0 0 1em;
-    font-size: 0.95em;
+    max-width: 320px;
+    padding: 0 1em;
+    font-size: 12px;
     line-height: 1.3em;
-    background: var(--color-site-background);
-    backdrop-filter: blur(2px);
+    background: rgb(255 255 255 / 60%);
+    backdrop-filter: blur(3px);
+    border-radius: var(--border-radius);
 
     @media screen and (max-width: variables.$ipad-vp) {
       bottom: 0;

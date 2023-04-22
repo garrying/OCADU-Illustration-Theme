@@ -29,3 +29,9 @@ sup {
 h1, h2, h3, h4, h5, h6, blockquote {
   text-wrap: balance;
 }
+
+// Helper classes
+
+.mono {
+  font-family: var(--font-mono);
+}

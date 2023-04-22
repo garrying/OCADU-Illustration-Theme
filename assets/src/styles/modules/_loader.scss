@@ -4,11 +4,12 @@
 // Loader
 
 .loader {
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: calc(50% - 1em);
   z-index: var(--z-important);
   width: 100%;
-  text-align: center;
   pointer-events: none;
 }
 

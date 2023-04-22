@@ -107,7 +107,7 @@
             <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                ↗
+                ↗ .....
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -118,7 +118,7 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                ↗
+                ↗ .....
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -128,7 +128,8 @@
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">✎ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
+              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">
+                @ ..... <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
             <?php endif; ?>
           </div>
         </div>

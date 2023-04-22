@@ -103,7 +103,7 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadSearch: () => {
       const autoCompleteJS = new autoComplete({ // eslint-disable-line
-        submit: true,
+        submit: false,
         data: {
           src: async (query) => {
             try {
@@ -139,7 +139,15 @@ Velocity('registerSequence', 'fadeIn', {
         resultItem: {
           class: 'autoComplete_result',
           highlight: 'autoComplete_highlighted',
-          selected: 'autoComplete_selected'
+          selected: 'autoComplete_selected',
+          submit: true
+        },
+        events: {
+          input: {
+            focus: (event) => {
+              autoCompleteJS.open()
+            }
+          }
         }
       })
 

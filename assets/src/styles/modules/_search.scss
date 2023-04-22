@@ -17,18 +17,15 @@
   position: relative;
   display: flex;
   font-size: 1em;
-  padding: 0 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  background: var(--color-white);
 
   .search-field {
     width: 100%;
-    box-sizing: border-box;
-    padding: 20px 40px;
-    line-height: 1.5em;
-    border: 1px solid var(--color-white);
-
-    &::placeholder {
-      color: var(--color-accent);
-    }
+    padding: 1em;
+    border: 0;
+    background: transparent;
 
     &::-webkit-search-cancel-button {
       appearance: none;
@@ -36,7 +33,6 @@
 
     &:focus {
       outline-style: none;
-      outline-color: var(--color-white);
     }
 
     @media screen and (max-width: variables.$small-vp) {
@@ -45,9 +41,7 @@
   }
 
   .search-submit {
-    padding: 20px 40px;
-    color: var(--color-accent);
-    background: var(--color-white);
+    padding: .5em 1em;
 
     @media screen and (max-width: variables.$small-vp) {
       padding: 10px 20px;
@@ -57,8 +51,24 @@
 
 .autoComplete_list { /* stylelint-disable-line */
   position: absolute;
-  padding-top: 15px;
+  padding-top: 1em;
   line-height: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.no_result {
+  margin-left: 1em;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+.autoComplete_wrapper > ul[hidden],
+.autoComplete_wrapper > ul:empty {
+  display: block;
+  opacity: 0;
+  transform: scale(0);
 }
 
 .autoComplete_result { /* stylelint-disable-line */
@@ -66,15 +76,20 @@
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
   color: rgb(0 0 0 / 50%);
-  border: 1px solid var(--color-accent);
-  padding: 0.5em;
+  background: var(--color-white);
+  padding: 0.5em 1em;
   margin-bottom: 0.5em;
   margin-right: 0.5em;
-  border-radius: 9999px;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
 
   &:hover,
   &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
     color: var(--color-accent);
+  }
+
+  mark {
+    background: transparent;
   }
 
   &.autoComplete_selected { /* stylelint-disable-line */
