@@ -134,6 +134,7 @@ summary {
 :root {
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-sans-serif-light: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
+  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   --color-white: #fff;
   --color-black: #000;
   --color-site-background: #fbf9f4;
@@ -158,10 +159,6 @@ summary {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.pill {
-  border-radius: 9999px;
 }
 
 .input-reset {
@@ -324,7 +321,6 @@ figure .wp-caption-text {
 .image-modal-wrapper .close-panel {
   position: fixed;
   top: 2em;
-  border: 1px solid var(--color-accent);
 }
 @media screen and (max-width: 1024px) {
   .image-modal-wrapper .close-panel {
@@ -545,7 +541,7 @@ button {
   cursor: pointer;
   line-height: 0;
   padding: 1em;
-  border: 1px solid var(--color-white);
+  color: var(--color-site-font);
 }
 @media screen and (max-width: 667px) {
   .close-panel {
@@ -1318,18 +1314,30 @@ button {
 }
 
 .loader {
-  font-size: 2em;
   position: fixed;
-  top: calc(50% - 16px);
+  top: calc(50% - 1em);
   z-index: var(--z-important);
   width: 100%;
-  font-family: var(--font-sans-serif-light);
-  color: var(--color-accent);
   text-align: center;
   pointer-events: none;
 }
 
 .loader-text {
+  font-family: var(--font-mono);
+  width: 0;
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
   margin: 0;
   line-height: 1em;
+  animation: typing 1s steps(8, end) infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8ch;
+  }
 }

@@ -31,8 +31,8 @@
   cursor: pointer;
   line-height: 0;
   padding: 1em;
-  border: 1px solid var(--color-white);
-
+  color: var(--color-site-font);
+  
   @media screen and (max-width: variables.$small-vp) {
     inset: auto auto 1em calc(50% - 33px);
   }

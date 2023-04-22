@@ -4,18 +4,26 @@
 // Loader
 
 .loader {
-  font-size: 2em;
   position: fixed;
-  top: calc(50% - 16px);
+  top: calc(50% - 1em);
   z-index: var(--z-important);
   width: 100%;
-  font-family: var(--font-sans-serif-light);
-  color: var(--color-accent);
   text-align: center;
   pointer-events: none;
 }
 
 .loader-text {
+  font-family: var(--font-mono);
+  width: 0;
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
   margin: 0;
   line-height: 1em;
+  animation: typing 1s steps(8, end) infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 8ch }
 }
