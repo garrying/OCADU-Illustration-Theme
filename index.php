@@ -30,10 +30,6 @@
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
-    <div class="grid-col grid-col-1"></div>
-    <div class="grid-col grid-col-2"></div>
-    <div class="grid-col grid-col-3"></div>
-    <div class="grid-col grid-col-4"></div>
 
     <?php if ( $ocaduillustration_home_index->have_posts() ) : ?>
 

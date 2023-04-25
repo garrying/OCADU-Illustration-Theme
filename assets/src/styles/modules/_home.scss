@@ -16,18 +16,12 @@
 }
 
 .home-grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -20px auto 0;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  margin: 0;
 
   &.ready {
     opacity: 1;
-  }
-
-  @media screen and (max-width: variables.$small-vp) {
-    padding: 30px 0 0;
   }
 
   .illustrator-meta-container {
@@ -72,31 +66,6 @@
   }
 
   .gallery-item {
-    position: relative;
-    display: block;
-    padding: 2%;
     margin: 0;
-    flex-basis: 25%;
-  }
-
-  .grid-col {
-    margin-top: -80px;
-
-    @media screen and (max-width: variables.$small-vp) {
-      margin-top: 0;
-    }
-
-    @media screen and (max-width: variables.$smallest-vp) {
-      width: 100%;
-    }
-
-    @media screen and (min-width: variables.$small-vp) {
-      width: 25%;
-
-      &.grid-col-2,
-      &.grid-col-3 {
-        display: block;
-      }
-    }
   }
 }

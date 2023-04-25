@@ -6,6 +6,8 @@ import SwipeListener from 'swipe-listener'
 import $ from 'jquery/dist/jquery.slim.min'
 import Velocity from 'velocity-animate/velocity.min'
 
+window.jQuery = $
+
 Velocity.patch($ && $.fn)
 
 Velocity('registerSequence', 'fadeOut', {
@@ -205,11 +207,11 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadShuffle: (elems) => {
       const elements = $(elems).sort(() => Math.random() - 0.5)
-      const colc = new Colcade(document.querySelector(app.settings.masonryContainerHome), {
-        columns: '.grid-col',
-        items: '.gallery-item'
+      $(app.settings.masonryContainerHome).append(elements).justifiedGallery({
+        rowHeight: 200,
+        lastRow: 'nojustify',
+        margins: 3
       })
-      colc.append(elements)
     },
 
     _ocadHomeLoader: () => {
