@@ -1,3 +1,4 @@
+/* eslint-disable */
 import $ from 'jquery/dist/jquery.slim.min'
 
 /*!
