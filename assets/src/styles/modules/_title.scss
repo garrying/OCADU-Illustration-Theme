@@ -9,6 +9,8 @@
   display: flex;
   color: var(--color-accent);
   align-items: center;
+  justify-content: center;
+  text-align: center;
 
   @media screen and (max-width: variables.$small-vp) {
     min-height: 80vh;
@@ -28,14 +30,11 @@
   }
 
   .title-primary {
-    margin: 0 0 0.5em;
-    font-family: var(--font-sans-serif-light);
-    line-height: 1em;
+    font-weight: normal;
   }
 
   .title-secondary {
-    max-width: 60%;
-    font-family: var(--font-sans-serif-light);
+    max-width: 50ch;
 
     @media screen and (max-width: variables.$small-vp) {
       max-width: unset;

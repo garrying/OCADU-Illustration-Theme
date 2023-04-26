@@ -6,7 +6,6 @@ $color-accent: #282828;
 
 :root {
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
-  --font-sans-serif-light: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
@@ -20,6 +19,7 @@ $color-accent: #282828;
   --z-important: 600;
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 5%), 0 1px 2px -1px rgb(0 0 0 / 5%);
   --border-radius: 8px;
+  --border-radius-extreme: 21px;
 }
 
 // Reference: 1080p

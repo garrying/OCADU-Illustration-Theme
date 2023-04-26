@@ -21,7 +21,7 @@
   white-space: nowrap;
   margin: 0;
   line-height: 1em;
-  animation: typing 1s steps(8, end) infinite;
+  animation: typing 500ms steps(8, end) infinite;
 }
 
 @keyframes typing {

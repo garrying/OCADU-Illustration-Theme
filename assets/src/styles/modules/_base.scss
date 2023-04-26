@@ -18,7 +18,8 @@ body {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--color-site-font);
-  background: var(--color-site-background);
+  background-color: var(--color-site-background);
+  transition: 500ms ease-in-out background-color;
 
   @include typography.font-smoothing(on);
 }

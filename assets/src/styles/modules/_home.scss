@@ -8,55 +8,41 @@
       width: 50%;
     }
   }
-
-  .logo-wrapper a {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 .home-grid {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  margin: 0;
+  margin: 0 30px;
+  padding: 0 30px;
 
   &.ready {
     opacity: 1;
   }
 
   .illustrator-meta-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
     z-index: var(--z-important);
-    display: none;
-    max-width: 50vw;
     opacity: 0;
-    background: var(--color-white);
-    color: var(--color-accent);
-    padding: 0.5em;
-
-    .accent {
-      color: inherit;
-    }
+    color: var(--color-white);
+    transition: opacity 350ms ease-in-out;
 
     .illustrator-meta-label {
       font-size: 1em;
+      line-height: 1em;
       font-weight: normal;
-      padding: 0;
-      margin-top: 0;
-      margin-bottom: 0.5em;
+      margin: 0;
     }
 
     .illustrator-name {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin: 0;
       font-size: 1em;
       font-weight: normal;
     }
 
     &.active {
-      display: flex;
       opacity: 1;
 
       @media screen and (max-width: variables.$small-vp) {
@@ -67,5 +53,17 @@
 
   .gallery-item {
     margin: 0;
+
+    img {
+      border-radius: var(--border-radius);
+      transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out;
+    }
+
+    &:hover {
+      img {
+        border-radius: var(--border-radius-extreme);
+        transform: scale(.99);
+      }
+    }
   }
 }

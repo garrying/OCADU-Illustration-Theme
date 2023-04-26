@@ -5,6 +5,7 @@ import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
 import $ from 'jquery/dist/jquery.slim.min'
 import Velocity from 'velocity-animate/velocity.min'
+import ColorThief from 'colorthief'
 
 window.jQuery = $
 
@@ -91,10 +92,20 @@ Velocity('registerSequence', 'fadeIn', {
     _ocadLoader: (e = true) => {
       if (e === false) {
         app.settings.documentBody.removeAttr('style')
-        app.settings.loader.velocity('stop').velocity('fadeOut', { duration: 'fast' })
+        app.settings.loader.velocity('stop').velocity('fadeOut', {
+          duration: 'fast',
+          complete: (e) => {
+            $(e).hide()
+          }
+        })
       } else {
         app.settings.documentBody.css('cursor', 'progress')
-        app.settings.loader.velocity('stop').velocity('fadeIn', { duration: 'fast' })
+        app.settings.loader.velocity('stop').velocity('fadeIn', {
+          duration: 'fast',
+          begin: (e) => {
+            $(e).show()
+          }
+        })
       }
     },
 
@@ -208,9 +219,9 @@ Velocity('registerSequence', 'fadeIn', {
     _ocadShuffle: (elems) => {
       const elements = $(elems).sort(() => Math.random() - 0.5)
       $(app.settings.masonryContainerHome).append(elements).justifiedGallery({
-        rowHeight: 200,
+        rowHeight: 400,
         lastRow: 'nojustify',
-        margins: 3
+        margins: 10
       })
     },
 
@@ -229,24 +240,21 @@ Velocity('registerSequence', 'fadeIn', {
     },
 
     _ocadHomeHover: () => {
+      const colorThief = new ColorThief()
+
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          let y = ele.clientY
-          let x = ele.clientX
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active')
-
-          window.requestAnimationFrame(function animation () {
-            $(ele.currentTarget).mousemove((e) => {
-              y = e.clientY + 5
-              x = e.clientX + 5
-            })
-            $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` })
-            window.requestAnimationFrame(animation)
-          })
+          if ($(ele.currentTarget).find('.lazyloaded').length) {
+            const image = $(ele.currentTarget).find('.lazyloaded')[0]
+            const BgColor = colorThief.getColor(image)
+            app.settings.documentBody.css('background-color', `rgba(${BgColor[0]} ${BgColor[1]} ${BgColor[2]} / 0.25)`)
+          }
         })
 
         $('.illustrator-link').on('mouseleave', (ele) => {
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
+          app.settings.documentBody.removeAttr('style')
         })
       }
     },

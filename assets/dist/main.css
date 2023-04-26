@@ -140,7 +140,6 @@ summary {
 .justified-gallery {
   width: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 .justified-gallery > a,
@@ -253,7 +252,6 @@ summary {
 
 :root {
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
-  --font-sans-serif-light: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
@@ -267,6 +265,7 @@ summary {
   --z-important: 600;
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 5%), 0 1px 2px -1px rgb(0 0 0 / 5%);
   --border-radius: 8px;
+  --border-radius-extreme: 21px;
 }
 
 .hidden {
@@ -326,7 +325,8 @@ body {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--color-site-font);
-  background: var(--color-site-background);
+  background-color: var(--color-site-background);
+  transition: 500ms ease-in-out background-color;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -823,10 +823,8 @@ button {
 .page-inner .entry-title {
   line-height: 1em;
   margin: 0.5em 0;
-  font-family: var(--font-sans-serif-light);
 }
 .page-inner .entry-title-secondary {
-  font-family: var(--font-sans-serif-light);
   line-height: 1em;
   margin: 1.5em 0 0.5em;
 }
@@ -853,39 +851,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-  line-height: 1.3em;
-}
-@media screen and (max-width: 667px) {
-  .error-body {
-    padding: 0 20px;
-  }
 }
 .error-body .entry-title {
-  margin-bottom: 0.75em;
-  font-family: var(--font-sans-serif-light);
-}
-.error-body .entry-body {
-  margin: 0;
-}
-.error-body .entry-header {
-  mix-blend-mode: difference;
-  position: relative;
-  z-index: 1;
-}
-
-#error-blob-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#error-blob-container svg path {
-  fill: var(--color-accent);
+  font-weight: normal;
 }
 
 .year-select {
@@ -946,7 +914,6 @@ button {
 .year-item {
   position: relative;
   z-index: 1;
-  font-family: var(--font-sans-serif-light);
   font-size: 2em;
   line-height: 1em;
   color: var(--color-white);
@@ -1183,13 +1150,11 @@ button {
 .illustrator-meta .thesis-title {
   font-weight: normal;
   color: var(--color-accent);
-  font-family: var(--font-sans-serif-light);
 }
 .illustrator-meta .illustrator-meta-name {
   font-weight: normal;
   font-size: 1em;
   color: var(--color-accent);
-  font-family: var(--font-sans-serif-light);
 }
 
 .meta-label {
@@ -1328,6 +1293,8 @@ button {
   display: flex;
   color: var(--color-accent);
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 @media screen and (max-width: 667px) {
   .title {
@@ -1346,13 +1313,10 @@ button {
   z-index: 1;
 }
 .title .title-primary {
-  margin: 0 0 0.5em;
-  font-family: var(--font-sans-serif-light);
-  line-height: 1em;
+  font-weight: normal;
 }
 .title .title-secondary {
-  max-width: 60%;
-  font-family: var(--font-sans-serif-light);
+  max-width: 50ch;
 }
 @media screen and (max-width: 667px) {
   .title .title-secondary {
@@ -1365,49 +1329,37 @@ button {
     width: 50%;
   }
 }
-.home .logo-wrapper a {
-  opacity: 0;
-  pointer-events: none;
-}
 
 .home-grid {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  margin: 0;
+  margin: 0 30px;
+  padding: 0 30px;
 }
 .home-grid.ready {
   opacity: 1;
 }
 .home-grid .illustrator-meta-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
   z-index: var(--z-important);
-  display: none;
-  max-width: 50vw;
   opacity: 0;
-  background: var(--color-white);
-  color: var(--color-accent);
-  padding: 0.5em;
-}
-.home-grid .illustrator-meta-container .accent {
-  color: inherit;
+  color: var(--color-white);
+  transition: opacity 350ms ease-in-out;
 }
 .home-grid .illustrator-meta-container .illustrator-meta-label {
   font-size: 1em;
+  line-height: 1em;
   font-weight: normal;
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  margin: 0;
 }
 .home-grid .illustrator-meta-container .illustrator-name {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 1em;
   font-weight: normal;
 }
 .home-grid .illustrator-meta-container.active {
-  display: flex;
   opacity: 1;
 }
 @media screen and (max-width: 667px) {
@@ -1417,6 +1369,14 @@ button {
 }
 .home-grid .gallery-item {
   margin: 0;
+}
+.home-grid .gallery-item img {
+  border-radius: var(--border-radius);
+  transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out;
+}
+.home-grid .gallery-item:hover img {
+  border-radius: var(--border-radius-extreme);
+  transform: scale(0.99);
 }
 
 .loader {
@@ -1437,7 +1397,7 @@ button {
   white-space: nowrap;
   margin: 0;
   line-height: 1em;
-  animation: typing 1s steps(8, end) infinite;
+  animation: typing 500ms steps(8, end) infinite;
 }
 
 @keyframes typing {
