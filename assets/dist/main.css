@@ -257,8 +257,8 @@ summary {
   --color-black: #000;
   --color-site-background: #fbf9f4;
   --color-site-font: #000;
-  --color-accent: #282828;
-  --color-accent-rgb: 40 40 40;
+  --color-accent: #444;
+  --color-accent-rgb: 68 68 68;
   --z-background: 100;
   --z-middle: 200;
   --z-foreground: 300;
@@ -345,7 +345,7 @@ mark {
 
 a {
   text-decoration: none;
-  color: var(--color-accent);
+  color: var(--color-site-font);
   transition: color 180ms ease-in-out;
 }
 a:hover, a:focus {
@@ -795,8 +795,8 @@ button {
 }
 
 .section-indicator-index {
-  font-size: 18em;
-  color: var(--color-accent);
+  font-family: Standard;
+  font-size: 3em;
   width: 100%;
   display: flex;
   line-height: 1em;
@@ -947,6 +947,7 @@ button {
 }
 
 .year-text {
+  font-family: Standard;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -1011,7 +1012,6 @@ button {
 .header-item {
   padding: 1em 1.5em;
   line-height: 1em;
-  color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
@@ -1024,6 +1024,9 @@ button {
 }
 .fade-out .header-item {
   pointer-events: none;
+}
+.header-item:hover {
+  color: var(--color-accent);
 }
 @media screen and (max-width: 667px) {
   .header-item {
@@ -1161,7 +1164,6 @@ button {
 .illustrator-meta .illustrator-meta-name {
   font-weight: normal;
   font-size: 1em;
-  color: var(--color-accent);
 }
 
 .meta-label {
@@ -1295,10 +1297,9 @@ button {
 
 .title {
   padding: 2em 0;
-  min-height: 61vh;
+  min-height: 75vh;
   position: relative;
   display: flex;
-  color: var(--color-accent);
   justify-content: space-between;
   align-items: center;
   margin: 80px 40px 0;
@@ -1310,9 +1311,6 @@ button {
     min-height: 80vh;
     padding: 20px;
   }
-}
-.title a {
-  color: var(--color-accent);
 }
 .title .title-unit {
   display: flex;
@@ -1346,6 +1344,10 @@ button {
   .home .header-items-wrapper {
     width: 50%;
   }
+}
+.home .logo-wrapper a {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .home-grid {

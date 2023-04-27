@@ -8,6 +8,11 @@
       width: 50%;
     }
   }
+
+  .logo-wrapper a {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .home-grid {

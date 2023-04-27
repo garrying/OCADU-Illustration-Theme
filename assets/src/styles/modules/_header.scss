@@ -62,7 +62,6 @@
 .header-item {
   padding: 1em 1.5em;
   line-height: 1em;
-  color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
@@ -77,6 +76,10 @@
 
   .fade-out & {
     pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--color-accent);
   }
 
   @media screen and (max-width: variables.$small-vp) {
