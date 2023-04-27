@@ -25,11 +25,15 @@
   <div class="title">
     <div class="title-unit">
       <div class="segment-first">
-        <h1 class="title-primary">OCAD U Illustration 2023</h1></div>
+        <h1 class="title-primary">OCAD U Illustration 2023</h1>
+      </div>
+    </div>
+    <div class="title-support-unit">
         <div class="title-secondary">
           <p>Spanning 2009&ndash;2023<br /> Maintained by the Illustration Program at OCAD University</p>
-          <p><a href="/about" class="about">About the archive</a></p>
+          <a href="/about" class="about">About the archive</a>
         </div>
+        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">

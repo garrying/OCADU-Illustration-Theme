@@ -1294,15 +1294,16 @@ button {
 }
 
 .title {
-  padding: 2em;
+  padding: 2em 0;
   min-height: 61vh;
   position: relative;
   display: flex;
   color: var(--color-accent);
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 80px 40px 0;
   text-align: center;
+  flex-direction: column;
 }
 @media screen and (max-width: 667px) {
   .title {
@@ -1317,20 +1318,28 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 .title .title-primary {
   font-family: Standard;
-  font-size: 5em;
+  font-size: 3em;
   font-weight: normal;
 }
 .title .title-secondary {
   max-width: 50ch;
-  justify-self: flex-end;
+  text-align: left;
 }
 @media screen and (max-width: 667px) {
   .title .title-secondary {
     max-width: unset;
   }
+}
+.title .title-support-unit {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
 }
 
 @media screen and (max-width: 667px) {
