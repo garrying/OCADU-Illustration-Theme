@@ -102,14 +102,6 @@ figure {
 }
 
 .blur-up {
-  filter: blur(5px);
-  transition: filter 200ms ease-in-out;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-}
-
-.lazyload-image-placeholder {
-  display: block;
-  width: 100%;
-  height: auto;
+  filter: blur(5px) brightness(1);
+  transition: filter 300ms ease-in-out;
 }

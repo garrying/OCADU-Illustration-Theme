@@ -61,11 +61,12 @@
 
     img {
       border-radius: var(--border-radius);
-      transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out;
+      transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out, filter 500ms ease-in-out;
     }
 
     &:hover {
       img {
+        filter: blur(0) brightness(70%);
         border-radius: var(--border-radius-extreme);
         transform: scale(.99);
       }

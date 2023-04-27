@@ -473,16 +473,8 @@ figure .wp-caption-text {
 }
 
 .blur-up {
-  filter: blur(5px);
-  transition: filter 200ms ease-in-out;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-}
-
-.lazyload-image-placeholder {
-  display: block;
-  width: 100%;
-  height: auto;
+  filter: blur(5px) brightness(1);
+  transition: filter 300ms ease-in-out;
 }
 
 ul {
@@ -1393,9 +1385,10 @@ button {
 }
 .home-grid .gallery-item img {
   border-radius: var(--border-radius);
-  transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out, filter 500ms ease-in-out;
 }
 .home-grid .gallery-item:hover img {
+  filter: blur(0) brightness(70%);
   border-radius: var(--border-radius-extreme);
   transform: scale(0.99);
 }
