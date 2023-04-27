@@ -5,6 +5,7 @@
 $color-accent: #444;
 
 :root {
+  --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;

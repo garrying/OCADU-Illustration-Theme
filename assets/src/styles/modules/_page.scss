@@ -2,7 +2,7 @@
 @use "../components/variables";
 
 .section-indicator-index {
-  font-family: Standard;
+  font-family: var(--font-standard);
   font-size: 3em;
   width: 100%;
   display: flex;

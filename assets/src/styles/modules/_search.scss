@@ -27,15 +27,15 @@
     padding: 1em;
     border: 0;
     background: transparent;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
 
     &::-webkit-search-cancel-button {
       appearance: none;
     }
 
     &:focus {
-      outline-style: dotted;
-      outline-width: 2px;
-      outline-color: var(--color-accent);
+      outline: 2px dotted var(--color-accent);
     }
 
     @media screen and (max-width: variables.$small-vp) {

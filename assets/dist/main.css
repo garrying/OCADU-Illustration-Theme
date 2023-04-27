@@ -251,6 +251,7 @@ summary {
 }
 
 :root {
+  --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
@@ -712,14 +713,14 @@ button {
   padding: 1em;
   border: 0;
   background: transparent;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 .search-form .search-field::-webkit-search-cancel-button {
   appearance: none;
 }
 .search-form .search-field:focus {
-  outline-style: dotted;
-  outline-width: 2px;
-  outline-color: var(--color-accent);
+  outline: 2px dotted var(--color-accent);
 }
 @media screen and (max-width: 667px) {
   .search-form .search-field {
@@ -795,7 +796,7 @@ button {
 }
 
 .section-indicator-index {
-  font-family: Standard;
+  font-family: var(--font-standard);
   font-size: 3em;
   width: 100%;
   display: flex;
@@ -947,7 +948,7 @@ button {
 }
 
 .year-text {
-  font-family: Standard;
+  font-family: var(--font-standard);
   position: absolute;
   z-index: 1;
   top: 0;
@@ -1320,7 +1321,7 @@ button {
   flex-grow: 1;
 }
 .title .title-primary {
-  font-family: Standard;
+  font-family: var(--font-standard);
   font-size: 3em;
   font-weight: normal;
 }
