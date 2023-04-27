@@ -23,6 +23,7 @@
 
   .search-field {
     width: 100%;
+    min-width: 16ch;
     padding: 1em;
     border: 0;
     background: transparent;
@@ -32,11 +33,13 @@
     }
 
     &:focus {
-      outline-style: none;
+      outline-style: dotted;
+      outline-width: 2px;
+      outline-color: var(--color-accent);
     }
 
     @media screen and (max-width: variables.$small-vp) {
-      padding: 10px 20px;
+      padding: 10px;
     }
   }
 
@@ -44,7 +47,7 @@
     padding: .5em 1em;
 
     @media screen and (max-width: variables.$small-vp) {
-      padding: 10px 20px;
+      padding: 10px;
     }
   }
 }
@@ -94,7 +97,7 @@
   }
 
   &.autoComplete_selected { /* stylelint-disable-line */
-    margin-left: 1em;
+    margin-left: .5em;
   }
 }
 

@@ -26,8 +26,10 @@
     <div class="title-unit">
       <div class="segment-first">
         <h1 class="title-primary">OCAD U Illustration 2023</h1></div>
-        <p class="title-secondary">Spanning 2009–2023<br /> Maintained by the Illustration Program at OCAD University</p>
-        <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
+        <div class="title-secondary">
+          <p>Spanning 2009&ndash;2023<br /> Maintained by the Illustration Program at OCAD University</p>
+          <p><a href="/about" class="about">About the archive</a></p>
+        </div>
     </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">

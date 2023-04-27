@@ -3,13 +3,14 @@
 @use "typography";
 
 .title {
-  padding: 30px;
-  min-height: 65vh;
+  padding: 2em;
+  min-height: 61vh;
   position: relative;
   display: flex;
   color: var(--color-accent);
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin: 80px 40px 0;
   text-align: center;
 
   @media screen and (max-width: variables.$small-vp) {
@@ -19,22 +20,23 @@
 
   a {
     color: var(--color-accent);
-    pointer-events: auto;
   }
 
   .title-unit {
     display: flex;
     flex-direction: column;
-    position: relative;
-    z-index: 1;
+    align-items: center;
   }
 
   .title-primary {
+    font-family: Standard;
+    font-size: 5em;
     font-weight: normal;
   }
 
   .title-secondary {
     max-width: 50ch;
+    justify-self: flex-end;
 
     @media screen and (max-width: variables.$small-vp) {
       max-width: unset;

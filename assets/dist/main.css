@@ -288,6 +288,10 @@ summary {
   color: var(--color-accent);
 }
 
+@font-face {
+  font-family: Standard;
+  src: url(./fonts/standard-book-webfont.woff2) format("woff2");
+}
 abbr,
 sup {
   text-transform: uppercase;
@@ -326,7 +330,7 @@ body {
   line-height: 1.25rem;
   color: var(--color-site-font);
   background-color: var(--color-site-background);
-  transition: 500ms ease-in-out background-color;
+  transition: 1s ease-in-out background-color;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -704,6 +708,7 @@ button {
 }
 .search-form .search-field {
   width: 100%;
+  min-width: 16ch;
   padding: 1em;
   border: 0;
   background: transparent;
@@ -712,11 +717,13 @@ button {
   appearance: none;
 }
 .search-form .search-field:focus {
-  outline-style: none;
+  outline-style: dotted;
+  outline-width: 2px;
+  outline-color: var(--color-accent);
 }
 @media screen and (max-width: 667px) {
   .search-form .search-field {
-    padding: 10px 20px;
+    padding: 10px;
   }
 }
 .search-form .search-submit {
@@ -724,7 +731,7 @@ button {
 }
 @media screen and (max-width: 667px) {
   .search-form .search-submit {
-    padding: 10px 20px;
+    padding: 10px;
   }
 }
 
@@ -770,7 +777,7 @@ button {
   background: transparent;
 }
 .autoComplete_result.autoComplete_selected { /* stylelint-disable-line */
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
 
 .search .archive-grid {
@@ -1287,13 +1294,14 @@ button {
 }
 
 .title {
-  padding: 30px;
-  min-height: 65vh;
+  padding: 2em;
+  min-height: 61vh;
   position: relative;
   display: flex;
   color: var(--color-accent);
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin: 80px 40px 0;
   text-align: center;
 }
 @media screen and (max-width: 667px) {
@@ -1304,19 +1312,20 @@ button {
 }
 .title a {
   color: var(--color-accent);
-  pointer-events: auto;
 }
 .title .title-unit {
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
+  align-items: center;
 }
 .title .title-primary {
+  font-family: Standard;
+  font-size: 5em;
   font-weight: normal;
 }
 .title .title-secondary {
   max-width: 50ch;
+  justify-self: flex-end;
 }
 @media screen and (max-width: 667px) {
   .title .title-secondary {
