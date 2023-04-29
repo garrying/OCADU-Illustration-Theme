@@ -16,16 +16,16 @@ import MatterAttractors from 'matter-attractors'
 /* eslint-enable */
 
 const entities = []
-let mouse
+const TitleElement = document.getElementById('title')
 
 const two = new Two({
   type: Two.Types.canvas,
   fitted: true,
   autostart: true
-}).appendTo(document.getElementById('title'))
+}).appendTo(TitleElement)
 
 const solver = Matter.Engine.create()
-solver.world.gravity.y = 0
+solver.gravity.y = 0
 
 const bounds = {
   length: 0,
@@ -50,8 +50,8 @@ Matter.World.add(solver.world, [
 Matter.use(MatterAttractors)
 
 const attractiveBody = Matter.Bodies.circle(
-  document.getElementById('title').clientWidth / 2,
-  document.getElementById('title').clientHeight / 2,
+  TitleElement.clientWidth / 2,
+  TitleElement.clientHeight / 2,
   100,
   {
     isStatic: true,
@@ -81,8 +81,9 @@ const defaultStyles = {
 
 addShapes()
 resize()
-mouse = addMouseInteraction()
-two.bind('resize', resize).bind('update', update)
+
+const mouse = addMouseInteraction()
+two.bind('update', update)
 
 function addMouseInteraction () {
   const mouse = Matter.Mouse.create(document.body)
@@ -110,11 +111,15 @@ function addMouseInteraction () {
 }
 
 function resize () {
+  window.addEventListener('resize', () => {
+    two.width = TitleElement.clientWidth
+    two.height = TitleElement.clientHeight
+  })
 }
 
 function addShapes () {
   let x = 0
-  let y = 0 // Header offset
+  let y = 0
 
   for (let i = 0; i < 40; i++) {
     const group = new Two.Group()
@@ -162,7 +167,7 @@ function addShapes () {
   Matter.World.add(solver.world, entities)
 }
 
-function update (frameCount, timeDelta) {
+function update () {
   const allBodies = Matter.Composite.allBodies(solver.world)
   Matter.MouseConstraint.update(mouse, allBodies)
   Matter.MouseConstraint._triggerEvents(mouse)
