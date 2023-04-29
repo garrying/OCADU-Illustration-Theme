@@ -139,7 +139,7 @@ function addShapes () {
       oy = y + rect.height / 2
     }
 
-    const rectangle = new Two.Rectangle(0, 0, 100, 100)
+    const rectangle = new Two.RoundedRectangle(0, 0, 100, 100, 8)
     rectangle.fill = 'rgb(251,249,244)'
     rectangle.noStroke()
 
