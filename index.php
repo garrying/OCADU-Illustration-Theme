@@ -22,7 +22,7 @@
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title">
+  <div id="title">
     <div class="title-unit">
       <div class="segment-first">
         <h1 class="title-primary">OCAD U Illustration 2023</h1>

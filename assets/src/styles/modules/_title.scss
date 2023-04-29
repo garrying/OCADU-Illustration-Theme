@@ -2,8 +2,8 @@
 @use "../components/variables";
 @use "typography";
 
-.title {
-  padding: 2em 0;
+#title {
+  padding: 0;
   min-height: 75vh;
   position: relative;
   display: flex;
@@ -12,6 +12,9 @@
   margin: 80px 40px 0;
   text-align: center;
   flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--border-radius-extreme);
+  overflow: hidden;
 
   @media screen and (max-width: variables.$small-vp) {
     min-height: 80vh;
@@ -24,6 +27,8 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    position: relative;
+    z-index: 1;
   }
 
   .title-primary {
@@ -45,6 +50,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    position: relative;
+    z-index: 1;
+    padding: 0 2em 2em;
     width: 100%;
+  }
+
+  canvas {
+    position: absolute;
   }
 }

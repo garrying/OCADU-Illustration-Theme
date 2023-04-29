@@ -1288,8 +1288,8 @@ button {
   background: rgb(var(--color-accent-rgb)/50%);
 }
 
-.title {
-  padding: 2em 0;
+#title {
+  padding: 0;
   min-height: 75vh;
   position: relative;
   display: flex;
@@ -1298,39 +1298,50 @@ button {
   margin: 80px 40px 0;
   text-align: center;
   flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--border-radius-extreme);
+  overflow: hidden;
 }
 @media screen and (max-width: 667px) {
-  .title {
+  #title {
     min-height: 80vh;
     padding: 20px;
   }
 }
-.title .title-unit {
+#title .title-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  position: relative;
+  z-index: 1;
 }
-.title .title-primary {
+#title .title-primary {
   font-family: var(--font-standard);
   font-size: 3em;
   font-weight: normal;
 }
-.title .title-secondary {
+#title .title-secondary {
   max-width: 50ch;
   text-align: left;
 }
 @media screen and (max-width: 667px) {
-  .title .title-secondary {
+  #title .title-secondary {
     max-width: unset;
   }
 }
-.title .title-support-unit {
+#title .title-support-unit {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  position: relative;
+  z-index: 1;
+  padding: 0 2em 2em;
   width: 100%;
+}
+#title canvas {
+  position: absolute;
 }
 
 @media screen and (max-width: 667px) {
