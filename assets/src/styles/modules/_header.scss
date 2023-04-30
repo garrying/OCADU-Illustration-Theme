@@ -38,7 +38,7 @@
 
   @media screen and (max-width: variables.$small-vp) {
     top: 0;
-    padding: 5px 20px;
+    padding: 1em 20px;
     right: 0;
     left: 0;
   }
@@ -61,7 +61,6 @@
 
 .header-item {
   padding: 1em 1.5em;
-  line-height: 1em;
   white-space: nowrap;
   pointer-events: auto;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
@@ -80,10 +79,6 @@
 
   &:hover {
     color: var(--color-accent);
-  }
-
-  @media screen and (max-width: variables.$small-vp) {
-    padding: 1em;
   }
 }
 

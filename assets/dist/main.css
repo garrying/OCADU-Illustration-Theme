@@ -526,7 +526,7 @@ button {
   margin: 0 auto;
 }
 .archive-grid .illustrator-type {
-  color: var(--color-black);
+  font-size: 12px;
   opacity: 0.5;
 }
 .archive-grid .illustrator-title {
@@ -536,10 +536,9 @@ button {
   margin-bottom: 0;
 }
 .archive-grid .illustrator-name {
-  margin-top: 0.5em;
+  margin-top: 0.25em;
   font-weight: normal;
   font-size: 1em;
-  color: var(--color-accent);
 }
 .archive-grid .grid-col {
   width: 50%;
@@ -789,7 +788,7 @@ button {
 
 .section-indicator-index {
   font-family: var(--font-standard);
-  font-size: 3em;
+  font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   display: flex;
   line-height: 1em;
@@ -981,7 +980,7 @@ button {
 @media screen and (max-width: 667px) {
   .heading-inner {
     top: 0;
-    padding: 5px 20px;
+    padding: 1em 20px;
     right: 0;
     left: 0;
   }
@@ -1004,7 +1003,6 @@ button {
 
 .header-item {
   padding: 1em 1.5em;
-  line-height: 1em;
   white-space: nowrap;
   pointer-events: auto;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
@@ -1020,11 +1018,6 @@ button {
 }
 .header-item:hover {
   color: var(--color-accent);
-}
-@media screen and (max-width: 667px) {
-  .header-item {
-    padding: 1em;
-  }
 }
 
 #search-link::after {
@@ -1316,10 +1309,11 @@ button {
   flex-grow: 1;
   position: relative;
   z-index: 1;
+  margin-top: 50px;
 }
 #title .title-primary {
   font-family: var(--font-standard);
-  font-size: 3em;
+  font-size: clamp(1rem, 5vw, 3rem);
   font-weight: normal;
 }
 #title .title-secondary {
@@ -1340,8 +1334,17 @@ button {
   padding: 0 2em 2em;
   width: 100%;
 }
+@media screen and (max-width: 667px) {
+  #title .title-support-unit {
+    padding: 0;
+  }
+}
+#title .title-support-unit a {
+  white-space: nowrap;
+}
 #title canvas {
   width: 100%;
+  top: 0;
   position: absolute;
 }
 
@@ -1358,7 +1361,6 @@ button {
 .home-grid {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  margin: 0 30px;
   padding: 0 30px;
 }
 .home-grid.ready {
@@ -1380,17 +1382,12 @@ button {
   margin: 0;
 }
 .home-grid .illustrator-meta-container .illustrator-name {
-  margin: 0;
+  margin: 0.25em 0 0;
   font-size: 1em;
   font-weight: normal;
 }
 .home-grid .illustrator-meta-container.active {
   opacity: 1;
-}
-@media screen and (max-width: 667px) {
-  .home-grid .illustrator-meta-container.active {
-    display: none;
-  }
 }
 .home-grid .gallery-item {
   margin: 0;

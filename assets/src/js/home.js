@@ -86,7 +86,7 @@ const mouse = addMouseInteraction()
 two.bind('update', update)
 
 function addMouseInteraction () {
-  const mouse = Matter.Mouse.create(document.body)
+  const mouse = Matter.Mouse.create(TitleElement)
   const mouseConstraint = Matter.MouseConstraint.create(solver, {
     mouse,
     constraint: {
@@ -110,11 +110,14 @@ function addMouseInteraction () {
   return mouseConstraint
 }
 
+mouse.mouse.element.removeEventListener('mousewheel', mouse.mouse.mousewheel)
+mouse.mouse.element.removeEventListener('DOMMouseScroll', mouse.mouse.mousewheel)
+
 function resize () {
   window.addEventListener('resize', () => {
     two.width = TitleElement.clientWidth
     two.height = TitleElement.clientHeight
-  })
+  }, { passive: false })
 }
 
 function addShapes () {

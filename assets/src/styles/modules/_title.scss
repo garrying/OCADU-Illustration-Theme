@@ -29,11 +29,12 @@
     flex-grow: 1;
     position: relative;
     z-index: 1;
+    margin-top: 50px;
   }
 
   .title-primary {
     font-family: var(--font-standard);
-    font-size: 3em;
+    font-size: clamp(1rem, 5vw, 3rem);
     font-weight: normal;
   }
 
@@ -54,10 +55,19 @@
     z-index: 1;
     padding: 0 2em 2em;
     width: 100%;
+
+    @media screen and (max-width: variables.$small-vp) {
+      padding: 0;
+    }
+
+    a {
+      white-space: nowrap;
+    }
   }
 
   canvas {
     width: 100%;
+    top: 0;
     position: absolute;
   }
 }

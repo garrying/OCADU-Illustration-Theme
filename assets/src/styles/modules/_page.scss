@@ -3,7 +3,7 @@
 
 .section-indicator-index {
   font-family: var(--font-standard);
-  font-size: 3em;
+  font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   display: flex;
   line-height: 1em;

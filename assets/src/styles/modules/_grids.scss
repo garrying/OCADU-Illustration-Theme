@@ -32,7 +32,7 @@
   margin: 0 auto;
 
   .illustrator-type {
-    color: var(--color-black);
+    font-size: 12px;
     opacity: 0.5;
   }
 
@@ -44,10 +44,9 @@
   }
 
   .illustrator-name {
-    margin-top: 0.5em;
+    margin-top: 0.25em;
     font-weight: normal;
     font-size: 1em;
-    color: var(--color-accent);
   }
 
   .grid-col {
