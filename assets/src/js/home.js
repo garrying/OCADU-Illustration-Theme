@@ -120,7 +120,7 @@ function resize () {
   window.addEventListener('resize', () => {
     two.width = TitleElement.clientWidth
     two.height = TitleElement.clientHeight
-  }, { passive: false })
+  })
 }
 
 function addShapes () {
