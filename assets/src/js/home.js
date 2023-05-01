@@ -127,7 +127,7 @@ function addShapes () {
   let x = 0
   let y = 0
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 60; i++) {
     const group = new Two.Group()
 
     const rect = {
