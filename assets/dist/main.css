@@ -441,7 +441,6 @@ figure .wp-caption-text {
   .image-modal-wrapper .image-modal-caption {
     bottom: 0;
     left: 20px;
-    padding: 1em;
   }
 }
 @media screen and (max-width: 667px) {
