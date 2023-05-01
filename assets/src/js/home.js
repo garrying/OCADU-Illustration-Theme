@@ -112,6 +112,9 @@ function addMouseInteraction () {
 
 mouse.mouse.element.removeEventListener('mousewheel', mouse.mouse.mousewheel)
 mouse.mouse.element.removeEventListener('DOMMouseScroll', mouse.mouse.mousewheel)
+mouse.mouse.element.removeEventListener('touchmove', mouse.mouse.mousemove)
+mouse.mouse.element.removeEventListener('touchstart', mouse.mouse.mousedown)
+mouse.mouse.element.removeEventListener('touchend', mouse.mouse.mouseup)
 
 function resize () {
   window.addEventListener('resize', () => {

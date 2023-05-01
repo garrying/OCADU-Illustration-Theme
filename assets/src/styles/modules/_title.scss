@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 80px 40px 0;
+  margin: 80px 30px 0;
   text-align: center;
   flex-direction: column;
   background: var(--color-white);
@@ -17,7 +17,7 @@
   overflow: hidden;
 
   @media screen and (max-width: variables.$small-vp) {
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 20px;
   }
 
@@ -43,6 +43,7 @@
     text-align: left;
 
     @media screen and (max-width: variables.$small-vp) {
+      text-align: center;
       max-width: unset;
     }
   }
@@ -55,8 +56,11 @@
     z-index: 1;
     padding: 0 2em 2em;
     width: 100%;
+    gap: 2em;
 
     @media screen and (max-width: variables.$small-vp) {
+      align-items: center;
+      flex-direction: column;
       padding: 0;
     }
 

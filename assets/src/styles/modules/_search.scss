@@ -37,13 +37,10 @@
     &:focus {
       outline: 2px dotted var(--color-accent);
     }
-
-    @media screen and (max-width: variables.$small-vp) {
-      padding: 10px;
-    }
   }
 
   .search-submit {
+    color: var(--color-site-font);
     padding: .5em 1em;
 
     @media screen and (max-width: variables.$small-vp) {

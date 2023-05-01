@@ -1,6 +1,7 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/src/styles/main.scss ***!
   \**********************************************************************************************************************/
+@charset "UTF-8";
 /**
  * Minified by jsDelivr using clean-css v4.2.3.
  * Original file: /npm/modern-normalize@1.1.0/modern-normalize.css
@@ -534,6 +535,7 @@ button {
   font-size: 1em;
   color: var(--color-accent);
   margin-bottom: 0;
+  line-height: 1.2em;
 }
 .archive-grid .illustrator-name {
   margin-top: 0.25em;
@@ -666,7 +668,7 @@ button {
 }
 @media screen and (max-width: 667px) {
   .close-panel {
-    inset: auto auto 1em calc(50% - 33px);
+    inset: auto auto 1em calc(50% - 22px);
   }
 }
 
@@ -713,12 +715,8 @@ button {
 .search-form .search-field:focus {
   outline: 2px dotted var(--color-accent);
 }
-@media screen and (max-width: 667px) {
-  .search-form .search-field {
-    padding: 10px;
-  }
-}
 .search-form .search-submit {
+  color: var(--color-site-font);
   padding: 0.5em 1em;
 }
 @media screen and (max-width: 667px) {
@@ -793,7 +791,7 @@ button {
   display: flex;
   line-height: 1em;
   font-weight: normal;
-  margin: 161px auto;
+  margin: 230px auto 160px;
   justify-content: center;
 }
 
@@ -964,6 +962,24 @@ button {
 .fade-out .logo {
   pointer-events: none;
 }
+@media screen and (max-width: 667px) {
+  .logo {
+    width: 30px;
+    overflow: hidden;
+    background: var(--color-white);
+    aspect-ratio: 1/1;
+    border-radius: var(--border-radius);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+  }
+  .logo::before {
+    color: var(--color-accent);
+    content: "↖";
+    margin-left: 1.15ch;
+    margin-right: 30px;
+  }
+}
 
 .heading-inner {
   position: fixed;
@@ -1006,6 +1022,8 @@ button {
   white-space: nowrap;
   pointer-events: auto;
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  appearance: none;
+  color: var(--color-site-font);
 }
 .header-item.invert {
   color: var(--color-accent);
@@ -1288,7 +1306,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 80px 40px 0;
+  margin: 80px 30px 0;
   text-align: center;
   flex-direction: column;
   background: var(--color-white);
@@ -1297,7 +1315,7 @@ button {
 }
 @media screen and (max-width: 667px) {
   #title {
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 20px;
   }
 }
@@ -1322,6 +1340,7 @@ button {
 }
 @media screen and (max-width: 667px) {
   #title .title-secondary {
+    text-align: center;
     max-width: unset;
   }
 }
@@ -1333,9 +1352,12 @@ button {
   z-index: 1;
   padding: 0 2em 2em;
   width: 100%;
+  gap: 2em;
 }
 @media screen and (max-width: 667px) {
   #title .title-support-unit {
+    align-items: center;
+    flex-direction: column;
     padding: 0;
   }
 }
@@ -1361,7 +1383,8 @@ button {
 .home-grid {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  padding: 0 30px;
+  margin: 0 auto;
+  width: calc(100vw - 40px);
 }
 .home-grid.ready {
   opacity: 1;

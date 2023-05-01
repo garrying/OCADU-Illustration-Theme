@@ -18,7 +18,8 @@
 .home-grid {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  padding: 0 30px;
+  margin: 0 auto;
+  width: calc(100vw - 40px);
 
   &.ready {
     opacity: 1;
