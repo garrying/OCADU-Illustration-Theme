@@ -57,7 +57,7 @@
         <div class="miniview image-modal-miniview">
         </div>
       </div>
-      <button class="close-panel pill" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
+      <button class="close-panel" title="Close full view" aria-label="Close full view"><?php get_template_part( 'assets/dist/images/close.svg' ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">
         <div class="image-modal-image"></div>
         <div class="image-modal-caption"></div>
@@ -107,7 +107,7 @@
             <?php endif; ?>
             <?php if ( get_post_meta( $post->ID, 'illu_sites', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites', true ) ); ?>">
-                ↗
+                ↗ .....
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -118,7 +118,7 @@
 
             <?php if ( get_post_meta( $post->ID, 'illu_sites_2', true ) ) : ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>" class="meta-link truncate" href="<?php echo esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) ); ?>">
-                ↗
+                ↗ .....
                 <?php
                   $ocaduillustration_url = esc_url( get_post_meta( $post->ID, 'illu_sites_2', true ) );
                   $ocaduillustration_url = preg_replace( '#^https?://#', '', $ocaduillustration_url );
@@ -128,7 +128,8 @@
             <?php endif; ?>
 
             <?php if ( get_post_meta( $post->ID, 'illu_email', true ) ) : ?>
-              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">✎ <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
+              <a title="<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?>">
+                @ ..... <?php echo esc_html( get_post_meta( $post->ID, 'illu_email', true ) ); ?></a>
             <?php endif; ?>
           </div>
         </div>
@@ -142,9 +143,9 @@
           foreach ( $ocaduillustration_class_year as $ocaduillustration_illustrator_term ) {
             $ocaduillustration_illustrator_year_section = $ocaduillustration_illustrator_term->slug;
             if ( $ocaduillustration_illustrator_term->parent <= 0 ) {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☀&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index">' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             } else {
-              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index"> ☼&#xFE0E; ' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
+              echo '<a class="section-indicator-single" href="/year/' . esc_html( $ocaduillustration_base_year->slug ) . '/' . esc_html( $ocaduillustration_illustrator_year_section ) . '" title="Return to ' . esc_html( $ocaduillustration_illustrator_term->name ) . ' index">' . esc_html( $ocaduillustration_illustrator_term->name ) . '</a>';
             }
           }
         }
@@ -180,14 +181,14 @@
           <li class="nav-previous">
             <?php
               if ( ! empty( $ocaduillustration_prev_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">⤺ ' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_prev_id ) ) . '" rel="prev"><span class="name previous-link truncate">' . esc_html( get_the_title( $ocaduillustration_prev_id ) ) . '</span></a>';
               }
             ?>
           </li>
           <li class="nav-next">
             <?php
               if ( ! empty( $ocaduillustration_next_id ) ) {
-                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . ' ⤻</span></a>';
+                echo '<a href="' . esc_url( get_permalink( $ocaduillustration_next_id ) ) . '" rel="next"><span class="name next-link truncate">' . esc_html( get_the_title( $ocaduillustration_next_id ) ) . '</span></a>';
               }
             ?>
           </li>

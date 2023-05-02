@@ -6,9 +6,6 @@
   display: block;
   line-height: 1em;
   white-space: nowrap;
-
-  @include typography.heading-features;
-
   pointer-events: auto;
   transition: color 200ms ease-in-out;
 
@@ -19,11 +16,29 @@
 
   &.invert,
   &.invert:hover {
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   .fade-out & {
     pointer-events: none;
+  }
+
+  @media screen and (max-width: variables.$small-vp) {
+    width: 30px;
+    overflow: hidden;
+    background: var(--color-white);
+    aspect-ratio: 1/1;
+    border-radius: var(--border-radius);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    
+    &::before {
+      color: var(--color-accent);
+      content: '↖';
+      margin-left: 1.15ch;
+      margin-right: 30px;
+    }
   }
 }
 
@@ -35,25 +50,26 @@
   right: 0;
   z-index: var(--z-foreground);
   display: flex;
-  pointer-events: none;
   align-items: center;
   justify-content: space-between;
   transition: opacity 200ms ease-in-out;
 
   @media screen and (max-width: variables.$small-vp) {
     top: 0;
-    padding: 5px 20px;
+    padding: 1em 20px;
     right: 0;
     left: 0;
   }
 
   &.fade-out {
     opacity: 0;
+    pointer-events: none;
   }
 }
 
 .header-items-wrapper {
   display: flex;
+  gap: 1em;
 
   @media screen and (max-width: variables.$small-vp) {
     justify-content: flex-end;
@@ -61,43 +77,28 @@
   }
 }
 
-.header-item-link {
-  margin-left: 5px;
-}
-
 .header-item {
   padding: 1em 1.5em;
-  line-height: 1em;
-  color: var(--color-accent);
   white-space: nowrap;
   pointer-events: auto;
-
-  @include typography.heading-features;
-
   transition: color 200ms ease-in-out, background 200ms ease-in-out;
-  background: rgb(var(--color-accent-rgb) / 20%);
-
-  &:hover,
-  &:focus {
-    background: rgb(var(--color-accent-rgb) / 35%);
-  }
+  appearance: none;
+  color: var(--color-site-font);
 
   &.invert {
-    color: var(--color-white);
-    background: var(--color-accent);
-    box-shadow: 0 0 0 1px inset var(--color-white);
+    color: var(--color-accent);
   }
 
   &.inactive {
-    color: var(--color-white);
+    color: var(--color-accent);
   }
 
   .fade-out & {
     pointer-events: none;
   }
 
-  @media screen and (max-width: variables.$small-vp) {
-    padding: 1em;
+  &:hover {
+    color: var(--color-accent);
   }
 }
 

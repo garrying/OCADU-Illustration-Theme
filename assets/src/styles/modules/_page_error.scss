@@ -6,42 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-  font-size: clamp(1em, 1.5vw, 2rem);
-  line-height: 1.3em;
-
-  @media screen and (max-width: variables.$small-vp) {
-    padding: 0 20px;
-  }
 
   .entry-title {
-    font-size: clamp(1em, 5vw, 10rem);
-    margin-bottom: 0.75em;
-    font-family: var(--font-sans-serif-light);
-  }
-
-  .entry-body {
-    margin: 0;
-  }
-
-  .entry-header {
-    mix-blend-mode: difference;
-    position: relative;
-    z-index: 1;
-  }
-}
-
-#error-blob-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg path {
-    fill: var(--color-accent);
+    font-weight: normal;
   }
 }

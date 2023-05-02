@@ -11,7 +11,7 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
     "php-parallel-lint/php-parallel-lint": "^1.3",
     "wptrt/wpthemereview": "^0.2.1",
-    "szepeviktor/phpstan-wordpress": "^1.1"
+    "szepeviktor/phpstan-wordpress": "^1.2"
   },
   "scripts": {
     "analyze": "@php ./vendor/bin/phpstan analyze",

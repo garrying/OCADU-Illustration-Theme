@@ -15,10 +15,11 @@ html {
 body {
   height: 100%;
   font-family: var(--font-sans-serif);
-  font-size: 75%;
-  line-height: 1.5em;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--color-site-font);
-  background: var(--color-site-background);
+  background-color: var(--color-site-background);
+  transition: 1s ease-in-out background-color;
 
   @include typography.font-smoothing(on);
 }
@@ -35,7 +36,7 @@ mark {
 
 a {
   text-decoration: none;
-  color: var(--color-accent);
+  color: var(--color-site-font);
   transition: color 180ms ease-in-out;
 
   &:hover,
@@ -51,8 +52,6 @@ a {
 // Tab shortcut reveal
 
 .screen-reader-shortcut {
-  @include typography.font-smoothing(on);
-
   position: absolute;
   top: 0;
   left: 30px;

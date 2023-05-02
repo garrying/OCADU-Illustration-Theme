@@ -1,15 +1,12 @@
 <?php get_header(); ?>
 
-  <div id="illustrators" class="grid illustrators-grid archive-grid">
+<h2 class="section-indicator-index"><?php printf( 'Search results for <mark>%s</mark>', get_search_query() ); ?></h2>
+
+<div id="illustrators" class="grid illustrators-grid archive-grid">
   <div class="grid-col grid-col-1"></div>
   <div class="grid-col grid-col-2"></div>
   <div class="grid-col grid-col-3"></div>
   <div class="grid-col grid-col-4"></div>
-    <div class="gallery-item">
-      <h1 class="search-title">
-        <?php printf( 'Search Results for <mark>%s</mark>', get_search_query() ); ?>
-      </h1>
-    </div>
   <?php if ( have_posts() ) : ?>
     <?php
     while ( have_posts() ) :
@@ -32,6 +29,6 @@
     </article><!-- .error-body -->
 
   <?php endif; ?>
-  </div>
+</div>
 
 <?php get_footer(); ?>

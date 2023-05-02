@@ -1,11 +1,13 @@
 import '../styles/main.scss'
 import autoComplete from '@tarekraafat/autocomplete.js'
-import * as blobs2 from './libs/blobs'
 import * as lazySizes from 'lazysizes'
 import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
 import $ from 'jquery/dist/jquery.slim.min'
 import Velocity from 'velocity-animate/velocity.min'
+import ColorThief from 'colorthief'
+
+window.jQuery = $
 
 Velocity.patch($ && $.fn)
 
@@ -39,7 +41,6 @@ Velocity('registerSequence', 'fadeIn', {
       app._ocadUIbinding()
       app._ocadSingleScroll()
       app._ocadSearch()
-      app._blob()
     },
 
     settings: {
@@ -91,10 +92,20 @@ Velocity('registerSequence', 'fadeIn', {
     _ocadLoader: (e = true) => {
       if (e === false) {
         app.settings.documentBody.removeAttr('style')
-        app.settings.loader.velocity('stop').velocity('fadeOut', { duration: 'fast' })
+        app.settings.loader.velocity('stop').velocity('fadeOut', {
+          duration: 'fast',
+          complete: (e) => {
+            $(e).hide()
+          }
+        })
       } else {
         app.settings.documentBody.css('cursor', 'progress')
-        app.settings.loader.velocity('stop').velocity('fadeIn', { duration: 'fast' })
+        app.settings.loader.velocity('stop').velocity('fadeIn', {
+          duration: 'fast',
+          begin: (e) => {
+            $(e).show()
+          }
+        })
       }
     },
 
@@ -105,7 +116,7 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadSearch: () => {
       const autoCompleteJS = new autoComplete({ // eslint-disable-line
-        submit: true,
+        submit: false,
         data: {
           src: async (query) => {
             try {
@@ -141,7 +152,15 @@ Velocity('registerSequence', 'fadeIn', {
         resultItem: {
           class: 'autoComplete_result',
           highlight: 'autoComplete_highlighted',
-          selected: 'autoComplete_selected'
+          selected: 'autoComplete_selected',
+          submit: true
+        },
+        events: {
+          input: {
+            focus: (event) => {
+              autoCompleteJS.open()
+            }
+          }
         }
       })
 
@@ -199,11 +218,11 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadShuffle: (elems) => {
       const elements = $(elems).sort(() => Math.random() - 0.5)
-      const colc = new Colcade(document.querySelector(app.settings.masonryContainerHome), {
-        columns: '.grid-col',
-        items: '.gallery-item'
+      $(app.settings.masonryContainerHome).append(elements).justifiedGallery({
+        rowHeight: 400,
+        lastRow: 'nojustify',
+        margins: 10
       })
-      colc.append(elements)
     },
 
     _ocadHomeLoader: () => {
@@ -221,24 +240,21 @@ Velocity('registerSequence', 'fadeIn', {
     },
 
     _ocadHomeHover: () => {
+      const colorThief = new ColorThief()
+
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          let y = ele.clientY
-          let x = ele.clientX
           $(ele.currentTarget).find('.illustrator-meta-container').addClass('active')
-
-          window.requestAnimationFrame(function animation () {
-            $(ele.currentTarget).mousemove((e) => {
-              y = e.clientY + 5
-              x = e.clientX + 5
-            })
-            $(ele.currentTarget).find('.illustrator-meta-container').css({ transform: `translate(${x}px, ${y}px)` })
-            window.requestAnimationFrame(animation)
-          })
+          if ($(ele.currentTarget).find('.lazyloaded').length) {
+            const image = $(ele.currentTarget).find('.lazyloaded')[0]
+            const BgColor = colorThief.getColor(image)
+            app.settings.documentBody.css('background-color', `rgba(${BgColor[0]} ${BgColor[1]} ${BgColor[2]} / 0.25)`)
+          }
         })
 
         $('.illustrator-link').on('mouseleave', (ele) => {
           $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
+          app.settings.documentBody.removeAttr('style')
         })
       }
     },
@@ -520,33 +536,7 @@ Velocity('registerSequence', 'fadeIn', {
         if (e.keyCode === 27) {
           app._ocadPanelsClose()
         }
-
-        if (!app.settings.imageModal.is(':visible')) {
-          if (e.keyCode === 37 && app.settings.prevItem.length) {
-            window.location = app.settings.prevItem.attr('href')
-          } else if (e.keyCode === 39 && app.settings.nextItem.length) {
-            window.location = app.settings.nextItem.attr('href')
-          }
-        }
       })
-    },
-
-    _blob: () => {
-      const svgString = blobs2.svg({
-        seed: Math.random(),
-        extraPoints: 8,
-        randomness: 4,
-        size: 400
-      }, {
-        fill: 'rgb(255,87,34)',
-        strokeWidth: 1
-      })
-      if (document.querySelector('#error-blob-container')) {
-        document.querySelector('#error-blob-container').innerHTML = svgString
-      }
-      if (!app.settings.documentBody.hasClass('single')) {
-        $('link[rel="shortcut icon"]').attr('href', `data:image/svg+xml,${svgString}`)
-      }
     }
   }
 

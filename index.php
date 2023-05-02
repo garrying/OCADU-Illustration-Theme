@@ -22,19 +22,21 @@
       $ocaduillustration_home_index = new WP_Query( $ocaduillustration_args );
     }
   ?>
-  <div class="title">
+  <div id="title">
     <div class="title-unit">
-      <div class="segment-first"><h1 class="title-primary">OCAD U <br /> Illustration 2022</h1></div>
-        <p class="title-secondary">Spanning 2009–2022, the archive is maintained by the Illustration Program at OCAD University.</p>
-        <p class="title-secondary"><a href="/about" class="about">About the archive</a></p>
+      <div class="segment-first">
+        <h1 class="title-primary">OCAD U Illustration 2023</h1>
+      </div>
     </div>
-    <div id="root"></div>
+    <div class="title-support-unit">
+        <div class="title-secondary">
+          <p>Spanning 2009&ndash;2023<br /> Maintained by the Illustration Program at OCAD University</p>
+          <a href="/about" class="about">About the archive</a>
+        </div>
+        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
+    </div>
   </div>
   <div id="illustrators" class="grid illustrators-grid home-grid">
-    <div class="grid-col grid-col-1"></div>
-    <div class="grid-col grid-col-2"></div>
-    <div class="grid-col grid-col-3"></div>
-    <div class="grid-col grid-col-4"></div>
 
     <?php if ( $ocaduillustration_home_index->have_posts() ) : ?>
 

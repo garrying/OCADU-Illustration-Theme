@@ -15,7 +15,7 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 6em;
+  margin-top: 5em;
 
   @media screen and (max-width: variables.$medium-vp) {
     flex-basis: 50%;
@@ -34,7 +34,7 @@
 
   .gallery-item {
     display: flex;
-    margin: 0 0 5% 5%;
+    margin: 0 0 2% 2%;
     justify-content: center;
     align-items: center;
 
@@ -47,6 +47,21 @@
     @media screen and (max-width: variables.$ipad-vp) {
       margin: 0 1px 1em 0;
     }
+  }
+}
+
+.section-indicator-single {
+  padding: 0.5em 1em;
+  transition: background 180ms ease-in-out;
+
+  &:nth-child(2) {
+    white-space: nowrap;
+    margin-left: 5px;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: variables.$small-vp) {
+    display: none;
   }
 }
 
@@ -100,75 +115,54 @@
   }
 
   .thesis-title {
+    font-weight: normal;
     color: var(--color-accent);
-    margin-bottom: 0.25em;
-    font-family: var(--font-sans-serif-light);
-    line-height: 1.2em;
-    font-size: 2.5em;
-  }
-
-  .thesis-description {
-    line-height: 1.3em;
-    font-size: 14px;
   }
 
   .illustrator-meta-name {
-    color: var(--color-accent);
-    font-family: var(--font-sans-serif-light);
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
+    font-weight: normal;
+    font-size: 1em;
   }
 }
 
 .meta-label {
-  color: var(--color-accent);
   margin-bottom: 0.5em;
 }
 
 .related-separator {
   border-top: 0;
-  border-style: dotted;
-  border-color: var(--color-accent);
+  border-style: solid;
+  border-color: rgb(var(--color-accent-rgb) / 20%);
 }
 
 .meta {
   margin-top: 2em;
-  font-size: 14px;
 
   @media screen and (max-width: variables.$small-vp) {
     margin: 2em 0 0;
   }
 
-  .illustrator-meta-header {
-    padding: 0.5em 0;
-    padding-right: 1em;
-  }
-
   .meta-link {
-    display: inline-block;
     max-width: 100%;
-    background: rgb(var(--color-accent-rgb) / 20%);
-    padding: 0.75em 1em;
-    transition: background 180ms ease-in-out;
-
-    &:hover,
-    &:focus {
-      background: rgb(var(--color-accent-rgb) / 35%);
-    }
+    margin-bottom: 0.5em;
   }
 }
 
 .illustrator-nav-single-wrapper {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1em;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
   align-items: center;
-  width: 100%;
-  bottom: 0;
+  right: 0;
+  bottom: 2em;
   left: 0;
-  padding: 0 30px;
+  margin: 0 30px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
 
   @media screen and (max-width: variables.$small-vp) {
     position: relative;
@@ -188,15 +182,19 @@
 .illustrator-nav-single {
   display: flex;
   width: 100%;
-  border-top: 1px solid rgb(var(--color-accent-rgb) / 20%);
+  border-top: 1px solid rgb(var(--color-site-background));
   justify-content: space-between;
 
   @media screen and (max-width: variables.$small-vp) {
+    border-radius: var(--border-radius);;
     border-top: 0;
     position: fixed;
-    left: 0;
-    bottom: 0;
-    background: var(--color-site-background);
+    left: 20px;
+    right: 20px;
+    width: unset;
+    bottom: 20px;
+    background: var(--color-white);
+    box-shadow: var(--shadow);
   }
 
   a {
@@ -204,15 +202,10 @@
     z-index: var(--z-foreground);
     padding: 1em;
     transition: background 180ms ease-in-out;
-
-    &:hover,
-    &:focus {
-      background: rgb(var(--color-accent-rgb) / 15%);
-    }
   }
 
   .truncate {
-    line-height: 1.2em;
+    line-height: 1.5em;
   }
 
   .nav-previous,

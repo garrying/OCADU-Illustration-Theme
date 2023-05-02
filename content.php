@@ -1,5 +1,5 @@
-<article <?php post_class( 'gallery-item' ); ?>>
-  <a href="<?php the_permalink(); ?>" class="illustrator-link">
+<div <?php post_class( 'gallery-item' ); ?>>
+  <a href="<?php the_permalink(); ?>" class="illustrator-link" title="<?php the_title(); ?>">
     <figure>
       <div class="illustrator-image">
         <?php the_post_thumbnail( 'illustrator-large' ); ?>
@@ -26,4 +26,4 @@
       </div>
     </div>
   </a>
-</article>
+</div>

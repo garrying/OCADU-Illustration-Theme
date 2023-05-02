@@ -2,35 +2,14 @@
 @use "../components/variables";
 
 .section-indicator-index {
-  font-size: clamp(4em, 5vw, 10rem);
-  font-family: var(--font-sans-serif-light);
-  color: var(--color-accent);
+  font-family: var(--font-standard);
+  font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   display: flex;
-  line-height: 0.5em;
-  margin: 161px auto 100px;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 230px auto 160px;
   justify-content: center;
-}
-
-.section-indicator-single {
-  font-size: 1em;
-  padding: 1em;
-  transition: background 180ms ease-in-out;
-
-  &:nth-child(2) {
-    white-space: nowrap;
-    margin-left: 5px;
-    margin-right: 0;
-  }
-
-  @media screen and (max-width: variables.$small-vp) {
-    display: none;
-  }
-
-  &:hover,
-  &:focus {
-    background: rgba(var(--color-accent-rgb) / 15%);
-  }
 }
 
 .faculty-list {
@@ -47,28 +26,24 @@
   max-width: 620px;
   margin: 130px auto;
   line-height: 1.45em;
-  font-size: 16px;
 
   @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
     margin: 8em 0;
     line-height: 1.3em;
-    font-size: 14px;
   }
 
   .entry-title {
+    font-weight: normal;
     line-height: 1em;
     margin: 0.5em 0;
-    font-family: var(--font-sans-serif-light);
-    font-size: 50px;
   }
 
   .entry-title-secondary {
-    font-size: 1.5em;
-    font-family: var(--font-sans-serif-light);
+    font-weight: normal;
     line-height: 1em;
-    margin: 1.5em 0 0.5em;
+    margin: 1.5em 0;
   }
 
   .faculty-list {

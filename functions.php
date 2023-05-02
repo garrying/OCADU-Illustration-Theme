@@ -92,11 +92,11 @@ if ( ! function_exists( 'ocaduillustration_scripts' ) ) {
   function ocaduillustration_scripts() {
     if ( ! is_admin() ) {
       wp_deregister_script( 'wp-embed' );
-      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1652140633', '', '2022', true );
+      wp_register_script( 'app', get_template_directory_uri() . '/assets/dist/app.js?1682786930', '', '2023', true );
       wp_enqueue_script( 'app' );
     }
     if ( is_home() ) {
-      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1652140633', '', '2022', true );
+      wp_register_script( 'home', get_template_directory_uri() . '/assets/dist/home.js?1682786930', '', '2023', true );
       wp_enqueue_script( 'home' );
     }
   }
@@ -111,7 +111,7 @@ function ocaduillustration_fonts() {
 }
 
 function ocaduillustration_styles() {
-  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1652140633', '', '2022' );
+  wp_register_style( 'ocadustyles', get_template_directory_uri() . '/assets/dist/main.css?1682786930', '', '2023' );
   wp_enqueue_style( 'ocadustyles' );
 }
 
@@ -258,11 +258,11 @@ function ocaduillustration_get_socialimage( $image_type = 'fb' ) {
   }
 
   if ( 'twitter-index' === $image_type ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1652140633';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1682786930';
   }
 
   if ( empty( $socialimg ) ) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1652140633';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1682786930';
   }
 
   return $socialimg;
@@ -297,7 +297,7 @@ function ocaduillustration_social_meta() {
     }
   }
   if ( is_home() || is_archive() ) {
-    $social_description = 'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2022.';
+    $social_description = 'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2023.';
     if ( is_home() ) {
       $social_title = get_bloginfo( 'name' );
     } else {
@@ -453,5 +453,17 @@ function ocaduillustration_wps_deregister_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'ocaduillustration_wps_deregister_styles', 100 );
+
+// Removes the decoding attribute from images added inside post content.
+add_filter( 'wp_img_tag_add_decoding_attr', '__return_false' );
+
+// Remove the decoding attribute from featured images and the Post Image block.
+add_filter(
+    'wp_get_attachment_image_attributes',
+    function( $attributes ) {
+      unset( $attributes['decoding'] );
+      return $attributes;
+    }
+);
 
 ?>

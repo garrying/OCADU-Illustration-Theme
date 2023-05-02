@@ -35,10 +35,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 18.15.0
+    - name: Use Node.js 18.16.0
       uses: actions/setup-node@v3
       with:
-        node-version: 18.15.0
+        node-version: 18.16.0
+        cache: 'npm'
     - run: npm ci
     - run: npm run lint:scss --silent
     - run: npm run lint:js --silent

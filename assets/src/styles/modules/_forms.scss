@@ -2,17 +2,12 @@
 @use "typography";
 
 input {
-  @include typography.font-features-body;
-  @include typography.font-smoothing(on);
-
   font-family: var(--font-sans-serif);
   border-radius: 0;
   appearance: none;
 }
 
 button {
-  @include typography.font-features-body;
-
   font-size: inherit;
   cursor: pointer;
   background: transparent;

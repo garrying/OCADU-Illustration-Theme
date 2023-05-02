@@ -6,7 +6,7 @@
   inset: 0;
   z-index: var(--z-middle);
   display: none;
-  background: var(--color-accent);
+  background: var(--color-site-background);
   outline: 0;
   opacity: 0;
   overflow: auto;
@@ -31,10 +31,10 @@
   cursor: pointer;
   line-height: 0;
   padding: 1em;
-  border: 1px solid var(--color-white);
-
+  color: var(--color-site-font);
+  
   @media screen and (max-width: variables.$small-vp) {
-    inset: auto auto 1em calc(50% - 33px);
+    inset: auto auto 1em calc(50% - 22px);
   }
 }
 

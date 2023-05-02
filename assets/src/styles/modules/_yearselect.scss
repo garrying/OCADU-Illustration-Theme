@@ -16,8 +16,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 100px;
-  padding-left: 40px;
+  padding-top: 80px;
+  gap: 8px;
 
   @media screen and (max-width: variables.$small-vp) {
     padding-left: 0;
@@ -33,7 +33,6 @@
 .year-list-item-inner {
   display: flex;
   position: relative;
-  margin: 0 20px 20px 0;
 
   @media screen and (max-width: variables.$small-vp) {
     margin-right: 0;
@@ -48,22 +47,23 @@
   width: 100%;
   opacity: 0.5;
   filter: grayscale(1);
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
+  border-radius: var(--border-radius);
 
   .year-item:hover & {
-    opacity: 0.75;
+    filter: grayscale(0);
+    opacity: 1;
   }
 }
 
 .year-item {
   position: relative;
   z-index: 1;
-  font-family: var(--font-sans-serif-light);
-  font-size: clamp(3rem, 5vw, 20rem);
+  font-size: 2em;
   line-height: 1em;
   color: var(--color-white);
-  width: 320px;
-  height: 480px;
+  width: 300px;
+  height: 400px;
   overflow: hidden;
   opacity: 0;
 
@@ -78,35 +78,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--color-accent);
-    mix-blend-mode: multiply;
   }
 
   &.active,
   &:hover {
     z-index: 1;
-    box-shadow: 0 0 0 1px var(--color-white);
-  }
-}
-
-.extended {
-  .sub {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .sub .year-item {
-    height: 140px;
-    font-size: clamp(2rem, 2vw, 10rem);
-
-    @media screen and (max-width: variables.$small-vp) {
-      margin-bottom: 0;
-    }
   }
 }
 
 .year-text {
+  font-family: var(--font-standard);
   position: absolute;
   z-index: 1;
   top: 0;

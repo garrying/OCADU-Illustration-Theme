@@ -2,14 +2,15 @@
   @return red($hex) green($hex) blue($hex);
 }
 
-$color-accent: #ff5722;
+$color-accent: #444;
 
 :root {
-  --font-sans-serif: "GT America Standard Regular", "Helvetica Neue", helvetica, arial, sans-serif;
-  --font-sans-serif-light: "GT America Standard Light", "Helvetica Neue", helvetica, arial, sans-serif;
+  --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
+  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #{$color-accent};
   --color-accent-rgb: #{hex2rgb($color-accent)};
@@ -17,6 +18,9 @@ $color-accent: #ff5722;
   --z-middle: 200;
   --z-foreground: 300;
   --z-important: 600;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 5%), 0 1px 2px -1px rgb(0 0 0 / 5%);
+  --border-radius: 8px;
+  --border-radius-extreme: 21px;
 }
 
 // Reference: 1080p

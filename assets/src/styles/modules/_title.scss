@@ -2,57 +2,76 @@
 @use "../components/variables";
 @use "typography";
 
-.title {
-  padding: 30px;
-  min-height: 95vh;
-  background: rgb(var(--color-accent-rgb) / 10%);
+#title {
+  padding: 0;
+  min-height: 75vh;
   position: relative;
   display: flex;
-  color: var(--color-accent);
+  justify-content: space-between;
   align-items: center;
+  margin: 80px 30px 0;
+  text-align: center;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--border-radius-extreme);
+  overflow: hidden;
 
   @media screen and (max-width: variables.$small-vp) {
-    min-height: 80vh;
+    min-height: 70vh;
     padding: 20px;
-  }
-
-  a {
-    color: var(--color-accent);
-    pointer-events: auto;
   }
 
   .title-unit {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     position: relative;
     z-index: 1;
-    pointer-events: none;
+    margin-top: 50px;
   }
 
   .title-primary {
-    margin: 0 0 0.5em;
-    font-family: var(--font-sans-serif-light);
-    font-size: clamp(1em, 8.5vw, 12em);
-    line-height: 0.95em;
-
-    @media screen and (max-width: variables.$small-vp) {
-      font-size: 5em;
-    }
-
-    @include typography.heading-features;
+    font-family: var(--font-standard);
+    font-size: clamp(1rem, 5vw, 3rem);
+    font-weight: normal;
   }
 
   .title-secondary {
-    @include typography.heading-features;
-
-    max-width: 60%;
-    font-family: var(--font-sans-serif-light);
-    font-size: clamp(1em, 1.5vw, 2rem);
-    line-height: 1.4em;
+    max-width: 50ch;
+    text-align: left;
 
     @media screen and (max-width: variables.$small-vp) {
-      font-size: clamp(1.25em, 1.5vw, 2rem);
+      text-align: center;
       max-width: unset;
     }
+  }
+
+  .title-support-unit {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+    padding: 0 2em 2em;
+    width: 100%;
+    gap: 2em;
+
+    @media screen and (max-width: variables.$small-vp) {
+      align-items: center;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    a {
+      white-space: nowrap;
+    }
+  }
+
+  canvas {
+    width: 100%;
+    top: 0;
+    position: absolute;
   }
 }
