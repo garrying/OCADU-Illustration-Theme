@@ -1,0 +1,8 @@
+/*!
+ * Colcade v0.2.0
+ * Lightweight masonry layout
+ * by David DeSandro
+ * MIT license
+ */
+
+/*! jQuery v3.6.4 -ajax,-ajax/jsonp,-ajax/load,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-deprecated/ajax-event-alias,-effects,-effects/animatedSelector,-effects/Tween | (c) OpenJS Foundation and other contributors | jquery.org/license */
