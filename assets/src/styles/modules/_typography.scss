@@ -12,7 +12,8 @@
 
 @font-face {
   font-family: Standard;
-  src: url('../fonts/standard-book-webfont.woff2') format('woff2'),
+  src: url('../fonts/standard-book-webfont.woff2') format('woff2');
+  font-display: swap;
 }
 
 // Base
