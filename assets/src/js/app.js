@@ -234,7 +234,6 @@ Velocity('registerSequence', 'fadeIn', {
             app._ocadMasonry(app.settings.masonryContainerHome)
           }
           $(app.settings.masonryContainerHome).addClass('ready')
-          lazySizes.autoSizer.checkElems()
         }
       }
     },
