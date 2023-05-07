@@ -370,7 +370,6 @@ function ocaduillustration_gallery_filter( $attr, $attachment ) {
   }
   $attr['alt']     = 'Illustration by ' . get_the_title() . '';
   $attr['class']   = 'lazyload blur-up';
-  $attr['loading'] = 'lazy';
   if ( is_home() || is_archive() ) {
     unset( $attr['title'] );
   } else {
