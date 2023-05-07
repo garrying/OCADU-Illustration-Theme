@@ -318,7 +318,6 @@ function ocaduillustration_social_meta() {
     echo '<meta name="twitter:image:src" content="' . esc_url( ocaduillustration_get_socialimage( 'twitter-index' ) ) . '">' . "\n";
 
     echo '<meta name="description" content="' . esc_html( $social_description ) . '">' . "\n";
-    echo '<link rel="shortcut icon" href="">'; // phpcs:ignore
 
   }
   echo '<!-- end social meta -->' . "\n";
