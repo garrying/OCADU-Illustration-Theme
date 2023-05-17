@@ -21,6 +21,10 @@
   margin: 0 auto;
   width: calc(100vw - 40px);
 
+  @media screen and (max-width: variables.$small-vp) {
+    width: calc(100vw - 20px);
+  }
+
   &.ready {
     opacity: 1;
   }
