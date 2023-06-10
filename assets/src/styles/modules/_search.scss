@@ -73,7 +73,7 @@
 }
 
 .autoComplete_result { /* stylelint-disable-line */
-  display: inline-flex;
+  max-width: fit-content;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
   color: rgb(0 0 0 / 50%);
@@ -93,7 +93,7 @@
     background: transparent;
   }
 
-  &.autoComplete_selected { /* stylelint-disable-line */
+  &:hover, &.autoComplete_selected { /* stylelint-disable-line */
     margin-left: .5em;
   }
 }

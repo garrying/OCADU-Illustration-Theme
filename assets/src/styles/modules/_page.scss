@@ -5,11 +5,10 @@
   font-family: var(--font-standard);
   font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
-  display: flex;
   line-height: 1em;
   font-weight: normal;
   margin: 230px auto 160px;
-  justify-content: center;
+  text-align: center;
 }
 
 .faculty-list {
