@@ -11,7 +11,7 @@ jobs:
       name: production
       url: https://www.ocaduillustration.com
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy theme
         uses: Burnett01/rsync-deployments@6.0.0
         with:
