@@ -2,7 +2,6 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -56,12 +55,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
-    }),
-    new BrowserSyncPlugin({
-      proxy: "https://ocaduillustration.test/",
-      files: [ './assets/dist/**/*.css', './assets/dist/**/*.js', './**/*.php' ],
-      injectCss: true,
-    }, { reload: false, }),
+    })
   ],
   stats: 'normal'
 }
