@@ -1,9 +1,7 @@
 <?php get_header(); ?>
 
-  <?php
-  while ( have_posts() ) :
-    the_post();
-  ?>
+  <?php while (have_posts()):
+    the_post(); ?>
 
     <article id="post-<?php the_ID(); ?>" class="page-inner">
     <header class="entry-header">
@@ -14,6 +12,7 @@
     </div><!-- .entry-content -->
     </article><!-- #post -->
 
-  <?php endwhile; ?>
+  <?php
+  endwhile; ?>
 
 <?php get_footer(); ?>

@@ -1,10 +1,8 @@
 {
-    "env": {
-        "jquery": true,
-        "browser": true,
-        "es2022": true
-    },
-    "extends": [
-        "standard"
-    ]
+  "env": {
+    "jquery": true,
+    "browser": true,
+    "es2022": true
+  },
+  "extends": ["standard"]
 }
