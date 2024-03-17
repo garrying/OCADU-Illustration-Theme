@@ -207,7 +207,7 @@ endif;
  */
 function ocaduillustration_gallery_style_override()
 {
-  return "<div id='pack-content' class='grid gallery-grid'><div class='grid-col grid-col-1'></div>
+  return "<div id='pack-content' class='flex flex-wrap gallery-grid'><div class='grid-col grid-col-1'></div>
   <div class='grid-col grid-col-2'></div>
   <div class='grid-col grid-col-3'></div>
   <div class='grid-col grid-col-4'></div>";

@@ -1,6 +1,3 @@
-@use "../components/variables";
-@use "typography";
-
 // General background
 
 .lock-scroll {
@@ -20,8 +17,8 @@ body {
   color: var(--color-site-font);
   background-color: var(--color-site-background);
   transition: 1s ease-in-out background-color;
-
-  @include typography.font-smoothing(on);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {

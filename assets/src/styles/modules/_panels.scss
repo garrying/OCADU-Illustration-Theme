@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../components/variables";
-
 .panel {
   position: fixed;
   inset: 0;
@@ -33,7 +30,7 @@
   padding: 1em;
   color: var(--color-site-font);
   
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     inset: auto auto 1em calc(50% - 22px);
   }
 }

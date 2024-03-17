@@ -23,7 +23,7 @@
   echo '</h2>';
 } ?>
 
-<div id="illustrators" class="grid illustrators-grid archive-grid">
+<div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
   <div class="grid-col grid-col-1"></div>
   <div class="grid-col grid-col-2"></div>
   <div class="grid-col grid-col-3"></div>

@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../components/variables";
-
 .section-indicator-index {
   font-family: var(--font-standard);
   font-size: clamp(1rem, 5vw, 3rem);
@@ -26,7 +23,7 @@
   margin: 130px auto;
   line-height: 1.45em;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     max-width: none;
     margin: 8em 0;
@@ -46,7 +43,7 @@
   }
 
   .faculty-list {
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       max-width: none;
     }
   }
@@ -55,7 +52,7 @@
 #post-6 {
   max-width: 60vw;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     max-width: none;
     margin-top: 8em;
