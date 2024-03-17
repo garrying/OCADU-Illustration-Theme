@@ -183,7 +183,7 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    border-radius: var(--border-radius);;
+    border-radius: var(--border-radius);
     border-top: 0;
     position: fixed;
     left: 20px;
