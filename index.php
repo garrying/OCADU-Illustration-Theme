@@ -38,7 +38,7 @@
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="grid illustrators-grid home-grid">
+  <div id="illustrators" class="flex flex-wrap illustrators-grid home-grid">
 
     <?php if ($ocaduillustration_home_index->have_posts()): ?>
 

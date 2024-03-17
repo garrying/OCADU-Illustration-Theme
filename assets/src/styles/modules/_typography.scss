@@ -1,15 +1,3 @@
-// Font smoothing
-
-@mixin font-smoothing($value: on) {
-  @if $value == on {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-  } @else {
-    -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: subpixel-antialiased;
-  }
-}
-
 @font-face {
   font-family: Standard;
   src: url('../fonts/standard-book-webfont.woff2') format('woff2');

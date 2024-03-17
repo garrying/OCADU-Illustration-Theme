@@ -1,10 +1,6 @@
-@use "sass:color";
-@use "../components/variables";
-@use "typography";
-
 .home {
   .header-items-wrapper {
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       width: 50%;
     }
   }

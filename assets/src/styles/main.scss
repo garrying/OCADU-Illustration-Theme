@@ -1,27 +1,28 @@
-@use "vendor/reset";
-@use "vendor/justifiedGallery";
+@tailwind base;
 
-// Component styles (e.g. mixins, vars)
+@import "vendor/justifiedGallery";
 
-@use "components/variables";
-@use "components/helpers";
+/* Component styles (e.g. mixins, vars) */
 
-// Modules styles (e.g. layouts, typography)
+@import "components/variables";
 
-@use "modules/typography";
-@use "modules/base";
-@use "modules/figures";
-@use "modules/lists";
-@use "modules/forms";
-@use "modules/grids";
-@use "modules/panels";
-@use "modules/search";
-@use "modules/page";
-@use "modules/page_error";
-@use "modules/yearselect";
-@use "modules/header";
-@use "modules/layout";
-@use "modules/miniview";
-@use "modules/title";
-@use "modules/home";
-@use "modules/loader";
+/* Modules styles (e.g. layouts, typography) */
+
+@import "modules/typography";
+@import "modules/base";
+@import "modules/figures";
+@import "modules/grids";
+@import "modules/panels";
+@import "modules/search";
+@import "modules/page";
+@import "modules/page_error";
+@import "modules/yearselect";
+@import "modules/header";
+@import "modules/layout";
+@import "modules/miniview";
+@import "modules/title";
+@import "modules/home";
+@import "modules/loader";
+
+@tailwind components;
+@tailwind utilities;
