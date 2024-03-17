@@ -28,7 +28,7 @@
     color: var(--color-white);
     display: flex;
     align-items: center;
-    
+
     &::before {
       color: var(--color-accent);
       content: '↖';
@@ -78,7 +78,9 @@
   padding: 1em 1.5em;
   white-space: nowrap;
   pointer-events: auto;
-  transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  transition:
+    color 200ms ease-in-out,
+    background 200ms ease-in-out;
   appearance: none;
   color: var(--color-site-font);
 
@@ -100,6 +102,6 @@
 }
 
 #search-link::after {
-  content: "Search";
+  content: 'Search';
   display: block;
 }
