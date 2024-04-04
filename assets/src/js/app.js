@@ -1,9 +1,10 @@
 import '../styles/main.scss'
-import autoComplete from '@tarekraafat/autocomplete.js'
+import * as AutoComplete from '@tarekraafat/autocomplete.js'
 import * as lazySizes from 'lazysizes'
 import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
-import $ from 'jquery/dist/jquery.slim.min'
+import $ from 'jquery'
+import 'justifiedGallery'
 import Velocity from 'velocity-animate/velocity.min'
 import ColorThief from 'colorthief'
 
@@ -29,9 +30,8 @@ Velocity('registerSequence', 'fadeIn', {
   '100%': {
     opacity: '1'
   }
-});
-
-(() => {
+})
+;(() => {
   const app = {
     init: () => {
       app._ocadPanelSelectButtons()
@@ -62,7 +62,7 @@ Velocity('registerSequence', 'fadeIn', {
       let knownPosition = 0
       let ticking = false
 
-      function doSomething (scrollPos, knownPosition) {
+      function doSomething(scrollPos, knownPosition) {
         if (scrollPos > knownPosition) {
           app.settings.headerInner.addClass('fade-out')
         } else {
@@ -76,17 +76,21 @@ Velocity('registerSequence', 'fadeIn', {
         }
       }
 
-      window.addEventListener('scroll', function (e) {
-        const st = window.pageYOffset || document.documentElement.scrollTop
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            doSomething(st, knownPosition)
-            ticking = false
-            knownPosition = st <= 0 ? 0 : st
-          })
-          ticking = true
-        }
-      }, { passive: true })
+      window.addEventListener(
+        'scroll',
+        function (e) {
+          const st = window.pageYOffset || document.documentElement.scrollTop
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              doSomething(st, knownPosition)
+              ticking = false
+              knownPosition = st <= 0 ? 0 : st
+            })
+            ticking = true
+          }
+        },
+        { passive: true }
+      )
     },
 
     _ocadLoader: (e = true) => {
@@ -109,18 +113,22 @@ Velocity('registerSequence', 'fadeIn', {
       }
     },
 
-    _ocadMasonry: selector => new Colcade(document.querySelector(selector), {
-      columns: '.grid-col',
-      items: '.gallery-item'
-    }),
+    _ocadMasonry: (selector) =>
+      new Colcade(document.querySelector(selector), {
+        columns: '.grid-col',
+        items: '.gallery-item'
+      }),
 
     _ocadSearch: () => {
-      const autoCompleteJS = new autoComplete({ // eslint-disable-line
+      const autoCompleteJS = new AutoComplete({
+        // eslint-disable-line
         submit: false,
         data: {
           src: async (query) => {
             try {
-              const source = await window.fetch(`/wp-json/wp/v2/illustrator?&search=${query}`)
+              const source = await window.fetch(
+                `/wp-json/wp/v2/illustrator?&search=${query}`
+              )
               const data = await source.json()
               return data.map((item) => ({
                 title: item.title.rendered,
@@ -164,9 +172,11 @@ Velocity('registerSequence', 'fadeIn', {
         }
       })
 
-      document.querySelector('#autocomplete').addEventListener('selection', (event) => {
-        window.location.href = event.detail.selection.value.link
-      })
+      document
+        .querySelector('#autocomplete')
+        .addEventListener('selection', (event) => {
+          window.location.href = event.detail.selection.value.link
+        })
     },
 
     _ocadPanelSelect: (e) => {
@@ -176,42 +186,52 @@ Velocity('registerSequence', 'fadeIn', {
         $(e).removeClass('invert')
         app._ocadPanelsClose()
       } else {
-        $('.panel.visible').removeClass('visible').velocity('fadeOut', {
-          complete: (e) => {
-            $(e).addClass('hidden').attr('aria-hidden', true)
-          },
-          duration: 'fast'
-        })
+        $('.panel.visible')
+          .removeClass('visible')
+          .velocity('fadeOut', {
+            complete: (e) => {
+              $(e).addClass('hidden').attr('aria-hidden', true)
+            },
+            duration: 'fast'
+          })
         $('.year-item').velocity('stop')
 
         $('.header-item').addClass('inactive').removeClass('invert')
         app.settings.logo.addClass('invert')
 
         $(e).addClass('invert').removeClass('inactive')
-        $(`.${targetPanel}`).velocity(
-          'fadeIn', {
-            begin: (e) => {
-              $(e).addClass('visible').attr('aria-hidden', false).focus().velocity({ display: 'flex' })
-            },
-            duration: 200
-          })
+        $(`.${targetPanel}`).velocity('fadeIn', {
+          begin: (e) => {
+            $(e)
+              .addClass('visible')
+              .attr('aria-hidden', false)
+              .focus()
+              .velocity({ display: 'flex' })
+          },
+          duration: 200
+        })
         $('html, body').addClass('lock-scroll')
 
         if (targetPanel === 'year-select') {
-          $('.year-item').velocity({
-            opacity: 1,
-            transformdisplay: 'flex'
-          }, {
-            stagger: 100,
-            duration: 1000
-          })
+          $('.year-item').velocity(
+            {
+              opacity: 1,
+              transformdisplay: 'flex'
+            },
+            {
+              stagger: 100,
+              duration: 1000
+            }
+          )
         }
       }
     },
 
     _ocadPanelSelectButtons: () => {
       $('.header-item').on('click', (ele) => {
-        $('.panel.velocity-animating').velocity('stop').velocity('fadeOut', { duration: 'fast' })
+        $('.panel.velocity-animating')
+          .velocity('stop')
+          .velocity('fadeOut', { duration: 'fast' })
         app._ocadPanelSelect(ele.target)
       })
     },
@@ -243,16 +263,23 @@ Velocity('registerSequence', 'fadeIn', {
 
       if (app.settings.documentBody.hasClass('home')) {
         $('.illustrator-link').on('mouseenter', (ele) => {
-          $(ele.currentTarget).find('.illustrator-meta-container').addClass('active')
+          $(ele.currentTarget)
+            .find('.illustrator-meta-container')
+            .addClass('active')
           if ($(ele.currentTarget).find('.lazyloaded').length) {
             const image = $(ele.currentTarget).find('.lazyloaded')[0]
             const BgColor = colorThief.getColor(image)
-            app.settings.documentBody.css('background-color', `rgba(${BgColor[0]} ${BgColor[1]} ${BgColor[2]} / 0.25)`)
+            app.settings.documentBody.css(
+              'background-color',
+              `rgba(${BgColor[0]} ${BgColor[1]} ${BgColor[2]} / 0.25)`
+            )
           }
         })
 
         $('.illustrator-link').on('mouseleave', (ele) => {
-          $(ele.currentTarget).find('.illustrator-meta-container').removeClass('active')
+          $(ele.currentTarget)
+            .find('.illustrator-meta-container')
+            .removeClass('active')
           app.settings.documentBody.removeAttr('style')
         })
       }
@@ -262,34 +289,51 @@ Velocity('registerSequence', 'fadeIn', {
       $('html, body').removeClass('lock-scroll')
 
       $('.header-item').removeClass('invert inactive')
-      app.settings.imageModal.velocity('fadeOut', { complete: (e) => { $(e).addClass('hidden') }, duration: 180 })
+      app.settings.imageModal.velocity('fadeOut', {
+        complete: (e) => {
+          $(e).addClass('hidden')
+        },
+        duration: 180
+      })
       app.settings.logo.removeClass('invert')
       $('.panel.velocity-animating').velocity('stop')
-      $('.panel.visible').attr('aria-hidden', true).blur().velocity('stop')
+      $('.panel.visible')
+        .attr('aria-hidden', true)
+        .blur()
+        .velocity('stop')
         .velocity('fadeOut', {
           duration: 'fast',
           complete: (e) => {
             $(e).removeClass('visible')
           }
         })
-      $('.year-item').velocity({ opacity: 0, display: 'flex' }, { duration: 'fast' })
+      $('.year-item').velocity(
+        { opacity: 0, display: 'flex' },
+        { duration: 'fast' }
+      )
     },
 
     _ocadPanelsCloseSelective: (event) => {
-      if (!$(event.target).closest('#full-image, .miniview').length &&
-        app.settings.imageModal.is(':visible')) {
+      if (
+        !$(event.target).closest('#full-image, .miniview').length &&
+        app.settings.imageModal.is(':visible')
+      ) {
         app.settings.imageModal.velocity('fadeOut', {
           complete: (e) => {
             $(e).addClass('hidden')
           },
           duration: 180
         })
-        $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass('inactive')
+        $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass(
+          'inactive'
+        )
         $('html, body').removeClass('lock-scroll')
       }
 
-      if (!$(event.target).closest('.panel, .header-item').length &&
-        $('.panel').hasClass('visible')) {
+      if (
+        !$(event.target).closest('.panel, .header-item').length &&
+        $('.panel').hasClass('visible')
+      ) {
         $('.panel').attr('aria-hidden', true)
         app._ocadPanelsClose()
       }
@@ -299,7 +343,9 @@ Velocity('registerSequence', 'fadeIn', {
       const galleryImages = []
       let nextImage
       let itemImage
-      const masonryItemAnchor = [...document.querySelectorAll('.gallery-icon-anchor')]
+      const masonryItemAnchor = [
+        ...document.querySelectorAll('.gallery-icon-anchor')
+      ]
 
       if (app.settings.documentBody.hasClass('single')) {
         const galleryItems = (ele, i) => {
@@ -379,15 +425,19 @@ Velocity('registerSequence', 'fadeIn', {
         Masonry item click
       */
 
-      $(app.settings.masonryContainer).on('click', '.gallery-icon-anchor', (event) => {
-        event.preventDefault()
-        app._ocadLoader()
-        itemImage = $(event.currentTarget)
-        app.settings.imageIndex = itemImage.data('index')
-        $('.image-modal-image').html(imageModalSetter(itemImage))
-        lazySizes.loader.unveil(document.querySelector('#full-image'))
-        miniViewUpdate(app.settings.imageIndex)
-      })
+      $(app.settings.masonryContainer).on(
+        'click',
+        '.gallery-icon-anchor',
+        (event) => {
+          event.preventDefault()
+          app._ocadLoader()
+          itemImage = $(event.currentTarget)
+          app.settings.imageIndex = itemImage.data('index')
+          $('.image-modal-image').html(imageModalSetter(itemImage))
+          lazySizes.loader.unveil(document.querySelector('#full-image'))
+          miniViewUpdate(app.settings.imageIndex)
+        }
+      )
 
       const modalReviel = () => {
         app._ocadLoader(false)
@@ -408,7 +458,9 @@ Velocity('registerSequence', 'fadeIn', {
         Modal image changer
       */
 
-      const modalImageChanger = (imageItem = galleryImages[app.settings.imageIndex]) => {
+      const modalImageChanger = (
+        imageItem = galleryImages[app.settings.imageIndex]
+      ) => {
         Velocity(
           $('#full-image'),
           { opacity: 0 },
@@ -431,10 +483,7 @@ Velocity('registerSequence', 'fadeIn', {
           image.onload = () => {
             imageCaptionSetter(imageItem.caption)
             app._ocadLoader(false)
-            $('#full-image').velocity(
-              { opacity: 1 },
-              app.settings.easeOutBack
-            )
+            $('#full-image').velocity({ opacity: 1 }, app.settings.easeOutBack)
           }
         })
       }
@@ -490,7 +539,10 @@ Velocity('registerSequence', 'fadeIn', {
       */
 
       document.addEventListener('lazybeforeunveil', (e) => {
-        if ($(e.target).is('#full-image') && !$(e.target).hasClass('lazyloaded')) {
+        if (
+          $(e.target).is('#full-image') &&
+          !$(e.target).hasClass('lazyloaded')
+        ) {
           modalReviel()
         }
       })
@@ -531,11 +583,13 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadUIbinding: () => {
       $('.close-panel').on('click', app._ocadPanelsClose)
-      $(document).on('click', app._ocadPanelsCloseSelective).keydown((e) => {
-        if (e.keyCode === 27) {
-          app._ocadPanelsClose()
-        }
-      })
+      $(document)
+        .on('click', app._ocadPanelsCloseSelective)
+        .keydown((e) => {
+          if (e.keyCode === 27) {
+            app._ocadPanelsClose()
+          }
+        })
     }
   }
 
