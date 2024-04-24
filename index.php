@@ -12,7 +12,7 @@
         [
           'taxonomy' => 'gradyear',
           'field' => 'slug',
-          'terms' => $ocaduillustration_grad_year[0]->name,
+          'terms' => '2019',
         ],
         [
           'taxonomy' => 'gradyear',
@@ -25,20 +25,15 @@
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
   <div id="title">
-    <div class="title-unit">
-      <div class="segment-first">
-        <h1 class="title-primary">OCAD U Illustration 2023</h1>
-      </div>
-    </div>
     <div class="title-support-unit">
         <div class="title-secondary">
-          <p>Spanning 2009&ndash;2023<br /> Maintained by the Illustration Program at OCAD University</p>
+          <p>Spanning 2009&ndash;2024<br /> Maintained by the Illustration Program at OCAD University</p>
           <a href="/about" class="about">About the archive</a>
         </div>
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="flex flex-wrap illustrators-grid home-grid">
+  <div class="grid js-grid">
 
     <?php if ($ocaduillustration_home_index->have_posts()): ?>
 
@@ -48,7 +43,7 @@
       <?php while ($ocaduillustration_home_index->have_posts()):
         $ocaduillustration_home_index->the_post(); ?>
 
-        <?php get_template_part('content', get_post_format()); ?>
+        <div><figure class="js-plane" data-src="<?php the_post_thumbnail_url('illustrator-large'); ?>"></figure></div>
 
       <?php
       endwhile; ?>

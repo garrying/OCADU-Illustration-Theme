@@ -1,193 +1,293 @@
-import Two from 'two.js'
-import Matter from 'matter-js'
-import MatterAttractors from 'matter-attractors'
+import THREE from 'three.js'
+import gsap from 'gsap'
+import VirtualScroll from 'virtual-scroll'
 
-const entities = []
-const TitleElement = document.getElementById('title')
+let ww = document.getElementById('title').offsetWidth
+let wh = document.getElementById('title').offsetHeight
 
-const two = new Two({
-  type: Two.Types.canvas,
-  fitted: true,
-  autostart: true
-}).appendTo(TitleElement)
+const isFirefox = navigator.userAgent.indexOf('Firefox') > -1
+const isWindows = navigator.appVersion.indexOf('Win') != -1
 
-const solver = Matter.Engine.create()
-solver.gravity.y = 0
+const mouseMultiplier = 0.6
+const firefoxMultiplier = 20
 
-const bounds = {
-  length: 0,
-  thickness: 0,
-  properties: {
-    isStatic: true
-  }
+const multipliers = {
+  mouse: isWindows ? mouseMultiplier * 2 : mouseMultiplier,
+  firefox: isWindows ? firefoxMultiplier * 2 : firefoxMultiplier
 }
 
-bounds.top = createBoundary(bounds.length, bounds.thickness)
-bounds.left = createBoundary(bounds.thickness, bounds.length)
-bounds.right = createBoundary(bounds.thickness, bounds.length)
-bounds.bottom = createBoundary(bounds.length, bounds.thickness)
+/** CORE **/
+class Core {
+  constructor() {
+    this.tx = 0
+    this.ty = 0
+    this.cx = 0
+    this.cy = 0
 
-Matter.World.add(solver.world, [
-  bounds.top.entity,
-  bounds.left.entity,
-  bounds.right.entity,
-  bounds.bottom.entity
-])
+    this.diff = 0
 
-Matter.use(MatterAttractors)
+    this.wheel = { x: 0, y: 0 }
+    this.on = { x: 0, y: 0 }
+    this.max = { x: 0, y: 0 }
 
-const attractiveBody = Matter.Bodies.circle(
-  TitleElement.clientWidth / 2,
-  TitleElement.clientHeight / 2,
-  100,
-  {
-    isStatic: true,
+    this.isDragging = false
 
-    plugin: {
-      attractors: [
-        function (bodyA, bodyB) {
-          return {
-            x: (bodyA.position.x - bodyB.position.x) * 1e-6,
-            y: (bodyA.position.y - bodyB.position.y) * 1e-6
-          }
-        }
-      ]
-    }
+    this.tl = gsap.timeline({ paused: true })
+
+    this.el = document.querySelector('.js-grid')
+
+    /** GL specifics **/
+    this.scene = new THREE.Scene()
+
+    this.camera = new THREE.OrthographicCamera(
+      ww / -2,
+      ww / 2,
+      wh / 2,
+      wh / -2,
+      1,
+      1000
+    )
+    this.camera.lookAt(this.scene.position)
+    this.camera.position.z = 1
+
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    this.renderer.setSize(ww, wh)
+    this.renderer.setPixelRatio(
+      gsap.utils.clamp(1, 1.5, window.devicePixelRatio)
+    )
+
+    document.getElementById('title').appendChild(this.renderer.domElement)
+    /** Gl specifics end **/
+
+    this.addPlanes()
+    this.addEvents()
+    this.resize()
   }
-)
 
-Matter.World.add(solver.world, attractiveBody)
+  addEvents() {
+    gsap.ticker.add(this.tick)
 
-const defaultStyles = {
-  margin: {
-    top: 100,
-    left: 0,
-    right: 0,
-    bottom: 0
+    window.addEventListener('mousemove', this.onMouseMove)
+    window.addEventListener('mousedown', this.onMouseDown)
+    window.addEventListener('mouseup', this.onMouseUp)
+    window.addEventListener('wheel', this.onWheel)
+    window.addEventListener('resize', this.resize)
   }
-}
 
-addShapes()
-resize()
+  addPlanes() {
+    const planes = [...document.querySelectorAll('.js-plane')]
 
-const mouse = addMouseInteraction()
-two.bind('update', update)
+    this.planes = planes.map((el, i) => {
+      const plane = new Plane()
+      plane.init(el, i)
 
-function addMouseInteraction() {
-  const mouse = Matter.Mouse.create(TitleElement)
-  const mouseConstraint = Matter.MouseConstraint.create(solver, {
-    mouse,
-    constraint: {
-      stiffness: 0.2
-    }
-  })
+      this.scene.add(plane)
 
-  Matter.World.add(solver.world, mouseConstraint)
-
-  Matter.Events.on(solver, 'afterUpdate', function () {
-    if (!mouse.position.x) {
-      return
-    }
-
-    Matter.Body.translate(attractiveBody, {
-      x: mouse.position.x - attractiveBody.position.x,
-      y: mouse.position.y - attractiveBody.position.y
+      return plane
     })
-  })
-
-  return mouseConstraint
-}
-
-mouse.mouse.element.removeEventListener('mousewheel', mouse.mouse.mousewheel)
-mouse.mouse.element.removeEventListener(
-  'DOMMouseScroll',
-  mouse.mouse.mousewheel
-)
-mouse.mouse.element.removeEventListener('touchmove', mouse.mouse.mousemove)
-mouse.mouse.element.removeEventListener('touchstart', mouse.mouse.mousedown)
-mouse.mouse.element.removeEventListener('touchend', mouse.mouse.mouseup)
-
-function resize() {
-  window.addEventListener('resize', () => {
-    two.width = TitleElement.clientWidth
-    two.height = TitleElement.clientHeight
-  })
-}
-
-function addShapes() {
-  let x = 0
-  let y = 0
-
-  for (let i = 0; i < 60; i++) {
-    const group = new Two.Group()
-
-    const rect = {
-      width: 0,
-      height: 0
-    }
-    let ox = x + rect.width
-    let oy = y + rect.height
-
-    const ca = x + rect.width
-    const cb = two.width
-
-    if (ca >= cb) {
-      x = defaultStyles.margin.left
-      y += defaultStyles.margin.top + defaultStyles.margin.bottom
-
-      ox = x + rect.width / 2
-      oy = y + rect.height / 2
-    }
-
-    const rectangle = new Two.RoundedRectangle(0, 0, 100, 100, 8)
-    rectangle.fill = 'rgb(251,249,244)'
-    rectangle.noStroke()
-
-    const entity = Matter.Bodies.rectangle(ox, oy, 1, 1)
-    Matter.Body.scale(entity, 100, 100)
-
-    entity.scale = new Two.Vector(100, 100)
-    entity.object = group
-    entities.push(entity)
-
-    x += 100 + defaultStyles.margin.left + defaultStyles.margin.right
-
-    group.rectangle = rectangle
-    group.entity = entity
-
-    group.add(rectangle)
-    two.add(group)
   }
 
-  Matter.World.add(solver.world, entities)
-}
+  tick = () => {
+    const xDiff = this.tx - this.cx
+    const yDiff = this.ty - this.cy
 
-function update() {
-  const allBodies = Matter.Composite.allBodies(solver.world)
-  Matter.MouseConstraint.update(mouse, allBodies)
-  Matter.MouseConstraint._triggerEvents(mouse)
+    this.cx += xDiff * 0.085
+    this.cx = Math.round(this.cx * 100) / 100
 
-  Matter.Engine.update(solver)
+    this.cy += yDiff * 0.085
+    this.cy = Math.round(this.cy * 100) / 100
 
-  for (let i = 0; i < entities.length; i++) {
-    const entity = entities[i]
-    entity.object.position.copy(entity.position)
-    entity.object.rotation = entity.angle
+    this.diff = Math.max(Math.abs(yDiff * 0.0001), Math.abs(xDiff * 0.0001))
+
+    this.planes.length &&
+      this.planes.forEach((plane) =>
+        plane.update(this.cx, this.cy, this.max, this.diff)
+      )
+
+    this.renderer.render(this.scene, this.camera)
+  }
+
+  onMouseMove = ({ clientX, clientY }) => {
+    if (!this.isDragging) return
+
+    this.tx = this.on.x + clientX * 2.5
+    this.ty = this.on.y - clientY * 2.5
+  }
+
+  onMouseDown = ({ clientX, clientY }) => {
+    if (this.isDragging) return
+
+    this.isDragging = true
+
+    this.on.x = this.tx - clientX * 2.5
+    this.on.y = this.ty + clientY * 2.5
+  }
+
+  onMouseUp = ({ clientX, clientY }) => {
+    if (!this.isDragging) return
+
+    this.isDragging = false
+  }
+
+  onWheel = (e) => {
+    const { mouse, firefox } = multipliers
+
+    this.wheel.x = e.wheelDeltaX || e.deltaX * -1
+    this.wheel.y = e.wheelDeltaY || e.deltaY * -1
+
+    if (isFirefox && e.deltaMode === 1) {
+      this.wheel.x *= firefox
+      this.wheel.y *= firefox
+    }
+
+    this.wheel.y *= mouse
+    this.wheel.x *= mouse
+
+    this.tx += this.wheel.x
+    this.ty -= this.wheel.y
+  }
+
+  resize = () => {
+    ww = document.getElementById('title').offsetWidth
+    wh = document.getElementById('title').offsetHeight
+
+    const { bottom, right } = this.el.getBoundingClientRect()
+
+    this.max.x = right
+    this.max.y = bottom
   }
 }
 
-function createBoundary(width, height) {
-  const rectangle = two.makeRectangle(0, 0, width, height)
-  rectangle.visible = false
+/** PLANE **/
+const loader = new THREE.TextureLoader()
 
-  rectangle.entity = Matter.Bodies.rectangle(
-    0,
-    0,
-    width,
-    height,
-    bounds.properties
-  )
-  rectangle.entity.position = rectangle.position
+const vertexShader = `
+precision mediump float;
 
-  return rectangle
+uniform float u_diff;
+
+varying vec2 vUv;
+
+void main(){
+  vec3 pos = position;
+  
+  pos.y *= 1. - u_diff;
+  pos.x *= 1. - u_diff;
+
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);;
 }
+`
+
+const fragmentShader = `
+precision mediump float;
+
+uniform vec2 u_res;
+uniform vec2 u_size;
+
+uniform sampler2D u_texture;
+
+vec2 cover(vec2 screenSize, vec2 imageSize, vec2 uv) {
+  float screenRatio = screenSize.x / screenSize.y;
+  float imageRatio = imageSize.x / imageSize.y;
+
+  vec2 newSize = screenRatio < imageRatio 
+      ? vec2(imageSize.x * (screenSize.y / imageSize.y), screenSize.y)
+      : vec2(screenSize.x, imageSize.y * (screenSize.x / imageSize.x));
+  vec2 newOffset = (screenRatio < imageRatio 
+      ? vec2((newSize.x - screenSize.x) / 2.0, 0.0) 
+      : vec2(0.0, (newSize.y - screenSize.y) / 2.0)) / newSize;
+
+  return uv * screenSize / newSize + newOffset;
+}
+
+varying vec2 vUv;
+
+void main() {
+    vec2 uv = vUv;
+
+    vec2 uvCover = cover(u_res, u_size, uv);
+    vec4 texture = texture2D(u_texture, uvCover);
+	
+    gl_FragColor = texture;
+}
+`
+
+const geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
+const material = new THREE.ShaderMaterial({
+  fragmentShader,
+  vertexShader
+})
+
+class Plane extends THREE.Object3D {
+  init(el, i) {
+    this.el = el
+
+    this.x = 0
+    this.y = 0
+
+    this.my = 1 - (i % 5) * 0.1
+
+    this.geometry = geometry
+    this.material = material.clone()
+
+    this.material.uniforms = {
+      u_texture: { value: 0 },
+      u_res: { value: new THREE.Vector2(1, 1) },
+      u_size: { value: new THREE.Vector2(1, 1) },
+      u_diff: { value: 0 }
+    }
+
+    this.texture = loader.load(this.el.dataset.src, (texture) => {
+      texture.minFilter = THREE.LinearFilter
+      texture.generateMipmaps = false
+
+      const { naturalWidth, naturalHeight } = texture.image
+      const { u_size, u_texture } = this.material.uniforms
+
+      u_texture.value = texture
+      u_size.value.x = naturalWidth
+      u_size.value.y = naturalHeight
+    })
+
+    this.mesh = new THREE.Mesh(this.geometry, this.material)
+    this.add(this.mesh)
+
+    this.resize()
+  }
+
+  update = (x, y, max, diff) => {
+    const { right, bottom } = this.rect
+    const { u_diff } = this.material.uniforms
+
+    this.y =
+      gsap.utils.wrap(-(max.y - bottom), bottom, y * this.my) - this.yOffset
+
+    this.x = gsap.utils.wrap(-(max.x - right), right, x) - this.xOffset
+
+    u_diff.value = diff
+
+    this.position.x = this.x
+    this.position.y = this.y
+  }
+
+  resize() {
+    this.rect = this.el.getBoundingClientRect()
+
+    const { left, top, width, height } = this.rect
+    const { u_res, u_toRes, u_pos, u_offset } = this.material.uniforms
+
+    this.xOffset = left + width / 2 - ww / 2
+    this.yOffset = top + height / 2 - wh / 2
+
+    this.position.x = this.xOffset
+    this.position.y = this.yOffset
+
+    u_res.value.x = width
+    u_res.value.y = height
+
+    this.mesh.scale.set(width, height, 1)
+  }
+}
+
+new Core()
