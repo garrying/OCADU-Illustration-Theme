@@ -238,23 +238,18 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadShuffle: (elems) => {
       const elements = $(elems).sort(() => Math.random() - 0.5)
-      $(app.settings.masonryContainerHome).append(elements).justifiedGallery({
-        rowHeight: 400,
-        lastRow: 'nojustify',
-        margins: 10
-      })
+      $(app.settings.masonryContainerHome).append(elements)
     },
 
     _ocadHomeLoader: () => {
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
         window.onload = () => {
-          if (app.settings.documentBody.hasClass('home')) {
-            app._ocadShuffle(document.querySelectorAll('.gallery-item'))
-          } else {
-            app._ocadMasonry(app.settings.masonryContainerHome)
-          }
+          app._ocadMasonry(app.settings.masonryContainerHome)
           $(app.settings.masonryContainerHome).addClass('ready')
         }
+      }
+      if (app.settings.documentBody.hasClass('home')) {
+        app._ocadShuffle(document.querySelectorAll('.gallery-item'))
       }
     },
 

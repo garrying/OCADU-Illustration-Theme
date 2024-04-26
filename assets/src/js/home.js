@@ -1,4 +1,5 @@
 import THREE from 'three.js'
+
 import gsap from 'gsap'
 import VirtualScroll from 'virtual-scroll'
 
@@ -16,6 +17,12 @@ const multipliers = {
   firefox: isWindows ? firefoxMultiplier * 2 : firefoxMultiplier
 }
 
+let intersects = []
+let hovered = {}
+
+let pointerDownTimestampRef = 0;
+let pointerUpTimestampRef = 0;
+
 /** CORE **/
 class Core {
   constructor() {
@@ -31,6 +38,7 @@ class Core {
     this.max = { x: 0, y: 0 }
 
     this.isDragging = false
+    this.mousedown = false
 
     this.tl = gsap.timeline({ paused: true })
 
@@ -72,6 +80,44 @@ class Core {
     window.addEventListener('mouseup', this.onMouseUp)
     window.addEventListener('wheel', this.onWheel)
     window.addEventListener('resize', this.resize)
+
+    const raycaster = new THREE.Raycaster()
+    const mouse = new THREE.Vector2()
+
+    window.addEventListener('pointermove', (e) => {
+      mouse.set((e.clientX / ww) * 2 - 1, -(e.clientY / wh) * 2 + 1)
+      raycaster.setFromCamera(mouse, this.camera)
+      intersects = raycaster.intersectObjects(this.scene.children, true)
+
+      Object.keys(hovered).forEach((key) => {
+        const hit = intersects.find((hit) => hit.object.uuid === key)
+        if (hit === undefined) {
+          const hoveredItem = hovered[key]
+          if (hoveredItem.object.onPointerOver) hoveredItem.object.onPointerOut(hoveredItem)
+          delete hovered[key]
+        }
+      })
+
+      intersects.forEach((hit) => {
+        // If a hit has not been flagged as hovered we must call onPointerOver
+        if (!hovered[hit.object.uuid]) {
+          hovered[hit.object.uuid] = hit
+          if (hit.object.onPointerOver) hit.object.onPointerOver(hit)
+        }
+        // Call onPointerMove
+        if (hit.object.onPointerMove) hit.object.onPointerMove(hit)
+      })
+    })
+
+    window.addEventListener('mouseup', () => {
+      const isNearlyAClick = pointerUpTimestampRef - pointerDownTimestampRef < 100
+      if (isNearlyAClick) {
+        intersects.forEach((hit) => {
+          window.location = hit.object.userData.link
+        })
+      }
+    })
+
   }
 
   addPlanes() {
@@ -115,6 +161,7 @@ class Core {
   }
 
   onMouseDown = ({ clientX, clientY }) => {
+    pointerDownTimestampRef = Date.now()
     if (this.isDragging) return
 
     this.isDragging = true
@@ -124,6 +171,7 @@ class Core {
   }
 
   onMouseUp = ({ clientX, clientY }) => {
+    pointerUpTimestampRef = Date.now()
     if (!this.isDragging) return
 
     this.isDragging = false
@@ -148,18 +196,47 @@ class Core {
   }
 
   resize = () => {
+    this.planes.map((plane) => {
+      this.scene.remove(plane)
+    })
+
+    this.addPlanes()
+
     ww = document.getElementById('title').offsetWidth
     wh = document.getElementById('title').offsetHeight
+
+    this.renderer.setSize(ww, wh)
 
     const { bottom, right } = this.el.getBoundingClientRect()
 
     this.max.x = right
     this.max.y = bottom
+
+    this.camera = new THREE.OrthographicCamera(
+      ww / -2,
+      ww / 2,
+      wh / 2,
+      wh / -2,
+      1,
+      1000
+    )
+    this.camera.lookAt(this.scene.position)
+    this.camera.position.z = 1
   }
 }
 
 /** PLANE **/
-const loader = new THREE.TextureLoader()
+
+const loadingManager = new THREE.LoadingManager()
+
+loadingManager.onProgress = function (item, loaded, total) {
+  if (loaded === total) {
+    document.querySelector('canvas').style.display = 'block'
+    document.querySelector('canvas').style.opacity = '1'
+  }
+}
+
+const loader = new THREE.TextureLoader(loadingManager)
 
 const vertexShader = `
 precision mediump float;
@@ -238,19 +315,23 @@ class Plane extends THREE.Object3D {
       u_diff: { value: 0 }
     }
 
-    this.texture = loader.load(this.el.dataset.src, (texture) => {
-      texture.minFilter = THREE.LinearFilter
-      texture.generateMipmaps = false
+    this.texture = loader.load(
+      this.el.dataset.src,
+      (texture) => {
+        texture.minFilter = THREE.LinearFilter
+        texture.generateMipmaps = false
 
-      const { naturalWidth, naturalHeight } = texture.image
-      const { u_size, u_texture } = this.material.uniforms
+        const { naturalWidth, naturalHeight } = texture.image
+        const { u_size, u_texture } = this.material.uniforms
 
-      u_texture.value = texture
-      u_size.value.x = naturalWidth
-      u_size.value.y = naturalHeight
-    })
+        u_texture.value = texture
+        u_size.value.x = naturalWidth
+        u_size.value.y = naturalHeight
+      }
+    )
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
+    this.mesh.userData = {link: this.el.dataset.href}
     this.add(this.mesh)
 
     this.resize()

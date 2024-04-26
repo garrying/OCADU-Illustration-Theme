@@ -33,7 +33,7 @@
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div class="grid js-grid">
+  <div id="illustrators" class="grid js-grid">
 
     <?php if ($ocaduillustration_home_index->have_posts()): ?>
 
@@ -43,7 +43,7 @@
       <?php while ($ocaduillustration_home_index->have_posts()):
         $ocaduillustration_home_index->the_post(); ?>
 
-        <div><figure class="js-plane" data-src="<?php the_post_thumbnail_url('illustrator-large'); ?>"></figure></div>
+        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url('illustrator-large'); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
 
       <?php
       endwhile; ?>

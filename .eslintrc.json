@@ -4,5 +4,5 @@
     "browser": true,
     "es2022": true
   },
-  "extends": ["standard", "plugin:prettier/recommended"]
+  "extends": ["plugin:prettier/recommended"]
 }

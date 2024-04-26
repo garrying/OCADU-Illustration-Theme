@@ -3,7 +3,7 @@
   \****************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
-! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */ /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -167,6 +167,7 @@ textarea {
   font-size: 100%; /* 1 */
   font-weight: inherit; /* 1 */
   line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
   color: inherit; /* 1 */
   margin: 0; /* 2 */
   padding: 0; /* 3 */
@@ -185,9 +186,9 @@ select {
 2. Remove default button styles.
 */
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+input:where([type=button]),
+input:where([type=reset]),
+input:where([type=submit]) {
   -webkit-appearance: button; /* 1 */
   background-color: transparent; /* 2 */
   background-image: none; /* 2 */
@@ -408,6 +409,10 @@ video {
   --tw-backdrop-opacity: ;
   --tw-backdrop-saturate: ;
   --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
 }
 
 ::backdrop {
@@ -458,6 +463,10 @@ video {
   --tw-backdrop-opacity: ;
   --tw-backdrop-saturate: ;
   --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
 }
 
 /*!
@@ -582,8 +591,11 @@ video {
 /* Component styles (e.g. mixins, vars) */
 :root {
   --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
-  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif; /* stylelint-disable-line value-keyword-case */
-  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* stylelint-disable-line value-keyword-case */
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif; /* stylelint-disable-line value-keyword-case */
+  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
   --color-site-background: #fbf9f4;
@@ -618,7 +630,13 @@ sup {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
 }
 
-h1, h2, h3, h4, h5, h6, blockquote {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
   text-wrap: balance;
 }
 
@@ -1010,7 +1028,8 @@ figure .wp-caption-text {
   }
 }
 
-.autoComplete_list { /* stylelint-disable-line */
+.autoComplete_list {
+  /* stylelint-disable-line */
   position: absolute;
   padding-top: 1em;
   line-height: 1em;
@@ -1027,13 +1046,15 @@ figure .wp-caption-text {
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-.autoComplete_wrapper > ul[hidden], .autoComplete_wrapper > ul:empty {
+.autoComplete_wrapper > ul[hidden],
+.autoComplete_wrapper > ul:empty {
   display: block;
   opacity: 0;
   transform: scale(0);
 }
 
-.autoComplete_result { /* stylelint-disable-line */
+.autoComplete_result {
+  /* stylelint-disable-line */
   max-width: fit-content;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
@@ -1045,13 +1066,16 @@ figure .wp-caption-text {
   box-shadow: var(--shadow);
   border-radius: var(--border-radius);
 }
-.autoComplete_result:hover, .autoComplete_result.autoComplete_selected, .autoComplete_result .autoComplete_highlighted { /* stylelint-disable-line */
+.autoComplete_result:hover, .autoComplete_result.autoComplete_selected,
+.autoComplete_result .autoComplete_highlighted {
+  /* stylelint-disable-line */
   color: var(--color-accent);
 }
 .autoComplete_result mark {
   background: transparent;
 }
-.autoComplete_result:hover, .autoComplete_result.autoComplete_selected { /* stylelint-disable-line */
+.autoComplete_result:hover, .autoComplete_result.autoComplete_selected {
+  /* stylelint-disable-line */
   margin-left: 0.5em;
 }
 
@@ -1572,16 +1596,16 @@ figure .wp-caption-text {
 
 #title {
   padding: 0;
-  min-height: 75vh;
+  min-height: 90vh;
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin: 80px 20px 0;
   text-align: center;
   flex-direction: column;
   background: var(--color-white);
-  border-radius: var(--border-radius-extreme);
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 @media screen and (max-width: 667px) {
@@ -1616,14 +1640,14 @@ figure .wp-caption-text {
   }
 }
 #title .title-support-unit {
+  color: var(--color-white);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
   z-index: 1;
-  padding: 0 2em 2em;
+  padding: 0 1em 1em;
   width: 100%;
-  gap: 2em;
 }
 @media screen and (max-width: 667px) {
   #title .title-support-unit {
@@ -1633,22 +1657,16 @@ figure .wp-caption-text {
   }
 }
 #title .title-support-unit a {
+  display: inline-flex;
+  margin-top: 0.5em;
+  color: var(--color-white);
   white-space: nowrap;
-}
-#title canvas {
-  width: 100%;
-  top: 0;
-  position: absolute;
 }
 
 @media screen and (max-width: 667px) {
   .home .header-items-wrapper {
     width: 50%;
   }
-}
-.home .logo-wrapper a {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .home-grid {
@@ -1694,6 +1712,28 @@ figure .wp-caption-text {
   filter: blur(0) brightness(70%);
   border-radius: var(--border-radius-extreme);
   transform: scale(0.99);
+}
+
+.grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 125%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  cursor: grab;
+}
+.grid .js-plane {
+  margin: 1px;
+  aspect-ratio: 1/1;
+}
+
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
 .loader {
@@ -1792,6 +1832,10 @@ figure .wp-caption-text {
 
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .contents {
