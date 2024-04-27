@@ -82,7 +82,7 @@ if ($ocaduillustration_json_ld_abstract) {
 
   <div class="illustrator-gallery-container">
     <?php echo do_shortcode(
-      '[gallery size="medium" link="file" columns="0"]'
+      '[gallery size="medium" link="file" columns="0" orderby="title"]'
     ); ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
           <div class="miniview-container">
