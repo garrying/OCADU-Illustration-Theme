@@ -752,7 +752,7 @@ figure .wp-caption-text {
 @media screen and (max-width: 768px) {
   .image-modal-wrapper .image-modal-caption {
     bottom: 0;
-    left: 20px;
+    left: 1rem;
   }
 }
 @media screen and (max-width: 667px) {
@@ -1073,7 +1073,6 @@ figure .wp-caption-text {
 }
 
 .section-indicator-index {
-  font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   line-height: 1em;
   font-weight: normal;
@@ -1234,7 +1233,7 @@ figure .wp-caption-text {
   .logo {
     width: 30px;
     overflow: hidden;
-    background: var(--color-white);
+    background: var(--color-accent);
     aspect-ratio: 1/1;
     border-radius: var(--border-radius);
     color: var(--color-white);
@@ -1242,9 +1241,9 @@ figure .wp-caption-text {
     align-items: center;
   }
   .logo::before {
-    color: var(--color-accent);
+    color: var(--color-white);
     content: "↖";
-    margin-left: 1.15ch;
+    margin-left: 0.95ch;
     margin-right: 30px;
   }
 }
@@ -1893,6 +1892,20 @@ figure .wp-caption-text {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .uppercase {

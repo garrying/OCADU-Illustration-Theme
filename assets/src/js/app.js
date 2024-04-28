@@ -45,7 +45,6 @@ Velocity('registerSequence', 'fadeIn', {
 
     settings: {
       documentBody: $('body'),
-      logo: $('.logo'),
       loader: $('.loader'),
       masonryContainer: '#pack-content',
       masonryContainerHome: '#illustrators',
