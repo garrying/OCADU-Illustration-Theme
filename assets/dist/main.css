@@ -1609,51 +1609,10 @@ figure .wp-caption-text {
   height: 100%;
   opacity: 0;
   transition: opacity 300ms ease-in-out;
+  cursor: grab;
 }
-
-.home-grid {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  margin: 0 auto;
-  width: calc(100vw - 20px);
-}
-.home-grid.ready {
-  opacity: 1;
-}
-.home-grid .illustrator-meta-container {
-  position: absolute;
-  bottom: 2em;
-  left: 2em;
-  z-index: var(--z-important);
-  opacity: 0;
-  color: var(--color-white);
-  transition: opacity 350ms ease-in-out;
-}
-.home-grid .illustrator-meta-container .illustrator-meta-label {
-  font-size: 1em;
-  line-height: 1em;
-  font-weight: normal;
-  margin: 0;
-}
-.home-grid .illustrator-meta-container .illustrator-name {
-  margin: 0.25em 0 0;
-  font-size: 1em;
-  font-weight: normal;
-}
-.home-grid .illustrator-meta-container.active {
-  opacity: 1;
-}
-.home-grid .gallery-item {
-  margin: 0;
-}
-.home-grid .gallery-item img {
-  border-radius: var(--border-radius);
-  transition: transform 300ms ease-in-out, border-radius 300ms ease-in-out, filter 500ms ease-in-out;
-}
-.home-grid .gallery-item:hover img {
-  filter: blur(0) brightness(70%);
-  border-radius: var(--border-radius-extreme);
-  transform: scale(0.99);
+.home canvas:active {
+  cursor: grabbing;
 }
 
 .grid {
@@ -1663,7 +1622,6 @@ figure .wp-caption-text {
   width: 125%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  cursor: grab;
 }
 .grid .js-plane {
   margin: 1px;

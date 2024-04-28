@@ -11,75 +11,21 @@
     height: 100%;
     opacity: 0;
     transition: opacity 300ms ease-in-out;
-  }
-}
+    cursor: grab;
 
-.home-grid {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  margin: 0 auto;
-  width: calc(100vw - 20px);
-
-  &.ready {
-    opacity: 1;
-  }
-
-  .illustrator-meta-container {
-    position: absolute;
-    bottom: 2em;
-    left: 2em;
-    z-index: var(--z-important);
-    opacity: 0;
-    color: var(--color-white);
-    transition: opacity 350ms ease-in-out;
-
-    .illustrator-meta-label {
-      font-size: 1em;
-      line-height: 1em;
-      font-weight: normal;
-      margin: 0;
-    }
-
-    .illustrator-name {
-      margin: 0.25em 0 0;
-      font-size: 1em;
-      font-weight: normal;
-    }
-
-    &.active {
-      opacity: 1;
-    }
-  }
-
-  .gallery-item {
-    margin: 0;
-
-    img {
-      border-radius: var(--border-radius);
-      transition:
-        transform 300ms ease-in-out,
-        border-radius 300ms ease-in-out,
-        filter 500ms ease-in-out;
-    }
-
-    &:hover {
-      img {
-        filter: blur(0) brightness(70%);
-        border-radius: var(--border-radius-extreme);
-        transform: scale(0.99);
-      }
+    &:active {
+      cursor: grabbing;
     }
   }
 }
 
-.grid{
-	position: fixed;
-	top: 0;
+.grid {
+  position: fixed;
+  top: 0;
   left: 0;
-	width: 125%;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-  cursor: grab;
+  width: 125%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 
   .js-plane {
     margin: 1px;
