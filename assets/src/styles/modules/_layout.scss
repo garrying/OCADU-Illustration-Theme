@@ -135,7 +135,6 @@
 .illustrator-nav-single-wrapper {
   line-height: 1em;
   display: flex;
-  flex-wrap: wrap;
   position: absolute;
   right: 0;
   bottom: 2em;
@@ -163,8 +162,7 @@
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
-    border-radius: var(--border-radius);
-    border-top: 0;
+    border-radius: 999px;
     position: fixed;
     left: 20px;
     right: 20px;

@@ -1448,7 +1448,6 @@ figure .wp-caption-text {
 .illustrator-nav-single-wrapper {
   line-height: 1em;
   display: flex;
-  flex-wrap: wrap;
   position: absolute;
   right: 0;
   bottom: 2em;
@@ -1477,8 +1476,7 @@ figure .wp-caption-text {
 }
 @media screen and (max-width: 667px) {
   .illustrator-nav-single {
-    border-radius: var(--border-radius);
-    border-top: 0;
+    border-radius: 999px;
     position: fixed;
     left: 20px;
     right: 20px;

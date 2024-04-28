@@ -295,7 +295,7 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (!empty($ocaduillustration_prev_id)) {
               echo '<a class="p-3" href="' .
                 esc_url(get_permalink($ocaduillustration_prev_id)) .
-                '" rel="prev"><span class="name previous-link truncate">' .
+                '" rel="prev"><span class="name previous-link truncate block">' .
                 esc_html(get_the_title($ocaduillustration_prev_id)) .
                 '</span></a>';
             } ?>
@@ -304,7 +304,7 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (!empty($ocaduillustration_next_id)) {
               echo '<a class="p-3" href="' .
                 esc_url(get_permalink($ocaduillustration_next_id)) .
-                '" rel="next"><span class="name next-link truncate">' .
+                '" rel="next"><span class="name next-link truncate block">' .
                 esc_html(get_the_title($ocaduillustration_next_id)) .
                 '</span></a>';
             } ?>
