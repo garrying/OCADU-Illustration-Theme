@@ -18,11 +18,17 @@
   .search-field {
     width: 100%;
     min-width: 17ch;
-    padding: 0.75rem;
+    padding: 0.625rem 1rem;
     background: transparent;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
 
     &::-webkit-search-cancel-button {
       appearance: none;
+    }
+
+    &:focus {
+      outline: 0;
     }
   }
 
@@ -34,12 +40,16 @@
       padding: 10px;
     }
   }
+
+  &:has(.search-field:focus) {
+    outline: 1px solid var(--color-accent);
+  }
 }
 
 .autoComplete_list {
   /* stylelint-disable-line */
   position: absolute;
-  padding-top: 0.25em;
+  padding-top: 0.5em;
   line-height: 1em;
   display: flex;
   flex-direction: column;

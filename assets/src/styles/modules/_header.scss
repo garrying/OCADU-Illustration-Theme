@@ -10,11 +10,6 @@
     color: var(--color-accent);
   }
 
-  &.invert,
-  &.invert:hover {
-    color: var(--color-accent);
-  }
-
   .fade-out & {
     pointer-events: none;
   }
@@ -70,7 +65,6 @@
   @media screen and (max-width: $small-vp) {
     gap: 0.5em;
     justify-content: flex-end;
-    width: 50%;
   }
 }
 

@@ -986,11 +986,16 @@ figure .wp-caption-text {
 .search-form .search-field {
   width: 100%;
   min-width: 17ch;
-  padding: 0.75rem;
+  padding: 0.625rem 1rem;
   background: transparent;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
 }
 .search-form .search-field::-webkit-search-cancel-button {
   appearance: none;
+}
+.search-form .search-field:focus {
+  outline: 0;
 }
 .search-form .search-submit {
   color: var(--color-site-font);
@@ -1001,11 +1006,14 @@ figure .wp-caption-text {
     padding: 10px;
   }
 }
+.search-form:has(.search-field:focus) {
+  outline: 1px solid var(--color-accent);
+}
 
 .autoComplete_list {
   /* stylelint-disable-line */
   position: absolute;
-  padding-top: 0.25em;
+  padding-top: 0.5em;
   line-height: 1em;
   display: flex;
   flex-direction: column;
@@ -1219,9 +1227,6 @@ figure .wp-caption-text {
 .logo:hover, .logo:focus {
   color: var(--color-accent);
 }
-.logo.invert, .logo.invert:hover {
-  color: var(--color-accent);
-}
 .fade-out .logo {
   pointer-events: none;
 }
@@ -1277,7 +1282,6 @@ figure .wp-caption-text {
   .header-items-wrapper {
     gap: 0.5em;
     justify-content: flex-end;
-    width: 50%;
   }
 }
 
@@ -1568,12 +1572,6 @@ figure .wp-caption-text {
   max-width: 50ch;
   text-align: left;
 }
-@media screen and (max-width: 667px) {
-  #title .title-secondary {
-    text-align: center;
-    max-width: unset;
-  }
-}
 #title .title-support-unit {
   display: flex;
   justify-content: space-between;
@@ -1583,24 +1581,12 @@ figure .wp-caption-text {
   width: 100%;
   background: linear-gradient(to top, hsl(30.857, 2.6%, 97.1%) 0%, hsla(30.857, 2.6%, 97.1%, 0.738) 19%, hsla(30.857, 2.6%, 97.1%, 0.541) 34%, hsla(30.857, 2.6%, 97.1%, 0.382) 47%, hsla(30.857, 2.6%, 97.1%, 0.278) 56.5%, hsla(30.857, 2.6%, 97.1%, 0.194) 65%, hsla(30.857, 2.6%, 97.1%, 0.126) 73%, hsla(30.857, 2.6%, 97.1%, 0.075) 80.2%, hsla(30.857, 2.6%, 97.1%, 0.042) 86.1%, hsla(30.857, 2.6%, 97.1%, 0.021) 91%, hsla(30.857, 2.6%, 97.1%, 0.008) 95.2%, hsla(30.857, 2.6%, 97.1%, 0.002) 98.2%, hsla(30.857, 2.6%, 97.1%, 0) 100%);
 }
-@media screen and (max-width: 667px) {
-  #title .title-support-unit {
-    align-items: center;
-    flex-direction: column;
-    padding: 0;
-  }
-}
 #title .title-support-unit a {
   display: inline-flex;
   margin-top: 0.5em;
   white-space: nowrap;
 }
 
-@media screen and (max-width: 667px) {
-  .home .header-items-wrapper {
-    width: 50%;
-  }
-}
 .home canvas {
   position: absolute;
   width: 100%;
@@ -1623,6 +1609,7 @@ figure .wp-caption-text {
 }
 .grid .js-plane {
   margin: 1px;
+  overflow: hidden;
   aspect-ratio: 1/1;
 }
 
@@ -1886,6 +1873,14 @@ figure .wp-caption-text {
   padding-top: 3rem;
 }
 
+.pt-24 {
+  padding-top: 6rem;
+}
+
+.pt-48 {
+  padding-top: 12rem;
+}
+
 .align-middle {
   vertical-align: middle;
 }
@@ -1967,4 +1962,13 @@ figure .wp-caption-text {
 .hover\:text-neutral-900:hover {
   --tw-text-opacity: 1;
   color: rgb(23 23 23/var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:pt-24 {
+    padding-top: 6rem;
+  }
+  .sm\:pt-12 {
+    padding-top: 3rem;
+  }
 }

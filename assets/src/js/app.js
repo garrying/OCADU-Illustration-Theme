@@ -196,7 +196,6 @@ Velocity('registerSequence', 'fadeIn', {
         $('.year-item').velocity('stop')
 
         $('.header-item').addClass('inactive').removeClass('invert')
-        app.settings.logo.addClass('invert')
 
         $(e).addClass('invert').removeClass('inactive')
         $(`.${targetPanel}`).velocity('fadeIn', {
@@ -289,7 +288,6 @@ Velocity('registerSequence', 'fadeIn', {
         },
         duration: 180
       })
-      app.settings.logo.removeClass('invert')
       $('.panel.velocity-animating').velocity('stop')
       $('.panel.visible')
         .attr('aria-hidden', true)
@@ -547,10 +545,10 @@ Velocity('registerSequence', 'fadeIn', {
 
       document.addEventListener('keydown', (e) => {
         if (app.settings.imageModal.is(':visible')) {
-          if (e.keyCode === 39) {
+          if (e.key === 'ArrowRight') {
             nextElement()
           }
-          if (e.keyCode === 37) {
+          if (e.key === 'ArrowLeft') {
             nextElement('reverse')
           }
         }
@@ -577,13 +575,17 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadUIbinding: () => {
       $('.close-panel').on('click', app._ocadPanelsClose)
-      $(document)
-        .on('click', app._ocadPanelsCloseSelective)
-        .keydown((e) => {
-          if (e.keyCode === 27) {
-            app._ocadPanelsClose()
-          }
-        })
+      $(document).on('click', app._ocadPanelsCloseSelective)
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          app._ocadPanelsClose()
+        }
+      })
+      document.addEventListener('keyup', (event) => {
+        if (event.key === '/') {
+          document.getElementById('autocomplete').focus()
+        }
+      })
     }
   }
 

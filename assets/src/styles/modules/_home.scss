@@ -1,10 +1,4 @@
 .home {
-  .header-items-wrapper {
-    @media screen and (max-width: $small-vp) {
-      width: 50%;
-    }
-  }
-
   canvas {
     position: absolute;
     width: 100%;
@@ -29,6 +23,7 @@
 
   .js-plane {
     margin: 1px;
+    overflow: hidden;
     aspect-ratio: 1/1;
   }
 }
