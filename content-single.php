@@ -225,7 +225,7 @@ if ($ocaduillustration_json_ld_abstract) {
         </div>
       </div>
 
-      <div class="illustrator-nav-single-wrapper">
+      <div class="illustrator-nav-single-wrapper text-xs flex items-stretch bg-white rounded-full">
         <?php if (is_singular('illustrator')) {
           $ocaduillustration_class_year = get_the_terms($post->ID, 'gradyear');
           $ocaduillustration_base_year = $ocaduillustration_class_year[0];
@@ -236,7 +236,7 @@ if ($ocaduillustration_json_ld_abstract) {
             $ocaduillustration_illustrator_year_section =
               $ocaduillustration_illustrator_term->slug;
             if ($ocaduillustration_illustrator_term->parent <= 0) {
-              echo '<a class="section-indicator-single" href="/year/' .
+              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
                 esc_html($ocaduillustration_base_year->slug) .
                 '" title="Return to ' .
                 esc_html($ocaduillustration_illustrator_term->name) .
@@ -244,7 +244,7 @@ if ($ocaduillustration_json_ld_abstract) {
                 esc_html($ocaduillustration_illustrator_term->name) .
                 '</a>';
             } else {
-              echo '<a class="section-indicator-single" href="/year/' .
+              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
                 esc_html($ocaduillustration_base_year->slug) .
                 '/' .
                 esc_html($ocaduillustration_illustrator_year_section) .
@@ -256,7 +256,7 @@ if ($ocaduillustration_json_ld_abstract) {
             }
           }
         } ?>
-        <ul class="illustrator-nav-single">
+        <ul class="illustrator-nav-single grow">
           <?php
           $ocaduillustration_args = [
             'post_status' => 'publish',
@@ -293,7 +293,7 @@ if ($ocaduillustration_json_ld_abstract) {
           ?>
           <li class="nav-previous">
             <?php if (!empty($ocaduillustration_prev_id)) {
-              echo '<a href="' .
+              echo '<a class="p-3" href="' .
                 esc_url(get_permalink($ocaduillustration_prev_id)) .
                 '" rel="prev"><span class="name previous-link truncate">' .
                 esc_html(get_the_title($ocaduillustration_prev_id)) .
@@ -302,7 +302,7 @@ if ($ocaduillustration_json_ld_abstract) {
           </li>
           <li class="nav-next">
             <?php if (!empty($ocaduillustration_next_id)) {
-              echo '<a href="' .
+              echo '<a class="p-3" href="' .
                 esc_url(get_permalink($ocaduillustration_next_id)) .
                 '" rel="next"><span class="name next-link truncate">' .
                 esc_html(get_the_title($ocaduillustration_next_id)) .

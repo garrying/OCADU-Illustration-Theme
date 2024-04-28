@@ -590,7 +590,6 @@ video {
 
 /* Component styles (e.g. mixins, vars) */
 :root {
-  --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif; /* stylelint-disable-line value-keyword-case */
@@ -600,8 +599,8 @@ video {
   --color-black: #000;
   --color-site-background: #fbf9f4;
   --color-site-font: #000;
-  --color-accent: #444;
-  --color-accent-rgb: 68 68 68;
+  --color-accent: #999;
+  --color-accent-rgb: 153 153 153;
   --z-background: 100;
   --z-middle: 200;
   --z-foreground: 300;
@@ -612,11 +611,6 @@ video {
 }
 
 /* Modules styles (e.g. layouts, typography) */
-@font-face {
-  font-family: Standard;
-  src: url(./fonts/standard-book-webfont.woff2) format("woff2");
-  font-display: swap;
-}
 abbr,
 sup {
   font-size: 0.75em;
@@ -638,10 +632,6 @@ h5,
 h6,
 blockquote {
   text-wrap: balance;
-}
-
-.mono {
-  font-family: var(--font-mono);
 }
 
 .lock-scroll {
@@ -828,9 +818,7 @@ figure .wp-caption-text {
   opacity: 0.5;
 }
 .archive-grid .illustrator-title {
-  font-weight: normal;
   font-size: 1em;
-  color: var(--color-accent);
   margin-bottom: 0;
   line-height: 1.2em;
 }
@@ -998,15 +986,11 @@ figure .wp-caption-text {
 .search-form .search-field {
   width: 100%;
   min-width: 17ch;
-  padding: 1em;
-  border: 0;
+  padding: 0.75rem;
   background: transparent;
 }
 .search-form .search-field::-webkit-search-cancel-button {
   appearance: none;
-}
-.search-form .search-field:focus {
-  outline: 1px dotted var(--color-accent);
 }
 .search-form .search-submit {
   color: var(--color-site-font);
@@ -1021,7 +1005,7 @@ figure .wp-caption-text {
 .autoComplete_list {
   /* stylelint-disable-line */
   position: absolute;
-  padding-top: 1em;
+  padding-top: 0.25em;
   line-height: 1em;
   display: flex;
   flex-direction: column;
@@ -1048,16 +1032,15 @@ figure .wp-caption-text {
   max-width: fit-content;
   cursor: pointer;
   transition: color 200ms ease-in-out, margin 200ms ease-in-out;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.4);
   background: var(--color-white);
-  padding: 0.5em 1em;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
+  padding: 0.25em 0.75rem;
+  margin-bottom: 0.25em;
+  margin-right: 0.25em;
 }
 .autoComplete_result:hover, .autoComplete_result.autoComplete_selected,
 .autoComplete_result .autoComplete_highlighted {
-  /* stylelint-disable-line */
-  color: var(--color-accent);
+  color: var(--color-black);
 }
 .autoComplete_result mark {
   background: transparent;
@@ -1082,7 +1065,6 @@ figure .wp-caption-text {
 }
 
 .section-indicator-index {
-  font-family: var(--font-standard);
   font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   line-height: 1em;
@@ -1219,7 +1201,6 @@ figure .wp-caption-text {
 }
 
 .year-text {
-  font-family: var(--font-standard);
   position: absolute;
   z-index: 1;
   top: 0;
@@ -1266,7 +1247,7 @@ figure .wp-caption-text {
 .heading-inner {
   position: fixed;
   top: 0;
-  padding: 1em 30px;
+  padding: 1rem 30px;
   left: 0;
   right: 0;
   z-index: var(--z-foreground);
@@ -1341,7 +1322,7 @@ figure .wp-caption-text {
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 5em;
+  margin-top: 5rem;
 }
 @media screen and (max-width: 1024px) {
   .illustrator-gallery-container {
@@ -1376,10 +1357,6 @@ figure .wp-caption-text {
   }
 }
 
-.section-indicator-single {
-  padding: 0.5em 1em;
-  transition: background 180ms ease-in-out;
-}
 .section-indicator-single:nth-child(2) {
   white-space: nowrap;
   margin-left: 5px;
@@ -1444,14 +1421,6 @@ figure .wp-caption-text {
     padding: 0;
   }
 }
-.illustrator-meta .thesis-title {
-  font-weight: normal;
-  color: var(--color-accent);
-}
-.illustrator-meta .illustrator-meta-name {
-  font-weight: normal;
-  font-size: 1em;
-}
 
 .meta-label {
   margin-bottom: 0.5em;
@@ -1477,12 +1446,10 @@ figure .wp-caption-text {
 }
 
 .illustrator-nav-single-wrapper {
-  font-size: 12px;
   line-height: 1em;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  align-items: center;
   right: 0;
   bottom: 2em;
   left: 0;
@@ -1506,8 +1473,6 @@ figure .wp-caption-text {
 
 .illustrator-nav-single {
   display: flex;
-  width: 100%;
-  border-top: 1px solid rgb(var(--color-site-background));
   justify-content: space-between;
 }
 @media screen and (max-width: 667px) {
@@ -1525,8 +1490,6 @@ figure .wp-caption-text {
 .illustrator-nav-single a {
   display: block;
   z-index: var(--z-foreground);
-  padding: 1em;
-  transition: background 180ms ease-in-out;
 }
 .illustrator-nav-single .truncate {
   line-height: 1.5em;
@@ -1600,7 +1563,6 @@ figure .wp-caption-text {
   margin-top: 50px;
 }
 #title .title-primary {
-  font-family: var(--font-standard);
   font-size: clamp(1rem, 3vw, 3rem);
   font-weight: normal;
 }
@@ -1852,6 +1814,14 @@ figure .wp-caption-text {
   display: none;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1864,14 +1834,70 @@ figure .wp-caption-text {
   flex-wrap: wrap;
 }
 
+.content-center {
+  align-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
+
+.self-center {
+  align-self: center;
+}
+
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-full, .autoComplete_result {
+  border-radius: 9999px;
+}
+
 .border {
   border-width: 1px;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255/var(--tw-bg-opacity));
+}
+
+.bg-neutral-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163/var(--tw-bg-opacity));
+}
+
+.bg-neutral-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229/var(--tw-bg-opacity));
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245/var(--tw-bg-opacity));
+}
+
+.bg-clip-border {
+  background-clip: border-box;
 }
 
 .p-4 {
@@ -1882,9 +1908,18 @@ figure .wp-caption-text {
   padding: 0.25rem;
 }
 
+.p-3 {
+  padding: 0.75rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .pt-8 {
@@ -1893,6 +1928,10 @@ figure .wp-caption-text {
 
 .pt-12 {
   padding-top: 3rem;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .text-xl {
@@ -1913,8 +1952,27 @@ figure .wp-caption-text {
   text-transform: lowercase;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .leading-normal {
   line-height: 1.5;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255/var(--tw-text-opacity));
+}
+
+.text-neutral-600 {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82/var(--tw-text-opacity));
+}
+
+.text-neutral-500 {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115/var(--tw-text-opacity));
 }
 
 .underline {
@@ -1933,4 +1991,24 @@ figure .wp-caption-text {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.hover\:bg-neutral-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163/var(--tw-bg-opacity));
+}
+
+.hover\:text-neutral-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163/var(--tw-text-opacity));
+}
+
+.hover\:text-neutral-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212/var(--tw-text-opacity));
+}
+
+.hover\:text-neutral-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23/var(--tw-text-opacity));
 }

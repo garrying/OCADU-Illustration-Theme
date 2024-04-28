@@ -12,7 +12,7 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 5em;
+  margin-top: 5rem;
 
   @media screen and (max-width: $medium-vp) {
     flex-basis: 50%;
@@ -48,9 +48,6 @@
 }
 
 .section-indicator-single {
-  padding: 0.5em 1em;
-  transition: background 180ms ease-in-out;
-
   &:nth-child(2) {
     white-space: nowrap;
     margin-left: 5px;
@@ -110,16 +107,6 @@
       padding: 0;
     }
   }
-
-  .thesis-title {
-    font-weight: normal;
-    color: var(--color-accent);
-  }
-
-  .illustrator-meta-name {
-    font-weight: normal;
-    font-size: 1em;
-  }
 }
 
 .meta-label {
@@ -146,12 +133,10 @@
 }
 
 .illustrator-nav-single-wrapper {
-  font-size: 12px;
   line-height: 1em;
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  align-items: center;
   right: 0;
   bottom: 2em;
   left: 0;
@@ -175,8 +160,6 @@
 
 .illustrator-nav-single {
   display: flex;
-  width: 100%;
-  border-top: 1px solid rgb(var(--color-site-background));
   justify-content: space-between;
 
   @media screen and (max-width: $small-vp) {
@@ -193,8 +176,6 @@
   a {
     display: block;
     z-index: var(--z-foreground);
-    padding: 1em;
-    transition: background 180ms ease-in-out;
   }
 
   .truncate {

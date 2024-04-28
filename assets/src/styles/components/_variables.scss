@@ -2,10 +2,9 @@
   @return red($hex) green($hex) blue($hex);
 }
 
-$color-accent: #444;
+$color-accent: #999;
 
 :root {
-  --font-standard: standard, sans-serif; /* stylelint-disable-line value-keyword-case */
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif; /* stylelint-disable-line value-keyword-case */

@@ -1,4 +1,4 @@
-<form role="search" method="get" class="search-form" action="<?php echo esc_url(
+<form role="search" method="get" class="search-form rounded-full items-center" action="<?php echo esc_url(
   home_url('/')
 ); ?>">
   <label for="autocomplete" class="screen-reader-shortcut"><?php echo esc_html(

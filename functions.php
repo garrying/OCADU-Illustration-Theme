@@ -101,7 +101,7 @@ if (!function_exists('ocaduillustration_scripts')) {
         'app',
         get_template_directory_uri() . '/assets/dist/app.js?1682786930',
         '',
-        '2023',
+        '2024',
         true
       );
       wp_enqueue_script('app');
@@ -111,7 +111,7 @@ if (!function_exists('ocaduillustration_scripts')) {
         'home',
         get_template_directory_uri() . '/assets/dist/home.js?1682786930',
         '',
-        '2023',
+        '2024',
         true
       );
       wp_enqueue_script('home');
@@ -134,7 +134,7 @@ function ocaduillustration_styles()
     'ocadustyles',
     get_template_directory_uri() . '/assets/dist/main.css?1682786930',
     '',
-    '2023'
+    '2024'
   );
   wp_enqueue_style('ocadustyles');
 }
@@ -389,7 +389,7 @@ function ocaduillustration_social_meta()
   }
   if (is_home() || is_archive()) {
     $social_description =
-      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2023.';
+      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2024.';
     if (is_home()) {
       $social_title = get_bloginfo('name');
     } else {
