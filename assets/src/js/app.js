@@ -121,7 +121,6 @@ Velocity('registerSequence', 'fadeIn', {
 
     _ocadSearch: () => {
       const autoCompleteJS = new AutoComplete({
-        // eslint-disable-line
         submit: false,
         data: {
           src: async (query) => {

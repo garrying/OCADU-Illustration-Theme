@@ -20,8 +20,8 @@ const multipliers = {
 let intersects = []
 let hovered = {}
 
-let pointerDownTimestampRef = 0;
-let pointerUpTimestampRef = 0;
+let pointerDownTimestampRef = 0
+let pointerUpTimestampRef = 0
 
 /** CORE **/
 class Core {
@@ -93,7 +93,8 @@ class Core {
         const hit = intersects.find((hit) => hit.object.uuid === key)
         if (hit === undefined) {
           const hoveredItem = hovered[key]
-          if (hoveredItem.object.onPointerOver) hoveredItem.object.onPointerOut(hoveredItem)
+          if (hoveredItem.object.onPointerOver)
+            hoveredItem.object.onPointerOut(hoveredItem)
           delete hovered[key]
         }
       })
@@ -110,14 +111,14 @@ class Core {
     })
 
     window.addEventListener('mouseup', () => {
-      const isNearlyAClick = pointerUpTimestampRef - pointerDownTimestampRef < 100
+      const isNearlyAClick =
+        pointerUpTimestampRef - pointerDownTimestampRef < 100
       if (isNearlyAClick) {
         intersects.forEach((hit) => {
           window.location = hit.object.userData.link
         })
       }
     })
-
   }
 
   addPlanes() {
@@ -315,23 +316,20 @@ class Plane extends THREE.Object3D {
       u_diff: { value: 0 }
     }
 
-    this.texture = loader.load(
-      this.el.dataset.src,
-      (texture) => {
-        texture.minFilter = THREE.LinearFilter
-        texture.generateMipmaps = false
+    this.texture = loader.load(this.el.dataset.src, (texture) => {
+      texture.minFilter = THREE.LinearFilter
+      texture.generateMipmaps = false
 
-        const { naturalWidth, naturalHeight } = texture.image
-        const { u_size, u_texture } = this.material.uniforms
+      const { naturalWidth, naturalHeight } = texture.image
+      const { u_size, u_texture } = this.material.uniforms
 
-        u_texture.value = texture
-        u_size.value.x = naturalWidth
-        u_size.value.y = naturalHeight
-      }
-    )
+      u_texture.value = texture
+      u_size.value.x = naturalWidth
+      u_size.value.y = naturalHeight
+    })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
-    this.mesh.userData = {link: this.el.dataset.href}
+    this.mesh.userData = { link: this.el.dataset.href }
     this.add(this.mesh)
 
     this.resize()
