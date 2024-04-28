@@ -156,10 +156,7 @@
   bottom: 2em;
   left: 0;
   margin: 0 30px;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
 
   @media screen and (max-width: $small-vp) {
     position: relative;
@@ -191,7 +188,6 @@
     width: unset;
     bottom: 20px;
     background: var(--color-white);
-    box-shadow: var(--shadow);
   }
 
   a {

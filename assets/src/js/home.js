@@ -76,8 +76,8 @@ class Core {
     gsap.ticker.add(this.tick)
 
     window.addEventListener('mousemove', this.onMouseMove)
-    window.addEventListener('mousedown', this.onMouseDown)
-    window.addEventListener('mouseup', this.onMouseUp)
+    document.getElementById('title').addEventListener('mousedown', this.onMouseDown)
+    document.getElementById('title').addEventListener('mouseup', this.onMouseUp)
     window.addEventListener('wheel', this.onWheel)
     window.addEventListener('resize', this.resize)
 
@@ -110,7 +110,7 @@ class Core {
       })
     })
 
-    window.addEventListener('mouseup', () => {
+    document.getElementById('title').addEventListener('mouseup', () => {
       const isNearlyAClick =
         pointerUpTimestampRef - pointerDownTimestampRef < 100
       if (isNearlyAClick) {

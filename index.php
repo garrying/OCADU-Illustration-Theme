@@ -24,8 +24,8 @@
     ];
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
-  <div id="title">
-    <div class="title-support-unit">
+  <div id="title" class="bottom-4 left-4 right-4 top-20">
+    <div class="title-support-unit p-4 pt-12">
         <div class="title-secondary">
           <p>Spanning 2009&ndash;2024<br /> Maintained by the Illustration Program at OCAD University</p>
           <a href="/about" class="about">About the archive</a>
@@ -33,7 +33,7 @@
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="grid js-grid">
+  <div id="illustrators" class="grid js-grid pointer-events-none">
 
     <?php if ($ocaduillustration_home_index->have_posts()): ?>
 

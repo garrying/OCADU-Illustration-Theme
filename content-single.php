@@ -94,7 +94,7 @@ if ($ocaduillustration_json_ld_abstract) {
       ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">
         <div class="image-modal-image"></div>
-        <div class="image-modal-caption"></div>
+        <div class="image-modal-caption p-4 text-xs leading-normal bottom-4	right-4 absolute"></div>
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@ if ($ocaduillustration_json_ld_abstract) {
               'illu_title',
               true
             );
-            echo '<h2 class="thesis-title">' .
+            echo '<h2 class="thesis-title my-4 text-xl">' .
               esc_html($ocaduillustration_title_illu) .
               '</h2>';
             ?>
@@ -125,7 +125,7 @@ if ($ocaduillustration_json_ld_abstract) {
 
         <div class="meta">
           <header class="illustrator-meta-header">
-            <h1 class="illustrator-meta-name"><?php the_title(); ?></h1> 
+            <h1 class="illustrator-meta-name text-l my-4"><?php the_title(); ?></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
             <?php if (get_post_meta($post->ID, 'illu_related', true)): ?>
@@ -143,7 +143,7 @@ if ($ocaduillustration_json_ld_abstract) {
               ); ?> ⤵</p>
               <a title="<?php echo esc_html(
                 $ocaduillustration_related_post->post_title
-              ); ?>" class="meta-link truncate" href="<?php echo esc_html(
+              ); ?>" class="meta-link truncate block" href="<?php echo esc_html(
   get_permalink($ocaduillustration_related_post->ID)
 ); ?>">
                 <?php if (
@@ -172,7 +172,7 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (get_post_meta($post->ID, 'illu_sites', true)): ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url(
                 get_post_meta($post->ID, 'illu_sites', true)
-              ); ?>" class="meta-link truncate" href="<?php echo esc_url(
+              ); ?>" class="meta-link truncate block" href="<?php echo esc_url(
   get_post_meta($post->ID, 'illu_sites', true)
 ); ?>">
                 ↗ .....
@@ -193,7 +193,7 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (get_post_meta($post->ID, 'illu_sites_2', true)): ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url(
                 get_post_meta($post->ID, 'illu_sites_2', true)
-              ); ?>" class="meta-link truncate" href="<?php echo esc_url(
+              ); ?>" class="meta-link truncate block" href="<?php echo esc_url(
   get_post_meta($post->ID, 'illu_sites_2', true)
 ); ?>">
                 ↗ .....
@@ -214,7 +214,7 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (get_post_meta($post->ID, 'illu_email', true)): ?>
               <a title="<?php echo esc_html(
                 get_post_meta($post->ID, 'illu_email', true)
-              ); ?>" class="meta-link truncate" href="mailto:<?php echo esc_html(
+              ); ?>" class="meta-link truncate block" href="mailto:<?php echo esc_html(
   get_post_meta($post->ID, 'illu_email', true)
 ); ?>">
                 @ ..... <?php echo esc_html(

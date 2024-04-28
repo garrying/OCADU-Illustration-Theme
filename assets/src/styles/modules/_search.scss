@@ -13,9 +13,7 @@
   position: relative;
   display: flex;
   font-size: 1em;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  background: var(--color-white);
+  background-color: var(--color-white);
 
   .search-field {
     width: 100%;
@@ -23,15 +21,13 @@
     padding: 1em;
     border: 0;
     background: transparent;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
 
     &::-webkit-search-cancel-button {
       appearance: none;
     }
 
     &:focus {
-      outline: 2px dotted var(--color-accent);
+      outline: 1px dotted var(--color-accent);
     }
   }
 
@@ -82,8 +78,6 @@
   padding: 0.5em 1em;
   margin-bottom: 0.5em;
   margin-right: 0.5em;
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
 
   &:hover,
   &.autoComplete_selected,
