@@ -613,9 +613,7 @@ video {
 /* Modules styles (e.g. layouts, typography) */
 abbr,
 sup {
-  font-size: 0.75em;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
 }
 
 sup {
@@ -1090,9 +1088,12 @@ figure .wp-caption-text {
 .page-inner {
   display: flex;
   flex-direction: column;
-  max-width: 620px;
+  max-width: 65ch;
   margin: 130px auto;
-  line-height: 1.45em;
+  line-height: 1.5;
+}
+.page-inner p {
+  margin-bottom: 1rem;
 }
 @media screen and (max-width: 667px) {
   .page-inner {
@@ -1104,13 +1105,15 @@ figure .wp-caption-text {
 }
 .page-inner .entry-title {
   font-weight: normal;
+  font-size: 1.125rem;
   line-height: 1em;
-  margin: 0.5em 0;
+  margin: 1.5rem 0;
 }
 .page-inner .entry-title-secondary {
   font-weight: normal;
+  font-size: 1.125rem;
   line-height: 1em;
-  margin: 1.5em 0;
+  margin: 1.5rem 0;
 }
 @media screen and (max-width: 667px) {
   .page-inner .faculty-list {
