@@ -367,7 +367,7 @@ function ocaduillustration_social_meta()
       esc_html($the_excerpt) .
       '">' .
       "\n";
-    echo '<meta name="twitter:image:src" content="' .
+    echo '<meta name="twitter:image" content="' .
       esc_url(ocaduillustration_get_socialimage('twitter')) .
       '">' .
       "\n";
@@ -425,7 +425,7 @@ function ocaduillustration_social_meta()
       esc_html($social_description) .
       '">' .
       "\n";
-    echo '<meta name="twitter:image:src" content="' .
+    echo '<meta name="twitter:image" content="' .
       esc_url(ocaduillustration_get_socialimage('twitter-index')) .
       '">' .
       "\n";
