@@ -12,7 +12,7 @@
       get_query_var('taxonomy')
     );
   }
-  echo '<h2 class="section-indicator-index">';
+  echo '<h2 class="section-indicator-index text-6xl md:text-8xl">';
   if (isset($ocaduillustration_selected_section_parent)) {
     echo esc_html($ocaduillustration_selected_section_parent->name);
     echo ', ';
@@ -23,7 +23,7 @@
   echo '</h2>';
 } ?>
 
-<div id="illustrators" class="grid illustrators-grid archive-grid">
+<div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
   <div class="grid-col grid-col-1"></div>
   <div class="grid-col grid-col-2"></div>
   <div class="grid-col grid-col-3"></div>

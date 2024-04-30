@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../components/variables";
-
 figure {
   margin: 0;
 
@@ -37,7 +34,7 @@ figure {
   overflow: auto;
   background: var(--color-site-background);
 
-  @media screen and (max-width: variables.$medium-vp) {
+  @media screen and (max-width: $medium-vp) {
     left: 0;
   }
 
@@ -50,24 +47,18 @@ figure {
   }
 
   .image-modal-caption {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
     z-index: var(--z-foreground);
     max-width: 320px;
-    padding: 0 1em;
-    font-size: 12px;
-    line-height: 1.3em;
     background: rgb(255 255 255 / 60%);
     backdrop-filter: blur(3px);
     border-radius: var(--border-radius);
 
-    @media screen and (max-width: variables.$ipad-vp) {
+    @media screen and (max-width: $ipad-vp) {
       bottom: 0;
-      left: 20px;
+      left: 1rem;
     }
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       bottom: 75px;
     }
   }
@@ -76,7 +67,7 @@ figure {
     position: fixed;
     top: 2em;
 
-    @media screen and (max-width: variables.$medium-vp) {
+    @media screen and (max-width: $medium-vp) {
       top: auto;
     }
   }

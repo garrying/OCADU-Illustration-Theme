@@ -99,9 +99,9 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1682786930',
+        get_template_directory_uri() . '/assets/dist/app.js?1714444403',
         '',
-        '2023',
+        '2024',
         true
       );
       wp_enqueue_script('app');
@@ -109,9 +109,9 @@ if (!function_exists('ocaduillustration_scripts')) {
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1682786930',
+        get_template_directory_uri() . '/assets/dist/home.js?1714444403',
         '',
-        '2023',
+        '2024',
         true
       );
       wp_enqueue_script('home');
@@ -132,9 +132,9 @@ function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1682786930',
+    get_template_directory_uri() . '/assets/dist/main.css?1714444403',
     '',
-    '2023'
+    '2024'
   );
   wp_enqueue_style('ocadustyles');
 }
@@ -207,7 +207,7 @@ endif;
  */
 function ocaduillustration_gallery_style_override()
 {
-  return "<div id='pack-content' class='grid gallery-grid'><div class='grid-col grid-col-1'></div>
+  return "<div id='pack-content' class='flex flex-wrap gallery-grid'><div class='grid-col grid-col-1'></div>
   <div class='grid-col grid-col-2'></div>
   <div class='grid-col grid-col-3'></div>
   <div class='grid-col grid-col-4'></div>";
@@ -311,11 +311,11 @@ function ocaduillustration_get_socialimage($image_type = 'fb')
   }
 
   if ('twitter-index' === $image_type) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1682786930';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1714444403';
   }
 
   if (empty($socialimg)) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg?1682786930';
+    $socialimg = get_template_directory_uri() . '/thumb.jpg?1714444403';
   }
 
   return $socialimg;
@@ -389,7 +389,7 @@ function ocaduillustration_social_meta()
   }
   if (is_home() || is_archive()) {
     $social_description =
-      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2023.';
+      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2024.';
     if (is_home()) {
       $social_title = get_bloginfo('name');
     } else {

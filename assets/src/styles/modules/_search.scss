@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../components/variables";
-@use "typography";
-
 .search-container {
   align-items: center;
   justify-content: center;
@@ -17,41 +13,47 @@
   position: relative;
   display: flex;
   font-size: 1em;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  background: var(--color-white);
+  background-color: var(--color-white);
 
   .search-field {
     width: 100%;
     min-width: 17ch;
-    padding: 1em;
-    border: 0;
+    padding: 0.625rem 1rem;
     background: transparent;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
 
     &::-webkit-search-cancel-button {
       appearance: none;
     }
 
     &:focus {
-      outline: 2px dotted var(--color-accent);
+      outline: 0;
     }
   }
 
   .search-submit {
     color: var(--color-site-font);
-    padding: .5em 1em;
+    padding: 0.5em 1em;
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       padding: 10px;
     }
   }
+
+  &:has(.search-field:focus) {
+    outline: 1px solid var(--color-accent);
+  }
+
+  &:hover {
+    outline: 1px solid var(--color-accent);
+  }
 }
 
-.autoComplete_list { /* stylelint-disable-line */
+.autoComplete_list {
+  /* stylelint-disable-line */
   position: absolute;
-  padding-top: 1em;
+  padding-top: 0.5em;
   line-height: 1em;
   display: flex;
   flex-direction: column;
@@ -66,35 +68,41 @@
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-.autoComplete_wrapper > ul[hidden], .autoComplete_wrapper > ul:empty {
+.autoComplete_wrapper > ul[hidden],
+.autoComplete_wrapper > ul:empty {
   display: block;
   opacity: 0;
   transform: scale(0);
 }
 
-.autoComplete_result { /* stylelint-disable-line */
+.autoComplete_result {
+  /* stylelint-disable-line */
   max-width: fit-content;
+  @extend .rounded-full;
   cursor: pointer;
-  transition: color 200ms ease-in-out, margin 200ms ease-in-out;
-  color: rgb(0 0 0 / 50%);
+  transition:
+    color 200ms ease-in-out,
+    margin 200ms ease-in-out;
+  color: rgb(0 0 0 / 40%);
   background: var(--color-white);
-  padding: 0.5em 1em;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em;
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
+  padding: 0.25em 0.75rem;
+  margin-bottom: 0.25em;
+  margin-right: 0.25em;
 
   &:hover,
-  &.autoComplete_selected, .autoComplete_highlighted { /* stylelint-disable-line */
-    color: var(--color-accent);
+  &.autoComplete_selected,
+  .autoComplete_highlighted {
+    color: var(--color-black);
   }
 
   mark {
     background: transparent;
   }
 
-  &:hover, &.autoComplete_selected { /* stylelint-disable-line */
-    margin-left: .5em;
+  &:hover,
+  &.autoComplete_selected {
+    /* stylelint-disable-line */
+    margin-left: 0.5em;
   }
 }
 
@@ -110,7 +118,7 @@
   line-height: 1em;
   font-size: 2em;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     margin: 0;
   }
 }

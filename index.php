@@ -8,37 +8,28 @@
     $ocaduillustration_args = [
       'post_type' => 'illustrator',
       'tax_query' => [
-        // phpcs:ignore
         [
           'taxonomy' => 'gradyear',
           'field' => 'slug',
           'terms' => $ocaduillustration_grad_year[0]->name,
         ],
-        [
-          'taxonomy' => 'gradyear',
-          'field' => 'slug',
-          'terms' => 'major-works',
-          'operator' => 'NOT IN',
-        ],
       ],
     ];
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
-  <div id="title">
-    <div class="title-unit">
-      <div class="segment-first">
-        <h1 class="title-primary">OCAD U Illustration 2023</h1>
-      </div>
+  <div id="title" class="bottom-4 left-4 right-4 top-20">
+    <div class="flex md:hidden absolute inset-x-0 inset-y-0 bg-black/50 justify-center items-center z-10 p-4">
+      <a class="border border-white rounded-full px-12 py-4 bg-white text-2xl hover:bg-neutral-200 hover:text-black" href="/year/2024/">View 2024 archive</a>
     </div>
-    <div class="title-support-unit">
+    <div class="title-support-unit p-4 pt-48 pointer-events-none hidden md:flex">
         <div class="title-secondary">
-          <p>Spanning 2009&ndash;2023<br /> Maintained by the Illustration Program at OCAD University</p>
-          <a href="/about" class="about">About the archive</a>
+          <p>Spanning 2009&ndash;2024<br /> Maintained by the Illustration Program at OCAD University</p>
+          <a href="/about" class="about pointer-events-auto">About the archive</a>
         </div>
-        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
+        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="grid illustrators-grid home-grid">
+  <div id="illustrators" class="grid js-grid pointer-events-none">
 
     <?php if ($ocaduillustration_home_index->have_posts()): ?>
 
@@ -48,7 +39,7 @@
       <?php while ($ocaduillustration_home_index->have_posts()):
         $ocaduillustration_home_index->the_post(); ?>
 
-        <?php get_template_part('content', get_post_format()); ?>
+        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url('illustrator-large'); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
 
       <?php
       endwhile; ?>

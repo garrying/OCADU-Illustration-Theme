@@ -2,20 +2,19 @@
 <html <?php language_attributes(); ?>>
 
 <!--
- ________  ________  ________  ________          ___  ___           _______  ________    _______  ________     
-|\   __  \|\   ____\|\   __  \|\   ___ \        |\  \|\  \         /  ___  \|\   __  \  /  ___  \|\_____  \    
-\ \  \|\  \ \  \___|\ \  \|\  \ \  \_|\ \       \ \  \\\  \       /__/|_/  /\ \  \|\  \/__/|_/  /\|____|\ /_   
- \ \  \\\  \ \  \    \ \   __  \ \  \ \\ \       \ \  \\\  \      |__|//  / /\ \  \\\  \__|//  / /     \|\  \  
-  \ \  \\\  \ \  \____\ \  \ \  \ \  \_\\ \       \ \  \\\  \         /  /_/__\ \  \\\  \  /  /_/__   __\_\  \ 
-   \ \_______\ \_______\ \__\ \__\ \_______\       \ \_______\       |\________\ \_______\|\________\|\_______\
-    \|_______|\|_______|\|__|\|__|\|_______|        \|_______|        \|_______|\|_______| \|_______|\|_______|
-                                                                                                               
+ ________  ________  ________  ________          ___  ___      
+|\   __  \|\   ____\|\   __  \|\   ___ \        |\  \|\  \     
+\ \  \|\  \ \  \___|\ \  \|\  \ \  \_|\ \       \ \  \\\  \    
+ \ \  \\\  \ \  \    \ \   __  \ \  \ \\ \       \ \  \\\  \   
+  \ \  \\\  \ \  \____\ \  \ \  \ \  \_\\ \       \ \  \\\  \  
+   \ \_______\ \_______\ \__\ \__\ \_______\       \ \_______\ 
+    \|_______|\|_______|\|__|\|__|\|_______|        \|_______| 
+                                                               
 -->
 
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#444444" />
   <?php wp_head(); ?>
 </head>
 
@@ -29,19 +28,15 @@
           <div class="logo-wrapper">
             <a href="<?php echo esc_url(
               home_url('/')
-            ); ?>" class="logo" rel="home" title="OCAD U Illustration"><?php bloginfo(
+            ); ?>" class="logo font-bold" rel="home" title="OCAD U Illustration"><?php bloginfo(
   'name'
 ); ?></a>
           </div>
           <div class="header-items-wrapper">
-            <div class="header-item-link">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009…2023</button>
-            </div>
-            <div class="header-item-link">
-              <div class="search-wrapper">
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2024</button>
+              <div class="search-wrapper content-center">
                 <?php get_search_form(); ?>
               </div>
-            </div>
           </div>
         </div>
 

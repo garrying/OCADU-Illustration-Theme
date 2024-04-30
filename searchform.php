@@ -1,10 +1,10 @@
-<form role="search" method="get" class="search-form" action="<?php echo esc_url(
+<form role="search" method="get" class="search-form rounded-full items-center" action="<?php echo esc_url(
   home_url('/')
 ); ?>">
   <label for="autocomplete" class="screen-reader-shortcut"><?php echo esc_html(
     'Search'
   ); ?></label>
-  <input required type="search" class="search-field input-reset" id="autocomplete" placeholder="<?php echo esc_attr_x(
+  <input required type="search" class="search-field" id="autocomplete" placeholder="<?php echo esc_attr_x(
     'Search illustrators',
     'placeholder',
     'ocaduillustration'

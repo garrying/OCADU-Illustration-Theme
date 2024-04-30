@@ -1,9 +1,4 @@
-@use "sass:color";
-@use "../components/variables";
-
 .section-indicator-index {
-  font-family: var(--font-standard);
-  font-size: clamp(1rem, 5vw, 3rem);
   width: 100%;
   line-height: 1em;
   font-weight: normal;
@@ -22,11 +17,15 @@
 .page-inner {
   display: flex;
   flex-direction: column;
-  max-width: 620px;
+  max-width: 65ch;
   margin: 130px auto;
-  line-height: 1.45em;
+  line-height: 1.5;
 
-  @media screen and (max-width: variables.$small-vp) {
+  p {
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     max-width: none;
     margin: 8em 0;
@@ -35,18 +34,20 @@
 
   .entry-title {
     font-weight: normal;
+    font-size: 1.125rem;
     line-height: 1em;
-    margin: 0.5em 0;
+    margin: 1.5rem 0;
   }
 
   .entry-title-secondary {
     font-weight: normal;
+    font-size: 1.125rem;
     line-height: 1em;
-    margin: 1.5em 0;
+    margin: 1.5rem 0;
   }
 
   .faculty-list {
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       max-width: none;
     }
   }
@@ -55,7 +56,7 @@
 #post-6 {
   max-width: 60vw;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     padding: 0 20px;
     max-width: none;
     margin-top: 8em;

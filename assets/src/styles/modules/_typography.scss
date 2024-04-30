@@ -1,42 +1,31 @@
-// Font smoothing
-
-@mixin font-smoothing($value: on) {
-  @if $value == on {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-  } @else {
-    -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: subpixel-antialiased;
-  }
-}
-
-@font-face {
-  font-family: Standard;
-  src: url('../fonts/standard-book-webfont.woff2') format('woff2');
-  font-display: swap;
-}
-
 // Base
 
 abbr,
 sup {
-  font-size: 0.75em;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
 }
 
 sup {
   text-transform: none;
   letter-spacing: 0;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'calt' 1,
+    'pnum' 1,
+    'tnum' 0,
+    'onum' 1,
+    'lnum' 0,
+    'dlig' 0,
+    'sups' 1;
 }
 
-h1, h2, h3, h4, h5, h6, blockquote {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
   text-wrap: balance;
-}
-
-// Helper classes
-
-.mono {
-  font-family: var(--font-mono);
 }

@@ -31,7 +31,7 @@
           <?php endif; ?>
         <?php endif; ?>
         <?php if (get_post_meta($post->ID, 'illu_title', true)): ?>
-          <h2 class="illustrator-meta-label illustrator-title"><?php echo esc_html(
+          <h2 class="illustrator-meta-label illustrator-title italic"><?php echo esc_html(
             get_post_meta($post->ID, 'illu_title', true)
           ); ?>
           </h2>

@@ -1,12 +1,9 @@
-@use "sass:color";
-@use "../components/variables";
-
 .single-illustrator {
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     flex-flow: column;
     flex-direction: column-reverse;
     padding-bottom: 60px;
@@ -15,19 +12,19 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 5em;
+  margin-top: 5rem;
 
-  @media screen and (max-width: variables.$medium-vp) {
+  @media screen and (max-width: $medium-vp) {
     flex-basis: 50%;
   }
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     margin-top: 0;
     padding: 0;
   }
 
   .gallery-grid {
-    @media screen and (max-width: variables.$ipad-vp) {
+    @media screen and (max-width: $ipad-vp) {
       margin-top: 0;
     }
   }
@@ -44,23 +41,19 @@
       display: flex;
     }
 
-    @media screen and (max-width: variables.$ipad-vp) {
+    @media screen and (max-width: $ipad-vp) {
       margin: 0 1px 1em 0;
     }
   }
 }
 
 .section-indicator-single {
-  padding: 0.5em 1em;
-  transition: background 180ms ease-in-out;
-
   &:nth-child(2) {
     white-space: nowrap;
-    margin-left: 5px;
     margin-right: 0;
   }
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     display: none;
   }
 }
@@ -69,11 +62,11 @@
   position: relative;
   flex: 1 1 30%;
 
-  @media screen and (max-width: variables.$ipad-vp) {
+  @media screen and (max-width: $ipad-vp) {
     flex: 1 1 50%;
   }
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     padding: 20px;
     margin-top: 80px;
     flex-basis: 100%;
@@ -89,16 +82,16 @@
     flex-flow: row wrap;
     align-items: center;
 
-    @media screen and (max-width: variables.$medium-vp) {
+    @media screen and (max-width: $medium-vp) {
       width: 40%;
     }
 
-    @media screen and (max-width: variables.$ipad-vp) {
+    @media screen and (max-width: $ipad-vp) {
       right: 20px;
       width: 50%;
     }
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       position: relative;
       right: 0;
       width: 100%;
@@ -109,19 +102,9 @@
     width: 100%;
     padding: 0 30px;
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (max-width: $small-vp) {
       padding: 0;
     }
-  }
-
-  .thesis-title {
-    font-weight: normal;
-    color: var(--color-accent);
-  }
-
-  .illustrator-meta-name {
-    font-weight: normal;
-    font-size: 1em;
   }
 }
 
@@ -138,7 +121,7 @@
 .meta {
   margin-top: 2em;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     margin: 2em 0 0;
   }
 
@@ -149,22 +132,16 @@
 }
 
 .illustrator-nav-single-wrapper {
-  font-size: 12px;
   line-height: 1em;
   display: flex;
-  flex-wrap: wrap;
   position: absolute;
-  align-items: center;
   right: 0;
   bottom: 2em;
   left: 0;
   margin: 0 30px;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     position: relative;
     padding: 0;
     z-index: var(--z-background);
@@ -181,27 +158,21 @@
 
 .illustrator-nav-single {
   display: flex;
-  width: 100%;
-  border-top: 1px solid rgb(var(--color-site-background));
   justify-content: space-between;
 
-  @media screen and (max-width: variables.$small-vp) {
-    border-radius: var(--border-radius);;
-    border-top: 0;
+  @media screen and (max-width: $small-vp) {
+    border-radius: 999px;
     position: fixed;
     left: 20px;
     right: 20px;
     width: unset;
     bottom: 20px;
     background: var(--color-white);
-    box-shadow: var(--shadow);
   }
 
   a {
     display: block;
     z-index: var(--z-foreground);
-    padding: 1em;
-    transition: background 180ms ease-in-out;
   }
 
   .truncate {

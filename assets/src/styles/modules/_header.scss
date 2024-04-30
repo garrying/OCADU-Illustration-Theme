@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../components/variables";
-@use "typography";
-
 .logo {
   display: block;
   line-height: 1em;
@@ -14,29 +10,28 @@
     color: var(--color-accent);
   }
 
-  &.invert,
-  &.invert:hover {
-    color: var(--color-accent);
-  }
-
   .fade-out & {
     pointer-events: none;
   }
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     width: 30px;
     overflow: hidden;
-    background: var(--color-white);
+    background: var(--color-accent);
     aspect-ratio: 1/1;
     border-radius: var(--border-radius);
     color: var(--color-white);
     display: flex;
     align-items: center;
-    
+
+    &:hover {
+      background: var(--color-black);
+    }
+
     &::before {
-      color: var(--color-accent);
+      color: var(--color-white);
       content: '↖';
-      margin-left: 1.15ch;
+      margin-left: 0.95ch;
       margin-right: 30px;
     }
   }
@@ -45,7 +40,7 @@
 .heading-inner {
   position: fixed;
   top: 0;
-  padding: 1em 30px;
+  padding: 1rem 30px;
   left: 0;
   right: 0;
   z-index: var(--z-foreground);
@@ -54,7 +49,7 @@
   justify-content: space-between;
   transition: opacity 200ms ease-in-out;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     top: 0;
     padding: 1em 20px;
     right: 0;
@@ -71,10 +66,9 @@
   display: flex;
   gap: 1em;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (max-width: $small-vp) {
     gap: 0.5em;
     justify-content: flex-end;
-    width: 50%;
   }
 }
 
@@ -82,7 +76,9 @@
   padding: 1em 1.5em;
   white-space: nowrap;
   pointer-events: auto;
-  transition: color 200ms ease-in-out, background 200ms ease-in-out;
+  transition:
+    color 200ms ease-in-out,
+    background 200ms ease-in-out;
   appearance: none;
   color: var(--color-site-font);
 
@@ -104,6 +100,6 @@
 }
 
 #search-link::after {
-  content: "Search";
+  content: 'Search';
   display: block;
 }
