@@ -8,17 +8,10 @@
     $ocaduillustration_args = [
       'post_type' => 'illustrator',
       'tax_query' => [
-        // phpcs:ignore
         [
           'taxonomy' => 'gradyear',
           'field' => 'slug',
-          'terms' => '2019',
-        ],
-        [
-          'taxonomy' => 'gradyear',
-          'field' => 'slug',
-          'terms' => 'major-works',
-          'operator' => 'NOT IN',
+          'terms' => $ocaduillustration_grad_year[0]->name,
         ],
       ],
     ];
