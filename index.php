@@ -39,7 +39,7 @@
       <?php while ($ocaduillustration_home_index->have_posts()):
         $ocaduillustration_home_index->the_post(); ?>
 
-        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url('illustrator-large'); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
+        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url('medium'); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
 
       <?php
       endwhile; ?>

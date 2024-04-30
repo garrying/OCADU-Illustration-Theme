@@ -2,7 +2,7 @@
   <a href="<?php the_permalink(); ?>" class="illustrator-link" title="<?php the_title(); ?>">
     <figure>
       <div class="illustrator-image">
-        <?php the_post_thumbnail('illustrator-large'); ?>
+        <?php the_post_thumbnail('medium'); ?>
       </div>
     </figure>
     <div class="illustrator-meta-container">
