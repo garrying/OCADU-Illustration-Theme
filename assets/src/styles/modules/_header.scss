@@ -24,6 +24,10 @@
     display: flex;
     align-items: center;
 
+    &:hover {
+      background: var(--color-black);
+    }
+
     &::before {
       color: var(--color-white);
       content: '↖';

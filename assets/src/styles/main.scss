@@ -1,7 +1,5 @@
 @tailwind base;
 
-@import 'vendor/justifiedGallery';
-
 /* Component styles (e.g. mixins, vars) */
 
 @import 'components/variables';
@@ -20,7 +18,6 @@
 @import 'modules/header';
 @import 'modules/layout';
 @import 'modules/miniview';
-@import 'modules/title';
 @import 'modules/home';
 @import 'modules/loader';
 

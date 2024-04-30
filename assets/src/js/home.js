@@ -1,7 +1,5 @@
 import THREE from 'three.js'
-
 import gsap from 'gsap'
-import VirtualScroll from 'virtual-scroll'
 
 let ww = document.getElementById('title').offsetWidth
 let wh = document.getElementById('title').offsetHeight
@@ -76,8 +74,10 @@ class Core {
     gsap.ticker.add(this.tick)
 
     window.addEventListener('mousemove', this.onMouseMove)
-    document.getElementById('title').addEventListener('mousedown', this.onMouseDown)
-    document.getElementById('title').addEventListener('mouseup', this.onMouseUp)
+    document
+      .querySelector('canvas')
+      .addEventListener('mousedown', this.onMouseDown)
+    document.querySelector('canvas').addEventListener('mouseup', this.onMouseUp)
     window.addEventListener('wheel', this.onWheel)
     window.addEventListener('resize', this.resize)
 
@@ -110,7 +110,7 @@ class Core {
       })
     })
 
-    document.getElementById('title').addEventListener('mouseup', () => {
+    document.querySelector('canvas').addEventListener('mouseup', () => {
       const isNearlyAClick =
         pointerUpTimestampRef - pointerDownTimestampRef < 100
       if (isNearlyAClick) {

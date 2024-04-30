@@ -25,12 +25,15 @@
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
   <div id="title" class="bottom-4 left-4 right-4 top-20">
-    <div class="title-support-unit p-4 pt-48">
+    <div class="flex md:hidden absolute inset-x-0 inset-y-0 bg-black/50 justify-center items-center z-10 p-4">
+      <a class="border border-white rounded-full px-12 py-4 bg-white text-2xl hover:bg-neutral-200 hover:text-black" href="/year/2024/">View 2024 archive</a>
+    </div>
+    <div class="title-support-unit p-4 pt-48 pointer-events-none hidden md:flex">
         <div class="title-secondary">
           <p>Spanning 2009&ndash;2024<br /> Maintained by the Illustration Program at OCAD University</p>
-          <a href="/about" class="about">About the archive</a>
+          <a href="/about" class="about pointer-events-auto">About the archive</a>
         </div>
-        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="instagram">@ocaduillustration ↗</a>
+        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
     </div>
   </div>
   <div id="illustrators" class="grid js-grid pointer-events-none">

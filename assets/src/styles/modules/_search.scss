@@ -44,6 +44,10 @@
   &:has(.search-field:focus) {
     outline: 1px solid var(--color-accent);
   }
+
+  &:hover {
+    outline: 1px solid var(--color-accent);
+  }
 }
 
 .autoComplete_list {

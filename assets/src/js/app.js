@@ -4,9 +4,7 @@ import * as lazySizes from 'lazysizes'
 import Colcade from 'colcade'
 import SwipeListener from 'swipe-listener'
 import $ from 'jquery'
-import 'justifiedGallery'
 import Velocity from 'velocity-animate/velocity.min'
-import ColorThief from 'colorthief'
 
 window.jQuery = $
 
@@ -36,7 +34,6 @@ Velocity('registerSequence', 'fadeIn', {
     init: () => {
       app._ocadPanelSelectButtons()
       app._ocadHomeLoader()
-      app._ocadHomeHover()
       app._ocadGalleryNav()
       app._ocadUIbinding()
       app._ocadSingleScroll()
@@ -247,33 +244,6 @@ Velocity('registerSequence', 'fadeIn', {
       }
       if (app.settings.documentBody.hasClass('home')) {
         app._ocadShuffle(document.querySelectorAll('.gallery-item'))
-      }
-    },
-
-    _ocadHomeHover: () => {
-      const colorThief = new ColorThief()
-
-      if (app.settings.documentBody.hasClass('home')) {
-        $('.illustrator-link').on('mouseenter', (ele) => {
-          $(ele.currentTarget)
-            .find('.illustrator-meta-container')
-            .addClass('active')
-          if ($(ele.currentTarget).find('.lazyloaded').length) {
-            const image = $(ele.currentTarget).find('.lazyloaded')[0]
-            const BgColor = colorThief.getColor(image)
-            app.settings.documentBody.css(
-              'background-color',
-              `rgba(${BgColor[0]} ${BgColor[1]} ${BgColor[2]} / 0.25)`
-            )
-          }
-        })
-
-        $('.illustrator-link').on('mouseleave', (ele) => {
-          $(ele.currentTarget)
-            .find('.illustrator-meta-container')
-            .removeClass('active')
-          app.settings.documentBody.removeAttr('style')
-        })
       }
     },
 
