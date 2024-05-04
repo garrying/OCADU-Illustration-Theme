@@ -6,11 +6,12 @@
 ); ?></h2>
 
 <div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
-  <div class="grid-col grid-col-1"></div>
-  <div class="grid-col grid-col-2"></div>
-  <div class="grid-col grid-col-3"></div>
-  <div class="grid-col grid-col-4"></div>
   <?php if (have_posts()): ?>
+    <div class="grid-col grid-col-1"></div>
+    <div class="grid-col grid-col-2"></div>
+    <div class="grid-col grid-col-3"></div>
+    <div class="grid-col grid-col-4"></div>
+
     <?php while (have_posts()):
       the_post(); ?>
 
@@ -18,12 +19,13 @@
 
     <?php
     endwhile; ?>
+    
 
   <?php else: ?>
 
-    <article class="fixed flex items-center justify-center">
+    <article class="flex items-center justify-center w-screen">
       <header class="entry-header">
-        <h1 class="font-normal"><?php esc_html_e(
+        <h1 class="mb-4"><?php esc_html_e(
           'No Matches &#9785;',
           'ocaduillustration'
         ); ?></h1>
