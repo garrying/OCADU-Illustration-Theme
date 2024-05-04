@@ -21,15 +21,15 @@
 
   <?php else: ?>
 
-    <article class="error-body">
+    <article class="fixed flex items-center justify-center">
       <header class="entry-header">
-        <h1 class="entry-title"><?php esc_html_e(
+        <h1 class="font-normal"><?php esc_html_e(
           'No Matches &#9785;',
           'ocaduillustration'
         ); ?></h1>
         <p>Sorry, but nothing matched your search criteria.<br> Please try again with some different keywords.</p>
       </header><!-- .entry-header -->
-    </article><!-- .error-body -->
+    </article>
 
   <?php endif; ?>
 </div>

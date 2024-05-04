@@ -14,10 +14,10 @@ $color-accent: #999;
   --color-site-font: #000;
   --color-accent: #{$color-accent};
   --color-accent-rgb: #{hex2rgb($color-accent)};
-  --z-background: 100;
-  --z-middle: 200;
-  --z-foreground: 300;
-  --z-important: 600;
+  --z-background: 10;
+  --z-middle: 20;
+  --z-foreground: 30;
+  --z-important: 50;
   --border-radius: 8px;
 }
 

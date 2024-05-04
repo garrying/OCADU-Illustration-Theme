@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
-  <div class="error-body">
+  <div class="fixed flex items-center justify-center">
     <header class="entry-header">
-      <h1 class="entry-title"><?php esc_html_e(
+      <h1 class="font-normal"><?php esc_html_e(
         'Page not found...D:',
         'ocaduillustration'
       ); ?></h1>
