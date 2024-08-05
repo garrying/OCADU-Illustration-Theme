@@ -8,6 +8,11 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types: ["patch"]
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
