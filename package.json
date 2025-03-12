@@ -29,7 +29,7 @@
     "postcss": "^8.5.3",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^10.1.5",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.2",
     "sass": "^1.83.4",
     "sass-loader": "^16.0.5",
     "svg-url-loader": "^8.0.0",
