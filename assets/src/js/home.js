@@ -1,5 +1,5 @@
-import THREE from 'three.js'
 import gsap from 'gsap'
+import * as THREE from 'three'
 
 let ww = document.getElementById('title').offsetWidth
 let wh = document.getElementById('title').offsetHeight
@@ -291,7 +291,7 @@ void main() {
 }
 `
 
-const geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
+const geometry = new THREE.PlaneGeometry(1, 1, 1, 1)
 const material = new THREE.ShaderMaterial({
   fragmentShader,
   vertexShader
