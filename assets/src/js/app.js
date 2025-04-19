@@ -1,10 +1,19 @@
 import * as AutoComplete from '@tarekraafat/autocomplete.js'
+import $ from 'cash-dom'
 import Colcade from 'colcade'
-import $ from 'jquery'
 import * as lazySizes from 'lazysizes'
 import { animate, stagger } from 'motion'
 import SwipeListener from 'swipe-listener'
 import '../styles/main.scss'
+
+const isVisible = (elem) =>
+  !!(
+    elem &&
+    (elem[0].offsetWidth ||
+      elem[0].offsetHeight ||
+      elem[0].getClientRects().length)
+  )
+
 ;(() => {
   const app = {
     init: () => {
@@ -172,8 +181,12 @@ import '../styles/main.scss'
     },
 
     _ocadShuffle: (elems) => {
-      const elements = $(elems).sort(() => Math.random() - 0.5)
-      $(app.settings.masonryContainerHome).append(elements)
+      const elemArray = $(elems).get()
+      for (let i = elemArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[elemArray[i], elemArray[j]] = [elemArray[j], elemArray[i]]
+      }
+      $(elemArray).appendTo(app.settings.masonryContainerHome)
     },
 
     _ocadHomeLoader: () => {
@@ -203,7 +216,7 @@ import '../styles/main.scss'
     _ocadPanelsCloseSelective: (event) => {
       if (
         !$(event.target).closest('#full-image, .miniview').length &&
-        app.settings.imageModal.is(':visible')
+        isVisible(app.settings.imageModal)
       ) {
         $('#image-modal').addClass('hidden')
 
@@ -316,7 +329,7 @@ import '../styles/main.scss'
           app._ocadLoader()
           itemImage = $(event.currentTarget)
           app.settings.imageIndex = itemImage.data('index')
-          $('.image-modal-image').html(imageModalSetter(itemImage))
+          $('.image-modal-image').empty().append(imageModalSetter(itemImage))
           lazySizes.loader.unveil(document.querySelector('#full-image'))
           miniViewUpdate(app.settings.imageIndex)
         }
@@ -325,8 +338,8 @@ import '../styles/main.scss'
       const modalReviel = () => {
         app._ocadLoader(false)
         app.settings.imageModal.removeClass('hidden')
+        imageCaptionSetter(itemImage.data('caption'))
         animate('#image-modal', { opacity: [0, 1] }).then(() => {
-          imageCaptionSetter(itemImage.data('caption'))
           $('html, body').addClass('lock-scroll')
         })
       }
@@ -423,7 +436,7 @@ import '../styles/main.scss'
       */
 
       document.addEventListener('keydown', (e) => {
-        if (app.settings.imageModal.is(':visible')) {
+        if (isVisible(app.settings.imageModal)) {
           if (e.key === 'ArrowRight') {
             nextElement()
           }
