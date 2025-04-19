@@ -113,14 +113,10 @@
 
 .gallery-grid {
   .grid-col {
-    width: 50%;
+    width: 100%;
 
-    @media screen and (max-width: $ipad-vp) {
-      width: 100%;
-    }
-
-    @media screen and (max-width: $small-vp) {
-      width: 100%;
+    @media screen and (min-width: $ipad-vp) {
+      width: 50%;
     }
 
     @media screen and (min-width: $large-vp) {
