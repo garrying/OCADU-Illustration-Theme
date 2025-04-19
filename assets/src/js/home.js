@@ -171,7 +171,7 @@ class Core {
     this.on.y = this.ty + clientY * 2.5
   }
 
-  onMouseUp = ({ clientX, clientY }) => {
+  onMouseUp = () => {
     pointerUpTimestampRef = Date.now()
     if (!this.isDragging) return
 
@@ -354,7 +354,7 @@ class Plane extends THREE.Object3D {
     this.rect = this.el.getBoundingClientRect()
 
     const { left, top, width, height } = this.rect
-    const { u_res, u_toRes, u_pos, u_offset } = this.material.uniforms
+    const { u_res } = this.material.uniforms
 
     this.xOffset = left + width / 2 - ww / 2
     this.yOffset = top + height / 2 - wh / 2
