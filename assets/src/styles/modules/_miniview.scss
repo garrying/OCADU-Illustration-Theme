@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 .miniview-container {
   position: fixed;
   bottom: 20px;
@@ -7,7 +9,7 @@
   justify-content: center;
   pointer-events: none;
 
-  @media screen and (max-width: $ipad-vp) {
+  @media screen and (max-width: variables.$ipad-vp) {
     display: none;
   }
 }

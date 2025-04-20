@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 .logo {
   display: block;
   line-height: 1em;
@@ -14,7 +16,7 @@
     pointer-events: none;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     width: 30px;
     overflow: hidden;
     background: var(--color-accent);
@@ -49,7 +51,7 @@
   justify-content: space-between;
   transition: opacity 200ms ease-in-out;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     top: 0;
     padding: 1em 20px;
     right: 0;
@@ -66,7 +68,7 @@
   display: flex;
   gap: 1em;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     gap: 0.5em;
     justify-content: flex-end;
   }

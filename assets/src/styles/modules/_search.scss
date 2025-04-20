@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 .search-container {
   align-items: center;
   justify-content: center;
@@ -36,7 +38,7 @@
     color: var(--color-site-font);
     padding: 0.5em 1em;
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       padding: 10px;
     }
   }
@@ -78,7 +80,7 @@
 .autoComplete_result {
   /* stylelint-disable-line */
   max-width: fit-content;
-  @extend .rounded-full;
+  border-radius: calc(infinity * 1px);
   cursor: pointer;
   transition:
     color 200ms ease-in-out,
@@ -118,7 +120,7 @@
   line-height: 1em;
   font-size: 2em;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin: 0;
   }
 }
