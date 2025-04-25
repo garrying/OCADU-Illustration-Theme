@@ -1,11 +1,7 @@
-@use "sass:meta";
+@use 'sass:meta';
 @tailwind base;
 
-/* Component styles (e.g. mixins, vars) */
-
 @include meta.load-css('components/variables');
-
-/* Modules styles (e.g. layouts, typography) */
 
 @include meta.load-css('modules/typography');
 @include meta.load-css('modules/base');

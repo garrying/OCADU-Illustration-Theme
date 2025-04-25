@@ -15,32 +15,43 @@ module.exports = {
   },
   mode: 'development',
   context: __dirname,
+  watchOptions: {
+    ignored: '**/node_modules'
+  },
   module: {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: './'
-          }
-        }, 'css-loader', 'sass-loader', 'postcss-loader']
-      }, {
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
+          'css-loader',
+          'sass-loader',
+          'postcss-loader'
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env']
         }
-      }, {
+      },
+      {
         test: /\.svg$/,
         exclude: /node_modules/,
         loader: 'file-loader',
         options: {
           name: './images/[name].[ext]'
         }
-      }, {
+      },
+      {
         test: /\.(svg|eot|ttf|woff|woff2)$/i,
         type: 'asset'
       }
@@ -49,9 +60,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: './assets/src/images', to: './images' }
-      ]
+      patterns: [{ from: './assets/src/images', to: './images' }]
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
