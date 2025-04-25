@@ -22,7 +22,7 @@
             </a>
           </div>
           <div class="header-items-wrapper">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2024</button>
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2025</button>
               <div class="search-wrapper content-center">
                 <?php get_search_form(); ?>
               </div>
