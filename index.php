@@ -19,11 +19,11 @@
   } ?>
   <div id="title" class="bottom-4 left-4 right-4 top-20">
     <div class="flex md:hidden absolute inset-x-0 inset-y-0 bg-black/50 justify-center items-center z-10 p-4">
-      <a class="border border-white rounded-full px-12 py-4 bg-white text-2xl hover:bg-neutral-200 hover:text-black" href="/year/2024/">View 2024 archive</a>
+      <a class="border border-white rounded-full px-12 py-4 bg-white text-2xl hover:bg-neutral-200 hover:text-black" href="/year/2025/">View 2025 archive</a>
     </div>
     <div class="title-support-unit p-4 pt-48 pointer-events-none hidden md:flex">
         <div class="title-secondary">
-          <p>Spanning 2009&ndash;2024<br /> Maintained by the Illustration Program at OCAD University</p>
+          <p>Spanning 2009&ndash;2025<br /> Maintained by the Illustration Program at OCAD University</p>
           <a href="/about" class="about pointer-events-auto">About the archive</a>
         </div>
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
@@ -39,7 +39,9 @@
       <?php while ($ocaduillustration_home_index->have_posts()):
         $ocaduillustration_home_index->the_post(); ?>
 
-        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url('medium'); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
+        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url(
+          'medium'
+        ); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
 
       <?php
       endwhile; ?>
