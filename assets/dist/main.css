@@ -477,7 +477,7 @@ video {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -581,7 +581,7 @@ a img {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -699,7 +699,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -851,7 +851,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -918,7 +918,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1055,7 +1055,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1139,7 +1139,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1235,7 +1235,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1357,7 +1357,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1576,7 +1576,7 @@ figure .wp-caption-text {
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
-  --color-site-background: #fff;
+  --color-site-background: #fbf9f4;
   --color-site-font: #000;
   --color-accent: #999;
   --color-accent-rgb: rgb(153, 153, 153);
@@ -1980,3 +1980,5 @@ figure .wp-caption-text {
     line-height: 1;
   }
 }
+
+/*# sourceMappingURL=main.css.map*/
