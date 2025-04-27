@@ -21,7 +21,7 @@
     endwhile; ?>
     
 
-  <?php else: ?>
+  <?php else : ?>
 
     <article class="flex items-center justify-center w-screen">
       <header class="entry-header">

@@ -9,9 +9,9 @@
     'placeholder',
     'ocaduillustration'
   ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x(
-  'Search for:',
-  'label',
-  'ocaduillustration'
+    'Search for:',
+    'label',
+    'ocaduillustration'
 ); ?>" />
   <button type="submit" aria-label="Search" class="search-submit"><?php get_template_part(
     'assets/dist/images/search.svg'

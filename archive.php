@@ -21,7 +21,7 @@
     <?php
     endwhile; ?>
 
-  <?php else: ?>
+  <?php else : ?>
 
     <article class="post no-results not-found">
       <header class="entry-header">

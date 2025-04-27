@@ -145,8 +145,6 @@ add_action('wp_enqueue_scripts', 'ocaduillustration_fonts');
 /**
  * Clean up body_class output
  *
- * @param string $wp_classes input classes from WordPress.
- *
  * @param array  $extra_classes extra classes to add to body class.
  *
  * @return array
@@ -252,8 +250,6 @@ add_filter('nav_menu_item_id', 'ocaduillustration_nav_id_filter', 10, 2);
 
 /**
  * Limit Search to Illustrators and Events
- *
- * @param string $query limits default search to just Illustrators.
  */
 function ocaduillustration_search_filter($query)
 {
@@ -462,8 +458,6 @@ add_action('wp_head', 'ocaduillustration_social_meta');
  * Hijack image titles for copyright alt
  *
  * @param string $attr takes gallery image attributes.
- *
- * @param string $attachment takes attachment object.
  *
  * @return string
  */

@@ -1,17 +1,6 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
-<!--
- ________  ________  ________  ________          ___  ___      
-|\   __  \|\   ____\|\   __  \|\   ___ \        |\  \|\  \     
-\ \  \|\  \ \  \___|\ \  \|\  \ \  \_|\ \       \ \  \\\  \    
- \ \  \\\  \ \  \    \ \   __  \ \  \ \\ \       \ \  \\\  \   
-  \ \  \\\  \ \  \____\ \  \ \  \ \  \_\\ \       \ \  \\\  \  
-   \ \_______\ \_______\ \__\ \__\ \_______\       \ \_______\ 
-    \|_______|\|_______|\|__|\|__|\|_______|        \|_______| 
-                                                               
--->
-
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,9 +17,9 @@
           <div class="logo-wrapper">
             <a href="<?php echo esc_url(
               home_url('/')
-            ); ?>" class="logo font-bold" rel="home" title="OCAD U Illustration"><?php bloginfo(
-  'name'
-); ?></a>
+            ); ?>" class="logo font-bold" rel="home" title="OCAD U Illustration">
+              <?php bloginfo('name'); ?>
+            </a>
           </div>
           <div class="header-items-wrapper">
               <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2024</button>

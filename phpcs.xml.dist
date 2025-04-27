@@ -6,8 +6,10 @@
 
   <file>.</file>
 
-  <exclude-pattern>vendor</exclude-pattern>
-  <exclude-pattern>node_modules</exclude-pattern>
+  <exclude-pattern>vendor/*</exclude-pattern>
+  <exclude-pattern>node_modules/*</exclude-pattern>
+  <exclude-pattern>assets/*</exclude-pattern>
+  <exclude-pattern>styles/*</exclude-pattern>
 
   <arg value="spv"/>
   <arg name="basepath" value="."/>
@@ -17,7 +19,31 @@
   <arg name="ignore" value="svg.php"/>
   <arg name="tab-width" value="2"/>
 
-  <rule ref="WordPress"/>
+  <rule ref="WordPress">
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+    <exclude name="Squiz.Commenting.FunctionComment" />
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterOpenParenthesis" />
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeCloseParenthesis" />
+    <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
+    <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter" />
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBetweenStructureColon" />
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+    <exclude name="Universal.Arrays.DisallowShortArraySyntax" />
+    <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
+    <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine" />
+    <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen" />
+    <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingBeforeClose" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
+    <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
+    <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
+    <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" />
+    <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayCloserSingleLine" />
+    <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayOpenerSingleLine" />
+    <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" />
+    <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys" />
+  </rule>
 
   <rule ref="WordPress-Extra">
     <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
@@ -27,11 +53,12 @@
     <exclude name="Squiz.Commenting.FileComment.Missing"/>
     <exclude name="Squiz.Commenting.FunctionComment.Missing" />
 
-    <exclude name="WordPress.WhiteSpace.PrecisionAlignment"/>
     <exclude name="WordPress.Arrays.ArrayIndentation"/>
+    <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen" />
+    <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
+    <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
+    <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterEnd" />
   </rule>
-
-  <rule ref="WPThemeReview"/>
 
   <rule ref="WordPress.Files.FileName">
     <properties>
@@ -45,8 +72,26 @@
     </properties>
   </rule>
 
-  <config name="minimum_supported_wp_version" value="4.5"/>
+  <rule ref="Universal.WhiteSpace.PrecisionAlignment">
+    <properties>
+        <property name="indent" value="2"/>
+    </properties>
+  </rule>
 
-  <config name="testVersion" value="5.6-"/>
-  <rule ref="PHPCompatibilityWP"/>
+  <rule ref="PEAR.Functions.FunctionCallSignature">
+    <properties>
+      <property name="requiredSpacesAfterOpen" value="0"/>
+      <property name="requiredSpacesBeforeClose" value="0"/>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+
 </ruleset>
