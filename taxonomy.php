@@ -38,11 +38,10 @@
     'post_status' => 'publish',
     'post_type' => 'illustrator',
     'tax_query' => [
-      // phpcs:ignore
       [
         'taxonomy' => 'gradyear',
-        'field' => 'slug',
-        'terms' => $ocaduillustration_term->slug,
+        'field' => 'term_id',
+        'terms' => $ocaduillustration_term->term_id,
       ],
     ],
     'orderby' => 'title',

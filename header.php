@@ -30,10 +30,12 @@
         </div>
 
         <?php
-        $ocaduillustration_grad_year = get_terms(
-          'gradyear',
-          'hide_empty=1&order=DESC&parent=0'
-        );
+        $ocaduillustration_grad_year = get_terms([
+          'taxonomy' => 'gradyear',
+          'hide_empty' => true,
+          'order' => 'DESC',
+          'parent' => 0,
+        ]);
         if (is_singular('illustrator') && has_term('', 'gradyear')) {
           // Selected menu state for individual items.
           $ocaduillustration_terms = get_the_terms($post->ID, 'gradyear');
@@ -94,11 +96,10 @@
                   'orderby' => 'rand',
                   'post_type' => 'illustrator',
                   'tax_query' => [
-                    // phpcs:ignore
                     [
                       'taxonomy' => 'gradyear',
-                      'field' => 'name',
-                      'terms' => $ocaduillustration_class_year->name,
+                      'field' => 'term_id',
+                      'terms' => $ocaduillustration_class_year->term_id,
                     ],
                   ],
                 ];
@@ -117,13 +118,35 @@
                   );
                 }
 
-                echo "<li class='year-list-item'><div class='year-list-item-inner'>" .
+                echo "<li class='year-list-item'><div class='year-list-item-inner'>";
+                echo wp_kses(
                   ocaduillustration_year_item_navigation(
                     $ocaduillustration_class_year,
                     $ocaduillustration_selected_year_class,
                     $ocaduillustration_year_image,
                     $ocaduillustration_year_image_srcset
-                  ); // phpcs:ignore
+                  ),
+                  [
+                    'a' => [
+                      'href' => [],
+                      'title' => [],
+                      'class' => [],
+                    ],
+                    'span' => [
+                      'class' => [],
+                    ],
+                    'img' => [
+                      'class' => [],
+                      'srcset' => [],
+                      'alt' => [],
+                      'sizes' => [],
+                      'width' => [],
+                      'height' => [],
+                      'src' => [],
+                      'loading' => [],
+                    ],
+                  ]
+                );
                 echo '</div></li>';
                 wp_reset_postdata();
               }

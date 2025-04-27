@@ -1,17 +1,20 @@
 <?php get_header(); ?>
 
   <?php if (is_home() || is_front_page()) {
-    $ocaduillustration_grad_year = get_terms(
-      'gradyear',
-      'hide_empty=1&order=DESC&number=1&parent=0'
-    );
+    $ocaduillustration_grad_year = get_terms([
+      'taxonomy' => 'gradyear',
+      'hide_empty' => true,
+      'order' => 'DESC',
+      'number' => 1,
+      'parent' => 0,
+    ]);
     $ocaduillustration_args = [
       'post_type' => 'illustrator',
       'tax_query' => [
         [
           'taxonomy' => 'gradyear',
-          'field' => 'slug',
-          'terms' => $ocaduillustration_grad_year[0]->name,
+          'field' => 'term_id',
+          'terms' => $ocaduillustration_grad_year[0]->term_id,
         ],
       ],
     ];
