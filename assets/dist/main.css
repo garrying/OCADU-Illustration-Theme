@@ -1630,32 +1630,43 @@ figure .wp-caption-text {
   background: rgb(var(--color-accent-rgb)/50%);
 }
 
-.home canvas {
+.grid-container {
+  user-select: none;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
   cursor: grab;
+  border-radius: var(--border-radius);
 }
 
-.home canvas:active {
+.grid-container:active {
   cursor: grabbing;
 }
 
-.grid {
-  position: fixed;
+.card img {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
   top: 0;
   left: 0;
-  width: 125%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.grid .js-plane {
-  margin: 1px;
+.card {
+  transition: opacity 0.5s;
+  opacity: 1;
   overflow: hidden;
-  aspect-ratio: 1/1;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+}
+
+.card:hover {
+  opacity: 0.5;
+}
+
+.card.hidden {
+  opacity: 0;
 }
 
 #title {
@@ -1847,6 +1858,10 @@ figure .wp-caption-text {
   justify-content: center;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1946,6 +1961,10 @@ figure .wp-caption-text {
 .text-neutral-500 {
   --tw-text-opacity: 1;
   color: rgb(115, 115, 115, var(--tw-text-opacity, 1));
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .invert {

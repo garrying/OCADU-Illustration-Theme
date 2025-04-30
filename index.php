@@ -32,42 +32,25 @@
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="grid js-grid pointer-events-none">
+  <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-20 overflow-hidden"></div>
 
-    <?php if ($ocaduillustration_home_index->have_posts()): ?>
+<script id="image-data" type="application/json">
+  <?php
+  $images = [];
+  $id = 0;
+  while ($ocaduillustration_home_index->have_posts()) {
+    $ocaduillustration_home_index->the_post();
+    $thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+    $full = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    if ($thumb && $full) {
+      $images[] = ['id' => $id, 'full_src' => $full, 'thumb_src' => $thumb];
+      $id++;
+    }
+  }
+  echo json_encode(['images' => $images]);
+  ?>
+</script>
 
-      <?php
-      /* Start the Loop */
-      ?>
-      <?php while ($ocaduillustration_home_index->have_posts()):
-        $ocaduillustration_home_index->the_post(); ?>
 
-        <div class="gallery-item"><figure class="js-plane" data-src="<?php the_post_thumbnail_url(
-          'medium'
-        ); ?>" data-href="<?php the_permalink(); ?>"></figure></div>
-
-      <?php
-      endwhile; ?>
-
-    <?php else : ?>
-
-      <article class="post no-results not-found">
-        <header class="entry-header">
-          <h1 class="entry-title"><?php esc_html_e(
-            'Nothing Found',
-            'ocaduillustration'
-          ); ?></h1>
-        </header><!-- .entry-header -->
-
-        <div class="entry-content">
-          <p><?php esc_html_e(
-            'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.',
-            'ocaduillustration'
-          ); ?></p>
-        </div><!-- .entry-content -->
-      </article><!-- #post-0 -->
-
-    <?php endif; ?>
-  </div>
 
 <?php get_footer(); ?>
