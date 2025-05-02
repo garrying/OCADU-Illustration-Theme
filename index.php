@@ -42,8 +42,16 @@
     $ocaduillustration_home_index->the_post();
     $thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium');
     $full = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    $url = get_permalink();
+    $title = get_the_title();
     if ($thumb && $full) {
-      $images[] = ['id' => $id, 'full_src' => $full, 'thumb_src' => $thumb];
+      $images[] = [
+        'id' => $id,
+        'full_src' => $full,
+        'thumb_src' => $thumb,
+        'link' => $url,
+        'name' => $title,
+      ];
       $id++;
     }
   }

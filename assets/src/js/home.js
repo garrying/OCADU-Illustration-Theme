@@ -36,6 +36,8 @@ class SimpleDrag {
 
   onMove(e) {
     if (this.dragging) {
+      this.DOMElement.classList.add('dragging')
+
       e = e.type == 'touchmove' ? e.touches[0] : e
       let xDelta = e.clientX - this.lastX
       let yDelta = e.clientY - this.lastY
@@ -69,6 +71,7 @@ class SimpleDrag {
 
   onEnd() {
     this.dragging = false
+    this.DOMElement.classList.remove('dragging')
   }
 
   isTouch() {
@@ -106,6 +109,9 @@ class Card {
     this.imgElement = document.createElement('img')
     this.rootElement.className = 'card'
     this.rootElement.appendChild(this.imgElement)
+    this.anchorElement = document.createElement('a')
+    this.anchorElement.className = 'w-full h-full block'
+    this.rootElement.appendChild(this.anchorElement)
   }
 
   load() {
@@ -115,6 +121,8 @@ class Card {
       imgElement.onload = () => {
         this.update()
         this.rootElement.classList.toggle('opacity-0', false)
+        this.anchorElement.href = this.descriptor.link
+        this.anchorElement.title = this.descriptor.name
       }
     }
   }
@@ -146,7 +154,7 @@ class Card {
 
 class Grid {
   constructor(DOMElement, JSONGallery) {
-    this.descriptors = JSONGallery.images.sort(() => Math.random() - 0.5)
+    this.descriptors = JSONGallery.images
     this.DOMElement = DOMElement
     // dict to save previous assignations by col and row
     this.picks = {}

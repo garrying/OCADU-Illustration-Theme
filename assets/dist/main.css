@@ -1650,6 +1650,9 @@ figure .wp-caption-text {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.2s;
+  transform-origin: center;
 }
 
 .card {
@@ -1662,11 +1665,19 @@ figure .wp-caption-text {
 }
 
 .card:hover {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
-.card.hidden {
-  opacity: 0;
+.card.opacity-0 img {
+  transform: scale(0.95);
+}
+
+.dragging a {
+  pointer-events: none;
+}
+
+.card a {
+  cursor: grab;
 }
 
 #title {
@@ -1822,8 +1833,16 @@ figure .wp-caption-text {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-screen {
   width: 100vw;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .grow {
