@@ -154,7 +154,7 @@ class Card {
 
 class Grid {
   constructor(DOMElement, JSONGallery) {
-    this.descriptors = JSONGallery.images
+    this.descriptors = JSONGallery.images.sort(() => Math.random() - 0.5)
     this.DOMElement = DOMElement
     // dict to save previous assignations by col and row
     this.picks = {}
