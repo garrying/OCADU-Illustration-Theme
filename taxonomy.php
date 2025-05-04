@@ -34,11 +34,11 @@
     get_query_var('taxonomy')
   ); ?>
   <?php
-  $term_slug = $ocaduillustration_term->slug;
+  $$ocaduillustration_term_slug = $ocaduillustration_term->slug;
   $ocaduillustration_args = [
     'post_status' => 'publish',
     'post_type' => 'illustrator',
-    'gradyear' => $term_slug,
+    'gradyear' => $ocaduillustration_term_slug,
     'orderby' => 'title',
     'order' => 'ASC',
   ];
