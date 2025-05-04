@@ -34,7 +34,7 @@
     get_query_var('taxonomy')
   ); ?>
   <?php
-  $$ocaduillustration_term_slug = $ocaduillustration_term->slug;
+  $ocaduillustration_term_slug = $ocaduillustration_term->slug;
   $ocaduillustration_args = [
     'post_status' => 'publish',
     'post_type' => 'illustrator',
