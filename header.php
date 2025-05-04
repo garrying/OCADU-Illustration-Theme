@@ -95,13 +95,7 @@
                   'posts_per_page' => 1,
                   'orderby' => 'rand',
                   'post_type' => 'illustrator',
-                  'tax_query' => [
-                    [
-                      'taxonomy' => 'gradyear',
-                      'field' => 'term_id',
-                      'terms' => $ocaduillustration_class_year->term_id,
-                    ],
-                  ],
+                  'gradyear' => $ocaduillustration_class_year->slug,
                 ];
 
                 $ocaduillustration_query = new WP_Query(
