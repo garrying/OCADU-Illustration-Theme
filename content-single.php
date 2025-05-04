@@ -261,14 +261,7 @@ if ($ocaduillustration_json_ld_abstract) {
           $ocaduillustration_args = [
             'post_status' => 'publish',
             'post_type' => 'illustrator',
-            'tax_query' => [
-              // phpcs:ignore
-              [
-                'taxonomy' => 'gradyear',
-                'field' => 'term_id',
-                'terms' => $ocaduillustration_base_year,
-              ],
-            ],
+            'gradyear' => $ocaduillustration_base_year->slug,
             'orderby' => 'title',
             'order' => 'ASC',
           ];
