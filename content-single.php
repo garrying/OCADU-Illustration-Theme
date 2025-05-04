@@ -143,9 +143,11 @@ if ($ocaduillustration_json_ld_abstract) {
               ); ?> ⤵</p>
               <a title="<?php echo esc_html(
                 $ocaduillustration_related_post->post_title
-              ); ?>" class="meta-link truncate block" href="<?php echo esc_html(
-  get_permalink($ocaduillustration_related_post->ID)
-); ?>">
+              ); ?>"
+              class="meta-link truncate block"
+              href="<?php echo esc_html(
+                get_permalink($ocaduillustration_related_post->ID)
+              ); ?>">
                 <?php if (
                   get_post_meta(
                     $ocaduillustration_related_post->ID,
@@ -172,9 +174,11 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (get_post_meta($post->ID, 'illu_sites', true)): ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url(
                 get_post_meta($post->ID, 'illu_sites', true)
-              ); ?>" class="meta-link truncate block" href="<?php echo esc_url(
-  get_post_meta($post->ID, 'illu_sites', true)
-); ?>">
+              ); ?>"
+              class="meta-link truncate block"
+              href="<?php echo esc_url(
+                get_post_meta($post->ID, 'illu_sites', true)
+              ); ?>">
                 ↗ .....
                 <?php
                 $ocaduillustration_url = esc_url(
@@ -193,9 +197,11 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php if (get_post_meta($post->ID, 'illu_sites_2', true)): ?>
               <a target="_blank" rel="noopener" title="<?php echo esc_url(
                 get_post_meta($post->ID, 'illu_sites_2', true)
-              ); ?>" class="meta-link truncate block" href="<?php echo esc_url(
-  get_post_meta($post->ID, 'illu_sites_2', true)
-); ?>">
+              ); ?>"
+              class="meta-link truncate block"
+              href="<?php echo esc_url(
+                get_post_meta($post->ID, 'illu_sites_2', true)
+              ); ?>">
                 ↗ .....
                 <?php
                 $ocaduillustration_url = esc_url(
@@ -212,11 +218,13 @@ if ($ocaduillustration_json_ld_abstract) {
             <?php endif; ?>
 
             <?php if (get_post_meta($post->ID, 'illu_email', true)): ?>
-              <a title="<?php echo esc_html(
+              <a
+              title="<?php echo esc_html(
                 get_post_meta($post->ID, 'illu_email', true)
-              ); ?>" class="meta-link truncate block" href="mailto:<?php echo esc_html(
-  get_post_meta($post->ID, 'illu_email', true)
-); ?>">
+              ); ?>" class="meta-link truncate block"
+              href="mailto:<?php echo esc_html(
+                get_post_meta($post->ID, 'illu_email', true)
+              ); ?>">
                 @ ..... <?php echo esc_html(
                   get_post_meta($post->ID, 'illu_email', true)
                 ); ?></a>
