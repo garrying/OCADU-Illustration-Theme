@@ -37,13 +37,7 @@
   $ocaduillustration_args = [
     'post_status' => 'publish',
     'post_type' => 'illustrator',
-    'tax_query' => [
-      [
-        'taxonomy' => 'gradyear',
-        'field' => 'term_id',
-        'terms' => $ocaduillustration_term->term_id,
-      ],
-    ],
+    'gradyear' => $ocaduillustration_term->term_id,
     'orderby' => 'title',
     'order' => 'ASC',
   ];
