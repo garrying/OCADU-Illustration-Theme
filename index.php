@@ -8,16 +8,13 @@
       'number' => 1,
       'parent' => 0,
     ]);
+
     $ocaduillustration_args = [
       'post_type' => 'illustrator',
-      'tax_query' => [
-        [
-          'taxonomy' => 'gradyear',
-          'field' => 'term_id',
-          'terms' => $ocaduillustration_grad_year[0]->term_id,
-        ],
-      ],
+      'posts_per_page' => -1,
+      'gradyear' => $ocaduillustration_grad_year[0]->slug,
     ];
+
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
   <div id="title" class="bottom-4 left-4 right-4 top-20">
@@ -36,26 +33,29 @@
 
 <script id="image-data" type="application/json">
   <?php
-  $images = [];
-  $id = 0;
+  $ocaduillustration_images = [];
+  $ocaduillustration_id = 0;
   while ($ocaduillustration_home_index->have_posts()) {
     $ocaduillustration_home_index->the_post();
-    $thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-    $full = get_the_post_thumbnail_url(get_the_ID(), 'full');
-    $url = get_permalink();
-    $title = get_the_title();
-    if ($thumb && $full) {
-      $images[] = [
-        'id' => $id,
-        'full_src' => $full,
-        'thumb_src' => $thumb,
-        'link' => $url,
-        'name' => $title,
+    $ocaduillustration_thumb = get_the_post_thumbnail_url(
+      get_the_ID(),
+      'medium'
+    );
+    $ocaduillustration_full = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    $ocaduillustration_url = get_permalink();
+    $ocaduillustration_title = get_the_title();
+    if ($ocaduillustration_thumb && $ocaduillustration_full) {
+      $ocaduillustration_images[] = [
+        'id' => $ocaduillustration_id,
+        'full_src' => $ocaduillustration_full,
+        'thumb_src' => $ocaduillustration_thumb,
+        'link' => $ocaduillustration_url,
+        'name' => $ocaduillustration_title,
       ];
-      $id++;
+      ++$ocaduillustration_id;
     }
   }
-  echo json_encode(['images' => $images]);
+  echo wp_json_encode(['images' => $ocaduillustration_images]);
   ?>
 </script>
 
