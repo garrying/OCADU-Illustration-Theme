@@ -1,24 +1,21 @@
+@use 'sass:meta';
 @tailwind base;
 
-/* Component styles (e.g. mixins, vars) */
+@include meta.load-css('components/variables');
 
-@import 'components/variables';
-
-/* Modules styles (e.g. layouts, typography) */
-
-@import 'modules/typography';
-@import 'modules/base';
-@import 'modules/figures';
-@import 'modules/grids';
-@import 'modules/panels';
-@import 'modules/search';
-@import 'modules/page';
-@import 'modules/yearselect';
-@import 'modules/header';
-@import 'modules/layout';
-@import 'modules/miniview';
-@import 'modules/home';
-@import 'modules/loader';
+@include meta.load-css('modules/typography');
+@include meta.load-css('modules/base');
+@include meta.load-css('modules/figures');
+@include meta.load-css('modules/grids');
+@include meta.load-css('modules/panels');
+@include meta.load-css('modules/search');
+@include meta.load-css('modules/page');
+@include meta.load-css('modules/yearselect');
+@include meta.load-css('modules/header');
+@include meta.load-css('modules/layout');
+@include meta.load-css('modules/miniview');
+@include meta.load-css('modules/home');
+@include meta.load-css('modules/loader');
 
 @tailwind components;
 @tailwind utilities;

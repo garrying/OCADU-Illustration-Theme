@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 .section-indicator-index {
   width: 100%;
   line-height: 1em;
@@ -25,7 +27,7 @@
     margin-bottom: 1rem;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
     margin: 8em 0;
@@ -47,7 +49,7 @@
   }
 
   .faculty-list {
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       max-width: none;
     }
   }
@@ -56,7 +58,7 @@
 #post-6 {
   max-width: 60vw;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 0 20px;
     max-width: none;
     margin-top: 8em;

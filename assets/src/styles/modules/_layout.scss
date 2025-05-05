@@ -1,9 +1,11 @@
+@use '../components/variables';
+
 .single-illustrator {
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     flex-flow: column;
     flex-direction: column-reverse;
     padding-bottom: 60px;
@@ -14,17 +16,17 @@
   flex: 1 1 70%;
   margin-top: 5rem;
 
-  @media screen and (max-width: $medium-vp) {
+  @media screen and (max-width: variables.$medium-vp) {
     flex-basis: 50%;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin-top: 0;
     padding: 0;
   }
 
   .gallery-grid {
-    @media screen and (max-width: $ipad-vp) {
+    @media screen and (max-width: variables.$ipad-vp) {
       margin-top: 0;
     }
   }
@@ -41,7 +43,7 @@
       display: flex;
     }
 
-    @media screen and (max-width: $ipad-vp) {
+    @media screen and (max-width: variables.$ipad-vp) {
       margin: 0 1px 1em 0;
     }
   }
@@ -53,7 +55,7 @@
     margin-right: 0;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     display: none;
   }
 }
@@ -62,11 +64,11 @@
   position: relative;
   flex: 1 1 30%;
 
-  @media screen and (max-width: $ipad-vp) {
+  @media screen and (max-width: variables.$ipad-vp) {
     flex: 1 1 50%;
   }
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     padding: 20px;
     margin-top: 80px;
     flex-basis: 100%;
@@ -82,16 +84,16 @@
     flex-flow: row wrap;
     align-items: center;
 
-    @media screen and (max-width: $medium-vp) {
+    @media screen and (max-width: variables.$medium-vp) {
       width: 40%;
     }
 
-    @media screen and (max-width: $ipad-vp) {
+    @media screen and (max-width: variables.$ipad-vp) {
       right: 20px;
       width: 50%;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       position: relative;
       right: 0;
       width: 100%;
@@ -102,9 +104,13 @@
     width: 100%;
     padding: 0 30px;
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       padding: 0;
     }
+  }
+
+  .thesis-description p + p {
+    margin-bottom: 1em;
   }
 }
 
@@ -121,7 +127,7 @@
 .meta {
   margin-top: 2em;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     margin: 2em 0 0;
   }
 
@@ -141,7 +147,7 @@
   margin: 0 30px;
   overflow: hidden;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     position: relative;
     padding: 0;
     z-index: var(--z-background);
@@ -160,7 +166,7 @@
   display: flex;
   justify-content: space-between;
 
-  @media screen and (max-width: $small-vp) {
+  @media screen and (max-width: variables.$small-vp) {
     border-radius: 999px;
     position: fixed;
     left: 20px;

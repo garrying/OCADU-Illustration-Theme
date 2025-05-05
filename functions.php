@@ -101,7 +101,7 @@ if (!function_exists('ocaduillustration_scripts')) {
         'app',
         get_template_directory_uri() . '/assets/dist/app.js?1714444403',
         '',
-        '2024',
+        '2025',
         true
       );
       wp_enqueue_script('app');
@@ -111,7 +111,7 @@ if (!function_exists('ocaduillustration_scripts')) {
         'home',
         get_template_directory_uri() . '/assets/dist/home.js?1714444403',
         '',
-        '2024',
+        '2025',
         true
       );
       wp_enqueue_script('home');
@@ -134,7 +134,7 @@ function ocaduillustration_styles()
     'ocadustyles',
     get_template_directory_uri() . '/assets/dist/main.css?1714444403',
     '',
-    '2024'
+    '2025'
   );
   wp_enqueue_style('ocadustyles');
 }
@@ -217,13 +217,15 @@ add_filter('use_default_gallery_style', '__return_false');
 /**
  * Reduce nav classes, leaving only 'current-menu-item'
  *
- * @param array $var takes the default wp menu classes.
+ * @param array $menuclasses takes the default wp menu classes.
  *
  * @return array
  */
-function ocaduillustration_nav_class_filter($var)
+function ocaduillustration_nav_class_filter($menuclasses)
 {
-  return is_array($var) ? array_intersect($var, ['current-menu-item']) : '';
+  return is_array($menuclasses)
+    ? array_intersect($menuclasses, ['current-menu-item'])
+    : '';
 }
 
 add_filter('nav_menu_css_class', 'ocaduillustration_nav_class_filter', 100, 1);
@@ -264,11 +266,9 @@ add_filter('pre_get_posts', 'ocaduillustration_search_filter');
 /**
  * Use proper ellipses for excerpts
  *
- * @param string $more more text to proper ellipses.
- *
  * @return string
  */
-function ocaduillustration_new_excerpt_more($more)
+function ocaduillustration_new_excerpt_more()
 {
   return '&hellip;';
 }
@@ -278,36 +278,22 @@ add_filter('excerpt_more', 'ocaduillustration_new_excerpt_more');
 /**
  * Get Social Image
  *
- * @param string $image_type string to determine if the type is facebook or twitter.
- *
  * @return string
  */
-function ocaduillustration_get_socialimage($image_type = 'fb')
+function ocaduillustration_get_socialimage()
 {
   global $post, $posts;
 
   if (is_single() && has_post_thumbnail($post->ID)) {
-    if ('twitter' === $image_type) {
-      $src = wp_get_attachment_image_src(
-        get_post_thumbnail_id($post->ID),
-        'illustrator-social-twitter',
-        ''
-      );
-    } else {
-      $src = wp_get_attachment_image_src(
-        get_post_thumbnail_id($post->ID),
-        'medium',
-        ''
-      );
-    }
+    $src = wp_get_attachment_image_src(
+      get_post_thumbnail_id($post->ID),
+      'medium',
+      ''
+    );
 
     $socialimg = $src[0];
   } else {
     $socialimg = '';
-  }
-
-  if ('twitter-index' === $image_type) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg';
   }
 
   if (empty($socialimg)) {
@@ -353,25 +339,6 @@ function ocaduillustration_social_meta()
       '">' .
       "\n";
 
-    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-    echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="' .
-      esc_attr(get_the_title()) .
-      '">' .
-      "\n";
-    echo '<meta name="twitter:description" content="' .
-      esc_html($the_excerpt) .
-      '">' .
-      "\n";
-    echo '<meta name="twitter:image" content="' .
-      esc_url(ocaduillustration_get_socialimage('twitter')) .
-      '">' .
-      "\n";
-    echo '<meta name="twitter:image:alt" content="' .
-      esc_html(get_post_meta($post->ID, 'illu_title', true)) .
-      '">' .
-      "\n";
-
     echo '<meta name="description" content="' .
       esc_html($the_excerpt) .
       '">' .
@@ -385,7 +352,7 @@ function ocaduillustration_social_meta()
   }
   if (is_home() || is_archive()) {
     $social_description =
-      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2024.';
+      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2025.';
     if (is_home()) {
       $social_title = get_bloginfo('name');
     } else {
@@ -410,21 +377,6 @@ function ocaduillustration_social_meta()
       '">' .
       "\n";
     echo '<meta property="og:type" content="website">' . "\n";
-
-    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-    echo '<meta name="twitter:site" content="@ocaduillu">' . "\n";
-    echo '<meta name="twitter:title" content="' .
-      esc_html($social_title) .
-      '">' .
-      "\n";
-    echo '<meta name="twitter:description" content="' .
-      esc_html($social_description) .
-      '">' .
-      "\n";
-    echo '<meta name="twitter:image" content="' .
-      esc_url(ocaduillustration_get_socialimage('twitter-index')) .
-      '">' .
-      "\n";
 
     echo '<meta name="description" content="' .
       esc_html($social_description) .

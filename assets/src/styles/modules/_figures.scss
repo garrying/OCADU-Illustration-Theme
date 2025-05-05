@@ -1,3 +1,5 @@
+@use "../components/variables";
+
 figure {
   margin: 0;
 
@@ -34,7 +36,7 @@ figure {
   overflow: auto;
   background: var(--color-site-background);
 
-  @media screen and (max-width: $medium-vp) {
+  @media screen and (max-width: variables.$medium-vp) {
     left: 0;
   }
 
@@ -53,12 +55,12 @@ figure {
     backdrop-filter: blur(3px);
     border-radius: var(--border-radius);
 
-    @media screen and (max-width: $ipad-vp) {
+    @media screen and (max-width: variables.$ipad-vp) {
       bottom: 0;
       left: 1rem;
     }
 
-    @media screen and (max-width: $small-vp) {
+    @media screen and (max-width: variables.$small-vp) {
       bottom: 75px;
     }
   }
@@ -67,7 +69,7 @@ figure {
     position: fixed;
     top: 2em;
 
-    @media screen and (max-width: $medium-vp) {
+    @media screen and (max-width: variables.$medium-vp) {
       top: auto;
     }
   }

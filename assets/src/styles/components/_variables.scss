@@ -1,19 +1,16 @@
-@function hex2rgb($hex) {
-  @return red($hex) green($hex) blue($hex);
-}
-
 $color-accent: #999;
 
 :root {
-  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+  --font-sans-serif:
+    -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif; /* stylelint-disable-line value-keyword-case */
   --color-white: #fff;
   --color-black: #000;
   --color-site-background: #fbf9f4;
   --color-site-font: #000;
-  --color-accent: #{$color-accent};
-  --color-accent-rgb: #{hex2rgb($color-accent)};
+  --color-accent: #999;
+  --color-accent-rgb: rgb(153, 153, 153);
   --z-background: 10;
   --z-middle: 20;
   --z-foreground: 30;

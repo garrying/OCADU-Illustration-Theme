@@ -22,7 +22,7 @@
             </a>
           </div>
           <div class="header-items-wrapper">
-              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2024</button>
+              <button id="year-select-link" aria-controls="panel-year-select" data-panel="year-select" class="header-item" title="Navigate years">2009.....2025</button>
               <div class="search-wrapper content-center">
                 <?php get_search_form(); ?>
               </div>
@@ -30,10 +30,12 @@
         </div>
 
         <?php
-        $ocaduillustration_grad_year = get_terms(
-          'gradyear',
-          'hide_empty=1&order=DESC&parent=0'
-        );
+        $ocaduillustration_grad_year = get_terms([
+          'taxonomy' => 'gradyear',
+          'hide_empty' => true,
+          'order' => 'DESC',
+          'parent' => 0,
+        ]);
         if (is_singular('illustrator') && has_term('', 'gradyear')) {
           // Selected menu state for individual items.
           $ocaduillustration_terms = get_the_terms($post->ID, 'gradyear');
@@ -93,14 +95,7 @@
                   'posts_per_page' => 1,
                   'orderby' => 'rand',
                   'post_type' => 'illustrator',
-                  'tax_query' => [
-                    // phpcs:ignore
-                    [
-                      'taxonomy' => 'gradyear',
-                      'field' => 'name',
-                      'terms' => $ocaduillustration_class_year->name,
-                    ],
-                  ],
+                  'gradyear' => $ocaduillustration_class_year->slug,
                 ];
 
                 $ocaduillustration_query = new WP_Query(
@@ -117,13 +112,35 @@
                   );
                 }
 
-                echo "<li class='year-list-item'><div class='year-list-item-inner'>" .
+                echo "<li class='year-list-item'><div class='year-list-item-inner'>";
+                echo wp_kses(
                   ocaduillustration_year_item_navigation(
                     $ocaduillustration_class_year,
                     $ocaduillustration_selected_year_class,
                     $ocaduillustration_year_image,
                     $ocaduillustration_year_image_srcset
-                  ); // phpcs:ignore
+                  ),
+                  [
+                    'a' => [
+                      'href' => [],
+                      'title' => [],
+                      'class' => [],
+                    ],
+                    'span' => [
+                      'class' => [],
+                    ],
+                    'img' => [
+                      'class' => [],
+                      'srcset' => [],
+                      'alt' => [],
+                      'sizes' => [],
+                      'width' => [],
+                      'height' => [],
+                      'src' => [],
+                      'loading' => [],
+                    ],
+                  ]
+                );
                 echo '</div></li>';
                 wp_reset_postdata();
               }
