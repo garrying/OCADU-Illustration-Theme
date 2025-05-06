@@ -17,19 +17,20 @@
 
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
-  <div id="title" class="bottom-4 left-4 right-4 top-20">
+  <div id="top-mask" class="pointer-events-none top-4"></div>
+  <div id="title" class="bottom-4 left-4 right-4 top-4">
     <div class="flex md:hidden absolute inset-x-0 inset-y-0 bg-black/50 justify-center items-center z-10 p-4">
-      <a class="border border-white rounded-full px-12 py-4 bg-white text-2xl hover:bg-neutral-200 hover:text-black" href="/year/2025/">View 2025 archive</a>
+      <a class="rounded-full px-12 py-4 bg-white text-l hover:bg-neutral-200 hover:text-black" href="/year/2025/">View 2025 archive</a>
     </div>
-    <div class="title-support-unit p-4 pt-48 pointer-events-none hidden md:flex">
+    <div class="title-support-unit p-3 pointer-events-none hidden md:flex m-4 mx-5 text-xs rounded-full">
         <div class="title-secondary">
-          <p>Spanning 2009&ndash;2025<br /> Maintained by the Illustration Program at OCAD University</p>
-          <a href="/about" class="about pointer-events-auto">About the archive</a>
+          <p>Maintained by the Illustration Program at OCAD University. <a href="/about" class="about pointer-events-auto">About the archive</a>
+          </p>
         </div>
         <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
     </div>
   </div>
-  <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-20 overflow-hidden"></div>
+  <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-4 overflow-hidden"></div>
 
 <script id="image-data" type="application/json">
   <?php
