@@ -89,7 +89,7 @@ if ($ocaduillustration_json_ld_abstract) {
         <div class="miniview image-modal-miniview">
         </div>
       </div>
-      <button class="close-panel" title="Close full view" aria-label="Close full view"><?php get_template_part(
+      <button class="close-panel rounded-full" title="Close full view" aria-label="Close full view"><?php get_template_part(
         'assets/dist/images/close.svg'
       ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">

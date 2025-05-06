@@ -147,7 +147,7 @@
               ?>
             </ul>
           </div>
-          <button class="close-panel" title="Close panel" aria-label="Close search panel"><?php get_template_part(
+          <button class="close-panel rounded-full" title="Close panel" aria-label="Close search panel"><?php get_template_part(
             'assets/dist/images/close.svg'
           ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->
