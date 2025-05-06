@@ -19,7 +19,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1);
-  transition: transform 0.2s;
+  transition: transform 0.3s;
   transform-origin: center;
 }
 
@@ -50,59 +50,41 @@
   cursor: grab;
 }
 
+#top-mask {
+  position: absolute;
+  height: 25vh;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    hsl(30.857, 2.6%, 97.1%) 0%,
+    hsla(30.857, 2.6%, 97.1%, 0.738) 19%,
+    hsla(30.857, 2.6%, 97.1%, 0.541) 34%,
+    hsla(30.857, 2.6%, 97.1%, 0.382) 47%,
+    hsla(30.857, 2.6%, 97.1%, 0.278) 56.5%,
+    hsla(30.857, 2.6%, 97.1%, 0.194) 65%,
+    hsla(30.857, 2.6%, 97.1%, 0.126) 73%,
+    hsla(30.857, 2.6%, 97.1%, 0.075) 80.2%,
+    hsla(30.857, 2.6%, 97.1%, 0.042) 86.1%,
+    hsla(30.857, 2.6%, 97.1%, 0.021) 91%,
+    hsla(30.857, 2.6%, 97.1%, 0.008) 95.2%,
+    hsla(30.857, 2.6%, 97.1%, 0.002) 98.2%,
+    hsla(30.857, 2.6%, 97.1%, 0) 100%
+  );
+}
+
 #title {
   position: absolute;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  text-align: center;
   flex-direction: column;
-  background: var(--color-white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-
-  .title-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    position: relative;
-    z-index: 1;
-    margin-top: 50px;
-  }
-
-  .title-primary {
-    font-size: clamp(1rem, 3vw, 3rem);
-    font-weight: normal;
-  }
-
-  .title-secondary {
-    max-width: 50ch;
-    text-align: left;
-  }
 
   .title-support-unit {
     justify-content: space-between;
     align-items: flex-end;
     position: relative;
     z-index: 1;
-    width: 100%;
-    background: linear-gradient(
-      to top,
-      hsl(30.857, 2.6%, 97.1%) 0%,
-      hsla(30.857, 2.6%, 97.1%, 0.738) 19%,
-      hsla(30.857, 2.6%, 97.1%, 0.541) 34%,
-      hsla(30.857, 2.6%, 97.1%, 0.382) 47%,
-      hsla(30.857, 2.6%, 97.1%, 0.278) 56.5%,
-      hsla(30.857, 2.6%, 97.1%, 0.194) 65%,
-      hsla(30.857, 2.6%, 97.1%, 0.126) 73%,
-      hsla(30.857, 2.6%, 97.1%, 0.075) 80.2%,
-      hsla(30.857, 2.6%, 97.1%, 0.042) 86.1%,
-      hsla(30.857, 2.6%, 97.1%, 0.021) 91%,
-      hsla(30.857, 2.6%, 97.1%, 0.008) 95.2%,
-      hsla(30.857, 2.6%, 97.1%, 0.002) 98.2%,
-      hsla(30.857, 2.6%, 97.1%, 0) 100%
-    );
+    backdrop-filter: blur(7px);
+    background: hsla(30.857, 2.6%, 97.1%, 0.2);
   }
 }

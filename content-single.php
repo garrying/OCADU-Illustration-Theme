@@ -244,7 +244,7 @@ if ($ocaduillustration_json_ld_abstract) {
             $ocaduillustration_illustrator_year_section =
               $ocaduillustration_illustrator_term->slug;
             if ($ocaduillustration_illustrator_term->parent <= 0) {
-              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+              echo '<a class="section-indicator-single px-4 bg-neutral-300 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
                 esc_html($ocaduillustration_base_year->slug) .
                 '" title="Return to ' .
                 esc_html($ocaduillustration_illustrator_term->name) .
@@ -252,7 +252,7 @@ if ($ocaduillustration_json_ld_abstract) {
                 esc_html($ocaduillustration_illustrator_term->name) .
                 '</a>';
             } else {
-              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+              echo '<a class="section-indicator-single px-4 bg-neutral-300 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
                 esc_html($ocaduillustration_base_year->slug) .
                 '/' .
                 esc_html($ocaduillustration_illustrator_year_section) .

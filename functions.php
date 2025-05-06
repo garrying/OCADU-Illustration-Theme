@@ -99,7 +99,7 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1714444403',
+        get_template_directory_uri() . '/assets/dist/app.js?1746494349',
         '',
         '2025',
         true
@@ -109,7 +109,7 @@ if (!function_exists('ocaduillustration_scripts')) {
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1714444403',
+        get_template_directory_uri() . '/assets/dist/home.js?1746494349',
         '',
         '2025',
         true
@@ -124,15 +124,12 @@ add_action('wp_enqueue_scripts', 'ocaduillustration_scripts');
 /**
  * Load some styles please.
  */
-function ocaduillustration_fonts()
-{
-}
 
 function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1714444403',
+    get_template_directory_uri() . '/assets/dist/main.css?1746494349',
     '',
     '2025'
   );
@@ -140,7 +137,6 @@ function ocaduillustration_styles()
 }
 
 add_action('wp_enqueue_scripts', 'ocaduillustration_styles');
-add_action('wp_enqueue_scripts', 'ocaduillustration_fonts');
 
 /**
  * Clean up body_class output
