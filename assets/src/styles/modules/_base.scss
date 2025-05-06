@@ -20,14 +20,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection {
-  background: rgb(var(--color-accent-rgb) / 20%);
-}
-
-mark {
-  background: rgb(var(--color-accent-rgb) / 20%);
-}
-
 // Links
 
 a {

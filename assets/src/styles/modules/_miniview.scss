@@ -1,4 +1,4 @@
-@use "../components/variables";
+@use '../components/variables';
 
 .miniview-container {
   position: fixed;
@@ -29,16 +29,15 @@
     display: block;
     max-width: 100%;
     height: auto;
-    background: rgb(var(--color-accent-rgb) / 10%);
     transition: background 200ms ease-in-out;
+    border: 1px solid var(--color-accent);
+    opacity: 0.25;
+    border-radius: 2px;
 
     &.active,
     &:hover {
+      opacity: 1;
       background: var(--color-accent);
-    }
-
-    &:hover {
-      background: rgb(var(--color-accent-rgb) / 50%);
     }
   }
 }

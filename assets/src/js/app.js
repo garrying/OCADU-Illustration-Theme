@@ -2,11 +2,10 @@ import * as AutoComplete from '@tarekraafat/autocomplete.js'
 import $ from 'cash-dom'
 import Colcade from 'colcade'
 import * as lazySizes from 'lazysizes'
-import {animate, stagger} from 'motion'
+import { animate, stagger } from 'motion'
 import SwipeListener from 'swipe-listener'
 import '../styles/main.scss'
-
-(() => {
+;(() => {
   const app = {
     init: () => {
       app._ocadPanelSelectButtons()
@@ -328,9 +327,7 @@ import '../styles/main.scss'
         app._ocadLoader(false)
         app.settings.imageModal.removeClass('hidden')
         imageCaptionSetter(itemImage.data('caption'))
-        animate('#image-modal', { opacity: [0, 1] }).then(() => {
-          $('html, body').addClass('lock-scroll')
-        })
+        $('html, body').addClass('lock-scroll')
       }
       /*
         Modal image changer

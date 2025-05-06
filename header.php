@@ -17,7 +17,7 @@
           <div class="logo-wrapper">
             <a href="<?php echo esc_url(
               home_url('/')
-            ); ?>" class="logo font-bold" rel="home" title="OCAD U Illustration">
+            ); ?>" class="logo font-normal" rel="home" title="OCAD U Illustration">
               <?php bloginfo('name'); ?>
             </a>
           </div>
