@@ -19,15 +19,11 @@
   } ?>
   <div id="top-mask" class="pointer-events-none top-4"></div>
   <div id="title" class="bottom-4 left-4 right-4 top-4">
-    <div class="flex md:hidden absolute inset-x-0 inset-y-0 bg-black/50 justify-center items-center z-10 p-4">
-      <a class="rounded-full px-12 py-4 bg-white text-l hover:bg-neutral-200 hover:text-black" href="/year/2025/">View 2025 archive</a>
-    </div>
     <div class="title-support-unit p-3 pointer-events-none hidden md:flex m-4 mx-5 text-xs rounded-full">
-        <div class="title-secondary">
-          <p>Maintained by the Illustration Program at OCAD University. <a href="/about" class="about pointer-events-auto">About the archive</a>
-          </p>
-        </div>
-        <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
+      <p>Maintained by the Illustration Program at OCAD University.
+        <a href="/about" class="about pointer-events-auto">About the archive</a>
+      </p>
+      <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
     </div>
   </div>
   <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-4 overflow-hidden"></div>
