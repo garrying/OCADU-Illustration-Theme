@@ -51,14 +51,10 @@ if ($ocaduillustration_json_ld_title) {
   $ocaduillustration_json_ld['name'] = $ocaduillustration_json_ld_title;
 }
 if ($ocaduillustration_json_ld_email) {
-  $ocaduillustration_json_ld['author'][
-    'email'
-  ] = $ocaduillustration_json_ld_email;
+  $ocaduillustration_json_ld['author']['email'] = $ocaduillustration_json_ld_email;
 }
 if ($ocaduillustration_json_ld_sites) {
-  $ocaduillustration_json_ld['author'][
-    'sameAs'
-  ] = $ocaduillustration_json_ld_sites;
+  $ocaduillustration_json_ld['author']['sameAs'] = $ocaduillustration_json_ld_sites;
   if ($ocaduillustration_json_ld_sites_2) {
     $ocaduillustration_json_ld['author']['sameAs'] = [
       $ocaduillustration_json_ld_sites,

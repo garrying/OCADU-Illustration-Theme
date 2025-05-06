@@ -205,15 +205,6 @@ import '../styles/main.scss'
     },
 
     _ocadPanelsCloseSelective: (event) => {
-      if (!$(event.target).closest('#full-image, .miniview').length) {
-        $('#image-modal').addClass('hidden')
-
-        $('.illustrator-nav-single, .illustrator-meta-wrapper').removeClass(
-          'inactive'
-        )
-        $('html, body').removeClass('lock-scroll')
-      }
-
       if (
         !$(event.target).closest('.panel, .header-item').length &&
         $('.panel').hasClass('visible')

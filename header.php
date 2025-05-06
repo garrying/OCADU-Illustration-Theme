@@ -1,5 +1,8 @@
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="
+  <?php if (is_home() || is_front_page()) {
+    echo 'lock-scroll-home';
+  } ?>">
 
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />

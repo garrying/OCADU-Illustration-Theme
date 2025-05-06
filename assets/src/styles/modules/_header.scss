@@ -1,4 +1,4 @@
-@use "../components/variables";
+@use '../components/variables';
 
 .logo {
   display: block;
@@ -19,7 +19,7 @@
   @media screen and (max-width: variables.$small-vp) {
     width: 30px;
     overflow: hidden;
-    background: var(--color-accent);
+    background: var(--color-black);
     aspect-ratio: 1/1;
     border-radius: var(--border-radius);
     color: var(--color-white);
@@ -27,7 +27,7 @@
     align-items: center;
 
     &:hover {
-      background: var(--color-black);
+      background: var(--color-accent);
     }
 
     &::before {

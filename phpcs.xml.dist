@@ -27,7 +27,6 @@
     <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
     <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter" />
     <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBetweenStructureColon" />
-    <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
     <exclude name="Universal.Arrays.DisallowShortArraySyntax" />
     <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
     <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine" />

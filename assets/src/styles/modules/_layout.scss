@@ -173,7 +173,8 @@
     right: 20px;
     width: unset;
     bottom: 20px;
-    background: var(--color-white);
+    backdrop-filter: blur(7px);
+    background: hsla(30.857, 2.6%, 97.1%, 0.2);
   }
 
   a {
