@@ -51,10 +51,14 @@ if ($ocaduillustration_json_ld_title) {
   $ocaduillustration_json_ld['name'] = $ocaduillustration_json_ld_title;
 }
 if ($ocaduillustration_json_ld_email) {
-  $ocaduillustration_json_ld['author']['email'] = $ocaduillustration_json_ld_email;
+  $ocaduillustration_json_ld['author'][
+    'email'
+  ] = $ocaduillustration_json_ld_email;
 }
 if ($ocaduillustration_json_ld_sites) {
-  $ocaduillustration_json_ld['author']['sameAs'] = $ocaduillustration_json_ld_sites;
+  $ocaduillustration_json_ld['author'][
+    'sameAs'
+  ] = $ocaduillustration_json_ld_sites;
   if ($ocaduillustration_json_ld_sites_2) {
     $ocaduillustration_json_ld['author']['sameAs'] = [
       $ocaduillustration_json_ld_sites,
@@ -90,7 +94,7 @@ if ($ocaduillustration_json_ld_abstract) {
       ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">
         <div class="image-modal-image"></div>
-        <div class="image-modal-caption p-4 text-xs leading-normal bottom-4 right-4 absolute"></div>
+        <div class="image-modal-caption p-3 text-xs leading-normal bottom-4 right-4 absolute"></div>
       </div>
     </div>
   </div>
