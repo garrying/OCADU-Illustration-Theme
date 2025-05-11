@@ -14,7 +14,7 @@
 
 .illustrator-gallery-container {
   flex: 1 1 70%;
-  margin-top: 5rem;
+  margin-top: 3rem;
 
   @media screen and (max-width: variables.$medium-vp) {
     flex-basis: 50%;
@@ -23,12 +23,6 @@
   @media screen and (max-width: variables.$small-vp) {
     margin-top: 0;
     padding: 0;
-  }
-
-  .gallery-grid {
-    @media screen and (max-width: variables.$ipad-vp) {
-      margin-top: 0;
-    }
   }
 
   .gallery-item {

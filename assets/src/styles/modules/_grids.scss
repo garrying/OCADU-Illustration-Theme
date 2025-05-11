@@ -1,4 +1,4 @@
-@use "../components/variables";
+@use '../components/variables';
 
 .grid-col {
   flex-grow: 1;
@@ -128,9 +128,5 @@
         display: block;
       }
     }
-  }
-
-  @media screen and (max-width: variables.$ipad-vp) {
-    margin: 90px 0 0;
   }
 }

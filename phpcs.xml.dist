@@ -42,6 +42,7 @@
     <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayOpenerSingleLine" />
     <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" />
     <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys" />
+    <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.SpacesAroundArrayKeys" />
   </rule>
 
   <rule ref="WordPress-Extra">
