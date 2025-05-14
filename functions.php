@@ -99,7 +99,7 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1746494351',
+        get_template_directory_uri() . '/assets/dist/app.js?1746494352',
         '',
         '2025',
         true
@@ -109,7 +109,7 @@ if (!function_exists('ocaduillustration_scripts')) {
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1746494351',
+        get_template_directory_uri() . '/assets/dist/home.js?1746494352',
         '',
         '2025',
         true
@@ -129,7 +129,7 @@ function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1746494351',
+    get_template_directory_uri() . '/assets/dist/main.css?1746494352',
     '',
     '2025'
   );
