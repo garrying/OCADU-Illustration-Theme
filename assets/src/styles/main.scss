@@ -1,5 +1,5 @@
+@forward "tailwindcss";
 @use 'sass:meta';
-@tailwind base;
 
 @include meta.load-css('components/variables');
 
@@ -16,6 +16,3 @@
 @include meta.load-css('modules/miniview');
 @include meta.load-css('modules/home');
 @include meta.load-css('modules/loader');
-
-@tailwind components;
-@tailwind utilities;
