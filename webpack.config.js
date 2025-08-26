@@ -1,7 +1,8 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode !== 'production'
@@ -13,10 +14,11 @@ module.exports = (env, argv) => {
     output: {
       path: path.join(__dirname, './assets/dist/'),
       filename: '[name].js',
-      assetModuleFilename: './fonts/[name][ext]'
+      assetModuleFilename: './fonts/[name][ext]',
+      clean: true
     },
     mode: isDevelopment ? 'development' : 'production',
-    devtool: isDevelopment ? 'source-map' : false,
+    devtool: isDevelopment ? 'eval-source-map' : false,
     context: __dirname,
     watchOptions: {
       ignored: '**/node_modules'
@@ -34,8 +36,8 @@ module.exports = (env, argv) => {
               }
             },
             'css-loader',
-            'sass-loader',
-            'postcss-loader'
+            'postcss-loader',
+            'sass-loader'
           ]
         },
         {
@@ -61,7 +63,6 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
       new CopyWebpackPlugin({
         patterns: [{ from: './assets/src/images', to: './images' }]
       }),
@@ -69,6 +70,10 @@ module.exports = (env, argv) => {
         filename: 'main.css'
       })
     ],
+    optimization: {
+      minimize: !isDevelopment,
+      minimizer: [new CssMinimizerPlugin(), new TerserPlugin()]
+    },
     stats: 'normal'
   }
 }
