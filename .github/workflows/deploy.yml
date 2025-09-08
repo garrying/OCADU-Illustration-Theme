@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Deploy theme
-        uses: Burnett01/rsync-deployments@7.0.2
+        uses: Burnett01/rsync-deployments@7.1.0
         with:
           switches: -avzr --delete
           remote_path: /var/www/html/wp-content/themes/ocaduillustration/
