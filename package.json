@@ -29,7 +29,7 @@
     "@prettier/plugin-php": "^0.24.0",
     "@tailwindcss/postcss": "^4.2.1",
     "autoprefixer": "^10.4.27",
-    "babel-loader": "^10.0.0",
+    "babel-loader": "^10.1.0",
     "browser-sync": "^3.0.4",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^14.0.0",
