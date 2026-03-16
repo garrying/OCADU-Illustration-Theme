@@ -49,7 +49,7 @@
     "svg-url-loader": "^8.0.0",
     "tailwindcss": "^4.1.12",
     "webpack": "^5.105.4",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^7.0.0"
   },
   "scripts": {
     "dev": "webpack --mode=development --progress --color --watch",
