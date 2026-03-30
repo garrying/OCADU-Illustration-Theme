@@ -39,7 +39,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.4.0",
-    "mini-css-extract-plugin": "^2.10.1",
+    "mini-css-extract-plugin": "^2.10.2",
     "postcss": "^8.5.8",
     "postcss-loader": "^8.2.1",
     "postcss-preset-env": "^11.2.0",
