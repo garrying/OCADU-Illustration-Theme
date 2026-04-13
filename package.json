@@ -48,7 +48,7 @@
     "sass-loader": "^16.0.7",
     "svg-url-loader": "^8.0.0",
     "tailwindcss": "^4.1.12",
-    "webpack": "^5.105.4",
+    "webpack": "^5.106.1",
     "webpack-cli": "^7.0.2"
   },
   "scripts": {
