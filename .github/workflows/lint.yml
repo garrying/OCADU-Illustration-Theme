@@ -32,11 +32,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      - name: Use Node.js 20
+      - name: Use Node.js 24
         uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 24
+          cache: "npm"
       - run: npm ci
-      - run: npm run lint:js --silent
+      - run: npm run lint --silent
       - run: npm run build
