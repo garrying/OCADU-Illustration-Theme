@@ -1,5 +1,3 @@
-@use '../components/variables';
-
 .grid-col {
   flex-grow: 1;
 }
@@ -17,7 +15,7 @@
   }
 
   .grid-col {
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (width <= 667px) {
       width: 50%;
     }
   }
@@ -46,15 +44,7 @@
   .grid-col {
     width: 50%;
 
-    @media screen and (max-width: variables.$smallest-vp) {
-      width: 100%;
-
-      &.grid-col-4 {
-        display: none;
-      }
-    }
-
-    @media screen and (min-width: variables.$small-vp) {
+    @media screen and (width >= 667px) {
       width: 33.3333%;
 
       &.grid-col-2 {
@@ -62,7 +52,7 @@
       }
     }
 
-    @media screen and (min-width: variables.$medium-vp) {
+    @media screen and (width >= 1024px) {
       width: 25%;
 
       &.grid-col-2,
@@ -72,14 +62,10 @@
     }
   }
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (width <= 667px) {
     width: 100vw;
     padding: 20px;
     margin: 60px 0 0;
-  }
-
-  @media screen and (max-width: variables.$smallest-vp) {
-    flex-direction: column;
   }
 
   .illustrator-meta-container {
@@ -89,7 +75,7 @@
   .gallery-item {
     margin: 0 2% 10%;
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (width <= 667px) {
       margin-right: 5%;
       margin-left: 0;
     }
@@ -101,13 +87,9 @@
 
   .grid-col-4 {
     .gallery-item {
-      @media screen and (max-width: variables.$small-vp) {
+      @media screen and (width <= 667px) {
         margin-right: 0;
         margin-left: 5%;
-      }
-
-      @media screen and (max-width: variables.$smallest-vp) {
-        margin: 0;
       }
     }
   }
@@ -117,11 +99,7 @@
   .grid-col {
     width: 100%;
 
-    @media screen and (min-width: variables.$ipad-vp) {
-      width: 50%;
-    }
-
-    @media screen and (min-width: variables.$large-vp) {
+    @media screen and (width >= 1920px) {
       width: 33.3333%;
 
       &.grid-col-3 {

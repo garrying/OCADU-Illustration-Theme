@@ -1,4 +1,3 @@
-import css from '@eslint/css'
 import js from '@eslint/js'
 import { defineConfig } from 'eslint/config'
 import globals from 'globals'
@@ -9,11 +8,5 @@ export default defineConfig([
     plugins: { js },
     extends: ['js/recommended'],
     languageOptions: { globals: globals.browser }
-  },
-  {
-    files: ['**/*.css'],
-    plugins: { css },
-    language: 'css/css',
-    extends: ['css/recommended']
   }
 ])
