@@ -217,7 +217,7 @@ class Grid {
   getRandomSafe(col, row) {
     let pick
     let tries = 0
-    let i = 0
+    let i
 
     while (pick === undefined) {
       let rnd = ~~(Math.random() * 10000)
@@ -261,7 +261,7 @@ class Grid {
     let rowOffset = ~~(this.offsetY / CARD_HEIGHT) * -1
     for (let row = -1; row < this.viewRows; row++) {
       for (let col = -1; col < this.viewCols; col++) {
-        let desc = undefined
+        let desc
         let tCol = colOffset + col
         let tRow = rowOffset + row
         if (tCol > 0 && tRow > 0 && tCol < FIXED_COLS && tRow < FIXED_ROWS) {

@@ -25,7 +25,8 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
-    "@eslint/js": "^9.39.2",
+    "@eslint/css": "^1.1.0",
+    "@eslint/js": "^10.0.1",
     "@prettier/plugin-php": "^0.25.0",
     "@tailwindcss/postcss": "^4.2.2",
     "autoprefixer": "^10.4.27",
@@ -38,7 +39,7 @@
     "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^17.4.0",
+    "globals": "^17.5.0",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss": "^8.5.9",
     "postcss-loader": "^8.2.1",
@@ -54,7 +55,7 @@
   "scripts": {
     "dev": "webpack --mode=development --progress --color --watch",
     "build": "webpack --mode=production --progress --color",
-    "lint:js": "eslint 'assets/src/js/**/*.js'",
+    "lint": "eslint 'assets/src/js/**/*.js'",
     "lint:fix": "eslint 'assets/src/js/**/*.js' --fix"
   },
   "browserslist": [
