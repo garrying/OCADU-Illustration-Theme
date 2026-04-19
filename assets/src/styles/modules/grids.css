@@ -97,7 +97,7 @@
 
 .gallery-grid {
   .grid-col {
-    width: 100%;
+    width: 50%;
 
     @media screen and (width >= 1920px) {
       width: 33.3333%;

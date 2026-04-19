@@ -2,7 +2,6 @@
   position: fixed;
   bottom: 20px;
   z-index: var(--z-foreground);
-  display: flex;
   width: 100%;
   justify-content: center;
   pointer-events: none;
