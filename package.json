@@ -29,7 +29,7 @@
     "@eslint/js": "^10.0.1",
     "@prettier/plugin-php": "^0.25.0",
     "@tailwindcss/postcss": "^4.2.2",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "babel-loader": "^10.1.1",
     "browser-sync": "^3.0.4",
     "clean-webpack-plugin": "^4.0.0",
