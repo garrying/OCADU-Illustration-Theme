@@ -233,7 +233,7 @@ add_filter('nav_menu_css_class', 'ocaduillustration_nav_class_filter', 100, 1);
  */
 function ocaduillustration_cleanname($v)
 {
-  $v = preg_replace('/[^a-zA-Z0-9s]/', '', $v);
+  $v = preg_replace('/[^a-zA-Z0-9\s]/', '', $v);
   $v = str_replace(' ', '-', $v);
   $v = strtolower($v);
   return $v;
@@ -311,6 +311,29 @@ function ocaduillustration_year_thumb_ids()
 
   set_transient('ocaduillustration_year_thumb_ids', $out, DAY_IN_SECONDS);
   return $out;
+}
+
+if (!function_exists('ocaduillustration_year_item_navigation')) {
+  function ocaduillustration_year_item_navigation(
+    $term_obj,
+    $term_active,
+    $term_image,
+    $term_srcset
+  ) {
+    return "<a class='year-item " .
+      esc_attr($term_active) .
+      "' href='" .
+      esc_url(get_term_link($term_obj->slug, 'gradyear')) .
+      "' title='View Work From " .
+      esc_attr($term_obj->name) .
+      "'><span class='year-text'>" .
+      esc_html($term_obj->name) .
+      "</span><img srcset='" .
+      esc_attr($term_srcset) .
+      "' loading='lazy' width='300' height='460' src='" .
+      esc_url($term_image) .
+      "' sizes='300px' class='year-item-image' alt='Graduating year feature image' /></a>";
+  }
 }
 
 function ocaduillustration_bust_year_thumb_ids()
@@ -540,7 +563,7 @@ function ocaduillustration_modify_attachment_link(
   $image_url = wp_get_attachment_image_src($id, 'full');
   $image_srcset = wp_get_attachment_image_srcset($id);
   $image_sizes = wp_get_attachment_image_sizes($id, 'large');
-  $image_caption = esc_html(wpautop(get_post($id)->post_excerpt));
+  $image_caption = esc_attr(get_post($id)->post_excerpt);
 
   $image_data = wp_get_attachment_image_src($id, 'large');
   $image_width = $image_data[1];

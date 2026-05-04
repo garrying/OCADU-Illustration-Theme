@@ -126,8 +126,9 @@ if ($ocaduillustration_json_ld_abstract) {
             <h1 class="illustrator-meta-name text-l my-4"><?php the_title(); ?></h1> 
           </header><!-- .illustrator-meta-header -->
           <div class="illustrator-meta-items">
-            <?php if ($ocaduillustration_illu_related): ?>
-              <?php
+            <?php
+            $ocaduillustration_related_section_term = null;
+            if ($ocaduillustration_illu_related) {
               $ocaduillustration_related_post = get_post(
                 $ocaduillustration_illu_related,
               );
@@ -135,20 +136,30 @@ if ($ocaduillustration_json_ld_abstract) {
                 $ocaduillustration_related_post->ID,
                 'gradyear',
               );
+              if (
+                !empty($ocaduillustration_related_post_terms) &&
+                !is_wp_error($ocaduillustration_related_post_terms)
+              ) {
+                $ocaduillustration_related_section_term =
+                  $ocaduillustration_related_post_terms[1] ??
+                  $ocaduillustration_related_post_terms[0];
+              }
               $ocaduillustration_related_post_title = get_post_meta(
                 $ocaduillustration_related_post->ID,
                 'illu_title',
                 true,
               );
-              ?>
+            }
+            ?>
+            <?php if ($ocaduillustration_related_section_term): ?>
               <p class="meta-label"><?php echo esc_html(
-                $ocaduillustration_related_post_terms[1]->name,
+                $ocaduillustration_related_section_term->name,
               ); ?> ⤵</p>
-              <a title="<?php echo esc_html(
+              <a title="<?php echo esc_attr(
                 $ocaduillustration_related_post->post_title,
               ); ?>"
               class="meta-link truncate block"
-              href="<?php echo esc_html(
+              href="<?php echo esc_url(
                 get_permalink($ocaduillustration_related_post->ID),
               ); ?>">
                 <?php if ($ocaduillustration_related_post_title) {
@@ -157,7 +168,7 @@ if ($ocaduillustration_json_ld_abstract) {
                   echo 'View ' .
                     esc_html(
                       strtolower(
-                        $ocaduillustration_related_post_terms[1]->name,
+                        $ocaduillustration_related_section_term->name,
                       ),
                     );
                 } ?>
@@ -227,63 +238,75 @@ if ($ocaduillustration_json_ld_abstract) {
       </div>
 
       <div class="illustrator-nav-single-wrapper text-xs flex items-stretch bg-white rounded-full">
-        <?php if (is_singular('illustrator')) {
+        <?php
+        $ocaduillustration_base_year = null;
+        if (is_singular('illustrator')) {
           $ocaduillustration_class_year = get_the_terms($post->ID, 'gradyear');
-          $ocaduillustration_base_year = $ocaduillustration_class_year[0];
-          foreach (
-            $ocaduillustration_class_year
-            as $ocaduillustration_illustrator_term
+          if (
+            !empty($ocaduillustration_class_year) &&
+            !is_wp_error($ocaduillustration_class_year)
           ) {
-            $ocaduillustration_illustrator_year_section =
-              $ocaduillustration_illustrator_term->slug;
-            if ($ocaduillustration_illustrator_term->parent <= 0) {
-              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
-                esc_html($ocaduillustration_base_year->slug) .
-                '" title="Return to ' .
-                esc_html($ocaduillustration_illustrator_term->name) .
-                ' index">' .
-                esc_html($ocaduillustration_illustrator_term->name) .
-                '</a>';
-            } else {
-              echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
-                esc_html($ocaduillustration_base_year->slug) .
-                '/' .
-                esc_html($ocaduillustration_illustrator_year_section) .
-                '" title="Return to ' .
-                esc_html($ocaduillustration_illustrator_term->name) .
-                ' index">' .
-                esc_html($ocaduillustration_illustrator_term->name) .
-                '</a>';
+            $ocaduillustration_base_year = $ocaduillustration_class_year[0];
+            foreach (
+              $ocaduillustration_class_year
+              as $ocaduillustration_illustrator_term
+            ) {
+              $ocaduillustration_illustrator_year_section =
+                $ocaduillustration_illustrator_term->slug;
+              if ($ocaduillustration_illustrator_term->parent <= 0) {
+                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+                  esc_html($ocaduillustration_base_year->slug) .
+                  '" title="Return to ' .
+                  esc_html($ocaduillustration_illustrator_term->name) .
+                  ' index">' .
+                  esc_html($ocaduillustration_illustrator_term->name) .
+                  '</a>';
+              } else {
+                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+                  esc_html($ocaduillustration_base_year->slug) .
+                  '/' .
+                  esc_html($ocaduillustration_illustrator_year_section) .
+                  '" title="Return to ' .
+                  esc_html($ocaduillustration_illustrator_term->name) .
+                  ' index">' .
+                  esc_html($ocaduillustration_illustrator_term->name) .
+                  '</a>';
+              }
             }
           }
-        } ?>
+        }
+        ?>
         <ul class="illustrator-nav-single grow">
-          <?php
-          $ocaduillustration_args = [
-            'post_status' => 'publish',
-            'post_type' => 'illustrator',
-            'gradyear' => $ocaduillustration_base_year->slug,
-            'orderby' => 'title',
-            'order' => 'ASC',
-          ];
+          <?php if ($ocaduillustration_base_year):
+            $ocaduillustration_args = [
+              'post_status' => 'publish',
+              'post_type' => 'illustrator',
+              'gradyear' => $ocaduillustration_base_year->slug,
+              'orderby' => 'title',
+              'order' => 'ASC',
+            ];
 
-          $ocaduillustration_query = new WP_Query($ocaduillustration_args);
-          $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
-          $ocaduillustration_posts = [];
+            $ocaduillustration_query = new WP_Query($ocaduillustration_args);
+            $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
+            $ocaduillustration_posts = [];
 
-          foreach ($ocaduillustration_posts_list as $ocaduillustration_post) {
-            $ocaduillustration_posts[] += $ocaduillustration_post->ID;
-          }
+            foreach ($ocaduillustration_posts_list as $ocaduillustration_post) {
+              $ocaduillustration_posts[] = $ocaduillustration_post->ID;
+            }
 
-          $ocaduillustration_current = array_search(
-            get_the_ID(),
-            $ocaduillustration_posts,
-            true,
-          );
-          $ocaduillustration_prev_id =
-            $ocaduillustration_posts[$ocaduillustration_current - 1] ?? null;
-          $ocaduillustration_next_id =
-            $ocaduillustration_posts[$ocaduillustration_current + 1] ?? null;
+            $ocaduillustration_current = array_search(
+              get_the_ID(),
+              $ocaduillustration_posts,
+              true,
+            );
+            $ocaduillustration_prev_id =
+              $ocaduillustration_posts[$ocaduillustration_current - 1] ?? null;
+            $ocaduillustration_next_id =
+              $ocaduillustration_posts[$ocaduillustration_current + 1] ?? null;
+          else:
+            $ocaduillustration_prev_id = null;
+            $ocaduillustration_next_id = null;
+          endif;
           ?>
           <li class="nav-previous">
             <?php if (!empty($ocaduillustration_prev_id)) {
