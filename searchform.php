@@ -8,7 +8,7 @@
     'Search illustrators',
     'placeholder',
     'ocaduillustration'
-  ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x(
+  ); ?>" value="<?php echo esc_attr(get_search_query()); ?>" name="s" title="<?php echo esc_attr_x(
     'Search for:',
     'label',
     'ocaduillustration'

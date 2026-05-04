@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 
 <h2 class="section-indicator-index"><?php printf(
-  'Search results for <mark>%s</mark>',
-  get_search_query()
+  /* translators: %s: search query. */
+  esc_html__('Search results for %s', 'ocaduillustration'),
+  '<mark>' . esc_html(get_search_query()) . '</mark>'
 ); ?></h2>
 
 <div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
