@@ -80,6 +80,8 @@
                   "' sizes='300px' class='year-item-image' alt='Graduating year feature image' /></a>";
               }
 
+              $ocaduillustration_year_thumb_ids = ocaduillustration_year_thumb_ids();
+
               foreach (
                 $ocaduillustration_grad_year
                 as $ocaduillustration_class_year
@@ -94,24 +96,18 @@
                   $ocaduillustration_selected_year_class = '';
                 }
 
-                $ocaduillustration_args = [
-                  'posts_per_page' => 1,
-                  'orderby' => 'rand',
-                  'post_type' => 'illustrator',
-                  'gradyear' => $ocaduillustration_class_year->slug,
-                ];
-
-                $ocaduillustration_query = new WP_Query(
-                  $ocaduillustration_args
-                );
-                if ($ocaduillustration_query->have_posts()) {
-                  $ocaduillustration_query->the_post();
-                  $ocaduillustration_year_image = get_the_post_thumbnail_url(
-                    $post,
+                $ocaduillustration_year_image = '';
+                $ocaduillustration_year_image_srcset = '';
+                $ocaduillustration_year_term_id = $ocaduillustration_class_year->term_id;
+                if (!empty($ocaduillustration_year_thumb_ids[ $ocaduillustration_year_term_id ])) {
+                  $ocaduillustration_year_term_thumbs = $ocaduillustration_year_thumb_ids[ $ocaduillustration_year_term_id ];
+                  $ocaduillustration_random_thumb_id  = $ocaduillustration_year_term_thumbs[ array_rand($ocaduillustration_year_term_thumbs) ];
+                  $ocaduillustration_year_image = wp_get_attachment_image_url(
+                    $ocaduillustration_random_thumb_id,
                     'illustrator-small'
                   );
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset(
-                    get_post_thumbnail_id()
+                    $ocaduillustration_random_thumb_id
                   );
                 }
 
@@ -145,7 +141,6 @@
                   ]
                 );
                 echo '</div></li>';
-                wp_reset_postdata();
               }
               ?>
             </ul>

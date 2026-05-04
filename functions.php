@@ -260,6 +260,70 @@ function ocaduillustration_search_filter($query)
 add_filter('pre_get_posts', 'ocaduillustration_search_filter');
 
 /**
+ * Build a term_id => [thumb_attachment_id, ...] map across all gradyear terms.
+ *
+ * Cached in a transient so the year-select panel in the header can pick
+ * a random thumbnail per pageload (in PHP) without firing a WP_Query
+ * per term on every load.
+ *
+ * @return array
+ */
+function ocaduillustration_year_thumb_ids()
+{
+  $cached = get_transient('ocaduillustration_year_thumb_ids');
+  if (false !== $cached) {
+    return $cached;
+  }
+
+  $out = [];
+  $terms = get_terms([
+    'taxonomy' => 'gradyear',
+    'hide_empty' => true,
+    'order' => 'DESC',
+    'parent' => 0,
+  ]);
+
+  if (is_wp_error($terms) || empty($terms)) {
+    return $out;
+  }
+
+  foreach ($terms as $ocaduillustration_term) {
+    $ocaduillustration_query = new WP_Query([
+      'posts_per_page' => -1,
+      'post_type' => 'illustrator',
+      'gradyear' => $ocaduillustration_term->slug,
+      'no_found_rows' => true,
+      'fields' => 'ids',
+    ]);
+
+    $ocaduillustration_thumb_ids = [];
+    foreach ($ocaduillustration_query->posts as $ocaduillustration_pid) {
+      $ocaduillustration_tid = get_post_thumbnail_id($ocaduillustration_pid);
+      if ($ocaduillustration_tid) {
+        $ocaduillustration_thumb_ids[] = $ocaduillustration_tid;
+      }
+    }
+
+    if (!empty($ocaduillustration_thumb_ids)) {
+      $out[$ocaduillustration_term->term_id] = $ocaduillustration_thumb_ids;
+    }
+  }
+
+  set_transient('ocaduillustration_year_thumb_ids', $out, DAY_IN_SECONDS);
+  return $out;
+}
+
+function ocaduillustration_bust_year_thumb_ids()
+{
+  delete_transient('ocaduillustration_year_thumb_ids');
+}
+
+add_action('save_post_illustrator', 'ocaduillustration_bust_year_thumb_ids');
+add_action('edited_gradyear', 'ocaduillustration_bust_year_thumb_ids');
+add_action('created_gradyear', 'ocaduillustration_bust_year_thumb_ids');
+add_action('delete_term', 'ocaduillustration_bust_year_thumb_ids');
+
+/**
  * Use proper ellipses for excerpts
  *
  * @return string
