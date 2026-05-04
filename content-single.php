@@ -277,36 +277,29 @@ if ($ocaduillustration_json_ld_abstract) {
         }
         ?>
         <ul class="illustrator-nav-single grow">
-          <?php if ($ocaduillustration_base_year):
-            $ocaduillustration_args = [
-              'post_status' => 'publish',
-              'post_type' => 'illustrator',
-              'gradyear' => $ocaduillustration_base_year->slug,
-              'orderby' => 'title',
-              'order' => 'ASC',
-            ];
-
-            $ocaduillustration_query = new WP_Query($ocaduillustration_args);
-            $ocaduillustration_posts_list = $ocaduillustration_query->get_posts();
-            $ocaduillustration_posts = [];
-
-            foreach ($ocaduillustration_posts_list as $ocaduillustration_post) {
-              $ocaduillustration_posts[] = $ocaduillustration_post->ID;
-            }
-
+          <?php
+          $ocaduillustration_prev_id = null;
+          $ocaduillustration_next_id = null;
+          if ($ocaduillustration_base_year) {
+            $ocaduillustration_year_post_ids = ocaduillustration_year_post_ids();
+            $ocaduillustration_posts =
+              $ocaduillustration_year_post_ids[
+                $ocaduillustration_base_year->slug
+              ] ?? [];
             $ocaduillustration_current = array_search(
               get_the_ID(),
               $ocaduillustration_posts,
               true,
             );
-            $ocaduillustration_prev_id =
-              $ocaduillustration_posts[$ocaduillustration_current - 1] ?? null;
-            $ocaduillustration_next_id =
-              $ocaduillustration_posts[$ocaduillustration_current + 1] ?? null;
-          else:
-            $ocaduillustration_prev_id = null;
-            $ocaduillustration_next_id = null;
-          endif;
+            if (false !== $ocaduillustration_current) {
+              $ocaduillustration_prev_id =
+                $ocaduillustration_posts[$ocaduillustration_current - 1] ??
+                null;
+              $ocaduillustration_next_id =
+                $ocaduillustration_posts[$ocaduillustration_current + 1] ??
+                null;
+            }
+          }
           ?>
           <li class="nav-previous">
             <?php if (!empty($ocaduillustration_prev_id)) {

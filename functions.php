@@ -313,6 +313,59 @@ function ocaduillustration_year_thumb_ids()
   return $out;
 }
 
+/**
+ * Build a gradyear-slug => ordered post ID list map for illustrators.
+ *
+ * Used by single-illustrator prev/next nav so each detail page doesn't run
+ * a full WP_Query of every illustrator in the year on every request.
+ *
+ * @return array<string, int[]>
+ */
+function ocaduillustration_year_post_ids()
+{
+  $cached = get_transient('ocaduillustration_year_post_ids');
+  if (false !== $cached) {
+    return $cached;
+  }
+
+  $out = [];
+  $terms = get_terms([
+    'taxonomy' => 'gradyear',
+    'hide_empty' => true,
+  ]);
+
+  if (is_wp_error($terms) || empty($terms)) {
+    return $out;
+  }
+
+  foreach ($terms as $ocaduillustration_term) {
+    $ocaduillustration_query = new WP_Query([
+      'post_status' => 'publish',
+      'post_type' => 'illustrator',
+      'gradyear' => $ocaduillustration_term->slug,
+      'orderby' => 'title',
+      'order' => 'ASC',
+      'posts_per_page' => -1,
+      'no_found_rows' => true,
+      'fields' => 'ids',
+      'update_post_meta_cache' => false,
+      'update_post_term_cache' => false,
+    ]);
+    $out[$ocaduillustration_term->slug] = $ocaduillustration_query->posts;
+  }
+
+  set_transient('ocaduillustration_year_post_ids', $out, DAY_IN_SECONDS);
+  return $out;
+}
+
+function ocaduillustration_bust_year_post_ids()
+{
+  delete_transient('ocaduillustration_year_post_ids');
+}
+
+add_action('save_post_illustrator', 'ocaduillustration_bust_year_post_ids');
+add_action('deleted_post', 'ocaduillustration_bust_year_post_ids');
+
 if (!function_exists('ocaduillustration_year_item_navigation')) {
   function ocaduillustration_year_item_navigation(
     $term_obj,
