@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-env": "^7.29.3",
     "@eslint/css": "^1.1.0",
     "@eslint/js": "^10.0.1",
     "@prettier/plugin-php": "^0.25.0",
@@ -41,7 +41,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.5.0",
     "mini-css-extract-plugin": "^2.10.2",
-    "postcss": "^8.5.12",
+    "postcss": "^8.5.13",
     "postcss-loader": "^8.2.1",
     "postcss-preset-env": "^11.2.1",
     "prettier": "^3.8.3",
