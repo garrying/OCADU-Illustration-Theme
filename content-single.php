@@ -282,10 +282,10 @@ if ($ocaduillustration_json_ld_abstract) {
           $ocaduillustration_next_id = null;
           if ($ocaduillustration_base_year) {
             $ocaduillustration_year_post_ids = ocaduillustration_year_post_ids();
+            $ocaduillustration_year_slug = $ocaduillustration_base_year->slug;
             $ocaduillustration_posts =
-              $ocaduillustration_year_post_ids[
-                $ocaduillustration_base_year->slug
-              ] ?? [];
+              $ocaduillustration_year_post_ids[$ocaduillustration_year_slug] ??
+              [];
             $ocaduillustration_current = array_search(
               get_the_ID(),
               $ocaduillustration_posts,
