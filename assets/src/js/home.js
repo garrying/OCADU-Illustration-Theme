@@ -1,20 +1,9 @@
 import gsap from 'gsap'
 
 const CARD_WIDTH = 300
-const CARD_HEIGHT = 400
-const FIXED_ROWS = 5
-const FIXED_COLS = 5
-
-const NEIGHBOURS = [
-  [0, -1], // up
-  [0, 1], // down
-  [1, 0], // right
-  [-1, 0], // left
-  [1, 1], // bottom right
-  [-1, 1], // bottom left
-  [-1, -1], // upper left
-  [1, -1] // upper right
-]
+const MIN_CARD_HEIGHT = 200
+const MAX_CARD_HEIGHT = 600
+const STRIPE_MIN_HEIGHT = 8000
 
 function LoadJSON(callback) {
   const jsonData = JSON.parse(document.getElementById('image-data').textContent)
@@ -43,7 +32,6 @@ class SimpleDrag {
       let yDelta = e.clientY - this.lastY
       let velocity = Math.abs(xDelta * yDelta)
       if (velocity > 50) {
-        //this.dragging = false;
         let v = { x: xDelta * 0.5, y: yDelta * 0.5 }
         if (this.tween) this.tween.kill()
         this.tween = gsap.to(v, {
@@ -97,8 +85,9 @@ class SimpleDrag {
 }
 
 class Card {
-  constructor(descriptor) {
+  constructor(descriptor, height) {
     this.descriptor = descriptor
+    this.height = height
     this.createDOMElement()
     this.x = 0
     this.y = 0
@@ -129,7 +118,6 @@ class Card {
 
   appendTo(el) {
     if (this.rootElement.parentElement !== el) {
-      //console.log('append');
       el.appendChild(this.rootElement)
       this.load()
     }
@@ -144,11 +132,10 @@ class Card {
   }
 
   update() {
-    let cssBatch = ''
-    cssBatch += `transform: translate3d(${this.x}px, ${this.y}px, 0);`
-    //cssBatch += 'display:' + ( this._visible ? 'block;' : 'none;' );
-
-    this.rootElement.setAttribute('style', cssBatch)
+    this.rootElement.setAttribute(
+      'style',
+      `transform: translate3d(${this.x}px, ${this.y}px, 0); height: ${this.height}px;`
+    )
   }
 }
 
@@ -156,16 +143,12 @@ class Grid {
   constructor(DOMElement, JSONGallery) {
     this.descriptors = JSONGallery.images.sort(() => Math.random() - 0.5)
     this.DOMElement = DOMElement
-    // dict to save previous assignations by col and row
-    this.picks = {}
-    // current visible cards
+    this.colCache = {}
     this.cards = {}
-    // all elements are cached and reused
     this.cardsPool = []
     this.offsetX = 0
     this.offsetY = 0
     this.viewCols = 0
-    this.viewRows = 0
     this.viewWidth = 0
     this.viewHeight = 0
   }
@@ -176,18 +159,7 @@ class Grid {
     new SimpleDrag(this.DOMElement, this.onDrag.bind(this))
   }
 
-  getGalleryDescriptor(index) {
-    return this.descriptors[index % this.descriptors.length]
-  }
-
-  onDragEnd() {
-    //this.DOMElement.classList.remove( "hover-enabled" );
-    //this.DOMElement.classList.add( "hover-enabled" );
-  }
-
   onDrag(deltaX, deltaY) {
-    //this.DOMElement.classList.remove( "hover-enabled" );
-    //console.log( e );
     this.offsetX += deltaX
     this.offsetY += deltaY
     this.updateGrid()
@@ -196,93 +168,78 @@ class Grid {
   onResize() {
     this.viewHeight = this.DOMElement.offsetHeight
     this.viewWidth = this.DOMElement.offsetWidth
-    this.updateViewColRows()
+    this.viewCols = Math.ceil(this.viewWidth / CARD_WIDTH) + 2
     this.updateGrid()
   }
 
-  updateViewColRows() {
-    this.viewCols = Math.ceil(this.viewWidth / CARD_WIDTH) + 2
-    this.viewRows = Math.ceil(this.viewHeight / CARD_HEIGHT) + 2
+  pickDescriptor(col, row) {
+    let h = ((col * 73856093) ^ (row * 19349663)) >>> 0
+    return this.descriptors[h % this.descriptors.length]
   }
 
-  isVisible(x, y) {
-    return (
-      x + CARD_WIDTH > 0 &&
-      y + CARD_HEIGHT > 0 &&
-      x < this.viewWidth &&
-      y < this.viewHeight
-    )
+  cardHeight(desc) {
+    if (!desc.width || !desc.height) return 400
+    let h = CARD_WIDTH * (desc.height / desc.width)
+    return Math.round(Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)))
   }
 
-  getRandomSafe(col, row) {
-    let pick
-    let tries = 0
-    let i
-
-    while (pick === undefined) {
-      let rnd = ~~(Math.random() * 10000)
-      let item = this.getGalleryDescriptor(rnd)
-      for (i = 0; i < NEIGHBOURS.length; i++) {
-        let offsets = NEIGHBOURS[i]
-        let key = `${col + offsets[0]}:${row + offsets[1]}`
-        if (this.picks[key] === item) {
-          break
-        }
-      }
-
-      if (tries++ > 20 || i === NEIGHBOURS.length) {
-        pick = item
-      }
+  buildColStripe(col) {
+    const items = []
+    let y = 0
+    let i = 0
+    while (y < STRIPE_MIN_HEIGHT) {
+      const desc = this.pickDescriptor(col, i)
+      const height = this.cardHeight(desc)
+      items.push({ desc, y, height })
+      y += height
+      i++
     }
-
-    return pick
+    return { items, total: y }
   }
 
-  getRandomDescriptor(col, row) {
-    let key = `${col}:${row}`
-    if (!this.picks[key]) {
-      let item = this.getRandomSafe(col, row)
-      this.picks[key] = item
-    }
-    return this.picks[key]
-  }
-
-  getCardPos(col, row) {
-    let offsetX = this.offsetX % CARD_WIDTH
-    let offsetY = this.offsetY % CARD_HEIGHT
-    let x = col * CARD_WIDTH + offsetX - CARD_WIDTH
-    let y = row * CARD_HEIGHT + offsetY - CARD_HEIGHT
-    return [Math.round(x), Math.round(y)]
+  getColStripe(col) {
+    if (!this.colCache[col]) this.colCache[col] = this.buildColStripe(col)
+    return this.colCache[col]
   }
 
   updateGrid() {
-    let newCards = {}
-    let colOffset = ~~(this.offsetX / CARD_WIDTH) * -1
-    let rowOffset = ~~(this.offsetY / CARD_HEIGHT) * -1
-    for (let row = -1; row < this.viewRows; row++) {
-      for (let col = -1; col < this.viewCols; col++) {
-        let desc
-        let tCol = colOffset + col
-        let tRow = rowOffset + row
-        if (tCol > 0 && tRow > 0 && tCol < FIXED_COLS && tRow < FIXED_ROWS) {
-          let index = tRow * FIXED_COLS + tCol
-          desc = this.getGalleryDescriptor(index)
-        } else {
-          desc = this.getRandomDescriptor(tCol, tRow)
-        }
+    const newCards = {}
+    const colOffset = Math.floor(this.offsetX / CARD_WIDTH)
+    const xMod = this.offsetX - colOffset * CARD_WIDTH
 
-        let [x, y] = this.getCardPos(col, row)
+    for (let col = -1; col <= this.viewCols; col++) {
+      const tCol = -colOffset + col
+      const xPos = col * CARD_WIDTH + xMod - CARD_WIDTH
 
-        if (this.isVisible(x, y)) {
-          let index = tCol + '' + tRow
-          let card = this.cards[index] || this.getCard(desc)
-          delete this.cards[index]
-          card.x = x
-          card.y = y
-          card.appendTo(this.DOMElement)
-          card.update()
-          newCards[index] = card
+      if (xPos + CARD_WIDTH <= 0 || xPos >= this.viewWidth) continue
+
+      const stripe = this.getColStripe(tCol)
+      const total = stripe.total
+      const yMod = ((this.offsetY % total) + total) % total
+
+      for (let i = 0; i < stripe.items.length; i++) {
+        const item = stripe.items[i]
+        let screenY = null
+        for (let wrap = -1; wrap <= 1; wrap++) {
+          const cy = item.y + yMod - total + wrap * total
+          if (cy + item.height > 0 && cy < this.viewHeight) {
+            screenY = cy
+            break
+          }
         }
+        if (screenY === null) continue
+
+        const key = `${tCol}:${i}`
+        const card =
+          this.cards[key] || this.getCard(item.desc, item.height)
+        delete this.cards[key]
+        card.descriptor = item.desc
+        card.height = item.height
+        card.x = xPos
+        card.y = screenY
+        card.appendTo(this.DOMElement)
+        card.update()
+        newCards[key] = card
       }
     }
     this.cleanupCards()
@@ -290,22 +247,23 @@ class Grid {
   }
 
   cleanupCards() {
-    let keys = Object.keys(this.cards)
+    const keys = Object.keys(this.cards)
     for (let i = 0; i < keys.length; i++) {
-      let card = this.cards[keys[i]]
+      const card = this.cards[keys[i]]
       card.removeSelf()
       this.cardsPool.push(card)
     }
     this.cards = null
   }
 
-  getCard(descriptor) {
+  getCard(descriptor, height) {
     if (this.cardsPool.length > 0) {
-      let card = this.cardsPool.pop()
+      const card = this.cardsPool.pop()
       card.descriptor = descriptor
+      card.height = height
       return card
     } else {
-      return new Card(descriptor)
+      return new Card(descriptor, height)
     }
   }
 }

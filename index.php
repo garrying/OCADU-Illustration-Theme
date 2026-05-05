@@ -34,18 +34,20 @@
   $ocaduillustration_id = 0;
   while ($ocaduillustration_home_index->have_posts()) {
     $ocaduillustration_home_index->the_post();
-    $ocaduillustration_thumb = get_the_post_thumbnail_url(
-      get_the_ID(),
-      'medium',
-    );
+    $ocaduillustration_thumb_id = get_post_thumbnail_id(get_the_ID());
+    $ocaduillustration_thumb_data = $ocaduillustration_thumb_id
+      ? wp_get_attachment_image_src($ocaduillustration_thumb_id, 'medium')
+      : false;
     $ocaduillustration_full = get_the_post_thumbnail_url(get_the_ID(), 'full');
     $ocaduillustration_url = get_permalink();
     $ocaduillustration_title = get_the_title();
-    if ($ocaduillustration_thumb && $ocaduillustration_full) {
+    if ($ocaduillustration_thumb_data && $ocaduillustration_full) {
       $ocaduillustration_images[] = [
         'id' => $ocaduillustration_id,
         'full_src' => $ocaduillustration_full,
-        'thumb_src' => $ocaduillustration_thumb,
+        'thumb_src' => $ocaduillustration_thumb_data[0],
+        'width' => $ocaduillustration_thumb_data[1],
+        'height' => $ocaduillustration_thumb_data[2],
         'link' => $ocaduillustration_url,
         'name' => $ocaduillustration_title,
       ];
