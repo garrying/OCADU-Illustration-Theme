@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<h2 class="section-indicator-index"><?php printf(
+<h2 class="w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center"><?php printf(
   /* translators: %s: search query. */
   esc_html__('Search results for %s', 'ocaduillustration'),
   '<mark>' . esc_html(get_search_query()) . '</mark>'

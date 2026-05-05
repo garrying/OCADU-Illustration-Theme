@@ -1,13 +1,3 @@
-.loader {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: calc(50% - 1em);
-  z-index: var(--z-important);
-  width: 100%;
-  pointer-events: none;
-}
-
 .loader-text {
   width: 0;
   display: inline-flex;

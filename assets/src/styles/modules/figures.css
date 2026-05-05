@@ -22,11 +22,6 @@ figure {
   object-fit: contain;
 }
 
-.gallery-icon-anchor {
-  display: block;
-  cursor: zoom-in;
-}
-
 .image-modal-wrapper {
   position: fixed;
   inset: 0;

@@ -1,12 +1,3 @@
-.miniview-container {
-  position: fixed;
-  bottom: 20px;
-  z-index: var(--z-foreground);
-  width: 100%;
-  justify-content: center;
-  pointer-events: none;
-}
-
 .miniview {
   display: flex;
   line-height: 0;

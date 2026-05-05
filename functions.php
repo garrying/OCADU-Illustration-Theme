@@ -625,7 +625,7 @@ function ocaduillustration_modify_attachment_link(
   if (!$permalink) {
     $markup = str_replace(
       '<a href',
-      '<a class="gallery-icon-anchor" data-srcset="' .
+      '<a class="gallery-icon-anchor block cursor-zoom-in" data-srcset="' .
         $image_srcset .
         '" data-src-large="' .
         $image_url[0] .

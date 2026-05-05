@@ -90,7 +90,7 @@ if ($ocaduillustration_json_ld_abstract) {
       '[gallery size="medium" link="file" columns="0" orderby="title"]',
     ); ?>
     <div id="image-modal" class="image-modal-wrapper hidden">
-          <div class="miniview-container sm:flex hidden">
+          <div class="sm:flex hidden fixed bottom-5 z-30 w-full justify-center pointer-events-none">
         <div class="miniview image-modal-miniview">
         </div>
       </div>
@@ -152,7 +152,7 @@ if ($ocaduillustration_json_ld_abstract) {
             }
             ?>
             <?php if ($ocaduillustration_related_section_term): ?>
-              <p class="meta-label"><?php echo esc_html(
+              <p class="mb-[0.5em]"><?php echo esc_html(
                 $ocaduillustration_related_section_term->name,
               ); ?> ⤵</p>
               <a title="<?php echo esc_attr(
