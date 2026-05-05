@@ -94,7 +94,7 @@ if ($ocaduillustration_json_ld_abstract) {
         <div class="miniview image-modal-miniview">
         </div>
       </div>
-      <button class="close-panel rounded-full" title="Close full view" aria-label="Close full view"><?php get_template_part(
+      <button class="close-panel rounded" title="Close full view" aria-label="Close full view"><?php get_template_part(
         'assets/dist/images/close.svg',
       ); ?><span class="hidden">Close</span></button>
       <div class="image-modal-container">
@@ -167,9 +167,7 @@ if ($ocaduillustration_json_ld_abstract) {
                 } else {
                   echo 'View ' .
                     esc_html(
-                      strtolower(
-                        $ocaduillustration_related_section_term->name,
-                      ),
+                      strtolower($ocaduillustration_related_section_term->name),
                     );
                 } ?>
                 </a>
@@ -180,9 +178,7 @@ if ($ocaduillustration_json_ld_abstract) {
                 $ocaduillustration_json_ld_sites,
               ); ?>"
               class="meta-link truncate block"
-              href="<?php echo esc_url(
-                $ocaduillustration_json_ld_sites,
-              ); ?>">
+              href="<?php echo esc_url($ocaduillustration_json_ld_sites); ?>">
                 ↗ .....
                 <?php
                 $ocaduillustration_url = esc_url(
@@ -203,9 +199,7 @@ if ($ocaduillustration_json_ld_abstract) {
                 $ocaduillustration_json_ld_sites_2,
               ); ?>"
               class="meta-link truncate block"
-              href="<?php echo esc_url(
-                $ocaduillustration_json_ld_sites_2,
-              ); ?>">
+              href="<?php echo esc_url($ocaduillustration_json_ld_sites_2); ?>">
                 ↗ .....
                 <?php
                 $ocaduillustration_url = esc_url(
@@ -237,7 +231,7 @@ if ($ocaduillustration_json_ld_abstract) {
         </div>
       </div>
 
-      <div class="illustrator-nav-single-wrapper text-xs flex items-stretch bg-white rounded-full">
+      <div class="illustrator-nav-single-wrapper text-xs flex items-stretch bg-white rounded">
         <?php
         $ocaduillustration_base_year = null;
         if (is_singular('illustrator')) {
@@ -254,7 +248,7 @@ if ($ocaduillustration_json_ld_abstract) {
               $ocaduillustration_illustrator_year_section =
                 $ocaduillustration_illustrator_term->slug;
               if ($ocaduillustration_illustrator_term->parent <= 0) {
-                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center no-underline hover:text-neutral-900" href="/year/' .
                   esc_html($ocaduillustration_base_year->slug) .
                   '" title="Return to ' .
                   esc_html($ocaduillustration_illustrator_term->name) .
@@ -262,7 +256,7 @@ if ($ocaduillustration_json_ld_abstract) {
                   esc_html($ocaduillustration_illustrator_term->name) .
                   '</a>';
               } else {
-                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center text-neutral-500 hover:text-neutral-900" href="/year/' .
+                echo '<a class="section-indicator-single px-4 bg-neutral-200 content-center no-underline hover:text-neutral-900" href="/year/' .
                   esc_html($ocaduillustration_base_year->slug) .
                   '/' .
                   esc_html($ocaduillustration_illustrator_year_section) .

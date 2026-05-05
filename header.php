@@ -19,7 +19,7 @@
         <div class="heading-inner">
           <div class="logo-wrapper">
             <a href="<?php echo esc_url(
-              home_url('/')
+              home_url('/'),
             ); ?>" class="logo font-normal" rel="home" title="OCAD U Illustration">
               <?php bloginfo('name'); ?>
             </a>
@@ -77,16 +77,29 @@
 
                 $ocaduillustration_year_image = '';
                 $ocaduillustration_year_image_srcset = '';
-                $ocaduillustration_year_term_id = $ocaduillustration_class_year->term_id;
-                if (!empty($ocaduillustration_year_thumb_ids[ $ocaduillustration_year_term_id ])) {
-                  $ocaduillustration_year_term_thumbs = $ocaduillustration_year_thumb_ids[ $ocaduillustration_year_term_id ];
-                  $ocaduillustration_random_thumb_id  = $ocaduillustration_year_term_thumbs[ array_rand($ocaduillustration_year_term_thumbs) ];
+                $ocaduillustration_year_term_id =
+                  $ocaduillustration_class_year->term_id;
+                if (
+                  !empty(
+                    $ocaduillustration_year_thumb_ids[
+                      $ocaduillustration_year_term_id
+                    ]
+                  )
+                ) {
+                  $ocaduillustration_year_term_thumbs =
+                    $ocaduillustration_year_thumb_ids[
+                      $ocaduillustration_year_term_id
+                    ];
+                  $ocaduillustration_random_thumb_id =
+                    $ocaduillustration_year_term_thumbs[
+                      array_rand($ocaduillustration_year_term_thumbs)
+                    ];
                   $ocaduillustration_year_image = wp_get_attachment_image_url(
                     $ocaduillustration_random_thumb_id,
-                    'illustrator-small'
+                    'illustrator-small',
                   );
                   $ocaduillustration_year_image_srcset = wp_get_attachment_image_srcset(
-                    $ocaduillustration_random_thumb_id
+                    $ocaduillustration_random_thumb_id,
                   );
                 }
 
@@ -96,7 +109,7 @@
                     $ocaduillustration_class_year,
                     $ocaduillustration_selected_year_class,
                     $ocaduillustration_year_image,
-                    $ocaduillustration_year_image_srcset
+                    $ocaduillustration_year_image_srcset,
                   ),
                   [
                     'a' => [
@@ -117,15 +130,15 @@
                       'src' => [],
                       'loading' => [],
                     ],
-                  ]
+                  ],
                 );
                 echo '</div></li>';
               }
               ?>
             </ul>
           </div>
-          <button class="close-panel rounded-full" title="Close panel" aria-label="Close search panel"><?php get_template_part(
-            'assets/dist/images/close.svg'
+          <button class="close-panel rounded" title="Close panel" aria-label="Close search panel"><?php get_template_part(
+            'assets/dist/images/close.svg',
           ); ?><span class="hidden">Close</span></button>
         </div> <!-- year-select-->
     </div><!-- .app-head-items -->

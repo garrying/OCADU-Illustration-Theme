@@ -19,7 +19,7 @@
   } ?>
   <div id="top-mask" class="pointer-events-none top-4"></div>
   <div id="title" class="bottom-4 left-4 right-4 top-4">
-    <div class="title-support-unit p-3 pointer-events-none hidden md:flex m-4 mx-5 text-xs rounded-full">
+    <div class="title-support-unit p-3 pointer-events-none hidden md:flex m-4 mx-5 text-xs rounded">
       <p>Maintained by the Illustration Program at OCAD University.
         <a href="/about" class="about pointer-events-auto">About the archive</a>
       </p>
@@ -36,7 +36,7 @@
     $ocaduillustration_home_index->the_post();
     $ocaduillustration_thumb = get_the_post_thumbnail_url(
       get_the_ID(),
-      'medium'
+      'medium',
     );
     $ocaduillustration_full = get_the_post_thumbnail_url(get_the_ID(), 'full');
     $ocaduillustration_url = get_permalink();
