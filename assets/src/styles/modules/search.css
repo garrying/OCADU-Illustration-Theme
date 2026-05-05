@@ -20,8 +20,6 @@
     min-width: 17ch;
     padding: 0.625rem 1rem;
     background: transparent;
-    border-top-left-radius: 999px;
-    border-bottom-left-radius: 999px;
 
     &::-webkit-search-cancel-button {
       appearance: none;
@@ -78,14 +76,13 @@
 .autoComplete_result {
   /* stylelint-disable-line */
   max-width: fit-content;
-  border-radius: calc(infinity * 1px);
   cursor: pointer;
   transition:
     color 200ms ease-in-out,
     margin 200ms ease-in-out;
   color: rgba(0 0 0 / 0.4);
   background: var(--color-white);
-  padding: 0.25em 0.75rem;
+  padding: 1em 0.75rem;
   margin-bottom: 0.25em;
   margin-right: 0.25em;
 
