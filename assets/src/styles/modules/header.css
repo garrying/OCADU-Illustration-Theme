@@ -98,8 +98,3 @@
     color: var(--color-accent);
   }
 }
-
-#search-link::after {
-  content: 'Search';
-  display: block;
-}

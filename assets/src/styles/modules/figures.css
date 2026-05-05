@@ -62,21 +62,6 @@ figure {
       bottom: 75px;
     }
   }
-
-  .close-panel {
-    position: fixed;
-    top: 2em;
-
-    @media screen and (width <= 1024px) {
-      top: auto;
-    }
-  }
-
-  .close-btn {
-    path {
-      stroke: var(--color-accent);
-    }
-  }
 }
 
 .lazyload {

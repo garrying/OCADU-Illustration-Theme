@@ -34,15 +34,13 @@
   @media screen and (width <= 667px) {
     inset: auto auto 1em calc(50% - 22px);
   }
-}
 
-.close-btn {
-  overflow: visible;
-  margin: 3px;
+  &.close-panel-figure {
+    position: fixed;
+    top: 2em;
 
-  path {
-    stroke: var(--color-white);
-    stroke-linecap: round;
-    stroke-width: 1;
+    @media screen and (width <= 1024px) {
+      top: auto;
+    }
   }
 }
