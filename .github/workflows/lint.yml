@@ -1,13 +1,29 @@
 name: PHP/Assets Lint
 
-on: [push, pull_request]
+on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint-php:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
@@ -22,16 +38,23 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --no-interaction
 
-      - name: Run test suite
+      - name: Audit Composer dependencies
+        run: composer audit
+        continue-on-error: true
+
+      - name: Run PHPCS
         run: composer lint
 
   lint-assets:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Use Node.js 24
         uses: actions/setup-node@v6
         with:

@@ -1,5 +1,3 @@
-@use "../components/variables";
-
 figure {
   margin: 0;
 
@@ -24,11 +22,6 @@ figure {
   object-fit: contain;
 }
 
-.gallery-icon-anchor {
-  display: block;
-  cursor: zoom-in;
-}
-
 .image-modal-wrapper {
   position: fixed;
   inset: 0;
@@ -36,7 +29,7 @@ figure {
   overflow: auto;
   background: var(--color-site-background);
 
-  @media screen and (max-width: variables.$medium-vp) {
+  @media screen and (width <= 1024px) {
     left: 0;
   }
 
@@ -51,32 +44,17 @@ figure {
   .image-modal-caption {
     z-index: var(--z-foreground);
     max-width: 320px;
-    background: rgb(255 255 255 / 60%);
+    background: rgba(255 255 255 / 0.6);
     backdrop-filter: blur(3px);
     border-radius: var(--border-radius);
 
-    @media screen and (max-width: variables.$ipad-vp) {
+    @media screen and (width <= 768px) {
       bottom: 0;
       left: 1rem;
     }
 
-    @media screen and (max-width: variables.$small-vp) {
+    @media screen and (width <= 667px) {
       bottom: 75px;
-    }
-  }
-
-  .close-panel {
-    position: fixed;
-    top: 2em;
-
-    @media screen and (max-width: variables.$medium-vp) {
-      top: auto;
-    }
-  }
-
-  .close-btn {
-    path {
-      stroke: var(--color-accent);
     }
   }
 }

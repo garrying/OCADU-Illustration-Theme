@@ -62,12 +62,12 @@ function ocaduillustration_head_cleanup()
   add_filter(
     'style_loader_src',
     'ocaduillustration_remove_wp_ver_css_js',
-    9999
+    9999,
   ); // remove WP version from css.
   add_filter(
     'script_loader_src',
     'ocaduillustration_remove_wp_ver_css_js',
-    9999
+    9999,
   ); // remove Wp version from scripts.
 }
 
@@ -99,20 +99,20 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1746494352',
+        get_template_directory_uri() . '/assets/dist/app.js?1746494351',
         '',
-        '2025',
-        true
+        '2026',
+        true,
       );
       wp_enqueue_script('app');
     }
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1746494352',
+        get_template_directory_uri() . '/assets/dist/home.js?1746494351',
         '',
-        '2025',
-        true
+        '2026',
+        true,
       );
       wp_enqueue_script('home');
     }
@@ -129,9 +129,9 @@ function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1746494352',
+    get_template_directory_uri() . '/assets/dist/main.css?1746494351',
     '',
-    '2025'
+    '2026',
   );
   wp_enqueue_style('ocadustyles');
 }
@@ -177,19 +177,19 @@ if (!function_exists('ocaduillustration_content_nav')):
     <nav id="<?php echo esc_attr($nav_id); ?>">
       <h3 class="assistive-text"><?php esc_html_e(
         'Post navigation',
-        'ocaduillustration'
+        'ocaduillustration',
       ); ?></h3>
       <div class="nav-next"><?php next_posts_link(
         __(
           'Next Page <span class="meta-nav">&rarr;</span>',
-          'ocaduillustration'
-        )
+          'ocaduillustration',
+        ),
       ); ?></div>
       <div class="nav-previous"><?php previous_posts_link(
         __(
           '<span class="meta-nav">&larr;</span> Previous Page',
-          'ocaduillustration'
-        )
+          'ocaduillustration',
+        ),
       ); ?></div>
     </nav><!-- #nav-above -->
   <?php endif;
@@ -233,7 +233,7 @@ add_filter('nav_menu_css_class', 'ocaduillustration_nav_class_filter', 100, 1);
  */
 function ocaduillustration_cleanname($v)
 {
-  $v = preg_replace('/[^a-zA-Z0-9s]/', '', $v);
+  $v = preg_replace('/[^a-zA-Z0-9\s]/', '', $v);
   $v = str_replace(' ', '-', $v);
   $v = strtolower($v);
   return $v;
@@ -260,6 +260,146 @@ function ocaduillustration_search_filter($query)
 add_filter('pre_get_posts', 'ocaduillustration_search_filter');
 
 /**
+ * Build a term_id => [thumb_attachment_id, ...] map across all gradyear terms.
+ *
+ * Cached in a transient so the year-select panel in the header can pick
+ * a random thumbnail per pageload (in PHP) without firing a WP_Query
+ * per term on every load.
+ *
+ * @return array
+ */
+function ocaduillustration_year_thumb_ids()
+{
+  $cached = get_transient('ocaduillustration_year_thumb_ids');
+  if (false !== $cached) {
+    return $cached;
+  }
+
+  $out = [];
+  $terms = get_terms([
+    'taxonomy' => 'gradyear',
+    'hide_empty' => true,
+    'order' => 'DESC',
+    'parent' => 0,
+  ]);
+
+  if (is_wp_error($terms) || empty($terms)) {
+    return $out;
+  }
+
+  foreach ($terms as $ocaduillustration_term) {
+    $ocaduillustration_query = new WP_Query([
+      'posts_per_page' => -1,
+      'post_type' => 'illustrator',
+      'gradyear' => $ocaduillustration_term->slug,
+      'no_found_rows' => true,
+      'fields' => 'ids',
+    ]);
+
+    $ocaduillustration_thumb_ids = [];
+    foreach ($ocaduillustration_query->posts as $ocaduillustration_pid) {
+      $ocaduillustration_tid = get_post_thumbnail_id($ocaduillustration_pid);
+      if ($ocaduillustration_tid) {
+        $ocaduillustration_thumb_ids[] = $ocaduillustration_tid;
+      }
+    }
+
+    if (!empty($ocaduillustration_thumb_ids)) {
+      $out[$ocaduillustration_term->term_id] = $ocaduillustration_thumb_ids;
+    }
+  }
+
+  set_transient('ocaduillustration_year_thumb_ids', $out, DAY_IN_SECONDS);
+  return $out;
+}
+
+/**
+ * Build a gradyear-slug => ordered post ID list map for illustrators.
+ *
+ * Used by single-illustrator prev/next nav so each detail page doesn't run
+ * a full WP_Query of every illustrator in the year on every request.
+ *
+ * @return array<string, int[]>
+ */
+function ocaduillustration_year_post_ids()
+{
+  $cached = get_transient('ocaduillustration_year_post_ids');
+  if (false !== $cached) {
+    return $cached;
+  }
+
+  $out = [];
+  $terms = get_terms([
+    'taxonomy' => 'gradyear',
+    'hide_empty' => true,
+  ]);
+
+  if (is_wp_error($terms) || empty($terms)) {
+    return $out;
+  }
+
+  foreach ($terms as $ocaduillustration_term) {
+    $ocaduillustration_query = new WP_Query([
+      'post_status' => 'publish',
+      'post_type' => 'illustrator',
+      'gradyear' => $ocaduillustration_term->slug,
+      'orderby' => 'title',
+      'order' => 'ASC',
+      'posts_per_page' => -1,
+      'no_found_rows' => true,
+      'fields' => 'ids',
+      'update_post_meta_cache' => false,
+      'update_post_term_cache' => false,
+    ]);
+    $out[$ocaduillustration_term->slug] = $ocaduillustration_query->posts;
+  }
+
+  set_transient('ocaduillustration_year_post_ids', $out, DAY_IN_SECONDS);
+  return $out;
+}
+
+function ocaduillustration_bust_year_post_ids()
+{
+  delete_transient('ocaduillustration_year_post_ids');
+}
+
+add_action('save_post_illustrator', 'ocaduillustration_bust_year_post_ids');
+add_action('deleted_post', 'ocaduillustration_bust_year_post_ids');
+
+if (!function_exists('ocaduillustration_year_item_navigation')) {
+  function ocaduillustration_year_item_navigation(
+    $term_obj,
+    $term_active,
+    $term_image,
+    $term_srcset,
+  ) {
+    return "<a class='year-item " .
+      esc_attr($term_active) .
+      "' href='" .
+      esc_url(get_term_link($term_obj->slug, 'gradyear')) .
+      "' title='View Work From " .
+      esc_attr($term_obj->name) .
+      "'><span class='year-text'>" .
+      esc_html($term_obj->name) .
+      "</span><img srcset='" .
+      esc_attr($term_srcset) .
+      "' loading='lazy' width='300' height='460' src='" .
+      esc_url($term_image) .
+      "' sizes='300px' class='year-item-image' alt='Graduating year feature image' /></a>";
+  }
+}
+
+function ocaduillustration_bust_year_thumb_ids()
+{
+  delete_transient('ocaduillustration_year_thumb_ids');
+}
+
+add_action('save_post_illustrator', 'ocaduillustration_bust_year_thumb_ids');
+add_action('edited_gradyear', 'ocaduillustration_bust_year_thumb_ids');
+add_action('created_gradyear', 'ocaduillustration_bust_year_thumb_ids');
+add_action('delete_term', 'ocaduillustration_bust_year_thumb_ids');
+
+/**
  * Use proper ellipses for excerpts
  *
  * @return string
@@ -284,7 +424,7 @@ function ocaduillustration_get_socialimage()
     $src = wp_get_attachment_image_src(
       get_post_thumbnail_id($post->ID),
       'medium',
-      ''
+      '',
     );
 
     $socialimg = $src[0];
@@ -315,7 +455,7 @@ function ocaduillustration_social_meta()
     $ocaduillustration_year_image = wp_get_attachment_image_src(
       get_post_thumbnail_id($post->ID),
       'illustrator-icon',
-      ''
+      '',
     );
     echo '<meta property="og:url" content="' .
       esc_url(get_permalink()) .
@@ -348,7 +488,7 @@ function ocaduillustration_social_meta()
   }
   if (is_home() || is_archive()) {
     $social_description =
-      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2025.';
+      'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2026.';
     if (is_home()) {
       $social_title = get_bloginfo('name');
     } else {
@@ -426,12 +566,12 @@ function ocaduillustration_gallery_filter($attr, $attachment)
         '"%3E%3C/svg%3E';
       $attr['data-src'] = get_the_post_thumbnail_url(
         $post,
-        'illustrator-extra-small'
+        'illustrator-extra-small',
       );
     } else {
       $attachment_small = wp_get_attachment_image_src(
         $attachment->ID,
-        'illustrator-extra-small'
+        'illustrator-extra-small',
       );
       $attr['data-src'] = $attachment_small[0];
     }
@@ -451,7 +591,7 @@ if (!is_admin()) {
     'wp_get_attachment_image_attributes',
     'ocaduillustration_gallery_filter',
     10,
-    2
+    2,
   );
 }
 
@@ -470,13 +610,13 @@ function ocaduillustration_modify_attachment_link(
   $markup,
   $id,
   $size,
-  $permalink
+  $permalink,
 ) {
   global $post;
   $image_url = wp_get_attachment_image_src($id, 'full');
   $image_srcset = wp_get_attachment_image_srcset($id);
   $image_sizes = wp_get_attachment_image_sizes($id, 'large');
-  $image_caption = esc_html(wpautop(get_post($id)->post_excerpt));
+  $image_caption = esc_attr(get_post($id)->post_excerpt);
 
   $image_data = wp_get_attachment_image_src($id, 'large');
   $image_width = $image_data[1];
@@ -485,7 +625,7 @@ function ocaduillustration_modify_attachment_link(
   if (!$permalink) {
     $markup = str_replace(
       '<a href',
-      '<a class="gallery-icon-anchor" data-srcset="' .
+      '<a class="gallery-icon-anchor block cursor-zoom-in" data-srcset="' .
         $image_srcset .
         '" data-src-large="' .
         $image_url[0] .
@@ -494,7 +634,7 @@ function ocaduillustration_modify_attachment_link(
         '" data-sizes="' .
         $image_sizes .
         '" href',
-      $markup
+      $markup,
     );
   }
   return $markup;
@@ -504,7 +644,7 @@ add_filter(
   'wp_get_attachment_link',
   'ocaduillustration_modify_attachment_link',
   10,
-  4
+  4,
 );
 
 /**
@@ -540,6 +680,7 @@ add_filter('post_class', 'ocaduillustration_simplify_post_class');
  */
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('wp_footer', 'wp_enqueue_global_styles', 1);
 
 /**
  * Disable gutenberg style in Front
@@ -553,7 +694,7 @@ function ocaduillustration_wps_deregister_styles()
 add_action(
   'wp_enqueue_scripts',
   'ocaduillustration_wps_deregister_styles',
-  100
+  100,
 );
 
 // Removes the decoding attribute from images added inside post content.

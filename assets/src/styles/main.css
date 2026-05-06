@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import './components/variables.css' layer(variables);
+@import './modules/typography.css' layer(typography);
+@import './modules/base.css' layer(base);
+@import './modules/figures.css' layer(figures);
+@import './modules/grids.css' layer(grids);
+@import './modules/panels.css' layer(panels);
+@import './modules/search.css' layer(search);
+@import './modules/page.css' layer(page);
+@import './modules/yearselect.css' layer(yearselect);
+@import './modules/header.css' layer(header);
+@import './modules/layout.css' layer(layout);
+@import './modules/miniview.css' layer(miniview);
+@import './modules/home.css' layer(home);
+@import './modules/loader.css' layer(loader);

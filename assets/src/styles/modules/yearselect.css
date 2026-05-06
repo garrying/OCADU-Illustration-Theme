@@ -1,5 +1,3 @@
-@use "../components/variables";
-
 .year-select {
   justify-content: center;
 
@@ -18,7 +16,7 @@
   padding-top: 80px;
   gap: 8px;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (width <= 667px) {
     padding-left: 0;
   }
 }
@@ -33,7 +31,7 @@
   display: flex;
   position: relative;
 
-  @media screen and (max-width: variables.$small-vp) {
+  @media screen and (width <= 667px) {
     margin-right: 0;
   }
 }

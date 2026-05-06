@@ -1,0 +1,14 @@
+:root {
+  --font-sans-serif:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --color-white: #fff;
+  --color-black: #000;
+  --color-site-background: #fbf9f4;
+  --color-site-font: #000;
+  --color-accent: #999;
+  --z-background: 10;
+  --z-middle: 20;
+  --z-foreground: 30;
+  --z-important: 50;
+  --border-radius: 8px;
+}

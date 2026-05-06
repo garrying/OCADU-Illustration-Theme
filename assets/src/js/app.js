@@ -4,7 +4,7 @@ import Colcade from 'colcade'
 import * as lazySizes from 'lazysizes'
 import { animate, stagger } from 'motion'
 import SwipeListener from 'swipe-listener'
-import '../styles/main.scss'
+import '../styles/main.css'
 ;(() => {
   const app = {
     init: () => {

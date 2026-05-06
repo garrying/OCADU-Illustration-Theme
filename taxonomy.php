@@ -12,7 +12,7 @@
       get_query_var('taxonomy')
     );
   }
-  echo '<h2 class="section-indicator-index text-4xl">';
+  echo '<h2 class="text-4xl w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center">';
   if (isset($ocaduillustration_selected_section_parent)) {
     echo esc_html($ocaduillustration_selected_section_parent->name);
     echo ', ';

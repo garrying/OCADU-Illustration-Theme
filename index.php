@@ -18,12 +18,12 @@
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
   <div id="top-mask" class="pointer-events-none top-4"></div>
-  <div id="title" class="bottom-4 left-4 right-4 top-4">
-    <div class="title-support-unit p-3 pointer-events-none hidden md:flex m-4 mx-5 text-xs rounded-full">
+  <div id="title" class="bottom-3 left-3 right-3 top-4 text-white">
+    <div class="title-support-unit p-4 pointer-events-none hidden md:flex m-4 mx-5 rounded">
       <p>Maintained by the Illustration Program at OCAD University.
-        <a href="/about" class="about pointer-events-auto">About the archive</a>
+        <a href="/about" class="about pointer-events-auto text-white">About the archive</a>
       </p>
-      <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto">@ocaduillustration ↗</a>
+      <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto text-white">@ocaduillustration ↗</a>
     </div>
   </div>
   <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-4 overflow-hidden"></div>
@@ -34,18 +34,20 @@
   $ocaduillustration_id = 0;
   while ($ocaduillustration_home_index->have_posts()) {
     $ocaduillustration_home_index->the_post();
-    $ocaduillustration_thumb = get_the_post_thumbnail_url(
-      get_the_ID(),
-      'medium'
-    );
+    $ocaduillustration_thumb_id = get_post_thumbnail_id(get_the_ID());
+    $ocaduillustration_thumb_data = $ocaduillustration_thumb_id
+      ? wp_get_attachment_image_src($ocaduillustration_thumb_id, 'medium')
+      : false;
     $ocaduillustration_full = get_the_post_thumbnail_url(get_the_ID(), 'full');
     $ocaduillustration_url = get_permalink();
     $ocaduillustration_title = get_the_title();
-    if ($ocaduillustration_thumb && $ocaduillustration_full) {
+    if ($ocaduillustration_thumb_data && $ocaduillustration_full) {
       $ocaduillustration_images[] = [
         'id' => $ocaduillustration_id,
         'full_src' => $ocaduillustration_full,
-        'thumb_src' => $ocaduillustration_thumb,
+        'thumb_src' => $ocaduillustration_thumb_data[0],
+        'width' => $ocaduillustration_thumb_data[1],
+        'height' => $ocaduillustration_thumb_data[2],
         'link' => $ocaduillustration_url,
         'name' => $ocaduillustration_title,
       ];
