@@ -1,9 +1,11 @@
 import gsap from 'gsap'
 
 const CARD_WIDTH = 300
+const PAIR_WIDTH = CARD_WIDTH * 2
 const MIN_CARD_HEIGHT = 200
 const MAX_CARD_HEIGHT = 600
 const STRIPE_MIN_HEIGHT = 8000
+const WIDE_RATIO = 1.3
 
 function LoadJSON(callback) {
   const jsonData = JSON.parse(document.getElementById('image-data').textContent)
@@ -85,8 +87,9 @@ class SimpleDrag {
 }
 
 class Card {
-  constructor(descriptor, height) {
+  constructor(descriptor, width, height) {
     this.descriptor = descriptor
+    this.width = width
     this.height = height
     this.createDOMElement()
     this.x = 0
@@ -134,7 +137,7 @@ class Card {
   update() {
     this.rootElement.setAttribute(
       'style',
-      `transform: translate3d(${this.x}px, ${this.y}px, 0); height: ${this.height}px;`
+      `transform: translate3d(${this.x}px, ${this.y}px, 0); width: ${this.width}px; height: ${this.height}px;`
     )
   }
 }
@@ -143,12 +146,12 @@ class Grid {
   constructor(DOMElement, JSONGallery) {
     this.descriptors = JSONGallery.images.sort(() => Math.random() - 0.5)
     this.DOMElement = DOMElement
-    this.colCache = {}
+    this.pairCache = {}
     this.cards = {}
     this.cardsPool = []
     this.offsetX = 0
     this.offsetY = 0
-    this.viewCols = 0
+    this.viewPairs = 0
     this.viewWidth = 0
     this.viewHeight = 0
   }
@@ -168,52 +171,106 @@ class Grid {
   onResize() {
     this.viewHeight = this.DOMElement.offsetHeight
     this.viewWidth = this.DOMElement.offsetWidth
-    this.viewCols = Math.ceil(this.viewWidth / CARD_WIDTH) + 2
+    this.viewPairs = Math.ceil(this.viewWidth / PAIR_WIDTH) + 2
     this.updateGrid()
   }
 
-  pickDescriptor(col, row) {
-    let h = ((col * 73856093) ^ (row * 19349663)) >>> 0
+  pickDescriptor(pair, i) {
+    let h = ((pair * 73856093) ^ (i * 19349663)) >>> 0
     return this.descriptors[h % this.descriptors.length]
   }
 
-  cardHeight(desc) {
-    if (!desc.width || !desc.height) return 400
-    let h = CARD_WIDTH * (desc.height / desc.width)
-    return Math.round(Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)))
+  isWide(desc) {
+    if (!desc.width || !desc.height) return false
+    return desc.width / desc.height >= WIDE_RATIO
   }
 
-  buildColStripe(col) {
-    const items = []
-    let y = 0
-    let i = 0
-    while (y < STRIPE_MIN_HEIGHT) {
-      const desc = this.pickDescriptor(col, i)
-      const height = this.cardHeight(desc)
-      items.push({ desc, y, height })
-      y += height
-      i++
+  cardSize(desc) {
+    if (!desc.width || !desc.height) {
+      return { width: CARD_WIDTH, height: 400, span: 1 }
     }
-    return { items, total: y }
+    if (this.isWide(desc)) {
+      const h = Math.round(PAIR_WIDTH * (desc.height / desc.width))
+      return {
+        width: PAIR_WIDTH,
+        height: Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)),
+        span: 2
+      }
+    }
+    const h = Math.round(CARD_WIDTH * (desc.height / desc.width))
+    return {
+      width: CARD_WIDTH,
+      height: Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)),
+      span: 1
+    }
   }
 
-  getColStripe(col) {
-    if (!this.colCache[col]) this.colCache[col] = this.buildColStripe(col)
-    return this.colCache[col]
+  buildPairStripe(pair) {
+    const items = []
+    const MAX_FILL_TRIES = 16
+    let yLeft = 0
+    let yRight = 0
+    let i = 0
+
+    const place = (desc, wide, capHeight = null) => {
+      const size = this.cardSize(desc)
+      if (wide) {
+        const startY = Math.max(yLeft, yRight)
+        items.push({ desc, col: 0, y: startY, width: size.width, height: size.height })
+        yLeft = startY + size.height
+        yRight = startY + size.height
+        return
+      }
+      const height = capHeight !== null ? Math.min(size.height, capHeight) : size.height
+      if (yLeft <= yRight) {
+        items.push({ desc, col: 0, y: yLeft, width: size.width, height })
+        yLeft += height
+      } else {
+        items.push({ desc, col: 1, y: yRight, width: size.width, height })
+        yRight += height
+      }
+    }
+
+    const fillGap = () => {
+      for (let k = 0; k < MAX_FILL_TRIES; k++) {
+        if (yLeft === yRight) break
+        const candidate = this.pickDescriptor(pair, i++)
+        if (this.isWide(candidate)) continue
+        place(candidate, false, Math.abs(yLeft - yRight))
+      }
+    }
+
+    while (Math.min(yLeft, yRight) < STRIPE_MIN_HEIGHT) {
+      const desc = this.pickDescriptor(pair, i++)
+      const wide = this.isWide(desc)
+      if (wide) {
+        fillGap()
+        place(desc, true)
+      } else {
+        place(desc, wide)
+      }
+    }
+    fillGap()
+    return { items, total: Math.max(yLeft, yRight) }
+  }
+
+  getPairStripe(pair) {
+    if (!this.pairCache[pair]) this.pairCache[pair] = this.buildPairStripe(pair)
+    return this.pairCache[pair]
   }
 
   updateGrid() {
     const newCards = {}
-    const colOffset = Math.floor(this.offsetX / CARD_WIDTH)
-    const xMod = this.offsetX - colOffset * CARD_WIDTH
+    const pairOffset = Math.floor(this.offsetX / PAIR_WIDTH)
+    const xMod = this.offsetX - pairOffset * PAIR_WIDTH
 
-    for (let col = -1; col <= this.viewCols; col++) {
-      const tCol = -colOffset + col
-      const xPos = col * CARD_WIDTH + xMod - CARD_WIDTH
+    for (let p = -1; p <= this.viewPairs; p++) {
+      const tPair = -pairOffset + p
+      const xPos = p * PAIR_WIDTH + xMod - PAIR_WIDTH
 
-      if (xPos + CARD_WIDTH <= 0 || xPos >= this.viewWidth) continue
+      if (xPos + PAIR_WIDTH <= 0 || xPos >= this.viewWidth) continue
 
-      const stripe = this.getColStripe(tCol)
+      const stripe = this.getPairStripe(tPair)
       const total = stripe.total
       const yMod = ((this.offsetY % total) + total) % total
 
@@ -229,13 +286,14 @@ class Grid {
         }
         if (screenY === null) continue
 
-        const key = `${tCol}:${i}`
+        const key = `${tPair}:${i}`
         const card =
-          this.cards[key] || this.getCard(item.desc, item.height)
+          this.cards[key] || this.getCard(item.desc, item.width, item.height)
         delete this.cards[key]
         card.descriptor = item.desc
+        card.width = item.width
         card.height = item.height
-        card.x = xPos
+        card.x = xPos + item.col * CARD_WIDTH
         card.y = screenY
         card.appendTo(this.DOMElement)
         card.update()
@@ -256,14 +314,15 @@ class Grid {
     this.cards = null
   }
 
-  getCard(descriptor, height) {
+  getCard(descriptor, width, height) {
     if (this.cardsPool.length > 0) {
       const card = this.cardsPool.pop()
       card.descriptor = descriptor
+      card.width = width
       card.height = height
       return card
     } else {
-      return new Card(descriptor, height)
+      return new Card(descriptor, width, height)
     }
   }
 }

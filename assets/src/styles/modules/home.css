@@ -2,6 +2,31 @@
   overflow: hidden;
 }
 
+.home {
+  background-color: lab(1.90334% .278696 -5.48866);
+
+  .logo, .header-item, .search-submit {
+    color: var(--color-site-background);
+  }
+
+  .search-form {
+    background: rgba(255 255 255/0.1);
+    backdrop-filter: blur(7px);
+
+    &:hover {
+      outline-color: rgba(255 255 255/0.3);
+    }
+  }
+
+  input, input::placeholder {
+    color: #fff;
+  }
+
+  .no_result {
+    color: var(--color-site-background);
+  }
+}
+
 .grid-container {
   position: absolute;
   cursor: grab;
@@ -30,7 +55,6 @@
   opacity: 1;
   overflow: hidden;
   position: absolute;
-  width: 300px;
 }
 
 .card:hover {
@@ -58,19 +82,19 @@
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    hsla(30.857deg 2.6% 97.1%) 0%,
-    hsla(30.857deg 2.6% 97.1% / 0.738) 19%,
-    hsla(30.857deg 2.6% 97.1% / 0.541) 34%,
-    hsla(30.857deg 2.6% 97.1% / 0.382) 47%,
-    hsla(30.857deg 2.6% 97.1% / 0.278) 56.5%,
-    hsla(30.857deg 2.6% 97.1% / 0.194) 65%,
-    hsla(30.857deg 2.6% 97.1% / 0.126) 73%,
-    hsla(30.857deg 2.6% 97.1% / 0.075) 80.2%,
-    hsla(30.857deg 2.6% 97.1% / 0.042) 86.1%,
-    hsla(30.857deg 2.6% 97.1% / 0.021) 91%,
-    hsla(30.857deg 2.6% 97.1% / 0.008) 95.2%,
-    hsla(30.857deg 2.6% 97.1% / 0.002) 98.2%,
-    hsla(30.857deg 2.6% 97.1% / 0) 100%
+    lab(1.90334% .278696 -5.48866) 0%,
+    lab(1.90334% .278696 -5.48866 / 0.738) 19%,
+    lab(1.90334% .278696 -5.48866 / 0.541) 34%,
+    lab(1.90334% .278696 -5.48866 / 0.382) 47%,
+    lab(1.90334% .278696 -5.48866 / 0.278) 56.5%,
+    lab(1.90334% .278696 -5.48866 / 0.194) 65%,
+    lab(1.90334% .278696 -5.48866 / 0.126) 73%,
+    lab(1.90334% .278696 -5.48866 / 0.075) 80.2%,
+    lab(1.90334% .278696 -5.48866 / 0.042) 86.1%,
+    lab(1.90334% .278696 -5.48866 / 0.021) 91%,
+    lab(1.90334% .278696 -5.48866 / 0.008) 95.2%,
+    lab(1.90334% .278696 -5.48866 / 0.002) 98.2%,
+    lab(1.90334% .278696 -5.48866 / 0) 100%
   );
 }
 
@@ -86,6 +110,6 @@
     position: relative;
     z-index: 1;
     backdrop-filter: blur(7px);
-    background: hsla(30.857deg 2.6% 97.1% / 0.2);
+    background: hsla(0, 0%, 0%, 0.314);
   }
 }

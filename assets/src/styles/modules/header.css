@@ -40,7 +40,7 @@
 .heading-inner {
   position: fixed;
   top: 0;
-  padding: 1rem 30px;
+  padding: 1rem 30px 0;
   left: 0;
   right: 0;
   z-index: var(--z-foreground);
