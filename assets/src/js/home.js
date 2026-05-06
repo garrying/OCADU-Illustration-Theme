@@ -2,8 +2,6 @@ import gsap from 'gsap'
 
 const CARD_WIDTH = 300
 const PAIR_WIDTH = CARD_WIDTH * 2
-const MIN_CARD_HEIGHT = 200
-const MAX_CARD_HEIGHT = 600
 const STRIPE_MIN_HEIGHT = 8000
 const WIDE_RATIO = 1.3
 
@@ -187,20 +185,18 @@ class Grid {
 
   cardSize(desc) {
     if (!desc.width || !desc.height) {
-      return { width: CARD_WIDTH, height: 400, span: 1 }
+      return { width: CARD_WIDTH, height: CARD_WIDTH, span: 1 }
     }
     if (this.isWide(desc)) {
-      const h = Math.round(PAIR_WIDTH * (desc.height / desc.width))
       return {
         width: PAIR_WIDTH,
-        height: Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)),
+        height: Math.round(PAIR_WIDTH * (desc.height / desc.width)),
         span: 2
       }
     }
-    const h = Math.round(CARD_WIDTH * (desc.height / desc.width))
     return {
       width: CARD_WIDTH,
-      height: Math.max(MIN_CARD_HEIGHT, Math.min(MAX_CARD_HEIGHT, h)),
+      height: Math.round(CARD_WIDTH * (desc.height / desc.width)),
       span: 1
     }
   }
@@ -224,7 +220,7 @@ class Grid {
       return candidate
     }
 
-    const place = (desc, wide, capHeight = null) => {
+    const place = (desc, wide) => {
       const size = this.cardSize(desc)
       if (wide) {
         const startY = Math.max(yLeft, yRight)
@@ -235,14 +231,13 @@ class Grid {
         lastRight = desc
         return
       }
-      const height = capHeight !== null ? Math.min(size.height, capHeight) : size.height
       if (yLeft <= yRight) {
-        items.push({ desc, col: 0, y: yLeft, width: size.width, height })
-        yLeft += height
+        items.push({ desc, col: 0, y: yLeft, width: size.width, height: size.height })
+        yLeft += size.height
         lastLeft = desc
       } else {
-        items.push({ desc, col: 1, y: yRight, width: size.width, height })
-        yRight += height
+        items.push({ desc, col: 1, y: yRight, width: size.width, height: size.height })
+        yRight += size.height
         lastRight = desc
       }
     }
@@ -250,9 +245,18 @@ class Grid {
     const fillGap = () => {
       for (let k = 0; k < MAX_FILL_TRIES; k++) {
         if (yLeft === yRight) break
-        const candidate = pickFresh()
-        if (this.isWide(candidate)) continue
-        place(candidate, false, Math.abs(yLeft - yRight))
+        const gap = Math.abs(yLeft - yRight)
+        let chosen = null
+        for (let t = 0; t < MAX_PICK_TRIES; t++) {
+          const candidate = pickFresh()
+          if (this.isWide(candidate)) continue
+          if (this.cardSize(candidate).height <= gap) {
+            chosen = candidate
+            break
+          }
+        }
+        if (!chosen) break
+        place(chosen, false)
       }
     }
 
