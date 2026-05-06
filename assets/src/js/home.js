@@ -208,9 +208,21 @@ class Grid {
   buildPairStripe(pair) {
     const items = []
     const MAX_FILL_TRIES = 16
+    const MAX_PICK_TRIES = 32
     let yLeft = 0
     let yRight = 0
     let i = 0
+    let lastLeft = null
+    let lastRight = null
+
+    const pickFresh = () => {
+      let candidate = this.pickDescriptor(pair, i++)
+      for (let k = 0; k < MAX_PICK_TRIES; k++) {
+        if (candidate !== lastLeft && candidate !== lastRight) return candidate
+        candidate = this.pickDescriptor(pair, i++)
+      }
+      return candidate
+    }
 
     const place = (desc, wide, capHeight = null) => {
       const size = this.cardSize(desc)
@@ -219,29 +231,33 @@ class Grid {
         items.push({ desc, col: 0, y: startY, width: size.width, height: size.height })
         yLeft = startY + size.height
         yRight = startY + size.height
+        lastLeft = desc
+        lastRight = desc
         return
       }
       const height = capHeight !== null ? Math.min(size.height, capHeight) : size.height
       if (yLeft <= yRight) {
         items.push({ desc, col: 0, y: yLeft, width: size.width, height })
         yLeft += height
+        lastLeft = desc
       } else {
         items.push({ desc, col: 1, y: yRight, width: size.width, height })
         yRight += height
+        lastRight = desc
       }
     }
 
     const fillGap = () => {
       for (let k = 0; k < MAX_FILL_TRIES; k++) {
         if (yLeft === yRight) break
-        const candidate = this.pickDescriptor(pair, i++)
+        const candidate = pickFresh()
         if (this.isWide(candidate)) continue
         place(candidate, false, Math.abs(yLeft - yRight))
       }
     }
 
     while (Math.min(yLeft, yRight) < STRIPE_MIN_HEIGHT) {
-      const desc = this.pickDescriptor(pair, i++)
+      const desc = pickFresh()
       const wide = this.isWide(desc)
       if (wide) {
         fillGap()
