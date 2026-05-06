@@ -55,6 +55,7 @@
   opacity: 1;
   overflow: hidden;
   position: absolute;
+  user-select: none;
 }
 
 .card:hover {
