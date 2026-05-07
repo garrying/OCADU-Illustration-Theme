@@ -1,6 +1,9 @@
 name: PHP/Assets Lint
 
-on: [ push, pull_request ]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 permissions:
   contents: read
@@ -63,3 +66,13 @@ jobs:
       - run: npm ci
       - run: npm run lint --silent
       - run: npm run build
+      - name: Verify assets/dist is up to date
+        run: |
+          if [ -n "$(git status --porcelain -- assets/dist)" ]; then
+            echo "::error::assets/dist is out of sync with source. Run 'npm run build' and commit the result."
+            echo "Files that drifted:"
+            git status --porcelain -- assets/dist
+            echo "Diff (truncated):"
+            git diff --stat -- assets/dist
+            exit 1
+          fi
