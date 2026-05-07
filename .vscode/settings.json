@@ -1,6 +1,0 @@
-{
-  "stylelint.config": null,
-  "prettier.documentSelectors": [
-    "**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"
-  ]
-}

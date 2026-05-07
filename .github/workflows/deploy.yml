@@ -20,10 +20,26 @@ jobs:
       url: https://www.ocaduillustration.com
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
       - name: Deploy theme
         uses: Burnett01/rsync-deployments@8.0.5
         with:
-          switches: -avzr --delete
+          switches: >-
+            -avzr --delete
+            --exclude=/.git --exclude=/.github --exclude=/.gitignore
+            --exclude=/node_modules --exclude=/package.json --exclude=/package-lock.json
+            --exclude=/webpack.config.js --exclude=/postcss.config.mjs
+            --exclude=/eslint.config.mjs --exclude=/stylelint.config.mjs --exclude=/.prettierrc
+            --exclude=/vendor --exclude=/composer.json --exclude=/composer.lock --exclude=/phpcs.xml.dist
+            --exclude=/assets/src
           remote_path: /var/www/html/wp-content/themes/ocaduillustration/
           remote_host: ocaduillustration.com
           remote_user: ${{ secrets.DEPLOY_USER }}
