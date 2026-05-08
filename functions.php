@@ -558,16 +558,11 @@ function ocaduillustration_gallery_filter($attr, $attachment)
     unset($attr['srcset']);
     unset($attr['sizes']);
     if (is_home() || is_archive() || is_search()) {
-      $attr['src'] =
-        'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' .
-        wp_get_attachment_image_src($attachment->ID, 'large')[1] .
-        ' ' .
-        wp_get_attachment_image_src($attachment->ID, 'large')[2] .
-        '"%3E%3C/svg%3E';
-      $attr['data-src'] = get_the_post_thumbnail_url(
+      $attr['src'] = get_the_post_thumbnail_url(
         $post,
         'illustrator-extra-small',
       );
+      $attr['data-src'] = $attr['src'];
     } else {
       $attachment_small = wp_get_attachment_image_src(
         $attachment->ID,
