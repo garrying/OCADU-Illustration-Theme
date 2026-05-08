@@ -65,6 +65,7 @@ figure {
 
 .lazyloaded {
   opacity: 1;
+  transition: opacity var(--duration-slow) var(--ease-out);
 
   &.blur-up {
     filter: blur(0);
@@ -72,6 +73,8 @@ figure {
 }
 
 .blur-up {
-  filter: blur(5px) brightness(1);
-  transition: filter 300ms ease-in-out;
+  filter: blur(8px);
+  transition:
+    filter var(--duration-slow) var(--ease-out),
+    opacity var(--duration-slow) var(--ease-out);
 }

@@ -11,4 +11,9 @@
   --z-foreground: 30;
   --z-important: 50;
   --border-radius: 8px;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 480ms;
 }

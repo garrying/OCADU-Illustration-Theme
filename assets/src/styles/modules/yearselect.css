@@ -44,12 +44,16 @@
   width: 100%;
   opacity: 0.5;
   filter: grayscale(1);
-  transition: opacity 100ms ease-in-out;
+  transition:
+    opacity 100ms ease-in-out,
+    filter 600ms var(--ease-out),
+    transform 1200ms var(--ease-out);
   border-radius: var(--border-radius);
 
   .year-item:hover & {
     filter: grayscale(0);
     opacity: 1;
+    transform: scale(1.06);
   }
 }
 
@@ -63,6 +67,7 @@
   height: 400px;
   overflow: hidden;
   opacity: 0;
+  border-radius: var(--border-radius);
 }
 
 .year-text {
