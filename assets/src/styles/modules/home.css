@@ -46,12 +46,12 @@
   height: 100%;
   object-fit: contain;
   transform: scale(1);
-  transition: transform 0.3s;
+  transition: transform 600ms var(--ease-out);
   transform-origin: center;
 }
 
 .card {
-  transition: opacity 0.5s;
+  transition: opacity 600ms var(--ease-out);
   opacity: 1;
   overflow: hidden;
   position: absolute;
@@ -62,10 +62,12 @@
   opacity: 0.75;
 }
 
-.card.opacity-0 {
-  img {
-    transform: scale(0.95);
-  }
+.card.card-loading {
+  opacity: 0;
+}
+
+.card.card-loading img {
+  transform: scale(0.95);
 }
 
 .dragging a {

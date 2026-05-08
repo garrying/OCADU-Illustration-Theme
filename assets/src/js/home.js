@@ -97,36 +97,40 @@ class Card {
   createDOMElement() {
     this.rootElement = document.createElement('div')
     this.imgElement = document.createElement('img')
-    this.rootElement.className = 'card'
+    this.rootElement.className = 'card card-loading'
     this.rootElement.appendChild(this.imgElement)
     this.anchorElement = document.createElement('a')
     this.anchorElement.className = 'w-full h-full block'
     this.rootElement.appendChild(this.anchorElement)
   }
 
-  load() {
+  load(delay = 0) {
     let { imgElement } = this
     if (imgElement.src !== this.descriptor.thumb_src) {
       imgElement.src = this.descriptor.thumb_src
       imgElement.onload = () => {
         this.update()
-        this.rootElement.classList.toggle('opacity-0', false)
-        this.anchorElement.href = this.descriptor.link
-        this.anchorElement.title = this.descriptor.name
+        const reveal = () => {
+          this.rootElement.classList.toggle('card-loading', false)
+          this.anchorElement.href = this.descriptor.link
+          this.anchorElement.title = this.descriptor.name
+        }
+        if (delay > 0) setTimeout(reveal, delay)
+        else reveal()
       }
     }
   }
 
-  appendTo(el) {
+  appendTo(el, loadDelay = 0) {
     if (this.rootElement.parentElement !== el) {
       el.appendChild(this.rootElement)
-      this.load()
+      this.load(loadDelay)
     }
   }
 
   removeSelf() {
     if (this.rootElement.parentElement) {
-      this.rootElement.classList.toggle('opacity-0', true)
+      this.rootElement.classList.toggle('card-loading', true)
       this.imgElement.src = ''
       this.rootElement.parentElement.removeChild(this.rootElement)
     }
@@ -152,12 +156,25 @@ class Grid {
     this.viewPairs = 0
     this.viewWidth = 0
     this.viewHeight = 0
+    this.firstLoad = true
+    this.staggerMaxMs = 800
   }
 
   init() {
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
     new SimpleDrag(this.DOMElement, this.onDrag.bind(this))
+    setTimeout(() => {
+      this.firstLoad = false
+    }, this.staggerMaxMs + 400)
+  }
+
+  staggerDelay(x, y) {
+    if (!this.firstLoad) return 0
+    const denom = this.viewWidth + this.viewHeight
+    if (denom <= 0) return 0
+    const norm = Math.max(0, Math.min(1, (x + y) / denom))
+    return Math.round(norm * this.staggerMaxMs)
   }
 
   onDrag(deltaX, deltaY) {
@@ -315,7 +332,8 @@ class Grid {
         card.height = item.height
         card.x = xPos + item.col * CARD_WIDTH
         card.y = screenY
-        card.appendTo(this.DOMElement)
+        const delay = this.staggerDelay(card.x, card.y)
+        card.appendTo(this.DOMElement, delay)
         card.update()
         newCards[key] = card
       }
