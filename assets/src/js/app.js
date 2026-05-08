@@ -182,9 +182,14 @@ import '../styles/main.css'
 
     _ocadHomeLoader: () => {
       if ($(app.settings.masonryContainerHome).hasClass('illustrators-grid')) {
-        window.onload = () => {
+        const initMasonry = () => {
           app._ocadMasonry(app.settings.masonryContainerHome)
           $(app.settings.masonryContainerHome).addClass('ready')
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initMasonry, { once: true })
+        } else {
+          initMasonry()
         }
       }
       if (app.settings.documentBody.hasClass('home')) {

@@ -552,27 +552,36 @@ add_action('wp_head', 'ocaduillustration_social_meta');
 function ocaduillustration_gallery_filter($attr, $attachment)
 {
   global $post;
-  $attr['data-sizes'] = 'auto';
-  if (isset($attr['srcset'])) {
-    $attr['data-srcset'] = $attr['srcset'];
-    unset($attr['srcset']);
-    unset($attr['sizes']);
-    if (is_home() || is_archive() || is_search()) {
-      $attr['src'] = get_the_post_thumbnail_url(
-        $post,
-        'illustrator-extra-small',
-      );
-      $attr['data-src'] = $attr['src'];
-    } else {
+
+  if (is_home() || is_archive() || is_search()) {
+    // Archive/search: native browser responsive loading, no lazysizes.
+    // Small thumb in src gives the blur-up something to display from first paint;
+    // srcset/sizes let the browser upgrade to the right variant for the rendered cell.
+    $attr['src'] = get_the_post_thumbnail_url(
+      $post,
+      'illustrator-extra-small',
+    );
+    $attr['sizes'] = '(min-width: 1024px) 25vw, (min-width: 667px) 33vw, 50vw';
+    $attr['loading'] = 'lazy';
+    $attr['decoding'] = 'async';
+    $attr['class'] = 'blur-up';
+  } else {
+    // Single illustrator galleries: lazysizes handles adaptive sizing across many images.
+    $attr['data-sizes'] = 'auto';
+    if (isset($attr['srcset'])) {
+      $attr['data-srcset'] = $attr['srcset'];
+      unset($attr['srcset']);
+      unset($attr['sizes']);
       $attachment_small = wp_get_attachment_image_src(
         $attachment->ID,
         'illustrator-extra-small',
       );
       $attr['data-src'] = $attachment_small[0];
     }
+    $attr['class'] = 'lazyload blur-up';
   }
+
   $attr['alt'] = 'Illustration by ' . get_the_title() . '';
-  $attr['class'] = 'lazyload blur-up';
   if (is_home() || is_archive()) {
     unset($attr['title']);
   } else {
