@@ -4,6 +4,8 @@ const CARD_WIDTH = 300
 const PAIR_WIDTH = CARD_WIDTH * 2
 const STRIPE_MIN_HEIGHT = 8000
 const WIDE_RATIO = 1.3
+const MIN_SCALE = 0.15
+const MAX_SCALE = 1.0
 
 function LoadJSON(callback) {
   const jsonData = JSON.parse(document.getElementById('image-data').textContent)
@@ -24,6 +26,10 @@ class SimpleDrag {
   }
 
   onMove(e) {
+    if (e.type == 'touchmove' && e.touches.length > 1) {
+      this.dragging = false
+      return
+    }
     if (this.dragging) {
       this.DOMElement.classList.add('dragging')
 
@@ -33,7 +39,7 @@ class SimpleDrag {
       let velocity = Math.abs(xDelta * yDelta)
       if (velocity > 50) {
         let v = { x: xDelta * 0.5, y: yDelta * 0.5 }
-        if (this.tween) this.tween.kill()
+        this.tween?.kill()
         this.tween = gsap.to(v, {
           duration: 0.5,
           x: 0,
@@ -51,6 +57,10 @@ class SimpleDrag {
   }
 
   onStart(e) {
+    if (e.type == 'touchstart' && e.touches.length > 1) {
+      this.dragging = false
+      return
+    }
     e = e.type == 'touchstart' ? e.touches[0] : e
     this.lastX = e.clientX
     this.lastY = e.clientY
@@ -92,11 +102,15 @@ class Card {
     this.createDOMElement()
     this.x = 0
     this.y = 0
+    this.scale = 1
+    this._lastW = 0
+    this._lastH = 0
   }
 
   createDOMElement() {
     this.rootElement = document.createElement('div')
     this.imgElement = document.createElement('img')
+    this.imgElement.decoding = 'async'
     this.rootElement.className = 'card card-loading'
     this.rootElement.appendChild(this.imgElement)
     this.anchorElement = document.createElement('a')
@@ -129,18 +143,23 @@ class Card {
   }
 
   removeSelf() {
-    if (this.rootElement.parentElement) {
-      this.rootElement.classList.toggle('card-loading', true)
-      this.imgElement.src = ''
-      this.rootElement.parentElement.removeChild(this.rootElement)
-    }
+    if (!this.rootElement.parentElement) return
+    this.rootElement.classList.toggle('card-loading', true)
+    this.imgElement.src = ''
+    this.rootElement.remove()
   }
 
   update() {
-    this.rootElement.setAttribute(
-      'style',
-      `transform: translate3d(${this.x}px, ${this.y}px, 0); width: ${this.width}px; height: ${this.height}px;`
-    )
+    const { style } = this.rootElement
+    if (this.width !== this._lastW) {
+      style.width = `${this.width}px`
+      this._lastW = this.width
+    }
+    if (this.height !== this._lastH) {
+      style.height = `${this.height}px`
+      this._lastH = this.height
+    }
+    style.transform = `translate3d(${this.x}px, ${this.y}px, 0) scale(${this.scale})`
   }
 }
 
@@ -158,15 +177,101 @@ class Grid {
     this.viewHeight = 0
     this.firstLoad = true
     this.staggerMaxMs = 800
+    this.scale = MAX_SCALE
+    this.pinching = false
+    this.lastPinchDist = 0
+    this.zoomTween = null
   }
 
   init() {
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
     new SimpleDrag(this.DOMElement, this.onDrag.bind(this))
+    this.bindZoom()
     setTimeout(() => {
       this.firstLoad = false
     }, this.staggerMaxMs + 400)
+  }
+
+  bindZoom() {
+    const el = this.DOMElement
+    el.addEventListener('wheel', this.onWheel.bind(this), { passive: false })
+    el.addEventListener('touchstart', this.onPinchStart.bind(this), { passive: false })
+    el.addEventListener('touchmove', this.onPinchMove.bind(this), { passive: false })
+    el.addEventListener('touchend', this.onPinchEnd.bind(this), false)
+    el.addEventListener('touchcancel', this.onPinchEnd.bind(this), false)
+  }
+
+  onWheel(e) {
+    e.preventDefault()
+    const factor = e.ctrlKey ? 0.02 : 0.005
+    const target = this.scale * Math.exp(-e.deltaY * factor)
+    const rect = this.DOMElement.getBoundingClientRect()
+    const duration = e.ctrlKey ? 0.08 : 0.28
+    this.zoomAt(target, e.clientX - rect.left, e.clientY - rect.top, duration)
+  }
+
+  onPinchStart(e) {
+    if (e.touches.length === 2) {
+      const t1 = e.touches[0]
+      const t2 = e.touches[1]
+      this.pinching = true
+      this.lastPinchDist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+    }
+  }
+
+  onPinchMove(e) {
+    if (!this.pinching || e.touches.length < 2) return
+    e.preventDefault()
+    const t1 = e.touches[0]
+    const t2 = e.touches[1]
+    const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+    if (this.lastPinchDist <= 0) {
+      this.lastPinchDist = dist
+      return
+    }
+    const ratio = dist / this.lastPinchDist
+    const rect = this.DOMElement.getBoundingClientRect()
+    const cx = (t1.clientX + t2.clientX) / 2 - rect.left
+    const cy = (t1.clientY + t2.clientY) / 2 - rect.top
+    this.zoomAt(this.scale * ratio, cx, cy, 0.08)
+    this.lastPinchDist = dist
+  }
+
+  onPinchEnd(e) {
+    if (e.touches.length < 2) {
+      this.pinching = false
+      this.lastPinchDist = 0
+    }
+  }
+
+  zoomAt(targetScale, cx, cy, duration = 0.28) {
+    const next = Math.max(MIN_SCALE, Math.min(MAX_SCALE, targetScale))
+    if (next === this.scale) return
+    const ratio = next / this.scale
+    const targetOffsetX = cx + (this.offsetX - cx) * ratio
+    const targetOffsetY = cy + (this.offsetY - cy) * ratio
+
+    this.zoomTween?.kill()
+    const state = {
+      scale: this.scale,
+      offsetX: this.offsetX,
+      offsetY: this.offsetY
+    }
+    this.zoomTween = gsap.to(state, {
+      duration,
+      ease: 'power3.out',
+      scale: next,
+      offsetX: targetOffsetX,
+      offsetY: targetOffsetY,
+      onUpdate: () => {
+        this.scale = state.scale
+        this.offsetX = state.offsetX
+        this.offsetY = state.offsetY
+        this.viewPairs = Math.ceil(this.viewWidth / (PAIR_WIDTH * this.scale)) + 2
+        this.updateGrid()
+      }
+    })
   }
 
   staggerDelay(x, y) {
@@ -178,6 +283,8 @@ class Grid {
   }
 
   onDrag(deltaX, deltaY) {
+    this.zoomTween?.kill()
+    this.zoomTween = null
     this.offsetX += deltaX
     this.offsetY += deltaY
     this.updateGrid()
@@ -186,7 +293,7 @@ class Grid {
   onResize() {
     this.viewHeight = this.DOMElement.offsetHeight
     this.viewWidth = this.DOMElement.offsetWidth
-    this.viewPairs = Math.ceil(this.viewWidth / PAIR_WIDTH) + 2
+    this.viewPairs = Math.ceil(this.viewWidth / (PAIR_WIDTH * this.scale)) + 2
     this.updateGrid()
   }
 
@@ -298,44 +405,45 @@ class Grid {
 
   updateGrid() {
     const newCards = {}
-    const pairOffset = Math.floor(this.offsetX / PAIR_WIDTH)
-    const xMod = this.offsetX - pairOffset * PAIR_WIDTH
+    const sCardW = CARD_WIDTH * this.scale
+    const sPairW = PAIR_WIDTH * this.scale
+    const pairOffset = Math.floor(this.offsetX / sPairW)
+    const xMod = this.offsetX - pairOffset * sPairW
 
     for (let p = -1; p <= this.viewPairs; p++) {
       const tPair = -pairOffset + p
-      const xPos = p * PAIR_WIDTH + xMod - PAIR_WIDTH
+      const xPos = p * sPairW + xMod - sPairW
 
-      if (xPos + PAIR_WIDTH <= 0 || xPos >= this.viewWidth) continue
+      if (xPos + sPairW <= 0 || xPos >= this.viewWidth) continue
 
       const stripe = this.getPairStripe(tPair)
-      const total = stripe.total
+      const total = stripe.total * this.scale
       const yMod = ((this.offsetY % total) + total) % total
+      const wrapMax = Math.ceil(this.viewHeight / total) + 1
 
       for (let i = 0; i < stripe.items.length; i++) {
         const item = stripe.items[i]
-        let screenY = null
-        for (let wrap = -1; wrap <= 1; wrap++) {
-          const cy = item.y + yMod - total + wrap * total
-          if (cy + item.height > 0 && cy < this.viewHeight) {
-            screenY = cy
-            break
-          }
-        }
-        if (screenY === null) continue
+        const itemY = item.y * this.scale
+        const itemH = item.height * this.scale
+        for (let wrap = -1; wrap <= wrapMax; wrap++) {
+          const cy = itemY + yMod - total + wrap * total
+          if (cy + itemH <= 0 || cy >= this.viewHeight) continue
 
-        const key = `${tPair}:${i}`
-        const card =
-          this.cards[key] || this.getCard(item.desc, item.width, item.height)
-        delete this.cards[key]
-        card.descriptor = item.desc
-        card.width = item.width
-        card.height = item.height
-        card.x = xPos + item.col * CARD_WIDTH
-        card.y = screenY
-        const delay = this.staggerDelay(card.x, card.y)
-        card.appendTo(this.DOMElement, delay)
-        card.update()
-        newCards[key] = card
+          const key = `${tPair}:${i}:${wrap}`
+          const card =
+            this.cards[key] || this.getCard(item.desc, item.width, item.height)
+          delete this.cards[key]
+          card.descriptor = item.desc
+          card.width = item.width
+          card.height = item.height
+          card.scale = this.scale
+          card.x = xPos + item.col * sCardW
+          card.y = cy
+          const delay = this.staggerDelay(card.x, card.y)
+          card.appendTo(this.DOMElement, delay)
+          card.update()
+          newCards[key] = card
+        }
       }
     }
     this.cleanupCards()

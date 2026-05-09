@@ -31,6 +31,8 @@
   position: absolute;
   cursor: grab;
   border-radius: var(--border-radius);
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 .grid-container:active {
@@ -56,6 +58,7 @@
   overflow: hidden;
   position: absolute;
   user-select: none;
+  transform-origin: 0 0;
 }
 
 .card:hover {

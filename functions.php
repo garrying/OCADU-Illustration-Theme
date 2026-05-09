@@ -99,7 +99,7 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1746494351',
+        get_template_directory_uri() . '/assets/dist/app.js?1778370981',
         '',
         '2026',
         true,
@@ -109,7 +109,7 @@ if (!function_exists('ocaduillustration_scripts')) {
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1746494351',
+        get_template_directory_uri() . '/assets/dist/home.js?1778370981',
         '',
         '2026',
         true,
@@ -129,7 +129,7 @@ function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1746494351',
+    get_template_directory_uri() . '/assets/dist/main.css?1778370981',
     '',
     '2026',
   );
@@ -557,10 +557,7 @@ function ocaduillustration_gallery_filter($attr, $attachment)
     // Archive/search: native browser responsive loading, no lazysizes.
     // Small thumb in src gives the blur-up something to display from first paint;
     // srcset/sizes let the browser upgrade to the right variant for the rendered cell.
-    $attr['src'] = get_the_post_thumbnail_url(
-      $post,
-      'illustrator-extra-small',
-    );
+    $attr['src'] = get_the_post_thumbnail_url($post, 'illustrator-extra-small');
     $attr['sizes'] = '(min-width: 1024px) 25vw, (min-width: 667px) 33vw, 50vw';
     $attr['loading'] = 'lazy';
     $attr['decoding'] = 'async';
