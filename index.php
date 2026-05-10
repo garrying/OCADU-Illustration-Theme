@@ -17,13 +17,18 @@
 
     $ocaduillustration_home_index = new WP_Query($ocaduillustration_args);
   } ?>
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+    <?php echo esc_html(get_bloginfo('name')); ?> — Graduating Class of <?php echo esc_html(
+  $ocaduillustration_grad_year[0]->name,
+); ?>
+  </h1>
   <div id="top-mask" class="pointer-events-none top-4"></div>
   <div id="title" class="bottom-3 left-3 right-3 top-4 text-white">
     <div class="title-support-unit p-4 pointer-events-none hidden md:flex m-4 mx-5 rounded">
       <p>Maintained by the Illustration Program at OCAD University.
         <a href="/about" class="about pointer-events-auto text-white">About the archive</a>
       </p>
-      <a href="https://www.instagram.com/ocaduillustration/" target="_blank" class="pointer-events-auto text-white">@ocaduillustration ↗</a>
+      <a href="https://www.instagram.com/ocaduillustration/" target="_blank" rel="noopener noreferrer" class="pointer-events-auto text-white">@ocaduillustration ↗</a>
     </div>
   </div>
   <div id="illustrators" class="grid-container bottom-4 left-4 right-4 top-4 overflow-hidden"></div>

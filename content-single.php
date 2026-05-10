@@ -72,13 +72,77 @@ if ($ocaduillustration_json_ld_sites) {
   }
 }
 if ($ocaduillustration_json_ld_abstract) {
-  $ocaduillustration_json_ld['abstract'] = $ocaduillustration_json_ld_abstract;
+  $ocaduillustration_json_ld['abstract'] = wp_strip_all_tags(
+    get_the_excerpt(),
+  );
 }
+
+$ocaduillustration_breadcrumb_items = [
+  [
+    '@type' => 'ListItem',
+    'position' => 1,
+    'name' => 'Home',
+    'item' => home_url('/'),
+  ],
+];
+
+$ocaduillustration_breadcrumb_terms = get_the_terms(
+  $ocaduillustration_json_ld_post_id,
+  'gradyear',
+);
+if (
+  !empty($ocaduillustration_breadcrumb_terms) &&
+  !is_wp_error($ocaduillustration_breadcrumb_terms)
+) {
+  $ocaduillustration_breadcrumb_root = null;
+  $ocaduillustration_breadcrumb_child = null;
+  foreach ($ocaduillustration_breadcrumb_terms as $ocaduillustration_bc_term) {
+    if (0 === (int) $ocaduillustration_bc_term->parent) {
+      $ocaduillustration_breadcrumb_root = $ocaduillustration_bc_term;
+    } else {
+      $ocaduillustration_breadcrumb_child = $ocaduillustration_bc_term;
+    }
+  }
+  if ($ocaduillustration_breadcrumb_root) {
+    $ocaduillustration_breadcrumb_items[] = [
+      '@type' => 'ListItem',
+      'position' => count($ocaduillustration_breadcrumb_items) + 1,
+      'name' => $ocaduillustration_breadcrumb_root->name,
+      'item' => get_term_link($ocaduillustration_breadcrumb_root),
+    ];
+  }
+  if ($ocaduillustration_breadcrumb_child) {
+    $ocaduillustration_breadcrumb_items[] = [
+      '@type' => 'ListItem',
+      'position' => count($ocaduillustration_breadcrumb_items) + 1,
+      'name' => $ocaduillustration_breadcrumb_child->name,
+      'item' => get_term_link($ocaduillustration_breadcrumb_child),
+    ];
+  }
+}
+$ocaduillustration_breadcrumb_items[] = [
+  '@type' => 'ListItem',
+  'position' => count($ocaduillustration_breadcrumb_items) + 1,
+  'name' => $ocaduillustration_json_ld_name,
+  'item' => get_permalink(),
+];
+
+$ocaduillustration_breadcrumb_ld = [
+  '@context' => 'https://schema.org',
+  '@type' => 'BreadcrumbList',
+  'itemListElement' => $ocaduillustration_breadcrumb_items,
+];
 ?>
 
 <script type="application/ld+json">
   <?php echo wp_json_encode(
     $ocaduillustration_json_ld,
+    JSON_UNESCAPED_SLASHES,
+  ); ?>
+</script>
+<script type="application/ld+json">
+  <?php echo wp_json_encode(
+    $ocaduillustration_breadcrumb_ld,
     JSON_UNESCAPED_SLASHES,
   ); ?>
 </script>

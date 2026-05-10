@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<h2 class="w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center">Illustrators</h2>
+<h1 class="w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center">Illustrators</h1>
 
 <div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
   <div class="grid-col grid-col-1"></div>

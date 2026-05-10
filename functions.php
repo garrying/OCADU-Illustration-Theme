@@ -385,7 +385,9 @@ if (!function_exists('ocaduillustration_year_item_navigation')) {
       esc_attr($term_srcset) .
       "' loading='lazy' width='300' height='460' src='" .
       esc_url($term_image) .
-      "' sizes='300px' class='year-item-image' alt='Graduating year feature image' /></a>";
+      "' sizes='300px' class='year-item-image' alt='Illustration work from " .
+      esc_attr($term_obj->name) .
+      " graduating class' /></a>";
   }
 }
 
@@ -414,29 +416,51 @@ add_filter('excerpt_more', 'ocaduillustration_new_excerpt_more');
 /**
  * Get Social Image
  *
- * @return string
+ * @return array{0:string,1:int,2:int} [url, width, height]
  */
 function ocaduillustration_get_socialimage()
 {
-  global $post, $posts;
+  $img = null;
 
-  if (is_single() && has_post_thumbnail($post->ID)) {
-    $src = wp_get_attachment_image_src(
-      get_post_thumbnail_id($post->ID),
-      'medium',
-      '',
+  if (is_singular() && has_post_thumbnail()) {
+    $img = wp_get_attachment_image_src(
+      get_post_thumbnail_id(),
+      'illustrator-social-twitter',
     );
-
-    $socialimg = $src[0];
-  } else {
-    $socialimg = '';
+  } elseif (is_tax('gradyear')) {
+    $term = get_queried_object();
+    if ($term && isset($term->term_id)) {
+      $thumb_map = ocaduillustration_year_thumb_ids();
+      if (!empty($thumb_map[$term->term_id])) {
+        $first = reset($thumb_map[$term->term_id]);
+        $img = wp_get_attachment_image_src(
+          $first,
+          'illustrator-social-twitter',
+        );
+      }
+    }
   }
 
-  if (empty($socialimg)) {
-    $socialimg = get_template_directory_uri() . '/thumb.jpg';
+  if (!$img) {
+    $img = [get_template_directory_uri() . '/thumb.jpg', 1200, 630];
   }
 
-  return $socialimg;
+  return $img;
+}
+
+/**
+ * Build a short, single-line description from a post excerpt.
+ *
+ * @return string
+ */
+function ocaduillustration_meta_description_from_post()
+{
+  $excerpt = wp_strip_all_tags(get_the_excerpt(), true);
+  $excerpt = preg_replace('/\s+/', ' ', $excerpt);
+  if (mb_strlen($excerpt) > 160) {
+    $excerpt = rtrim(mb_substr($excerpt, 0, 157)) . '…';
+  }
+  return wptexturize($excerpt);
 }
 
 /**
@@ -444,19 +468,25 @@ function ocaduillustration_get_socialimage()
  */
 function ocaduillustration_social_meta()
 {
+  $social_image = ocaduillustration_get_socialimage();
+  $social_image_w = (int) $social_image[1];
+  $social_image_h = (int) $social_image[2];
+
   echo "\n" . '<!-- social meta -->' . "\n";
   echo '<meta property="og:site_name" content="' .
-    esc_html(get_bloginfo('name')) .
+    esc_attr(get_bloginfo('name')) .
     '">' .
     "\n";
-  if (is_singular() && is_attachment() !== true) {
-    global $post;
-    $the_excerpt = wptexturize(wp_strip_all_tags($post->post_content));
+  echo '<meta property="og:locale" content="en_US">' . "\n";
+
+  if (is_singular() && !is_attachment()) {
+    $description = ocaduillustration_meta_description_from_post();
     $ocaduillustration_year_image = wp_get_attachment_image_src(
-      get_post_thumbnail_id($post->ID),
+      get_post_thumbnail_id(),
       'illustrator-icon',
       '',
     );
+
     echo '<meta property="og:url" content="' .
       esc_url(get_permalink()) .
       '">' .
@@ -467,78 +497,98 @@ function ocaduillustration_social_meta()
       "\n";
     echo '<meta property="og:type" content="article">' . "\n";
     echo '<meta property="og:description" content="' .
-      esc_html($the_excerpt) .
+      esc_attr($description) .
       '">' .
       "\n";
     echo '<meta property="og:image" content="' .
-      esc_url(ocaduillustration_get_socialimage()) .
+      esc_url($social_image[0]) .
+      '">' .
+      "\n";
+    echo '<meta property="og:image:width" content="' .
+      esc_attr($social_image_w) .
+      '">' .
+      "\n";
+    echo '<meta property="og:image:height" content="' .
+      esc_attr($social_image_h) .
       '">' .
       "\n";
 
     echo '<meta name="description" content="' .
-      esc_html($the_excerpt) .
+      esc_attr($description) .
       '">' .
       "\n";
     if ($ocaduillustration_year_image) {
       echo '<link rel="shortcut icon" href="' .
-        esc_html($ocaduillustration_year_image[0]) .
+        esc_url($ocaduillustration_year_image[0]) .
         '">' .
-        "\n"; // phpcs:ignore
+        "\n";
     }
-  }
-  if (is_home() || is_archive()) {
+  } elseif (is_home() || is_front_page() || is_archive()) {
     $social_description =
       'Presented by the Illustration Program at OCAD U featuring work from the graduating class of 2026.';
-    if (is_home()) {
+
+    if (is_home() || is_front_page()) {
       $social_title = get_bloginfo('name');
+      $social_url = home_url('/');
+    } elseif (is_tax()) {
+      $term = get_queried_object();
+      $social_title = get_bloginfo('name') . ' ' . single_term_title('', false);
+      $social_url = $term ? get_term_link($term) : home_url('/');
+      if (is_wp_error($social_url)) {
+        $social_url = home_url('/');
+      }
     } else {
-      $selected_year = single_term_title('', false);
-      $social_title = get_bloginfo('name') . ' ' . $selected_year;
+      $social_title = get_bloginfo('name');
+      $social_url = home_url('/');
+    }
+
+    if (is_paged()) {
+      $paged_url = get_pagenum_link(get_query_var('paged'));
+      if ($paged_url) {
+        $social_url = $paged_url;
+      }
     }
 
     echo '<meta property="og:title" content="' .
-      esc_html($social_title) .
+      esc_attr($social_title) .
       '">' .
       "\n";
-    echo '<meta property="og:url" content="' .
-      esc_url(site_url()) .
-      '">' .
-      "\n";
+    echo '<meta property="og:url" content="' . esc_url($social_url) . '">' . "\n";
     echo '<meta property="og:image" content="' .
-      esc_url(ocaduillustration_get_socialimage()) .
+      esc_url($social_image[0]) .
+      '">' .
+      "\n";
+    echo '<meta property="og:image:width" content="' .
+      esc_attr($social_image_w) .
+      '">' .
+      "\n";
+    echo '<meta property="og:image:height" content="' .
+      esc_attr($social_image_h) .
       '">' .
       "\n";
     echo '<meta property="og:description" content="' .
-      esc_html($social_description) .
+      esc_attr($social_description) .
       '">' .
       "\n";
     echo '<meta property="og:type" content="website">' . "\n";
 
     echo '<meta name="description" content="' .
-      esc_html($social_description) .
+      esc_attr($social_description) .
       '">' .
       "\n";
   }
   echo '<!-- end social meta -->' . "\n";
 }
 
-function ocaduillustration_remove_tax_name($title, $sep, $seplocation)
+function ocaduillustration_document_title_parts($parts)
 {
-  if (is_tax()) {
-    $term_title = single_term_title('', false);
-
-    // Determines position of separator.
-    if ('right' === $seplocation) {
-      $title = $term_title . " $sep " . get_bloginfo('name');
-    } else {
-      $title = get_bloginfo('name') . " $sep " . $term_title;
-    }
+  if (is_tax('gradyear')) {
+    $parts['title'] = single_term_title('', false);
   }
-
-  return $title;
+  return $parts;
 }
 
-add_filter('wp_title', 'ocaduillustration_remove_tax_name', 10, 3);
+add_filter('document_title_parts', 'ocaduillustration_document_title_parts');
 
 add_action('wp_head', 'ocaduillustration_social_meta');
 
@@ -706,5 +756,104 @@ add_filter('wp_get_attachment_image_attributes', function ($attributes) {
   unset($attributes['decoding']);
   return $attributes;
 });
+
+/**
+ * Emit a canonical URL for templates WordPress core doesn't cover.
+ *
+ * Core's rel_canonical() handles singular posts/pages, so only emit on
+ * front/home, taxonomy, and post-type archives here to avoid duplicates.
+ */
+function ocaduillustration_canonical()
+{
+  if (is_singular()) {
+    return;
+  }
+
+  $canonical = '';
+
+  if (is_front_page() || is_home()) {
+    $canonical = home_url('/');
+  } elseif (is_tax()) {
+    $term = get_queried_object();
+    if ($term) {
+      $term_link = get_term_link($term);
+      if (!is_wp_error($term_link)) {
+        $canonical = $term_link;
+      }
+    }
+  } elseif (is_post_type_archive()) {
+    $canonical = get_post_type_archive_link(get_query_var('post_type'));
+  }
+
+  if ($canonical && is_paged()) {
+    $paged = get_pagenum_link(get_query_var('paged'));
+    if ($paged) {
+      $canonical = $paged;
+    }
+  }
+
+  if ($canonical) {
+    echo '<link rel="canonical" href="' . esc_url($canonical) . '">' . "\n";
+  }
+}
+
+add_action('wp_head', 'ocaduillustration_canonical', 1);
+
+/**
+ * Tell crawlers not to index low-value pages.
+ */
+add_filter('wp_robots', function ($robots) {
+  if (is_search() || is_404()) {
+    $robots['noindex'] = true;
+    $robots['follow'] = true;
+  }
+  return $robots;
+});
+
+/**
+ * Site-wide Organization + WebSite JSON-LD on the front page.
+ */
+function ocaduillustration_site_schema()
+{
+  if (!is_front_page()) {
+    return;
+  }
+
+  $home = home_url('/');
+  $graph = [
+    [
+      '@type' => 'Organization',
+      'name' => get_bloginfo('name'),
+      'url' => $home,
+      'logo' => get_template_directory_uri() . '/thumb.jpg',
+      'sameAs' => ['https://www.instagram.com/ocaduillustration/'],
+    ],
+    [
+      '@type' => 'WebSite',
+      'name' => get_bloginfo('name'),
+      'url' => $home,
+      'potentialAction' => [
+        '@type' => 'SearchAction',
+        'target' => [
+          '@type' => 'EntryPoint',
+          'urlTemplate' => $home . '?s={search_term_string}',
+        ],
+        'query-input' => 'required name=search_term_string',
+      ],
+    ],
+  ];
+
+  $payload = [
+    '@context' => 'https://schema.org',
+    '@graph' => $graph,
+  ];
+
+  echo '<script type="application/ld+json">' .
+    wp_json_encode($payload, JSON_UNESCAPED_SLASHES) .
+    '</script>' .
+    "\n";
+}
+
+add_action('wp_head', 'ocaduillustration_site_schema');
 
 ?>

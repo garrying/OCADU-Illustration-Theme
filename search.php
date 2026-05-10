@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<h2 class="w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center"><?php printf(
+<h1 class="w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center"><?php printf(
   /* translators: %s: search query. */
   esc_html__('Search results for %s', 'ocaduillustration'),
   '<mark>' . esc_html(get_search_query()) . '</mark>'
-); ?></h2>
+); ?></h1>
 
 <div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
   <?php if (have_posts()): ?>

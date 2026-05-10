@@ -12,7 +12,49 @@
       get_query_var('taxonomy')
     );
   }
-  echo '<h2 class="text-4xl w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center">';
+
+  $ocaduillustration_tax_breadcrumbs = [
+    [
+      '@type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Home',
+      'item' => home_url('/'),
+    ],
+  ];
+  if (isset($ocaduillustration_selected_section_parent)) {
+    $ocaduillustration_tax_breadcrumbs[] = [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => $ocaduillustration_selected_section_parent->name,
+      'item' => get_term_link($ocaduillustration_selected_section_parent),
+    ];
+    $ocaduillustration_tax_breadcrumbs[] = [
+      '@type' => 'ListItem',
+      'position' => 3,
+      'name' => $ocaduillustration_selected_section->name,
+      'item' => get_term_link($ocaduillustration_selected_section),
+    ];
+  } else {
+    $ocaduillustration_tax_breadcrumbs[] = [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => $ocaduillustration_selected_section->name,
+      'item' => get_term_link($ocaduillustration_selected_section),
+    ];
+  }
+  $ocaduillustration_tax_breadcrumb_ld = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => $ocaduillustration_tax_breadcrumbs,
+  ];
+  echo '<script type="application/ld+json">' .
+    wp_json_encode(
+      $ocaduillustration_tax_breadcrumb_ld,
+      JSON_UNESCAPED_SLASHES
+    ) .
+    '</script>';
+
+  echo '<h1 class="text-4xl w-full leading-none font-normal mt-[230px] mb-[160px] mx-auto text-center">';
   if (isset($ocaduillustration_selected_section_parent)) {
     echo esc_html($ocaduillustration_selected_section_parent->name);
     echo ', ';
@@ -20,7 +62,7 @@
   } else {
     echo esc_html($ocaduillustration_selected_section->name);
   }
-  echo '</h2>';
+  echo '</h1>';
 } ?>
 
 <div id="illustrators" class="flex flex-wrap illustrators-grid archive-grid">
