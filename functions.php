@@ -74,19 +74,28 @@ function ocaduillustration_head_cleanup()
 add_action('init', 'ocaduillustration_head_cleanup');
 
 /**
- * Remove WP version from scripts
+ * Strip the `ver=` query arg only when it leaks the WP core version.
  *
- * @param string $src provides function with string to remove version numbers.
- *
- * @return string
+ * Why: theme assets use filemtime as their version for cache-busting;
+ * blanket-stripping `ver=` would defeat that. Match on the core version
+ * string so only WP-emitted versions get removed.
  */
 function ocaduillustration_remove_wp_ver_css_js($src)
 {
-  $ver_var = strpos($src, 'ver=');
-  if ($ver_var) {
+  $wp_ver = get_bloginfo('version');
+  if ($wp_ver && strpos($src, 'ver=' . $wp_ver) !== false) {
     $src = remove_query_arg('ver', $src);
   }
   return $src;
+}
+
+/**
+ * Filemtime-based cache-buster for a theme-relative asset path.
+ */
+function ocaduillustration_asset_ver($relative_path)
+{
+  $file = get_template_directory() . '/' . ltrim($relative_path, '/');
+  return file_exists($file) ? (string) filemtime($file) : false;
 }
 
 /**
@@ -99,9 +108,9 @@ if (!function_exists('ocaduillustration_scripts')) {
       wp_deregister_script('wp-embed');
       wp_register_script(
         'app',
-        get_template_directory_uri() . '/assets/dist/app.js?1778370981',
-        '',
-        '2026',
+        get_template_directory_uri() . '/assets/dist/app.js',
+        [],
+        ocaduillustration_asset_ver('assets/dist/app.js'),
         true,
       );
       wp_enqueue_script('app');
@@ -109,9 +118,9 @@ if (!function_exists('ocaduillustration_scripts')) {
     if (is_home()) {
       wp_register_script(
         'home',
-        get_template_directory_uri() . '/assets/dist/home.js?1778370981',
-        '',
-        '2026',
+        get_template_directory_uri() . '/assets/dist/home.js',
+        [],
+        ocaduillustration_asset_ver('assets/dist/home.js'),
         true,
       );
       wp_enqueue_script('home');
@@ -129,9 +138,9 @@ function ocaduillustration_styles()
 {
   wp_register_style(
     'ocadustyles',
-    get_template_directory_uri() . '/assets/dist/main.css?1778370981',
-    '',
-    '2026',
+    get_template_directory_uri() . '/assets/dist/main.css',
+    [],
+    ocaduillustration_asset_ver('assets/dist/main.css'),
   );
   wp_enqueue_style('ocadustyles');
 }
