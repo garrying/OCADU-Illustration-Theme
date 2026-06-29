@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-env": "^8.0.2",
     "@eslint/js": "^10.0.1",
     "@prettier/plugin-php": "^0.25.0",
     "@tailwindcss/postcss": "^4.3.1",
