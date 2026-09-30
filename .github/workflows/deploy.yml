@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy theme
-        uses: Burnett01/rsync-deployments@9.0.0
+        uses: Burnett01/rsync-deployments@9.0.1
         with:
           switches: >-
             -avzr --delete
